@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy Support</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Strategy Support</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="about.html">About / Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Creative Strategy with an Edge</h2>
+      <p>Helping brands, agencies, and in-house teams get sharp and stay sharp.</p>
+      <img src="placeholder-hero.jpg" alt="80s-inspired hero visual">
+    </section>
+
+    <section class="intro">
+      <h3>What is Strategy Support?</h3>
+      <p>I'm a one-man consultancy blending insight, brand strategy and creative energy to make brands resonate. Whether you're a startup, a legacy brand or an agency in need of outside perspective – I'm here to help.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Strategy Support</p>
+    <p><a href="mailto:hello@strategysupport.com">hello@strategysupport.com</a></p>
+  </footer>
+</body>
+</html>

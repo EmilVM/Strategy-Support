@@ -1,0 +1,99 @@
+/* Global styles */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0d0221;
+  color: #fff;
+  line-height: 1.6;
+}
+
+a {
+  color: #ff66c4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+header {
+  background: linear-gradient(to right, #2d0030, #400080);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: #00ffe7;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: radial-gradient(circle, #1a0033, #0d0221);
+}
+
+.hero h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  color: #ff0080;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.hero img {
+  max-width: 100%;
+  height: auto;
+  border: 3px solid #00ffe7;
+  box-shadow: 0 0 20px #ff00ff;
+}
+
+/* Intro Section */
+.intro {
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro h3 {
+  color: #00ffe7;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  font-size: 1rem;
+}
+
+/* Footer */
+footer {
+  background-color: #1a0033;
+  color: #ccc;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+}
