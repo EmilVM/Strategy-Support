@@ -54,7 +54,7 @@ nav a:hover {
 
 /* Hero Section (New Retro Look) */
 .hero {
-  background: url('images/grid-bg.jpg') center bottom / cover no-repeat, #000;
+  background: url('images/grid-bg.png') center bottom / cover no-repeat, #000;
   color: #fff;
   text-align: center;
   padding: 140px 20px 100px;
