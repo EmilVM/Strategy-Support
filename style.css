@@ -191,11 +191,12 @@ footer {
 }
 
 .logos img {
-  height: 180px;
-  width: auto;
-  object-fit: contain;
+  height: 140px;
+  width: auto !important;
+  max-width: 100%;
   padding: 10px;
-  transition: transform 0.2s ease;
+  object-fit: contain;
+  display: block;
 }
 
 .logos img:hover {
