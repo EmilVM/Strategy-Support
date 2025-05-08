@@ -182,3 +182,22 @@ footer {
   padding: 2rem;
   font-size: 0.9rem;
 }
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.logos img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  padding: 10px;
+  transition: transform 0.2s ease;
+}
+
+.logos img:hover {
+  transform: scale(1.05);
+}
