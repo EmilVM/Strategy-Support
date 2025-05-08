@@ -191,17 +191,82 @@
       .case {
         flex-direction: column;
       }
-    }
+  }
+    .hero {
+  background: url('images/grid-bg.jpg') center bottom / cover no-repeat, #000;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+  position: relative;
+}
+
+.hero-text h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #fff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text .strapline {
+  font-size: 1.5rem;
+  color: #ddd;
+  margin: 10px 0;
+}
+
+.subline {
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+.highlight {
+  color: var(--highlight);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.service .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--highlight);
+}
+
+.service h4 {
+  color: var(--text-light);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
   </style>
 </head>
 <body>
-  <header>
-    
-    <img src="images/a_website_homepage_for_strategy_support_a_strat.png" alt="Hero Image" style="width: 100%; max-height: 80vh; object-fit: cover; border-bottom: 2px solid #222;">
-    
-    <h1>Strategy Support</h1>
-    <p class="strapline"><span class="strap-core">The subtle art of strategy</span><span class="neon-tag">– for hire</span></p>
-  </header>
+  <header class="hero">
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hero-text">
+    <h1>STRATEGY SUPPORT</h1>
+    <p class="strapline">The subtle art of strategy</p>
+    <p class="subline">Helping bold brands sharpen thinking and shape <span class="highlight">standout campaigns</span>.</p>
+    <p class="neon-tag">– for hire</p>
+  </div>
+</header>
 
   <nav>
     <a href="#services">Services</a>
@@ -210,15 +275,32 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="services" class="services">
-    <h2>Services</h2>
-    <ul>
-      <li>Brand definition and strategy</li>
-      <li>Creative platform and campaign strategy</li>
-      <li>Creative briefing</li>
-      <li>Marketing ecosystems</li>
-    </ul>
-  </section>
+ <section id="services" class="services">
+  <h2>SERVICES</h2>
+  <div class="service-grid">
+    <div class="service">
+      <div class="icon">🔍</div>
+      <h4>Brand Definition and Strategy</h4>
+      <p>Positioning, architecture, brand purpose and more.</p>
+    </div>
+    <div class="service">
+      <div class="icon">💡</div>
+      <h4>Creative Platform and Campaign Strategy</h4>
+      <p>Comms strategies, campaign ideas and messaging.</p>
+    </div>
+    <div class="service">
+      <div class="icon">📝</div>
+      <h4>Creative Briefing</h4>
+      <p>Brief writing and development.</p>
+    </div>
+    <div class="service">
+      <div class="icon">🔗</div>
+      <h4>Marketing Ecosystems</h4>
+      <p>Mapping each touchpoint in your brand's world.</p>
+    </div>
+  </div>
+</section>
+
 
   <section id="work">
     <h2>Work</h2>
