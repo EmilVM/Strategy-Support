@@ -191,13 +191,12 @@ footer {
 }
 
 .logos img {
-  height: 140px;
+  height: 140px !important;
   width: auto !important;
-  max-width: 100%;
-  padding: 10px;
-  object-fit: contain;
-  display: block;
+  border: 3px solid magenta !important;
+  background-color: yellow !important;
 }
+
 
 .logos img:hover {
   transform: scale(1.05);
