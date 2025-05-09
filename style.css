@@ -295,4 +295,14 @@ nav.sticky-nav.visible {
   display: block;
   margin: 0 auto;
 }
+.phone-hidden {
+  color: transparent;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.phone-hidden:hover {
+  color: var(--text-light);
+}
 
