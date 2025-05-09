@@ -148,7 +148,7 @@
       flex-wrap: wrap;
       gap: 20px;
       margin-bottom: 40px;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .case img {
