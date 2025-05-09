@@ -284,6 +284,41 @@ nav.sticky-nav.visible {
   font-size: 1rem;
   color: #ccc;
 }
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-left {
+  flex: 1 1 55%;
+}
+
+.about-right {
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-photo {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-left, .about-right {
+    flex: 1 1 100%;
+  }
+}
 
 .spacer {
   margin-top: 60px;
