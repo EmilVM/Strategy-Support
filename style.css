@@ -128,9 +128,11 @@
       margin: 40px 0;
     }
 
-   .logos img {
-  height: 140px;
+ .logos img {
+  max-height: 140px;
+  max-width: 180px;
   width: auto;
+  height: auto;
   object-fit: contain;
   padding: 10px;
   transition: transform 0.2s ease;
