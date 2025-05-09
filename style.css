@@ -288,4 +288,11 @@ nav.sticky-nav.visible {
 .spacer {
   margin-top: 60px;
 }
+.profile-photo {
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
 
