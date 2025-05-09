@@ -296,14 +296,16 @@ nav.sticky-nav.visible {
   margin: 0 auto;
 }
 .phone-hidden {
-  color: transparent;
-  transition: color 0.3s ease;
+  color: var(--highlight);
+  text-decoration: underline;
   cursor: pointer;
   user-select: none;
 }
 
-.phone-hidden:hover {
+.phone-hidden.revealed {
   color: var(--text-light);
+  text-decoration: none;
+  cursor: default;
 }
 .phone-container {
   text-align: center;
