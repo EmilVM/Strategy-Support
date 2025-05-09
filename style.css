@@ -305,4 +305,7 @@ nav.sticky-nav.visible {
 .phone-hidden:hover {
   color: var(--text-light);
 }
+.phone-container {
+  text-align: center;
+}
 
