@@ -345,4 +345,8 @@ nav.sticky-nav.visible {
 .phone-container {
   text-align: center;
 }
+.case {
+  opacity: 1; /* Default fallback, overridden by GSAP */
+  transform: none;
+}
 
