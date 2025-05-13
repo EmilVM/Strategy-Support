@@ -40,3 +40,19 @@ gsap.utils.toArray(".case").forEach((el) => {
   });
 });
 
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate all .case sections on scroll
+gsap.utils.toArray(".case").forEach((el) => {
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1.2,
+    ease: "power3.out"
+  });
+});
