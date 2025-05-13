@@ -9,7 +9,7 @@
    body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: url('images/your-new-grid.png') repeat;
+  background: url('images/grid-bg.png') repeat;
   background-size: cover;
   color: var(--text-light);
   scroll-behavior: smooth;
