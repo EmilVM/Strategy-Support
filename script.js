@@ -26,14 +26,17 @@ gsap.to(".hero-title", {
 });
 
 
-gsap.from("#case-lyca", {
-  scrollTrigger: {
-    trigger: "#case-lyca",
-    start: "top 80%", // animation starts when the top of the case is 80% down the viewport
-    toggleActions: "play none none none"
-  },
-  y: 50,            // slide up from 50px below
-  opacity: 0,       // fade in from invisible
-  duration: 1.2,    // animation duration in seconds
-  ease: "power3.out"
+gsap.utils.toArray(".case").forEach((el) => {
+  gsap.from(el, {
+    scrollTrigger: {
+      trigger: el,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1.2,
+    ease: "power3.out"
+  });
 });
+
