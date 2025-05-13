@@ -150,6 +150,13 @@ section + section {
 /* Highlight and Work Intro */
 .highlight { color: var(--highlight); }
 .work-intro-text { text-align: center; max-width: 700px; margin: 10px auto 40px; font-size: 1rem; color: #ccc; }
+.work-intro-title {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;           /* larger size */
+  color: var(--highlight);   /* yellow accent */
+  margin: 20px 0 10px;
+}
 
 /* About */
 .about-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
