@@ -148,7 +148,15 @@ h2 { font-family: 'Orbitron', sans-serif; color: var(--primary); text-align: cen
 .phone-hidden.revealed { color: var(--text-light); text-decoration: none; cursor: default; }
 
 /* Responsive */
-@media (max-width:768px) {
-  .case, .about-grid { flex-direction: column; text-align: center; }
-  .about-right, .case-image { order: -1; }
+@media (max-width: 768px) {
+  .case {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+ 
+  .about-grid {
+    flex-direction: column;
+    text-align: center;
+  }
 }
