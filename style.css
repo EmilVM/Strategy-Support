@@ -8,7 +8,11 @@
 }
 
 /* Root and Body */
-html { background-color: var(--bg-dark); }
+html {
+  position: relative;       /* establish stacking context */
+  background: var(--bg-dark);
+  overflow-x: hidden;       /* prevent horizontal scroll */
+}
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -17,12 +21,6 @@ body {
 }
 
 /* Grid Overlay */
-html {
-  position: relative;       /* establish stacking context */
-  background: var(--bg-dark);
-  overflow-x: hidden;       /* prevent horizontal scroll */
-}
-
 html::before {
   content: "";
   position: fixed;
@@ -36,11 +34,6 @@ html::before {
   z-index: -1;
   pointer-events: none;
   animation: moveGrid 60s linear infinite;
-}
-
-@keyframes moveGrid {
-  from { background-position: 0 0; }
-  to   { background-position: 100px 100px; }
 }
 @keyframes moveGrid {
   from { background-position: 0 0; }
