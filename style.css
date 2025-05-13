@@ -103,6 +103,11 @@ html::before {
 /* Sections */
 section { max-width: 1000px; margin: auto; padding: 60px 20px; }
 h2 { font-family: 'Orbitron', sans-serif; color: var(--primary); text-align: center; }
+/* subtle neon‐pink divider between sections */
+section + section {
+  border-top: 1px solid rgba(255, 93, 177, 0.2); /* neon‐pink at 20% opacity */
+  padding-top: 60px;  /* gives a bit of breathing room above each new section */
+}
 
 /* Services */
 .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 30px; }
