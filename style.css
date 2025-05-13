@@ -164,15 +164,7 @@ section + section {
   .case-image   { order: 1; }
 
   /* About section stacks normally */
-  .about-grid {
-    flex-direction: column;
-    text-align: center;
-  }
+  @media (max-width: 768px) {
 }
 
- 
-  .about-grid {
-    flex-direction: column;
-    text-align: center;
-  }
 }
