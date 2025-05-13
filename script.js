@@ -16,6 +16,16 @@ gsap.from(".hero-subtitle", {
 });
 gsap.registerPlugin(ScrollTrigger);
 
+// Flicker effect on “– for hire”
+gsap.to(".hero-title", {
+  textShadow: "0 0 8px #f0f",
+  repeat: -1,
+  yoyo: true,
+  ease: "power1.inOut",
+  duration: 0.4
+});
+
+
 gsap.from("#case-lyca", {
   scrollTrigger: {
     trigger: "#case-lyca",
