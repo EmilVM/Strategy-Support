@@ -137,6 +137,15 @@ section + section {
 .case-image { flex:1 1 45%; text-align: center; }
 .case-image img { width:100%; border-radius:10px; }
 .label { color: var(--highlight); font-weight: bold; }
+.case {
+  /* card background */
+  background-color: #111;               /* a hair lighter than pure black */
+  border-radius: 10px;                  /* soften the corners */
+  padding: 30px;                        /* space inside the card */
+  margin-bottom: 40px;                  /* keep your spacing */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);  /* subtle depth */
+  overflow: hidden;                     /* clip any children overflow */
+}
 
 /* Highlight and Work Intro */
 .highlight { color: var(--highlight); }
