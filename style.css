@@ -1,3 +1,7 @@
+html {
+  background-color: var(--bg-dark);
+}
+
 :root {
       --primary: #ff5db1;
       --text-light: #fff;
