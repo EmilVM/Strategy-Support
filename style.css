@@ -6,13 +6,16 @@
       --highlight: #ffcc00;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      scroll-behavior: smooth;
-    }
+   body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('images/your-new-grid.png') repeat;
+  background-size: cover;
+  color: var(--text-light);
+  scroll-behavior: smooth;
+  animation: moveGrid 60s linear infinite;
+}
+
 
     header {
       min-height: 100vh;
