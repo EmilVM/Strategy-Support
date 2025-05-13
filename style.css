@@ -149,11 +149,22 @@ h2 { font-family: 'Orbitron', sans-serif; color: var(--primary); text-align: cen
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* Stack case text then image */
   .case {
-    display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
   }
+  /* Explicitly ensure correct order */
+  .case-content { order: 0; }
+  .case-image   { order: 1; }
+
+  /* About section stacks normally */
+  .about-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
  
   .about-grid {
     flex-direction: column;
