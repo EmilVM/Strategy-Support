@@ -15,7 +15,14 @@
   scroll-behavior: smooth;
   animation: moveGrid 60s linear infinite;
 }
-
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
 
     header {
       min-height: 100vh;
