@@ -351,18 +351,18 @@ nav.sticky-nav.visible {
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('images/grid-bg.png') repeat;
-  background-size: 300px 300px; /* adjust as needed */
-  background-position: 0 0;
-  opacity: 0.08; /* subtle but visible */
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background:
+    url('images/grid-bg.png') repeat center,
+    var(--bg-dark);
+  background-size: 300px 300px, auto;
+  opacity: 0.08;
   z-index: -1;
   pointer-events: none;
   animation: moveGrid 60s linear infinite;
 }
+
 @keyframes moveGrid {
   from {
     background-position: 0 0;
