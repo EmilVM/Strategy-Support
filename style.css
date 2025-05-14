@@ -229,7 +229,7 @@ section + section {
 .contact-card p {
   margin: 0;
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text-light);
   text-align: center;
 }
 
