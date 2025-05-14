@@ -26,7 +26,7 @@ body {
   background-image: url('../images/grid-bg.png'); /* Fixed path with "../" to go up one directory */
   background-repeat: repeat;
   background-position: center;
-  background-size: 80px 80px; /* grid-cell size = 80×80px */
+  background-size: 100% auto; 
   animation: moveGrid 60s linear infinite; /* slide the pattern */
 }
 
