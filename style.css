@@ -7,7 +7,7 @@
   --text-light: #fff;
 }
 
-/* ── Base & Grid Overlay ── */
+/* ── Base & Animated Grid ── */
 html {
   position:      relative;
   background:    var(--bg-dark);
@@ -15,19 +15,20 @@ html {
 }
 
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-light);
-  scroll-behavior: smooth;
-  min-height: 100vh;   
+  margin:           0;
+  font-family:      'Poppins', sans-serif;
+  color:            var(--text-light);
+  scroll-behavior:  smooth;
+  min-height:       100vh;
 
-  /* ── DARK BASE + ANIMATED GRID ── */
-  background:
-    var(--bg-dark)                          /* black base color */
-    url('/images/grid-bg.png') repeat center/* tile the grid image */
-    / 80px 80px;                            /* grid cell size */
-  background-blend-mode: overlay;           /* merge grid over the black */
-  animation: moveGrid 60s linear infinite;  /* animate the background */
+  /* ▸ DARK BASE + ANIMATED GRID */
+  background-color: var(--bg-dark);
+  background-image: url('images/grid-bg.png');      /* ← no leading slash! */
+  background-repeat: repeat;
+  background-position: center;
+  background-size:    80px 80px;                    /* tweak for density */
+  background-blend-mode: overlay;                   /* blend grid into black */
+  animation:          moveGrid 60s linear infinite; /* animate tile */
 }
 
 /* ── Grid Animation ── */
