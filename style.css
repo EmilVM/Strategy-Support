@@ -20,7 +20,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Grid Overlay */
+/* ── Grid Overlay ── */
 html::before {
   content: "";
   position: fixed;
@@ -29,12 +29,17 @@ html::before {
   background:
     url('images/grid-bg.png') repeat center,
     var(--bg-dark);
-  background-size: 300px 300px, auto;
-  opacity: 0.40;
+  /* denser grid spacing — smaller tiles */
+  background-size: 100px 100px, auto;
+  /* blend it into the background color */
+  background-blend-mode: overlay;
+  /* stronger visibility */
+  opacity: 0.4;
   z-index: -1;
   pointer-events: none;
   animation: moveGrid 60s linear infinite;
 }
+
 @keyframes moveGrid {
   from { background-position: 0 0; }
   to   { background-position: 100px 100px; }
