@@ -21,15 +21,14 @@ body {
   scroll-behavior:  smooth;
   min-height:       100vh;
 
-  /* ▸ DARK BASE + ANIMATED GRID */
-  background-color: var(--bg-dark);
-  background-image: url('images/grid-bg.png');      /* ← no leading slash! */
-  background-repeat: repeat;
-  background-position: center;
-  background-size:    80px 80px;                    /* tweak for density */
-  background-blend-mode: overlay;                   /* blend grid into black */
-  animation:          moveGrid 60s linear infinite; /* animate tile */
+  /* ── DARK BASE + ANIMATED GRID ── */
+  background:
+    var(--bg-dark)                           /* black base */
+    url('images/grid-bg.png') repeat center  /* your grid image */
+    / 80px 80px;                             /* grid-cell size = 80×80px */
+  animation: moveGrid 60s linear infinite;   /* slide the pattern */
 }
+
 
 /* ── Grid Animation ── */
 @keyframes moveGrid {
@@ -270,6 +269,3 @@ section + section {
   line-height: 1.5;
 }
 
-
-
-}
