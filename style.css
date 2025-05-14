@@ -164,13 +164,12 @@ section + section {
 .about-right { flex:1 1 35%; text-align: center; }
 .profile-photo { max-width:200px; border-radius:10px; }
 
-/* Contact */
 /* ── Contact ── */
 .contact-section {
   padding: 4rem 1.5rem;            /* keep your existing padding */
   background-color: var(--bg-dark);/* use your dark page background */
   text-align: center;              /* keep headings centered */
-  margin-bottom: 2rem;             /* add breathing room above footer */
+  margin-bottom: 6rem;             /* add breathing room above footer */
 }
 
 
