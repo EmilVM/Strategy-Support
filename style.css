@@ -187,6 +187,8 @@ section + section {
 
 .contact-card {
   background: #ffffff;
+  background: var(--bg-dark, #111);   /* dark background */
+  color: var(--text-light);           /* light text inside */
   padding: 1.75rem 1.25rem;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.08);
@@ -215,7 +217,7 @@ section + section {
 .contact-card a,
 .contact-card button {
   font-size: 1rem;
-  color: var(--primary, #007acc);
+  color: var(--accent, #00ccff); 
   text-decoration: none;
   background: none;
   border: none;
