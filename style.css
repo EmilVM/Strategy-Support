@@ -165,8 +165,75 @@ section + section {
 .profile-photo { max-width:200px; border-radius:10px; }
 
 /* Contact */
-.phone-hidden { color: var(--highlight); text-decoration: underline; cursor: pointer; }
-.phone-hidden.revealed { color: var(--text-light); text-decoration: none; cursor: default; }
+.contact-section {
+  padding: 4rem 1.5rem;
+  background-color: var(--bg-light, #fafafa);
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: #ffffff;
+  padding: 1.75rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.contact-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-card h3 {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.contact-card a,
+.contact-card button {
+  font-size: 1rem;
+  color: var(--primary, #007acc);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.contact-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
