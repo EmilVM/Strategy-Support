@@ -28,9 +28,12 @@ gsap.utils.toArray('.case').forEach(el => {
 });
 
 // Phone reveal
-const phone = document.getElementById('phone-number');
-phone.addEventListener('click', () => {
-  phone.textContent = '+45 3045 1696';
-  phone.classList.add('revealed');
-});
+document
+  .getElementById('reveal-phone')
+  .addEventListener('click', function() {
+    const phoneEl = document.getElementById('phone-number');
+    phoneEl.classList.remove('hidden');
+    this.style.display = 'none';
+  });
+
 
