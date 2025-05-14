@@ -15,34 +15,25 @@ html {
 }
 
 body {
-  margin:           0;
-  font-family:      'Poppins', sans-serif;
-  color:            var(--text-light);
-  scroll-behavior:  smooth;
-  position:         relative;               /* for stacking context */
-  background-color: var(--bg-dark);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-light);
+  scroll-behavior: smooth;
+  min-height: 100vh;   
+
+  /* ── DARK BASE + ANIMATED GRID ── */
+  background:
+    var(--bg-dark)                          /* black base color */
+    url('/images/grid-bg.png') repeat center/* tile the grid image */
+    / 80px 80px;                            /* grid cell size */
+  background-blend-mode: overlay;           /* merge grid over the black */
+  animation: moveGrid 60s linear infinite;  /* animate the background */
 }
 
-body::before {
-  content:            "";
-  position:           fixed;
-  top: 0; left: 0;
-  width:              100vw;
-  height:             100vh;
-  pointer-events:     none;
-  z-index:            -1;
-  background-image:   url('/images/grid-bg.png');
-  background-repeat:  repeat;
-  background-position: center;
-  background-size:    80px 80px;            /* tweak density here */
-  background-blend-mode: overlay;
-  opacity:            0.6;                  /* 60% opaque */
-  animation:          moveGrid 60s linear infinite; /* optional */
-}
-
+/* ── Grid Animation ── */
 @keyframes moveGrid {
   from { background-position: 0 0; }
-  to   { background-position: 100px 100px; }
+  to   { background-position: 80px 80px; }
 }
 
 /* Hero */
