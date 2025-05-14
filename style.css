@@ -22,12 +22,12 @@ body {
   min-height:       100vh;
 
   /* ── DARK BASE + ANIMATED GRID ── */
-  background-color:  var(--bg-dark);            /* black base */
-  background-image:  url('images/grid-bg.png'); /* your grid image */
-  background-repeat: repeat;                    /* tile it */
-  background-size:   80px 80px;                 /* cell size */
-  background-position: 0 0;                     /* start corner */
-  animation:         moveGrid 60s linear infinite;
+  background-color: var(--bg-dark); /* black base */
+  background-image: url('../images/grid-bg.png'); /* Fixed path with "../" to go up one directory */
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 80px 80px; /* grid-cell size = 80×80px */
+  animation: moveGrid 60s linear infinite; /* slide the pattern */
 }
 
 
