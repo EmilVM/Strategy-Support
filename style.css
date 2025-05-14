@@ -236,49 +236,52 @@ section + section {
   display: none;
 }
 
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .case {
+    flex-direction: column;
+    text-align: center;
+  }
+  .case-content {
+    order: 0;
+  }
+  .case-image {
+    order: 1;
+  }
+  .about-grid {
+    flex-direction: column;
+  }
+}
 
- /* Responsive */
--@media (max-width: 768px) {
-+@media (max-width: 768px) {
-   /* Stack case text then image */
-   .case {
-     flex-direction: column;
-     text-align: center;
-   }
-   .case-content { order: 0; }
-   .case-image   { order: 1; }
+/* ── Footer ── */
+.site-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #e1e1e1;
+}
 
--  /* About section stacks normally */
--  @media (max-width: 768px) {
--}
-+  /* About section stacks normally */
-+  .about-grid {
-+    flex-direction: column;
-+  }
-+}  /* ← close your only media-query here */
+.site-footer p {
+  margin: 0.2rem 0;
+  line-height: 1.5;
+}
 
- /* — now the footer rules start outside any @media — */
- .site-footer {
-   width: 100%;
-   display: flex;               /* flex so children stack & center */
-   flex-direction: column;
-   align-items: center;
-   background-color: #f8f8f8;
-   padding: 1rem 0;
-   font-size: 0.9rem;
-   color: #555;
-   border-top: 1px solid #e1e1e1;
- }
+/* ── Contact cards ── */
+.contact-card {
+  background: var(--bg-dark, #111);
+  color: var(--text-light, #fff);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
 
- .site-footer p {
-   margin: 0.2rem 0;
-   line-height: 1.5;
- }
+.contact-card a,
+.contact-card button {
+  color: var(--accent, #00ccff);
+}
 
- /* — lighten up the card shadow so it shows on dark — */
- .contact-card {
--  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-+  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
- }
 
 }
