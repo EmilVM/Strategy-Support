@@ -189,8 +189,7 @@ section + section {
 }
 
 .contact-card {
-  background: #ffffff;
-  background: var(--bg-dark, #111);   /* dark background */
+  background-color: #111;   /* match your .case card */
   color: var(--text-light);           /* light text inside */
   padding: 1.75rem 1.25rem;
   border-radius: 12px;
