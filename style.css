@@ -182,5 +182,18 @@ section + section {
   /* About section stacks normally */
   @media (max-width: 768px) {
 }
+.site-footer {
+  text-align: center;           /* center the text */
+  background-color: #f8f8f8;    /* light neutral background */
+  padding: 1rem 0;              /* vertical breathing room */
+  font-size: 0.9rem;            /* slightly smaller font */
+  color: #555;                  /* soft dark gray text */
+  border-top: 1px solid #e1e1e1;/* subtle separator above footer */
+}
+
+.site-footer p {
+  margin: 0;                    /* remove default margins */
+  line-height: 1.5;             /* improve readability */
+}
 
 }
