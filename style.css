@@ -30,7 +30,7 @@ html::before {
     url('images/grid-bg.png') repeat center,
     var(--bg-dark);
   background-size: 300px 300px, auto;
-  opacity: 0.08;
+  opacity: 0.15;
   z-index: -1;
   pointer-events: none;
   animation: moveGrid 60s linear infinite;
