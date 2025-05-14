@@ -1,43 +1,43 @@
-/* Variables */
+/* ── Root Variables ── */
 :root {
-  --primary: #ff5db1;
-  --accent: #00ccff;
-  --highlight: #ffcc00;
-  --bg-dark: #000;
+  --primary:    #ff5db1;
+  --accent:     #00ccff;
+  --highlight:  #ffcc00;
+  --bg-dark:    #000;
   --text-light: #fff;
 }
 
-/* Root and Body */
+/* ── Base & Grid Overlay ── */
 html {
-  position: relative;       /* establish stacking context */
-  background: var(--bg-dark);
-  overflow-x: hidden;       /* prevent horizontal scroll */
-}
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-light);
-  scroll-behavior: smooth;
+  position:      relative;
+  background:    var(--bg-dark);
+  overflow-x:    hidden;
 }
 
-/* ── Grid Overlay ── */
-html::before {
-  content: "";
-  position: fixed;
+body {
+  margin:           0;
+  font-family:      'Poppins', sans-serif;
+  color:            var(--text-light);
+  scroll-behavior:  smooth;
+  position:         relative;               /* for stacking context */
+  background-color: var(--bg-dark);
+}
+
+body::before {
+  content:            "";
+  position:           fixed;
   top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background:
-    url('images/grid-bg.png') repeat center,
-    var(--bg-dark);
-  /* denser grid spacing — smaller tiles */
-  background-size: 100px 100px, auto;
-  /* blend it into the background color */
+  width:              100vw;
+  height:             100vh;
+  pointer-events:     none;
+  z-index:            -1;
+  background-image:   url('/images/grid-bg.png');
+  background-repeat:  repeat;
+  background-position: center;
+  background-size:    80px 80px;            /* tweak density here */
   background-blend-mode: overlay;
-  /* stronger visibility */
-  opacity: 0.7;
-  z-index: -1;
-  pointer-events: none;
-  animation: moveGrid 60s linear infinite;
+  opacity:            0.6;                  /* 60% opaque */
+  animation:          moveGrid 60s linear infinite; /* optional */
 }
 
 @keyframes moveGrid {
