@@ -183,16 +183,20 @@ section + section {
   @media (max-width: 768px) {
 }
 .site-footer {
-  text-align: center;           /* center the text */
-  background-color: #f8f8f8;    /* light neutral background */
-  padding: 1rem 0;              /* vertical breathing room */
-  font-size: 0.9rem;            /* slightly smaller font */
-  color: #555;                  /* soft dark gray text */
-  border-top: 1px solid #e1e1e1;/* subtle separator above footer */
+-  text-align: center;
++  width: 100%;
++  display: flex;               /* make it a flex container */
++  flex-direction: column;      /* stack lines vertically */
++  align-items: center;         /* center horizontally */
+   background-color: #f8f8f8;
+   padding: 1rem 0;
+   font-size: 0.9rem;
+   color: #555;
+   border-top: 1px solid #e1e1e1;
 }
 
 .site-footer p {
-  margin: 0;                    /* remove default margins */
+  margin: 0,2rem 0;                    /* remove default margins */
   line-height: 1.5;             /* improve readability */
 }
 
