@@ -191,7 +191,7 @@ section + section {
   color: var(--text-light);           /* light text inside */
   padding: 1.75rem 1.25rem;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -269,18 +269,6 @@ section + section {
 .site-footer p {
   margin: 0.2rem 0;
   line-height: 1.5;
-}
-
-/* ── Contact cards ── */
-.contact-card {
-  background: var(--bg-dark, #111);
-  color: var(--text-light, #fff);
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-}
-
-.contact-card a,
-.contact-card button {
-  color: var(--accent, #00ccff);
 }
 
 
