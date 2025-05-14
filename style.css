@@ -263,8 +263,9 @@ section + section {
 }
 
 .site-footer p {
-  margin: 0,2rem 0;                    /* remove default margins */
-  line-height: 1.5;             /* improve readability */
+  margin: 0.2rem 0;
+  /* … */
 }
+
 
 }
