@@ -49,6 +49,15 @@ container.addEventListener('touchstart', function(e) {
   }
 }, false);
 
+let touchStartY = null;
+let touchEndY = null;
+
+container.addEventListener('touchstart', function(e) {
+  if (e.touches.length === 1) {
+    touchStartY = e.touches[0].clientY;
+  }
+}, false);
+
 container.addEventListener('touchmove', function(e) {
   if (e.touches.length === 1) {
     touchEndY = e.touches[0].clientY;
@@ -69,4 +78,5 @@ container.addEventListener('touchend', function(e) {
   touchStartY = null;
   touchEndY = null;
 }, false);
+
 });
