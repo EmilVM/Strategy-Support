@@ -39,4 +39,34 @@ document.addEventListener('wheel', (e) => {
   } else if(e.deltaY < 0 && currentIdx > 0) {
     goToPanel(currentIdx - 1);
   }
+  // Touch/swipe support for mobile
+let touchStartY = null;
+let touchEndY = null;
+
+container.addEventListener('touchstart', function(e) {
+  if (e.touches.length === 1) {
+    touchStartY = e.touches[0].clientY;
+  }
+}, false);
+
+container.addEventListener('touchmove', function(e) {
+  if (e.touches.length === 1) {
+    touchEndY = e.touches[0].clientY;
+  }
+}, false);
+
+container.addEventListener('touchend', function(e) {
+  if (touchStartY !== null && touchEndY !== null) {
+    let diff = touchStartY - touchEndY;
+    if (Math.abs(diff) > 40) { // Minimum swipe distance
+      if (diff > 0 && currentIdx < panels.length - 1) {
+        goToPanel(currentIdx + 1); // Swipe up
+      } else if (diff < 0 && currentIdx > 0) {
+        goToPanel(currentIdx - 1); // Swipe down
+      }
+    }
+  }
+  touchStartY = null;
+  touchEndY = null;
+}, false);
 });
