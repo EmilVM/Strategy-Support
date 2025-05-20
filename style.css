@@ -32,17 +32,17 @@ main {
 }
 .panel p {
   font-size: 4vw;
-  font-weight: 700;
+  font-weight: 400;   /* No bold by default */
   color: #fff;
   max-width: 700px;
   text-align: center;
 }
-
 @media (max-width: 700px) {
   .panel p {
     font-size: 10vw;
   }
 }
+
 .brand-logos {
   display: flex;
   flex-wrap: wrap;
