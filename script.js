@@ -1,4 +1,3 @@
-
 const panels = document.querySelectorAll('.panel');
 const container = document.querySelector('.panels-container');
 let currentIdx = 0;
@@ -39,16 +38,9 @@ document.addEventListener('wheel', (e) => {
   } else if(e.deltaY < 0 && currentIdx > 0) {
     goToPanel(currentIdx - 1);
   }
-  // Touch/swipe support for mobile
-let touchStartY = null;
-let touchEndY = null;
+});
 
-container.addEventListener('touchstart', function(e) {
-  if (e.touches.length === 1) {
-    touchStartY = e.touches[0].clientY;
-  }
-}, false);
-
+// Touch/swipe support for mobile
 let touchStartY = null;
 let touchEndY = null;
 
@@ -79,4 +71,3 @@ container.addEventListener('touchend', function(e) {
   touchEndY = null;
 }, false);
 
-});
