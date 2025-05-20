@@ -31,7 +31,17 @@ main {
   position: relative;
 }
 .panel p {
-  font-size: 2vw; color: #fff; max-width: 700px; text-align: center;
+  font-size: 4vw;
+  font-weight: 700;
+  color: #fff;
+  max-width: 700px;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .panel p {
+    font-size: 10vw;
+  }
 }
 .brand-logos {
   display: flex;
