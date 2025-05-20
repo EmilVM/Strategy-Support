@@ -88,5 +88,5 @@ main {
   .brand-logos { gap: 16px; }
   .brand-logos img { max-width: 80px; max-height: 50px; }
   .contact-title { font-size: 5vw; }
-  .contact-email { font-size: 10vw; }
+  .contact-email { font-size: 6vw; }
 }
