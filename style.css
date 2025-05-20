@@ -32,7 +32,7 @@ main {
 }
 .panel p {
   font-size: 3vw;
-  font-weight: normal;   /* No bold by default */
+  font-weight: 400;   /* No bold by default */
   color: #fff;
   max-width: 700px;
   text-align: center;
