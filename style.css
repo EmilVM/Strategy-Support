@@ -31,8 +31,8 @@ main {
   position: relative;
 }
 .panel p {
-  font-size: 4vw;
-  font-weight: 400;   /* No bold by default */
+  font-size: 3vw;
+  font-weight: normal;   /* No bold by default */
   color: #fff;
   max-width: 700px;
   text-align: center;
