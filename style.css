@@ -1,6 +1,6 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 100%; height: 100%; font-family: 'Inter', Arial, sans-serif; background: #111; color: #fff; }
+html, body { width: 100%; height: 100%; font-family: 'Syne', Arial, sans-serif; background: #111; color: #fff; }
 body { min-height: 100vh; }
 header {
   position: fixed; top: 0; left: 0; width: 100vw;
