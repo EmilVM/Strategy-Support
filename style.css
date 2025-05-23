@@ -163,5 +163,31 @@ main {
   .case-paragraph {
     font-size: 5vw;
   }
+
+.panel p,
+.case-paragraph {
+  max-width: 900px;      /* Increased from 700px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make the font size more reasonable for case paragraphs */
+.case-paragraph {
+  font-size: 1.4rem;     /* Fixed font size for desktop */
+  line-height: 1.5;
+  margin-bottom: 32px;
+  padding: 1.7rem 2rem;
+  gap: 32px;
+}
+
+.cases-container {
+  gap: 32px;             /* Reduce vertical gap between case paragraphs */
+}
+
+@media (max-width: 700px) {
+  .case-paragraph {
+    font-size: 4.5vw;    /* Responsive for mobile, still smaller than before */
+    padding: 1.2rem 1rem;
+  }
 }
 
