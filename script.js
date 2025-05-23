@@ -84,23 +84,20 @@ const normalPanelScrollThreshold = 200; // Amount of scroll needed for normal pa
 
 document.addEventListener('wheel', (e) => {
   const now = Date.now();
-  if (now - lastScrollTime < 50) return; // Reduced throttle for smoother accumulation
+  if (now - lastScrollTime < 50) return;
   lastScrollTime = now;
 
   if (isInCasesPanel) {
-    // Accumulate scroll delta
     scrollAccumulator += Math.abs(e.deltaY);
     if (scrollAccumulator >= scrollThreshold) {
-      // Handle scroll within cases panel
       if (e.deltaY > 0) {
         if (scrollProgress < 1) {
           scrollProgress = Math.min(1, scrollProgress + 0.25);
           updateCasesAnimations();
         } else {
-          // At end of cases - need extra scroll to move to contact
-          scrollAccumulator += Math.abs(e.deltaY); // Keep accumulating
-          if (scrollAccumulator >= scrollThreshold * 2 && currentIdx < panels.length - 1) {
-            setTimeout(() => goToPanel(currentIdx + 1), 300);
+          // At end of cases - now move to contact immediately on next scroll
+          if (currentIdx < panels.length - 1) {
+            setTimeout(() => goToPanel(currentIdx + 1), 200);
             scrollAccumulator = 0;
           }
         }
@@ -109,18 +106,15 @@ document.addEventListener('wheel', (e) => {
           scrollProgress = Math.max(0, scrollProgress - 0.25);
           updateCasesAnimations();
         } else {
-          // At beginning of cases - need extra scroll to move to work
-          scrollAccumulator += Math.abs(e.deltaY); // Keep accumulating
-          if (scrollAccumulator >= scrollThreshold * 2 && currentIdx > 0) {
-            setTimeout(() => goToPanel(currentIdx - 1), 300);
+          // At beginning of cases - now move to work immediately on next scroll up
+          if (currentIdx > 0) {
+            setTimeout(() => goToPanel(currentIdx - 1), 200);
             scrollAccumulator = 0;
           }
         }
       }
-      // Reset accumulator only if we're still within the 0-1 range
-      if (scrollProgress > 0 && scrollProgress < 1) {
-        scrollAccumulator = 0;
-      }
+      // Always reset accumulator after an action
+      scrollAccumulator = 0;
     }
   } else {
     // Normal panel navigation with accumulation
@@ -166,17 +160,18 @@ container.addEventListener('touchend', function(e) {
     let diff = touchStartY - touchEndY;
     if (Math.abs(diff) > 40) {
       if (isInCasesPanel) {
-        // Handle swipe within cases panel
         if (diff > 0) { // Swipe up
-          scrollProgress = Math.min(1, scrollProgress + 0.25);
-          updateCasesAnimations();
-          if (scrollProgress >= 1 && currentIdx < panels.length - 1) {
+          if (scrollProgress < 1) {
+            scrollProgress = Math.min(1, scrollProgress + 0.25);
+            updateCasesAnimations();
+          } else if (currentIdx < panels.length - 1) {
             setTimeout(() => goToPanel(currentIdx + 1), 200);
           }
         } else { // Swipe down
-          scrollProgress = Math.max(0, scrollProgress - 0.25);
-          updateCasesAnimations();
-          if (scrollProgress <= 0 && currentIdx > 0) {
+          if (scrollProgress > 0) {
+            scrollProgress = Math.max(0, scrollProgress - 0.25);
+            updateCasesAnimations();
+          } else if (currentIdx > 0) {
             setTimeout(() => goToPanel(currentIdx - 1), 200);
           }
         }
@@ -201,3 +196,4 @@ container.addEventListener('touchend', function(e) {
   touchStartY = null;
   touchEndY = null;
 }, false);
+
