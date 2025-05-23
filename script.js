@@ -70,4 +70,20 @@ container.addEventListener('touchend', function(e) {
   touchStartY = null;
   touchEndY = null;
 }, false);
+// --- Case paragraph fly-in/fly-out ---
+const caseParagraphs = document.querySelectorAll('.case-paragraph');
+
+const caseObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, {
+  threshold: 0.3
+});
+
+caseParagraphs.forEach(paragraph => caseObserver.observe(paragraph));
 
