@@ -17,7 +17,7 @@ function goToPanel(idx, fromDirection = null) {
     updateCasesAnimations();
   } else {
     isInCasesPanel = true;
-    // When coming from CONTACT, show all cases. When coming from WORK, show only first.
+    // When coming from CONTACT, show all cases.
     if (fromDirection === 'up') {
       scrollProgress = CASE_COUNT;
       updateCasesAnimations();
@@ -63,7 +63,13 @@ document.addEventListener('keydown', (e) => {
       }
     }
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      if (scrollProgress > 0) {
+      // THIS BLOCK IS NEW: If all cases are visible and user scrolls up, immediately hide and go to Work
+      if (scrollProgress === CASE_COUNT) {
+        scrollProgress = 0;
+        updateCasesAnimations();
+        goToPanel(currentIdx - 1, 'down');
+        window._casesExtraScroll = false;
+      } else if (scrollProgress > 0) {
         scrollProgress -= 1;
         updateCasesAnimations();
         window._casesExtraScroll = false;
@@ -81,7 +87,6 @@ document.addEventListener('keydown', (e) => {
     }
     if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && currentIdx > 0) {
       if (currentIdx === 4) {
-        // <-- PATCH: Show all cases when coming up from contact
         scrollProgress = CASE_COUNT;
         updateCasesAnimations();
         goToPanel(currentIdx - 1, 'up');
@@ -122,7 +127,13 @@ document.addEventListener('wheel', (e) => {
           }
         }
       } else {
-        if (scrollProgress > 0) {
+        // THIS BLOCK IS NEW: If all cases are visible and user scrolls up, immediately hide and go to Work
+        if (scrollProgress === CASE_COUNT) {
+          scrollProgress = 0;
+          updateCasesAnimations();
+          goToPanel(currentIdx - 1, 'down');
+          window._casesExtraScroll = false;
+        } else if (scrollProgress > 0) {
           scrollProgress -= 1;
           updateCasesAnimations();
           window._casesExtraScroll = false;
@@ -143,7 +154,6 @@ document.addEventListener('wheel', (e) => {
         }
       } else if (e.deltaY < 0 && currentIdx > 0) {
         if (currentIdx === 4) {
-          // <-- PATCH: Show all cases when coming up from contact
           scrollProgress = CASE_COUNT;
           updateCasesAnimations();
           goToPanel(currentIdx - 1, 'up');
@@ -192,7 +202,13 @@ container.addEventListener('touchend', function(e) {
             }
           }
         } else { // Down
-          if (scrollProgress > 0) {
+          // THIS BLOCK IS NEW: If all cases are visible and user scrolls up, immediately hide and go to Work
+          if (scrollProgress === CASE_COUNT) {
+            scrollProgress = 0;
+            updateCasesAnimations();
+            goToPanel(currentIdx - 1, 'down');
+            window._casesExtraScroll = false;
+          } else if (scrollProgress > 0) {
             scrollProgress -= 1;
             updateCasesAnimations();
             window._casesExtraScroll = false;
@@ -209,7 +225,6 @@ container.addEventListener('touchend', function(e) {
           }
         } else if (diff < 0 && currentIdx > 0) {
           if (currentIdx === 4) {
-            // <-- PATCH: Show all cases when coming up from contact
             scrollProgress = CASE_COUNT;
             updateCasesAnimations();
             goToPanel(currentIdx - 1, 'up');
