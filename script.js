@@ -2,15 +2,14 @@ const panels = document.querySelectorAll('.panel');
 const container = document.querySelector('.panels-container');
 const caseParagraphs = document.querySelectorAll('.case-paragraph');
 let currentIdx = 0;
-let scrollProgress = 0; // Track scroll progress within cases panel
+let scrollProgress = 0; // Track how many case paragraphs are visible (0-4)
 let isInCasesPanel = false;
 
 function goToPanel(idx) {
   if (idx < 0 || idx >= panels.length) return;
   container.style.transform = `translateY(-${idx * window.innerHeight}px)`;
   currentIdx = idx;
-  
-  // Reset cases animations when leaving cases panel
+
   if (idx !== 3) {
     isInCasesPanel = false;
     scrollProgress = 0;
@@ -22,8 +21,7 @@ function goToPanel(idx) {
 
 function updateCasesAnimations() {
   caseParagraphs.forEach((paragraph, index) => {
-    const threshold = (index + 1) * 0.25; // 25%, 50%, 75%, 100%
-    if (scrollProgress >= threshold) {
+    if (scrollProgress > index) {
       paragraph.classList.add('visible');
     } else {
       paragraph.classList.remove('visible');
@@ -38,36 +36,41 @@ function updatePanelsContainerHeight() {
 window.addEventListener('resize', updatePanelsContainerHeight);
 updatePanelsContainerHeight();
 
-// Arrow keys
+// Keyboard navigation
 document.addEventListener('keydown', (e) => {
   if (isInCasesPanel) {
-    // Handle scroll within cases panel
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      scrollProgress = Math.min(1, scrollProgress + 0.25);
-      updateCasesAnimations();
-      if (scrollProgress >= 1 && currentIdx < panels.length - 1) {
+      if (scrollProgress < caseParagraphs.length) {
+        scrollProgress += 1;
+        updateCasesAnimations();
+      } else if (currentIdx < panels.length - 1) {
         goToPanel(currentIdx + 1);
       }
     }
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      scrollProgress = Math.max(0, scrollProgress - 0.25);
-      updateCasesAnimations();
-      if (scrollProgress <= 0 && currentIdx > 0) {
+      if (scrollProgress > 0) {
+        scrollProgress -= 1;
+        updateCasesAnimations();
+      } else if (currentIdx > 0) {
         goToPanel(currentIdx - 1);
+        // On returning to cases from contact, hide all
+        if (currentIdx === 4) {
+          scrollProgress = 0;
+          updateCasesAnimations();
+        }
       }
     }
   } else {
-    // Normal panel navigation
     if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && currentIdx < panels.length - 1) {
-      if (currentIdx === 2) { // Moving to cases panel from work
-        scrollProgress = 0.25; // Start with first paragraph visible
+      if (currentIdx === 2) {
+        scrollProgress = 1;
         updateCasesAnimations();
       }
       goToPanel(currentIdx + 1);
     }
     if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && currentIdx > 0) {
-      if (currentIdx === 4) { // Moving to cases panel from contact
-        scrollProgress = 1; // Start with all paragraphs visible
+      if (currentIdx === 4) {
+        scrollProgress = 0;
         updateCasesAnimations();
       }
       goToPanel(currentIdx - 1);
@@ -78,68 +81,63 @@ document.addEventListener('keydown', (e) => {
 // Mouse wheel
 let lastScrollTime = 0;
 let scrollAccumulator = 0;
-const scrollThreshold = 250; // Amount of scroll needed to trigger next paragraph
+const scrollThreshold = 120; // Lower for snappier feel
 let normalPanelScrollAccumulator = 0;
-const normalPanelScrollThreshold = 200; // Amount of scroll needed for normal panel transitions
+const normalPanelScrollThreshold = 120;
 
 document.addEventListener('wheel', (e) => {
   const now = Date.now();
-  if (now - lastScrollTime < 50) return;
+  if (now - lastScrollTime < 40) return;
   lastScrollTime = now;
 
   if (isInCasesPanel) {
     scrollAccumulator += Math.abs(e.deltaY);
     if (scrollAccumulator >= scrollThreshold) {
-      if (e.deltaY > 0) {
-        if (scrollProgress < 1) {
-          scrollProgress = Math.min(1, scrollProgress + 0.25);
+      if (e.deltaY > 0) { // Down
+        if (scrollProgress < caseParagraphs.length) {
+          scrollProgress += 1;
           updateCasesAnimations();
-        } else {
-          // At end of cases - now move to contact immediately on next scroll
-          if (currentIdx < panels.length - 1) {
-            setTimeout(() => goToPanel(currentIdx + 1), 200);
-            scrollAccumulator = 0;
-          }
+        } else if (currentIdx < panels.length - 1) {
+          goToPanel(currentIdx + 1);
         }
-      } else {
+      } else { // Up
         if (scrollProgress > 0) {
-          scrollProgress = Math.max(0, scrollProgress - 0.25);
+          scrollProgress -= 1;
           updateCasesAnimations();
-        } else {
-          // At beginning of cases - now move to work immediately on next scroll up
-          if (currentIdx > 0) {
-            setTimeout(() => goToPanel(currentIdx - 1), 200);
-            scrollAccumulator = 0;
+        } else if (currentIdx > 0) {
+          goToPanel(currentIdx - 1);
+          // On returning to cases from contact, hide all
+          if (currentIdx === 4) {
+            scrollProgress = 0;
+            updateCasesAnimations();
           }
         }
       }
-      // Always reset accumulator after an action
       scrollAccumulator = 0;
     }
   } else {
-    // Normal panel navigation with accumulation
     normalPanelScrollAccumulator += Math.abs(e.deltaY);
     if (normalPanelScrollAccumulator >= normalPanelScrollThreshold) {
       if (e.deltaY > 0 && currentIdx < panels.length - 1) {
-        if (currentIdx === 2) { // Moving to cases panel from work
-          scrollProgress = 0.25; // Start with first paragraph visible
+        if (currentIdx === 2) {
+          scrollProgress = 1;
           updateCasesAnimations();
         }
         goToPanel(currentIdx + 1);
       } else if (e.deltaY < 0 && currentIdx > 0) {
-        if (currentIdx === 4) { // Moving to cases panel from contact
-          scrollProgress = 1; // Start with all paragraphs visible
+        if (currentIdx === 4) {
+          scrollProgress = 0;
           updateCasesAnimations();
         }
         goToPanel(currentIdx - 1);
       }
-      normalPanelScrollAccumulator = 0; // Reset accumulator
+      normalPanelScrollAccumulator = 0;
     }
-    scrollAccumulator = 0; // Reset when not in cases panel
+    scrollAccumulator = 0;
   }
 });
 
-// Touch/swipe support for mobile
+// Touch/swipe for mobile
 let touchStartY = null;
 let touchEndY = null;
 
@@ -158,34 +156,38 @@ container.addEventListener('touchmove', function(e) {
 container.addEventListener('touchend', function(e) {
   if (touchStartY !== null && touchEndY !== null) {
     let diff = touchStartY - touchEndY;
-    if (Math.abs(diff) > 40) {
+    if (Math.abs(diff) > 30) {
       if (isInCasesPanel) {
-        if (diff > 0) { // Swipe up
-          if (scrollProgress < 1) {
-            scrollProgress = Math.min(1, scrollProgress + 0.25);
+        if (diff > 0) { // Up
+          if (scrollProgress < caseParagraphs.length) {
+            scrollProgress += 1;
             updateCasesAnimations();
           } else if (currentIdx < panels.length - 1) {
-            setTimeout(() => goToPanel(currentIdx + 1), 200);
+            goToPanel(currentIdx + 1);
           }
-        } else { // Swipe down
+        } else { // Down
           if (scrollProgress > 0) {
-            scrollProgress = Math.max(0, scrollProgress - 0.25);
+            scrollProgress -= 1;
             updateCasesAnimations();
           } else if (currentIdx > 0) {
-            setTimeout(() => goToPanel(currentIdx - 1), 200);
+            goToPanel(currentIdx - 1);
+            // On returning to cases from contact, hide all
+            if (currentIdx === 4) {
+              scrollProgress = 0;
+              updateCasesAnimations();
+            }
           }
         }
       } else {
-        // Normal panel navigation
         if (diff > 0 && currentIdx < panels.length - 1) {
-          if (currentIdx === 2) { // Moving to cases panel from work
-            scrollProgress = 0.25; // Start with first paragraph visible
+          if (currentIdx === 2) {
+            scrollProgress = 1;
             updateCasesAnimations();
           }
           goToPanel(currentIdx + 1);
         } else if (diff < 0 && currentIdx > 0) {
-          if (currentIdx === 4) { // Moving to cases panel from contact
-            scrollProgress = 1; // Start with all paragraphs visible
+          if (currentIdx === 4) {
+            scrollProgress = 0;
             updateCasesAnimations();
           }
           goToPanel(currentIdx - 1);
@@ -196,4 +198,5 @@ container.addEventListener('touchend', function(e) {
   touchStartY = null;
   touchEndY = null;
 }, false);
+
 
