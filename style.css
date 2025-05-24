@@ -55,7 +55,16 @@ main {
   margin-bottom: 32px;
 }
 
-/* Cases Panel */
+/* Cases Panel: GAP added here! */
+.cases-container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
 .case-paragraph {
   color: #fff;
   background: none !important;
@@ -145,8 +154,8 @@ main {
     padding: 0 2vw;
   }
   .cases-container {
-    max-width: 98vw;
     gap: 10px;
+    max-width: 98vw;
     padding: 20px 0;
   }
   .contact-title { font-size: 1rem; }
