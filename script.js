@@ -2,7 +2,7 @@ const panels = document.querySelectorAll('.panel');
 const container = document.querySelector('.panels-container');
 const caseParagraphs = document.querySelectorAll('.case-paragraph');
 let currentIdx = 0;
-let scrollProgress = 0; // Track how many case paragraphs are visible (0-4)
+let scrollProgress = 0; // Number of visible cases
 let isInCasesPanel = false;
 
 function goToPanel(idx) {
@@ -10,12 +10,17 @@ function goToPanel(idx) {
   container.style.transform = `translateY(-${idx * window.innerHeight}px)`;
   currentIdx = idx;
 
-  if (idx !== 3) {
-    isInCasesPanel = false;
-    scrollProgress = 0;
-    updateCasesAnimations();
-  } else {
+  if (idx === 3) { // entering cases
     isInCasesPanel = true;
+    // If arriving from contact, show all cases
+    if (scrollProgress < caseParagraphs.length) {
+      scrollProgress = caseParagraphs.length;
+      updateCasesAnimations();
+    }
+  } else {
+    isInCasesPanel = false;
+    // Don't reset scrollProgress here!
+    updateCasesAnimations();
   }
 }
 
@@ -53,24 +58,26 @@ document.addEventListener('keydown', (e) => {
         updateCasesAnimations();
       } else if (currentIdx > 0) {
         goToPanel(currentIdx - 1);
-        // On returning to cases from contact, hide all
-        if (currentIdx === 4) {
-          scrollProgress = 0;
-          updateCasesAnimations();
-        }
       }
     }
   } else {
     if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && currentIdx < panels.length - 1) {
+      // Entering cases from work
       if (currentIdx === 2) {
         scrollProgress = 1;
+        updateCasesAnimations();
+      }
+      // Entering cases from contact
+      if (currentIdx === 4) {
+        scrollProgress = caseParagraphs.length;
         updateCasesAnimations();
       }
       goToPanel(currentIdx + 1);
     }
     if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && currentIdx > 0) {
+      // Leaving contact to cases
       if (currentIdx === 4) {
-        scrollProgress = 0;
+        scrollProgress = caseParagraphs.length;
         updateCasesAnimations();
       }
       goToPanel(currentIdx - 1);
@@ -81,7 +88,7 @@ document.addEventListener('keydown', (e) => {
 // Mouse wheel
 let lastScrollTime = 0;
 let scrollAccumulator = 0;
-const scrollThreshold = 120; // Lower for snappier feel
+const scrollThreshold = 120; // For snappy interaction
 let normalPanelScrollAccumulator = 0;
 const normalPanelScrollThreshold = 120;
 
@@ -106,11 +113,6 @@ document.addEventListener('wheel', (e) => {
           updateCasesAnimations();
         } else if (currentIdx > 0) {
           goToPanel(currentIdx - 1);
-          // On returning to cases from contact, hide all
-          if (currentIdx === 4) {
-            scrollProgress = 0;
-            updateCasesAnimations();
-          }
         }
       }
       scrollAccumulator = 0;
@@ -119,14 +121,21 @@ document.addEventListener('wheel', (e) => {
     normalPanelScrollAccumulator += Math.abs(e.deltaY);
     if (normalPanelScrollAccumulator >= normalPanelScrollThreshold) {
       if (e.deltaY > 0 && currentIdx < panels.length - 1) {
+        // Entering cases from work
         if (currentIdx === 2) {
           scrollProgress = 1;
           updateCasesAnimations();
         }
+        // Entering cases from contact
+        if (currentIdx === 4) {
+          scrollProgress = caseParagraphs.length;
+          updateCasesAnimations();
+        }
         goToPanel(currentIdx + 1);
       } else if (e.deltaY < 0 && currentIdx > 0) {
+        // Leaving contact to cases
         if (currentIdx === 4) {
-          scrollProgress = 0;
+          scrollProgress = caseParagraphs.length;
           updateCasesAnimations();
         }
         goToPanel(currentIdx - 1);
@@ -171,23 +180,25 @@ container.addEventListener('touchend', function(e) {
             updateCasesAnimations();
           } else if (currentIdx > 0) {
             goToPanel(currentIdx - 1);
-            // On returning to cases from contact, hide all
-            if (currentIdx === 4) {
-              scrollProgress = 0;
-              updateCasesAnimations();
-            }
           }
         }
       } else {
         if (diff > 0 && currentIdx < panels.length - 1) {
+          // Entering cases from work
           if (currentIdx === 2) {
             scrollProgress = 1;
             updateCasesAnimations();
           }
+          // Entering cases from contact
+          if (currentIdx === 4) {
+            scrollProgress = caseParagraphs.length;
+            updateCasesAnimations();
+          }
           goToPanel(currentIdx + 1);
         } else if (diff < 0 && currentIdx > 0) {
+          // Leaving contact to cases
           if (currentIdx === 4) {
-            scrollProgress = 0;
+            scrollProgress = caseParagraphs.length;
             updateCasesAnimations();
           }
           goToPanel(currentIdx - 1);
@@ -198,5 +209,6 @@ container.addEventListener('touchend', function(e) {
   touchStartY = null;
   touchEndY = null;
 }, false);
+
 
 
