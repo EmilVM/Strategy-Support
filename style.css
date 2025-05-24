@@ -51,44 +51,28 @@ main {
 }
 
 /* CASES PANEL: */
-#cases {
-  justify-content: center;
-  padding: 0 24px;
-}
-
-.cases-container {
-  width: 100%;
-  max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 0 auto;
-  padding: 40px 0;
+.panel p,
+.case-paragraph {
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.45rem;  /* Larger for laptop */
+  line-height: 1.5;
 }
 
 .case-paragraph {
-  font-size: 1.05rem;           /* Small enough to fit all four */
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.5;
-  text-align: center;
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.77,0,0.175,1);
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   margin-bottom: 0;
-  padding: 1.1rem 1.5rem;
-  max-width: 100%;
-  background: rgba(32,32,32,0.92);
-  border-radius: 1rem;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(0.77,0,0.175,1);
 }
 
-.case-paragraph.from-right {
-  transform: translateX(100px);
-}
-
-.case-paragraph.from-left {
-  transform: translateX(-100px);
-}
-
+.case-paragraph.from-right { transform: translateX(100px); }
+.case-paragraph.from-left { transform: translateX(-100px); }
 .case-paragraph.visible {
   opacity: 1;
   transform: translateX(0);
