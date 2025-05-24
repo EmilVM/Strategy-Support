@@ -1,26 +1,30 @@
 const panels = document.querySelectorAll('.panel');
 const container = document.querySelector('.panels-container');
 const caseParagraphs = document.querySelectorAll('.case-paragraph');
+const CASE_COUNT = caseParagraphs.length;
 let currentIdx = 0;
-let scrollProgress = 0; // Number of visible cases
+let scrollProgress = 0; // 0 to CASE_COUNT
 let isInCasesPanel = false;
 
-function goToPanel(idx) {
+function goToPanel(idx, fromDirection = null) {
   if (idx < 0 || idx >= panels.length) return;
   container.style.transform = `translateY(-${idx * window.innerHeight}px)`;
   currentIdx = idx;
 
-  if (idx === 3) { // entering cases
+  if (idx !== 3) {
+    isInCasesPanel = false;
+    scrollProgress = 0;
+    updateCasesAnimations();
+  } else {
     isInCasesPanel = true;
-    // If arriving from contact, show all cases
-    if (scrollProgress < caseParagraphs.length) {
-      scrollProgress = caseParagraphs.length;
+    // When coming from CONTACT, show all cases. When coming from WORK, show only first.
+    if (fromDirection === 'up') {
+      scrollProgress = CASE_COUNT;
+      updateCasesAnimations();
+    } else if (fromDirection === 'down') {
+      scrollProgress = 1;
       updateCasesAnimations();
     }
-  } else {
-    isInCasesPanel = false;
-    // Don't reset scrollProgress here!
-    updateCasesAnimations();
   }
 }
 
@@ -41,54 +45,57 @@ function updatePanelsContainerHeight() {
 window.addEventListener('resize', updatePanelsContainerHeight);
 updatePanelsContainerHeight();
 
-// Keyboard navigation
+// KEYBOARD NAV
 document.addEventListener('keydown', (e) => {
   if (isInCasesPanel) {
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      if (scrollProgress < caseParagraphs.length) {
+      if (scrollProgress < CASE_COUNT) {
         scrollProgress += 1;
         updateCasesAnimations();
-      } else if (currentIdx < panels.length - 1) {
-        goToPanel(currentIdx + 1);
+      } else {
+        // Require an extra scroll at the end before leaving
+        if (typeof window._casesExtraScroll === 'undefined' || !window._casesExtraScroll) {
+          window._casesExtraScroll = true;
+        } else if (currentIdx < panels.length - 1) {
+          goToPanel(currentIdx + 1, 'up');
+          window._casesExtraScroll = false;
+        }
       }
     }
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
       if (scrollProgress > 0) {
         scrollProgress -= 1;
         updateCasesAnimations();
+        window._casesExtraScroll = false;
       } else if (currentIdx > 0) {
-        goToPanel(currentIdx - 1);
+        goToPanel(currentIdx - 1, 'down');
       }
     }
   } else {
     if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && currentIdx < panels.length - 1) {
-      // Entering cases from work
       if (currentIdx === 2) {
-        scrollProgress = 1;
-        updateCasesAnimations();
+        goToPanel(currentIdx + 1, 'down');
+      } else {
+        goToPanel(currentIdx + 1);
       }
-      // Entering cases from contact
-      if (currentIdx === 4) {
-        scrollProgress = caseParagraphs.length;
-        updateCasesAnimations();
-      }
-      goToPanel(currentIdx + 1);
     }
     if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && currentIdx > 0) {
-      // Leaving contact to cases
       if (currentIdx === 4) {
-        scrollProgress = caseParagraphs.length;
+        // <-- PATCH: Show all cases when coming up from contact
+        scrollProgress = CASE_COUNT;
         updateCasesAnimations();
+        goToPanel(currentIdx - 1, 'up');
+      } else {
+        goToPanel(currentIdx - 1);
       }
-      goToPanel(currentIdx - 1);
     }
   }
 });
 
-// Mouse wheel
+// MOUSE WHEEL
 let lastScrollTime = 0;
 let scrollAccumulator = 0;
-const scrollThreshold = 120; // For snappy interaction
+const scrollThreshold = 120;
 let normalPanelScrollAccumulator = 0;
 const normalPanelScrollThreshold = 120;
 
@@ -100,19 +107,27 @@ document.addEventListener('wheel', (e) => {
   if (isInCasesPanel) {
     scrollAccumulator += Math.abs(e.deltaY);
     if (scrollAccumulator >= scrollThreshold) {
-      if (e.deltaY > 0) { // Down
-        if (scrollProgress < caseParagraphs.length) {
+      if (e.deltaY > 0) {
+        if (scrollProgress < CASE_COUNT) {
           scrollProgress += 1;
           updateCasesAnimations();
-        } else if (currentIdx < panels.length - 1) {
-          goToPanel(currentIdx + 1);
+          window._casesExtraScroll = false;
+        } else {
+          // Extra scroll to leave
+          if (typeof window._casesExtraScroll === 'undefined' || !window._casesExtraScroll) {
+            window._casesExtraScroll = true;
+          } else if (currentIdx < panels.length - 1) {
+            goToPanel(currentIdx + 1, 'up');
+            window._casesExtraScroll = false;
+          }
         }
-      } else { // Up
+      } else {
         if (scrollProgress > 0) {
           scrollProgress -= 1;
           updateCasesAnimations();
+          window._casesExtraScroll = false;
         } else if (currentIdx > 0) {
-          goToPanel(currentIdx - 1);
+          goToPanel(currentIdx - 1, 'down');
         }
       }
       scrollAccumulator = 0;
@@ -121,24 +136,20 @@ document.addEventListener('wheel', (e) => {
     normalPanelScrollAccumulator += Math.abs(e.deltaY);
     if (normalPanelScrollAccumulator >= normalPanelScrollThreshold) {
       if (e.deltaY > 0 && currentIdx < panels.length - 1) {
-        // Entering cases from work
         if (currentIdx === 2) {
-          scrollProgress = 1;
-          updateCasesAnimations();
+          goToPanel(currentIdx + 1, 'down');
+        } else {
+          goToPanel(currentIdx + 1);
         }
-        // Entering cases from contact
-        if (currentIdx === 4) {
-          scrollProgress = caseParagraphs.length;
-          updateCasesAnimations();
-        }
-        goToPanel(currentIdx + 1);
       } else if (e.deltaY < 0 && currentIdx > 0) {
-        // Leaving contact to cases
         if (currentIdx === 4) {
-          scrollProgress = caseParagraphs.length;
+          // <-- PATCH: Show all cases when coming up from contact
+          scrollProgress = CASE_COUNT;
           updateCasesAnimations();
+          goToPanel(currentIdx - 1, 'up');
+        } else {
+          goToPanel(currentIdx - 1);
         }
-        goToPanel(currentIdx - 1);
       }
       normalPanelScrollAccumulator = 0;
     }
@@ -146,7 +157,7 @@ document.addEventListener('wheel', (e) => {
   }
 });
 
-// Touch/swipe for mobile
+// TOUCH / SWIPE
 let touchStartY = null;
 let touchEndY = null;
 
@@ -168,40 +179,43 @@ container.addEventListener('touchend', function(e) {
     if (Math.abs(diff) > 30) {
       if (isInCasesPanel) {
         if (diff > 0) { // Up
-          if (scrollProgress < caseParagraphs.length) {
+          if (scrollProgress < CASE_COUNT) {
             scrollProgress += 1;
             updateCasesAnimations();
-          } else if (currentIdx < panels.length - 1) {
-            goToPanel(currentIdx + 1);
+            window._casesExtraScroll = false;
+          } else {
+            if (typeof window._casesExtraScroll === 'undefined' || !window._casesExtraScroll) {
+              window._casesExtraScroll = true;
+            } else if (currentIdx < panels.length - 1) {
+              goToPanel(currentIdx + 1, 'up');
+              window._casesExtraScroll = false;
+            }
           }
         } else { // Down
           if (scrollProgress > 0) {
             scrollProgress -= 1;
             updateCasesAnimations();
+            window._casesExtraScroll = false;
           } else if (currentIdx > 0) {
-            goToPanel(currentIdx - 1);
+            goToPanel(currentIdx - 1, 'down');
           }
         }
       } else {
         if (diff > 0 && currentIdx < panels.length - 1) {
-          // Entering cases from work
           if (currentIdx === 2) {
-            scrollProgress = 1;
-            updateCasesAnimations();
+            goToPanel(currentIdx + 1, 'down');
+          } else {
+            goToPanel(currentIdx + 1);
           }
-          // Entering cases from contact
-          if (currentIdx === 4) {
-            scrollProgress = caseParagraphs.length;
-            updateCasesAnimations();
-          }
-          goToPanel(currentIdx + 1);
         } else if (diff < 0 && currentIdx > 0) {
-          // Leaving contact to cases
           if (currentIdx === 4) {
-            scrollProgress = caseParagraphs.length;
+            // <-- PATCH: Show all cases when coming up from contact
+            scrollProgress = CASE_COUNT;
             updateCasesAnimations();
+            goToPanel(currentIdx - 1, 'up');
+          } else {
+            goToPanel(currentIdx - 1);
           }
-          goToPanel(currentIdx - 1);
         }
       }
     }
@@ -209,6 +223,7 @@ container.addEventListener('touchend', function(e) {
   touchStartY = null;
   touchEndY = null;
 }, false);
+
 
 
 
