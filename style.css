@@ -6,17 +6,7 @@ html, body {
   background: #111; 
   color: #fff;
 }
-body { min-height: 100vh; }
-header {
-  position: fixed; top: 0; left: 0; width: 100vw;
-  display: flex; align-items: center;
-  padding: 40px 60px 0 60px; z-index: 10;
-  background: #111;
-  border: none !important;
-  box-shadow: none !important;
-}
-.logo {
-  width: 150px; height: 150px; object-fit: contain;
+body { min-height: 100vh; 
 }
 main {
   width: 100vw; height: 100vh; overflow: hidden;
