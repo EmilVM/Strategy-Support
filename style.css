@@ -134,4 +134,123 @@ main {
   padding: 40px;
   border-radius: 12px;
   max-width: 800px;
-  width: 9
+  width: 90%;
+  margin: 20px auto 0;
+  text-align: left;
+}
+
+.process-steps ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.process-steps li {
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.process-steps li:last-child {
+  margin-bottom: 0;
+}
+
+.process-steps li strong {
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+/* --- Styles for New Intro Panel --- */
+#intro {
+  padding-bottom: 0; /* Adjust spacing */
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Prevents image distortion */
+  border: 3px solid #fff;
+  margin-bottom: 24px;
+}
+
+.intro-text {
+  font-size: clamp(1.1rem, 1.5vw + 0.8rem, 2.0rem); /* Slightly smaller for hierarchy */
+  max-width: 800px;
+  margin-bottom: 0;
+}
+
+/* --- Styles for Scroll Down Indicator --- */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0.7;
+}
+
+.scroll-indicator p {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.scroll-indicator .arrow {
+  font-size: 1.5rem;
+  animation: jump 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Keyframe animation for the "jump" effect */
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+
+/* --- Mobile Responsive Section --- */
+@media (max-width: 700px) {
+  .panel {
+    min-height: calc(100vh - 60px);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .panel p,
+  .case-paragraph {
+    font-size: 1.08rem;
+    line-height: 1.4;
+    max-width: 97vw;
+    padding: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  #cases {
+    padding: 0 2vw;
+  }
+  .cases-container {
+    gap: 10px;
+    max-width: 98vw;
+    padding: 20px 0;
+  }
+  .contact-title { font-size: 1rem; }
+  .contact-email { font-size: 1.1rem; }
+  .brand-logos { gap: 16px; }
+  .brand-logos img { max-width: 80px; max-height: 50px; }
+  .process-steps {
+    padding: 24px;
+  }
+   .process-steps li {
+    font-size: 1rem;
+  }
+  .process-steps li strong {
+    font-size: 1.1rem;
+  }
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+}
