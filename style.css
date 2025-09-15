@@ -160,5 +160,51 @@ main {
   .brand-logos { gap: 16px; }
   .brand-logos img { max-width: 80px; max-height: 50px; }
 }
+/* --- Styles for the Approach White Box --- */
+.process-steps {
+  background: #fff;
+  color: #111;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  margin: 20px auto 0;
+  text-align: left;
+}
 
+.process-steps ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.process-steps li {
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.process-steps li:last-child {
+  margin-bottom: 0;
+}
+
+.process-steps li strong {
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+
+/* --- Mobile Responsive for the box --- */
+@media (max-width: 700px) {
+  .process-steps {
+    padding: 24px;
+  }
+   .process-steps li {
+    font-size: 1rem;
+  }
+  .process-steps li strong {
+    font-size: 1.1rem;
+  }
+}
 
