@@ -52,7 +52,6 @@ main {
   margin-bottom: 32px;
 }
 
-/* Cases Panel: GAP added here! */
 .cases-container {
   display: flex;
   flex-direction: column;
@@ -80,7 +79,6 @@ main {
   transform: translateX(0);
 }
 
-/* For the work panel: Center the logos + copy together */
 #work {
   justify-content: center;
 }
@@ -163,20 +161,20 @@ main {
 
 /* --- Styles for New Intro Panel --- */
 #intro {
-  padding-bottom: 0; /* Adjust spacing */
+  padding-bottom: 0;
 }
 
 .profile-picture {
   width: 150px;
   height: 150px;
-  border-radius: 50%; /* Makes the image circular */
-  object-fit: cover; /* Prevents image distortion */
+  border-radius: 50%;
+  object-fit: cover;
   border: 3px solid #fff;
   margin-bottom: 24px;
 }
 
 .intro-text {
-  font-size: clamp(1.1rem, 1.5vw + 0.8rem, 2.0rem); /* Slightly smaller for hierarchy */
+  font-size: clamp(1.1rem, 1.5vw + 0.8rem, 2.0rem);
   max-width: 800px;
   margin-bottom: 0;
 }
@@ -216,8 +214,6 @@ main {
 @media (max-width: 700px) {
   .panel {
     min-height: calc(100vh - 60px);
-    padding-top: 0;
-    padding-bottom: 0;
   }
   .panel p,
   .case-paragraph {
@@ -226,7 +222,6 @@ main {
     max-width: 97vw;
     padding: 0;
     margin-bottom: 0;
-    text-align: center;
   }
   #cases {
     padding: 0 2vw;
