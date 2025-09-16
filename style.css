@@ -58,6 +58,10 @@ main {
 
 /* --- NEW CASE STYLES START --- */
 .case-item {
+  display: flex;
+  align-items: center; /* Vertically aligns the image and text */
+  gap: 32px; /* Creates space between the image and text */
+  min-height: 320px; /* Ensures all boxes have the same height */
   border: 2px solid #fff;
   border-radius: 16px;
   padding: 24px;
@@ -73,22 +77,20 @@ main {
 }
 
 .case-image {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
+  width: 320px; /* Locks the width of the image */
+  height: 270px; /* Locks the height of the image */
+  flex-shrink: 0; /* Prevents the image from shrinking */
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Removed as it's no longer needed */
 }
 
 .case-text {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: clamp(1.1rem, 1.8vw + 0.9rem, 2.0rem); /* Font size reduced */
-  line-height: 1.5;
-  text-align: center;
-  margin-bottom: 0; /* Removed bottom margin */
+  flex: 1; /* Allows the text to fill the remaining space */
+  text-align: left; /* Aligns text to the left for better readability */
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem); /* Adjusted font size */
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 /* --- NEW CASE STYLES END --- */
 
@@ -270,12 +272,20 @@ main {
     max-width: 98vw;
     padding: 20px 0;
   }
-  .case-item {
+ .case-item {
+    flex-direction: column; /* Stacks image and text vertically on mobile */
     padding: 16px;
+    min-height: auto; /* Resets the minimum height */
+  }
+  .case-image {
+      width: 100%; /* Image takes full width on mobile */
+      height: 200px;
+      margin-bottom: 16px; /* Adds space between stacked image and text */
   }
   .case-text {
-    font-size: 1rem; /* Font size reduced for mobile */
+    font-size: 1rem;
     line-height: 1.4;
+    text-align: center; /* Center text on mobile for a better look */
   }
   .contact-title { font-size: 1rem; }
   .contact-email { font-size: 1.1rem; }
