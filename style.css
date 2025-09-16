@@ -34,19 +34,14 @@ main {
   padding-bottom: 0;
 }
 
-/* Main text and case text wider and larger */
-.panel p,
-.case-paragraph {
+/* Main text wider and larger */
+.panel p {
   max-width: 950px;
   margin-left: auto;
   margin-right: auto;
   font-size: clamp(1.25rem, 2vw + 1rem, 2.50rem);
   line-height: 1.5;
   text-align: center;
-}
-
-
-.panel p {
   font-weight: 400;
   color: #fff;
   margin-bottom: 32px;
@@ -61,23 +56,41 @@ main {
   margin: 0 auto;
 }
 
-.case-paragraph {
-  color: #fff;
-  background: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin-bottom: 0;
+/* --- NEW CASE STYLES START --- */
+.case-item {
+  border: 2px solid #fff;
+  border-radius: 16px;
+  padding: 24px;
   opacity: 0;
   transition: all 0.7s cubic-bezier(0.77,0,0.175,1);
 }
 
-.case-paragraph.from-right { transform: translateX(100px); }
-.case-paragraph.from-left { transform: translateX(-100px); }
-.case-paragraph.visible {
+.case-item.from-right { transform: translateX(100px); }
+.case-item.from-left { transform: translateX(-100px); }
+.case-item.visible {
   opacity: 1;
   transform: translateX(0);
 }
+
+.case-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.case-text {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(1.1rem, 1.8vw + 0.9rem, 2.0rem); /* Font size reduced */
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 0; /* Removed bottom margin */
+}
+/* --- NEW CASE STYLES END --- */
 
 #work {
   justify-content: center;
@@ -199,7 +212,6 @@ main {
   animation: jump 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
-/* Keyframe animation for the "jump" effect */
 @keyframes jump {
   0%, 100% {
     transform: translateY(0);
@@ -209,47 +221,7 @@ main {
   }
 }
 
-
-/* --- Mobile Responsive Section --- */
-@media (max-width: 700px) {
-  .panel {
-    min-height: calc(100vh - 60px);
-  }
-  .panel p,
-  .case-paragraph {
-    font-size: 1.08rem;
-    line-height: 1.4;
-    max-width: 97vw;
-    padding: 0;
-    margin-bottom: 0;
-  }
-  #cases {
-    padding: 0 2vw;
-  }
-  .cases-container {
-    gap: 10px;
-    max-width: 98vw;
-    padding: 20px 0;
-  }
-  .contact-title { font-size: 1rem; }
-  .contact-email { font-size: 1.1rem; }
-  .brand-logos { gap: 16px; }
-  .brand-logos img { max-width: 80px; max-height: 50px; }
-  .process-steps {
-    padding: 24px;
-  }
-   .process-steps li {
-    font-size: 1rem;
-  }
-  .process-steps li strong {
-    font-size: 1.1rem;
-  }
-  .profile-picture {
-    width: 120px;
-    height: 120px;
-  }
-}
-  /* Styles for Scroll Up Indicator */
+/* --- Styles for Scroll Up Indicator --- */
 .scroll-up-indicator {
   position: absolute;
   top: 30px;
@@ -269,7 +241,6 @@ main {
   animation: jump-up 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
-/* Keyframe animation for the up arrow "jump" effect */
 @keyframes jump-up {
   0%, 100% {
     transform: translateY(0);
@@ -279,8 +250,51 @@ main {
   }
 }
 
-/* Mobile responsive adjustments */
+/* --- Mobile Responsive Section --- */
 @media (max-width: 700px) {
+  .panel {
+    min-height: calc(100vh - 60px);
+  }
+  .panel p {
+    font-size: 1.08rem;
+    line-height: 1.4;
+    max-width: 97vw;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  #cases {
+    padding: 0 2vw;
+  }
+  .cases-container {
+    gap: 10px;
+    max-width: 98vw;
+    padding: 20px 0;
+  }
+  .case-item {
+    padding: 16px;
+  }
+  .case-text {
+    font-size: 1rem; /* Font size reduced for mobile */
+    line-height: 1.4;
+  }
+  .contact-title { font-size: 1rem; }
+  .contact-email { font-size: 1.1rem; }
+  .brand-logos { gap: 16px; }
+  .brand-logos img { max-width: 80px; max-height: 50px; }
+  .process-steps {
+    padding: 24px;
+  }
+   .process-steps li {
+    font-size: 1rem;
+  }
+  .process-steps li strong {
+    font-size: 1.1rem;
+  }
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
   .scroll-up-indicator {
     top: 20px;
   }
+}
