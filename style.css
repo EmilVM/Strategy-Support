@@ -6,10 +6,15 @@ html, body {
   background: #111; 
   color: #fff;
 }
-body { min-height: 100vh; 
+body { 
+  /* This rule is fine, but using the --vh variable for main and .panel is key */
+  min-height: 100vh; 
 }
 main {
-  width: 100vw; height: 100vh; overflow: hidden;
+  width: 100vw; 
+  /* UPDATED: Uses the JS-calculated viewport height */
+  height: calc(var(--vh, 1vh) * 100); 
+  overflow: hidden;
   position: relative;
 }
 .panels-container {
@@ -20,7 +25,8 @@ main {
 }
 
 .panel {
-  min-height: 100vh;
+  /* UPDATED: Uses the JS-calculated viewport height */
+  min-height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -255,8 +261,9 @@ main {
 /* --- Mobile Responsive Section --- */
 @media (max-width: 700px) {
   .panel {
-    min-height: calc(100vh - 60px);
-    padding-top: 40px; /* <-- ADD THIS LINE */
+    /* REMOVED: The unreliable "magic number" fix is no longer needed */
+    /* min-height: calc(100vh - 60px); */
+    padding-top: 40px;
   }
   .panel p {
     font-size: 1.08rem;
