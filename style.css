@@ -67,7 +67,7 @@ main {
   flex: 1;
   justify-content: center;
   align-items: center;
-  max-height: 76vh; /* Ensure container fits within available space */
+  max-height: 80vh; /* Increased to accommodate larger boxes */
 }
 
 /* Improved responsive case styles */
@@ -83,7 +83,7 @@ main {
   width: 100%;
   max-width: 900px;
   min-height: clamp(100px, 25vh, 130px); /* Use min-height so text can expand */
-  max-height: 35vh; /* Prevent boxes from getting too large */
+  max-height: 45vh; /* Increased from 35vh to 45vh to allow larger text */
 }
 
 .case-item.from-right { transform: translateX(100px); }
@@ -107,7 +107,7 @@ main {
 .case-item .case-text p {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 2.0rem) !important; /* Increased max to 1.5rem */
+  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 2.0rem) !important; /* Test with 2.0rem */
   line-height: 1.4 !important;
   margin-bottom: 0 !important;
   align-self: stretch;
@@ -344,5 +344,4 @@ main {
   .scroll-indicator {
     bottom: 20px;
   }
-}
 }
