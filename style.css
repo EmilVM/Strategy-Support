@@ -103,19 +103,19 @@ main {
   border-radius: 8px;
 }
 
-/* Case text - needs to override the general panel p styles */
+/* Case text - simplified and truly responsive */
 .case-item .case-text,
 .case-item .case-text p {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.85rem, 3vh + 0.2rem, 2.0rem) !important; /* Scale with viewport height instead of width */
-  line-height: 1.4 !important;
-  margin-bottom: 0 !important;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: none !important; /* Override the 950px max-width from panel p */
+  font-size: clamp(0.85rem, 2.5vh, 2.0rem) !important; /* Simpler vh-based scaling */
+  line-height: 1.3 !important; /* Tighter line height for better fit */
+  margin: 0 !important; /* Remove all margins */
+  padding: 0 !important; /* Remove any padding */
+  max-width: none !important; 
+  width: 100% !important; /* Ensure full width usage */
+  height: auto !important; /* Let height be natural */
+  display: block !important; /* Simpler display mode */
 }
 
 #work {
