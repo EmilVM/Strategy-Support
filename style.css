@@ -283,9 +283,9 @@ main {
       margin-bottom: 16px; /* Adds space between stacked image and text */
   }
   .case-text {
-    font-size: 1rem;
+    font-size: 0.7rem; /* <-- REDUCED FONT SIZE */
     line-height: 1.4;
-    text-align: center; /* Center text on mobile for a better look */
+    text-align: left; /* <-- ALIGNED LEFT */
   }
   .contact-title { font-size: 1rem; }
   .contact-email { font-size: 1.1rem; }
