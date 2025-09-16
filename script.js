@@ -28,12 +28,14 @@ function goToPanel(idx, fromDirection = null) {
   }
 }
 
+// New corrected function
 function updateCasesAnimations() {
-  caseParagraphs.forEach((paragraph, index) => {
+  caseItems.forEach((item, index) => {
+    // We check against index + 1 because scrollProgress starts at 1
     if (scrollProgress > index) {
-      paragraph.classList.add('visible');
+      item.classList.add('visible');
     } else {
-      paragraph.classList.remove('visible');
+      item.classList.remove('visible');
     }
   });
 }
