@@ -107,7 +107,7 @@ main {
 .case-item .case-text p {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 0.95rem) !important; /* Force override */
+  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 1.5rem) !important; /* Increased max to 1.5rem */
   line-height: 1.4 !important;
   margin-bottom: 0 !important;
   align-self: stretch;
@@ -344,4 +344,5 @@ main {
   .scroll-indicator {
     bottom: 20px;
   }
+}
 }
