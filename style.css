@@ -53,21 +53,21 @@ main {
 /* Cases panels specific adjustments for scroll indicator positioning */
 #cases1, #cases2 {
   justify-content: flex-start;
-  padding-top: 8vh;
-  padding-bottom: 12vh;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
 }
 
 .cases-container {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.8rem, 2vh, 1.5rem);
+  gap: clamp(0.8rem, 2vh, 2rem);
   width: 100%;
   max-width: 950px;
   margin: 0 auto;
   flex: 1;
   justify-content: center;
   align-items: center;
-  max-height: 80vh; /* Increased to accommodate larger boxes */
+  height: 85vh; /* Use fixed height to fill available space */
 }
 
 /* Improved responsive case styles */
@@ -82,8 +82,9 @@ main {
   transition: all 0.7s cubic-bezier(0.77,0,0.175,1);
   width: 100%;
   max-width: 900px;
-  min-height: clamp(100px, 25vh, 130px); /* Use min-height so text can expand */
-  max-height: 45vh; /* Increased from 35vh to 45vh to allow larger text */
+  flex: 1; /* Allow boxes to share available vertical space equally */
+  min-height: 120px; /* Reasonable minimum */
+  max-height: 40vh; /* Still prevent them from getting too large */
 }
 
 .case-item.from-right { transform: translateX(100px); }
