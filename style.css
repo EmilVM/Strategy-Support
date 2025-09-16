@@ -280,7 +280,7 @@ main {
   }
   .case-image {
       width: 100%; /* Image takes full width on mobile */
-      height: 200px;
+      height: 110px;
       margin-bottom: 16px; /* Adds space between stacked image and text */
   }
   .case-text {
