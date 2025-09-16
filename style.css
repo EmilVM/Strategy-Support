@@ -50,25 +50,38 @@ main {
   margin-bottom: 32px;
 }
 
+/* Cases panels specific adjustments for scroll indicator positioning */
+#cases1, #cases2 {
+  justify-content: flex-start;
+  padding-top: 10vh;
+  padding-bottom: 15vh;
+}
+
 .cases-container {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: clamp(1rem, 3vh, 2rem);
   width: 100%;
   max-width: 950px;
   margin: 0 auto;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 }
 
-/* --- UPDATED RESPONSIVE CASE STYLES --- */
+/* Improved responsive case styles */
 .case-item {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 4vw, 2rem); /* Fluid spacing */
+  gap: clamp(0.8rem, 2vw, 1.5rem);
   border: 2px solid #fff;
   border-radius: 16px;
-  padding: clamp(1rem, 3vw, 1.5rem); /* Fluid padding */
+  padding: clamp(0.8rem, 2vw, 1.2rem);
   opacity: 0;
   transition: all 0.7s cubic-bezier(0.77,0,0.175,1);
+  width: 100%;
+  max-width: 900px;
+  height: clamp(140px, 18vh, 200px); /* Responsive height that ensures 2 boxes fit */
 }
 
 .case-item.from-right { transform: translateX(100px); }
@@ -79,10 +92,9 @@ main {
 }
 
 .case-image {
-  width: 40%; /* Relative width */
-  max-width: 320px;
-  height: auto; /* Automatic height */
-  aspect-ratio: 32 / 27; /* Maintains shape */
+  width: clamp(100px, 25%, 160px); /* Responsive width with min/max constraints */
+  height: 100%; /* Fill the container height */
+  aspect-ratio: 4 / 3; /* Consistent aspect ratio */
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 8px;
@@ -91,11 +103,11 @@ main {
 .case-text {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.6rem, 1vw + 0.4rem, 1.05rem);
-  line-height: 1.6;
+  font-size: clamp(0.75rem, 1.2vw + 0.3rem, 1rem); /* Smaller maximum font size */
+  line-height: 1.5;
   margin-bottom: 0;
+  overflow: hidden; /* Prevent text overflow */
 }
-/* --- END OF UPDATED STYLES --- */
 
 #work {
   justify-content: center;
@@ -205,6 +217,7 @@ main {
   transform: translateX(-50%);
   text-align: center;
   opacity: 0.7;
+  z-index: 10; /* Ensure it appears above other content */
 }
 
 .scroll-indicator p {
@@ -260,6 +273,7 @@ main {
   .panel {
     padding-top: 40px;
   }
+  
   .panel p {
     font-size: 1.08rem;
     line-height: 1.4;
@@ -267,35 +281,37 @@ main {
     padding: 0;
     margin-bottom: 0;
   }
-  #cases {
-    padding: 0 2vw;
+  
+  #cases1, #cases2 {
+    padding-top: 8vh;
+    padding-bottom: 12vh;
   }
+  
   .cases-container {
-    gap: 10px;
-    max-width: 98vw;
-    padding: 20px 0;
+    gap: clamp(0.8rem, 2vh, 1.2rem);
+    max-width: 95vw;
+    padding: 0;
   }
-  /* --- FINAL MOBILE CASE STYLES --- */
- .case-item {
-    flex-direction: row; /* Lays out image and text side-by-side */
-    align-items: center; /* Vertically centers them */
-    padding: 12px;
-    min-height: auto;
+  
+  .case-item {
+    flex-direction: row;
+    align-items: center;
+    padding: clamp(0.6rem, 1.5vw, 1rem);
+    height: clamp(120px, 16vh, 160px); /* Slightly smaller on mobile but still responsive */
+    gap: clamp(0.6rem, 1.5vw, 1rem);
   }
+  
   .case-image {
-      width: 30%; /* Image takes 30% of the card's width */
-      height: auto; /* Height adjusts automatically */
-      aspect-ratio: 1 / 1; /* Keeps the image square */
-      object-fit: cover; /* Fills the space without distortion */
-      flex-shrink: 0;
-      margin-bottom: 0; /* Remove space from old stacked layout */
+    width: clamp(80px, 20%, 120px); /* Smaller image on mobile */
+    height: 90%; /* Slightly less than full height for better proportion */
+    aspect-ratio: 1 / 1; /* Square on mobile */
   }
+  
   .case-text {
-    font-size: 0.8rem; /* Slightly larger for better readability */
-    line-height: 1.5;
-    text-align: left;
+    font-size: clamp(0.7rem, 1vw + 0.4rem, 0.85rem); /* Smaller text on mobile */
+    line-height: 1.4;
   }
-  /* --- END FINAL MOBILE CASE STYLES --- */
+  
   .contact-title { font-size: 1rem; }
   .contact-email { font-size: 1.1rem; }
   .brand-logos { gap: 16px; }
@@ -315,5 +331,9 @@ main {
   }
   .scroll-up-indicator {
     top: 20px;
+  }
+  
+  .scroll-indicator {
+    bottom: 20px;
   }
 }
