@@ -1,33 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
     const panels = document.querySelectorAll('.panel');
     const container = document.querySelector('.panels-container');
+    const panelCount = panels.length;
     let currentIdx = 0;
     let isScrolling = false;
 
     // --- Panel Navigation ---
     function goToPanel(idx) {
-        if (idx < 0 || idx >= panels.length || isScrolling) return;
+        if (idx < 0 || idx >= panelCount) return;
 
         isScrolling = true;
-        container.style.transform = `translateY(-${idx * window.innerHeight}px)`;
+        container.style.transform = `translateY(-${idx * 100}vh)`;
         currentIdx = idx;
 
-        // Reset scroll lock after transition ends
+        // Reset scroll lock after the CSS transition ends
         setTimeout(() => {
             isScrolling = false;
-        }, 1000); // 1000ms matches CSS transition time + buffer
+        }, 1000); // This duration should match your CSS transition time plus a small buffer.
     }
 
     // --- Animate Cases on View ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Find case items within the visible panel and add 'visible' class
                 const caseItems = entry.target.querySelectorAll('.case-item');
                 caseItems.forEach((item, index) => {
+                    // Stagger the animation for a nice effect
                     setTimeout(() => {
                         item.classList.add('visible');
-                    }, index * 200); // Stagger the animation
+                    }, index * 200);
                 });
             }
         });
@@ -35,31 +36,26 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.5 // Trigger when 50% of the panel is visible
     });
 
-    // Observe the two cases panels
-    const cases1Panel = document.getElementById('cases1');
-    const cases2Panel = document.getElementById('cases2');
-    if (cases1Panel) observer.observe(cases1Panel);
-    if (cases2Panel) observer.observe(cases2Panel);
+    // Observe both cases panels
+    document.querySelectorAll('#cases1, #cases2').forEach(panel => {
+        if (panel) observer.observe(panel);
+    });
 
 
     // --- Event Listeners ---
-    let lastScrollTime = 0;
     document.addEventListener('wheel', (e) => {
-        const now = Date.now();
-        if (now - lastScrollTime < 50) return; // Debounce scroll
         if (isScrolling) return;
 
-        if (e.deltaY > 0 && currentIdx < panels.length - 1) { // Scrolling Down
+        if (e.deltaY > 0) { // Scrolling Down
             goToPanel(currentIdx + 1);
-        } else if (e.deltaY < 0 && currentIdx > 0) { // Scrolling Up
+        } else if (e.deltaY < 0) { // Scrolling Up
             goToPanel(currentIdx - 1);
         }
-        lastScrollTime = now;
     });
 
     document.addEventListener('keydown', (e) => {
         if (isScrolling) return;
-        if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIdx < panels.length - 1) {
+        if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIdx < panelCount - 1) {
             goToPanel(currentIdx + 1);
         }
         if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && currentIdx > 0) {
@@ -73,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.touches.length === 1) {
             touchStartY = e.touches[0].clientY;
         }
-    });
+    }, { passive: true });
 
     document.addEventListener('touchend', (e) => {
         if (touchStartY === null || isScrolling) return;
@@ -81,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let diff = touchStartY - touchEndY;
 
         if (Math.abs(diff) > 50) { // Swipe threshold
-            if (diff > 0 && currentIdx < panels.length - 1) { // Swipe Up (Scroll Down)
+            if (diff > 0) { // Swipe Up (Scroll Down)
                 goToPanel(currentIdx + 1);
-            } else if (diff < 0 && currentIdx > 0) { // Swipe Down (Scroll Up)
+            } else { // Swipe Down (Scroll Up)
                 goToPanel(currentIdx - 1);
             }
         }
@@ -92,10 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Window Resize Handling ---
-    function updatePanelsContainerHeight() {
-        container.style.height = `${panels.length * window.innerHeight}px`;
-        container.style.transform = `translateY(-${currentIdx * window.innerHeight}px)`;
+    function updateLayout() {
+      // Use vh units for transform to avoid issues with window.innerHeight
+      container.style.transform = `translateY(-${currentIdx * 100}vh)`;
     }
-    window.addEventListener('resize', updatePanelsContainerHeight);
-    updatePanelsContainerHeight(); // Initial call
-});
+    window.addEventListener('resize', updateLayout);
+    
+    // Set initial state without calling the function,
