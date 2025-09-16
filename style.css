@@ -103,7 +103,7 @@ main {
 .case-text {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.85rem, 1.5vw + 0.2rem, 1.1rem); /* Mobile readable min, smaller max than site default */
+  font-size: clamp(0.85rem, 1vw + 0.1rem, 0.95rem); /* Smaller maximum for desktop */
   line-height: 1.4;
   margin-bottom: 0;
 }
@@ -334,7 +334,5 @@ main {
   
   .scroll-indicator {
     bottom: 20px;
-  }
-}
   }
 }
