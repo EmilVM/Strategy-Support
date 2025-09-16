@@ -93,5 +93,4 @@ document.addEventListener('DOMContentLoaded', () => {
       container.style.transform = `translateY(-${currentIdx * 100}vh)`;
     }
     window.addEventListener('resize', updateLayout);
-    
-    // Set initial state without calling the function,
+});
