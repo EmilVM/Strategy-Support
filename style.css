@@ -102,16 +102,19 @@ main {
   border-radius: 8px;
 }
 
-.case-text {
+/* Case text - needs to override the general panel p styles */
+.case-item .case-text,
+.case-item .case-text p {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 0.95rem); /* Slightly more responsive scaling */
-  line-height: 1.4;
-  margin-bottom: 0;
-  align-self: stretch; /* Allow text to use full height of container */
+  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 0.95rem) !important; /* Force override */
+  line-height: 1.4 !important;
+  margin-bottom: 0 !important;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: none !important; /* Override the 950px max-width from panel p */
 }
 
 #work {
