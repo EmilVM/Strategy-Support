@@ -93,4 +93,5 @@ document.addEventListener('DOMContentLoaded', () => {
       container.style.transform = `translateY(-${currentIdx * 100}vh)`;
     }
     window.addEventListener('resize', updateLayout);
-});
+    
+}); // <-- The missing parenthesis was here
