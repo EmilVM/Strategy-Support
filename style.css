@@ -6,9 +6,11 @@ html, body {
   background: #111; 
   color: #fff;
 }
+body { 
+  /* The min-height property was removed from here to fix scrolling conflicts */
+}
 main {
   width: 100vw; 
-  /* UPDATED: Uses the JS-calculated viewport height */
   height: calc(var(--vh, 1vh) * 100); 
   overflow: hidden;
   position: relative;
@@ -21,7 +23,6 @@ main {
 }
 
 .panel {
-  /* UPDATED: Uses the JS-calculated viewport height */
   min-height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
   display: flex;
@@ -58,15 +59,14 @@ main {
   margin: 0 auto;
 }
 
-/* --- NEW CASE STYLES START --- */
+/* --- UPDATED RESPONSIVE CASE STYLES --- */
 .case-item {
   display: flex;
-  align-items: center; /* Vertically aligns the image and text */
-  gap: 32px; /* Creates space between the image and text */
-  min-height: 320px; /* Ensures all boxes have the same height */
+  align-items: center;
+  gap: clamp(1rem, 4vw, 2rem); /* Fluid spacing */
   border: 2px solid #fff;
   border-radius: 16px;
-  padding: 24px;
+  padding: clamp(1rem, 3vw, 1.5rem); /* Fluid padding */
   opacity: 0;
   transition: all 0.7s cubic-bezier(0.77,0,0.175,1);
 }
@@ -79,22 +79,23 @@ main {
 }
 
 .case-image {
-  width: 320px; /* Locks the width of the image */
-  height: 270px; /* Locks the height of the image */
-  flex-shrink: 0; /* Prevents the image from shrinking */
+  width: 40%; /* Relative width */
+  max-width: 320px;
+  height: auto; /* Automatic height */
+  aspect-ratio: 32 / 27; /* Maintains shape */
+  flex-shrink: 0;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 0; /* Removed as it's no longer needed */
 }
 
 .case-text {
-  flex: 1; /* Allows the text to fill the remaining space */
-  text-align: left; /* Aligns text to the left for better readability */
-  font-size: clamp(0.6rem, 1vw + 0.4rem, 1.05rem); /* <-- REDUCED FONT SIZE */
+  flex: 1;
+  text-align: left;
+  font-size: clamp(0.6rem, 1vw + 0.4rem, 1.05rem);
   line-height: 1.6;
   margin-bottom: 0;
 }
-/* --- NEW CASE STYLES END --- */
+/* --- END OF UPDATED STYLES --- */
 
 #work {
   justify-content: center;
@@ -257,8 +258,6 @@ main {
 /* --- Mobile Responsive Section --- */
 @media (max-width: 700px) {
   .panel {
-    /* REMOVED: The unreliable "magic number" fix is no longer needed */
-    /* min-height: calc(100vh - 60px); */
     padding-top: 40px;
   }
   .panel p {
@@ -277,19 +276,20 @@ main {
     padding: 20px 0;
   }
  .case-item {
-    flex-direction: column; /* Stacks image and text vertically on mobile */
+    flex-direction: column;
     padding: 16px;
-    min-height: auto; /* Resets the minimum height */
+    min-height: auto;
   }
   .case-image {
-      width: 100%; /* Image takes full width on mobile */
-      height: 110px;
-      margin-bottom: 16px; /* Adds space between stacked image and text */
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9; /* Modern widescreen ratio */
+      margin-bottom: 16px;
   }
   .case-text {
-    font-size: 0.7rem; /* <-- REDUCED FONT SIZE */
+    font-size: 0.7rem;
     line-height: 1.4;
-    text-align: left; /* <-- ALIGNED LEFT */
+    text-align: left;
   }
   .contact-title { font-size: 1rem; }
   .contact-email { font-size: 1.1rem; }
