@@ -82,7 +82,8 @@ main {
   transition: all 0.7s cubic-bezier(0.77,0,0.175,1);
   width: 100%;
   max-width: 900px;
-  height: clamp(100px, 30vh, 140px); /* Ensure each box takes max 30vh */
+  min-height: clamp(100px, 25vh, 130px); /* Use min-height so text can expand */
+  max-height: 35vh; /* Prevent boxes from getting too large */
 }
 
 .case-item.from-right { transform: translateX(100px); }
@@ -104,9 +105,13 @@ main {
 .case-text {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.85rem, 1vw + 0.1rem, 0.95rem); /* Smaller maximum for desktop */
+  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 0.95rem); /* Slightly more responsive scaling */
   line-height: 1.4;
   margin-bottom: 0;
+  align-self: stretch; /* Allow text to use full height of container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #work {
