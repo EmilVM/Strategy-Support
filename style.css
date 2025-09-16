@@ -108,7 +108,7 @@ main {
 .case-item .case-text p {
   flex: 1;
   text-align: left;
-  font-size: clamp(0.85rem, 1.2vw + 0.1rem, 2.0rem) !important; /* Test with 2.0rem */
+  font-size: clamp(0.85rem, 3vh + 0.2rem, 2.0rem) !important; /* Scale with viewport height instead of width */
   line-height: 1.4 !important;
   margin-bottom: 0 !important;
   align-self: stretch;
