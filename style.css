@@ -248,6 +248,7 @@ main {
     width: 120px;
     height: 120px;
   }
+}
   /* Styles for Scroll Up Indicator */
 .scroll-up-indicator {
   position: absolute;
@@ -283,4 +284,3 @@ main {
   .scroll-up-indicator {
     top: 20px;
   }
-}
