@@ -94,11 +94,30 @@ main {
   transform: translateX(0);
 }
 
-.case-image {
-  width: clamp(80px, 20%, 120px);
-  height: clamp(70px, 20vh, 100px); /* Proportional to case height */
-  aspect-ratio: 4 / 3;
+/* Case image container with title */
+.case-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 33.333%; /* Exactly 1/3 of the box */
+  height: 100%;
+  gap: clamp(0.3rem, 0.8vh, 0.6rem);
   flex-shrink: 0;
+}
+
+.case-title {
+  font-size: clamp(0.7rem, 1.8vh, 1.2rem) !important; /* Scale with viewport height */
+  font-weight: 600 !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+  color: #fff !important;
+}
+
+.case-image {
+  width: 100%; /* Fill the container width */
+  flex: 1; /* Take remaining space after title */
   object-fit: cover;
   border-radius: 8px;
 }
