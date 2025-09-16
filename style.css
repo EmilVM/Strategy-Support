@@ -6,10 +6,6 @@ html, body {
   background: #111; 
   color: #fff;
 }
-body { 
-  /* This rule is fine, but using the --vh variable for main and .panel is key */
-  min-height: 100vh; 
-}
 main {
   width: 100vw; 
   /* UPDATED: Uses the JS-calculated viewport height */
