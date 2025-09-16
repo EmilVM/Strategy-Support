@@ -275,22 +275,27 @@ main {
     max-width: 98vw;
     padding: 20px 0;
   }
+  /* --- FINAL MOBILE CASE STYLES --- */
  .case-item {
-    flex-direction: column;
-    padding: 16px;
+    flex-direction: row; /* Lays out image and text side-by-side */
+    align-items: center; /* Vertically centers them */
+    padding: 12px;
     min-height: auto;
   }
   .case-image {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9; /* Modern widescreen ratio */
-      margin-bottom: 16px;
+      width: 30%; /* Image takes 30% of the card's width */
+      height: auto; /* Height adjusts automatically */
+      aspect-ratio: 1 / 1; /* Keeps the image square */
+      object-fit: cover; /* Fills the space without distortion */
+      flex-shrink: 0;
+      margin-bottom: 0; /* Remove space from old stacked layout */
   }
   .case-text {
-    font-size: 0.7rem;
-    line-height: 1.4;
+    font-size: 0.8rem; /* Slightly larger for better readability */
+    line-height: 1.5;
     text-align: left;
   }
+  /* --- END FINAL MOBILE CASE STYLES --- */
   .contact-title { font-size: 1rem; }
   .contact-email { font-size: 1.1rem; }
   .brand-logos { gap: 16px; }
