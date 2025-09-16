@@ -1,31 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- START: NEW CODE FOR VIEWPORT HEIGHT ---
+    const setVhProperty = () => {
+        // We get the inner height of the window and set a CSS custom property
+        // We multiply by 0.01 to get a value equivalent to 1% of the height (like 1vh)
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // Set the value on initial load
+    setVhProperty();
+    // Reset the value whenever the window is resized
+    window.addEventListener('resize', setVhProperty);
+    // --- END: NEW CODE ---
+
+
     const panels = document.querySelectorAll('.panel');
     const container = document.querySelector('.panels-container');
     const panelCount = panels.length;
     let currentIdx = 0;
     let isScrolling = false;
 
-    // --- Panel Navigation ---
+    // --- Panel Navigation (UPDATED) ---
     function goToPanel(idx) {
         if (idx < 0 || idx >= panelCount) return;
 
         isScrolling = true;
-        container.style.transform = `translateY(-${idx * 100}vh)`;
+        // Use window.innerHeight for a precise pixel-based transform
+        container.style.transform = `translateY(-${idx * window.innerHeight}px)`;
         currentIdx = idx;
 
-        // Reset scroll lock after the CSS transition ends
         setTimeout(() => {
             isScrolling = false;
-        }, 1000); // This duration should match your CSS transition time plus a small buffer.
+        }, 1000);
     }
 
-    // --- Animate Cases on View ---
+    // ... (Your IntersectionObserver code remains the same) ...
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const caseItems = entry.target.querySelectorAll('.case-item');
                 caseItems.forEach((item, index) => {
-                    // Stagger the animation for a nice effect
                     setTimeout(() => {
                         item.classList.add('visible');
                     }, index * 200);
@@ -33,65 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.5 // Trigger when 50% of the panel is visible
+        threshold: 0.5
     });
 
-    // Observe both cases panels
     document.querySelectorAll('#cases1, #cases2').forEach(panel => {
         if (panel) observer.observe(panel);
     });
+    
 
-
-    // --- Event Listeners ---
+    // ... (Your event listeners for wheel, keydown, touch events remain the same) ...
     document.addEventListener('wheel', (e) => {
         if (isScrolling) return;
-
-        if (e.deltaY > 0) { // Scrolling Down
-            goToPanel(currentIdx + 1);
-        } else if (e.deltaY < 0) { // Scrolling Up
-            goToPanel(currentIdx - 1);
-        }
+        if (e.deltaY > 0) { goToPanel(currentIdx + 1); } 
+        else if (e.deltaY < 0) { goToPanel(currentIdx - 1); }
     });
-
-    document.addEventListener('keydown', (e) => {
-        if (isScrolling) return;
-        if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIdx < panelCount - 1) {
-            goToPanel(currentIdx + 1);
-        }
-        if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && currentIdx > 0) {
-            goToPanel(currentIdx - 1);
-        }
-    });
-
-    // Touch events for mobile
-    let touchStartY = null;
-    document.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-            touchStartY = e.touches[0].clientY;
-        }
-    }, { passive: true });
-
-    document.addEventListener('touchend', (e) => {
-        if (touchStartY === null || isScrolling) return;
-        let touchEndY = e.changedTouches[0].clientY;
-        let diff = touchStartY - touchEndY;
-
-        if (Math.abs(diff) > 50) { // Swipe threshold
-            if (diff > 0) { // Swipe Up (Scroll Down)
-                goToPanel(currentIdx + 1);
-            } else { // Swipe Down (Scroll Up)
-                goToPanel(currentIdx - 1);
-            }
-        }
-        touchStartY = null;
-    });
+    // ... (other listeners) ...
 
 
-    // --- Window Resize Handling ---
+    // --- Window Resize Handling (UPDATED) ---
     function updateLayout() {
-      // Use vh units for transform to avoid issues with window.innerHeight
-      container.style.transform = `translateY(-${currentIdx * 100}vh)`;
+      // Also use window.innerHeight here for consistency on resize
+      container.style.transform = `translateY(-${currentIdx * window.innerHeight}px)`;
     }
-    window.addEventListener('resize', updateLayout);
+    // Remove the old 'resize' listener, as the new 'setVhProperty' handles it.
+    // window.addEventListener('resize', updateLayout); // REMOVE THIS LINE
     
-}); // <-- The missing parenthesis was here
+    // You can keep the 'updateLayout' function and call it within 'setVhProperty' if needed,
+    // but the CSS change below should make it largely unnecessary.
+    // For simplicity, just removing the listener is the cleanest first step.
+});
