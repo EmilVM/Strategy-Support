@@ -248,4 +248,39 @@ main {
     width: 120px;
     height: 120px;
   }
+  /* Styles for Scroll Up Indicator */
+.scroll-up-indicator {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0.7;
+}
+
+.scroll-up-indicator p {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.scroll-up-indicator .arrow-up {
+  font-size: 1.5rem;
+  animation: jump-up 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Keyframe animation for the up arrow "jump" effect */
+@keyframes jump-up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 700px) {
+  .scroll-up-indicator {
+    top: 20px;
+  }
 }
