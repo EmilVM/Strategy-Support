@@ -363,7 +363,7 @@ main {
 @media (max-width: 480px) {
   .case-item .case-text,
   .case-item .case-text p {
-    font-size: clamp(0.85rem, 1.5vw, 1.0rem) !important; /* Even smaller on very small screens */
+    font-size: clamp(0.90rem, 1.5vw, 1.2rem) !important; /* Even smaller on very small screens */
     line-height: 1.2 !important;
   }
   
