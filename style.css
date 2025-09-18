@@ -183,40 +183,6 @@ main {
   -webkit-overflow-scrolling: touch;
 }
 
-/* --- Styles for the Approach White Box --- */
-.process-steps {
-  background: #fff;
-  color: #111;
-  padding: 40px;
-  border-radius: 12px;
-  max-width: 800px;
-  width: 90%;
-  margin: 20px auto 0;
-  text-align: left;
-}
-
-.process-steps ol {
-  list-style: none;
-  padding-left: 0;
-}
-
-.process-steps li {
-  margin-bottom: 24px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.process-steps li:last-child {
-  margin-bottom: 0;
-}
-
-.process-steps li strong {
-  font-size: 1.25rem;
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
 /* --- Styles for New Intro Panel --- */
 #intro {
   padding-bottom: 0;
@@ -354,7 +320,7 @@ main {
   .case-item .case-text p {
     flex: 1;
     text-align: left;
-    font-size: clamp(0.90rem, 1.8vw, 1.05rem) !important; /* Smaller, more controlled font size */
+    font-size: clamp(1.0rem, 1.8vw, 1.2rem) !important; /* Smaller, more controlled font size */
     line-height: 1.25 !important; /* Tighter line height */
     margin: 0 !important;
     padding: 0 !important;
@@ -397,7 +363,7 @@ main {
 @media (max-width: 480px) {
   .case-item .case-text,
   .case-item .case-text p {
-    font-size: clamp(0.7rem, 1.5vw, 0.85rem) !important; /* Even smaller on very small screens */
+    font-size: clamp(0.85rem, 1.5vw, 1.0rem) !important; /* Even smaller on very small screens */
     line-height: 1.2 !important;
   }
   
