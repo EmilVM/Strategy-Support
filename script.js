@@ -7,34 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- (UPDATED) Combined function for resizing and layout update ---
     const updateLayoutAndVh = () => {
-        // First, calculate the true viewport height and set it as a CSS variable
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-        // Then, immediately update the container's scroll position based on the new height
-        // This keeps the current panel perfectly centered after a resize/rotation
         container.style.transform = `translateY(-${currentIdx * window.innerHeight}px)`;
     };
 
-    // Run the function on initial load and whenever the window is resized
     updateLayoutAndVh();
     window.addEventListener('resize', updateLayoutAndVh);
 
-    // --- Panel Navigation (uses new height calculation) ---
+    // --- Panel Navigation ---
     function goToPanel(idx) {
         if (idx < 0 || idx >= panelCount || isScrolling) return;
 
         isScrolling = true;
-        // The transform now uses the live, correct window height
         container.style.transform = `translateY(-${idx * window.innerHeight}px)`;
         currentIdx = idx;
 
         setTimeout(() => {
             isScrolling = false;
-        }, 1000); // Match this to your CSS transition time
+        }, 1000); 
     }
 
-    // --- Animate Cases on View (No changes needed here) ---
+    // --- Animate Cases on View ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -53,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (panel) observer.observe(panel);
     });
 
-    // --- Event Listeners (No changes needed here) ---
+    // --- Event Listeners ---
     document.addEventListener('wheel', (e) => {
         if (isScrolling) return;
         if (e.deltaY > 0) {
@@ -73,12 +67,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- (NEW) Click Listeners for Scroll Indicators ---
+    document.querySelectorAll('.scroll-indicator').forEach(indicator => {
+        indicator.addEventListener('click', () => goToPanel(currentIdx + 1));
+    });
+
+    document.querySelectorAll('.scroll-up-indicator').forEach(indicator => {
+        indicator.addEventListener('click', () => goToPanel(currentIdx - 1));
+    });
+
+
+    // --- (MODIFIED FOR SMOOTHER MOBILE SCROLLING) ---
     let touchStartY = null;
+    
+    // 1. Removed { passive: true } so we can call preventDefault() in touchmove
     document.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
             touchStartY = e.touches[0].clientY;
         }
-    }, { passive: true });
+    });
+
+    // 2. Added a touchmove listener to prevent browser's default pull-to-refresh
+    document.addEventListener('touchmove', (e) => {
+        if (isScrolling) {
+            e.preventDefault();
+        }
+    }, { passive: false }); // Explicitly set passive to false
 
     document.addEventListener('touchend', (e) => {
         if (touchStartY === null || isScrolling) return;
