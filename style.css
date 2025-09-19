@@ -105,7 +105,8 @@ main {
 }
 
 .case-title {
-  font-size: clamp(0.6rem, 1.4vh, 1rem) !important; /* Scale with viewport height */
+  /* --- MODIFIED FONT SIZE --- */
+  font-size: clamp(1.0rem, 2vh, 1.5rem) !important; /* Increased font size */
   font-weight: 600 !important;
   text-align: center !important;
   margin: 0 !important;
@@ -211,7 +212,8 @@ main {
   transform: translateX(-50%);
   text-align: center;
   opacity: 0.7;
-  z-index: 10; /* Ensure it appears above other content */
+  z-index: 10;
+  cursor: pointer; /* Add pointer to show it's clickable */
 }
 
 .scroll-indicator p {
@@ -241,6 +243,7 @@ main {
   transform: translateX(-50%);
   text-align: center;
   opacity: 0.7;
+  cursor: pointer; /* Add pointer to show it's clickable */
 }
 
 .scroll-up-indicator p {
@@ -312,7 +315,7 @@ main {
   }
   
   .case-title {
-    font-size: clamp(0.55rem, 1.2vh, 0.8rem) !important; /* Smaller title */
+    font-size: clamp(0.8rem, 1.5vh, 1.0rem) !important; /* Adjusted mobile title size */
   }
   
   /* Fix the text container to use remaining space properly */
