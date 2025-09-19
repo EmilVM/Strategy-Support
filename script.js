@@ -66,33 +66,42 @@ document.addEventListener('DOMContentLoaded', () => {
             goToPanel(currentIdx - 1);
         }
     });
+    
+    // --- (MODIFIED) Event Listeners for Scroll Indicators (Desktop Click & Mobile Tap) ---
+    const setupIndicatorListeners = (selector, panelIncrement) => {
+        document.querySelectorAll(selector).forEach(indicator => {
+            // For mobile, use 'touchend' for an immediate response.
+            indicator.addEventListener('touchend', (e) => {
+                e.preventDefault(); // This stops the browser from firing a 'click' event afterwards.
+                goToPanel(currentIdx + panelIncrement);
+            });
+            // For desktop, use the standard 'click' event.
+            indicator.addEventListener('click', () => {
+                // On mobile, this event is prevented by the 'touchend' listener above.
+                // On desktop, it works as intended.
+                goToPanel(currentIdx + panelIncrement);
+            });
+        });
+    };
 
-    // --- (NEW) Click Listeners for Scroll Indicators ---
-    document.querySelectorAll('.scroll-indicator').forEach(indicator => {
-        indicator.addEventListener('click', () => goToPanel(currentIdx + 1));
-    });
-
-    document.querySelectorAll('.scroll-up-indicator').forEach(indicator => {
-        indicator.addEventListener('click', () => goToPanel(currentIdx - 1));
-    });
+    setupIndicatorListeners('.scroll-indicator', 1);      // Down arrows
+    setupIndicatorListeners('.scroll-up-indicator', -1);  // Up arrows
 
 
     // --- (MODIFIED FOR SMOOTHER MOBILE SCROLLING) ---
     let touchStartY = null;
     
-    // 1. Removed { passive: true } so we can call preventDefault() in touchmove
     document.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
             touchStartY = e.touches[0].clientY;
         }
     });
 
-    // 2. Added a touchmove listener to prevent browser's default pull-to-refresh
     document.addEventListener('touchmove', (e) => {
         if (isScrolling) {
             e.preventDefault();
         }
-    }, { passive: false }); // Explicitly set passive to false
+    }, { passive: false });
 
     document.addEventListener('touchend', (e) => {
         if (touchStartY === null || isScrolling) return;
