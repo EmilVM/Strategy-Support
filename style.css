@@ -2,7 +2,9 @@
 html, body {
   width: 100%; 
   height: 100%; 
-  font-family: 'Sora', sans-serif; /* Changed to Sora */
+  html, body {
+  font-family: 'Inter', sans-serif; /* Set default to Inter */
+}
   background: #111; 
   color: #fff;
 }
@@ -379,17 +381,29 @@ main {
   }
   }
 
-  /* --- Sora Font Weight Adjustments --- */
+/* --- Font Styling: The Bold & Modernist --- */
 
-/* Apply Bold (700) weight to headings and key text */
+/* Apply the bold heading font and transform to uppercase */
 .intro-text,
 .case-title,
-.contact-email {
-    font-weight: 700;
+.contact-title {
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em; /* Adds a little space for readability */
 }
 
-/* Ensure regular paragraphs and case text use Regular (400) weight */
+/* Style the email link to be bold Inter for clarity */
+.contact-email {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-transform: none; /* Keep email lowercase */
+}
+
+/* Ensure all other paragraph text uses the body font and regular weight */
 .panel p,
-.case-item .case-text {
+.case-item .case-text,
+.approach-summary {
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
+    text-transform: none; /* Reset text transform */
 }
