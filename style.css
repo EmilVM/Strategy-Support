@@ -377,4 +377,17 @@ main {
   .case-image {
     height: clamp(50px, 6vh, 70px); /* Smaller image height */
   }
+  /* --- Sora Font Weight Adjustments --- */
+
+/* Apply Bold (700) weight to headings and key text */
+.intro-text,
+.case-title,
+.contact-email {
+    font-weight: 700;
+}
+
+/* Ensure regular paragraphs and case text use Regular (400) weight */
+.panel p,
+.case-item .case-text {
+    font-weight: 400;
 }
