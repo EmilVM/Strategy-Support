@@ -380,29 +380,19 @@ main {
   }
   }
 
-/* --- Font Styling: The Bold & Modernist --- */
+/* --- Font Styling: Archivo Black Default --- */
 
-/* Apply the bold heading font and transform to uppercase */
-.intro-text,
-.case-title,
-.contact-title {
-    font-family: 'Archivo Black', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.03em; /* Adds a little space for readability */
-}
-
-/* Style the email link to be bold Inter for clarity */
-.contact-email {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    text-transform: none; /* Keep email lowercase */
-}
-
-/* Ensure all other paragraph text uses the body font and regular weight */
-.panel p,
+/* Set specific elements to use 'Inter' for readability */
 .case-item .case-text,
-.approach-summary {
+.contact-email a,
+.scroll-indicator p {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    text-transform: none; /* Reset text transform */
+    text-transform: none; /* Reset to normal case */
+    letter-spacing: normal; /* Reset letter spacing */
+    font-weight: 400; /* Use regular weight */
+}
+
+/* Make the email link bold */
+.contact-email a {
+    font-weight: 700;
 }
