@@ -107,7 +107,6 @@ main {
 .case-title {
   /* --- MODIFIED FONT SIZE --- */
   font-size: clamp(1.0rem, 2vh, 1.5rem) !important; /* Increased font size */
-  font-weight: 600 !important;
   text-align: center !important;
   margin: 0 !important;
   padding: 0 !important;
