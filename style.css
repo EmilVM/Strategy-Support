@@ -2,7 +2,9 @@
 html, body {
   width: 100%;
   height: 100%;
-  font-family: 'Inter', sans-serif; /* Set default to Inter */
+  font-family: 'Archivo Black', sans-serif; /* Set default to Archivo Black */
+  text-transform: uppercase; /* Make text uppercase by default */
+  letter-spacing: 0.03em; /* Add slight spacing for style */
   background: #111;
   color: #fff;
 }
