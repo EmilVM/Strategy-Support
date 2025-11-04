@@ -10,26 +10,37 @@ html, body {
   letter-spacing: 0.03em;
   background: #111;
   color: #fff;
-  scroll-behavior: smooth; /* Optional: smooth scrolling */
+  scroll-behavior: smooth;
 }
 
 main {
-  /* No fixed height — let content flow */
+  /* Let content flow naturally */
 }
 
-section {
-  padding: 80px 20px;
+/* ✅ ONLY the intro fills the screen */
+#intro {
+  min-height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 20px;
+  background: #111;
+}
+
+/* Rest of sections: natural height */
+section:not(#intro) {
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #111;
   color: #fff;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Intro */
+/* Intro content */
 .profile-picture {
   width: 150px;
   height: 150px;
@@ -52,6 +63,8 @@ section {
   max-width: 800px;
   text-align: center;
   line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: normal;
 }
 
 /* Work / Brands */
@@ -61,6 +74,7 @@ section {
   line-height: 1.5;
   text-align: center;
   margin-bottom: 40px;
+  font-family: 'Inter', sans-serif;
 }
 
 .brand-logos {
@@ -84,6 +98,7 @@ section {
   font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
   line-height: 1.5;
   text-align: center;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Cases */
@@ -187,21 +202,13 @@ section {
   text-decoration: none;
 }
 
-/* Font overrides for readability */
-.case-text,
-.contact-email,
-.brand-logos,
-#work p,
-#about p,
-.intro-text {
-  font-family: 'Inter', sans-serif;
-  letter-spacing: normal;
-  text-transform: none;
-}
-
 /* Mobile Responsive */
 @media (max-width: 700px) {
-  section {
+  #intro {
+    padding: 0 16px;
+  }
+
+  section:not(#intro) {
     padding: 50px 16px;
   }
 
