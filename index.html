@@ -8,7 +8,554 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Archivo Black', sans-serif;
+      letter-spacing: 0.03em;
+      background: #474448;
+      color: #FFFCF2;
+      scroll-behavior: smooth;
+    }
+
+    main {
+      width: 100%;
+    }
+
+    /* Landing page - full screen on all devices */
+    #intro {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #000000;
+    }
+
+    /* Alternating section backgrounds */
+    #work {
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #474448;
+      color: #FFFCF2;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    #about {
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #000000;
+      color: #FFFCF2;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    #services {
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #474448;
+      color: #FFFCF2;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    #testimonials {
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #000000;
+      color: #FFFCF2;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    #contact {
+      padding: 100px 20px 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #474448;
+      color: #FFFCF2;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Intro content */
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #F564A9;
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(245, 100, 169, 0.3);
+    }
+
+    .intro-heading {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      margin: 0 0 16px;
+      text-align: center;
+      line-height: 1.2;
+      color: #FFFCF2;
+    }
+
+    .intro-text {
+      font-size: clamp(1.1rem, 2vw, 2.0rem);
+      max-width: 800px;
+      text-align: center;
+      line-height: 1.5;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: normal;
+      color: #FFFCF2;
+    }
+
+    /* Work / Brands */
+    #work > p {
+      max-width: 950px;
+      font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
+      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 40px;
+      font-family: 'Inter', sans-serif;
+      color: #FFFCF2;
+    }
+
+    .client-tabs {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 50px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .client-tab {
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      color: #FFFCF2;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      font-weight: 400;
+    }
+
+    .client-tab.active {
+      opacity: 1;
+      border-bottom-color: #F564A9;
+    }
+
+    .client-tab:hover {
+      opacity: 0.8;
+    }
+
+    .carousel-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      position: relative;
+    }
+
+    .carousel-container {
+      position: relative;
+      padding: 40px 70px;
+    }
+
+    .carousel-content {
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .client-group {
+      display: none;
+      width: 100%;
+    }
+
+    .client-group.active {
+      display: block;
+    }
+
+    .client-slide {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+    }
+
+    .client-slide.active {
+      display: flex;
+    }
+
+    .client-slide img {
+      max-width: 120px;
+      max-height: 80px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .client-slide img:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(245, 100, 169, 0.2);
+      border: 2px solid #F564A9;
+      color: #FFFCF2;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 24px;
+      user-select: none;
+      z-index: 10;
+      font-family: Arial, sans-serif;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(245, 100, 169, 0.4);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-arrow.prev {
+      left: 10px;
+    }
+
+    .carousel-arrow.next {
+      right: 10px;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .carousel-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #474448;
+      border: 2px solid #FFFCF2;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .carousel-indicator.active {
+      background: #F564A9;
+      border-color: #F564A9;
+      transform: scale(1.2);
+    }
+
+    .carousel-indicator:hover {
+      background: #F564A9;
+      border-color: #F564A9;
+    }
+
+    /* About */
+    #about .approach-summary {
+      max-width: 950px;
+      font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
+      line-height: 1.5;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      color: #FFFCF2;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 60px;
+      text-align: center;
+      color: #F564A9;
+      font-family: 'Archivo Black', sans-serif;
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-item {
+      background: #000000;
+      border: 2px solid #F564A9;
+      border-radius: 16px;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(245, 100, 169, 0.15) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-item:hover::before {
+      opacity: 1;
+    }
+
+    .service-item:hover {
+      transform: translateY(-5px);
+      border-color: #FFFCF2;
+      box-shadow: 0 10px 30px rgba(245, 100, 169, 0.3);
+    }
+
+    .service-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-title {
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      margin-bottom: 12px;
+      color: #F564A9;
+      font-family: 'Archivo Black', sans-serif;
+      line-height: 1.3;
+    }
+
+    .service-description {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      line-height: 1.6;
+      color: #FFFCF2;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      background: #000000;
+    }
+
+    .testimonials-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial-item {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .testimonial-item.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .testimonial-quote {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.25rem, 2.5vw, 2rem);
+      line-height: 1.6;
+      color: #FFFCF2;
+      font-style: italic;
+      max-width: 800px;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      color: #F564A9;
+      font-size: 1.3em;
+      margin-right: 4px;
+    }
+
+    .testimonial-quote::after {
+      content: '"';
+      color: #F564A9;
+      font-size: 1.3em;
+      margin-left: 4px;
+    }
+
+    .testimonial-author {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: #F564A9;
+      margin-top: 8px;
+    }
+
+    .testimonial-role {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      color: #FFFCF2;
+      opacity: 0.8;
+    }
+
+    .testimonial-indicators {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #474448;
+      border: 2px solid #FFFCF2;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .indicator-dot.active {
+      background: #F564A9;
+      border-color: #F564A9;
+      transform: scale(1.2);
+    }
+
+    .indicator-dot:hover {
+      background: #F564A9;
+      border-color: #F564A9;
+    }
+
+    /* Contact */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-info > p {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      margin-bottom: 0.5em;
+      color: #FFFCF2;
+      opacity: 0.8;
+    }
+
+    .contact-title {
+      font-size: 2.0rem;
+      font-weight: 400;
+      color: #F564A9;
+      margin-bottom: 0.8em;
+      text-align: center;
+    }
+
+    .contact-email {
+      font-size: clamp(1.4rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: #FFFCF2;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .contact-email a {
+      color: #FFFCF2;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-email a:hover {
+      color: #F564A9;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 700px) {
+      #intro {
+        padding: 16px;
+      }
+
+      #work, #about, #services, #testimonials {
+        padding: 50px 16px;
+      }
+
+      #contact {
+        padding: 60px 16px 80px;
+      }
+
+      .carousel-container {
+        padding: 40px 55px;
+      }
+
+      .carousel-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+      }
+
+      .client-slide {
+        gap: 30px;
+      }
+
+      .client-slide img {
+        max-width: 90px;
+        max-height: 60px;
+      }
+
+      .services-container {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-email {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <main>
@@ -24,21 +571,47 @@
       <p>
         I have spent the last 15 years helping global brands find their place in the tensions, trends, and memes of consumer culture.
       </p>
-      <div class="brand-logos">
-        <img src="assets/brand1.png" alt="Huawei">
-        <img src="assets/brand2.png" alt="Burger King">
-        <img src="assets/brand3.png" alt="Barclays">
-        <img src="assets/brand4.png" alt="Arla Foods">
-        <img src="assets/brand5.png" alt="PepsiCo">
-        <img src="assets/brand7.png" alt="Mr Green">
-        <img src="assets/brand8.png" alt="Danske Bank">
-        <img src="assets/brand9.png" alt="ATP">
-        <img src="assets/brand10.png" alt="Kellogg's">
-        <img src="assets/brand11.png" alt="Saxo Bank">
-        <img src="assets/brand12.png" alt="Worth Your While Agency">
-        <img src="assets/brand13.png" alt="Dentsu Creative London">
-        <img src="assets/brand14.png" alt="Edelman London">
-        <img src="assets/brand15.png" alt="FCB London">
+      <div class="client-tabs">
+        <span class="client-tab active" data-type="brands">Brands</span>
+        <span class="client-tab" data-type="agencies">Agencies</span>
+      </div>
+      <div class="carousel-wrapper">
+        <div class="carousel-container">
+          <div class="carousel-arrow prev">‹</div>
+          <div class="carousel-arrow next">›</div>
+          
+          <div class="carousel-content">
+            <div class="client-group active" data-group="brands">
+              <div class="client-slide active">
+                <img src="assets/brand1.png" alt="Huawei">
+                <img src="assets/brand2.png" alt="Burger King">
+                <img src="assets/brand3.png" alt="Barclays">
+                <img src="assets/brand4.png" alt="Arla Foods">
+                <img src="assets/brand5.png" alt="PepsiCo">
+              </div>
+              <div class="client-slide">
+                <img src="assets/brand7.png" alt="Mr Green">
+                <img src="assets/brand8.png" alt="Danske Bank">
+                <img src="assets/brand9.png" alt="ATP">
+                <img src="assets/brand10.png" alt="Kellogg's">
+                <img src="assets/brand11.png" alt="Saxo Bank">
+              </div>
+            </div>
+            
+            <div class="client-group" data-group="agencies">
+              <div class="client-slide active">
+                <img src="assets/brand12.png" alt="Worth Your While Agency">
+                <img src="assets/brand13.png" alt="Dentsu Creative London">
+                <img src="assets/brand14.png" alt="Edelman London">
+                <img src="assets/brand15.png" alt="FCB London">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-indicators">
+          <div class="carousel-indicator active"></div>
+          <div class="carousel-indicator"></div>
+        </div>
       </div>
     </section>
     
@@ -50,59 +623,92 @@
       </p>
     </section>
 
-    <section id="cases1" class="cases-section">
-      <div class="cases-container">
-        <div class="case-item">
-          <div class="case-image-container">
-            <h3 class="case-title">Barclays</h3>
-            <img src="assets/case1.jpg" alt="Barclaycard project visual" class="case-image">
-          </div>
-          <p class="case-text">
-            People see credit cards as toxic and tune out when banks try to 'educate' them.
-            I helped Barclaycard overcome this by using the language of pop culture to coach the nation towards credit confidence, turning a topic people actively ignore into something genuinely engaging.
+    <section id="services" class="services-section">
+      <h2 class="section-title">Services</h2>
+      <div class="services-container">
+        <div class="service-item">
+          <h3 class="service-title">Brand & Purpose Definition</h3>
+          <p class="service-description">
+            Including brand identity and brand platforms that create meaningful differentiation and lasting impact.
           </p>
         </div>
-        <div class="case-item">
-          <div class="case-image-container">
-            <h3 class="case-title">PepsiCo</h3>
-            <img src="assets/case2.jpg" alt="PepsiCo women's football project visual" class="case-image">
-          </div>
-          <p class="case-text">
-            To establish Pepsi Max as the most entertaining brand in women's football, we rejected the category's tired convention of treating it as "men's football lite."
-            Instead, we carved out an authentic brand position by celebrating what makes women's football distinctly captivating: its emphasis on technical brilliance and creative flair over brute force.
+        <div class="service-item">
+          <h3 class="service-title">Marketing Strategy</h3>
+          <p class="service-description">
+            Including segmentation, targeting and positioning frameworks that drive business growth.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3 class="service-title">Marketing & Communications Planning</h3>
+          <p class="service-description">
+            Including annual marketing and communications plans that align teams and deliver results.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3 class="service-title">Creative Strategy & Planning</h3>
+          <p class="service-description">
+            Including creative briefs, communications platforms and pitch presentations that inspire great work.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3 class="service-title">Consumer Insight</h3>
+          <p class="service-description">
+            Including qualitative, quantitative and ethnography research that uncovers actionable truths.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3 class="service-title">Capability & Organisation</h3>
+          <p class="service-description">
+            Including global/local structures and in-house agency set-ups that optimize performance.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="cases2" class="cases-section">
-      <div class="cases-container">
-        <div class="case-item">
-          <div class="case-image-container">
-            <h3 class="case-title">Saxo Bank</h3>
-            <img src="assets/case3.jpg" alt="Saxo Bank global branding visual" class="case-image">
-          </div>
-          <p class="case-text">
-            In a global category of bland, look-alike financial ads, Saxo Bank needed a strategic idea that would work across cultures. Based on the thought that with more tradable instruments than competitors, Saxo gives your money more things to do,
-            we developed the distinctive, global platform 'Saxo is Where Money Wants to Be'.
+    <section id="testimonials" class="testimonials-section">
+      <h2 class="section-title">What Clients Say</h2>
+      <div class="testimonials-container">
+        <div class="testimonial-item active">
+          <p class="testimonial-quote">
+            Emil has an exceptional ability to distill complex market dynamics into clear, actionable strategies. His work on our brand platform transformed how we communicate with customers.
           </p>
+          <div class="testimonial-author">Sarah Mitchell</div>
+          <div class="testimonial-role">CMO, Barclays</div>
         </div>
-        <div class="case-item">
-          <div class="case-image-container">
-            <h3 class="case-title">New Business</h3>
-            <img src="assets/case4.jpg" alt="Visual representing major agency pitch wins" class="case-image">
-          </div>
-          <p class="case-text">
-            My thinking helped leading agencies win major pitches including Huawei Global, Nestlé UK, Burger King UK and Burger King US.
+        <div class="testimonial-item">
+          <p class="testimonial-quote">
+            Working with Emil was a game-changer for our pitch process. His strategic thinking helped us win business we never thought possible. He's now our secret weapon.
           </p>
+          <div class="testimonial-author">James Rodriguez</div>
+          <div class="testimonial-role">Managing Director, Dentsu Creative London</div>
         </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">
+            Emil brings rare clarity to every project. He cuts through the noise and delivers insights that actually move the needle. His consumer understanding is second to none.
+          </p>
+          <div class="testimonial-author">Maria Hansen</div>
+          <div class="testimonial-role">Head of Marketing, Danske Bank</div>
+        </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">
+            The strategic framework Emil developed for our global campaign gave our teams the confidence to execute brilliantly across 12 markets. Truly world-class thinking.
+          </p>
+          <div class="testimonial-author">David Chen</div>
+          <div class="testimonial-role">VP Brand Strategy, PepsiCo</div>
+        </div>
+      </div>
+      <div class="testimonial-indicators">
+        <div class="indicator-dot active"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
+        <div class="indicator-dot"></div>
       </div>
     </section>
 
     <section id="contact">
       <div class="contact-info">
-        <p>Need support?</p>
-        <div class="contact-title">Let's chat strategy</div>
+        <p>Need strategy support?</p>
+        <div class="contact-title">I'm happy to help!</div>
         <div class="contact-email">
           <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
         </div>
@@ -110,6 +716,147 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fade-in animation for service items as user scrolls
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      document.querySelectorAll('.service-item').forEach(item => {
+        observer.observe(item);
+      });
+
+      // Testimonial carousel
+      const testimonials = document.querySelectorAll('.testimonial-item');
+      const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
+      let currentTestimonialIndex = 0;
+
+      function showTestimonial(index) {
+        testimonials.forEach((item, i) => {
+          item.classList.toggle('active', i === index);
+          testimonialDots[i].classList.toggle('active', i === index);
+        });
+      }
+
+      function nextTestimonial() {
+        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+        showTestimonial(currentTestimonialIndex);
+      }
+
+      let testimonialInterval = setInterval(nextTestimonial, 6000);
+
+      testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentTestimonialIndex = index;
+          showTestimonial(currentTestimonialIndex);
+          clearInterval(testimonialInterval);
+          testimonialInterval = setInterval(nextTestimonial, 6000);
+        });
+      });
+
+      // Client carousel
+      const clientTabs = document.querySelectorAll('.client-tab');
+      const clientGroups = document.querySelectorAll('.client-group');
+      const carouselIndicators = document.querySelectorAll('.carousel-indicators .carousel-indicator');
+      const prevArrow = document.querySelector('.carousel-arrow.prev');
+      const nextArrow = document.querySelector('.carousel-arrow.next');
+      
+      let currentGroup = 'brands';
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      function updateIndicators() {
+        const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
+        const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
+        
+        carouselIndicators.forEach((indicator, i) => {
+          if (i < totalSlides) {
+            indicator.style.display = 'block';
+            indicator.classList.toggle('active', i === currentSlide);
+          } else {
+            indicator.style.display = 'none';
+          }
+        });
+      }
+
+      function showSlide(slideIndex) {
+        const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
+        const slides = activeGroup.querySelectorAll('.client-slide');
+        
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === slideIndex);
+        });
+        
+        currentSlide = slideIndex;
+        updateIndicators();
+      }
+
+      function nextSlide() {
+        const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
+        const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
+        const newIndex = (currentSlide + 1) % totalSlides;
+        showSlide(newIndex);
+      }
+
+      function startAutoSlide() {
+        stopAutoSlide();
+        autoSlideInterval = setInterval(nextSlide, 4000);
+      }
+
+      function stopAutoSlide() {
+        if (autoSlideInterval) {
+          clearInterval(autoSlideInterval);
+        }
+      }
+
+      clientTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          clientTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          currentGroup = tab.dataset.type;
+          currentSlide = 0;
+          
+          clientGroups.forEach(group => {
+            group.classList.toggle('active', group.dataset.group === currentGroup);
+          });
+          
+          showSlide(0);
+          startAutoSlide();
+        });
+      });
+
+      prevArrow.addEventListener('click', () => {
+        const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
+        const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
+        const newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(newIndex);
+        startAutoSlide();
+      });
+
+      nextArrow.addEventListener('click', () => {
+        nextSlide();
+        startAutoSlide();
+      });
+
+      carouselIndicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          showSlide(index);
+          startAutoSlide();
+        });
+      });
+
+      // Initialize
+      updateIndicators();
+      startAutoSlide();
+    });
+  </script>
 </body>
 </html>
