@@ -136,6 +136,7 @@
     .animated-word-static {
       display: inline-block;
       position: relative;
+      white-space: nowrap;
     }
 
     .animated-word::after {
@@ -893,6 +894,26 @@
       let typingSpeed = 150;
       let deletingSpeed = 100;
       let pauseTime = 1500;
+
+      // Set fixed width for animated word to prevent layout shifts
+      const tempSpan = document.createElement('span');
+      tempSpan.className = 'animated-word';
+      tempSpan.style.position = 'absolute';
+      tempSpan.style.visibility = 'hidden';
+      tempSpan.style.whiteSpace = 'nowrap';
+      document.body.appendChild(tempSpan);
+
+      let maxWidth = 0;
+      words.forEach(word => {
+        tempSpan.textContent = word;
+        maxWidth = Math.max(maxWidth, tempSpan.offsetWidth);
+      });
+
+      document.body.removeChild(tempSpan);
+
+      animatedWordElement.style.width = `${maxWidth}px`;
+      animatedWordElement.style.textAlign = 'center';
+      animatedWordElement.style.display = 'inline-block';
 
       function type() {
         const currentWord = words[currentWordIndex];
