@@ -38,8 +38,8 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      background: #FFEEDB; /* Changed to antique white as required */
-      color: #0B0500; /* Dark text for readability */
+      background: #FFEEDB;
+      color: #0B0500;
     }
 
     /* Alternating section backgrounds */
@@ -49,7 +49,7 @@
       flex-direction: column;
       align-items: center;
       background: #8A817C; /* Battleship gray */
-      color: #0B0500; /* Dark text for readability */
+      color: #FFEEDB; /* Light text for dark background */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -59,8 +59,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #0B0500; /* Smoky black */
-      color: #FFEEDB; /* Antique white text */
+      background: #FFEEDB; /* Antique white */
+      color: #0B0500; /* Dark text for light background */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -71,7 +71,7 @@
       flex-direction: column;
       align-items: center;
       background: #8A817C; /* Battleship gray */
-      color: #0B0500; /* Dark text for readability */
+      color: #0B0500;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -82,7 +82,7 @@
       flex-direction: column;
       align-items: center;
       background: #0B0500; /* Smoky black */
-      color: #FFEEDB; /* Antique white text */
+      color: #FFEEDB;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -92,8 +92,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #8A817C; /* Battleship gray */
-      color: #0B0500; /* Dark text for readability */
+      background: #FFEEDB; /* Antique white */
+      color: #0B0500; /* Dark text for light background */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -115,7 +115,6 @@
       margin: 0 0 16px;
       text-align: center;
       line-height: 1.2;
-      /* Removed color - now inherits from #intro */
     }
 
     .intro-text {
@@ -124,7 +123,6 @@
       text-align: center;
       line-height: 1.5;
       letter-spacing: normal;
-      /* Removed color - now inherits from #intro */
     }
 
     /* Work / Brands */
@@ -147,38 +145,40 @@
 
     .client-tab {
       font-size: clamp(1.2rem, 2vw, 1.8rem);
-      color: #0B0500;
-      opacity: 0.5;
+      background: none;
+      border: none;
+      padding: 0 0 4px 0;
+      margin: 0;
+      font: inherit;
       cursor: pointer;
       transition: all 0.3s;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 4px;
       font-weight: 400;
       position: relative;
       z-index: 1;
-    }
-
-    #about .client-tab {
-      color: #FFEEDB;
-      opacity: 0.5;
-    }
-
-    #about .client-tab.active {
-      color: #FFEEDB;
-    }
-
-    .client-tab.active {
-      opacity: 1;
-      border-bottom-color: #9B1D20;
+      opacity: 0.7;
     }
 
     .client-tab:hover,
     .client-tab:focus {
-      opacity: 0.8;
-      outline: none;
+      opacity: 0.9;
     }
 
-    .client-tab:focus {
+    .client-tab.active {
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    .client-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #9B1D20;
+    }
+
+    .client-tab:focus-visible {
       outline: 2px solid #9B1D20;
       outline-offset: 2px;
       border-radius: 2px;
@@ -193,40 +193,45 @@
     .carousel-container {
       position: relative;
       padding: 40px 70px;
+      overflow: hidden;
     }
 
     .carousel-content {
-      min-height: auto;
-      padding: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      min-height: 120px;
     }
 
     .client-group {
       display: none;
       width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
     }
 
     .client-group.active {
       display: block;
+      position: relative;
+    }
+
+    .client-slides-container {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      width: 100%;
+      height: 100%;
     }
 
     .client-slide {
-      display: none;
-      flex-wrap: wrap;
+      min-width: 100%;
+      display: flex;
       justify-content: center;
       align-items: center;
       gap: 30px;
-      width: 100%;
-    }
-
-    .client-slide.active {
-      display: flex;
+      padding: 20px 0;
     }
 
     .client-slide img {
-      /* Updated to uniform size */
       width: 150px;
       height: 75px;
       object-fit: contain;
@@ -262,7 +267,11 @@
       touch-action: manipulation;
     }
 
-    .carousel-arrow:focus {
+    #work .carousel-arrow {
+      color: #FFEEDB;
+    }
+
+    .carousel-arrow:focus-visible {
       outline: 2px solid #9B1D20;
       outline-offset: 2px;
     }
@@ -291,14 +300,10 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #8A817C;
-      border: 2px solid #0B0500;
+      background: rgba(255, 238, 219, 0.3);
+      border: 2px solid #FFEEDB;
       cursor: pointer;
       transition: all 0.3s;
-    }
-
-    #about .carousel-indicator {
-      border: 2px solid #FFEEDB;
     }
 
     .carousel-indicator.active {
@@ -308,14 +313,9 @@
     }
 
     .carousel-indicator:hover,
-    .carousel-indicator:focus {
+    .carousel-indicator:focus-visible {
       background: #9B1D20;
       border-color: #9B1D20;
-    }
-
-    .carousel-indicator:focus {
-      outline: 2px solid #9B1D20;
-      outline-offset: 2px;
     }
 
     /* About */
@@ -326,7 +326,7 @@
       text-align: center;
     }
 
-    /* Services Section - updated background for service items */
+    /* Services Section */
     .services-section {
       padding-top: 80px;
       padding-bottom: 80px;
@@ -349,7 +349,7 @@
     }
 
     .service-item {
-      background: #FFEEDB; /* Changed to antique white for readability */
+      background: #FFEEDB;
       border: 2px solid #9B1D20;
       border-radius: 16px;
       padding: clamp(1.5rem, 3vw, 2rem);
@@ -378,7 +378,7 @@
 
     .service-item:hover {
       transform: translateY(-5px);
-      border-color: #9B1D20; /* Updated hover border color */
+      border-color: #9B1D20;
       box-shadow: 0 10px 30px rgba(155, 29, 32, 0.3);
     }
 
@@ -477,10 +477,6 @@
       transition: all 0.3s;
     }
 
-    #about .indicator-dot {
-      border: 2px solid #FFEEDB;
-    }
-
     .indicator-dot.active {
       background: #9B1D20;
       border-color: #9B1D20;
@@ -488,14 +484,9 @@
     }
 
     .indicator-dot:hover,
-    .indicator-dot:focus {
+    .indicator-dot:focus-visible {
       background: #9B1D20;
       border-color: #9B1D20;
-    }
-
-    .indicator-dot:focus {
-      outline: 2px solid #9B1D20;
-      outline-offset: 2px;
     }
 
     /* Contact */
@@ -532,17 +523,12 @@
       transition: color 0.3s;
     }
 
-    #about .contact-email a {
-      color: #FFEEDB;
-    }
-
     .contact-email a:hover,
-    .contact-email a:focus {
+    .contact-email a:focus-visible {
       color: #9B1D20;
-      outline: none;
     }
 
-    .contact-email a:focus {
+    .contact-email a:focus-visible {
       outline: 2px solid #9B1D20;
       outline-offset: 2px;
       border-radius: 2px;
@@ -576,7 +562,6 @@
         gap: 25px;
       }
 
-      /* Uniform logo size for mobile */
       .client-slide img {
         width: 120px;
         height: 60px;
@@ -619,7 +604,7 @@
 <body>
   <main>
     <section id="intro" aria-labelledby="intro-heading">
-      <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
+      <img src="https://via.placeholder.com/150" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
       <h1 id="intro-heading" class="intro-heading">Hi! I'm Emil Valdemar Madsen</h1>
       <p class="intro-text">
        A Brand and marketing strategy consultant.
@@ -631,7 +616,7 @@
       <p>
         I have spent the last 15 years helping global brands find their place in the tensions, trends, and memes of consumer culture.
       </p>
-      <div class="client-tabs" role="tablist">
+      <div class="client-tabs" role="tablist" aria-label="Client types">
         <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
         <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
       </div>
@@ -641,40 +626,44 @@
           <button class="carousel-arrow next" aria-label="Next slide">›</button>
           
           <div class="carousel-content">
-            <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel">
-              <div class="client-slide active">
-                <img src="assets/brand1.png" alt="Huawei" loading="lazy">
-                <img src="assets/brand2.png" alt="Burger King" loading="lazy">
-                <img src="assets/brand3.png" alt="Barclays" loading="lazy">
-              </div>
-              <div class="client-slide">
-                <img src="assets/brand4.png" alt="Arla Foods" loading="lazy">
-                <img src="assets/brand5.png" alt="PepsiCo" loading="lazy">
-                <img src="assets/brand7.png" alt="Mr Green" loading="lazy">
-              </div>
-              <div class="client-slide">
-                <img src="assets/brand8.png" alt="Danske Bank" loading="lazy">
-                <img src="assets/brand9.png" alt="ATP" loading="lazy">
-                <img src="assets/brand10.png" alt="Kellogg's" loading="lazy">
-              </div>
-              <div class="client-slide">
-                <img src="assets/brand11.png" alt="Saxo Bank" loading="lazy">
+            <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
+              <div class="client-slides-container">
+                <div class="client-slide">
+                  <img src="https://via.placeholder.com/150x75?text=Huawei" alt="Huawei" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=Burger+King" alt="Burger King" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=Barclays" alt="Barclays" loading="lazy">
+                </div>
+                <div class="client-slide">
+                  <img src="https://via.placeholder.com/150x75?text=Arla+Foods" alt="Arla Foods" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=PepsiCo" alt="PepsiCo" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=Mr+Green" alt="Mr Green" loading="lazy">
+                </div>
+                <div class="client-slide">
+                  <img src="https://via.placeholder.com/150x75?text=Danske+Bank" alt="Danske Bank" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=ATP" alt="ATP" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=Kellogg's" alt="Kellogg's" loading="lazy">
+                </div>
+                <div class="client-slide">
+                  <img src="https://via.placeholder.com/150x75?text=Saxo+Bank" alt="Saxo Bank" loading="lazy">
+                </div>
               </div>
             </div>
             
-            <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel">
-              <div class="client-slide active">
-                <img src="assets/brand12.png" alt="Worth Your While Agency" loading="lazy">
-                <img src="assets/brand13.png" alt="Dentsu Creative London" loading="lazy">
-                <img src="assets/brand14.png" alt="Edelman London" loading="lazy">
-              </div>
-              <div class="client-slide">
-                <img src="assets/brand15.png" alt="FCB London" loading="lazy">
+            <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
+              <div class="client-slides-container">
+                <div class="client-slide">
+                  <img src="https://via.placeholder.com/150x75?text=Worth+Your+While" alt="Worth Your While Agency" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=Dentsu+Creative" alt="Dentsu Creative London" loading="lazy">
+                  <img src="https://via.placeholder.com/150x75?text=Edelman" alt="Edelman London" loading="lazy">
+                </div>
+                <div class="client-slide">
+                  <img src="https://via.placeholder.com/150x75?text=FCB+London" alt="FCB London" loading="lazy">
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="carousel-indicators" role="tablist">
+        <div class="carousel-indicators" role="tablist" aria-label="Slide navigation">
           <!-- Indicators will be dynamically generated by JavaScript -->
         </div>
       </div>
@@ -771,11 +760,11 @@
           <div class="testimonial-role">VP Brand Strategy, PepsiCo</div>
         </div>
       </div>
-      <div class="testimonial-indicators" role="tablist">
-        <div class="indicator-dot active" role="tab" aria-selected="true"></div>
-        <div class="indicator-dot" role="tab" aria-selected="false"></div>
-        <div class="indicator-dot" role="tab" aria-selected="false"></div>
-        <div class="indicator-dot" role="tab" aria-selected="false"></div>
+      <div class="testimonial-indicators" role="tablist" aria-label="Testimonial navigation">
+        <div class="indicator-dot active" role="tab" aria-selected="true" aria-label="Testimonial 1"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 4"></div>
       </div>
     </section>
 
@@ -849,7 +838,7 @@
         });
       });
 
-      // Client carousel
+      // Client carousel with horizontal sliding
       const clientTabs = document.querySelectorAll('.client-tab');
       const clientGroups = document.querySelectorAll('.client-group');
       const prevArrow = document.querySelector('.carousel-arrow.prev');
@@ -859,6 +848,7 @@
       let currentGroup = 'brands';
       let currentSlide = 0;
       let clientInterval;
+      let isAnimating = false;
 
       function updateCarouselIndicators() {
         const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
@@ -873,18 +863,17 @@
           indicator.className = `carousel-indicator${i === currentSlide ? ' active' : ''}`;
           indicator.setAttribute('role', 'tab');
           indicator.setAttribute('aria-selected', i === currentSlide);
+          indicator.setAttribute('aria-label', `Slide ${i + 1}`);
           indicator.addEventListener('click', () => {
-            currentSlide = i;
-            showSlide();
-            startClientCarousel();
+            if (isAnimating) return;
+            goToSlide(i);
           });
           
           indicator.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              currentSlide = i;
-              showSlide();
-              startClientCarousel();
+              if (isAnimating) return;
+              goToSlide(i);
             }
           });
           
@@ -892,22 +881,46 @@
         }
       }
 
-      function showSlide() {
+      function goToSlide(slideIndex) {
+        if (isAnimating) return;
+        
         const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
-        const slides = activeGroup.querySelectorAll('.client-slide');
+        const slidesContainer = activeGroup.querySelector('.client-slides-container');
+        const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
         
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === currentSlide);
-        });
+        // Prevent invalid slide index
+        if (slideIndex < 0 || slideIndex >= totalSlides || slideIndex === currentSlide) return;
         
+        isAnimating = true;
+        
+        // Calculate direction for animation class
+        const direction = slideIndex > currentSlide ? 'next' : 'prev';
+        
+        // Update current slide
+        currentSlide = slideIndex;
+        
+        // Apply transform to slide container
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update indicators
         updateCarouselIndicators();
+        
+        // Reset animation lock after transition completes
+        setTimeout(() => {
+          isAnimating = false;
+        }, 800);
       }
 
       function nextSlide() {
         const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
         const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
-        currentSlide = (currentSlide + 1) % totalSlides;
-        showSlide();
+        goToSlide((currentSlide + 1) % totalSlides);
+      }
+
+      function prevSlide() {
+        const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
+        const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
+        goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
       }
 
       function startClientCarousel() {
@@ -915,10 +928,18 @@
         clientInterval = setInterval(nextSlide, 4000);
       }
 
+      // Tab switching functionality
       clientTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-          clientTabs.forEach(t => t.classList.remove('active'));
+          if (isAnimating) return;
+          
+          clientTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          
           tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
           
           currentGroup = tab.dataset.type;
           currentSlide = 0;
@@ -927,12 +948,12 @@
             group.classList.toggle('active', group.dataset.group === currentGroup);
           });
           
-          // Update tab attributes
-          clientTabs.forEach(t => {
-            t.setAttribute('aria-selected', t === tab);
-          });
+          // Reset slide position for the new group
+          const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
+          const slidesContainer = activeGroup.querySelector('.client-slides-container');
+          slidesContainer.style.transform = `translateX(0)`;
           
-          showSlide();
+          updateCarouselIndicators();
           startClientCarousel();
         });
         
@@ -944,17 +965,22 @@
         });
       });
 
+      // Arrow navigation
       prevArrow.addEventListener('click', () => {
-        const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
-        const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        showSlide();
-        startClientCarousel();
+        if (!isAnimating) prevSlide();
       });
 
       nextArrow.addEventListener('click', () => {
-        nextSlide();
-        startClientCarousel();
+        if (!isAnimating) nextSlide();
+      });
+
+      // Keyboard navigation for carousel
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' && document.activeElement.closest('.carousel-container')) {
+          prevSlide();
+        } else if (e.key === 'ArrowRight' && document.activeElement.closest('.carousel-container')) {
+          nextSlide();
+        }
       });
 
       // Initialize
