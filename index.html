@@ -104,7 +104,6 @@
       font-weight: 700;
       text-align: center;
       line-height: 1.1;
-      white-space: nowrap;
     }
 
     .animated-word {
@@ -545,9 +544,16 @@
       }
       
       .animated-heading {
-        font-size: clamp(2rem, 10vw, 4rem);
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(2.2rem, 10vw, 3.5rem); /* Adjusted clamp */
+    line-height: 1.2;
+  }
+      .animated-word {
+    display: inline-block; /* Keeps cursor next to word */
+  }
+}
   </style>
 </head>
 <body>
