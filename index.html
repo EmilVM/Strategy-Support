@@ -119,26 +119,35 @@
 
     /* Intro content (UPDATED FOR RESPONSIVENESS) */
     .animated-heading {
-  font-size: clamp(2.5rem, 8vw, 6rem);
-  font-weight: 700;
-  text-align: left; /* Aligns text left within the flex container */
-  line-height: 1.1;
-  /* Use flexbox for large-screen alignment */
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: center; /* Keeps the entire heading centered */
-  flex-wrap: wrap;
-  gap: 0.4em; /* Small gap between words on desktop */
-}
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+      /* Use flexbox for large-screen alignment */
+      display: flex; 
+      flex-direction: row; 
+      align-items: baseline;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.2em; /* Small gap between words on desktop */
+    }
 
-.animated-word,
-.animated-word-static {
-  display: inline-block;
-  position: relative;
-  white-space: nowrap;
-  text-align: left; /* Ensures each individual word is left-aligned */
-}
+    .animated-word,
+    .animated-word-static {
+      display: inline-block;
+      position: relative;
+    }
+
+    .animated-word::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #0B0500;
+      animation: blink 0.7s infinite;
+    }
     
     @keyframes blink {
       0%, 100% { opacity: 0; }
@@ -319,28 +328,11 @@
 
     .services-container {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: clamp(1.5rem, 3vw, 2rem);
       width: 100%;
       max-width: 1400px;
       margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-      .services-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 767px) {
-      .services-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .services-container {
-        grid-template-columns: 1fr;
-      }
     }
 
     .service-item {
@@ -396,36 +388,59 @@
 
     /* Recent Work Section */
     .recent-container {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(2rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
       width: 100%;
       max-width: 1400px;
       margin: 0 auto;
     }
 
     .case-item {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: clamp(1.5rem, 3vw, 2rem);
-      padding: clamp(1rem, 2vw, 1.5rem) 0;
-      border-bottom: 1px solid #8A817C; /* Thin grey line to demarcate cases */
+      background: #8A817C; /* Gray background for contrast on light section */
+      color: #FFEEDB; /* Light text */
+      border: 2px solid #9B1D20;
+      border-radius: 16px;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
 
-    .case-item:last-child {
-      border-bottom: none;
+    .case-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(155, 29, 32, 0.15) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .case-item:hover::before {
+      opacity: 1;
+    }
+
+    .case-item:hover {
+      transform: translateY(-5px);
+      border-color: #9B1D20;
+      box-shadow: 0 10px 30px rgba(155, 29, 32, 0.3);
+    }
+
+    .case-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .case-image {
-      width: clamp(80px, 15vw, 100px);
-      height: auto;
+      width: 100px;
+      height: 100px;
       object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .case-content {
-      flex: 1;
+      margin-bottom: 20px;
     }
 
     .case-title {
@@ -438,24 +453,12 @@
     .case-subtitle {
       font-size: clamp(1rem, 2vw, 1.2rem);
       margin: 16px 0 8px;
-      color: #0B0500;
+      color: #FFEEDB;
     }
 
     .case-description {
       font-size: clamp(0.9rem, 1.6vw, 1rem);
       line-height: 1.6;
-    }
-
-    @media (max-width: 480px) {
-      .case-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .case-image {
-        margin-bottom: 1rem;
-      }
     }
 
     /* Testimonials Section */
@@ -616,6 +619,10 @@
         margin: 0 20px;
       }
 
+      .services-container, .recent-container {
+        grid-template-columns: 1fr;
+      }
+
       .contact-email {
         font-size: 1.4rem;
       }
@@ -649,34 +656,17 @@
       .testimonial-quote {
         font-size: clamp(1.1rem, 4vw, 1.6rem);
       }
-    
-      .inner-text {
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.inner-text::after {
-  content: '';
-  position: absolute;
-  right: -2px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #0B0500;
-  animation: blink 0.7s infinite;
-}
     }
   </style>
 </head>
 <body>
   <main>
     <section id="intro" aria-labelledby="intro-heading">
-     <h1 class="animated-heading">
-  <span class="animated-word"><span class="inner-text"></span></span>
-  <span class="animated-word-static">STRATEGY</span>
-  <span class="animated-word-static">SUPPORT</span>
-</h1>
+      <h1 class="animated-heading">
+        <span class="animated-word"></span>
+        <span class="animated-word-static">STRATEGY</span>
+        <span class="animated-word-static">SUPPORT</span>
+      </h1>
     </section>
 
     <section id="about-me" aria-labelledby="about-me-heading">
@@ -794,33 +784,27 @@
       <div class="recent-container">
         <div class="case-item">
           <img src="assets/case1.png" alt="Case 1 icon" class="case-image" loading="lazy">
-          <div class="case-content">
-            <h3 class="case-title">Client Name, Country</h3>
-            <h4 class="case-subtitle">Problem</h4>
-            <p class="case-description">Description of the problem...</p>
-            <h4 class="case-subtitle">Solution</h4>
-            <p class="case-description">Description of the solution...</p>
-          </div>
+          <h3 class="case-title">Client Name, Country</h3>
+          <h4 class="case-subtitle">Problem</h4>
+          <p class="case-description">Description of the problem...</p>
+          <h4 class="case-subtitle">Solution</h4>
+          <p class="case-description">Description of the solution...</p>
         </div>
         <div class="case-item">
           <img src="assets/case2.png" alt="Case 2 icon" class="case-image" loading="lazy">
-          <div class="case-content">
-            <h3 class="case-title">Client Name, Country</h3>
-            <h4 class="case-subtitle">Problem</h4>
-            <p class="case-description">Description of the problem...</p>
-            <h4 class="case-subtitle">Solution</h4>
-            <p class="case-description">Description of the solution...</p>
-          </div>
+          <h3 class="case-title">Client Name, Country</h3>
+          <h4 class="case-subtitle">Problem</h4>
+          <p class="case-description">Description of the problem...</p>
+          <h4 class="case-subtitle">Solution</h4>
+          <p class="case-description">Description of the solution...</p>
         </div>
         <div class="case-item">
           <img src="assets/case3.png" alt="Case 3 icon" class="case-image" loading="lazy">
-          <div class="case-content">
-            <h3 class="case-title">Client Name, Country</h3>
-            <h4 class="case-subtitle">Problem</h4>
-            <p class="case-description">Description of the problem...</p>
-            <h4 class="case-subtitle">Solution</h4>
-            <p class="case-description">Description of the solution...</p>
-          </div>
+          <h3 class="case-title">Client Name, Country</h3>
+          <h4 class="case-subtitle">Problem</h4>
+          <p class="case-description">Description of the problem...</p>
+          <h4 class="case-subtitle">Solution</h4>
+          <p class="case-description">Description of the solution...</p>
         </div>
       </div>
     </section>
@@ -886,75 +870,52 @@
   </main>
 
   <footer>
-    <p>© 2025 Strategy Support, a strategy studio in Copenhagen, Denmark. CVR 33320817</p>
+    <p>&copy; 2025 Strategy Support, Copenhagen Denmark, CVR 33320817</p>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Animated heading
       // *** UPDATED: 'CREATIVE' added here ***
-  // Animated heading
-const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
-const animatedWordElement = document.querySelector('.animated-word');
-const innerTextElement = animatedWordElement.querySelector('.inner-text'); // New: target inner for typing
-let currentWordIndex = 0;
-let isDeleting = false;
-let text = '';
-let typingSpeed = 150;
-let deletingSpeed = 100;
-let pauseTime = 1500;
+      const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
+      const animatedWordElement = document.querySelector('.animated-word');
+      let currentWordIndex = 0;
+      let isDeleting = false;
+      let text = '';
+      let typingSpeed = 150;
+      let deletingSpeed = 100;
+      let pauseTime = 1500;
 
-// Calculate max width for the outer container to prevent layout shifts
-const tempSpan = document.createElement('span');
-tempSpan.className = 'inner-text'; // Measure based on inner
-tempSpan.style.position = 'absolute';
-tempSpan.style.visibility = 'hidden';
-tempSpan.style.whiteSpace = 'nowrap';
-document.body.appendChild(tempSpan);
+      function type() {
+        const currentWord = words[currentWordIndex];
+        
+        if (isDeleting) {
+          text = currentWord.substring(0, text.length - 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === '') {
+            isDeleting = false;
+            currentWordIndex = (currentWordIndex + 1) % words.length;
+            setTimeout(type, 500);
+            return;
+          }
+          
+          setTimeout(type, deletingSpeed);
+        } else {
+          text = currentWord.substring(0, text.length + 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === currentWord) {
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+            return;
+          }
+          
+          setTimeout(type, typingSpeed);
+        }
+      }
 
-let maxWidth = 0;
-words.forEach(word => {
-  tempSpan.textContent = word;
-  maxWidth = Math.max(maxWidth, tempSpan.offsetWidth);
-});
-
-document.body.removeChild(tempSpan);
-
-// Set fixed width on outer, with some padding for cursor
-animatedWordElement.style.width = `${maxWidth + 4}px`; // +4px for cursor width/positioning
-animatedWordElement.style.textAlign = 'left';
-animatedWordElement.style.display = 'inline-block';
-
-function type() {
-  const currentWord = words[currentWordIndex];
-  
-  if (isDeleting) {
-    text = currentWord.substring(0, text.length - 1);
-    innerTextElement.textContent = text; // Type into inner
-    
-    if (text === '') {
-      isDeleting = false;
-      currentWordIndex = (currentWordIndex + 1) % words.length;
-      setTimeout(type, 500);
-      return;
-    }
-    
-    setTimeout(type, deletingSpeed);
-  } else {
-    text = currentWord.substring(0, text.length + 1);
-    innerTextElement.textContent = text; // Type into inner
-    
-    if (text === currentWord) {
-      isDeleting = true;
-      setTimeout(type, pauseTime);
-      return;
-    }
-    
-    setTimeout(type, typingSpeed);
-  }
-}
-
-type();
+      type();
 
       // Fade-in animation for service and case items as user scrolls
       const observer = new IntersectionObserver((entries) => {
