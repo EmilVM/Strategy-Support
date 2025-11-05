@@ -76,6 +76,17 @@
       margin: 0 auto;
     }
 
+    #recent-work {
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #FFEEDB; /* Antique white - alternating after gray services */
+      color: #0B0500;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
     #testimonials {
       padding: 80px 20px;
       display: flex;
@@ -98,18 +109,27 @@
       margin: 0 auto;
     }
 
+    footer {
+      background: #FFEEDB;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #0B0500;
+    }
+
     /* Intro content (UPDATED FOR RESPONSIVENESS) */
     .animated-heading {
       font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 700;
       text-align: center;
       line-height: 1.1;
-      /* New: Use flexbox for large-screen alignment */
+      /* Use flexbox for large-screen alignment */
       display: flex; 
       flex-direction: row; 
-      align-items: center;
+      align-items: baseline;
       justify-content: center;
-      flex-wrap: wrap; 
+      flex-wrap: wrap;
+      gap: 0.2em; /* Small gap between words on desktop */
     }
 
     .animated-word,
@@ -129,12 +149,6 @@
       animation: blink 0.7s infinite;
     }
     
-    /* New: Hidden by default (desktop layout) */
-    .mobile-break {
-      display: none; 
-    }
-
-
     @keyframes blink {
       0%, 100% { opacity: 0; }
       50% { opacity: 1; }
@@ -187,7 +201,7 @@
     }
 
     .client-tab {
-      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-size: clamp(1.4rem, 2.5vw, 2rem); /* Increased font size */
       background: none;
       border: none;
       padding: 0 0 4px 0;
@@ -199,6 +213,7 @@
       position: relative;
       z-index: 1;
       opacity: 0.7;
+      color: #0B0500; /* Set to black as requested */
     }
 
     .client-tab:hover,
@@ -371,6 +386,81 @@
       line-height: 1.6;
     }
 
+    /* Recent Work Section */
+    .recent-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.5rem, 3vw, 2rem);
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .case-item {
+      background: #8A817C; /* Gray background for contrast on light section */
+      color: #FFEEDB; /* Light text */
+      border: 2px solid #9B1D20;
+      border-radius: 16px;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(155, 29, 32, 0.15) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .case-item:hover::before {
+      opacity: 1;
+    }
+
+    .case-item:hover {
+      transform: translateY(-5px);
+      border-color: #9B1D20;
+      box-shadow: 0 10px 30px rgba(155, 29, 32, 0.3);
+    }
+
+    .case-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .case-image {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .case-title {
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      margin-bottom: 12px;
+      color: #9B1D20;
+      line-height: 1.3;
+    }
+
+    .case-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin: 16px 0 8px;
+      color: #FFEEDB;
+    }
+
+    .case-description {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      line-height: 1.6;
+    }
+
     /* Testimonials Section */
     .testimonials-section {
       padding-top: 80px;
@@ -512,7 +602,7 @@
         padding: 16px;
       }
 
-      #about-me, #my-approach, #services, #testimonials {
+      #about-me, #my-approach, #services, #recent-work, #testimonials {
         padding: 50px 16px;
       }
 
@@ -529,7 +619,7 @@
         margin: 0 20px;
       }
 
-      .services-container {
+      .services-container, .recent-container {
         grid-template-columns: 1fr;
       }
 
@@ -544,19 +634,7 @@
         /* Impressive sizing for mobile */
         font-size: clamp(2.2rem, 10vw, 3.5rem); 
         line-height: 1.2;
-      }
-
-      /* Show the break on small screens to force 'STRATEGY' and 'SUPPORT' onto new lines */
-      .mobile-break {
-        display: block; 
-        width: 100%; 
-        height: 0; 
-        margin: 0;
-      }
-      
-      .animated-word {
-        /* This is important to ensure the animated word line stays centered */
-        display: inline-block; 
+        gap: 0.1em; /* Small gap between the three words */
       }
       
       .section-title {
@@ -566,8 +644,9 @@
 
     @media (max-width: 480px) {
       .client-tabs {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row; /* Changed to row as requested */
+        gap: 20px; /* Adjusted gap for side-by-side */
+        flex-wrap: nowrap;
       }
       
       .carousel-container {
@@ -585,12 +664,13 @@
     <section id="intro" aria-labelledby="intro-heading">
       <h1 class="animated-heading">
         <span class="animated-word"></span>
-        <br class="mobile-break"> <span class="animated-word-static">STRATEGY SUPPORT</span>
+        <span class="animated-word-static">STRATEGY</span>
+        <span class="animated-word-static">SUPPORT</span>
       </h1>
     </section>
 
     <section id="about-me" aria-labelledby="about-me-heading">
-      <h2 id="about-me-heading" class="section-title">About Me</h2>
+      <h2 id="about-me-heading" class="section-title">About Strategy Support</h2>
       <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
       <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
       <p class="intro-text">
@@ -699,6 +779,36 @@
       </div>
     </section>
 
+    <section id="recent-work" aria-labelledby="recent-work-heading">
+      <h2 id="recent-work-heading" class="section-title">Recent Work</h2>
+      <div class="recent-container">
+        <div class="case-item">
+          <img src="assets/case1.png" alt="Case 1 icon" class="case-image" loading="lazy">
+          <h3 class="case-title">Client Name, Country</h3>
+          <h4 class="case-subtitle">Problem</h4>
+          <p class="case-description">Description of the problem...</p>
+          <h4 class="case-subtitle">Solution</h4>
+          <p class="case-description">Description of the solution...</p>
+        </div>
+        <div class="case-item">
+          <img src="assets/case2.png" alt="Case 2 icon" class="case-image" loading="lazy">
+          <h3 class="case-title">Client Name, Country</h3>
+          <h4 class="case-subtitle">Problem</h4>
+          <p class="case-description">Description of the problem...</p>
+          <h4 class="case-subtitle">Solution</h4>
+          <p class="case-description">Description of the solution...</p>
+        </div>
+        <div class="case-item">
+          <img src="assets/case3.png" alt="Case 3 icon" class="case-image" loading="lazy">
+          <h3 class="case-title">Client Name, Country</h3>
+          <h4 class="case-subtitle">Problem</h4>
+          <p class="case-description">Description of the problem...</p>
+          <h4 class="case-subtitle">Solution</h4>
+          <p class="case-description">Description of the solution...</p>
+        </div>
+      </div>
+    </section>
+
     <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
       <h2 id="testimonials-heading" class="section-title">What Clients Say</h2>
       <div class="testimonials-container">
@@ -759,6 +869,10 @@
     </section>
   </main>
 
+  <footer>
+    <p>&copy; 2025 Strategy Support, Copenhagen Denmark, CVR 33320817</p>
+  </footer>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Animated heading
@@ -803,7 +917,7 @@
 
       type();
 
-      // Fade-in animation for service items as user scrolls
+      // Fade-in animation for service and case items as user scrolls
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -814,7 +928,7 @@
         threshold: 0.15
       });
 
-      document.querySelectorAll('.service-item').forEach(item => {
+      document.querySelectorAll('.service-item, .case-item').forEach(item => {
         observer.observe(item);
       });
 
