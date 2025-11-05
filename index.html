@@ -43,7 +43,7 @@
     }
 
     /* Alternating section backgrounds */
-    #work {
+    #about-me {
       padding: 80px 20px;
       display: flex;
       flex-direction: column;
@@ -54,7 +54,7 @@
       margin: 0 auto;
     }
 
-    #about {
+    #my-approach {
       padding: 80px 20px;
       display: flex;
       flex-direction: column;
@@ -99,6 +99,36 @@
     }
 
     /* Intro content */
+    .animated-heading {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .animated-word {
+      display: inline-block;
+      position: relative;
+    }
+
+    .animated-word::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #0B0500;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    /* About Me content */
     .profile-picture {
       width: 150px;
       height: 150px;
@@ -123,11 +153,12 @@
       text-align: center;
       line-height: 1.5;
       letter-spacing: normal;
+      margin-bottom: 40px;
     }
 
     /* Work / Brands */
-    #work > p {
-      max-width: 950px;
+    #about-me > p {
+      max-width: 1200px;
       font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
       line-height: 1.5;
       text-align: center;
@@ -186,7 +217,7 @@
 
     .carousel-wrapper {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1400px;
       position: relative;
       overflow: hidden;
     }
@@ -247,9 +278,9 @@
       animation-play-state: paused;
     }
 
-    /* About */
-    #about .approach-summary {
-      max-width: 950px;
+    /* My Approach */
+    #my-approach .approach-summary {
+      max-width: 1200px;
       font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
       line-height: 1.5;
       text-align: center;
@@ -273,7 +304,7 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: clamp(1.5rem, 3vw, 2rem);
       width: 100%;
-      max-width: 1100px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -337,7 +368,7 @@
 
     .testimonials-container {
       width: 100%;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
       position: relative;
       min-height: 300px;
@@ -469,7 +500,7 @@
         padding: 16px;
       }
 
-      #work, #about, #services, #testimonials {
+      #about-me, #my-approach, #services, #testimonials {
         padding: 50px 16px;
       }
 
@@ -512,21 +543,28 @@
       .testimonial-quote {
         font-size: clamp(1.1rem, 4vw, 1.6rem);
       }
+      
+      .animated-heading {
+        font-size: clamp(2rem, 10vw, 4rem);
+      }
     }
   </style>
 </head>
 <body>
   <main>
     <section id="intro" aria-labelledby="intro-heading">
-      <img src="assets/emilmadsenJPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
-      <h1 id="intro-heading" class="intro-heading">Hi! I'm Emil Valdemar Madsen</h1>
-      <p class="intro-text">
-       A Brand and marketing strategy consultant.
-      </p>
+      <h1 class="animated-heading">
+        <span class="animated-word"></span> STRATEGY SUPPORT
+      </h1>
     </section>
 
-    <section id="work" aria-labelledby="work-heading">
-      <h2 id="work-heading" class="section-title">Client Work</h2>
+    <section id="about-me" aria-labelledby="about-me-heading">
+      <h2 id="about-me-heading" class="section-title">About Me</h2>
+      <img src="assets/emilmadsenJPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
+      <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
+      <p class="intro-text">
+        A brand and marketing strategy consultant.
+      </p>
       <p>
         I have spent the last 15 years helping global brands find their place in the tensions, trends, and memes of consumer culture.
       </p>
@@ -583,8 +621,8 @@
       </div>
     </section>
     
-    <section id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading" class="section-title">About Me</h2>
+    <section id="my-approach" aria-labelledby="my-approach-heading">
+      <h2 id="my-approach-heading" class="section-title">My Approach</h2>
       <p class="approach-summary">
         My approach is simple: 
         <br>It starts with the truth of your business, your customers and your competitors.
@@ -696,6 +734,47 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Animated heading
+      const words = ['MARKETING', 'BRAND', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
+      const animatedWordElement = document.querySelector('.animated-word');
+      let currentWordIndex = 0;
+      let isDeleting = false;
+      let text = '';
+      let typingSpeed = 150;
+      let deletingSpeed = 100;
+      let pauseTime = 1500;
+
+      function type() {
+        const currentWord = words[currentWordIndex];
+        
+        if (isDeleting) {
+          text = currentWord.substring(0, text.length - 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === '') {
+            isDeleting = false;
+            currentWordIndex = (currentWordIndex + 1) % words.length;
+            setTimeout(type, 500);
+            return;
+          }
+          
+          setTimeout(type, deletingSpeed);
+        } else {
+          text = currentWord.substring(0, text.length + 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === currentWord) {
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+            return;
+          }
+          
+          setTimeout(type, typingSpeed);
+        }
+      }
+
+      type();
+
       // Fade-in animation for service items as user scrolls
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
