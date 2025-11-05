@@ -119,25 +119,26 @@
 
     /* Intro content (UPDATED FOR RESPONSIVENESS) */
     .animated-heading {
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.1;
-      /* Use flexbox for large-screen alignment */
-      display: flex; 
-      flex-direction: row; 
-      align-items: baseline;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.2em; /* Small gap between words on desktop */
-    }
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 700;
+  text-align: left; /* Aligns text left within the flex container */
+  line-height: 1.1;
+  /* Use flexbox for large-screen alignment */
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center; /* Keeps the entire heading centered */
+  flex-wrap: wrap;
+  gap: 0.4em; /* Small gap between words on desktop */
+}
 
-    .animated-word,
-    .animated-word-static {
-      display: inline-block;
-      position: relative;
-      white-space: nowrap;
-    }
+.animated-word,
+.animated-word-static {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  text-align: left; /* Ensures each individual word is left-aligned */
+}
     
     @keyframes blink {
       0%, 100% { opacity: 0; }
@@ -921,7 +922,7 @@ document.body.removeChild(tempSpan);
 
 // Set fixed width on outer, with some padding for cursor
 animatedWordElement.style.width = `${maxWidth + 4}px`; // +4px for cursor width/positioning
-animatedWordElement.style.textAlign = 'center';
+animatedWordElement.style.textAlign = 'left';
 animatedWordElement.style.display = 'inline-block';
 
 function type() {
