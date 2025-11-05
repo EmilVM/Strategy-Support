@@ -7,7 +7,7 @@
   <meta name="description" content="Copenhagen-based, London-trained strategist. I help brands, agencies and in-house teams with pitches, platforms and campaigns. DK / UK / Global experience.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap&font-display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -18,10 +18,10 @@
     html, body {
       width: 100%;
       height: 100%;
-      font-family: 'Archivo Black', sans-serif;
+      font-family: 'Vollkorn', serif;
       letter-spacing: 0.03em;
-      background: #474448;
-      color: #FFFCF2;
+      background: #FFEEDB;
+      color: #0B0500;
       scroll-behavior: smooth;
     }
 
@@ -38,7 +38,8 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      background: #000000;
+      background: #0B0500;
+      color: #FFEEDB;
     }
 
     /* Alternating section backgrounds */
@@ -47,8 +48,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #474448;
-      color: #FFFCF2;
+      background: #8A817C;
+      color: #222; /* Improved contrast */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -58,8 +59,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #000000;
-      color: #FFFCF2;
+      background: #0B0500;
+      color: #FFEEDB;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -69,8 +70,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #474448;
-      color: #FFFCF2;
+      background: #8A817C;
+      color: #0B0500;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -80,8 +81,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #000000;
-      color: #FFFCF2;
+      background: #0B0500;
+      color: #FFEEDB;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -91,8 +92,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #474448;
-      color: #FFFCF2;
+      background: #8A817C;
+      color: #0B0500;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -103,9 +104,9 @@
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #F564A9;
+      border: 3px solid #9B1D20;
       margin-bottom: 24px;
-      box-shadow: 0 0 20px rgba(245, 100, 169, 0.3);
+      box-shadow: 0 0 20px rgba(155, 29, 32, 0.3);
     }
 
     .intro-heading {
@@ -114,7 +115,7 @@
       margin: 0 0 16px;
       text-align: center;
       line-height: 1.2;
-      color: #FFFCF2;
+      color: #FFEEDB;
     }
 
     .intro-text {
@@ -122,9 +123,8 @@
       max-width: 800px;
       text-align: center;
       line-height: 1.5;
-      font-family: 'Inter', sans-serif;
       letter-spacing: normal;
-      color: #FFFCF2;
+      color: #FFEEDB;
     }
 
     /* Work / Brands */
@@ -134,8 +134,6 @@
       line-height: 1.5;
       text-align: center;
       margin-bottom: 40px;
-      font-family: 'Inter', sans-serif;
-      color: #FFFCF2;
     }
 
     .client-tabs {
@@ -144,27 +142,46 @@
       justify-content: center;
       align-items: center;
       margin-bottom: 50px;
-      font-family: 'Inter', sans-serif;
+      flex-wrap: wrap;
     }
 
     .client-tab {
       font-size: clamp(1.2rem, 2vw, 1.8rem);
-      color: #FFFCF2;
+      color: #0B0500;
       opacity: 0.5;
       cursor: pointer;
       transition: all 0.3s;
       border-bottom: 2px solid transparent;
       padding-bottom: 4px;
       font-weight: 400;
+      position: relative;
+      z-index: 1;
+    }
+
+    #about .client-tab {
+      color: #FFEEDB;
+      opacity: 0.5;
+    }
+
+    #about .client-tab.active {
+      color: #FFEEDB;
     }
 
     .client-tab.active {
       opacity: 1;
-      border-bottom-color: #F564A9;
+      border-bottom-color: #9B1D20;
     }
 
-    .client-tab:hover {
+    .client-tab:hover,
+    .client-tab:focus {
       opacity: 0.8;
+      outline: none;
+    }
+
+    .client-tab:focus {
+      outline: 2px solid #9B1D20;
+      outline-offset: 2px;
+      border-radius: 2px;
     }
 
     .carousel-wrapper {
@@ -179,7 +196,8 @@
     }
 
     .carousel-content {
-      min-height: 120px;
+      min-height: auto;
+      padding: 20px 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -199,7 +217,7 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 30px;
       width: 100%;
     }
 
@@ -208,8 +226,8 @@
     }
 
     .client-slide img {
-      max-width: 120px;
-      max-height: 80px;
+      max-width: 180px;
+      max-height: 120px;
       object-fit: contain;
       filter: brightness(0) invert(1);
       opacity: 0.9;
@@ -225,9 +243,9 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(245, 100, 169, 0.2);
-      border: 2px solid #F564A9;
-      color: #FFFCF2;
+      background: rgba(155, 29, 32, 0.2);
+      border: 2px solid #9B1D20;
+      color: #FFEEDB;
       width: 45px;
       height: 45px;
       border-radius: 50%;
@@ -240,10 +258,16 @@
       user-select: none;
       z-index: 10;
       font-family: Arial, sans-serif;
+      touch-action: manipulation;
+    }
+
+    .carousel-arrow:focus {
+      outline: 2px solid #9B1D20;
+      outline-offset: 2px;
     }
 
     .carousel-arrow:hover {
-      background: rgba(245, 100, 169, 0.4);
+      background: rgba(155, 29, 32, 0.4);
       transform: translateY(-50%) scale(1.1);
     }
 
@@ -266,21 +290,31 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #474448;
-      border: 2px solid #FFFCF2;
+      background: #8A817C;
+      border: 2px solid #0B0500;
       cursor: pointer;
       transition: all 0.3s;
     }
 
+    #about .carousel-indicator {
+      border: 2px solid #FFEEDB;
+    }
+
     .carousel-indicator.active {
-      background: #F564A9;
-      border-color: #F564A9;
+      background: #9B1D20;
+      border-color: #9B1D20;
       transform: scale(1.2);
     }
 
-    .carousel-indicator:hover {
-      background: #F564A9;
-      border-color: #F564A9;
+    .carousel-indicator:hover,
+    .carousel-indicator:focus {
+      background: #9B1D20;
+      border-color: #9B1D20;
+    }
+
+    .carousel-indicator:focus {
+      outline: 2px solid #9B1D20;
+      outline-offset: 2px;
     }
 
     /* About */
@@ -289,8 +323,6 @@
       font-size: clamp(1.25rem, 2vw + 1rem, 2.5rem);
       line-height: 1.5;
       text-align: center;
-      font-family: 'Inter', sans-serif;
-      color: #FFFCF2;
     }
 
     /* Services Section */
@@ -303,8 +335,7 @@
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 60px;
       text-align: center;
-      color: #F564A9;
-      font-family: 'Archivo Black', sans-serif;
+      color: #9B1D20;
     }
 
     .services-container {
@@ -317,8 +348,8 @@
     }
 
     .service-item {
-      background: #000000;
-      border: 2px solid #F564A9;
+      background: #0B0500;
+      border: 2px solid #9B1D20;
       border-radius: 16px;
       padding: clamp(1.5rem, 3vw, 2rem);
       opacity: 0;
@@ -335,7 +366,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(245, 100, 169, 0.15) 0%, transparent 100%);
+      background: linear-gradient(135deg, rgba(155, 29, 32, 0.15) 0%, transparent 100%);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -346,8 +377,8 @@
 
     .service-item:hover {
       transform: translateY(-5px);
-      border-color: #FFFCF2;
-      box-shadow: 0 10px 30px rgba(245, 100, 169, 0.3);
+      border-color: #FFEEDB;
+      box-shadow: 0 10px 30px rgba(155, 29, 32, 0.3);
     }
 
     .service-item.visible {
@@ -358,23 +389,20 @@
     .service-title {
       font-size: clamp(1.1rem, 2.2vw, 1.4rem);
       margin-bottom: 12px;
-      color: #F564A9;
-      font-family: 'Archivo Black', sans-serif;
+      color: #9B1D20;
       line-height: 1.3;
     }
 
     .service-description {
-      font-family: 'Inter', sans-serif;
       font-size: clamp(0.9rem, 1.6vw, 1rem);
       line-height: 1.6;
-      color: #FFFCF2;
     }
 
     /* Testimonials Section */
     .testimonials-section {
       padding-top: 80px;
       padding-bottom: 80px;
-      background: #000000;
+      background: #0B0500;
     }
 
     .testimonials-container {
@@ -409,39 +437,25 @@
     }
 
     .testimonial-quote {
-      font-family: 'Inter', sans-serif;
       font-size: clamp(1.25rem, 2.5vw, 2rem);
       line-height: 1.6;
-      color: #FFFCF2;
       font-style: italic;
       max-width: 800px;
     }
 
-    .testimonial-quote::before {
-      content: '"';
-      color: #F564A9;
+    .testimonial-quote span.quote-mark {
+      color: #9B1D20;
       font-size: 1.3em;
-      margin-right: 4px;
-    }
-
-    .testimonial-quote::after {
-      content: '"';
-      color: #F564A9;
-      font-size: 1.3em;
-      margin-left: 4px;
     }
 
     .testimonial-author {
-      font-family: 'Archivo Black', sans-serif;
       font-size: clamp(1rem, 2vw, 1.3rem);
-      color: #F564A9;
+      color: #9B1D20;
       margin-top: 8px;
     }
 
     .testimonial-role {
-      font-family: 'Inter', sans-serif;
       font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-      color: #FFFCF2;
       opacity: 0.8;
     }
 
@@ -456,21 +470,31 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: #474448;
-      border: 2px solid #FFFCF2;
+      background: #8A817C;
+      border: 2px solid #0B0500;
       cursor: pointer;
       transition: all 0.3s;
     }
 
+    #about .indicator-dot {
+      border: 2px solid #FFEEDB;
+    }
+
     .indicator-dot.active {
-      background: #F564A9;
-      border-color: #F564A9;
+      background: #9B1D20;
+      border-color: #9B1D20;
       transform: scale(1.2);
     }
 
-    .indicator-dot:hover {
-      background: #F564A9;
-      border-color: #F564A9;
+    .indicator-dot:hover,
+    .indicator-dot:focus {
+      background: #9B1D20;
+      border-color: #9B1D20;
+    }
+
+    .indicator-dot:focus {
+      outline: 2px solid #9B1D20;
+      outline-offset: 2px;
     }
 
     /* Contact */
@@ -484,14 +508,13 @@
     .contact-info > p {
       font-size: clamp(1rem, 2vw, 1.3rem);
       margin-bottom: 0.5em;
-      color: #FFFCF2;
       opacity: 0.8;
     }
 
     .contact-title {
       font-size: 2.0rem;
       font-weight: 400;
-      color: #F564A9;
+      color: #9B1D20;
       margin-bottom: 0.8em;
       text-align: center;
     }
@@ -499,19 +522,29 @@
     .contact-email {
       font-size: clamp(1.4rem, 3vw, 2.5rem);
       font-weight: 700;
-      color: #FFFCF2;
       text-align: center;
-      font-family: 'Inter', sans-serif;
     }
 
     .contact-email a {
-      color: #FFFCF2;
+      color: #0B0500;
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .contact-email a:hover {
-      color: #F564A9;
+    #about .contact-email a {
+      color: #FFEEDB;
+    }
+
+    .contact-email a:hover,
+    .contact-email a:focus {
+      color: #9B1D20;
+      outline: none;
+    }
+
+    .contact-email a:focus {
+      outline: 2px solid #9B1D20;
+      outline-offset: 2px;
+      border-radius: 2px;
     }
 
     /* Mobile Responsive */
@@ -533,18 +566,18 @@
       }
 
       .carousel-arrow {
-        width: 38px;
-        height: 38px;
+        width: 48px;
+        height: 48px;
         font-size: 20px;
       }
 
       .client-slide {
-        gap: 30px;
+        gap: 25px;
       }
 
       .client-slide img {
-        max-width: 90px;
-        max-height: 60px;
+        max-width: 120px;
+        max-height: 80px;
       }
 
       .services-container {
@@ -555,67 +588,98 @@
         font-size: 1.4rem;
       }
     }
+
+    @media (max-width: 480px) {
+      .client-tabs {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .section-title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+      }
+      
+      .carousel-container {
+        padding: 20px 15px;
+      }
+      
+      .carousel-arrow {
+        width: 48px;
+        height: 48px;
+      }
+      
+      .testimonial-quote {
+        font-size: clamp(1.1rem, 4vw, 1.6rem);
+      }
+    }
   </style>
 </head>
 <body>
   <main>
-    <section id="intro">
-      <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture">
-      <h1 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h1>
+    <section id="intro" aria-labelledby="intro-heading">
+      <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
+      <h1 id="intro-heading" class="intro-heading">Hi! I'm Emil Valdemar Madsen</h1>
       <p class="intro-text">
        A Brand and marketing strategy consultant.
       </p>
     </section>
 
-    <section id="work">
+    <section id="work" aria-labelledby="work-heading">
+      <h2 id="work-heading" class="section-title">Client Work</h2>
       <p>
         I have spent the last 15 years helping global brands find their place in the tensions, trends, and memes of consumer culture.
       </p>
-      <div class="client-tabs">
-        <span class="client-tab active" data-type="brands">Brands</span>
-        <span class="client-tab" data-type="agencies">Agencies</span>
+      <div class="client-tabs" role="tablist">
+        <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
+        <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
       </div>
       <div class="carousel-wrapper">
         <div class="carousel-container">
-          <div class="carousel-arrow prev">‹</div>
-          <div class="carousel-arrow next">›</div>
+          <button class="carousel-arrow prev" aria-label="Previous slide">‹</button>
+          <button class="carousel-arrow next" aria-label="Next slide">›</button>
           
           <div class="carousel-content">
-            <div class="client-group active" data-group="brands">
+            <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel">
               <div class="client-slide active">
-                <img src="assets/brand1.png" alt="Huawei">
-                <img src="assets/brand2.png" alt="Burger King">
-                <img src="assets/brand3.png" alt="Barclays">
-                <img src="assets/brand4.png" alt="Arla Foods">
-                <img src="assets/brand5.png" alt="PepsiCo">
+                <img src="assets/brand1.png" alt="Huawei" loading="lazy">
+                <img src="assets/brand2.png" alt="Burger King" loading="lazy">
+                <img src="assets/brand3.png" alt="Barclays" loading="lazy">
               </div>
               <div class="client-slide">
-                <img src="assets/brand7.png" alt="Mr Green">
-                <img src="assets/brand8.png" alt="Danske Bank">
-                <img src="assets/brand9.png" alt="ATP">
-                <img src="assets/brand10.png" alt="Kellogg's">
-                <img src="assets/brand11.png" alt="Saxo Bank">
+                <img src="assets/brand4.png" alt="Arla Foods" loading="lazy">
+                <img src="assets/brand5.png" alt="PepsiCo" loading="lazy">
+                <img src="assets/brand7.png" alt="Mr Green" loading="lazy">
+              </div>
+              <div class="client-slide">
+                <img src="assets/brand8.png" alt="Danske Bank" loading="lazy">
+                <img src="assets/brand9.png" alt="ATP" loading="lazy">
+                <img src="assets/brand10.png" alt="Kellogg's" loading="lazy">
+              </div>
+              <div class="client-slide">
+                <img src="assets/brand11.png" alt="Saxo Bank" loading="lazy">
               </div>
             </div>
             
-            <div class="client-group" data-group="agencies">
+            <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel">
               <div class="client-slide active">
-                <img src="assets/brand12.png" alt="Worth Your While Agency">
-                <img src="assets/brand13.png" alt="Dentsu Creative London">
-                <img src="assets/brand14.png" alt="Edelman London">
-                <img src="assets/brand15.png" alt="FCB London">
+                <img src="assets/brand12.png" alt="Worth Your While Agency" loading="lazy">
+                <img src="assets/brand13.png" alt="Dentsu Creative London" loading="lazy">
+                <img src="assets/brand14.png" alt="Edelman London" loading="lazy">
+              </div>
+              <div class="client-slide">
+                <img src="assets/brand15.png" alt="FCB London" loading="lazy">
               </div>
             </div>
           </div>
         </div>
-        <div class="carousel-indicators">
-          <div class="carousel-indicator active"></div>
-          <div class="carousel-indicator"></div>
+        <div class="carousel-indicators" role="tablist">
+          <!-- Indicators will be dynamically generated by JavaScript -->
         </div>
       </div>
     </section>
     
-    <section id="about">
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="section-title">About Me</h2>
       <p class="approach-summary">
         My approach is simple: 
         <br>It starts with the truth of your business, your customers and your competitors.
@@ -623,8 +687,8 @@
       </p>
     </section>
 
-    <section id="services" class="services-section">
-      <h2 class="section-title">Services</h2>
+    <section id="services" class="services-section" aria-labelledby="services-heading">
+      <h2 id="services-heading" class="section-title">Services</h2>
       <div class="services-container">
         <div class="service-item">
           <h3 class="service-title">Brand & Purpose Definition</h3>
@@ -665,52 +729,61 @@
       </div>
     </section>
 
-    <section id="testimonials" class="testimonials-section">
-      <h2 class="section-title">What Clients Say</h2>
+    <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading" class="section-title">What Clients Say</h2>
       <div class="testimonials-container">
         <div class="testimonial-item active">
           <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
             Emil has an exceptional ability to distill complex market dynamics into clear, actionable strategies. His work on our brand platform transformed how we communicate with customers.
+            <span class="quote-mark">&rdquo;</span>
           </p>
           <div class="testimonial-author">Sarah Mitchell</div>
           <div class="testimonial-role">CMO, Barclays</div>
         </div>
         <div class="testimonial-item">
           <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
             Working with Emil was a game-changer for our pitch process. His strategic thinking helped us win business we never thought possible. He's now our secret weapon.
+            <span class="quote-mark">&rdquo;</span>
           </p>
           <div class="testimonial-author">James Rodriguez</div>
           <div class="testimonial-role">Managing Director, Dentsu Creative London</div>
         </div>
         <div class="testimonial-item">
           <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
             Emil brings rare clarity to every project. He cuts through the noise and delivers insights that actually move the needle. His consumer understanding is second to none.
+            <span class="quote-mark">&rdquo;</span>
           </p>
           <div class="testimonial-author">Maria Hansen</div>
           <div class="testimonial-role">Head of Marketing, Danske Bank</div>
         </div>
         <div class="testimonial-item">
           <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
             The strategic framework Emil developed for our global campaign gave our teams the confidence to execute brilliantly across 12 markets. Truly world-class thinking.
+            <span class="quote-mark">&rdquo;</span>
           </p>
           <div class="testimonial-author">David Chen</div>
           <div class="testimonial-role">VP Brand Strategy, PepsiCo</div>
         </div>
       </div>
-      <div class="testimonial-indicators">
-        <div class="indicator-dot active"></div>
-        <div class="indicator-dot"></div>
-        <div class="indicator-dot"></div>
-        <div class="indicator-dot"></div>
+      <div class="testimonial-indicators" role="tablist">
+        <div class="indicator-dot active" role="tab" aria-selected="true"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false"></div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-title">Get In Touch</h2>
       <div class="contact-info">
         <p>Need strategy support?</p>
         <div class="contact-title">I'm happy to help!</div>
         <div class="contact-email">
-          <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
+          <a href="mailto:emil@strategy-support.com" aria-label="Email Emil at emil@strategy-support.com">emil@strategy-support.com</a>
         </div>
       </div>
     </section>
@@ -737,11 +810,13 @@
       const testimonials = document.querySelectorAll('.testimonial-item');
       const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
       let currentTestimonialIndex = 0;
+      let testimonialInterval;
 
       function showTestimonial(index) {
         testimonials.forEach((item, i) => {
           item.classList.toggle('active', i === index);
           testimonialDots[i].classList.toggle('active', i === index);
+          testimonialDots[i].setAttribute('aria-selected', i === index);
         });
       }
 
@@ -750,70 +825,92 @@
         showTestimonial(currentTestimonialIndex);
       }
 
-      let testimonialInterval = setInterval(nextTestimonial, 6000);
+      function startTestimonialCarousel() {
+        clearInterval(testimonialInterval);
+        testimonialInterval = setInterval(nextTestimonial, 6000);
+      }
 
       testimonialDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
           currentTestimonialIndex = index;
           showTestimonial(currentTestimonialIndex);
-          clearInterval(testimonialInterval);
-          testimonialInterval = setInterval(nextTestimonial, 6000);
+          startTestimonialCarousel();
+        });
+        
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentTestimonialIndex = index;
+            showTestimonial(currentTestimonialIndex);
+            startTestimonialCarousel();
+          }
         });
       });
 
       // Client carousel
       const clientTabs = document.querySelectorAll('.client-tab');
       const clientGroups = document.querySelectorAll('.client-group');
-      const carouselIndicators = document.querySelectorAll('.carousel-indicators .carousel-indicator');
       const prevArrow = document.querySelector('.carousel-arrow.prev');
       const nextArrow = document.querySelector('.carousel-arrow.next');
+      const carouselIndicatorsContainer = document.querySelector('.carousel-indicators');
       
       let currentGroup = 'brands';
       let currentSlide = 0;
-      let autoSlideInterval;
+      let clientInterval;
 
-      function updateIndicators() {
+      function updateCarouselIndicators() {
         const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
         const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
         
-        carouselIndicators.forEach((indicator, i) => {
-          if (i < totalSlides) {
-            indicator.style.display = 'block';
-            indicator.classList.toggle('active', i === currentSlide);
-          } else {
-            indicator.style.display = 'none';
-          }
-        });
+        // Clear existing indicators
+        carouselIndicatorsContainer.innerHTML = '';
+        
+        // Create new indicators
+        for (let i = 0; i < totalSlides; i++) {
+          const indicator = document.createElement('div');
+          indicator.className = `carousel-indicator${i === currentSlide ? ' active' : ''}`;
+          indicator.setAttribute('role', 'tab');
+          indicator.setAttribute('aria-selected', i === currentSlide);
+          indicator.addEventListener('click', () => {
+            currentSlide = i;
+            showSlide();
+            startClientCarousel();
+          });
+          
+          indicator.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              currentSlide = i;
+              showSlide();
+              startClientCarousel();
+            }
+          });
+          
+          carouselIndicatorsContainer.appendChild(indicator);
+        }
       }
 
-      function showSlide(slideIndex) {
+      function showSlide() {
         const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
         const slides = activeGroup.querySelectorAll('.client-slide');
         
         slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === slideIndex);
+          slide.classList.toggle('active', i === currentSlide);
         });
         
-        currentSlide = slideIndex;
-        updateIndicators();
+        updateCarouselIndicators();
       }
 
       function nextSlide() {
         const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
         const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
-        const newIndex = (currentSlide + 1) % totalSlides;
-        showSlide(newIndex);
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide();
       }
 
-      function startAutoSlide() {
-        stopAutoSlide();
-        autoSlideInterval = setInterval(nextSlide, 4000);
-      }
-
-      function stopAutoSlide() {
-        if (autoSlideInterval) {
-          clearInterval(autoSlideInterval);
-        }
+      function startClientCarousel() {
+        clearInterval(clientInterval);
+        clientInterval = setInterval(nextSlide, 4000);
       }
 
       clientTabs.forEach(tab => {
@@ -828,34 +925,57 @@
             group.classList.toggle('active', group.dataset.group === currentGroup);
           });
           
-          showSlide(0);
-          startAutoSlide();
+          // Update tab attributes
+          clientTabs.forEach(t => {
+            t.setAttribute('aria-selected', t === tab);
+          });
+          
+          showSlide();
+          startClientCarousel();
+        });
+        
+        tab.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            tab.click();
+          }
         });
       });
 
       prevArrow.addEventListener('click', () => {
         const activeGroup = document.querySelector(`.client-group[data-group="${currentGroup}"]`);
         const totalSlides = activeGroup.querySelectorAll('.client-slide').length;
-        const newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-        showSlide(newIndex);
-        startAutoSlide();
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide();
+        startClientCarousel();
       });
 
       nextArrow.addEventListener('click', () => {
         nextSlide();
-        startAutoSlide();
-      });
-
-      carouselIndicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-          showSlide(index);
-          startAutoSlide();
-        });
+        startClientCarousel();
       });
 
       // Initialize
-      updateIndicators();
-      startAutoSlide();
+      updateCarouselIndicators();
+      startClientCarousel();
+      startTestimonialCarousel();
+      
+      // Cleanup on unload
+      window.addEventListener('beforeunload', () => {
+        clearInterval(testimonialInterval);
+        clearInterval(clientInterval);
+      });
+      
+      // Pause carousels when tab is not visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(testimonialInterval);
+          clearInterval(clientInterval);
+        } else {
+          startTestimonialCarousel();
+          startClientCarousel();
+        }
+      });
     });
   </script>
 </body>
