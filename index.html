@@ -122,20 +122,45 @@
       font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 700;
       text-align: center;
-      line-height: 1.1;
-      /* Use flexbox for large-screen alignment */
-      display: flex; 
-      flex-direction: row; 
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.1em;
+    }
+
+    .animated-line {
+      display: block;
+      min-height: 1.2em; /* Reserve space for the animated word */
+    }
+
+    .static-line {
+      display: flex;
+      gap: 0.2em;
       align-items: baseline;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.2em; /* Small gap between words on desktop */
     }
 
     .animated-word,
     .animated-word-static {
       display: inline-block;
       position: relative;
+    }
+
+    /* Desktop: STRATEGY SUPPORT on same line */
+    @media (min-width: 701px) {
+      .static-line {
+        flex-direction: row;
+      }
+    }
+
+    /* Mobile: SUPPORT below STRATEGY */
+    @media (max-width: 700px) {
+      .static-line {
+        flex-direction: column;
+        gap: 0.1em;
+      }
     }
 
     .animated-word::after {
@@ -634,7 +659,7 @@
         /* Impressive sizing for mobile */
         font-size: clamp(2.2rem, 10vw, 3.5rem); 
         line-height: 1.2;
-        gap: 0.1em; /* Small gap between the three words */
+        gap: 0.1em;
       }
       
       .section-title {
@@ -663,9 +688,13 @@
   <main>
     <section id="intro" aria-labelledby="intro-heading">
       <h1 class="animated-heading">
-        <span class="animated-word"></span>
-        <span class="animated-word-static">STRATEGY</span>
-        <span class="animated-word-static">SUPPORT</span>
+        <span class="animated-line">
+          <span class="animated-word"></span>
+        </span>
+        <span class="static-line">
+          <span class="animated-word-static">STRATEGY</span>
+          <span class="animated-word-static">SUPPORT</span>
+        </span>
       </h1>
     </section>
 
