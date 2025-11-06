@@ -708,6 +708,11 @@
   .case-text-container::before {
     display: none;
   }
+  
+  /* Make carousel animation faster on mobile */
+  .client-logos-container {
+    animation-duration: 15s;
+  }
 }
 
     @media (max-width: 480px) {
@@ -723,6 +728,13 @@
       
       .testimonial-quote {
         font-size: clamp(1.1rem, 4vw, 1.6rem);
+      }
+    }
+    
+    /* Larger font size for client tabs on desktop */
+    @media (min-width: 1024px) {
+      .client-tab {
+        font-size: clamp(1.6rem, 2.5vw, 2.5rem);
       }
     }
   </style>
