@@ -313,11 +313,12 @@
       display: flex;
       animation: scroll 30s linear infinite;
       width: max-content;
+      min-width: 100%;
     }
 
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-100% / 2)); }
+      100% { transform: translateX(calc(-50%)); }
     }
 
     @media (prefers-reduced-motion) {
@@ -332,6 +333,7 @@
       filter: brightness(0) invert(1);
       opacity: 0.9;
       transition: opacity 0.3s, transform 0.3s;
+      flex-shrink: 0;
     }
 
     .client-logo:hover {
@@ -672,7 +674,7 @@
 
   .client-logo {
     height: 60px;
-    margin: 0 20px;
+    margin: 0 15px;
   }
 
   .services-container, .recent-container {
@@ -709,9 +711,15 @@
     display: none;
   }
   
-  /* Make carousel animation faster on mobile */
+  /* Fixed mobile carousel */
   .client-logos-container {
-    animation-duration: 15s;
+    animation: scroll-mobile 15s linear infinite;
+    width: 200%;
+  }
+  
+  @keyframes scroll-mobile {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 }
 
@@ -728,6 +736,11 @@
       
       .testimonial-quote {
         font-size: clamp(1.1rem, 4vw, 1.6rem);
+      }
+      
+      .client-logo {
+        height: 50px;
+        margin: 0 10px;
       }
     }
     
@@ -1100,9 +1113,10 @@
           // Restart animation for the active group
           const activeGroup = document.querySelector(`.client-group.active`);
           const logoContainer = activeGroup.querySelector('.client-logos-container');
+          const animation = logoContainer.style.animation;
           logoContainer.style.animation = 'none';
           setTimeout(() => {
-            logoContainer.style.animation = '';
+            logoContainer.style.animation = animation || '';
           }, 10);
         });
         
@@ -1110,6 +1124,28 @@
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             tab.click();
+          }
+        });
+      });
+
+      // Mobile carousel touch support
+      document.querySelectorAll('.client-logos-container').forEach(container => {
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+        
+        // Pause animation on touch
+        container.addEventListener('touchstart', () => {
+          container.style.animationPlayState = 'paused';
+        });
+        
+        // Optional: Add touch drag functionality for mobile
+        container.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 1) {
+            e.preventDefault();
+            container.style.transform = `translateX(${-e.touches[0].clientX}px)`;
           }
         });
       });
