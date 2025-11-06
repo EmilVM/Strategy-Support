@@ -623,51 +623,56 @@
     }
 
     /* Mobile Responsive (UPDATED) */
-    @media (max-width: 700px) {
-      #intro {
-        padding: 16px;
-      }
+   @media (max-width: 700px) {
+  #intro {
+    padding: 16px;
+  }
 
-      #about-me, #my-approach, #services, #recent-work, #testimonials {
-        padding: 50px 16px;
-      }
+  #about-me, #my-approach, #services, #recent-work, #testimonials {
+    padding: 50px 16px;
+  }
 
-      #contact {
-        padding: 60px 16px 80px;
-      }
+  #contact {
+    padding: 60px 16px 80px;
+  }
 
-      .carousel-container {
-        padding: 40px 10px;
-      }
+  .carousel-container {
+    padding: 40px 10px;
+  }
 
-      .client-logo {
-        height: 60px;
-        margin: 0 20px;
-      }
+  .client-logo {
+    height: 60px;
+    margin: 0 20px;
+  }
 
-      .services-container, .recent-container {
-        grid-template-columns: 1fr;
-      }
+  .services-container, .recent-container {
+    grid-template-columns: 1fr;
+  }
 
-      .contact-email {
-        font-size: 1.4rem;
-      }
-      
-      .animated-heading {
-        /* Stack the lines vertically on mobile */
-        flex-direction: column;
-        align-items: center;
-        /* Impressive sizing for mobile */
-        font-size: clamp(2.2rem, 10vw, 3.5rem); 
-        line-height: 1.2;
-        gap: 0.1em;
-      }
-      
-      .section-title {
-        font-size: clamp(1.8rem, 8vw, 2.5rem);
-      }
-    }
-
+  .contact-email {
+    font-size: 1.4rem;
+  }
+  
+  /* FIX FOR STRATEGY/SUPPORT ALIGNMENT */
+  .static-line {
+    flex-direction: column;
+    gap: 0.1em;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .animated-heading {
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(2.2rem, 10vw, 3.5rem); 
+    line-height: 1.2;
+    gap: 0.25em; /* Slightly increased from 0.1em */
+  }
+  
+  .section-title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+}
     @media (max-width: 480px) {
       .client-tabs {
         flex-direction: row; /* Changed to row as requested */
