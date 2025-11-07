@@ -7,7 +7,7 @@
   <meta name="description" content="Copenhagen-based, London-trained strategist. I help brands, agencies and in-house teams with pitches, platforms and campaigns. DK / UK / Global experience.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap&font-display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap&font-display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -204,9 +204,9 @@
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #92140C; /* PENN RED */
+      border: 3px solid #FA38B3; /* CHANGED TO PINK */
       margin-bottom: 24px;
-      box-shadow: 0 0 20px rgba(146, 20, 12, 0.3);
+      box-shadow: 0 0 20px rgba(250, 56, 179, 0.3); /* Updated shadow color to pink */
     }
 
     .intro-heading {
@@ -277,11 +277,11 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: #92140C; /* PENN RED */
+      background: #FA38B3; /* CHANGED TO PINK */
     }
 
     .client-tab:focus-visible {
-      outline: 2px solid #92140C; /* PENN RED */
+      outline: 2px solid #FA38B3; /* CHANGED TO PINK */
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -369,7 +369,7 @@
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 60px;
       text-align: center;
-      color: #92140C; /* PENN RED */
+      color: #FA38B3; /* CHANGED TO PINK */
     }
 
     .services-container {
@@ -401,7 +401,7 @@
 
     .service-item {
       background: #FFF8F0;
-      border: 2px solid #92140C; /* PENN RED */
+      border: 2px solid #FA38B3; /* CHANGED TO PINK */
       border-radius: 16px;
       padding: clamp(1.5rem, 3vw, 2rem);
       opacity: 0;
@@ -409,6 +409,7 @@
       transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      color: #1E1E24; /* FIXED TEXT VISIBILITY - ADDED DARK TEXT COLOR */
     }
 
     .service-item::before {
@@ -418,7 +419,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(146, 20, 12, 0.15) 0%, transparent 100%); /* PENN RED at 15% opacity */
+      background: linear-gradient(135deg, rgba(250, 56, 179, 0.15) 0%, transparent 100%); /* CHANGED TO PINK AT 15% OPACITY */
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -429,8 +430,8 @@
 
     .service-item:hover {
       transform: translateY(-5px);
-      border-color: #92140C; /* PENN RED */
-      box-shadow: 0 10px 30px rgba(146, 20, 12, 0.3);
+      border-color: #FA38B3; /* CHANGED TO PINK */
+      box-shadow: 0 10px 30px rgba(250, 56, 179, 0.3); /* Updated shadow color to pink */
     }
 
     .service-item.visible {
@@ -441,13 +442,14 @@
     .service-title {
       font-size: clamp(1.1rem, 2.2vw, 1.4rem);
       margin-bottom: 12px;
-      color: #92140C; /* PENN RED */
+      color: #FA38B3; /* CHANGED TO PINK */
       line-height: 1.3;
     }
 
     .service-description {
       font-size: clamp(0.9rem, 1.6vw, 1rem);
       line-height: 1.6;
+      color: #1E1E24; /* FIXED TEXT VISIBILITY - ENSURED DARK TEXT */
     }
 
     /* Recent Work Section - COMPLETELY REDESIGNED */
@@ -525,7 +527,7 @@
     .case-title {
       font-size: clamp(1.4rem, 2.8vw, 2rem);
       margin-bottom: 16px;
-      color: #92140C; /* PENN RED */
+      color: #FA38B3; /* CHANGED TO PINK */
       line-height: 1.3;
     }
 
@@ -649,7 +651,7 @@
     .contact-title {
       font-size: 2.0rem;
       font-weight: 400;
-      color: #92140C; /* PENN RED */
+      color: #FA38B3; /* CHANGED TO PINK */
       margin-bottom: 0.8em;
       text-align: center;
     }
@@ -668,11 +670,11 @@
 
     .contact-email a:hover,
     .contact-email a:focus-visible {
-      color: #92140C; /* PENN RED */
+      color: #FA38B3; /* CHANGED TO PINK */
     }
 
     .contact-email a:focus-visible {
-      outline: 2px solid #92140C; /* PENN RED */
+      outline: 2px solid #FA38B3; /* CHANGED TO PINK */
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -1001,9 +1003,9 @@
     </section>
 
     <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+      <h2 id="contact-heading" class="section-title">Need Strategy Support?</h2> <!-- CHANGED HEADING -->
       <div class="contact-info">
-        <p>Need strategy support?</p>
+        <!-- REMOVED "Need strategy support?" paragraph -->
         <div class="contact-title">I'm happy to help!</div>
         <div class="contact-email">
           <a href="mailto:emil@strategy-support.com" aria-label="Email Emil at emil@strategy-support.com">emil@strategy-support.com</a>
@@ -1071,6 +1073,7 @@
       });
 
       document.querySelectorAll('.service-item, .case-item').forEach(item => {
+        item.style.color = '#1E1E24'; // Ensure dark text for service items
         observer.observe(item);
       });
 
