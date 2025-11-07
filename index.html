@@ -106,7 +106,16 @@
       color: #1E1E24;
     }
 
-    /* Section titles with updated colors */
+    /* UPDATED SECTION TITLES - LARGER FONT SIZE */
+    .section-title {
+      font-size: clamp(2.5rem, 6vw, 4rem); /* Significantly larger font size */
+      font-weight: 700;
+      margin-bottom: 60px;
+      text-align: center;
+      line-height: 1.2;
+    }
+    
+    /* Section title colors by background */
     #my-approach .section-title,
     #recent-work .section-title,
     #contact .section-title {
@@ -628,7 +637,18 @@
       border-color: #FA38B3;
     }
 
-    /* Contact */
+    /* Contact section - FIXED TITLES */
+    #contact {
+      padding: 100px 20px 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #FFF8F0; /* Floral white */
+      color: #1E1E24; /* Raisin black for text on light background */
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
     .contact-info {
       display: flex;
       flex-direction: column;
@@ -643,15 +663,16 @@
     }
 
     .contact-title {
-      font-size: 2.0rem;
-      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3rem); /* Larger font size */
+      font-weight: 600;
       color: #A52A2A; /* Burnt red on light background */
       margin-bottom: 0.8em;
       text-align: center;
+      line-height: 1.3;
     }
 
     .contact-email {
-      font-size: clamp(1.4rem, 3vw, 2.5rem);
+      font-size: clamp(1.8rem, 3.5vw, 3rem); /* Larger font size */
       font-weight: 700;
       text-align: center;
     }
@@ -701,7 +722,7 @@
       }
 
       .contact-email {
-        font-size: 1.4rem;
+        font-size: clamp(1.4rem, 4vw, 2rem);
       }
       
       .static-line {
@@ -711,8 +732,9 @@
         width: 100%;
       }
       
+      /* Ensure section titles remain large on mobile */
       .section-title {
-        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        font-size: clamp(2rem, 8vw, 2.8rem);
       }
       
       .case-content-wrapper {
@@ -758,16 +780,27 @@
         height: 50px;
         margin: 0 10px;
       }
+      
+      /* Extra large section titles on very small screens */
+      .section-title {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+      }
     }
     
     @media (min-width: 1024px) {
       .client-tab {
         font-size: clamp(1.6rem, 2.5vw, 2.5rem);
       }
+      
+      /* Extra large section titles on desktop */
+      .section-title {
+        font-size: clamp(3rem, 5vw, 4.5rem);
+      }
     }
   </style>
 </head>
 <body>
+  <!-- The rest of the HTML remains the same as before -->
   <main>
     <section id="intro" aria-labelledby="intro-heading">
       <h1 class="animated-heading">
@@ -958,7 +991,7 @@
         <div class="testimonial-item">
           <p class="testimonial-quote">
             <span class="quote-mark">&ldquo;</span>
-            Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He thinks laterally and inspired creative teams with his briefings. 
+            Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He pushes for both creativity and for work that works. He thinks laterally and inspired creative teams with his briefings. 
             <span class="quote-mark">&rdquo;</span>
           </p>
           <div class="testimonial-author">Vicki Holgate</div>
