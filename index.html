@@ -48,8 +48,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #857F74; /* Battleship gray */
-      color: #FFF8F0; /* Light text for dark background */
+      background: #A52A2A; /* Burnt red */
+      color: #FFF8F0; /* Floral white text on dark background */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -70,8 +70,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #857F74; /* Battleship gray */
-      color: #FFF8F0; /* Light text for dark background */
+      background: #A52A2A; /* Burnt red */
+      color: #FFF8F0; /* Floral white text on dark background */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -93,23 +93,7 @@
       flex-direction: column;
       align-items: center;
       background: #1E1E24; /* Raisin black */
-      color: #FA38B3; /* Persian rose on black background */
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    /* Special color for testimonials heading */
-    #testimonials .section-title {
-      color: #FA38B3 !important;
-    }
-
-    #contact {
-      padding: 100px 20px 120px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #FFF8F0; /* Floral white */
-      color: #1E1E24; /* Raisin black for text on light background */
+      color: #FA38B3; /* Hot pink on black background */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -122,10 +106,25 @@
       color: #1E1E24;
     }
 
+    /* Section titles with updated colors */
+    #my-approach .section-title,
+    #recent-work .section-title,
+    #contact .section-title {
+      color: #A52A2A; /* Burnt red on light backgrounds */
+    }
+
+    #about-me .section-title,
+    #services .section-title {
+      color: #FFF8F0; /* Floral white on dark backgrounds */
+    }
+
+    #testimonials .section-title {
+      color: #FA38B3; /* Hot pink on black background */
+    }
+
     /* Intro content - ENLARGED FONT FOR DESKTOP ONLY */
     .animated-heading {
-      /* Base size matches original mobile sizing */
-      font-size: clamp(2.5rem, 8vw, 6rem); /* Increased max size for large screens only */
+      font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 700;
       text-align: center;
       line-height: 1.1;
@@ -136,10 +135,9 @@
       gap: 0.15em;
     }
 
-    /* Only increase font size on medium+ screens */
     @media (min-width: 1024px) {
       .animated-heading {
-        font-size: clamp(3.5rem, 8vw, 8rem); /* Larger sizes only on desktop */
+        font-size: clamp(3.5rem, 8vw, 8rem);
       }
     }
 
@@ -162,21 +160,18 @@
       position: relative;
     }
 
-    /* Desktop: STRATEGY SUPPORT on same line */
     @media (min-width: 701px) {
       .static-line {
         flex-direction: row;
       }
     }
 
-    /* Mobile: SUPPORT below STRATEGY */
     @media (max-width: 700px) {
       .static-line {
         flex-direction: column;
         gap: 0.1em;
       }
       
-      /* Preserve original mobile font sizing */
       .animated-heading {
         font-size: clamp(2.2rem, 10vw, 3.5rem);
       }
@@ -189,7 +184,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #FA38B3; /* PERSIAN ROSE - blinking line color */
+      background: #FA38B3; /* Hot pink blinking line */
       animation: blink 0.7s infinite;
     }
     
@@ -204,9 +199,9 @@
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #FA38B3; /* CHANGED TO PINK */
+      border: 3px solid #FA38B3;
       margin-bottom: 24px;
-      box-shadow: 0 0 20px rgba(250, 56, 179, 0.3); /* Updated shadow color to pink */
+      box-shadow: 0 0 20px rgba(250, 56, 179, 0.3);
     }
 
     .intro-heading {
@@ -224,6 +219,13 @@
       line-height: 1.5;
       letter-spacing: normal;
       margin-bottom: 40px;
+    }
+
+    /* Text elements in burnt red sections */
+    #about-me .intro-heading,
+    #about-me .intro-text,
+    #about-me > p {
+      color: #FFF8F0;
     }
 
     /* Work / Brands */
@@ -257,7 +259,7 @@
       position: relative;
       z-index: 1;
       opacity: 0.7;
-      color: #1E1E24; /* Raisin black */
+      color: #FFF8F0; /* Floral white on burnt red */
     }
 
     .client-tab:hover,
@@ -277,11 +279,11 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: #FA38B3; /* CHANGED TO PINK */
+      background: #FA38B3;
     }
 
     .client-tab:focus-visible {
-      outline: 2px solid #FA38B3; /* CHANGED TO PINK */
+      outline: 2px solid #FA38B3;
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -313,7 +315,6 @@
       display: block;
     }
 
-    /* Fixed continuous carousel container */
     .client-logos-container {
       display: flex;
       animation: scroll 30s linear infinite;
@@ -346,7 +347,6 @@
       transform: scale(1.05);
     }
 
-    /* Pause animation on hover */
     .client-logos-container:hover {
       animation-play-state: paused;
     }
@@ -359,17 +359,10 @@
       text-align: center;
     }
 
-    /* Services Section - Updated Grid Layout */
+    /* Services Section */
     .services-section {
       padding-top: 80px;
       padding-bottom: 80px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 60px;
-      text-align: center;
-      color: #FA38B3; /* CHANGED TO PINK */
     }
 
     .services-container {
@@ -380,7 +373,6 @@
       margin: 0 auto;
     }
 
-    /* Responsive grid layout for services */
     @media (min-width: 1200px) {
       .services-container {
         grid-template-columns: repeat(3, 1fr);
@@ -401,7 +393,7 @@
 
     .service-item {
       background: #FFF8F0;
-      border: 2px solid #FA38B3; /* CHANGED TO PINK */
+      border: 2px solid #FA38B3;
       border-radius: 16px;
       padding: clamp(1.5rem, 3vw, 2rem);
       opacity: 0;
@@ -409,7 +401,7 @@
       transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
-      color: #1E1E24; /* FIXED TEXT VISIBILITY - ADDED DARK TEXT COLOR */
+      color: #1E1E24;
     }
 
     .service-item::before {
@@ -419,7 +411,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(250, 56, 179, 0.15) 0%, transparent 100%); /* CHANGED TO PINK AT 15% OPACITY */
+      background: linear-gradient(135deg, rgba(250, 56, 179, 0.15) 0%, transparent 100%);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -430,8 +422,8 @@
 
     .service-item:hover {
       transform: translateY(-5px);
-      border-color: #FA38B3; /* CHANGED TO PINK */
-      box-shadow: 0 10px 30px rgba(250, 56, 179, 0.3); /* Updated shadow color to pink */
+      border-color: #FA38B3;
+      box-shadow: 0 10px 30px rgba(250, 56, 179, 0.3);
     }
 
     .service-item.visible {
@@ -442,17 +434,17 @@
     .service-title {
       font-size: clamp(1.1rem, 2.2vw, 1.4rem);
       margin-bottom: 12px;
-      color: #FA38B3; /* CHANGED TO PINK */
+      color: #A52A2A; /* Burnt red on light background */
       line-height: 1.3;
     }
 
     .service-description {
       font-size: clamp(0.9rem, 1.6vw, 1rem);
       line-height: 1.6;
-      color: #1E1E24; /* FIXED TEXT VISIBILITY - ENSURED DARK TEXT */
+      color: #1E1E24;
     }
 
-    /* Recent Work Section - COMPLETELY REDESIGNED */
+    /* Recent Work Section */
     .recent-container {
       width: 100%;
       max-width: 1400px;
@@ -520,21 +512,21 @@
         left: -20px;
         height: 100%;
         width: 1px;
-        background: #857F74; /* Battleship gray */
+        background: #A52A2A; /* Burnt red divider */
       }
     }
 
     .case-title {
       font-size: clamp(1.4rem, 2.8vw, 2rem);
       margin-bottom: 16px;
-      color: #FA38B3; /* CHANGED TO PINK */
+      color: #A52A2A; /* Burnt red on light background */
       line-height: 1.3;
     }
 
     .case-subtitle {
       font-size: clamp(1.1rem, 2.2vw, 1.4rem);
       margin: 16px 0 8px;
-      color: #1E1E24; /* Raisin black */
+      color: #1E1E24;
       font-weight: 600;
     }
 
@@ -548,7 +540,7 @@
     .testimonials-section {
       padding-top: 80px;
       padding-bottom: 80px;
-      background: #1E1E24; /* Raisin black */
+      background: #1E1E24;
     }
 
     .testimonials-container {
@@ -587,22 +579,24 @@
       line-height: 1.6;
       font-style: italic;
       max-width: 800px;
+      color: #FA38B3; /* Hot pink on black */
     }
 
     .testimonial-quote span.quote-mark {
-      color: #FA38B3; /* Persian rose */
+      color: #FA38B3;
       font-size: 1.3em;
     }
 
     .testimonial-author {
       font-size: clamp(1rem, 2vw, 1.3rem);
-      color: #FA38B3; /* Persian rose */
+      color: #FA38B3;
       margin-top: 8px;
     }
 
     .testimonial-role {
       font-size: clamp(0.9rem, 1.8vw, 1.1rem);
       opacity: 0.8;
+      color: #FA38B3;
     }
 
     .testimonial-indicators {
@@ -616,22 +610,22 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: #857F74; /* Battleship gray */
-      border: 2px solid #1E1E24; /* Raisin black */
+      background: #A52A2A; /* Burnt red dots */
+      border: 2px solid #1E1E24;
       cursor: pointer;
       transition: all 0.3s;
     }
 
     .indicator-dot.active {
-      background: #FA38B3; /* Persian rose */
-      border-color: #FA38B3; /* Persian rose */
+      background: #FA38B3;
+      border-color: #FA38B3;
       transform: scale(1.2);
     }
 
     .indicator-dot:hover,
     .indicator-dot:focus-visible {
-      background: #FA38B3; /* Persian rose */
-      border-color: #FA38B3; /* Persian rose */
+      background: #FA38B3;
+      border-color: #FA38B3;
     }
 
     /* Contact */
@@ -651,7 +645,7 @@
     .contact-title {
       font-size: 2.0rem;
       font-weight: 400;
-      color: #FA38B3; /* CHANGED TO PINK */
+      color: #A52A2A; /* Burnt red on light background */
       margin-bottom: 0.8em;
       text-align: center;
     }
@@ -663,90 +657,87 @@
     }
 
     .contact-email a {
-      color: #1E1E24; /* Raisin black */
+      color: #1E1E24;
       text-decoration: none;
       transition: color 0.3s;
     }
 
     .contact-email a:hover,
     .contact-email a:focus-visible {
-      color: #FA38B3; /* CHANGED TO PINK */
+      color: #FA38B3;
     }
 
     .contact-email a:focus-visible {
-      outline: 2px solid #FA38B3; /* CHANGED TO PINK */
+      outline: 2px solid #FA38B3;
       outline-offset: 2px;
       border-radius: 2px;
     }
 
-    /* Mobile Responsive (UPDATED) */
-   @media (max-width: 700px) {
-  #intro {
-    padding: 16px;
-  }
+    /* Mobile Responsive */
+    @media (max-width: 700px) {
+      #intro {
+        padding: 16px;
+      }
 
-  #about-me, #my-approach, #services, #recent-work, #testimonials {
-    padding: 50px 16px;
-  }
+      #about-me, #my-approach, #services, #recent-work, #testimonials {
+        padding: 50px 16px;
+      }
 
-  #contact {
-    padding: 60px 16px 80px;
-  }
+      #contact {
+        padding: 60px 16px 80px;
+      }
 
-  .carousel-container {
-    padding: 40px 10px;
-  }
+      .carousel-container {
+        padding: 40px 10px;
+      }
 
-  .client-logo {
-    height: 60px;
-    margin: 0 15px;
-  }
+      .client-logo {
+        height: 60px;
+        margin: 0 15px;
+      }
 
-  .services-container, .recent-container {
-    grid-template-columns: 1fr;
-  }
+      .services-container, .recent-container {
+        grid-template-columns: 1fr;
+      }
 
-  .contact-email {
-    font-size: 1.4rem;
-  }
-  
-  /* FIX FOR STRATEGY/SUPPORT ALIGNMENT */
-  .static-line {
-    flex-direction: column;
-    gap: 0.1em;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .section-title {
-    font-size: clamp(1.8rem, 8vw, 2.5rem);
-  }
-  
-  /* Recent work mobile adjustments */
-  .case-content-wrapper {
-    flex-direction: column;
-  }
-  
-  .case-image-container {
-    flex: 0 0 auto;
-    height: 180px;
-  }
-  
-  .case-text-container::before {
-    display: none;
-  }
-  
-  /* Fixed mobile carousel */
-  .client-logos-container {
-    animation: scroll-mobile 15s linear infinite;
-    width: 200%;
-  }
-  
-  @keyframes scroll-mobile {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-}
+      .contact-email {
+        font-size: 1.4rem;
+      }
+      
+      .static-line {
+        flex-direction: column;
+        gap: 0.1em;
+        align-items: center;
+        width: 100%;
+      }
+      
+      .section-title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+      }
+      
+      .case-content-wrapper {
+        flex-direction: column;
+      }
+      
+      .case-image-container {
+        flex: 0 0 auto;
+        height: 180px;
+      }
+      
+      .case-text-container::before {
+        display: none;
+      }
+      
+      .client-logos-container {
+        animation: scroll-mobile 15s linear infinite;
+        width: 200%;
+      }
+      
+      @keyframes scroll-mobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    }
 
     @media (max-width: 480px) {
       .client-tabs {
@@ -769,7 +760,6 @@
       }
     }
     
-    /* Larger font size for client tabs on desktop */
     @media (min-width: 1024px) {
       .client-tab {
         font-size: clamp(1.6rem, 2.5vw, 2.5rem);
@@ -903,7 +893,6 @@
       </div>
     </section>
 
-    <!-- Redesigned Recent Work Section -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
       <h2 id="recent-work-heading" class="section-title">Recent Work</h2>
       <div class="recent-container">
@@ -969,7 +958,7 @@
         <div class="testimonial-item">
           <p class="testimonial-quote">
             <span class="quote-mark">&ldquo;</span>
-            Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He pushes for both creativity and for work that works. He thinks laterally and inspired creative teams with his briefings. 
+            Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He thinks laterally and inspired creative teams with his briefings. 
             <span class="quote-mark">&rdquo;</span>
           </p>
           <div class="testimonial-author">Vicki Holgate</div>
@@ -989,14 +978,12 @@
         <div class="indicator-dot active" role="tab" aria-selected="true" aria-label="Testimonial 1"></div>
         <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></div>
         <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></div>
-        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 4"></div>
       </div>
     </section>
 
     <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading" class="section-title">Need Strategy Support?</h2> <!-- CHANGED HEADING -->
+      <h2 id="contact-heading" class="section-title">Need Strategy Support?</h2>
       <div class="contact-info">
-        <!-- REMOVED "Need strategy support?" paragraph -->
         <div class="contact-title">I'm happy to help!</div>
         <div class="contact-email">
           <a href="mailto:emil@strategy-support.com" aria-label="Email Emil at emil@strategy-support.com">emil@strategy-support.com</a>
@@ -1064,7 +1051,7 @@
       });
 
       document.querySelectorAll('.service-item, .case-item').forEach(item => {
-        item.style.color = '#1E1E24'; // Ensure dark text for service items
+        item.style.color = '#1E1E24';
         observer.observe(item);
       });
 
@@ -1143,28 +1130,6 @@
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             tab.click();
-          }
-        });
-      });
-
-      // Mobile carousel touch support
-      document.querySelectorAll('.client-logos-container').forEach(container => {
-        let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationID;
-        
-        // Pause animation on touch
-        container.addEventListener('touchstart', () => {
-          container.style.animationPlayState = 'paused';
-        });
-        
-        // Optional: Add touch drag functionality for mobile
-        container.addEventListener('touchmove', (e) => {
-          if (e.touches.length === 1) {
-            e.preventDefault();
-            container.style.transform = `translateX(${-e.touches[0].clientX}px)`;
           }
         });
       });
