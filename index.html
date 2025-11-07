@@ -98,6 +98,11 @@
       margin: 0 auto;
     }
 
+    /* Special color for testimonials heading */
+    #testimonials .section-title {
+      color: #FA38B3 !important;
+    }
+
     #contact {
       padding: 100px 20px 120px;
       display: flex;
@@ -354,7 +359,7 @@
       text-align: center;
     }
 
-    /* Services Section */
+    /* Services Section - Updated Grid Layout */
     .services-section {
       padding-top: 80px;
       padding-bottom: 80px;
@@ -369,11 +374,29 @@
 
     .services-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: clamp(1.5rem, 3vw, 2rem);
       width: 100%;
       max-width: 1400px;
       margin: 0 auto;
+    }
+
+    /* Responsive grid layout for services */
+    @media (min-width: 1200px) {
+      .services-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .services-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .services-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     .service-item {
@@ -795,6 +818,7 @@
                 <img src="assets/brand8.png" alt="ATP" class="client-logo" loading="lazy">
                 <img src="assets/brand9.png" alt="Kellogg's" class="client-logo" loading="lazy">
                 <img src="assets/brand10.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                <!-- Repeated for seamless animation -->
                 <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
                 <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
                 <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
@@ -814,6 +838,7 @@
                 <img src="assets/brand12.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
                 <img src="assets/brand13.png" alt="Edelman London" class="client-logo" loading="lazy">
                 <img src="assets/brand14.png" alt="FCB London" class="client-logo" loading="lazy">
+                <!-- Repeated for seamless animation -->
                 <img src="assets/brand11.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
                 <img src="assets/brand12.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
                 <img src="assets/brand13.png" alt="Edelman London" class="client-logo" loading="lazy">
