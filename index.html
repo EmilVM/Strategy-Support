@@ -519,26 +519,71 @@
       max-height: 100%;
       object-fit: contain;
     }
+
+/* Updated icon styling - removing overlay effect and making responsive */
 .icon-overlay {
+  /* Remove all overlay styling */
   filter: none;
-  /* Add antique white background */
-  background-color: #FFF8F0;
-  padding: 40px; /* Increased padding */
-  border-radius: 8px;
-  /* Ensure icons fit properly */
-  width: auto !important;
-  height: auto !important;
-  max-width: 140px !important;
-  max-height: 140px !important;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  
+  /* Make truly responsive */
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100px;
+  
   /* Center the icon */
   display: block;
   margin: 0 auto;
+  object-fit: contain;
 }
-    .case-text-container {
-      flex: 1;
-      position: relative;
-      padding-top: 10px;
-    }
+
+/* Responsive container for the icons */
+.case-image-container {
+  flex: 0 0 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  margin-right: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+  .case-image-container {
+    flex: 0 0 100px;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .icon-overlay {
+    max-height: 80px;
+  }
+}
+
+@media (max-width: 700px) {
+  .case-image-container {
+    height: 80px;
+  }
+  
+  .icon-overlay {
+    max-height: 60px;
+  }
+}
+
+/* Ensure proper spacing in the case content */
+.case-content-wrapper {
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .case-content-wrapper {
+    gap: 40px;
+  }
+}
 
     @media (min-width: 900px) {
       .case-text-container::before {
