@@ -518,60 +518,22 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-  .icon-overlay {
-  /* Antique white background */
+    }
+.icon-overlay {
+  filter: none;
+  /* Add antique white background */
   background-color: #FFF8F0;
-  
-  /* Responsive padding */
-  padding: clamp(16px, 2.5vw, 40px);
-  
-  /* Rounded corners */
+  padding: 40px; /* Increased padding */
   border-radius: 8px;
-  
-  /* Center and size responsively */
-  display: block;
-  margin: 0 auto;
+  /* Ensure icons fit properly */
   width: auto !important;
   height: auto !important;
-  max-width: clamp(100px, 12vw, 180px) !important;
-  max-height: clamp(100px, 12vw, 180px) !important;
-  
-  /* MORE PRECISE burnt red filter (#A52A2A) */
-  /* This works by: invert to white → sepia tone → saturate → rotate to red → darken */
-  filter: invert(100%) sepia(100%) saturate(10000%) hue-rotate(350deg) brightness(0.6);
-  
-  /* Ensure background stays white */
-  background-blend-mode: normal;
+  max-width: 140px !important;
+  max-height: 140px !important;
+  /* Center the icon */
+  display: block;
+  margin: 0 auto;
 }
-
-    .icon-overlay:hover {
-      filter: invert(1) sepia(1) saturate(5) hue-rotate(350deg) brightness(0.5);
-      transform: scale(1.05);
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 700px) {
-      .icon-overlay {
-        max-width: clamp(80px, 20vw, 120px) !important;
-        max-height: clamp(80px, 20vw, 120px) !important;
-        padding: clamp(12px, 3vw, 24px);
-      }
-      
-      /* Adjust container height for smaller icons */
-      .case-image-container {
-        flex: 0 0 180px;
-        height: 180px;
-      }
-    }
-
-    /* Large screens */
-    @media (min-width: 1200px) {
-      .icon-overlay {
-        max-width: clamp(150px, 10vw, 200px) !important;
-        max-height: clamp(150px, 10vw, 200px) !important;
-      }
-    }
-
     .case-text-container {
       flex: 1;
       position: relative;
