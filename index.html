@@ -520,10 +520,19 @@
       object-fit: contain;
     }
 .icon-overlay {
-  filter: brightness(0) saturate(100%) invert(22%) sepia(71%) saturate(1232%) hue-rotate(343deg) brightness(91%) contrast(101%);
+  filter: none;
+  /* Add antique white background */
   background-color: #FFF8F0;
-  padding: 20px; /* Space around the icon */
-  border-radius: 8px; /* Soft edges */
+  padding: 40px; /* Increased padding */
+  border-radius: 8px;
+  /* Ensure icons fit properly */
+  width: auto !important;
+  height: auto !important;
+  max-width: 140px !important;
+  max-height: 140px !important;
+  /* Center the icon */
+  display: block;
+  margin: 0 auto;
 }
     .case-text-container {
       flex: 1;
