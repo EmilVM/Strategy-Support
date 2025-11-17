@@ -550,27 +550,58 @@
   margin-right: 20px;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Updated case image container - more prominent on desktop */
+.case-image-container {
+  flex: 0 0 320px;
+  height: 320px;
+  margin-right: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Full-bleed case images with proper scaling */
+.case-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Interactive effect on hover */
+.case-item:hover .case-image-container {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.case-item:hover .case-image {
+  transform: scale(1.03);
+}
+
+/* Mobile responsive adjustments */
 @media (max-width: 900px) {
-  .case-image-container {
-    flex: 0 0 100px;
-    height: 100px;
-    margin-right: 0;
-    margin-bottom: 20px;
+  .case-content-wrapper {
+    flex-direction: column;
   }
   
-  .icon-overlay {
-    max-height: 80px;
+  .case-image-container {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 280px;
+    margin-right: 0;
+    margin-bottom: 30px;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .case-image-container {
-    height: 80px;
+    height: 220px;
   }
   
-  .icon-overlay {
-    max-height: 60px;
+  .case-title {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
   }
 }
 
@@ -1029,8 +1060,8 @@
 <div class="case-item">
   <div class="case-content-wrapper">
     <div class="case-image-container">
-      <img src="assets/marketing-strategy-plan.png" alt="Marketing Strategy" class="case-image icon-overlay" loading="lazy">
-    </div>
+      <img src="assets/dsv-case.png" alt="DSV Global Marketing Strategy" class="case-image" loading="lazy">
+</div>
     <div class="case-text-container">
       <h3 class="case-title">DSV, Global Marketing Strategy</h3>
     
@@ -1046,7 +1077,7 @@
 <div class="case-item">
   <div class="case-content-wrapper">
     <div class="case-image-container">
-      <img src="assets/brand-platform.png" alt="Brand Platform" class="case-image icon-overlay" loading="lazy">
+      <img src="assets/saxo-bank-case.png" alt="Saxo Bank Global Brand Strategy" class="case-image" loading="lazy">
     </div>
     <div class="case-text-container">
       <h3 class="case-title">Saxo Bank, Global</h3>
@@ -1069,7 +1100,7 @@ gives your money more things to do.</p>
 <div class="case-item">
   <div class="case-content-wrapper">
     <div class="case-image-container">
-      <img src="assets/campaign-concept.png" alt="Campaign Concept" class="case-image icon-overlay" loading="lazy">
+     <img src="assets/burger-king-case.png" alt="Burger King UK Platform" class="case-image" loading="lazy">
     </div>
     <div class="case-text-container">
       <h3 class="case-title">Burger King, United Kingdom</h3>
