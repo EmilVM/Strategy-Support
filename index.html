@@ -181,7 +181,7 @@
       }
     }
 
-    @media (max-width: 700px) {
+     @media (max-width: 700px) {
       .static-line {
         flex-direction: column;
         gap: 0.1em;
@@ -190,6 +190,17 @@
       .animated-heading {
         font-size: clamp(2.2rem, 10vw, 3.5rem);
       }
+    }
+
+    .animated-word::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #FA38B3; /* Hot pink blinking line */
+      animation: blink 0.7s infinite;
     }
 
     .animated-word::after {
