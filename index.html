@@ -798,91 +798,177 @@
     }
 
     /* Mobile Responsive */
-    @media (max-width: 700px) {
-      #intro {
-        padding: 16px;
-      }
+   @media (max-width: 700px) {
+  #intro {
+    padding: 16px;
+  }
 
-      #about-me, #my-approach, #services, #recent-work, #testimonials {
-        padding: 50px 16px;
-      }
+  #about-me, #my-approach, #services, #recent-work, #testimonials {
+    padding: 50px 16px;
+  }
 
-      #contact {
-        padding: 60px 16px 80px;
-      }
+  #contact {
+    padding: 60px 16px 80px;
+  }
 
-      .carousel-container {
-        padding: 40px 10px;
-      }
+  /* Base font size reduction for better mobile scaling */
+  html, body {
+    font-size: 15px;
+  }
 
-      .client-logo {
-        height: 60px;
-        margin: 0 15px;
-      }
+  /* Smaller section titles */
+  .section-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 40px;
+  }
 
-      .services-container, .recent-container {
-        grid-template-columns: 1fr;
-      }
+  /* Smaller animated heading */
+  .animated-heading {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
 
-      .contact-email {
-        font-size: clamp(1.4rem, 4vw, 2rem);
-      }
-      
-      .static-line {
-        flex-direction: column;
-        gap: 0.1em;
-        align-items: center;
-        width: 100%;
-      }
-      
-      /* Ensure section titles remain large on mobile */
-      .section-title {
-        font-size: clamp(2rem, 8vw, 2.8rem);
-      }
-      
-      .case-content-wrapper {
-        flex-direction: column;
-      }
-      
-      .case-image-container {
-        flex: 0 0 auto;
-        height: 180px;
-      }
-      
-      .case-text-container::before {
-        display: none;
-      }
-      
-      .client-logos-container {
-        animation: scroll-mobile 15s linear infinite;
-        width: 200%;
-      }
-      
-      @keyframes scroll-mobile {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-    }
+  /* Smaller about section text */
+  .intro-heading {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+  }
+
+  .intro-text {
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    margin-bottom: 30px;
+  }
+
+  #about-me > p {
+    font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.8rem);
+  }
+
+  /* Smaller client tabs */
+  .client-tab {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+  }
+
+  .carousel-container {
+    padding: 40px 10px;
+  }
+
+  .client-logo {
+    height: 50px;
+    margin: 0 15px;
+  }
+
+  /* Smaller services text */
+  .services-intro {
+    font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.8rem);
+    margin-bottom: 40px;
+  }
+
+  .service-title {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+  }
+
+  .service-description {
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  }
+
+  /* Smaller case study text */
+  .case-title {
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  }
+
+  .case-subtitle {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+  }
+
+  .case-description {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+  }
+
+  .case-content-wrapper {
+    flex-direction: column;
+  }
+
+  .case-image-container {
+    flex: 0 0 auto;
+    height: 180px;
+  }
+
+  .case-text-container::before {
+    display: none;
+  }
+
+  /* Smaller testimonial text */
+  .testimonial-quote {
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+  }
+
+  .testimonial-author {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  }
+
+  .testimonial-role {
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+  }
+
+  .testimonial-indicators {
+    margin-top: 30px;
+  }
+
+  /* Smaller contact text */
+  .contact-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+
+  .contact-email {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+  }
+
+  .services-container, .recent-container {
+    grid-template-columns: 1fr;
+  }
+
+  .client-logos-container {
+    animation: scroll-mobile 15s linear infinite;
+    width: 200%;
+  }
+  
+  @keyframes scroll-mobile {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
 
     @media (max-width: 480px) {
-      .client-tabs {
-        flex-direction: row;
-        gap: 20px;
-        flex-wrap: nowrap;
-      }
-      
-      .carousel-container {
-        padding: 20px 5px;
-      }
-      
-      .testimonial-quote {
-        font-size: clamp(1.1rem, 4vw, 1.6rem);
-      }
-      
-      .client-logo {
-        height: 50px;
-        margin: 0 10px;
-      }
+  /* Further reduction for very small screens */
+  html, body {
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .animated-heading {
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+
+  .client-tabs {
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+  
+  .carousel-container {
+    padding: 20px 5px;
+  }
+  
+  .testimonial-quote {
+    font-size: clamp(1rem, 3.5vw, 1.4rem);
+  }
+  
+  .client-logo {
+    height: 45px;
+    margin: 0 10px;
+  }
+}
       
       /* Extra large section titles on very small screens */
       .section-title {
