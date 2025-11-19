@@ -29,20 +29,22 @@
 
     main {
       width: 100%;
-      overflow-x: hidden; /* Prevent horizontal scroll */
+      overflow-x: hidden;
     }
 
-    /* --- SHARED TYPOGRAPHY --- */
+    /* --- SHARED TYPOGRAPHY & LAYOUT --- */
     .section-title {
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 700;
-      margin-bottom: 60px;
-      text-align: left; /* Swiss Style: Left Align Default */
+      margin-bottom: 40px;
+      text-align: left;
       line-height: 1.1;
       letter-spacing: -0.02em;
+      width: 100%;
+      max-width: 1200px;
     }
     
-    /* Section title colors by background */
+    /* Section colors */
     #my-approach .section-title,
     #recent-work .section-title,
     #contact .section-title {
@@ -56,6 +58,15 @@
 
     #testimonials .section-title {
       color: #FA38B3;
+    }
+
+    /* Container Utility for the new Stacked Layout */
+    .content-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     /* --- HERO SECTION --- */
@@ -145,46 +156,37 @@
       50% { opacity: 1; }
     }
 
-    /* --- ABOUT ME (Refactored to Swiss Grid) --- */
+    /* --- ABOUT ME (Refactored: Vertical Stack) --- */
     #about-me {
       padding: 100px 20px;
       background: #A52A2A;
       color: #FFF8F0;
       width: 100%;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .about-grid {
+    .about-content-wrapper {
       width: 100%;
       max-width: 1200px;
-      display: grid;
-      /* Swiss Grid: 30% Title | 70% Content */
-      grid-template-columns: 30% 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .about-header {
-      position: sticky;
-      top: 40px;
-    }
-
-    .about-content {
       display: flex;
       flex-direction: column;
       gap: 40px;
-      padding-left: 40px;
-      border-left: 1px solid rgba(255, 248, 240, 0.3); /* Swiss line */
+    }
+
+    .profile-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
     }
 
     .profile-picture {
-      width: 180px;
-      height: 180px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border: 1px solid #FFF8F0;
-      margin-bottom: 10px;
-      /* Effect: Grayscale to Color on hover */
       filter: grayscale(100%);
       transition: filter 0.4s ease;
     }
@@ -198,38 +200,31 @@
       font-weight: 400;
       line-height: 1.1;
       margin: 0;
+      max-width: 900px;
     }
 
     .intro-text {
       font-size: clamp(1.1rem, 1.5vw, 1.3rem);
       line-height: 1.5;
-      max-width: 750px;
+      max-width: 800px;
       opacity: 0.9;
-      overflow-wrap: break-word; /* Prevents breaking */
+      /* FIX: Ensure text wraps properly on all screens */
+      word-wrap: break-word;
+      overflow-wrap: break-word; 
     }
 
-    @media (max-width: 600px) {
-      .intro-text br {
-        display: none;
-      }
-    }
-
-    #about-me .intro-heading,
-    #about-me .intro-text,
-    #about-me > p {
-      color: #FFF8F0;
-    }
-
-    /* Client Tabs & Logos (Left Aligned now) */
+    /* Client Tabs & Logos */
     .client-tabs {
       display: flex;
       gap: 30px;
-      justify-content: flex-start; /* Left align */
+      justify-content: flex-start;
       align-items: center;
+      margin-top: 20px;
       margin-bottom: 30px;
       flex-wrap: wrap;
       border-bottom: 1px solid rgba(255, 248, 240, 0.2);
       padding-bottom: 10px;
+      width: 100%;
     }
 
     .client-tab {
@@ -261,7 +256,7 @@
     .client-tab.active::after {
       content: '';
       position: absolute;
-      bottom: -12px; /* Aligns with the border line */
+      bottom: -12px;
       left: 0;
       width: 100%;
       height: 2px;
@@ -276,7 +271,7 @@
 
     .carousel-container {
       position: relative;
-      padding: 20px 0; /* Removed side padding */
+      padding: 20px 0;
     }
 
     .carousel-content {
@@ -307,7 +302,7 @@
     }
 
     .client-logo {
-      height: 60px; /* Slightly smaller for elegance */
+      height: 60px;
       margin-right: 50px;
       filter: brightness(0) invert(1);
       opacity: 0.8;
@@ -320,85 +315,45 @@
       transform: scale(1.05);
     }
 
-    /* Responsive About Me */
-    @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .about-header {
-        position: static;
-        border-bottom: 1px solid rgba(255, 248, 240, 0.2);
-        padding-bottom: 20px;
-      }
-      .about-content {
-        padding-left: 0;
-        border-left: none;
-        gap: 30px;
-      }
-      .client-tabs {
-        justify-content: flex-start;
-      }
-    }
-
-    /* --- APPROACH (SWISS EDITORIAL) --- */
+    /* --- APPROACH (Refactored: Vertical Stack) --- */
     #my-approach {
       padding: 120px 20px;
       background: #FFF8F0;
       color: #1E1E24;
       width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-    }
-
-    .approach-grid {
-      width: 100%;
-      max-width: 1200px;
-      display: grid;
-      /* Asymmetrical Grid: Title (30%) | Content (70%) */
-      grid-template-columns: 30% 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    /* Left Column: The Section Title */
-    .approach-header {
-      position: sticky;
-      top: 40px;
-    }
-
-    #my-approach .section-title {
-      margin-bottom: 0;
-    }
-
-    /* Right Column: The Content */
-    .approach-content {
       display: flex;
       flex-direction: column;
-      gap: 40px; /* Space between thoughts */
-      padding-left: 40px;
-      border-left: 1px solid rgba(165, 42, 42, 0.3); /* The "Swiss Line" */
+      align-items: center;
     }
 
-    /* Paragraph Styles */
+    /* No grid, just standard block flow */
+    .approach-content {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px; 
+      /* Removed border-left to fit new stacked layout */
+      border-left: none;
+      padding-left: 0;
+    }
+
     .approach-text-std {
       font-size: clamp(1.1rem, 1.5vw, 1.3rem);
       line-height: 1.6;
       opacity: 0.9;
-      max-width: 750px;
+      max-width: 850px; /* Slightly wider now */
     }
 
     .approach-text-hero {
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Larger, impactful */
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       line-height: 1.3;
       font-weight: 500;
-      color: #A52A2A; /* Burnt Red */
-      max-width: 800px;
+      color: #A52A2A;
+      max-width: 900px;
+      margin: 20px 0; /* Add emphasis space */
     }
 
-    /* Animation classes */
     .approach-p {
       opacity: 0;
       transform: translateY(20px);
@@ -410,29 +365,9 @@
       transform: translateY(0);
     }
 
-    /* Mobile Responsiveness for Approach */
-    @media (max-width: 900px) {
-      .approach-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .approach-header {
-        position: static;
-        border-bottom: 1px solid rgba(165, 42, 42, 0.2);
-        padding-bottom: 20px;
-      }
-
-      .approach-content {
-        padding-left: 0;
-        border-left: none;
-        gap: 30px;
-      }
-    }
-
-    /* --- SERVICES --- */
+    /* --- SERVICES (Refactored: Layout consistency) --- */
     #services {
-      padding: 80px 20px;
+      padding: 100px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -440,19 +375,20 @@
       color: #FFF8F0;
     }
     
+    /* Intro now sits below title left aligned like others */
     .services-intro {
-      max-width: 800px;
-      font-size: clamp(1.25rem, 2vw + 1rem, 2.2rem);
+      width: 100%;
+      max-width: 1200px;
+      font-size: clamp(1.25rem, 2vw + 1rem, 2rem);
       line-height: 1.5;
-      text-align: center;
-      margin-bottom: 50px;
+      text-align: left;
+      margin-bottom: 60px;
       color: #FFF8F0;
     }
     
     .services-list {
       width: 100%;
       max-width: 1200px;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
     }
@@ -480,13 +416,13 @@
     .service-num {
       font-size: clamp(1.5rem, 3vw, 2rem);
       opacity: 0.5;
-      flex-basis: 10%;
+      flex-basis: 8%;
       padding-top: 5px;
       color: #FFF8F0;
     }
 
     .service-details {
-      flex-basis: 85%;
+      flex-basis: 92%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -521,14 +457,12 @@
       transition: color 0.3s ease;
     }
 
-    /* Responsive Services */
     @media (max-width: 900px) {
       .service-details {
         flex-direction: column;
         gap: 20px;
       }
       .service-row p { padding-top: 0; }
-      .service-num { flex-basis: 15%; }
     }
     @media (max-width: 600px) {
       .service-row {
@@ -539,16 +473,15 @@
       .service-details { width: 100%; }
     }
 
-    /* --- RECENT WORK (SWISS GRID 30/70) --- */
+    /* --- RECENT WORK (Refactored: Vertical Stack Layout) --- */
     #recent-work {
-      padding: 80px 20px;
+      padding: 100px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       background: #FFF8F0;
       color: #1E1E24;
-      max-width: 100%;
-      margin: 0 auto;
+      width: 100%;
     }
 
     .work-list {
@@ -556,17 +489,14 @@
       flex-direction: column;
       width: 100%;
       max-width: 1200px;
-      margin: 0 auto;
     }
 
     .work-row {
-      padding: 70px 0; 
+      padding: 80px 0; 
       border-top: 1px solid rgba(30, 30, 36, 0.2);
-      display: grid;
-      /* THE SWISS GRID: Left Col (30%) | Right Col (70%) */
-      grid-template-columns: 30% 1fr; 
-      gap: 60px;
-      align-items: start;
+      display: flex;
+      flex-direction: column; /* Stacked layout */
+      gap: 40px;
       
       /* Animation */
       opacity: 0;
@@ -583,18 +513,19 @@
       border-bottom: 1px solid rgba(30, 30, 36, 0.2);
     }
 
-    /* Left Column: Anchor/Context */
-    .work-col-left {
+    /* Header area for Work Row (Name + Meta) */
+    .work-header {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
       gap: 30px;
-      position: sticky; 
-      top: 40px;
+      width: 100%;
     }
 
     .client-name {
       font-family: 'Vollkorn', serif;
-      font-size: clamp(2rem, 3vw, 3.5rem);
+      font-size: clamp(2.5rem, 5vw, 4rem); /* Larger impact */
       font-weight: 700;
       color: #A52A2A;
       line-height: 1;
@@ -604,11 +535,9 @@
 
     .case-meta {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      font-size: 0.9rem;
-      border-left: 2px solid rgba(165, 42, 42, 0.3);
-      padding-left: 20px;
+      gap: 40px;
+      border-left: none; /* Removed side border */
+      padding-left: 0;
     }
 
     .meta-group {
@@ -632,18 +561,18 @@
       line-height: 1.4;
     }
 
-    /* Right Column: Visuals/Story */
-    .work-col-right {
+    /* Main Content area for Work Row */
+    .work-content {
       display: flex;
       flex-direction: column;
       gap: 40px;
+      width: 100%;
     }
 
-    /* Updated Image Wrapper for Swiss Restraint */
     .work-image-wrapper {
       width: 100%;
-      max-width: 800px; /* Restrained width */
-      aspect-ratio: 16/9; /* Editorial cinema ratio */
+      /* 16:9 Ratio preserved */
+      aspect-ratio: 16/9; 
       overflow: hidden;
       background: #E5E5E5;
       position: relative;
@@ -664,7 +593,8 @@
     }
 
     .case-text-content {
-      max-width: 700px;
+      max-width: 800px;
+      align-self: flex-start;
     }
 
     .case-headline {
@@ -683,55 +613,22 @@
       margin: 0;
     }
 
-    /* Mobile Responsiveness for Work */
-    @media (max-width: 900px) {
-      .work-row {
-        grid-template-columns: 1fr; 
-        gap: 30px;
-        padding: 50px 0;
-      }
-      
-      .work-col-left {
-        position: static;
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        padding-bottom: 20px;
-      }
-
-      .case-meta {
-        border-left: none;
-        padding-left: 0;
-        flex-direction: row;
-        gap: 20px;
-      }
-
-      .work-image-wrapper {
-        max-width: 100%;
-        aspect-ratio: 3/2; /* Standard photo ratio on mobile */
-      }
-    }
-
-    @media (max-width: 600px) {
-      .work-col-left {
+    @media (max-width: 700px) {
+      .work-header {
         flex-direction: column;
-        gap: 15px;
+        align-items: flex-start;
+        gap: 20px;
       }
       .case-meta {
         flex-direction: column;
         gap: 15px;
-        width: 100%;
       }
     }
-
 
     /* --- TESTIMONIALS --- */
     .testimonials-section {
-      padding-top: 80px;
-      padding-bottom: 80px;
+      padding-top: 100px;
+      padding-bottom: 100px;
       background: #1E1E24;
       display: flex;
       flex-direction: column;
@@ -762,7 +659,7 @@
       align-items: center;
       text-align: center;
       pointer-events: none;
-      padding: 0 20px; /* Prevents text hitting edge */
+      padding: 0 20px;
     }
 
     .testimonial-item.active {
@@ -825,39 +722,33 @@
       border-color: #FA38B3;
     }
 
-    /* --- CONTACT --- */
+    /* --- CONTACT (Refactored: Aligned layout) --- */
     #contact {
-      padding: 100px 20px 120px;
+      padding: 120px 20px 140px;
       display: flex;
       flex-direction: column;
       align-items: center;
       background: #FFF8F0;
       color: #1E1E24;
-      max-width: 100%;
-      margin: 0 auto;
+      width: 100%;
     }
 
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    /* Contact uses the content-container logic now for consistency */
+    #contact .content-container {
+      align-items: center; /* Keep email centered for impact */
     }
-
-    .contact-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
-      color: #A52A2A;
-      margin-bottom: 0.8em;
+    
+    /* Override left align for contact title to keep it centered as a "Sign off" */
+    #contact .section-title {
       text-align: center;
-      line-height: 1.3;
+      margin-bottom: 40px;
     }
 
     .contact-email {
       font-size: clamp(1.8rem, 3.5vw, 3rem);
       font-weight: 700;
       text-align: center;
-      word-break: break-all; /* Ensures long emails wrap on tiny screens */
+      word-break: break-all;
     }
 
     .contact-email a {
@@ -883,8 +774,9 @@
     /* General Mobile Fixes */
     @media (max-width: 700px) {
       #intro { padding: 16px; }
-      #about-me, #my-approach, #services, #recent-work, #testimonials { padding: 50px 16px; }
-      #contact { padding: 60px 16px 80px; }
+      #about-me, #my-approach, #services, #recent-work, #testimonials { padding: 60px 16px; }
+      #contact { padding: 80px 16px 100px; }
+      
       .client-logos-container { animation: scroll-mobile 15s linear infinite; width: 200%; }
       @keyframes scroll-mobile {
         0% { transform: translateX(0); }
@@ -925,17 +817,14 @@
       </h1>
     </section>
 
-    <!-- ABOUT ME: Updated to Swiss Grid Layout -->
+    <!-- ABOUT ME: Refactored to Vertical Stack (No Overflow Bug) -->
     <section id="about-me" aria-labelledby="about-me-heading">
-      <div class="about-grid">
-        <!-- Left: Header -->
-        <div class="about-header">
-           <h1 id="about-me-heading" class="section-title">About</h1>
-        </div>
+      <div class="about-content-wrapper">
+         <!-- Title on Top -->
+         <h1 id="about-me-heading" class="section-title">About</h1>
         
-        <!-- Right: Content -->
-        <div class="about-content">
-           <!-- Profile Image (Now Integrated in content flow) -->
+         <!-- Content Below -->
+         <div class="profile-section">
            <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
            
            <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
@@ -1002,16 +891,14 @@
       </div>
     </section>
     
-    <!-- REDESIGNED SWISS EDITORIAL APPROACH -->
+    <!-- APPROACH: Refactored to Vertical Stack -->
     <section id="my-approach" aria-labelledby="my-approach-heading">
-      <div class="approach-grid">
+      <div class="content-container">
         
-        <!-- Left Column: Title -->
-        <div class="approach-header">
-          <h2 id="my-approach-heading" class="section-title">Approach</h2>
-        </div>
+        <!-- Header Top -->
+        <h2 id="my-approach-heading" class="section-title">Approach</h2>
 
-        <!-- Right Column: Content split into thoughts -->
+        <!-- Content Below -->
         <div class="approach-content">
           
           <!-- 1. Context -->
@@ -1033,8 +920,12 @@
       </div>
     </section>
 
+    <!-- SERVICES: Consistent Alignment -->
     <section id="services" class="services-section" aria-labelledby="services-heading">
+      <!-- Header Top -->
       <h2 id="services-heading" class="section-title">How I Help</h2>
+      
+      <!-- Intro Text Left Aligned -->
       <p class="services-intro">
         I help brands and agencies cut through complexity. My work typically falls into three core areas:
       </p>
@@ -1077,7 +968,7 @@
       </div>
     </section>
 
-    <!-- RECENT WORK (SWISS GRID 30/70) -->
+    <!-- RECENT WORK: Refactored to Stacked Layout -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
       <h2 id="recent-work-heading" class="section-title">Selected Work</h2>
       
@@ -1085,8 +976,8 @@
 
         <!-- Case 1: DSV -->
         <article class="work-row">
-          <!-- Left Column: Context & Anchor -->
-          <div class="work-col-left">
+          <!-- Top: Name & Meta -->
+          <div class="work-header">
             <h3 class="client-name">DSV</h3>
             
             <div class="case-meta">
@@ -1101,8 +992,8 @@
             </div>
           </div>
 
-          <!-- Right Column: Visual & Story -->
-          <div class="work-col-right">
+          <!-- Bottom: Visual & Story -->
+          <div class="work-content">
             <div class="work-image-wrapper">
               <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
             </div>
@@ -1118,7 +1009,7 @@
 
         <!-- Case 2: Saxo Bank -->
         <article class="work-row">
-          <div class="work-col-left">
+          <div class="work-header">
             <h3 class="client-name">Saxo</h3>
             
             <div class="case-meta">
@@ -1133,7 +1024,7 @@
             </div>
           </div>
 
-          <div class="work-col-right">
+          <div class="work-content">
             <div class="work-image-wrapper">
               <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
             </div>
@@ -1149,7 +1040,7 @@
 
         <!-- Case 3: Burger King -->
         <article class="work-row">
-          <div class="work-col-left">
+          <div class="work-header">
             <h3 class="client-name">Burger King</h3>
             
             <div class="case-meta">
@@ -1164,7 +1055,7 @@
             </div>
           </div>
 
-          <div class="work-col-right">
+          <div class="work-content">
             <div class="work-image-wrapper">
                <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
             </div>
@@ -1182,7 +1073,7 @@
     </section>
 
     <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
-      <h2 id="testimonials-heading" class="section-title">What Clients Say</h2>
+      <h2 id="testimonials-heading" class="section-title" style="text-align: center;">What Clients Say</h2>
       <div class="testimonials-container">
         <div class="testimonial-item active">
           <p class="testimonial-quote">
@@ -1220,9 +1111,8 @@
     </section>
 
     <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading" class="section-title">Need Strategy Support?</h2>
-      <div class="contact-info">
-        <div class="contact-title">I'm happy to help!</div>
+      <div class="content-container">
+        <h2 id="contact-heading" class="section-title">Need Strategy Support?</h2>
         <div class="contact-email">
           <a href="mailto:emil@strategy-support.com" aria-label="Email Emil at emil@strategy-support.com">emil@strategy-support.com</a>
         </div>
