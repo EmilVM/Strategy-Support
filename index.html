@@ -614,29 +614,50 @@
         margin-bottom: 5px;
       }
     }
-  /* --- RECENT WORK (ARCHIVAL LAYOUT) --- */
+  /* --- RECENT WORK (TOP-ALIGNED LEDGER) --- */
     #recent-work {
       padding: 120px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       background: #FFF8F0; /* Floral White */
       color: #1E1E24;      /* Raisin Black */
+      width: 100%;
       max-width: 100%;
       margin: 0 auto;
+      display: flex;
+      justify-content: center;
     }
 
+    .work-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* The Top Header */
+    .work-header {
+      width: 100%;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(30, 30, 36, 0.3); /* The Main Divider */
+      margin-bottom: 0;
+    }
+
+    #recent-work .section-title {
+      text-align: left;
+      margin-bottom: 0;
+      color: #A52A2A; /* Burnt Red */
+      font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    /* The List */
     .work-list {
       display: flex;
       flex-direction: column;
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
     }
 
     .work-row {
-      padding: 80px 0; 
-      border-top: 1px solid rgba(30, 30, 36, 0.2); /* Hairline divider */
+      padding: 60px 0; 
+      border-bottom: 1px solid rgba(30, 30, 36, 0.15); /* Divider between rows */
       display: grid;
       /* 30% (Name + Image) | 70% (Story + Data) */
       grid-template-columns: 30% 1fr; 
@@ -648,23 +669,21 @@
       transform: translateY(20px);
       transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
+    
+    .work-row:last-child {
+      border-bottom: none; /* No border on the very last item */
+    }
 
     .work-row.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .work-row:last-child {
-      border-bottom: 1px solid rgba(30, 30, 36, 0.2);
-    }
-
-    /* --- LEFT COLUMN: The "File" (Sticky) --- */
+    /* --- LEFT COLUMN: Identity --- */
     .work-col-left {
       display: flex;
       flex-direction: column;
-      gap: 30px; /* Space between Name and Image */
-      position: sticky; 
-      top: 40px;
+      gap: 30px;
     }
 
     .client-name {
@@ -677,15 +696,14 @@
       letter-spacing: -0.02em;
     }
 
-    /* The Reference Image */
     .work-image-wrapper {
       width: 100%;
-      max-width: 350px; /* Ensure it doesn't get massive on wide screens */
-      aspect-ratio: 4/3; /* Standard archival ratio */
+      max-width: 100%; 
+      aspect-ratio: 4/3; /* Archival Ratio */
       overflow: hidden;
       background: #E5E5E5;
       position: relative;
-      border: 1px solid rgba(30, 30, 36, 0.1); /* Thin border frame */
+      border: 1px solid rgba(30, 30, 36, 0.1);
     }
 
     .work-image {
@@ -693,16 +711,16 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.8s ease, filter 0.8s ease;
-      filter: grayscale(100%); /* Strict black & white */
+      filter: grayscale(100%);
     }
 
-    /* Hover: Color reveal */
+    /* Hover: Reveal Color */
     .work-row:hover .work-image {
       transform: scale(1.03);
       filter: grayscale(0%);
     }
 
-    /* --- RIGHT COLUMN: The "Report" --- */
+    /* --- RIGHT COLUMN: Narrative --- */
     .work-col-right {
       display: flex;
       flex-direction: column;
@@ -732,11 +750,11 @@
       margin: 0;
     }
 
-    /* The Footer / Meta Data */
+    /* Meta Data Footer */
     .case-meta {
-      margin-top: 20px;
+      margin-top: 10px;
       padding-top: 30px;
-      border-top: 1px solid rgba(30, 30, 36, 0.1); /* Internal separation line */
+      border-top: 1px solid rgba(30, 30, 36, 0.1);
       display: flex;
       flex-direction: row;
       gap: 60px;
@@ -764,8 +782,13 @@
       line-height: 1.4;
     }
 
-    /* Mobile Responsiveness for Work */
+    /* Mobile Responsiveness */
     @media (max-width: 900px) {
+      .work-header {
+        border-bottom: 1px solid rgba(30, 30, 36, 0.2);
+        padding-bottom: 20px;
+      }
+
       .work-row {
         grid-template-columns: 1fr; 
         gap: 40px;
@@ -773,14 +796,10 @@
       }
       
       .work-col-left {
-        position: static;
-        flex-direction: column;
         gap: 20px;
       }
 
       .work-image-wrapper {
-        width: 100%; 
-        max-width: 100%;
         aspect-ratio: 16/9; /* Wider on mobile */
       }
 
@@ -789,7 +808,6 @@
         gap: 20px;
       }
     }
-
     /* --- TESTIMONIALS --- */
     .testimonials-section {
       padding-top: 80px;
@@ -1238,109 +1256,108 @@
       </div>
     </section>
 
-    <!-- RECENT WORK (ARCHIVAL STYLE) -->
+   <!-- RECENT WORK (TOP-ALIGNED LEDGER) -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
-      <h2 id="recent-work-heading" class="section-title">Selected Work</h2>
-      
-      <div class="work-list">
+      <div class="work-container">
+        
+        <!-- Top Header -->
+        <div class="work-header">
+          <h2 id="recent-work-heading" class="section-title">Selected Work</h2>
+        </div>
+        
+        <div class="work-list">
 
-        <!-- Case 1: DSV -->
-        <article class="work-row">
-          <!-- Left Column: Name & Image -->
-          <div class="work-col-left">
-            <h3 class="client-name">DSV</h3>
-            <div class="work-image-wrapper">
-              <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
+          <!-- Case 1: DSV -->
+          <article class="work-row">
+            <div class="work-col-left">
+              <h3 class="client-name">DSV</h3>
+              <div class="work-image-wrapper">
+                <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
+              </div>
             </div>
-          </div>
 
-          <!-- Right Column: Story & Meta -->
-          <div class="work-col-right">
-            <div class="case-text-content">
-              <h4 class="case-headline">Unifying 90 markets for the world’s largest transport company</h4>
-              <p class="case-body">
-                DSV is the world's largest logistics company. I'm working with the Global CMO to develop a marketing strategy that unifies six industry verticals and four product divisions into a coherent approach.
-              </p>
-              
-              <!-- Meta moved to bottom of text -->
-              <div class="case-meta">
-                <div class="meta-group">
-                  <span class="meta-label">Challenge</span>
-                  <span class="meta-value">Fragmented global messaging</span>
-                </div>
-                <div class="meta-group">
-                  <span class="meta-label">Solution</span>
-                  <span class="meta-value">Unified B2B framework</span>
+            <div class="work-col-right">
+              <div class="case-text-content">
+                <h4 class="case-headline">Unifying 90 markets for the world’s largest transport company</h4>
+                <p class="case-body">
+                  DSV is the world's largest logistics company. I'm working with the Global CMO to develop a marketing strategy that unifies six industry verticals and four product divisions into a coherent approach.
+                </p>
+                
+                <div class="case-meta">
+                  <div class="meta-group">
+                    <span class="meta-label">Challenge</span>
+                    <span class="meta-value">Fragmented global messaging</span>
+                  </div>
+                  <div class="meta-group">
+                    <span class="meta-label">Solution</span>
+                    <span class="meta-value">Unified B2B framework</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Case 2: Saxo Bank -->
-        <article class="work-row">
-          <!-- Left Column -->
-          <div class="work-col-left">
-            <h3 class="client-name">Saxo</h3>
-            <div class="work-image-wrapper">
-              <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
+          <!-- Case 2: Saxo Bank -->
+          <article class="work-row">
+            <div class="work-col-left">
+              <h3 class="client-name">Saxo</h3>
+              <div class="work-image-wrapper">
+                <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
+              </div>
             </div>
-          </div>
 
-          <!-- Right Column -->
-          <div class="work-col-right">
-            <div class="case-text-content">
-              <h4 class="case-headline">Giving money a voice in a generic category</h4>
-              <p class="case-body">
-                In a crowded, price-driven category full of bland ads, Saxo needed to stand out. We dramatised the product benefit by asking: if your money had a choice, who would it choose?
-              </p>
+            <div class="work-col-right">
+              <div class="case-text-content">
+                <h4 class="case-headline">Giving money a voice in a generic category</h4>
+                <p class="case-body">
+                  In a crowded, price-driven category full of bland ads, Saxo needed to stand out. We dramatised the product benefit by asking: if your money had a choice, who would it choose?
+                </p>
 
-              <div class="case-meta">
-                <div class="meta-group">
-                  <span class="meta-label">Insight</span>
-                  <span class="meta-value">Money is for activating</span>
-                </div>
-                <div class="meta-group">
-                  <span class="meta-label">Platform</span>
-                  <span class="meta-value">'Be Invested'</span>
+                <div class="case-meta">
+                  <div class="meta-group">
+                    <span class="meta-label">Insight</span>
+                    <span class="meta-value">Money is for activating</span>
+                  </div>
+                  <div class="meta-group">
+                    <span class="meta-label">Platform</span>
+                    <span class="meta-value">'Be Invested'</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Case 3: Burger King -->
-        <article class="work-row">
-          <!-- Left Column -->
-          <div class="work-col-left">
-            <h3 class="client-name">Burger King</h3>
-            <div class="work-image-wrapper">
-               <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
+          <!-- Case 3: Burger King -->
+          <article class="work-row">
+            <div class="work-col-left">
+              <h3 class="client-name">Burger King</h3>
+              <div class="work-image-wrapper">
+                 <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
+              </div>
             </div>
-          </div>
 
-          <!-- Right Column -->
-          <div class="work-col-right">
-            <div class="case-text-content">
-              <h4 class="case-headline">Turning global strategy into local rebellion</h4>
-              <p class="case-body">
-                The global 'Be Your Way' platform risked feeling generic in the UK. We positioned Burger King as the destination for cheeky detours, tapping into British youth culture.
-              </p>
+            <div class="work-col-right">
+              <div class="case-text-content">
+                <h4 class="case-headline">Turning global strategy into local rebellion</h4>
+                <p class="case-body">
+                  The global 'Be Your Way' platform risked feeling generic in the UK. We positioned Burger King as the destination for cheeky detours, tapping into British youth culture.
+                </p>
 
-              <div class="case-meta">
-                <div class="meta-group">
-                  <span class="meta-label">Insight</span>
-                  <span class="meta-value">Fast food is rebellion</span>
-                </div>
-                <div class="meta-group">
-                  <span class="meta-label">Strategy</span>
-                  <span class="meta-value">Cheeky Detours</span>
+                <div class="case-meta">
+                  <div class="meta-group">
+                    <span class="meta-label">Insight</span>
+                    <span class="meta-value">Fast food is rebellion</span>
+                  </div>
+                  <div class="meta-group">
+                    <span class="meta-label">Strategy</span>
+                    <span class="meta-value">Cheeky Detours</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </article>
+          </article>
 
+        </div>
       </div>
     </section>
 
