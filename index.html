@@ -614,14 +614,14 @@
         margin-bottom: 5px;
       }
     }
-    /* --- RECENT WORK (SWISS GRID 30/70) --- */
+  /* --- RECENT WORK (ARCHIVAL LAYOUT) --- */
     #recent-work {
-      padding: 80px 20px;
+      padding: 120px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #FFF8F0;
-      color: #1E1E24;
+      background: #FFF8F0; /* Floral White */
+      color: #1E1E24;      /* Raisin Black */
       max-width: 100%;
       margin: 0 auto;
     }
@@ -635,10 +635,10 @@
     }
 
     .work-row {
-      padding: 70px 0; 
-      border-top: 1px solid rgba(30, 30, 36, 0.2);
+      padding: 80px 0; 
+      border-top: 1px solid rgba(30, 30, 36, 0.2); /* Hairline divider */
       display: grid;
-      /* THE SWISS GRID: Left Col (30%) | Right Col (70%) */
+      /* 30% (Name + Image) | 70% (Story + Data) */
       grid-template-columns: 30% 1fr; 
       gap: 60px;
       align-items: start;
@@ -658,11 +658,11 @@
       border-bottom: 1px solid rgba(30, 30, 36, 0.2);
     }
 
-    /* Left Column: Anchor/Context */
+    /* --- LEFT COLUMN: The "File" (Sticky) --- */
     .work-col-left {
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 30px; /* Space between Name and Image */
       position: sticky; 
       top: 40px;
     }
@@ -671,55 +671,21 @@
       font-family: 'Vollkorn', serif;
       font-size: clamp(2rem, 3vw, 3.5rem);
       font-weight: 700;
-      color: #A52A2A;
+      color: #A52A2A; /* Burnt Red */
       line-height: 1;
       margin: 0;
       letter-spacing: -0.02em;
     }
 
-    .case-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      font-size: 0.9rem;
-      border-left: 2px solid rgba(165, 42, 42, 0.3);
-      padding-left: 20px;
-    }
-
-    .meta-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .meta-label {
-      font-weight: 700;
-      color: #A52A2A;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      opacity: 0.8;
-    }
-
-    .meta-value {
-      color: #1E1E24;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    /* Right Column: Visuals/Story */
-    .work-col-right {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
+    /* The Reference Image */
     .work-image-wrapper {
       width: 100%;
-      aspect-ratio: 16/10; 
+      max-width: 350px; /* Ensure it doesn't get massive on wide screens */
+      aspect-ratio: 4/3; /* Standard archival ratio */
       overflow: hidden;
       background: #E5E5E5;
       position: relative;
+      border: 1px solid rgba(30, 30, 36, 0.1); /* Thin border frame */
     }
 
     .work-image {
@@ -727,24 +693,35 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.8s ease, filter 0.8s ease;
-      filter: grayscale(100%) contrast(1.1); 
+      filter: grayscale(100%); /* Strict black & white */
     }
 
+    /* Hover: Color reveal */
     .work-row:hover .work-image {
       transform: scale(1.03);
-      filter: grayscale(0%) contrast(1); 
+      filter: grayscale(0%);
+    }
+
+    /* --- RIGHT COLUMN: The "Report" --- */
+    .work-col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
 
     .case-text-content {
-      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 750px;
     }
 
     .case-headline {
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       font-weight: 400;
       color: #1E1E24;
       line-height: 1.2;
-      margin: 0 0 20px 0;
+      margin: 0;
     }
 
     .case-body {
@@ -755,49 +732,63 @@
       margin: 0;
     }
 
+    /* The Footer / Meta Data */
+    .case-meta {
+      margin-top: 20px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(30, 30, 36, 0.1); /* Internal separation line */
+      display: flex;
+      flex-direction: row;
+      gap: 60px;
+      font-size: 0.9rem;
+    }
+
+    .meta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .meta-label {
+      font-weight: 700;
+      color: #A52A2A; /* Burnt Red */
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+    }
+
+    .meta-value {
+      color: #1E1E24;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
     /* Mobile Responsiveness for Work */
     @media (max-width: 900px) {
       .work-row {
         grid-template-columns: 1fr; 
-        gap: 30px;
+        gap: 40px;
         padding: 50px 0;
       }
       
       .work-col-left {
         position: static;
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        padding-bottom: 20px;
-      }
-
-      .case-meta {
-        border-left: none;
-        padding-left: 0;
-        flex-direction: row;
+        flex-direction: column;
         gap: 20px;
       }
 
       .work-image-wrapper {
-        aspect-ratio: 4/3;
+        width: 100%; 
+        max-width: 100%;
+        aspect-ratio: 16/9; /* Wider on mobile */
       }
-    }
 
-    @media (max-width: 600px) {
-      .work-col-left {
-        flex-direction: column;
-        gap: 15px;
-      }
       .case-meta {
         flex-direction: column;
-        gap: 15px;
-        width: 100%;
+        gap: 20px;
       }
     }
-
 
     /* --- TESTIMONIALS --- */
     .testimonials-section {
@@ -1163,7 +1154,7 @@
       </div>
     </section>
 
-    <!-- RECENT WORK (SWISS GRID 30/70) -->
+    <!-- RECENT WORK (ARCHIVAL STYLE) -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
       <h2 id="recent-work-heading" class="section-title">Selected Work</h2>
       
@@ -1171,95 +1162,97 @@
 
         <!-- Case 1: DSV -->
         <article class="work-row">
-          <!-- Left Column: Context & Anchor -->
+          <!-- Left Column: Name & Image -->
           <div class="work-col-left">
             <h3 class="client-name">DSV</h3>
-            
-            <div class="case-meta">
-              <div class="meta-group">
-                <span class="meta-label">Challenge</span>
-                <span class="meta-value">Fragmented global messaging</span>
-              </div>
-              <div class="meta-group">
-                <span class="meta-label">Solution</span>
-                <span class="meta-value">Unified B2B framework</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: Visual & Story -->
-          <div class="work-col-right">
             <div class="work-image-wrapper">
               <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
             </div>
-            
+          </div>
+
+          <!-- Right Column: Story & Meta -->
+          <div class="work-col-right">
             <div class="case-text-content">
               <h4 class="case-headline">Unifying 90 markets for the world’s largest transport company</h4>
               <p class="case-body">
                 DSV is the world's largest logistics company. I'm working with the Global CMO to develop a marketing strategy that unifies six industry verticals and four product divisions into a coherent approach.
               </p>
+              
+              <!-- Meta moved to bottom of text -->
+              <div class="case-meta">
+                <div class="meta-group">
+                  <span class="meta-label">Challenge</span>
+                  <span class="meta-value">Fragmented global messaging</span>
+                </div>
+                <div class="meta-group">
+                  <span class="meta-label">Solution</span>
+                  <span class="meta-value">Unified B2B framework</span>
+                </div>
+              </div>
             </div>
           </div>
         </article>
 
         <!-- Case 2: Saxo Bank -->
         <article class="work-row">
+          <!-- Left Column -->
           <div class="work-col-left">
             <h3 class="client-name">Saxo</h3>
-            
-            <div class="case-meta">
-              <div class="meta-group">
-                <span class="meta-label">Insight</span>
-                <span class="meta-value">Money is for activating</span>
-              </div>
-              <div class="meta-group">
-                <span class="meta-label">Platform</span>
-                <span class="meta-value">'Be Invested'</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-col-right">
             <div class="work-image-wrapper">
               <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
             </div>
-            
+          </div>
+
+          <!-- Right Column -->
+          <div class="work-col-right">
             <div class="case-text-content">
               <h4 class="case-headline">Giving money a voice in a generic category</h4>
               <p class="case-body">
                 In a crowded, price-driven category full of bland ads, Saxo needed to stand out. We dramatised the product benefit by asking: if your money had a choice, who would it choose?
               </p>
+
+              <div class="case-meta">
+                <div class="meta-group">
+                  <span class="meta-label">Insight</span>
+                  <span class="meta-value">Money is for activating</span>
+                </div>
+                <div class="meta-group">
+                  <span class="meta-label">Platform</span>
+                  <span class="meta-value">'Be Invested'</span>
+                </div>
+              </div>
             </div>
           </div>
         </article>
 
         <!-- Case 3: Burger King -->
         <article class="work-row">
+          <!-- Left Column -->
           <div class="work-col-left">
             <h3 class="client-name">Burger King</h3>
-            
-            <div class="case-meta">
-              <div class="meta-group">
-                <span class="meta-label">Insight</span>
-                <span class="meta-value">Fast food is rebellion</span>
-              </div>
-              <div class="meta-group">
-                <span class="meta-label">Strategy</span>
-                <span class="meta-value">Cheeky Detours</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="work-col-right">
             <div class="work-image-wrapper">
                <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
             </div>
-            
+          </div>
+
+          <!-- Right Column -->
+          <div class="work-col-right">
             <div class="case-text-content">
               <h4 class="case-headline">Turning global strategy into local rebellion</h4>
               <p class="case-body">
                 The global 'Be Your Way' platform risked feeling generic in the UK. We positioned Burger King as the destination for cheeky detours, tapping into British youth culture.
               </p>
+
+              <div class="case-meta">
+                <div class="meta-group">
+                  <span class="meta-label">Insight</span>
+                  <span class="meta-value">Fast food is rebellion</span>
+                </div>
+                <div class="meta-group">
+                  <span class="meta-label">Strategy</span>
+                  <span class="meta-value">Cheeky Detours</span>
+                </div>
+              </div>
             </div>
           </div>
         </article>
