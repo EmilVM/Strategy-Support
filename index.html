@@ -489,6 +489,132 @@
       }
     }
 
+    /* --- SWISS STYLE WORK LEDGER (With Images) --- */
+    .work-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 1400px; /* Wider to fit images */
+      margin: 0 auto;
+    }
+
+    .work-row {
+      padding: 60px 0;
+      border-top: 1px solid rgba(30, 30, 36, 0.2);
+      display: grid;
+      /* THE MAGIC GRID: Client (20%) | Image (30%) | Content (50%) */
+      grid-template-columns: 1fr 1.5fr 2.5fr; 
+      gap: 60px;
+      align-items: start;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* The visible state triggered by JS */
+    .work-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .work-row:last-child {
+      border-bottom: 1px solid rgba(30, 30, 36, 0.2);
+    }
+
+    .client-name {
+      font-family: 'Vollkorn', serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 700;
+      color: #A52A2A;
+      line-height: 1;
+      margin: 0;
+      position: sticky; /* Keeps name visible if text is long */
+      top: 40px; 
+    }
+
+    /* NEW IMAGE STYLING */
+    .work-image-wrapper {
+      width: 100%;
+      /* Aspect ratio of 4:3 creates a classic editorial look */
+      aspect-ratio: 4/3; 
+      overflow: hidden;
+      background: #E5E5E5; /* Placeholder color while loading */
+      position: relative;
+    }
+
+    .work-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+      filter: grayscale(100%); /* Makes it feel "Swiss" & serious */
+    }
+
+    .work-row:hover .work-image {
+      transform: scale(1.05); /* Subtle zoom on hover */
+      filter: grayscale(0%); /* Color comes back on hover */
+    }
+
+    .case-details {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .case-headline {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400;
+      color: #1E1E24;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .case-body {
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      line-height: 1.6;
+      color: #1E1E24;
+      opacity: 0.9;
+      max-width: 600px;
+    }
+
+    /* The Case Tags (Problem/Solution) */
+    .case-meta {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 20px;
+      font-size: 0.95rem;
+      border-left: 2px solid #A52A2A;
+      padding-left: 20px;
+    }
+
+    .meta-label {
+      font-weight: 700;
+      color: #A52A2A;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Mobile Responsiveness for Work */
+    @media (max-width: 900px) {
+      .work-row {
+        grid-template-columns: 1fr; /* Stack everything */
+        gap: 30px;
+        padding: 40px 0;
+      }
+      
+      .client-name {
+        position: static;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 15px;
+      }
+
+      .work-image-wrapper {
+        aspect-ratio: 16/9; /* Wider on mobile */
+      }
+    }
+
     /* Testimonials Section */
     .testimonials-section {
       padding-top: 80px;
@@ -632,111 +758,6 @@
       color: #FA38B3;
     }
 
-    /* --- SWISS STYLE WORK LEDGER (New) --- */
-    .work-list {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .work-row {
-      padding: 60px 0;
-      border-top: 1px solid rgba(30, 30, 36, 0.2); /* Dark subtle line */
-      display: grid;
-      grid-template-columns: 1fr 2fr; /* 1/3 Client Name, 2/3 Content */
-      gap: 40px;
-      align-items: start;
-      /* Animation Properties Added Here */
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* This state is triggered by the JS observer */
-    .work-row.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .work-row:last-child {
-      border-bottom: 1px solid rgba(30, 30, 36, 0.2);
-    }
-
-    /* The Client Name (Left Column) */
-    .client-name {
-      font-family: 'Vollkorn', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 700;
-      color: #A52A2A; /* Burnt Red */
-      line-height: 1;
-      margin: 0;
-    }
-
-    /* The Case Content (Right Column) */
-    .case-details {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .case-headline {
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 600;
-      color: #1E1E24;
-      line-height: 1.2;
-      margin: 0;
-    }
-
-    .case-body {
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      line-height: 1.6;
-      color: #1E1E24;
-      opacity: 0.9;
-      max-width: 700px;
-    }
-
-    /* The Case Tags (Problem/Solution) */
-    .case-meta {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 10px 20px;
-      font-size: 0.95rem;
-      border-left: 2px solid #A52A2A;
-      padding-left: 20px;
-    }
-
-    .meta-label {
-      font-weight: 700;
-      color: #A52A2A;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 800px) {
-      .work-row {
-        grid-template-columns: 1fr; /* Stack vertically */
-        gap: 20px;
-        padding: 40px 0;
-      }
-      
-      .client-name {
-        font-size: 2.5rem;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        padding-bottom: 15px;
-        margin-bottom: 10px;
-      }
-      
-      .case-meta {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-    }
-    
     /* Mobile Responsive fixes */
     @media (max-width: 700px) {
       #intro { padding: 16px; }
@@ -924,6 +945,7 @@
       </div>
     </section>
 
+    <!-- UPDATED RECENT WORK WITH IMAGES -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
       <h2 id="recent-work-heading" class="section-title">Selected Work</h2>
       
@@ -932,6 +954,12 @@
         <!-- Case 1: DSV -->
         <div class="work-row">
           <h3 class="client-name">DSV</h3>
+          
+          <!-- IMAGE COLUMN -->
+          <div class="work-image-wrapper">
+            <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
+          </div>
+          
           <div class="case-details">
             <h4 class="case-headline">Unifying 90 markets for the world’s largest transport company</h4>
             <p class="case-body">
@@ -939,9 +967,9 @@
             </p>
             <div class="case-meta">
               <span class="meta-label">Challenge</span>
-              <span>Fragmented messaging across global, regional, and local stakeholders.</span>
+              <span>Fragmented messaging across global markets.</span>
               <span class="meta-label">Solution</span>
-              <span>A unified framework grounded in B2B purchase drivers.</span>
+              <span>A unified framework grounded in B2B drivers.</span>
             </div>
           </div>
         </div>
@@ -949,16 +977,21 @@
         <!-- Case 2: Saxo Bank -->
         <div class="work-row">
           <h3 class="client-name">Saxo</h3>
+          
+          <div class="work-image-wrapper">
+            <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
+          </div>
+          
           <div class="case-details">
             <h4 class="case-headline">Giving money a voice in a generic category</h4>
             <p class="case-body">
-              In a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in Asian, European, and American markets simultaneously.
+              In a crowded, price-driven category full of bland ads, Saxo needed to stand out. We dramatised the product benefit by asking: if your money had a choice, who would it choose?
             </p>
             <div class="case-meta">
               <span class="meta-label">Insight</span>
               <span>Money isn't just for saving; it's for activating.</span>
               <span class="meta-label">Platform</span>
-              <span>'Be Invested' – If your money had a choice, it would choose Saxo.</span>
+              <span>'Be Invested'</span>
             </div>
           </div>
         </div>
@@ -966,16 +999,21 @@
         <!-- Case 3: Burger King -->
         <div class="work-row">
           <h3 class="client-name">Burger King</h3>
+          
+          <div class="work-image-wrapper">
+             <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
+          </div>
+          
           <div class="case-details">
             <h4 class="case-headline">Turning global strategy into local rebellion</h4>
             <p class="case-body">
-              The global 'Be Your Way' platform risked feeling generic in the UK. We needed to land the platform in a way that felt authentically Burger King and distinctly British.
+              The global 'Be Your Way' platform risked feeling generic in the UK. We positioned Burger King as the destination for cheeky detours, tapping into British youth culture.
             </p>
             <div class="case-meta">
               <span class="meta-label">Insight</span>
-              <span>British youth manage expectations all day. Fast food is their moment of cheeky rebellion.</span>
+              <span>Fast food is a moment of cheeky rebellion.</span>
               <span class="meta-label">Strategy</span>
-              <span>Position Burger King as the destination for cheeky detours.</span>
+              <span>Cheeky Detours.</span>
             </div>
           </div>
         </div>
@@ -1080,7 +1118,6 @@
       type();
 
       // Fade-in animation for service and case items as user scrolls
-      // NOTE: I updated this to include .service-row so your new list animates!
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
