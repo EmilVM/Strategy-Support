@@ -781,7 +781,47 @@
       font-weight: 500;
       line-height: 1.4;
     }
+/* --- NEW NARRATIVE STACK (Added for Problem/Insight/Solution) --- */
+    .narrative-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-top: 30px;
+      padding-top: 30px;
+      /* A subtle divider line separating Headline from Narrative */
+      border-top: 1px solid rgba(30, 30, 36, 0.15);
+    }
 
+    .narrative-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .narrative-label {
+      font-family: 'Vollkorn', serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: #A52A2A; /* Burnt Red */
+      opacity: 0.9;
+    }
+
+    .narrative-text {
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      line-height: 1.6;
+      color: #1E1E24;
+      margin: 0;
+    }
+
+    @media (max-width: 700px) {
+      .narrative-stack {
+        gap: 20px;
+        margin-top: 20px;
+        padding-top: 20px;
+      }
+    }
     /* Mobile Responsiveness */
     @media (max-width: 900px) {
       .work-header {
@@ -1281,8 +1321,8 @@
                 <h4 class="case-headline">I'm making the world's largest transport company move as one</h4>
                 <p class="case-body">
                 DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
-<br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
-<br>I'm also supporting organisational design, process development, and AI implementation.
+<br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
+<br><br>I'm also supporting organisational design, process development, and AI implementation.
                 </p>
               </div>
             </div>
@@ -1299,25 +1339,37 @@
 
             <div class="work-col-right">
               <div class="case-text-content">
-                <h4 class="case-headline">Giving money a voice in a generic category</h4>
-                <p class="case-body">
-                  In a crowded, price-driven category full of bland ads, Saxo needed to stand out. We dramatised the product benefit by asking: if your money had a choice, who would it choose?
-                </p>
+                <!-- Main Headline -->
+                <h4 class="case-headline">I made Saxo Bank give money a voice in a category that all sounds the same</h4>
+                
+                <!-- New Narrative Stack -->
+                <div class="narrative-stack">
+                  
+                  <div class="narrative-item">
+                    <span class="narrative-label">Problem</span>
+                    <p class="narrative-text">
+                      Saxo wanted to grow brand awareness and preference among experienced investors and traders globally. But in a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in a way that felt equally relevant in Asian, European and American markets.
+                    </p>
+                  </div>
 
-                <div class="case-meta">
-                  <div class="meta-group">
-                    <span class="meta-label">Insight</span>
-                    <span class="meta-value">Money is for activating</span>
+                  <div class="narrative-item">
+                    <span class="narrative-label">Insight</span>
+                    <p class="narrative-text">
+                      For investors, money isn’t just something to save, it’s something to activate. And with more tradable instruments than competitors, Saxo gives your money more things to do.
+                    </p>
                   </div>
-                  <div class="meta-group">
-                    <span class="meta-label">Platform</span>
-                    <span class="meta-value">'Be Invested'</span>
+
+                  <div class="narrative-item">
+                    <span class="narrative-label">Solution</span>
+                    <p class="narrative-text">
+                      Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.
+                    </p>
                   </div>
+
                 </div>
               </div>
             </div>
           </article>
-
           <!-- Case 3: Burger King -->
           <article class="work-row">
             <div class="work-col-left">
@@ -1329,20 +1381,33 @@
 
             <div class="work-col-right">
               <div class="case-text-content">
-                <h4 class="case-headline">Turning global strategy into local rebellion</h4>
-                <p class="case-body">
-                  The global 'Be Your Way' platform risked feeling generic in the UK. We positioned Burger King as the destination for cheeky detours, tapping into British youth culture.
-                </p>
+                <!-- Main Headline -->
+                <h4 class="case-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
+                
+                <!-- New Narrative Stack -->
+                <div class="narrative-stack">
+                  
+                  <div class="narrative-item">
+                    <span class="narrative-label">Problem</span>
+                    <p class="narrative-text">
+                      Burger King had launched a new global brand strategy pivoting Have It Your Way to Be Your Way. But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported.
+                    </p>
+                  </div>
 
-                <div class="case-meta">
-                  <div class="meta-group">
-                    <span class="meta-label">Insight</span>
-                    <span class="meta-value">Fast food is rebellion</span>
+                  <div class="narrative-item">
+                    <span class="narrative-label">Insight</span>
+                    <p class="narrative-text">
+                      Burdened by expectations, British youth feel most themselves when being cheeky – taking what's expected and adding their own twist.
+                    </p>
                   </div>
-                  <div class="meta-group">
-                    <span class="meta-label">Strategy</span>
-                    <span class="meta-value">Cheeky Detours</span>
+
+                  <div class="narrative-item">
+                    <span class="narrative-label">Solution</span>
+                    <p class="narrative-text">
+                      Position Burger King as the destination of cheeky detours.
+                    </p>
                   </div>
+
                 </div>
               </div>
             </div>
