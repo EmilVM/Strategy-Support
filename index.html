@@ -29,7 +29,7 @@
 
     main {
       width: 100%;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
     /* --- SHARED TYPOGRAPHY --- */
@@ -37,17 +37,19 @@
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 700;
       margin-bottom: 60px;
-      text-align: left;
+      text-align: left; /* Swiss Style: Left Align Default */
       line-height: 1.1;
       letter-spacing: -0.02em;
     }
     
-    /* Section title colors */
+    /* Section title colors by background */
+    #my-approach .section-title,
     #recent-work .section-title,
     #contact .section-title {
       color: #A52A2A; /* Burnt Red */
     }
 
+    #about-me .section-title,
     #services .section-title {
       color: #FFF8F0;
     }
@@ -143,152 +145,116 @@
       50% { opacity: 1; }
     }
 
-    /* --- NEW LEDGER / MANIFESTO LAYOUT (About & Approach) --- */
-    
-    .ledger-section {
+/* --- ABOUT ME (Refactored to Swiss Grid) --- */
+    #about-me {
+      padding: 100px 20px;
+      background: #A52A2A;
+      color: #FFF8F0;
+      width: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-grid {
       width: 100%;
       max-width: 1200px;
-      margin: 0 auto;
+      display: grid;
+      /* Swiss Grid: 30% Title | 70% Content */
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      align-items: start;
     }
 
-    /* The Meta Header: Divider line with small labels */
-    .ledger-header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-bottom: 15px;
-      border-bottom: 1px solid currentColor; /* Inherits color from section */
-      margin-bottom: 50px;
-      opacity: 0.7;
-    }
-
-    .ledger-label {
-      font-family: 'Vollkorn', serif;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-
-    .ledger-meta-group {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .ledger-meta-item {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 500;
-    }
-
-    .approach-list-horizontal {
-      list-style: none;
-      display: flex;
-      gap: 40px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .approach-list-horizontal li {
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Main Content Container */
-    .ledger-content {
+    .about-header {
+      position: sticky;
+      top: 40px;
       display: flex;
       flex-direction: column;
-      /* Animation Prep */
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      gap: 30px;
+      height: fit-content;
     }
 
-    .ledger-content.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Visual Anchor (Profile Pic) */
-    .about-image-row {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 40px;
-    }
-
-    .ledger-profile-pic {
-      width: 100px;
-      height: 100px;
+    /* New Profile Picture Logic (Left Column) */
+    .profile-picture {
+      width: 180px;
+      height: 180px;
       object-fit: cover;
       border: 1px solid #FFF8F0;
       filter: grayscale(100%);
       transition: filter 0.4s ease;
       display: block;
     }
-    
-    .ledger-profile-pic:hover {
+
+    .profile-picture:hover {
       filter: grayscale(0%);
     }
 
-    /* Massive Headlines */
-    .ledger-headline {
-      font-size: clamp(2.2rem, 4.5vw, 4rem);
+    /* New Meta Data Logic (Left Column) */
+    .about-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      border-top: 1px solid rgba(255, 248, 240, 0.3);
+      padding-top: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.6;
+      color: #FFF8F0;
+    }
+
+    .meta-value {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #FFF8F0;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-left: 40px;
+      border-left: 1px solid rgba(255, 248, 240, 0.3);
+      /* --- FIX FOR OVERFLOWING TEXT --- */
+      min-width: 0; 
+      width: 100%;
+    }
+
+    .intro-heading {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 400;
       line-height: 1.1;
-      max-width: 950px;
-      margin-bottom: 50px;
-    }
-    
-    /* Editorial Two-Column Text */
-    .ledger-body-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
+      margin: 0;
     }
 
-    .ledger-text {
+    .intro-text {
       font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-      line-height: 1.6;
+      line-height: 1.5;
+      max-width: 750px;
       opacity: 0.9;
+      overflow-wrap: break-word;
     }
 
-    /* --- SECTION SPECIFICS --- */
+    @media (max-width: 600px) {
+      .intro-text br { display: none; }
+    }
 
-    #about-me {
-      padding: 120px 20px;
-      background: #A52A2A;
+    #about-me .intro-heading,
+    #about-me .intro-text,
+    #about-me > p {
       color: #FFF8F0;
-      display: flex;
-      justify-content: center;
     }
 
-    #my-approach {
-      padding: 120px 20px;
-      background: #FFF8F0;
-      color: #A52A2A;
-      display: flex;
-      justify-content: center;
-    }
-
-    #my-approach .ledger-header {
-      border-color: rgba(165, 42, 42, 0.3);
-    }
-    
-    /* Client Carousel Styles (kept from original) */
-    .client-section-wrapper {
-      margin-top: 80px;
-      border-top: 1px solid rgba(255, 248, 240, 0.3);
-      padding-top: 40px;
-    }
-
+    /* Client Tabs */
     .client-tabs {
       display: flex;
       gap: 30px;
@@ -296,6 +262,8 @@
       align-items: center;
       margin-bottom: 30px;
       flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 248, 240, 0.2);
+      padding-bottom: 10px;
     }
 
     .client-tab {
@@ -314,69 +282,192 @@
       color: #FFF8F0;
     }
 
-    .client-tab:hover, .client-tab:focus { opacity: 0.9; }
-    .client-tab.active { opacity: 1; font-weight: 600; }
+    .client-tab:hover,
+    .client-tab:focus { opacity: 0.9; }
+
+    .client-tab.active {
+      opacity: 1;
+      font-weight: 600;
+    }
+
     .client-tab.active::after {
       content: '';
       position: absolute;
-      bottom: -8px;
+      bottom: -12px;
       left: 0;
       width: 100%;
       height: 2px;
       background: #FA38B3;
     }
 
-    .carousel-wrapper { width: 100%; position: relative; overflow: hidden; }
-    .carousel-container { position: relative; padding: 20px 0; }
-    .carousel-content { position: relative; min-height: 80px; overflow: hidden; }
+    /* Carousel Wrapper Fix */
+    .carousel-wrapper {
+      width: 100%;
+      position: relative;
+      overflow: hidden; /* This cuts off the overflow */
+    }
+
+    .carousel-container {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .carousel-content {
+      position: relative;
+      min-height: 100px;
+      overflow: hidden;
+    }
+
     .client-group { display: none; width: 100%; }
     .client-group.active { display: block; }
-    .client-logos-container { display: flex; animation: scroll 30s linear infinite; width: max-content; min-width: 100%; }
-    
+
+    .client-logos-container {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      width: max-content;
+      min-width: 100%;
+    }
+
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(calc(-50%)); }
     }
 
     .client-logo {
-      height: 50px;
+      height: 60px;
       margin-right: 50px;
       filter: brightness(0) invert(1);
       opacity: 0.8;
       transition: opacity 0.3s, transform 0.3s;
       flex-shrink: 0;
     }
-    .client-logo:hover { opacity: 1; transform: scale(1.05); }
 
-    /* Ledger Mobile Responsiveness */
+    .client-logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* --- APPROACH (SWISS EDITORIAL) --- */
+    #my-approach {
+      padding: 120px 20px;
+      background: #FFF8F0;
+      color: #1E1E24;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .approach-grid {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .approach-header {
+      position: sticky;
+      top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      height: fit-content;
+    }
+
+    #my-approach .section-title { margin-bottom: 0; }
+
+    /* New Approach List Logic (Left Column) */
+    .approach-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      border-top: 1px solid rgba(165, 42, 42, 0.3);
+      padding-top: 20px;
+    }
+
+    .approach-list li {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #A52A2A;
+      opacity: 0.8;
+    }
+
+    .approach-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-left: 40px;
+      border-left: 1px solid rgba(165, 42, 42, 0.3);
+    }
+
+    .approach-text-std {
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 750px;
+    }
+
+    .approach-text-hero {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      line-height: 1.3;
+      font-weight: 500;
+      color: #A52A2A;
+      max-width: 800px;
+    }
+
+    .approach-p {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    
+    .approach-p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Logic for About & Approach */
     @media (max-width: 900px) {
-      .ledger-body-grid {
+      .about-grid, .approach-grid {
         grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .about-header, .approach-header {
+        position: static;
+        border-bottom: 1px solid rgba(255, 248, 240, 0.2);
+        padding-bottom: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .approach-header {
+        border-bottom: 1px solid rgba(165, 42, 42, 0.2);
+      }
+
+      .about-content, .approach-content {
+        padding-left: 0;
+        border-left: none;
         gap: 30px;
       }
       
-      .ledger-header {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
+      .client-tabs { justify-content: flex-start; }
       
-      .ledger-meta-group {
-        display: none; /* Hide extra meta on small screens for cleanliness */
-      }
-      
-      .approach-list-horizontal {
-        display: none; /* Hide list on small screens */
-      }
-      
-      .ledger-headline {
-        font-size: 2.2rem;
-        margin-bottom: 30px;
-      }
+      /* Mobile: Shrink image, hide extra lists */
+      .profile-picture { width: 100px; height: 100px; margin: 0; }
+      .about-meta, .approach-list { display: none; }
     }
-
     /* --- SERVICES --- */
     #services {
-      padding: 100px 20px;
+      padding: 80px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -389,7 +480,7 @@
       font-size: clamp(1.25rem, 2vw + 1rem, 2.2rem);
       line-height: 1.5;
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
       color: #FFF8F0;
     }
     
@@ -412,8 +503,14 @@
       transform: translateY(20px);
     }
     
-    .service-row.visible { opacity: 1; transform: translateY(0); }
-    .service-row:last-child { border-bottom: 1px solid rgba(255, 248, 240, 0.3); }
+    .service-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-row:last-child {
+      border-bottom: 1px solid rgba(255, 248, 240, 0.3);
+    }
 
     .service-num {
       font-size: clamp(1.5rem, 3vw, 2rem);
@@ -450,23 +547,36 @@
       padding-top: 10px;
     }
 
-    .service-row:hover { background-color: rgba(255, 255, 255, 0.05); }
-    .service-row:hover h3 { color: #FA38B3; transition: color 0.3s ease; }
+    .service-row:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
 
+    .service-row:hover h3 {
+      color: #FA38B3;
+      transition: color 0.3s ease;
+    }
+
+    /* Responsive Services */
     @media (max-width: 900px) {
-      .service-details { flex-direction: column; gap: 20px; }
+      .service-details {
+        flex-direction: column;
+        gap: 20px;
+      }
       .service-row p { padding-top: 0; }
       .service-num { flex-basis: 15%; }
     }
     @media (max-width: 600px) {
-      .service-row { flex-direction: column; padding: 40px 0; }
+      .service-row {
+        flex-direction: column;
+        padding: 40px 0;
+      }
       .service-num { margin-bottom: 10px; }
       .service-details { width: 100%; }
     }
 
-    /* --- RECENT WORK --- */
+    /* --- RECENT WORK (SWISS GRID 30/70) --- */
     #recent-work {
-      padding: 100px 20px;
+      padding: 80px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -485,20 +595,30 @@
     }
 
     .work-row {
-      padding: 80px 0; 
+      padding: 70px 0; 
       border-top: 1px solid rgba(30, 30, 36, 0.2);
       display: grid;
+      /* THE SWISS GRID: Left Col (30%) | Right Col (70%) */
       grid-template-columns: 30% 1fr; 
       gap: 60px;
       align-items: start;
+      
+      /* Animation */
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .work-row.visible { opacity: 1; transform: translateY(0); }
-    .work-row:last-child { border-bottom: 1px solid rgba(30, 30, 36, 0.2); }
+    .work-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
+    .work-row:last-child {
+      border-bottom: 1px solid rgba(30, 30, 36, 0.2);
+    }
+
+    /* Left Column: Anchor/Context */
     .work-col-left {
       display: flex;
       flex-direction: column;
@@ -526,7 +646,12 @@
       padding-left: 20px;
     }
 
-    .meta-group { display: flex; flex-direction: column; gap: 4px; }
+    .meta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     .meta-label {
       font-weight: 700;
       color: #A52A2A;
@@ -535,14 +660,25 @@
       letter-spacing: 0.05em;
       opacity: 0.8;
     }
-    .meta-value { color: #1E1E24; font-weight: 500; line-height: 1.4; }
 
-    .work-col-right { display: flex; flex-direction: column; gap: 40px; }
-    
+    .meta-value {
+      color: #1E1E24;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* Right Column: Visuals/Story */
+    .work-col-right {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* Updated Image Wrapper for Swiss Restraint */
     .work-image-wrapper {
       width: 100%;
-      max-width: 800px;
-      aspect-ratio: 16/9;
+      max-width: 800px; /* Restrained width */
+      aspect-ratio: 16/9; /* Editorial cinema ratio */
       overflow: hidden;
       background: #E5E5E5;
       position: relative;
@@ -557,9 +693,15 @@
       filter: grayscale(100%) contrast(1.1); 
     }
 
-    .work-row:hover .work-image { transform: scale(1.03); filter: grayscale(0%) contrast(1); }
-    
-    .case-text-content { max-width: 700px; }
+    .work-row:hover .work-image {
+      transform: scale(1.03);
+      filter: grayscale(0%) contrast(1); 
+    }
+
+    .case-text-content {
+      max-width: 700px;
+    }
+
     .case-headline {
       font-size: clamp(1.6rem, 2.5vw, 2.2rem);
       font-weight: 400;
@@ -567,6 +709,7 @@
       line-height: 1.2;
       margin: 0 0 20px 0;
     }
+
     .case-body {
       font-size: clamp(1rem, 1.2vw, 1.2rem);
       line-height: 1.6;
@@ -575,21 +718,55 @@
       margin: 0;
     }
 
+    /* Mobile Responsiveness for Work */
     @media (max-width: 900px) {
-      .work-row { grid-template-columns: 1fr; gap: 30px; padding: 50px 0; }
-      .work-col-left { position: static; flex-direction: row; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 20px; }
-      .case-meta { border-left: none; padding-left: 0; flex-direction: row; gap: 20px; }
-      .work-image-wrapper { max-width: 100%; aspect-ratio: 3/2; }
+      .work-row {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+        padding: 50px 0;
+      }
+      
+      .work-col-left {
+        position: static;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 20px;
+      }
+
+      .case-meta {
+        border-left: none;
+        padding-left: 0;
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      .work-image-wrapper {
+        max-width: 100%;
+        aspect-ratio: 3/2; /* Standard photo ratio on mobile */
+      }
     }
+
     @media (max-width: 600px) {
-      .work-col-left { flex-direction: column; gap: 15px; }
-      .case-meta { flex-direction: column; gap: 15px; width: 100%; }
+      .work-col-left {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .case-meta {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+      }
     }
+
 
     /* --- TESTIMONIALS --- */
     .testimonials-section {
-      padding-top: 100px;
-      padding-bottom: 100px;
+      padding-top: 80px;
+      padding-bottom: 80px;
       background: #1E1E24;
       display: flex;
       flex-direction: column;
@@ -620,10 +797,15 @@
       align-items: center;
       text-align: center;
       pointer-events: none;
-      padding: 0 20px;
+      padding: 0 20px; /* Prevents text hitting edge */
     }
 
-    .testimonial-item.active { opacity: 1; transform: scale(1); pointer-events: auto; }
+    .testimonial-item.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
     .testimonial-quote {
       font-size: clamp(1.25rem, 2.5vw, 2rem);
       line-height: 1.6;
@@ -631,17 +813,52 @@
       max-width: 800px;
       color: #FA38B3;
     }
-    .testimonial-quote span.quote-mark { color: #FA38B3; font-size: 1.3em; }
-    .testimonial-author { font-size: clamp(1rem, 2vw, 1.3rem); color: #FA38B3; margin-top: 8px; }
-    .testimonial-role { font-size: clamp(0.9rem, 1.8vw, 1.1rem); opacity: 0.8; color: #FA38B3; }
 
-    .testimonial-indicators { display: flex; gap: 12px; justify-content: center; margin-top: 40px; }
-    .indicator-dot {
-      width: 12px; height: 12px; border-radius: 50%; background: #A52A2A; border: 2px solid #1E1E24;
-      cursor: pointer; transition: all 0.3s;
+    .testimonial-quote span.quote-mark {
+      color: #FA38B3;
+      font-size: 1.3em;
     }
-    .indicator-dot.active { background: #FA38B3; border-color: #FA38B3; transform: scale(1.2); }
-    .indicator-dot:hover, .indicator-dot:focus-visible { background: #FA38B3; border-color: #FA38B3; }
+
+    .testimonial-author {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: #FA38B3;
+      margin-top: 8px;
+    }
+
+    .testimonial-role {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      opacity: 0.8;
+      color: #FA38B3;
+    }
+
+    .testimonial-indicators {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #A52A2A;
+      border: 2px solid #1E1E24;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .indicator-dot.active {
+      background: #FA38B3;
+      border-color: #FA38B3;
+      transform: scale(1.2);
+    }
+
+    .indicator-dot:hover,
+    .indicator-dot:focus-visible {
+      background: #FA38B3;
+      border-color: #FA38B3;
+    }
 
     /* --- CONTACT --- */
     #contact {
@@ -655,7 +872,13 @@
       margin: 0 auto;
     }
 
-    .contact-info { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
     .contact-title {
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
@@ -664,14 +887,24 @@
       text-align: center;
       line-height: 1.3;
     }
+
     .contact-email {
       font-size: clamp(1.8rem, 3.5vw, 3rem);
       font-weight: 700;
       text-align: center;
-      word-break: break-all;
+      word-break: break-all; /* Ensures long emails wrap on tiny screens */
     }
-    .contact-email a { color: #1E1E24; text-decoration: none; transition: color 0.3s; }
-    .contact-email a:hover, .contact-email a:focus-visible { color: #FA38B3; }
+
+    .contact-email a {
+      color: #1E1E24;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-email a:hover,
+    .contact-email a:focus-visible {
+      color: #FA38B3;
+    }
 
     footer {
       background: #FFF8F0;
@@ -681,11 +914,17 @@
       color: #1E1E24;
       opacity: 0.7;
     }
-    
-    /* Mobile Animation Fixes */
+
+    /* General Mobile Fixes */
     @media (max-width: 700px) {
+      #intro { padding: 16px; }
+      #about-me, #my-approach, #services, #recent-work, #testimonials { padding: 50px 16px; }
+      #contact { padding: 60px 16px 80px; }
       .client-logos-container { animation: scroll-mobile 15s linear infinite; width: 200%; }
-      @keyframes scroll-mobile { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      @keyframes scroll-mobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
     }
   </style>
   <script type="application/ld+json">
@@ -721,135 +960,130 @@
       </h1>
     </section>
 
-    <!-- REFACTORED: ABOUT ME (LEDGER STYLE) -->
-    <section id="about-me" aria-labelledby="about-label">
-      <div class="ledger-section">
-        
-        <!-- Header: Divider & Metadata -->
-        <header class="ledger-header">
-          <span id="about-label" class="ledger-label">01 — Profile</span>
-          <div class="ledger-meta-group">
-            <span class="ledger-meta-item">Exp: 15 Years</span>
-            <span class="ledger-meta-item">Base: Copenhagen</span>
-            <span class="ledger-meta-item">Focus: Brand & Growth</span>
-          </div>
-        </header>
-    
-        <!-- Content Body -->
-        <div class="ledger-content">
-          
-          <!-- Visual Anchor: Small Stamp Style Image -->
-          <div class="about-image-row">
-            <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" class="ledger-profile-pic" width="100" height="100" loading="eager">
-          </div>
-    
-          <!-- Manifesto Headline -->
-          <h2 class="ledger-headline">
-            Big-agency thinking without the bureaucracy. I bring strategy directly into your team.
-          </h2>
-    
-          <!-- Two-Column Text -->
-          <div class="ledger-body-grid">
-            <div class="text-col">
-              <p class="ledger-text">
-                Hi, I'm Emil. I've spent 15 years helping global brands develop breakthrough concepts and marketing plans that cut through complexity.
-              </p>
-            </div>
-            <div class="text-col">
-              <p class="ledger-text">
-                Whether you are a global brand or an agency pitch team, I provide the clarity and direction needed to win. No junior teams, no overhead—just the work.
-              </p>
-            </div>
-          </div>
-    
-          <!-- Client Carousel Integration -->
-          <div class="client-section-wrapper">
-             <div class="client-tabs" role="tablist" aria-label="Client types">
-                 <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
-                 <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
+    <!-- ABOUT ME: Updated to Swiss Grid Layout -->
+   <section id="about-me" aria-labelledby="about-me-heading">
+      <div class="about-grid">
+        <!-- Left: Header + Visual Anchor -->
+        <div class="about-header">
+           <h1 id="about-me-heading" class="section-title">About</h1>
+           
+           <!-- Image moved here for Swiss Layout -->
+           <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" class="profile-picture" width="180" height="180" loading="eager">
+           
+           <!-- New Meta Data (Fill space) -->
+           <div class="about-meta">
+             <div class="meta-row">
+               <span class="meta-label">Base</span>
+               <span class="meta-value">Copenhagen, DK</span>
              </div>
-             
-             <div class="carousel-wrapper">
-                 <div class="carousel-container">
-                   <div class="carousel-content">
-                     <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel">
-                       <div class="client-logos-container">
-                         <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
-                         <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
-                         <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
-                         <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
-                         <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
-                         <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
-                         <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
-                         <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
-                         <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
-                         <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
-                         <!-- Duplicates for Loop -->
-                         <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
-                         <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
-                         <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
-                         <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
-                         <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
-                       </div>
-                     </div>
-                     
-                     <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel">
-                       <div class="client-logos-container">
-                         <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
-                         <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
-                         <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
-                         <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
-                         <!-- Duplicates for Loop -->
-                         <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
-                         <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
-                         <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
-                         <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
-                       </div>
-                     </div>
+             <div class="meta-row">
+               <span class="meta-label">Experience</span>
+               <span class="meta-value">15 Years</span>
+             </div>
+             <div class="meta-row">
+               <span class="meta-label">Focus</span>
+               <span class="meta-value">Brand & Growth</span>
+             </div>
+           </div>
+        </div>
+        
+        <!-- Right: Content -->
+        <div class="about-content">
+           
+           <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
+           <p class="intro-text">
+             I've spent 15 years helping global brands develop breakthrough concepts, enduring platform ideas and marketing plans that cut through complexity.
+             <br><br> If you need big-agency thinking without the big-agency price tag or bureaucracy, I can bring that expertise directly into your team.
+           </p>
+           
+           <!-- Client Tabs -->
+           <div class="client-tabs" role="tablist" aria-label="Client types">
+             <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
+             <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
+           </div>
+           
+           <!-- Carousel -->
+           <div class="carousel-wrapper">
+             <div class="carousel-container">
+               <div class="carousel-content">
+                 <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
+                   <div class="client-logos-container">
+                     <!-- Brand Logos -->
+                     <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                     <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                     <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                     <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                     <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                     <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                     <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                     <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
+                     <!-- Duplicate for Loop -->
+                     <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                     <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                     <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                     <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                     <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                     <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                     <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                     <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
                    </div>
                  </div>
+                 
+                 <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
+                   <div class="client-logos-container">
+                     <!-- Agency Logos -->
+                     <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                     <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                     <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                     <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+                     <!-- Duplicate for Loop -->
+                     <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                     <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                     <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                     <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+                   </div>
+                 </div>
+               </div>
              </div>
-          </div>
-    
+           </div>
         </div>
       </div>
     </section>
     
-    <!-- REFACTORED: APPROACH (LEDGER STYLE) -->
-    <section id="my-approach" aria-labelledby="approach-label">
-      <div class="ledger-section">
+    <!-- REDESIGNED SWISS EDITORIAL APPROACH -->
+   <section id="my-approach" aria-labelledby="my-approach-heading">
+      <div class="approach-grid">
         
-        <!-- Header: Divider & Horizontal List -->
-        <header class="ledger-header">
-          <span id="approach-label" class="ledger-label">02 — Approach</span>
-          <ul class="approach-list-horizontal">
+        <!-- Left Column: Title + Manifesto List -->
+        <div class="approach-header">
+          <h2 id="my-approach-heading" class="section-title">Approach</h2>
+          
+          <!-- New List to balance height -->
+          <ul class="approach-list">
             <li>Truth</li>
             <li>Clarity</li>
             <li>Impact</li>
           </ul>
-        </header>
-    
-        <div class="ledger-content">
-          <!-- Manifesto Headline -->
-          <h2 class="ledger-headline">
-            I don’t do fluff. I provide clear, actionable direction that creative teams want to execute.
-          </h2>
-    
-          <!-- Two-Column Text -->
-          <div class="ledger-body-grid">
-            <div class="text-col">
-              <p class="ledger-text">
-                I learnt my craft in the strategy departments of London and New York agencies. My process is simple: it starts with the cold, hard truth behind your business, your customers, and your competition.
-              </p>
-            </div>
-            <div class="text-col">
-              <p class="ledger-text">
-                This rigor has shaped global work for brands like Burger King and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
-              </p>
-            </div>
-          </div>
         </div>
-    
+
+        <!-- Right Column: Content -->
+        <div class="approach-content">
+          <p class="approach-p approach-text-std">
+            I learnt my craft in the strategy departments of London and New York agencies, so my approach is simple: it starts with the truth behind your business, your customers, and your competition.
+          </p>
+          
+          <p class="approach-p approach-text-hero">
+            I don’t do fluff. I provide clear direction that teams can actually execute.
+          </p>
+
+          <p class="approach-p approach-text-std">
+            This has shaped global work for brands like Burger King, Huawei, and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
+          </p>
+        </div>
       </div>
     </section>
     
@@ -905,8 +1139,10 @@
 
         <!-- Case 1: DSV -->
         <article class="work-row">
+          <!-- Left Column: Context & Anchor -->
           <div class="work-col-left">
             <h3 class="client-name">DSV</h3>
+            
             <div class="case-meta">
               <div class="meta-group">
                 <span class="meta-label">Challenge</span>
@@ -919,10 +1155,12 @@
             </div>
           </div>
 
+          <!-- Right Column: Visual & Story -->
           <div class="work-col-right">
             <div class="work-image-wrapper">
               <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
             </div>
+            
             <div class="case-text-content">
               <h4 class="case-headline">Unifying 90 markets for the world’s largest transport company</h4>
               <p class="case-body">
@@ -936,6 +1174,7 @@
         <article class="work-row">
           <div class="work-col-left">
             <h3 class="client-name">Saxo</h3>
+            
             <div class="case-meta">
               <div class="meta-group">
                 <span class="meta-label">Insight</span>
@@ -952,6 +1191,7 @@
             <div class="work-image-wrapper">
               <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
             </div>
+            
             <div class="case-text-content">
               <h4 class="case-headline">Giving money a voice in a generic category</h4>
               <p class="case-body">
@@ -965,6 +1205,7 @@
         <article class="work-row">
           <div class="work-col-left">
             <h3 class="client-name">Burger King</h3>
+            
             <div class="case-meta">
               <div class="meta-group">
                 <span class="meta-label">Insight</span>
@@ -981,6 +1222,7 @@
             <div class="work-image-wrapper">
                <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
             </div>
+            
             <div class="case-text-content">
               <h4 class="case-headline">Turning global strategy into local rebellion</h4>
               <p class="case-body">
@@ -1089,7 +1331,7 @@
 
       type();
 
-      // Fade-in animation for service rows, work rows, and now LEDGER CONTENT
+      // Fade-in animation for service and case items as user scrolls
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1100,8 +1342,8 @@
         threshold: 0.15
       });
 
-      // UPDATED: Target the new .ledger-content class
-      document.querySelectorAll('.service-row, .work-row, .ledger-content').forEach(item => {
+      // Observing Service rows, Work rows, and the new Approach paragraphs
+      document.querySelectorAll('.service-row, .work-row, .approach-p').forEach(item => {
         observer.observe(item);
       });
 
