@@ -382,91 +382,130 @@
       padding-top: 80px;
       padding-bottom: 80px;
     }
-.services-intro {
-  max-width: 800px;
-  font-size: clamp(1.25rem, 2vw + 1rem, 2.2rem);
-  line-height: 1.5;
-  text-align: center;
-  margin-bottom: 50px;
-  color: #FFF8F0; /* Floral white text on burnt red background */
-}
-    .services-container {
-      display: grid;
-      gap: clamp(1.5rem, 3vw, 2rem);
+    
+    .services-intro {
+      max-width: 800px;
+      font-size: clamp(1.25rem, 2vw + 1rem, 2.2rem);
+      line-height: 1.5;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #FFF8F0; /* Floral white text on burnt red background */
+    }
+    
+    /* --- NEW SWISS-STYLE SERVICES --- */
+
+    /* The container for the list */
+    .services-list {
       width: 100%;
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
     }
 
-    @media (min-width: 1200px) {
-      .services-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    
-    @media (min-width: 768px) and (max-width: 1199px) {
-      .services-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 767px) {
-      .services-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .service-item {
-      background: #FFF8F0;
-      border: 2px solid #1E1E24;
-      border-radius: 16px;
-      padding: clamp(1.5rem, 3vw, 2rem);
+    /* Individual Service Row - WITH ANIMATION */
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 50px 0;
+      border-top: 1px solid rgba(255, 248, 240, 0.3); /* Subtle white line */
+      transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+      
+      /* Start hidden for scroll animation */
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-      color: #1E1E24;
     }
-
-    .service-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(250, 56, 179, 0.15) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .service-item:hover::before {
-      opacity: 1;
-    }
-
-    .service-item:hover {
-      transform: translateY(-5px);
-      border-color: #FA38B3;
-      box-shadow: 0 10px 30px rgba(250, 56, 179, 0.3);
-    }
-
-    .service-item.visible {
+    
+    /* Visible state (added by JS) */
+    .service-row.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .service-title {
-      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-      margin-bottom: 12px;
-      color: #A52A2A; /* Burnt red on light background */
-      line-height: 1.3;
+    /* The bottom line for the last item */
+    .service-row:last-child {
+      border-bottom: 1px solid rgba(255, 248, 240, 0.3);
     }
 
-    .service-description {
-      font-size: clamp(0.9rem, 1.6vw, 1rem);
+    /* The Number (01, 02...) - Swiss Style */
+    .service-num {
+      font-family: 'Vollkorn', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      opacity: 0.5;
+      flex-basis: 10%;
+      padding-top: 5px;
+      color: #FFF8F0;
+    }
+
+    /* The Content Wrapper */
+    .service-details {
+      flex-basis: 85%;
+      display: flex;
+      flex-direction: row; /* Side by side on desktop */
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    /* The Service Title */
+    .service-row h3 {
+      flex: 1;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; /* Lighter weight looks more premium */
+      margin: 0;
+      color: #FFF8F0;
+      line-height: 1.1;
+    }
+
+    /* The Service Description */
+    .service-row p {
+      flex: 1;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
       line-height: 1.6;
-      color: #1E1E24;
+      color: #FFF8F0;
+      opacity: 0.9;
+      margin: 0;
+      padding-top: 10px; /* Align visually with the large title */
+    }
+
+    /* Hover Effect */
+    .service-row:hover {
+      background-color: rgba(255, 255, 255, 0.05); /* Slight highlight */
+    }
+
+    .service-row:hover h3 {
+      color: #FA38B3; /* Pink highlight on hover */
+      transition: color 0.3s ease;
+    }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 900px) {
+      .service-details {
+        flex-direction: column; /* Stack title and text */
+        gap: 20px;
+      }
+      
+      .service-row p {
+        padding-top: 0;
+      }
+      
+      .service-num {
+        flex-basis: 15%;
+      }
+    }
+    @media (max-width: 600px) {
+      .service-row {
+        flex-direction: column;
+        padding: 40px 0;
+      }
+      
+      .service-num {
+        margin-bottom: 10px;
+      }
+      
+      .service-details {
+        width: 100%;
+      }
     }
 
     /* Recent Work Section */
@@ -523,101 +562,71 @@
       object-fit: contain;
     }
 
-/* Updated icon styling - removing overlay effect and making responsive */
-.icon-overlay {
-  /* Remove all overlay styling */
-  filter: none;
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  
-  /* Make truly responsive */
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100px;
-  
-  /* Center the icon */
-  display: block;
-  margin: 0 auto;
-  object-fit: contain;
-}
+    /* Updated case image container - more prominent on desktop */
+    .case-image-container {
+      flex: 0 0 320px;
+      height: 320px;
+      margin-right: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-/* Responsive container for the icons */
-.case-image-container {
-  flex: 0 0 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-  margin-right: 20px;
-}
+    /* Full-bleed case images with proper scaling */
+    .case-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
 
-/* Updated case image container - more prominent on desktop */
-.case-image-container {
-  flex: 0 0 320px;
-  height: 320px;
-  margin-right: 40px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    /* Interactive effect on hover */
+    .case-item:hover .case-image-container {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
 
-/* Full-bleed case images with proper scaling */
-.case-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
+    .case-item:hover .case-image {
+      transform: scale(1.03);
+    }
 
-/* Interactive effect on hover */
-.case-item:hover .case-image-container {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
+    /* Mobile responsive adjustments */
+    @media (max-width: 900px) {
+      .case-content-wrapper {
+        flex-direction: column;
+      }
+      
+      .case-image-container {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 280px;
+        margin-right: 0;
+        margin-bottom: 30px;
+      }
+    }
 
-.case-item:hover .case-image {
-  transform: scale(1.03);
-}
+    @media (max-width: 600px) {
+      .case-image-container {
+        height: 220px;
+      }
+      
+      .case-title {
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+      }
+    }
 
-/* Mobile responsive adjustments */
-@media (max-width: 900px) {
-  .case-content-wrapper {
-    flex-direction: column;
-  }
-  
-  .case-image-container {
-    flex: 0 0 auto;
-    width: 100%;
-    height: 280px;
-    margin-right: 0;
-    margin-bottom: 30px;
-  }
-}
+    /* Ensure proper spacing in the case content */
+    .case-content-wrapper {
+      gap: 24px;
+    }
 
-@media (max-width: 600px) {
-  .case-image-container {
-    height: 220px;
-  }
-  
-  .case-title {
-    font-size: clamp(1.4rem, 4vw, 1.8rem);
-  }
-}
-
-/* Ensure proper spacing in the case content */
-.case-content-wrapper {
-  gap: 24px;
-}
-
-@media (min-width: 900px) {
-  .case-content-wrapper {
-    gap: 40px;
-  }
-}
+    @media (min-width: 900px) {
+      .case-content-wrapper {
+        gap: 40px;
+      }
+    }
 
     @media (min-width: 900px) {
       .case-text-container::before {
@@ -964,456 +973,4 @@
   }
   
   .testimonial-quote {
-    font-size: clamp(1rem, 3.5vw, 1.4rem);
-  }
-  
-  .client-logo {
-    height: 45px;
-    margin: 0 10px;
-  }
-}
-      
-      /* Extra large section titles on very small screens */
-      .section-title {
-        font-size: clamp(1.8rem, 10vw, 2.5rem);
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .client-tab {
-        font-size: clamp(1.6rem, 2.5vw, 2.5rem);
-      }
-      
-      /* Extra large section titles on desktop */
-      .section-title {
-        font-size: clamp(3rem, 5vw, 4.5rem);
-      }
-    }
-    h1.section-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-}
-  </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Emil Valdemar Madsen",
-  "jobTitle": "Freelance Brand & Marketing Strategist",
-  "description": "15 years helping global brands with brand strategy, marketing planning, and creative development",
-  "url": "https://strategy-support.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Copenhagen",
-    "addressCountry": "DK"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/emilvmadsen/"
-  ]
-}
-</script>
-</head>
-<body>
-  <!-- The rest of the HTML remains the same as before -->
-  <main>
-    <section id="intro" aria-labelledby="intro-heading">
-      <h1 class="animated-heading">
-        <span class="animated-line">
-          <span class="animated-word"></span>
-        </span>
-        <span class="static-line">
-          <span class="animated-word-static">STRATEGY</span>
-          <span class="animated-word-static">SUPPORT</span>
-        </span>
-      </h1>
-    </section>
-
-    <section id="about-me" aria-labelledby="about-me-heading">
-      <h1 id="about-me-heading" class="section-title">About Strategy Support</h1>
-      <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
-      <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
-      <p class="intro-text">
-        I've spent 15 years helping global brands develop breakthrough concepts, enduring platform ideas and marketing plans that cut through complexity.
-        <br><br> If you need big-agency thinking without the big-agency price tag or bureaucracy, I can bring that expertise directly into your team.
-      </p>
-      
-      <div class="client-tabs" role="tablist" aria-label="Client types">
-        <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
-        <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
-      </div>
-      <div class="carousel-wrapper">
-        <div class="carousel-container">
-          <div class="carousel-content">
-            <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
-              <div class="client-logos-container">
-                <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
-                <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
-                <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
-                <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
-                <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
-                <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
-                <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
-                <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
-                <!-- Repeated for seamless animation -->
-                <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
-                <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
-                <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
-                <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
-                <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
-                <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
-                <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
-                <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
-              </div>
-            </div>
-            
-            <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
-              <div class="client-logos-container">
-                <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
-                <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
-                <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
-                <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
-                <!-- Repeated for seamless animation -->
-                <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
-                <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
-                <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
-                <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="my-approach" aria-labelledby="my-approach-heading">
-      <h2 id="my-approach-heading" class="section-title">Approach</h2>
-      <p class="approach-summary">
-       I learnt my craft in the strategy departments of London and New York agencies, so my approach is simple: it starts with the truth behind your business, your customers, and your competition.
-        <br><br>I don’t do fluff. I provide clear direction that teams can actually execute.
-        <br><br>This approach has shaped global work for brands like Burger King, Huawei, and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
-      </p>
-    </section>
-    <section id="services" class="services-section" aria-labelledby="services-heading">
-      <h2 id="services-heading" class="section-title">Services</h2>
-      <p class="services-intro">
-    I can help you with most of your strategy needs. But usually, my projects fall into one or more of six categories:
-  </p>
-      <div class="services-container">
-        <div class="service-item">
-          <h3 class="service-title">Brand & Purpose Definition</h3>
-          <p class="service-description">
-            Including brand identity and brand platforms that create meaningful differentiation and lasting impact.
-          </p>
-        </div>
-        <div class="service-item">
-          <h3 class="service-title">Marketing Strategy</h3>
-          <p class="service-description">
-            Including segmentation, targeting and positioning frameworks that drive business growth.
-          </p>
-        </div>
-        <div class="service-item">
-          <h3 class="service-title">Marketing & Communications Planning</h3>
-          <p class="service-description">
-            Including annual marketing and communications plans that align teams and deliver results.
-          </p>
-        </div>
-        <div class="service-item">
-          <h3 class="service-title">Creative Strategy & Planning</h3>
-          <p class="service-description">
-            Including creative briefs, communications platforms and pitch presentations that inspire great work.
-          </p>
-        </div>
-        <div class="service-item">
-          <h3 class="service-title">Consumer Insight</h3>
-          <p class="service-description">
-            Including qualitative, quantitative and ethnography research that uncovers actionable truths.
-          </p>
-        </div>
-        <div class="service-item">
-          <h3 class="service-title">Capability & Organisation</h3>
-          <p class="service-description">
-            Including global/local structures and processes, and in-house agency set-ups that optimise performance.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="recent-work" aria-labelledby="recent-work-heading">
-      <h2 id="recent-work-heading" class="section-title">Examples of Work</h2>
-      <div class="recent-container">
-        <!-- Case 1: Marketing Strategy -->
-<div class="case-item">
-  <div class="case-content-wrapper">
-    <div class="case-image-container">
-      <img src="assets/dsv-case.png" alt="DSV Global Marketing Strategy" class="case-image" loading="lazy">
-</div>
-    <div class="case-text-container">
-      <h3 class="case-title">I'm making the world's largest transport company move as one</h3>
-    
-      <p class="case-description">DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
-<br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
-<br><br>I'm also supporting organisational design, process development, and AI implementation.
-        </p>
-    </div>
-  </div>
-</div>
-
-<!-- Case 2: Brand Platform -->
-<div class="case-item">
-  <div class="case-content-wrapper">
-    <div class="case-image-container">
-      <img src="assets/saxo-bank-case.png" alt="Saxo Bank Global Brand Strategy" class="case-image" loading="lazy">
-    </div>
-    <div class="case-text-container">
-      <h3 class="case-title">I made Saxo Bank give money a voice in a category that all sounds the same</h3>
-      <h4 class="case-subtitle">Problem</h4>
-      <p class="case-description">Saxo wanted to grow brand awareness and preference among experienced 
-investors and traders globally. But in a crowded, price-driven category full of 
-bland, bank-like ads, Saxo needed to stand out in a way that felt equally 
-relevant in Asian, European and American markets.</p>
-      <h4 class="case-subtitle">Insight</h4>
-      <p class="case-description">For investors, money isn’t just something to save, it’s something to 
-activate. And with more tradable instruments than competitors, Saxo 
-gives your money more things to do.</p>
-      <h4 class="case-subtitle">Solution</h4>
-      <p class="case-description">Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Case 3: Campaign Concept -->
-<div class="case-item">
-  <div class="case-content-wrapper">
-    <div class="case-image-container">
-     <img src="assets/burger-king-case.png" alt="Burger King UK Platform" class="case-image" loading="lazy">
-    </div>
-    <div class="case-text-container">
-      <h3 class="case-title">I helped Burger King UK turn a global strategy into local rebellion</h3>
-      <h4 class="case-subtitle">Problem</h4>
-      <p class="case-description">Burger King had launched a new global brand strategy pivoting <em>Have It Your Way</em> to <em>Be Your Way</em>. 
-        But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported. And the UK had never really understood Burger King's old promise of customisation anyway. The brand needed to land Be Your Way in a way that felt authentically Burger King and distinctly British.</p>
-      <h4 class="case-subtitle">Insight</h4>
-      <p class="case-description">British youth are constantly managing expectations – from parents, teachers, society. 
-        The only time they truly feel like themselves is when they're being cheeky: taking what's expected and giving it their own twist. It's not rebellion, it's spontaneous reinterpretation. A bit like the act of deciding to eat fast food.</p>
-      <h4 class="case-subtitle">Solution</h4>
-      <p class="case-description">Position Burger King as the destination of cheeky detours.</p>
-    </div>
-  </div>
-</div>
-      </div>
-    </section>
-
-    <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
-      <h2 id="testimonials-heading" class="section-title">What Clients Say</h2>
-      <div class="testimonials-container">
-        <div class="testimonial-item active">
-          <p class="testimonial-quote">
-            <span class="quote-mark">&ldquo;</span>
-           If you need a marketing strategist that also has flair for tactical execution there is no one better than Emil. I cannot recommed Emil highly enough.
-            <span class="quote-mark">&rdquo;</span>
-          </p>
-          <div class="testimonial-author">John Veje</div>
-          <div class="testimonial-role">Group CMO, Danske Bank</div>
-        </div>
-        <div class="testimonial-item">
-          <p class="testimonial-quote">
-            <span class="quote-mark">&ldquo;</span>
-            Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He thinks laterally and inspired creative teams with his briefings. 
-            <span class="quote-mark">&rdquo;</span>
-          </p>
-          <div class="testimonial-author">Vicki Holgate</div>
-          <div class="testimonial-role">CSO, FCB Inferno London</div>
-        </div>
-        <div class="testimonial-item">
-          <p class="testimonial-quote">
-            <span class="quote-mark">&ldquo;</span>
-            Emil is a brilliant strategist. His work is meticulous and his approach is rigorous, his presentation and communications skills are second to none. 
-            <span class="quote-mark">&rdquo;</span>
-          </p>
-          <div class="testimonial-author">Nathan Cook</div>
-          <div class="testimonial-role">Global Director, Unilever</div>
-        </div>
-      </div>
-      <div class="testimonial-indicators" role="tablist" aria-label="Testimonial navigation">
-        <div class="indicator-dot active" role="tab" aria-selected="true" aria-label="Testimonial 1"></div>
-        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></div>
-        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></div>
-      </div>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading" class="section-title">Need Strategy Support?</h2>
-      <div class="contact-info">
-        <div class="contact-title">I'm happy to help!</div>
-        <div class="contact-email">
-          <a href="mailto:emil@strategy-support.com" aria-label="Email Emil at emil@strategy-support.com">emil@strategy-support.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Animated heading
-      const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
-      const animatedWordElement = document.querySelector('.animated-word');
-      let currentWordIndex = 0;
-      let isDeleting = false;
-      let text = '';
-      let typingSpeed = 150;
-      let deletingSpeed = 100;
-      let pauseTime = 1500;
-
-      function type() {
-        const currentWord = words[currentWordIndex];
-        
-        if (isDeleting) {
-          text = currentWord.substring(0, text.length - 1);
-          animatedWordElement.textContent = text;
-          
-          if (text === '') {
-            isDeleting = false;
-            currentWordIndex = (currentWordIndex + 1) % words.length;
-            setTimeout(type, 500);
-            return;
-          }
-          
-          setTimeout(type, deletingSpeed);
-        } else {
-          text = currentWord.substring(0, text.length + 1);
-          animatedWordElement.textContent = text;
-          
-          if (text === currentWord) {
-            isDeleting = true;
-            setTimeout(type, pauseTime);
-            return;
-          }
-          
-          setTimeout(type, typingSpeed);
-        }
-      }
-
-      type();
-
-      // Fade-in animation for service and case items as user scrolls
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, {
-        threshold: 0.15
-      });
-
-      document.querySelectorAll('.service-item, .case-item').forEach(item => {
-        item.style.color = '#1E1E24';
-        observer.observe(item);
-      });
-
-      // Testimonial carousel
-      const testimonials = document.querySelectorAll('.testimonial-item');
-      const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
-      let currentTestimonialIndex = 0;
-      let testimonialInterval;
-
-      function showTestimonial(index) {
-        testimonials.forEach((item, i) => {
-          item.classList.toggle('active', i === index);
-          testimonialDots[i].classList.toggle('active', i === index);
-          testimonialDots[i].setAttribute('aria-selected', i === index);
-        });
-      }
-
-      function nextTestimonial() {
-        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
-        showTestimonial(currentTestimonialIndex);
-      }
-
-      function startTestimonialCarousel() {
-        clearInterval(testimonialInterval);
-        testimonialInterval = setInterval(nextTestimonial, 6000);
-      }
-
-      testimonialDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          currentTestimonialIndex = index;
-          showTestimonial(currentTestimonialIndex);
-          startTestimonialCarousel();
-        });
-        
-        dot.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            currentTestimonialIndex = index;
-            showTestimonial(currentTestimonialIndex);
-            startTestimonialCarousel();
-          }
-        });
-      });
-
-      // Client tabs functionality
-      const clientTabs = document.querySelectorAll('.client-tab');
-      const clientGroups = document.querySelectorAll('.client-group');
-      
-      clientTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          clientTabs.forEach(t => {
-            t.classList.remove('active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-          
-          const groupType = tab.dataset.type;
-          
-          clientGroups.forEach(group => {
-            group.classList.toggle('active', group.dataset.group === groupType);
-          });
-          
-          // Restart animation for the active group
-          const activeGroup = document.querySelector(`.client-group.active`);
-          const logoContainer = activeGroup.querySelector('.client-logos-container');
-          const animation = logoContainer.style.animation;
-          logoContainer.style.animation = 'none';
-          setTimeout(() => {
-            logoContainer.style.animation = animation || '';
-          }, 10);
-        });
-        
-        tab.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            tab.click();
-          }
-        });
-      });
-
-      // Start testimonial carousel
-      startTestimonialCarousel();
-      
-      // Cleanup on unload
-      window.addEventListener('beforeunload', () => {
-        clearInterval(testimonialInterval);
-      });
-      
-      // Pause carousels when tab is not visible
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          clearInterval(testimonialInterval);
-        } else {
-          startTestimonialCarousel();
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+    font-si
