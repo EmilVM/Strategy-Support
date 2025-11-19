@@ -290,21 +290,95 @@
       animation-play-state: paused;
     }
 
-    /* --- APPROACH --- */
+    /* --- APPROACH (SWISS EDITORIAL REDESIGN) --- */
     #my-approach {
-      padding: 80px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 120px 20px;
       background: #FFF8F0;
       color: #1E1E24;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
     }
 
-    #my-approach .approach-summary {
+    .approach-grid {
+      width: 100%;
       max-width: 1200px;
-      font-size: clamp(1rem, 2vw + 1rem, 1.5rem);
-      line-height: 1.5;
-      text-align: center;
+      display: grid;
+      /* Asymmetrical Grid: Title (30%) | Content (70%) */
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Left Column: The Section Title */
+    .approach-header {
+      position: sticky;
+      top: 40px;
+    }
+
+    #my-approach .section-title {
+      text-align: left; /* Left align for Swiss style */
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    /* Right Column: The Content */
+    .approach-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px; /* Space between thoughts */
+      padding-left: 40px;
+      border-left: 1px solid rgba(165, 42, 42, 0.3); /* The "Swiss Line" */
+    }
+
+    /* Paragraph Styles */
+    .approach-text-std {
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 750px;
+    }
+
+    .approach-text-hero {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Larger, impactful */
+      line-height: 1.3;
+      font-weight: 500;
+      color: #A52A2A; /* Burnt Red */
+      max-width: 800px;
+    }
+
+    /* Animation classes */
+    .approach-p {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    
+    .approach-p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Responsiveness for Approach */
+    @media (max-width: 900px) {
+      .approach-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .approach-header {
+        position: static;
+        border-bottom: 1px solid rgba(165, 42, 42, 0.2);
+        padding-bottom: 20px;
+      }
+
+      .approach-content {
+        padding-left: 0;
+        border-left: none;
+        gap: 30px;
+      }
     }
 
     /* --- SERVICES --- */
@@ -416,7 +490,7 @@
       .service-details { width: 100%; }
     }
 
-    /* --- RECENT WORK (SWISS GRID UPDATE) --- */
+    /* --- RECENT WORK (SWISS GRID 30/70) --- */
     #recent-work {
       padding: 80px 20px;
       display: flex;
@@ -437,8 +511,8 @@
     }
 
     .work-row {
-      padding: 70px 0; /* Generous spacing */
-      border-top: 1px solid rgba(30, 30, 36, 0.2); /* Thin hairline divider */
+      padding: 70px 0; 
+      border-top: 1px solid rgba(30, 30, 36, 0.2);
       display: grid;
       /* THE SWISS GRID: Left Col (30%) | Right Col (70%) */
       grid-template-columns: 30% 1fr; 
@@ -466,7 +540,7 @@
       flex-direction: column;
       gap: 30px;
       position: sticky; 
-      top: 40px; /* Keeps context visible while scrolling long content */
+      top: 40px;
     }
 
     .client-name {
@@ -518,7 +592,7 @@
 
     .work-image-wrapper {
       width: 100%;
-      aspect-ratio: 16/10; /* Cinematic landscape */
+      aspect-ratio: 16/10; 
       overflow: hidden;
       background: #E5E5E5;
       position: relative;
@@ -529,12 +603,12 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.8s ease, filter 0.8s ease;
-      filter: grayscale(100%) contrast(1.1); /* Serious, editorial look */
+      filter: grayscale(100%) contrast(1.1); 
     }
 
     .work-row:hover .work-image {
       transform: scale(1.03);
-      filter: grayscale(0%) contrast(1); /* Color reveal on hover */
+      filter: grayscale(0%) contrast(1); 
     }
 
     .case-text-content {
@@ -560,7 +634,7 @@
     /* Mobile Responsiveness for Work */
     @media (max-width: 900px) {
       .work-row {
-        grid-template-columns: 1fr; /* Stack content */
+        grid-template-columns: 1fr; 
         gap: 30px;
         padding: 50px 0;
       }
@@ -857,15 +931,35 @@
       </div>
     </section>
     
+    <!-- REDESIGNED SWISS EDITORIAL APPROACH -->
     <section id="my-approach" aria-labelledby="my-approach-heading">
-      <h2 id="my-approach-heading" class="section-title">Approach</h2>
-      <p class="approach-summary">
-        I learnt my craft in the strategy departments of London and New York agencies, so my approach is simple: it starts with the truth behind your business, your customers, and your competition.
-        <br><br>
-        I don’t do fluff. I provide clear direction that teams can actually execute.
-        <br><br>
-        This has shaped global work for brands like Burger King, Huawei, and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
-      </p>
+      <div class="approach-grid">
+        
+        <!-- Left Column: Title -->
+        <div class="approach-header">
+          <h2 id="my-approach-heading" class="section-title">Approach</h2>
+        </div>
+
+        <!-- Right Column: Content split into thoughts -->
+        <div class="approach-content">
+          
+          <!-- 1. Context -->
+          <p class="approach-p approach-text-std">
+            I learnt my craft in the strategy departments of London and New York agencies, so my approach is simple: it starts with the truth behind your business, your customers, and your competition.
+          </p>
+          
+          <!-- 2. The Hook (Emphasized) -->
+          <p class="approach-p approach-text-hero">
+            I don’t do fluff. I provide clear direction that teams can actually execute.
+          </p>
+
+          <!-- 3. The Proof -->
+          <p class="approach-p approach-text-std">
+            This has shaped global work for brands like Burger King, Huawei, and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
+          </p>
+
+        </div>
+      </div>
     </section>
 
     <section id="services" class="services-section" aria-labelledby="services-heading">
@@ -912,7 +1006,7 @@
       </div>
     </section>
 
-    <!-- UPDATED RECENT WORK (SWISS LAYOUT) -->
+    <!-- RECENT WORK (SWISS GRID 30/70) -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
       <h2 id="recent-work-heading" class="section-title">Selected Work</h2>
       
@@ -1123,7 +1217,8 @@
         threshold: 0.15
       });
 
-      document.querySelectorAll('.service-row, .work-row').forEach(item => {
+      // Observing Service rows, Work rows, and the new Approach paragraphs
+      document.querySelectorAll('.service-row, .work-row, .approach-p').forEach(item => {
         observer.observe(item);
       });
 
