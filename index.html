@@ -145,7 +145,7 @@
       50% { opacity: 1; }
     }
 
-    /* --- ABOUT ME (Refactored to Swiss Grid) --- */
+/* --- ABOUT ME (Refactored to Swiss Grid) --- */
     #about-me {
       padding: 100px 20px;
       background: #A52A2A;
@@ -168,6 +168,54 @@
     .about-header {
       position: sticky;
       top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      height: fit-content;
+    }
+
+    /* New Profile Picture Logic (Left Column) */
+    .profile-picture {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border: 1px solid #FFF8F0;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease;
+      display: block;
+    }
+
+    .profile-picture:hover {
+      filter: grayscale(0%);
+    }
+
+    /* New Meta Data Logic (Left Column) */
+    .about-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      border-top: 1px solid rgba(255, 248, 240, 0.3);
+      padding-top: 20px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.6;
+      color: #FFF8F0;
+    }
+
+    .meta-value {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #FFF8F0;
     }
 
     .about-content {
@@ -175,24 +223,10 @@
       flex-direction: column;
       gap: 40px;
       padding-left: 40px;
-      border-left: 1px solid rgba(255, 248, 240, 0.3); /* Swiss line */
-      min-width: 0;
-      width: 100%; 
-    }
-
-    .profile-picture {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border: 1px solid #FFF8F0;
-      margin-bottom: 10px;
-      /* Effect: Grayscale to Color on hover */
-      filter: grayscale(100%);
-      transition: filter 0.4s ease;
-    }
-
-    .profile-picture:hover {
-      filter: grayscale(0%);
+      border-left: 1px solid rgba(255, 248, 240, 0.3);
+      /* --- FIX FOR OVERFLOWING TEXT --- */
+      min-width: 0; 
+      width: 100%;
     }
 
     .intro-heading {
@@ -207,13 +241,11 @@
       line-height: 1.5;
       max-width: 750px;
       opacity: 0.9;
-      overflow-wrap: break-word; /* Prevents breaking */
+      overflow-wrap: break-word;
     }
 
     @media (max-width: 600px) {
-      .intro-text br {
-        display: none;
-      }
+      .intro-text br { display: none; }
     }
 
     #about-me .intro-heading,
@@ -222,11 +254,11 @@
       color: #FFF8F0;
     }
 
-    /* Client Tabs & Logos (Left Aligned now) */
+    /* Client Tabs */
     .client-tabs {
       display: flex;
       gap: 30px;
-      justify-content: flex-start; /* Left align */
+      justify-content: flex-start;
       align-items: center;
       margin-bottom: 30px;
       flex-wrap: wrap;
@@ -251,9 +283,7 @@
     }
 
     .client-tab:hover,
-    .client-tab:focus {
-      opacity: 0.9;
-    }
+    .client-tab:focus { opacity: 0.9; }
 
     .client-tab.active {
       opacity: 1;
@@ -263,22 +293,23 @@
     .client-tab.active::after {
       content: '';
       position: absolute;
-      bottom: -12px; /* Aligns with the border line */
+      bottom: -12px;
       left: 0;
       width: 100%;
       height: 2px;
       background: #FA38B3;
     }
 
+    /* Carousel Wrapper Fix */
     .carousel-wrapper {
       width: 100%;
       position: relative;
-      overflow: hidden;
+      overflow: hidden; /* This cuts off the overflow */
     }
 
     .carousel-container {
       position: relative;
-      padding: 20px 0; /* Removed side padding */
+      padding: 20px 0;
     }
 
     .carousel-content {
@@ -287,14 +318,8 @@
       overflow: hidden;
     }
 
-    .client-group {
-      display: none;
-      width: 100%;
-    }
-
-    .client-group.active {
-      display: block;
-    }
+    .client-group { display: none; width: 100%; }
+    .client-group.active { display: block; }
 
     .client-logos-container {
       display: flex;
@@ -309,7 +334,7 @@
     }
 
     .client-logo {
-      height: 60px; /* Slightly smaller for elegance */
+      height: 60px;
       margin-right: 50px;
       filter: brightness(0) invert(1);
       opacity: 0.8;
@@ -320,27 +345,6 @@
     .client-logo:hover {
       opacity: 1;
       transform: scale(1.05);
-    }
-
-    /* Responsive About Me */
-    @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .about-header {
-        position: static;
-        border-bottom: 1px solid rgba(255, 248, 240, 0.2);
-        padding-bottom: 20px;
-      }
-      .about-content {
-        padding-left: 0;
-        border-left: none;
-        gap: 30px;
-      }
-      .client-tabs {
-        justify-content: flex-start;
-      }
     }
 
     /* --- APPROACH (SWISS EDITORIAL) --- */
@@ -359,32 +363,49 @@
       width: 100%;
       max-width: 1200px;
       display: grid;
-      /* Asymmetrical Grid: Title (30%) | Content (70%) */
       grid-template-columns: 30% 1fr;
       gap: 60px;
       align-items: start;
     }
 
-    /* Left Column: The Section Title */
     .approach-header {
       position: sticky;
       top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      height: fit-content;
     }
 
-    #my-approach .section-title {
-      margin-bottom: 0;
+    #my-approach .section-title { margin-bottom: 0; }
+
+    /* New Approach List Logic (Left Column) */
+    .approach-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      border-top: 1px solid rgba(165, 42, 42, 0.3);
+      padding-top: 20px;
     }
 
-    /* Right Column: The Content */
+    .approach-list li {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #A52A2A;
+      opacity: 0.8;
+    }
+
     .approach-content {
       display: flex;
       flex-direction: column;
-      gap: 40px; /* Space between thoughts */
+      gap: 40px;
       padding-left: 40px;
-      border-left: 1px solid rgba(165, 42, 42, 0.3); /* The "Swiss Line" */
+      border-left: 1px solid rgba(165, 42, 42, 0.3);
     }
 
-    /* Paragraph Styles */
     .approach-text-std {
       font-size: clamp(1.1rem, 1.5vw, 1.3rem);
       line-height: 1.6;
@@ -393,14 +414,13 @@
     }
 
     .approach-text-hero {
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Larger, impactful */
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       line-height: 1.3;
       font-weight: 500;
-      color: #A52A2A; /* Burnt Red */
+      color: #A52A2A;
       max-width: 800px;
     }
 
-    /* Animation classes */
     .approach-p {
       opacity: 0;
       transform: translateY(20px);
@@ -412,26 +432,39 @@
       transform: translateY(0);
     }
 
-    /* Mobile Responsiveness for Approach */
+    /* Responsive Logic for About & Approach */
     @media (max-width: 900px) {
-      .approach-grid {
+      .about-grid, .approach-grid {
         grid-template-columns: 1fr;
         gap: 40px;
       }
-
-      .approach-header {
+      
+      .about-header, .approach-header {
         position: static;
-        border-bottom: 1px solid rgba(165, 42, 42, 0.2);
+        border-bottom: 1px solid rgba(255, 248, 240, 0.2);
         padding-bottom: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
       }
 
-      .approach-content {
+      .approach-header {
+        border-bottom: 1px solid rgba(165, 42, 42, 0.2);
+      }
+
+      .about-content, .approach-content {
         padding-left: 0;
         border-left: none;
         gap: 30px;
       }
+      
+      .client-tabs { justify-content: flex-start; }
+      
+      /* Mobile: Shrink image, hide extra lists */
+      .profile-picture { width: 100px; height: 100px; margin: 0; }
+      .about-meta, .approach-list { display: none; }
     }
-
     /* --- SERVICES --- */
     #services {
       padding: 80px 20px;
@@ -928,17 +961,34 @@
     </section>
 
     <!-- ABOUT ME: Updated to Swiss Grid Layout -->
-    <section id="about-me" aria-labelledby="about-me-heading">
+   <section id="about-me" aria-labelledby="about-me-heading">
       <div class="about-grid">
-        <!-- Left: Header -->
+        <!-- Left: Header + Visual Anchor -->
         <div class="about-header">
            <h1 id="about-me-heading" class="section-title">About</h1>
+           
+           <!-- Image moved here for Swiss Layout -->
+           <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" class="profile-picture" width="180" height="180" loading="eager">
+           
+           <!-- New Meta Data (Fill space) -->
+           <div class="about-meta">
+             <div class="meta-row">
+               <span class="meta-label">Base</span>
+               <span class="meta-value">Copenhagen, DK</span>
+             </div>
+             <div class="meta-row">
+               <span class="meta-label">Experience</span>
+               <span class="meta-value">15 Years</span>
+             </div>
+             <div class="meta-row">
+               <span class="meta-label">Focus</span>
+               <span class="meta-value">Brand & Growth</span>
+             </div>
+           </div>
         </div>
         
         <!-- Right: Content -->
         <div class="about-content">
-           <!-- Profile Image (Now Integrated in content flow) -->
-           <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
            
            <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
            <p class="intro-text">
