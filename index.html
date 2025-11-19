@@ -5,12 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freelance Brand & Marketing Strategist | Strategy Support</title>
   <meta name="description" content="Copenhagen-based, London-trained strategist. I help brands, agencies and in-house teams with pitches, platforms and campaigns. DK / UK / Global experience.">
-<meta property="og:title" content="Freelance Brand & Marketing Strategist | Emil Valdemar Madsen">
-<meta property="og:description" content="15 years of global marketing, now freelance. Copenhagen-based, London-trained. I help brands and agencies with strategy that cuts through complexity.">
-<meta property="og:image" content="https://strategy-support.com/assets/emilmadsen.JPG">
-<meta property="og:url" content="https://strategy-support.com">
-<meta property="og:type" content="profile">
-<meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap&font-display=swap" rel="stylesheet">
@@ -114,7 +108,7 @@
 
     /* UPDATED SECTION TITLES - LARGER FONT SIZE */
     .section-title {
-      font-size: clamp(2.5rem, 6vw, 4rem); /* Significantly larger font size */
+      font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 700;
       margin-bottom: 60px;
       text-align: center;
@@ -125,19 +119,19 @@
     #my-approach .section-title,
     #recent-work .section-title,
     #contact .section-title {
-      color: #A52A2A; /* Burnt red on light backgrounds */
+      color: #A52A2A;
     }
 
     #about-me .section-title,
     #services .section-title {
-      color: #FFF8F0; /* Floral white on dark backgrounds */
+      color: #FFF8F0;
     }
 
     #testimonials .section-title {
-      color: #FA38B3; /* Hot pink on black background */
+      color: #FA38B3;
     }
 
-    /* Intro content - ENLARGED FONT FOR DESKTOP ONLY */
+    /* Intro content */
     .animated-heading {
       font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 700;
@@ -190,11 +184,11 @@
         font-size: clamp(2.2rem, 10vw, 3.5rem);
       }
     }
-.animated-word {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-}
+    .animated-word {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+    }
     .animated-word::after {
       content: '';
       position: absolute;
@@ -202,7 +196,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #FA38B3; /* Hot pink blinking line */
+      background: #FA38B3;
       animation: blink 0.7s infinite;
     }
     
@@ -277,7 +271,7 @@
       position: relative;
       z-index: 1;
       opacity: 0.7;
-      color: #FFF8F0; /* Floral white on burnt red */
+      color: #FFF8F0;
     }
 
     .client-tab:hover,
@@ -389,12 +383,10 @@
       line-height: 1.5;
       text-align: center;
       margin-bottom: 50px;
-      color: #FFF8F0; /* Floral white text on burnt red background */
+      color: #FFF8F0;
     }
     
-    /* --- NEW SWISS-STYLE SERVICES --- */
-
-    /* The container for the list */
+    /* --- NEW SWISS-STYLE SERVICES CSS --- */
     .services-list {
       width: 100%;
       max-width: 1200px;
@@ -411,7 +403,6 @@
       padding: 50px 0;
       border-top: 1px solid rgba(255, 248, 240, 0.3); /* Subtle white line */
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
-      
       /* Start hidden for scroll animation */
       opacity: 0;
       transform: translateY(20px);
@@ -423,12 +414,10 @@
       transform: translateY(0);
     }
 
-    /* The bottom line for the last item */
     .service-row:last-child {
       border-bottom: 1px solid rgba(255, 248, 240, 0.3);
     }
 
-    /* The Number (01, 02...) - Swiss Style */
     .service-num {
       font-family: 'Vollkorn', serif;
       font-size: clamp(1.5rem, 3vw, 2rem);
@@ -438,26 +427,23 @@
       color: #FFF8F0;
     }
 
-    /* The Content Wrapper */
     .service-details {
       flex-basis: 85%;
       display: flex;
-      flex-direction: row; /* Side by side on desktop */
+      flex-direction: row;
       justify-content: space-between;
       gap: 40px;
     }
 
-    /* The Service Title */
     .service-row h3 {
       flex: 1;
       font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400; /* Lighter weight looks more premium */
+      font-weight: 400;
       margin: 0;
       color: #FFF8F0;
       line-height: 1.1;
     }
 
-    /* The Service Description */
     .service-row p {
       flex: 1;
       font-size: clamp(1rem, 1.5vw, 1.25rem);
@@ -465,12 +451,11 @@
       color: #FFF8F0;
       opacity: 0.9;
       margin: 0;
-      padding-top: 10px; /* Align visually with the large title */
+      padding-top: 10px;
     }
 
-    /* Hover Effect */
     .service-row:hover {
-      background-color: rgba(255, 255, 255, 0.05); /* Slight highlight */
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     .service-row:hover h3 {
@@ -478,17 +463,15 @@
       transition: color 0.3s ease;
     }
 
-    /* MOBILE RESPONSIVENESS */
+    /* MOBILE RESPONSIVENESS for Services */
     @media (max-width: 900px) {
       .service-details {
-        flex-direction: column; /* Stack title and text */
+        flex-direction: column;
         gap: 20px;
       }
-      
       .service-row p {
         padding-top: 0;
       }
-      
       .service-num {
         flex-basis: 15%;
       }
@@ -498,11 +481,9 @@
         flex-direction: column;
         padding: 40px 0;
       }
-      
       .service-num {
         margin-bottom: 10px;
       }
-      
       .service-details {
         width: 100%;
       }
@@ -549,21 +530,6 @@
     }
 
     .case-image-container {
-      flex: 0 0 220px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 220px;
-    }
-
-    .case-image {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    /* Updated case image container - more prominent on desktop */
-    .case-image-container {
       flex: 0 0 320px;
       height: 320px;
       margin-right: 40px;
@@ -573,7 +539,6 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Full-bleed case images with proper scaling */
     .case-image {
       width: 100%;
       height: 100%;
@@ -582,7 +547,6 @@
       transition: transform 0.5s ease;
     }
 
-    /* Interactive effect on hover */
     .case-item:hover .case-image-container {
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -592,12 +556,11 @@
       transform: scale(1.03);
     }
 
-    /* Mobile responsive adjustments */
+    /* Mobile responsive adjustments for cases */
     @media (max-width: 900px) {
       .case-content-wrapper {
         flex-direction: column;
       }
-      
       .case-image-container {
         flex: 0 0 auto;
         width: 100%;
@@ -611,20 +574,8 @@
       .case-image-container {
         height: 220px;
       }
-      
       .case-title {
         font-size: clamp(1.4rem, 4vw, 1.8rem);
-      }
-    }
-
-    /* Ensure proper spacing in the case content */
-    .case-content-wrapper {
-      gap: 24px;
-    }
-
-    @media (min-width: 900px) {
-      .case-content-wrapper {
-        gap: 40px;
       }
     }
 
@@ -643,7 +594,7 @@
     .case-title {
       font-size: clamp(1.4rem, 2.8vw, 2rem);
       margin-bottom: 16px;
-      color: #A52A2A; /* Burnt red on light background */
+      color: #A52A2A;
       line-height: 1.3;
     }
 
@@ -703,7 +654,7 @@
       line-height: 1.6;
       font-style: italic;
       max-width: 800px;
-      color: #FA38B3; /* Hot pink on black */
+      color: #FA38B3;
     }
 
     .testimonial-quote span.quote-mark {
@@ -734,7 +685,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: #A52A2A; /* Burnt red dots */
+      background: #A52A2A;
       border: 2px solid #1E1E24;
       cursor: pointer;
       transition: all 0.3s;
@@ -752,14 +703,14 @@
       border-color: #FA38B3;
     }
 
-    /* Contact section - FIXED TITLES */
+    /* Contact section */
     #contact {
       padding: 100px 20px 120px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: #FFF8F0; /* Floral white */
-      color: #1E1E24; /* Raisin black for text on light background */
+      background: #FFF8F0;
+      color: #1E1E24;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -778,16 +729,16 @@
     }
 
     .contact-title {
-      font-size: clamp(2rem, 4vw, 3rem); /* Larger font size */
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
-      color: #A52A2A; /* Burnt red on light background */
+      color: #A52A2A;
       margin-bottom: 0.8em;
       text-align: center;
       line-height: 1.3;
     }
 
     .contact-email {
-      font-size: clamp(1.8rem, 3.5vw, 3rem); /* Larger font size */
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
       font-weight: 700;
       text-align: center;
     }
@@ -803,174 +754,470 @@
       color: #FA38B3;
     }
 
-    .contact-email a:focus-visible {
-      outline: 2px solid #FA38B3;
-      outline-offset: 2px;
-      border-radius: 2px;
+    /* Mobile Responsive fixes where file was cut off */
+    @media (max-width: 700px) {
+      #intro { padding: 16px; }
+      #about-me, #my-approach, #services, #recent-work, #testimonials { padding: 50px 16px; }
+      #contact { padding: 60px 16px 80px; }
+      html, body { font-size: 15px; }
+      .section-title { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 40px; }
+      .animated-heading { font-size: clamp(2rem, 8vw, 3rem); }
+      .intro-heading { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+      .intro-text { font-size: clamp(1.1rem, 1.8vw, 2rem); margin-bottom: 30px; }
+      #about-me > p { font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.5rem); }
+      .client-tab { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+      .carousel-container { padding: 40px 10px; }
+      .client-logo { height: 50px; margin: 0 15px; }
+      .services-intro { font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.8rem); margin-bottom: 40px; }
+      /* Removed old service grid selectors here, not needed for new layout */
+      .case-title { font-size: clamp(1.2rem, 2.2vw, 1.6rem); }
+      .case-subtitle { font-size: clamp(1rem, 1.8vw, 1.2rem); }
+      .case-description { font-size: clamp(0.9rem, 1.5vw, 1rem); }
+      .case-content-wrapper { flex-direction: column; }
+      .case-image-container { flex: 0 0 auto; height: 180px; }
+      .testimonial-quote { font-size: clamp(1.1rem, 2vw, 1.6rem); }
+      .testimonial-author { font-size: clamp(0.9rem, 1.8vw, 1.1rem); }
+      .testimonial-role { font-size: clamp(0.8rem, 1.6vw, 1rem); }
+      .contact-title { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+      .contact-email { font-size: clamp(1.4rem, 3vw, 2rem); }
+      .recent-container { grid-template-columns: 1fr; }
+      .client-logos-container { animation: scroll-mobile 15s linear infinite; width: 200%; }
+      @keyframes scroll-mobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
     }
 
-    /* Mobile Responsive */
-   @media (max-width: 700px) {
-  #intro {
-    padding: 16px;
-  }
-
-  #about-me, #my-approach, #services, #recent-work, #testimonials {
-    padding: 50px 16px;
-  }
-
-  #contact {
-    padding: 60px 16px 80px;
-  }
-
-  /* Base font size reduction for better mobile scaling */
-  html, body {
-    font-size: 15px;
-  }
-
-  /* Smaller section titles */
-  .section-title {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    margin-bottom: 40px;
-  }
-
-  /* Smaller animated heading */
-  .animated-heading {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  /* Smaller about section text */
-  .intro-heading {
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
-  }
-
-  .intro-text {
-    font-size: clamp(1.1rem, 1.8vw, 2rem);
-    margin-bottom: 30px;
-  }
-
-  #about-me > p {
-    font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.5rem);
-  }
-
-  /* Smaller client tabs */
-  .client-tab {
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
-  }
-
-  .carousel-container {
-    padding: 40px 10px;
-  }
-
-  .client-logo {
-    height: 50px;
-    margin: 0 15px;
-  }
-
-  /* Smaller services text */
-  .services-intro {
-    font-size: clamp(1.1rem, 1.5vw + 0.5rem, 1.8rem);
-    margin-bottom: 40px;
-  }
-
-  .service-title {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-  }
-
-  .service-description {
-    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
-  }
-
-  /* Smaller case study text */
-  .case-title {
-    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-  }
-
-  .case-subtitle {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-  }
-
-  .case-description {
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-  }
-
-  .case-content-wrapper {
-    flex-direction: column;
-  }
-
-  .case-image-container {
-    flex: 0 0 auto;
-    height: 180px;
-  }
-
-  .case-text-container::before {
-    display: none;
-  }
-
-  /* Smaller testimonial text */
-  .testimonial-quote {
-    font-size: clamp(1.1rem, 2vw, 1.6rem);
-  }
-
-  .testimonial-author {
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  }
-
-  .testimonial-role {
-    font-size: clamp(0.8rem, 1.6vw, 1rem);
-  }
-
-  .testimonial-indicators {
-    margin-top: 30px;
-  }
-
-  /* Smaller contact text */
-  .contact-title {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-  }
-
-  .contact-email {
-    font-size: clamp(1.4rem, 3vw, 2rem);
-  }
-
-  .services-container, .recent-container {
-    grid-template-columns: 1fr;
-  }
-
-  .client-logos-container {
-    animation: scroll-mobile 15s linear infinite;
-    width: 200%;
-  }
-  
-  @keyframes scroll-mobile {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-}
-
     @media (max-width: 480px) {
-  /* Further reduction for very small screens */
-  html, body {
-    font-size: 14px;
-  }
+      html, body { font-size: 14px; }
+      .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      .animated-heading { font-size: clamp(1.8rem, 9vw, 2.5rem); }
+      .client-tabs { flex-direction: row; gap: 20px; flex-wrap: nowrap; }
+      .carousel-container { padding: 20px 5px; }
+      .testimonial-quote { font-size: clamp(1rem, 3.5vw, 1.4rem); }
+      .client-logo { height: 45px; margin: 0 10px; }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Emil Valdemar Madsen",
+      "jobTitle": "Freelance Brand & Marketing Strategist",
+      "description": "15 years helping global brands with brand strategy, marketing planning, and creative development",
+      "url": "https://strategy-support.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Copenhagen",
+        "addressCountry": "DK"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/emilvmadsen/"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <main>
+    <section id="intro" aria-labelledby="intro-heading">
+      <h1 class="animated-heading">
+        <span class="animated-line">
+          <span class="animated-word"></span>
+        </span>
+        <span class="static-line">
+          <span class="animated-word-static">STRATEGY</span>
+          <span class="animated-word-static">SUPPORT</span>
+        </span>
+      </h1>
+    </section>
 
-  .section-title {
-    font-size: clamp(1.6rem, 6vw, 2.2rem);
-  }
+    <section id="about-me" aria-labelledby="about-me-heading">
+      <h1 id="about-me-heading" class="section-title">About Strategy Support</h1>
+      <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
+      <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
+      <p class="intro-text">
+        I've spent 15 years helping global brands develop breakthrough concepts, enduring platform ideas and marketing plans that cut through complexity.
+        <br><br> If you need big-agency thinking without the big-agency price tag or bureaucracy, I can bring that expertise directly into your team.
+      </p>
+      
+      <div class="client-tabs" role="tablist" aria-label="Client types">
+        <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
+        <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
+      </div>
+      <div class="carousel-wrapper">
+        <div class="carousel-container">
+          <div class="carousel-content">
+            <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
+              <div class="client-logos-container">
+                <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
+                <!-- Repeated for seamless animation -->
+                <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
+              </div>
+            </div>
+            
+            <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
+              <div class="client-logos-container">
+                <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+                <!-- Repeated for seamless animation -->
+                <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- UPDATED APPROACH TEXT -->
+    <section id="my-approach" aria-labelledby="my-approach-heading">
+      <h2 id="my-approach-heading" class="section-title">Approach</h2>
+      <p class="approach-summary">
+        I learnt my craft in the strategy departments of London and New York agencies, so my approach is simple: it starts with the truth behind your business, your customers, and your competition.
+        <br><br>
+        I don’t do fluff. I provide clear direction that teams can actually execute.
+        <br><br>
+        This has shaped global work for brands like Burger King, Huawei, and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
+      </p>
+    </section>
 
-  .animated-heading {
-    font-size: clamp(1.8rem, 9vw, 2.5rem);
-  }
+    <!-- NEW SWISS STYLE SERVICES SECTION -->
+    <section id="services" class="services-section" aria-labelledby="services-heading">
+      <h2 id="services-heading" class="section-title">How I Help</h2>
+      <p class="services-intro">
+        I help brands and agencies cut through complexity. My work typically falls into three core areas:
+      </p>
+      
+      <div class="services-list">
+        
+        <!-- Service 01 -->
+        <div class="service-row">
+          <div class="service-num">01</div>
+          <div class="service-details">
+            <h3>Brand Strategy</h3>
+            <p>
+              Defining the truth of who you are. I build brand identities, purpose frameworks, and positioning strategies that create meaningful differentiation and lasting commercial impact.
+            </p>
+          </div>
+        </div>
 
-  .client-tabs {
-    flex-direction: row;
-    gap: 20px;
-    flex-wrap: nowrap;
-  }
-  
-  .carousel-container {
-    padding: 20px 5px;
-  }
-  
-  .testimonial-quote {
-    font-si
+        <!-- Service 02 -->
+        <div class="service-row">
+          <div class="service-num">02</div>
+          <div class="service-details">
+            <h3>Commercial Strategy</h3>
+            <p>
+              Planning for growth. From annual marketing plans and go-to-market strategies to effectiveness frameworks, I help align your budget with your business ambition.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 03 -->
+        <div class="service-row">
+          <div class="service-num">03</div>
+          <div class="service-details">
+            <h3>Creative Planning</h3>
+            <p>
+              Inspiring the work. I write the creative briefs, comms platforms, and pitch narratives that creative teams actually want to work on—and that win the business.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="recent-work" aria-labelledby="recent-work-heading">
+      <h2 id="recent-work-heading" class="section-title">Examples of Work</h2>
+      <div class="recent-container">
+        <!-- Case 1: Marketing Strategy -->
+        <div class="case-item">
+          <div class="case-content-wrapper">
+            <div class="case-image-container">
+              <img src="assets/dsv-case.png" alt="DSV Global Marketing Strategy" class="case-image" loading="lazy">
+            </div>
+            <div class="case-text-container">
+              <h3 class="case-title">I'm making the world's largest transport company move as one</h3>
+            
+              <p class="case-description">DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
+              <br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
+              <br><br>I'm also supporting organisational design, process development, and AI implementation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: Brand Platform -->
+        <div class="case-item">
+          <div class="case-content-wrapper">
+            <div class="case-image-container">
+              <img src="assets/saxo-bank-case.png" alt="Saxo Bank Global Brand Strategy" class="case-image" loading="lazy">
+            </div>
+            <div class="case-text-container">
+              <h3 class="case-title">I made Saxo Bank give money a voice in a category that all sounds the same</h3>
+              <h4 class="case-subtitle">Problem</h4>
+              <p class="case-description">Saxo wanted to grow brand awareness and preference among experienced investors and traders globally. But in a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in a way that felt equally relevant in Asian, European and American markets.</p>
+              <h4 class="case-subtitle">Insight</h4>
+              <p class="case-description">For investors, money isn’t just something to save, it’s something to activate. And with more tradable instruments than competitors, Saxo gives your money more things to do.</p>
+              <h4 class="case-subtitle">Solution</h4>
+              <p class="case-description">Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3: Campaign Concept -->
+        <div class="case-item">
+          <div class="case-content-wrapper">
+            <div class="case-image-container">
+             <img src="assets/burger-king-case.png" alt="Burger King UK Platform" class="case-image" loading="lazy">
+            </div>
+            <div class="case-text-container">
+              <h3 class="case-title">I helped Burger King UK turn a global strategy into local rebellion</h3>
+              <h4 class="case-subtitle">Problem</h4>
+              <p class="case-description">Burger King had launched a new global brand strategy pivoting <em>Have It Your Way</em> to <em>Be Your Way</em>. But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported. And the UK had never really understood Burger King's old promise of customisation anyway. The brand needed to land Be Your Way in a way that felt authentically Burger King and distinctly British.</p>
+              <h4 class="case-subtitle">Insight</h4>
+              <p class="case-description">British youth are constantly managing expectations – from parents, teachers, society. The only time they truly feel like themselves is when they're being cheeky: taking what's expected and giving it their own twist. It's not rebellion, it's spontaneous reinterpretation. A bit like the act of deciding to eat fast food.</p>
+              <h4 class="case-subtitle">Solution</h4>
+              <p class="case-description">Position Burger King as the destination of cheeky detours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading" class="section-title">What Clients Say</h2>
+      <div class="testimonials-container">
+        <div class="testimonial-item active">
+          <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
+           If you need a marketing strategist that also has flair for tactical execution there is no one better than Emil. I cannot recommed Emil highly enough.
+            <span class="quote-mark">&rdquo;</span>
+          </p>
+          <div class="testimonial-author">John Veje</div>
+          <div class="testimonial-role">Group CMO, Danske Bank</div>
+        </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
+            Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He thinks laterally and inspired creative teams with his briefings. 
+            <span class="quote-mark">&rdquo;</span>
+          </p>
+          <div class="testimonial-author">Vicki Holgate</div>
+          <div class="testimonial-role">CSO, FCB Inferno London</div>
+        </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
+            Emil is a brilliant strategist. His work is meticulous and his approach is rigorous, his presentation and communications skills are second to none. 
+            <span class="quote-mark">&rdquo;</span>
+          </p>
+          <div class="testimonial-author">Nathan Cook</div>
+          <div class="testimonial-role">Global Director, Unilever</div>
+        </div>
+      </div>
+      <div class="testimonial-indicators" role="tablist" aria-label="Testimonial navigation">
+        <div class="indicator-dot active" role="tab" aria-selected="true" aria-label="Testimonial 1"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="section-title">Need Strategy Support?</h2>
+      <div class="contact-info">
+        <div class="contact-title">I'm happy to help!</div>
+        <div class="contact-email">
+          <a href="mailto:emil@strategy-support.com" aria-label="Email Emil at emil@strategy-support.com">emil@strategy-support.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animated heading
+      const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
+      const animatedWordElement = document.querySelector('.animated-word');
+      let currentWordIndex = 0;
+      let isDeleting = false;
+      let text = '';
+      let typingSpeed = 150;
+      let deletingSpeed = 100;
+      let pauseTime = 1500;
+
+      function type() {
+        const currentWord = words[currentWordIndex];
+        
+        if (isDeleting) {
+          text = currentWord.substring(0, text.length - 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === '') {
+            isDeleting = false;
+            currentWordIndex = (currentWordIndex + 1) % words.length;
+            setTimeout(type, 500);
+            return;
+          }
+          
+          setTimeout(type, deletingSpeed);
+        } else {
+          text = currentWord.substring(0, text.length + 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === currentWord) {
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+            return;
+          }
+          
+          setTimeout(type, typingSpeed);
+        }
+      }
+
+      type();
+
+      // Fade-in animation for service and case items as user scrolls
+      // NOTE: I updated this to include .service-row so your new list animates!
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      document.querySelectorAll('.service-item, .case-item, .service-row').forEach(item => {
+        // service-row already has white text color set in CSS, so we don't force it here
+        if (!item.classList.contains('service-row')) {
+            item.style.color = '#1E1E24';
+        }
+        observer.observe(item);
+      });
+
+      // Testimonial carousel
+      const testimonials = document.querySelectorAll('.testimonial-item');
+      const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
+      let currentTestimonialIndex = 0;
+      let testimonialInterval;
+
+      function showTestimonial(index) {
+        testimonials.forEach((item, i) => {
+          item.classList.toggle('active', i === index);
+          testimonialDots[i].classList.toggle('active', i === index);
+          testimonialDots[i].setAttribute('aria-selected', i === index);
+        });
+      }
+
+      function nextTestimonial() {
+        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+        showTestimonial(currentTestimonialIndex);
+      }
+
+      function startTestimonialCarousel() {
+        clearInterval(testimonialInterval);
+        testimonialInterval = setInterval(nextTestimonial, 6000);
+      }
+
+      testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentTestimonialIndex = index;
+          showTestimonial(currentTestimonialIndex);
+          startTestimonialCarousel();
+        });
+        
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentTestimonialIndex = index;
+            showTestimonial(currentTestimonialIndex);
+            startTestimonialCarousel();
+          }
+        });
+      });
+
+      // Client tabs functionality
+      const clientTabs = document.querySelectorAll('.client-tab');
+      const clientGroups = document.querySelectorAll('.client-group');
+      
+      clientTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          clientTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          
+          const groupType = tab.dataset.type;
+          
+          clientGroups.forEach(group => {
+            group.classList.toggle('active', group.dataset.group === groupType);
+          });
+          
+          // Restart animation for the active group
+          const activeGroup = document.querySelector(`.client-group.active`);
+          const logoContainer = activeGroup.querySelector('.client-logos-container');
+          const animation = logoContainer.style.animation;
+          logoContainer.style.animation = 'none';
+          setTimeout(() => {
+            logoContainer.style.animation = animation || '';
+          }, 10);
+        });
+        
+        tab.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            tab.click();
+          }
+        });
+      });
+
+      // Start testimonial carousel
+      startTestimonialCarousel();
+      
+      // Cleanup on unload
+      window.addEventListener('beforeunload', () => {
+        clearInterval(testimonialInterval);
+      });
+      
+      // Pause carousels when tab is not visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(testimonialInterval);
+        } else {
+          startTestimonialCarousel();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
