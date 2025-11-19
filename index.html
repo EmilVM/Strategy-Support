@@ -37,7 +37,7 @@
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 700;
       margin-bottom: 60px;
-      text-align: center;
+      text-align: left; /* Swiss Style: Left Align Default */
       line-height: 1.1;
       letter-spacing: -0.02em;
     }
@@ -145,51 +145,72 @@
       50% { opacity: 1; }
     }
 
-    /* --- ABOUT ME --- */
+    /* --- ABOUT ME (Refactored to Swiss Grid) --- */
     #about-me {
-      padding: 80px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 100px 20px;
       background: #A52A2A;
       color: #FFF8F0;
       width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-grid {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      /* Swiss Grid: 30% Title | 70% Content */
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-header {
+      position: sticky;
+      top: 40px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-left: 40px;
+      border-left: 1px solid rgba(255, 248, 240, 0.3); /* Swiss line */
     }
 
     .profile-picture {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+      width: 180px;
+      height: 180px;
       object-fit: cover;
-      border: 3px solid #1E1E24;
-      margin-bottom: 24px;
-      box-shadow: 0 0 20px rgba(250, 56, 179, 0.3);
+      border: 1px solid #FFF8F0;
+      margin-bottom: 10px;
+      /* Effect: Grayscale to Color on hover */
+      filter: grayscale(100%);
+      transition: filter 0.4s ease;
+    }
+
+    .profile-picture:hover {
+      filter: grayscale(0%);
     }
 
     .intro-heading {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 400;
-      margin: 0 0 16px;
-      text-align: center;
-      line-height: 1.2;
+      line-height: 1.1;
+      margin: 0;
     }
 
-    /* Updated Intro Text for Mobile Safety */
     .intro-text {
-      font-size: clamp(1rem, 2vw, 1.5rem);
-      width: 100%;
-      max-width: 800px;
-      text-align: center;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
       line-height: 1.5;
-      letter-spacing: normal;
-      margin-bottom: 40px;
-      padding: 0 10px; /* Prevents text hitting edges */
-      overflow-wrap: break-word;
+      max-width: 750px;
+      opacity: 0.9;
+      overflow-wrap: break-word; /* Prevents breaking */
     }
-    
+
     @media (max-width: 600px) {
       .intro-text br {
-        display: none; /* Removes hard breaks on mobile to prevent layout shifting */
+        display: none;
       }
     }
 
@@ -199,18 +220,20 @@
       color: #FFF8F0;
     }
 
-    /* Client Tabs & Logos */
+    /* Client Tabs & Logos (Left Aligned now) */
     .client-tabs {
       display: flex;
-      gap: 40px;
-      justify-content: center;
+      gap: 30px;
+      justify-content: flex-start; /* Left align */
       align-items: center;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
       flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 248, 240, 0.2);
+      padding-bottom: 10px;
     }
 
     .client-tab {
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
       background: none;
       border: none;
       padding: 0 0 4px 0;
@@ -221,7 +244,7 @@
       font-weight: 400;
       position: relative;
       z-index: 1;
-      opacity: 0.7;
+      opacity: 0.6;
       color: #FFF8F0;
     }
 
@@ -238,7 +261,7 @@
     .client-tab.active::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -12px; /* Aligns with the border line */
       left: 0;
       width: 100%;
       height: 2px;
@@ -247,19 +270,18 @@
 
     .carousel-wrapper {
       width: 100%;
-      max-width: 1400px;
       position: relative;
       overflow: hidden;
     }
 
     .carousel-container {
       position: relative;
-      padding: 40px 70px;
+      padding: 20px 0; /* Removed side padding */
     }
 
     .carousel-content {
       position: relative;
-      min-height: 120px;
+      min-height: 100px;
       overflow: hidden;
     }
 
@@ -285,10 +307,10 @@
     }
 
     .client-logo {
-      height: 75px;
-      margin: 0 30px;
+      height: 60px; /* Slightly smaller for elegance */
+      margin-right: 50px;
       filter: brightness(0) invert(1);
-      opacity: 0.9;
+      opacity: 0.8;
       transition: opacity 0.3s, transform 0.3s;
       flex-shrink: 0;
     }
@@ -298,11 +320,28 @@
       transform: scale(1.05);
     }
 
-    .client-logos-container:hover {
-      animation-play-state: paused;
+    /* Responsive About Me */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-header {
+        position: static;
+        border-bottom: 1px solid rgba(255, 248, 240, 0.2);
+        padding-bottom: 20px;
+      }
+      .about-content {
+        padding-left: 0;
+        border-left: none;
+        gap: 30px;
+      }
+      .client-tabs {
+        justify-content: flex-start;
+      }
     }
 
-    /* --- APPROACH (SWISS EDITORIAL REDESIGN) --- */
+    /* --- APPROACH (SWISS EDITORIAL) --- */
     #my-approach {
       padding: 120px 20px;
       background: #FFF8F0;
@@ -331,9 +370,7 @@
     }
 
     #my-approach .section-title {
-      text-align: left; /* Left align for Swiss style */
       margin-bottom: 0;
-      font-size: clamp(2rem, 4vw, 3.5rem);
     }
 
     /* Right Column: The Content */
@@ -888,64 +925,79 @@
       </h1>
     </section>
 
+    <!-- ABOUT ME: Updated to Swiss Grid Layout -->
     <section id="about-me" aria-labelledby="about-me-heading">
-      <h1 id="about-me-heading" class="section-title">About Strategy Support</h1>
-      <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
-      <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
-      <p class="intro-text">
-        I've spent 15 years helping global brands develop breakthrough concepts, enduring platform ideas and marketing plans that cut through complexity.
-        <br><br> If you need big-agency thinking without the big-agency price tag or bureaucracy, I can bring that expertise directly into your team.
-      </p>
-      
-      <div class="client-tabs" role="tablist" aria-label="Client types">
-        <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
-        <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
-      </div>
-      <div class="carousel-wrapper">
-        <div class="carousel-container">
-          <div class="carousel-content">
-            <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
-              <div class="client-logos-container">
-                <!-- Brand Logos -->
-                <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
-                <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
-                <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
-                <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
-                <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
-                <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
-                <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
-                <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
-                <!-- Duplicate for Loop -->
-                <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
-                <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
-                <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
-                <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
-                <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
-                <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
-                <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
-                <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
-                <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
-              </div>
-            </div>
-            
-            <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
-              <div class="client-logos-container">
-                <!-- Agency Logos -->
-                <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
-                <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
-                <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
-                <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
-                <!-- Duplicate for Loop -->
-                <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
-                <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
-                <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
-                <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
-              </div>
-            </div>
-          </div>
+      <div class="about-grid">
+        <!-- Left: Header -->
+        <div class="about-header">
+           <h1 id="about-me-heading" class="section-title">About</h1>
+        </div>
+        
+        <!-- Right: Content -->
+        <div class="about-content">
+           <!-- Profile Image (Now Integrated in content flow) -->
+           <img src="assets/emilmadsen.JPG" alt="A photo of Emil Valdemar Madsen" class="profile-picture" width="150" height="150" loading="eager">
+           
+           <h3 class="intro-heading">Hi! I'm Emil Valdemar Madsen</h3>
+           <p class="intro-text">
+             I've spent 15 years helping global brands develop breakthrough concepts, enduring platform ideas and marketing plans that cut through complexity.
+             <br><br> If you need big-agency thinking without the big-agency price tag or bureaucracy, I can bring that expertise directly into your team.
+           </p>
+           
+           <!-- Client Tabs -->
+           <div class="client-tabs" role="tablist" aria-label="Client types">
+             <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
+             <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
+           </div>
+           
+           <!-- Carousel -->
+           <div class="carousel-wrapper">
+             <div class="carousel-container">
+               <div class="carousel-content">
+                 <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
+                   <div class="client-logos-container">
+                     <!-- Brand Logos -->
+                     <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                     <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                     <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                     <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                     <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                     <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                     <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                     <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
+                     <!-- Duplicate for Loop -->
+                     <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                     <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                     <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                     <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                     <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                     <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                     <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                     <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                     <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
+                   </div>
+                 </div>
+                 
+                 <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
+                   <div class="client-logos-container">
+                     <!-- Agency Logos -->
+                     <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                     <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                     <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                     <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+                     <!-- Duplicate for Loop -->
+                     <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                     <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                     <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                     <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
         </div>
       </div>
     </section>
