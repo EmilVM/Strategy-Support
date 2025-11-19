@@ -460,29 +460,63 @@
       }
     }
 
-    /* --- SERVICES --- */
+    /* --- SERVICES (SWISS GRID - RED ORIGINAL) --- */
     #services {
-      padding: 80px 20px;
+      padding: 120px 20px;
+      background: #A52A2A; /* Burnt Red (Original) */
+      color: #FFF8F0;      /* Floral White */
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #A52A2A;
-      color: #FFF8F0;
+      justify-content: center;
     }
     
-    .services-intro {
-      max-width: 800px;
-      font-size: clamp(1.25rem, 2vw + 1rem, 2.2rem);
-      line-height: 1.5;
-      text-align: center;
-      margin-bottom: 50px;
+    .services-grid {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      /* Asymmetrical Grid: Title & Intro (30%) | List (70%) */
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Left Column: Sticky Header & Intro */
+    .services-header {
+      position: sticky;
+      top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    #services .section-title {
+      text-align: left;
+      margin-bottom: 0;
       color: #FFF8F0;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .services-intro-side {
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      line-height: 1.5;
+      opacity: 0.9;
+      color: #FFF8F0;
+      max-width: 90%;
+    }
+
+    /* Right Column: Service List */
+    .services-content {
+      display: flex;
+      flex-direction: column;
+      padding-left: 40px;
+      /* The "Swiss Line" in white opacity */
+      border-left: 1px solid rgba(255, 248, 240, 0.3); 
     }
     
     .services-list {
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
     }
@@ -492,6 +526,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 0;
+      /* Border top in white opacity */
       border-top: 1px solid rgba(255, 248, 240, 0.3);
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
       opacity: 0;
@@ -508,67 +543,77 @@
     }
 
     .service-num {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      opacity: 0.5;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-weight: 400;
       flex-basis: 10%;
       padding-top: 5px;
       color: #FFF8F0;
+      opacity: 0.5;
     }
 
     .service-details {
       flex-basis: 85%;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 40px;
+      flex-direction: column;
+      gap: 15px;
     }
 
     .service-row h3 {
-      flex: 1;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 3vw, 2.8rem);
       font-weight: 400;
       margin: 0;
       color: #FFF8F0;
       line-height: 1.1;
+      transition: color 0.3s ease;
     }
 
     .service-row p {
-      flex: 1;
       font-size: clamp(1rem, 1.5vw, 1.25rem);
       line-height: 1.6;
       color: #FFF8F0;
       opacity: 0.9;
       margin: 0;
-      padding-top: 10px;
+      max-width: 650px;
     }
 
+    /* Hover Effects */
     .service-row:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgba(255, 255, 255, 0.05); /* Subtle light highlight */
     }
 
     .service-row:hover h3 {
-      color: #FA38B3;
-      transition: color 0.3s ease;
+      color: #FA38B3; /* Pink highlight on title */
     }
 
     /* Responsive Services */
     @media (max-width: 900px) {
-      .service-details {
-        flex-direction: column;
-        gap: 20px;
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
       }
-      .service-row p { padding-top: 0; }
-      .service-num { flex-basis: 15%; }
+
+      .services-header {
+        position: static;
+        border-bottom: 1px solid rgba(255, 248, 240, 0.3);
+        padding-bottom: 30px;
+      }
+
+      .services-content {
+        padding-left: 0;
+        border-left: none;
+      }
     }
+
     @media (max-width: 600px) {
       .service-row {
         flex-direction: column;
+        gap: 20px;
         padding: 40px 0;
       }
-      .service-num { margin-bottom: 10px; }
-      .service-details { width: 100%; }
+      .service-num {
+        margin-bottom: 5px;
+      }
     }
-
     /* --- RECENT WORK (SWISS GRID 30/70) --- */
     #recent-work {
       padding: 80px 20px;
@@ -1065,47 +1110,56 @@
       </div>
     </section>
 
-    <section id="services" class="services-section" aria-labelledby="services-heading">
-      <h2 id="services-heading" class="section-title">How I Help</h2>
-      <p class="services-intro">
-        I help brands and agencies cut through complexity. My work typically falls into three core areas:
-      </p>
-      
-      <div class="services-list">
+    <section id="services" aria-labelledby="services-heading">
+      <div class="services-grid">
         
-        <!-- Service 01 -->
-        <div class="service-row">
-          <div class="service-num">01</div>
-          <div class="service-details">
-            <h3>Brand Strategy</h3>
-            <p>
-              Defining the truth of who you are. I build brand identities, purpose frameworks, and positioning strategies that create meaningful differentiation and lasting commercial impact.
-            </p>
-          </div>
+        <!-- Left Column (30%): Title + Intro -->
+        <div class="services-header">
+          <h2 id="services-heading" class="section-title">How I Help</h2>
+          <p class="services-intro-side">
+            I help brands and agencies cut through complexity. My work typically falls into three core areas:
+          </p>
         </div>
 
-        <!-- Service 02 -->
-        <div class="service-row">
-          <div class="service-num">02</div>
-          <div class="service-details">
-            <h3>Commercial Strategy</h3>
-            <p>
-              Planning for growth. From annual marketing plans and go-to-market strategies to effectiveness frameworks, I help align your budget with your business ambition.
-            </p>
+        <!-- Right Column (70%): The List -->
+        <div class="services-content">
+          <div class="services-list">
+            
+            <!-- Service 01 -->
+            <div class="service-row">
+              <div class="service-num">01</div>
+              <div class="service-details">
+                <h3>Brand Strategy</h3>
+                <p>
+                  Defining the truth of who you are. I build brand identities, purpose frameworks, and positioning strategies that create meaningful differentiation and lasting commercial impact.
+                </p>
+              </div>
+            </div>
+
+            <!-- Service 02 -->
+            <div class="service-row">
+              <div class="service-num">02</div>
+              <div class="service-details">
+                <h3>Commercial Strategy</h3>
+                <p>
+                  Planning for growth. From annual marketing plans and go-to-market strategies to effectiveness frameworks, I help align your budget with your business ambition.
+                </p>
+              </div>
+            </div>
+
+            <!-- Service 03 -->
+            <div class="service-row">
+              <div class="service-num">03</div>
+              <div class="service-details">
+                <h3>Creative Planning</h3>
+                <p>
+                  Inspiring the work. I write the creative briefs, comms platforms, and pitch narratives that creative teams actually want to work on—and that win the business.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <!-- Service 03 -->
-        <div class="service-row">
-          <div class="service-num">03</div>
-          <div class="service-details">
-            <h3>Creative Planning</h3>
-            <p>
-              Inspiring the work. I write the creative briefs, comms platforms, and pitch narratives that creative teams actually want to work on—and that win the business.
-            </p>
-          </div>
-        </div>
-
       </div>
     </section>
 
