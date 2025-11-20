@@ -32,29 +32,36 @@
     }
 
     /* --- SHARED TYPOGRAPHY --- */
-    .section-title {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 700;
-      margin-bottom: 60px;
-      text-align: center;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-    
-    /* Section title colors by background */
-    #my-approach .section-title,
-    #recent-work .section-title,
-    #contact .section-title {
-      color: #A52A2A; /* Burnt Red */
+    /* --- NEW SWISS LABEL STYLE --- */
+    .swiss-label {
+      font-family: 'Vollkorn', serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      display: block;
+      width: 100%;
+      font-weight: 400; /* Ensures it isn't too bold */
+      text-align: left;
     }
 
-    #about-me .section-title,
-    #services .section-title {
+    /* Variation 1: For White Backgrounds (Red Text/Line) */
+    .swiss-label.on-white {
+      color: #A52A2A;
+      border-bottom: 1px solid rgba(165, 42, 42, 0.3);
+    }
+
+    /* Variation 2: For Red Backgrounds (White Text/Line) */
+    .swiss-label.on-red {
       color: #FFF8F0;
+      border-bottom: 1px solid rgba(255, 248, 240, 0.3);
     }
 
-    #testimonials .section-title {
+    /* Variation 3: For Dark Backgrounds (Pink Text/Line) */
+    .swiss-label.on-dark {
       color: #FA38B3;
+      border-bottom: 1px solid rgba(250, 56, 179, 0.3);
     }
 
     /* --- HERO SECTION --- */
@@ -397,12 +404,6 @@
       top: 40px;
     }
 
-    #my-approach .section-title {
-      text-align: left; /* Left align for Swiss style */
-      margin-bottom: 0;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-    }
-
     /* Right Column: The Content */
     .approach-content {
       display: flex;
@@ -449,7 +450,8 @@
 
       .approach-header {
         position: static;
-        border-bottom: 1px solid rgba(165, 42, 42, 0.2);
+        /* border removed to avoid double lines */
+        border-bottom: none;
         padding-bottom: 20px;
       }
 
@@ -489,13 +491,6 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
-    }
-
-    #services .section-title {
-      text-align: left;
-      margin-bottom: 0;
-      color: #FFF8F0;
-      font-size: clamp(2rem, 4vw, 3.5rem);
     }
 
     .services-intro-side {
@@ -594,7 +589,8 @@
 
       .services-header {
         position: static;
-        border-bottom: 1px solid rgba(255, 248, 240, 0.3);
+        /* border removed to avoid double lines */
+        border-bottom: none;
         padding-bottom: 30px;
       }
 
@@ -637,15 +633,8 @@
     .work-header {
       width: 100%;
       padding-bottom: 40px;
-      border-bottom: 1px solid rgba(30, 30, 36, 0.3); /* The Main Divider */
+      /* Border removed here to avoid double line with the new title style */
       margin-bottom: 0;
-    }
-
-    #recent-work .section-title {
-      text-align: left;
-      margin-bottom: 0;
-      color: #A52A2A; /* Burnt Red */
-      font-size: clamp(2rem, 4vw, 3.5rem);
     }
 
     /* The List */
@@ -825,7 +814,8 @@
     /* Mobile Responsiveness */
     @media (max-width: 900px) {
       .work-header {
-        border-bottom: 1px solid rgba(30, 30, 36, 0.2);
+        /* border removed to avoid double lines */
+        border-bottom: none;
         padding-bottom: 20px;
       }
 
@@ -971,13 +961,6 @@
       top: 40px;
     }
 
-    #contact .section-title {
-      text-align: left;
-      margin-bottom: 0;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      color: #A52A2A; /* Burnt Red */
-    }
-
     /* Right Column */
     .contact-content {
       display: flex;
@@ -1057,7 +1040,8 @@
 
       .contact-header {
         position: static;
-        border-bottom: 1px solid rgba(165, 42, 42, 0.2);
+        /* border removed to avoid double lines */
+        border-bottom: none;
         padding-bottom: 20px;
       }
 
@@ -1218,7 +1202,7 @@
         
         <!-- Left Column: Title -->
         <div class="approach-header">
-          <h2 id="my-approach-heading" class="section-title">Approach</h2>
+         <h2 id="my-approach-heading" class="swiss-label on-white">Approach</h2>
         </div>
 
         <!-- Right Column: Content split into thoughts -->
@@ -1248,7 +1232,7 @@
         
         <!-- Left Column (30%): Title + Intro -->
         <div class="services-header">
-          <h2 id="services-heading" class="section-title">How I Help</h2>
+          <h2 id="services-heading" class="swiss-label on-red">How I Help</h2>
           <p class="services-intro-side">
             I help brands and agencies cut through complexity. My work typically falls into three core areas:
           </p>
@@ -1302,7 +1286,7 @@
         
         <!-- Top Header -->
         <div class="work-header">
-          <h2 id="recent-work-heading" class="section-title">Selected Work</h2>
+          <h2 id="recent-work-heading" class="swiss-label on-white">Selected Work</h2>
         </div>
         
         <div class="work-list">
@@ -1418,7 +1402,9 @@
     </section>
 
     <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
-      <h2 id="testimonials-heading" class="section-title">What Clients Say</h2>
+      <div style="width: 100%; max-width: 1200px;">
+  <h2 id="testimonials-heading" class="swiss-label on-dark">What Clients Say</h2>
+</div>
       <div class="testimonials-container">
         <div class="testimonial-item active">
           <p class="testimonial-quote">
@@ -1461,7 +1447,7 @@
         
         <!-- Left Column: Anchor -->
         <div class="contact-header">
-          <h2 id="contact-heading" class="section-title">Contact</h2>
+         <h2 id="contact-heading" class="swiss-label on-white">Contact</h2>
         </div>
 
         <!-- Right Column: Action -->
