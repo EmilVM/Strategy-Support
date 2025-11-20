@@ -376,7 +376,7 @@
       }
     }
 
-    /* --- APPROACH (SWISS EDITORIAL REDESIGN) --- */
+    /* --- APPROACH (UPDATED: TOP-ALIGNED LEDGER) --- */
     #my-approach {
       padding: 120px 20px;
       background: #FFF8F0;
@@ -391,26 +391,25 @@
     .approach-grid {
       width: 100%;
       max-width: 1200px;
-      display: grid;
-      /* Asymmetrical Grid: Title (30%) | Content (70%) */
-      grid-template-columns: 30% 1fr;
-      gap: 60px;
-      align-items: start;
+      /* UPDATED: Flex column instead of grid to match 'Selected Work' */
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Left Column: The Section Title */
+    /* Header: Title full width */
     .approach-header {
-      position: sticky;
-      top: 40px;
+      width: 100%;
+      padding-bottom: 40px;
+      margin-bottom: 0;
     }
 
-    /* Right Column: The Content */
+    /* Content: Underneath */
     .approach-content {
       display: flex;
       flex-direction: column;
       gap: 40px; /* Space between thoughts */
-      padding-left: 40px;
-      border-left: 1px solid rgba(165, 42, 42, 0.3); /* The "Swiss Line" */
+      padding-left: 0; /* Removed padding */
+      border-left: none; /* Removed border */
     }
 
     /* Paragraph Styles */
@@ -443,21 +442,7 @@
 
     /* Mobile Responsiveness for Approach */
     @media (max-width: 900px) {
-      .approach-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .approach-header {
-        position: static;
-        /* border removed to avoid double lines */
-        border-bottom: none;
-        padding-bottom: 20px;
-      }
-
       .approach-content {
-        padding-left: 0;
-        border-left: none;
         gap: 30px;
       }
     }
@@ -589,7 +574,6 @@
 
       .services-header {
         position: static;
-        /* border removed to avoid double lines */
         border-bottom: none;
         padding-bottom: 30px;
       }
@@ -610,6 +594,7 @@
         margin-bottom: 5px;
       }
     }
+
   /* --- RECENT WORK (TOP-ALIGNED LEDGER) --- */
     #recent-work {
       padding: 120px 20px;
@@ -633,7 +618,6 @@
     .work-header {
       width: 100%;
       padding-bottom: 40px;
-      /* Border removed here to avoid double line with the new title style */
       margin-bottom: 0;
     }
 
@@ -770,7 +754,8 @@
       font-weight: 500;
       line-height: 1.4;
     }
-/* --- NEW NARRATIVE STACK (Added for Problem/Insight/Solution) --- */
+
+    /* --- NEW NARRATIVE STACK --- */
     .narrative-stack {
       display: flex;
       flex-direction: column;
@@ -814,7 +799,6 @@
     /* Mobile Responsiveness */
     @media (max-width: 900px) {
       .work-header {
-        /* border removed to avoid double lines */
         border-bottom: none;
         padding-bottom: 20px;
       }
@@ -933,7 +917,7 @@
       border-color: #FA38B3;
     }
 
-    /* --- CONTACT (SWISS GRID) --- */
+    /* --- CONTACT (UPDATED: TOP-ALIGNED LEDGER) --- */
     #contact {
       padding: 120px 20px 100px; /* Top padding matches other sections */
       background: #FFF8F0; /* Floral White */
@@ -948,26 +932,24 @@
     .contact-grid {
       width: 100%;
       max-width: 1200px;
-      display: grid;
-      /* 30% (Title) | 70% (Message & Details) */
-      grid-template-columns: 30% 1fr;
-      gap: 60px;
-      align-items: start;
+      /* UPDATED: Flex column instead of grid */
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Left Column */
+    /* Header */
     .contact-header {
-      position: sticky;
-      top: 40px;
+      width: 100%;
+      padding-bottom: 40px;
     }
 
-    /* Right Column */
+    /* Content */
     .contact-content {
       display: flex;
       flex-direction: column;
-      padding-left: 40px;
-      border-left: 1px solid rgba(165, 42, 42, 0.3); /* The Swiss Line */
-      min-height: 300px; /* Ensure vertical balance */
+      padding-left: 0; /* Removed padding */
+      border-left: none; /* Removed Swiss line */
+      min-height: auto;
       justify-content: space-between;
     }
 
@@ -1033,24 +1015,6 @@
 
     /* Mobile Responsiveness for Contact */
     @media (max-width: 900px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .contact-header {
-        position: static;
-        /* border removed to avoid double lines */
-        border-bottom: none;
-        padding-bottom: 20px;
-      }
-
-      .contact-content {
-        padding-left: 0;
-        border-left: none;
-        min-height: auto;
-      }
-      
       .contact-message {
         margin-bottom: 40px;
       }
@@ -1196,16 +1160,16 @@
       </div>
     </section>
     
-    <!-- REDESIGNED SWISS EDITORIAL APPROACH -->
+    <!-- UPDATED SWISS APPROACH (VERTICAL LAYOUT) -->
     <section id="my-approach" aria-labelledby="my-approach-heading">
       <div class="approach-grid">
         
-        <!-- Left Column: Title -->
+        <!-- Full Width Title -->
         <div class="approach-header">
          <h2 id="my-approach-heading" class="swiss-label on-white">Approach</h2>
         </div>
 
-        <!-- Right Column: Content split into thoughts -->
+        <!-- Full Width Content (with max-width on text) -->
         <div class="approach-content">
           
           <!-- 1. Context -->
@@ -1441,16 +1405,16 @@
       </div>
     </section>
 
-   <!-- CONTACT (SWISS GRID LAYOUT) -->
+   <!-- CONTACT (UPDATED: TOP-ALIGNED LEDGER) -->
     <section id="contact" aria-labelledby="contact-heading">
       <div class="contact-grid">
         
-        <!-- Left Column: Anchor -->
+        <!-- Full Width Anchor -->
         <div class="contact-header">
          <h2 id="contact-heading" class="swiss-label on-white">Contact</h2>
         </div>
 
-        <!-- Right Column: Action -->
+        <!-- Full Width Action -->
         <div class="contact-content">
           
           <!-- The "Play on Name" Copy -->
