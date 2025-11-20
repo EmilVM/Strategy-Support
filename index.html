@@ -32,7 +32,6 @@
     }
 
     /* --- SHARED TYPOGRAPHY --- */
-    /* --- NEW SWISS LABEL STYLE --- */
     .swiss-label {
       font-family: 'Vollkorn', serif;
       font-size: 0.9rem;
@@ -42,23 +41,20 @@
       padding-bottom: 20px;
       display: block;
       width: 100%;
-      font-weight: 400; /* Ensures it isn't too bold */
+      font-weight: 400;
       text-align: left;
     }
 
-    /* Variation 1: For White Backgrounds (Red Text/Line) */
     .swiss-label.on-white {
       color: #A52A2A;
       border-bottom: 1px solid rgba(165, 42, 42, 0.3);
     }
 
-    /* Variation 2: For Red Backgrounds (White Text/Line) */
     .swiss-label.on-red {
       color: #FFF8F0;
       border-bottom: 1px solid rgba(255, 248, 240, 0.3);
     }
 
-    /* Variation 3: For Dark Backgrounds (Pink Text/Line) */
     .swiss-label.on-dark {
       color: #FA38B3;
       border-bottom: 1px solid rgba(250, 56, 179, 0.3);
@@ -151,7 +147,7 @@
       50% { opacity: 1; }
     }
 
-    /* --- ABOUT ME (SWISS PROFILE REDESIGN) --- */
+    /* --- ABOUT ME --- */
     #about-me {
       padding: 100px 20px;
       background: #A52A2A; /* Burnt Red */
@@ -165,13 +161,11 @@
       width: 100%;
       max-width: 1200px;
       display: grid;
-      /* Grid: Image (35%) | Content (65%) */
       grid-template-columns: 35% 1fr;
       gap: 80px;
       align-items: start;
     }
 
-    /* The Portrait */
     .about-image-col {
       position: sticky;
       top: 40px;
@@ -179,9 +173,9 @@
 
     .about-portrait {
       width: 100%;
-      aspect-ratio: 3/4; /* Classic portrait ratio */
+      aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: 0; /* Sharp edges */
+      border-radius: 0;
       border: 1px solid rgba(255, 248, 240, 0.3);
       filter: grayscale(100%);
       transition: filter 0.5s ease;
@@ -191,7 +185,6 @@
       filter: grayscale(0%);
     }
 
-    /* The Content */
     .about-content-col {
       display: flex;
       flex-direction: column;
@@ -250,7 +243,7 @@
     .client-tabs {
       display: flex;
       gap: 40px;
-      justify-content: flex-start; /* Left aligned */
+      justify-content: flex-start;
       align-items: center;
       margin-bottom: 30px;
       flex-wrap: wrap;
@@ -350,7 +343,6 @@
       animation-play-state: paused;
     }
 
-    /* Mobile Responsiveness for About */
     @media (max-width: 900px) {
       .about-container {
         grid-template-columns: 1fr;
@@ -376,7 +368,7 @@
       }
     }
 
-    /* --- APPROACH (UPDATED: TOP-ALIGNED LEDGER) --- */
+    /* --- APPROACH --- */
     #my-approach {
       padding: 120px 20px;
       background: #FFF8F0;
@@ -391,28 +383,24 @@
     .approach-grid {
       width: 100%;
       max-width: 1200px;
-      /* UPDATED: Flex column instead of grid to match 'Selected Work' */
       display: flex;
       flex-direction: column;
     }
 
-    /* Header: Title full width - PADDING REDUCED TO 0 */
     .approach-header {
       width: 100%;
       padding-bottom: 0;
       margin-bottom: 0;
     }
 
-    /* Content: Underneath */
     .approach-content {
       display: flex;
       flex-direction: column;
-      gap: 40px; /* Space between thoughts */
-      padding-left: 0; /* Removed padding */
-      border-left: none; /* Removed border */
+      gap: 40px;
+      padding-left: 0;
+      border-left: none;
     }
 
-    /* Paragraph Styles */
     .approach-text-std {
       font-size: clamp(1.1rem, 1.5vw, 1.3rem);
       line-height: 1.6;
@@ -421,14 +409,13 @@
     }
 
     .approach-text-hero {
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Larger, impactful */
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       line-height: 1.3;
       font-weight: 500;
-      color: #A52A2A; /* Burnt Red */
+      color: #A52A2A;
       max-width: 800px;
     }
 
-    /* Animation classes */
     .approach-p {
       opacity: 0;
       transform: translateY(20px);
@@ -440,18 +427,17 @@
       transform: translateY(0);
     }
 
-    /* Mobile Responsiveness for Approach */
     @media (max-width: 900px) {
       .approach-content {
         gap: 30px;
       }
     }
 
-    /* --- SERVICES (SWISS GRID - RED ORIGINAL) --- */
+    /* --- SERVICES --- */
     #services {
       padding: 120px 20px;
-      background: #A52A2A; /* Burnt Red (Original) */
-      color: #FFF8F0;      /* Floral White */
+      background: #A52A2A;
+      color: #FFF8F0;
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -463,13 +449,11 @@
       width: 100%;
       max-width: 1200px;
       display: grid;
-      /* Asymmetrical Grid: Title & Intro (30%) | List (70%) */
       grid-template-columns: 30% 1fr;
       gap: 60px;
       align-items: start;
     }
 
-    /* Left Column: Sticky Header & Intro */
     .services-header {
       position: sticky;
       top: 40px;
@@ -486,12 +470,10 @@
       max-width: 90%;
     }
 
-    /* Right Column: Service List */
     .services-content {
       display: flex;
       flex-direction: column;
       padding-left: 40px;
-      /* The "Swiss Line" in white opacity */
       border-left: 1px solid rgba(255, 248, 240, 0.3); 
     }
     
@@ -506,7 +488,6 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 0;
-      /* Border top in white opacity */
       border-top: 1px solid rgba(255, 248, 240, 0.3);
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
       opacity: 0;
@@ -556,16 +537,14 @@
       max-width: 650px;
     }
 
-    /* Hover Effects */
     .service-row:hover {
-      background-color: rgba(255, 255, 255, 0.05); /* Subtle light highlight */
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     .service-row:hover h3 {
-      color: #FA38B3; /* Pink highlight on title */
+      color: #FA38B3;
     }
 
-    /* Responsive Services */
     @media (max-width: 900px) {
       .services-grid {
         grid-template-columns: 1fr;
@@ -575,7 +554,7 @@
       .services-header {
         position: static;
         border-bottom: none;
-        padding-bottom: 0; /* Changed from 30px to 0 */
+        padding-bottom: 0;
       }
 
       .services-content {
@@ -595,11 +574,11 @@
       }
     }
 
-  /* --- RECENT WORK (TOP-ALIGNED LEDGER) --- */
+    /* --- RECENT WORK (ACCORDION REDESIGN) --- */
     #recent-work {
       padding: 120px 20px;
-      background: #FFF8F0; /* Floral White */
-      color: #1E1E24;      /* Raisin Black */
+      background: #FFF8F0;
+      color: #1E1E24;
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -614,68 +593,155 @@
       flex-direction: column;
     }
 
-    /* The Top Header - PADDING REDUCED TO 0 */
     .work-header {
       width: 100%;
       padding-bottom: 0;
       margin-bottom: 0;
     }
 
-    /* The List */
     .work-list {
       display: flex;
       flex-direction: column;
       width: 100%;
     }
 
+    /* The Accordion Row */
     .work-row {
-      padding: 60px 0; 
-      border-bottom: 1px solid rgba(30, 30, 36, 0.15); /* Divider between rows */
-      display: grid;
-      /* 30% (Name + Image) | 70% (Story + Data) */
-      grid-template-columns: 30% 1fr; 
-      gap: 60px;
-      align-items: start;
-      
-      /* Animation */
+      border-bottom: 1px solid rgba(30, 30, 36, 0.15);
+      display: flex;
+      flex-direction: column;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
-    .work-row:last-child {
-      border-bottom: none; /* No border on the very last item */
-    }
-
     .work-row.visible {
       opacity: 1;
       transform: translateY(0);
     }
+    
+    .work-row:last-child {
+      border-bottom: none;
+    }
 
-    /* --- LEFT COLUMN: Identity --- */
-    .work-col-left {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+    /* The Trigger (Visible State) */
+    .work-trigger {
+      width: 100%;
+      display: grid;
+      /* Grid: Client Name (30%) | Headline (1fr) | Icon (Auto) */
+      grid-template-columns: 30% 1fr auto;
+      gap: 60px;
+      padding: 40px 0;
+      cursor: pointer;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .work-trigger:hover .client-name {
+      color: #1E1E24; /* Darken on hover */
+    }
+    
+    .work-trigger:hover .work-plus-icon::before,
+    .work-trigger:hover .work-plus-icon::after {
+      background-color: #A52A2A; /* Red on hover */
     }
 
     .client-name {
       font-family: 'Vollkorn', serif;
       font-size: clamp(2rem, 3vw, 3.5rem);
       font-weight: 700;
-      color: #A52A2A; /* Burnt Red */
+      color: #A52A2A;
       line-height: 1;
       margin: 0;
       letter-spacing: -0.02em;
+      transition: color 0.3s ease;
+    }
+
+    .trigger-headline {
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      font-weight: 400;
+      color: #1E1E24;
+      line-height: 1.2;
+      margin: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* The Plus Icon */
+    .work-icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px; /* Touch target */
+    }
+
+    .work-plus-icon {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .work-plus-icon::before,
+    .work-plus-icon::after {
+      content: '';
+      position: absolute;
+      background-color: #FA38B3; /* Pink Accent */
+      transition: background-color 0.3s ease;
+    }
+
+    /* Vertical line */
+    .work-plus-icon::before {
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+
+    /* Horizontal line */
+    .work-plus-icon::after {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+
+    /* Active State (Open) */
+    .work-row.active .work-plus-icon {
+      transform: rotate(45deg); /* Turns to X */
+    }
+
+    /* The Fold (Hidden Content) */
+    .work-fold-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .work-row.active .work-fold-wrapper {
+      grid-template-rows: 1fr;
+    }
+
+    .work-fold-inner {
+      overflow: hidden;
+    }
+
+    .work-fold-content {
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      padding-bottom: 60px; /* Bottom padding for open state */
+      align-items: start;
     }
 
     .work-image-wrapper {
       width: 100%;
-      max-width: 100%; 
-      aspect-ratio: 4/3; /* Archival Ratio */
+      aspect-ratio: 4/3;
       overflow: hidden;
       background: #E5E5E5;
-      position: relative;
       border: 1px solid rgba(30, 30, 36, 0.1);
     }
 
@@ -683,36 +749,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.8s ease, filter 0.8s ease;
       filter: grayscale(100%);
+      transition: transform 0.8s ease, filter 0.8s ease;
     }
-
-    /* Hover: Reveal Color */
-    .work-row:hover .work-image {
-      transform: scale(1.03);
+    
+    .work-row.active .work-image {
       filter: grayscale(0%);
-    }
-
-    /* --- RIGHT COLUMN: Narrative --- */
-    .work-col-right {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .case-text-content {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 750px;
-    }
-
-    .case-headline {
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-      font-weight: 400;
-      color: #1E1E24;
-      line-height: 1.2;
-      margin: 0;
     }
 
     .case-body {
@@ -721,48 +763,16 @@
       color: #1E1E24;
       opacity: 0.85;
       margin: 0;
+      max-width: 750px;
     }
 
-    /* Meta Data Footer */
-    .case-meta {
-      margin-top: 10px;
-      padding-top: 30px;
-      border-top: 1px solid rgba(30, 30, 36, 0.1);
-      display: flex;
-      flex-direction: row;
-      gap: 60px;
-      font-size: 0.9rem;
-    }
-
-    .meta-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .meta-label {
-      font-weight: 700;
-      color: #A52A2A; /* Burnt Red */
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      opacity: 0.9;
-    }
-
-    .meta-value {
-      color: #1E1E24;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    /* --- NEW NARRATIVE STACK --- */
+    /* Narrative Stack Inside Fold */
     .narrative-stack {
       display: flex;
       flex-direction: column;
       gap: 25px;
       margin-top: 30px;
       padding-top: 30px;
-      /* A subtle divider line separating Headline from Narrative */
       border-top: 1px solid rgba(30, 30, 36, 0.15);
     }
 
@@ -778,7 +788,7 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-weight: 700;
-      color: #A52A2A; /* Burnt Red */
+      color: #A52A2A;
       opacity: 0.9;
     }
 
@@ -789,39 +799,46 @@
       margin: 0;
     }
 
-    @media (max-width: 700px) {
-      .narrative-stack {
-        gap: 20px;
-        margin-top: 20px;
-        padding-top: 20px;
-      }
-    }
-    /* Mobile Responsiveness */
+    /* Mobile Responsiveness for Work Accordion */
     @media (max-width: 900px) {
       .work-header {
         border-bottom: none;
         padding-bottom: 20px;
       }
 
-      .work-row {
-        grid-template-columns: 1fr; 
-        gap: 40px;
-        padding: 50px 0;
+      .work-trigger {
+        grid-template-columns: 1fr auto; /* Name/Headline Stacked | Icon Right */
+        gap: 20px;
+        padding: 30px 0;
+      }
+
+      .trigger-col-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
       }
       
-      .work-col-left {
-        gap: 20px;
+      /* On mobile, client name wrapper takes full width */
+      .trigger-col-left {
+        grid-column: 1 / -1;
+      }
+
+      .work-icon-wrapper {
+        align-self: flex-start; /* Align top with headline */
+        margin-top: 5px;
+      }
+
+      .work-fold-content {
+        grid-template-columns: 1fr; /* Stack image and text */
+        gap: 30px;
+        padding-bottom: 40px;
       }
 
       .work-image-wrapper {
-        aspect-ratio: 16/9; /* Wider on mobile */
-      }
-
-      .case-meta {
-        flex-direction: column;
-        gap: 20px;
+        aspect-ratio: 16/9;
       }
     }
+
     /* --- TESTIMONIALS --- */
     .testimonials-section {
       padding-top: 80px;
@@ -917,11 +934,11 @@
       border-color: #FA38B3;
     }
 
-    /* --- CONTACT (UPDATED: TOP-ALIGNED LEDGER) --- */
+    /* --- CONTACT --- */
     #contact {
-      padding: 120px 20px 100px; /* Top padding matches other sections */
-      background: #FFF8F0; /* Floral White */
-      color: #1E1E24;      /* Raisin Black */
+      padding: 120px 20px 100px;
+      background: #FFF8F0;
+      color: #1E1E24;
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -932,29 +949,26 @@
     .contact-grid {
       width: 100%;
       max-width: 1200px;
-      /* UPDATED: Flex column instead of grid */
       display: flex;
       flex-direction: column;
     }
 
-    /* Header - PADDING REDUCED TO 0 */
     .contact-header {
       width: 100%;
       padding-bottom: 0;
     }
 
-    /* Content */
     .contact-content {
       display: flex;
       flex-direction: column;
-      padding-left: 0; /* Removed padding */
-      border-left: none; /* Removed Swiss line */
+      padding-left: 0;
+      border-left: none;
       min-height: auto;
       justify-content: space-between;
     }
 
     .contact-message {
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Hero size */
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       font-weight: 500;
       line-height: 1.3;
       color: #1E1E24;
@@ -962,7 +976,6 @@
       margin-bottom: 60px;
     }
     
-    /* Highlight the brand name in the text */
     .contact-message strong {
       color: #A52A2A;
       font-weight: 500;
@@ -977,7 +990,7 @@
     .contact-email-link {
       font-size: clamp(1.8rem, 4vw, 3.5rem);
       font-weight: 700;
-      color: #A52A2A; /* Burnt Red */
+      color: #A52A2A;
       text-decoration: none;
       line-height: 1;
       transition: color 0.3s ease;
@@ -985,10 +998,9 @@
     }
 
     .contact-email-link:hover {
-      color: #FA38B3; /* Pink on hover */
+      color: #FA38B3;
     }
 
-    /* Footer info (Location / Social) */
     .contact-meta {
       display: flex;
       gap: 30px;
@@ -1013,7 +1025,6 @@
       text-decoration: underline;
     }
 
-    /* Mobile Responsiveness for Contact */
     @media (max-width: 900px) {
       .contact-message {
         margin-bottom: 40px;
@@ -1074,16 +1085,12 @@
       </h1>
     </section>
 
-    <!-- REDESIGNED SWISS ABOUT SECTION -->
     <section id="about-me" aria-labelledby="about-me-heading">
       <div class="about-container">
-        
-        <!-- Column 1: The Visual -->
         <div class="about-image-col">
            <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" class="about-portrait" loading="eager">
         </div>
 
-        <!-- Column 2: The Story & Proof -->
         <div class="about-content-col">
           <span class="about-label">About Strategy Support</span>
           <h2 id="about-me-heading" class="about-heading">Hi! I'm Emil Valdemar Madsen</h2>
@@ -1093,22 +1100,18 @@
             If you need big-agency thinking without the big-agency price tag or bureaucracy, I can bring that expertise directly into your team.
           </p>
 
-          <!-- Integrated Carousel Section -->
           <div class="about-clients-wrapper">
             <span class="clients-intro-label">Trusted By</span>
             
-            <!-- Tabs (Left Aligned) -->
             <div class="client-tabs" role="tablist" aria-label="Client types">
               <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
               <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
             </div>
 
-            <!-- Carousel -->
             <div class="carousel-wrapper">
               <div class="carousel-container">
                 <div class="carousel-content">
                   
-                  <!-- Brands Group -->
                   <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
                     <div class="client-logos-container">
                       <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
@@ -1135,7 +1138,6 @@
                     </div>
                   </div>
                   
-                  <!-- Agencies Group -->
                   <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
                     <div class="client-logos-container">
                       <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
@@ -1154,35 +1156,29 @@
               </div>
             </div>
 
-          </div> <!-- End Wrapper -->
-        </div> <!-- End Content Col -->
+          </div>
+        </div>
 
       </div>
     </section>
     
-    <!-- UPDATED SWISS APPROACH (VERTICAL LAYOUT) -->
     <section id="my-approach" aria-labelledby="my-approach-heading">
       <div class="approach-grid">
         
-        <!-- Full Width Title -->
         <div class="approach-header">
          <h2 id="my-approach-heading" class="swiss-label on-white">Approach</h2>
         </div>
 
-        <!-- Full Width Content (with max-width on text) -->
         <div class="approach-content">
           
-          <!-- 1. Context -->
           <p class="approach-p approach-text-std">
             I learnt my craft in the strategy departments of London and New York agencies, so my approach is simple: it starts with the truth behind your business, your customers, and your competition.
           </p>
           
-          <!-- 2. The Hook (Emphasized) -->
           <p class="approach-p approach-text-hero">
             I don’t do fluff. I provide clear direction that teams can actually execute.
           </p>
 
-          <!-- 3. The Proof -->
           <p class="approach-p approach-text-std">
             This has shaped global work for brands like Burger King, Huawei, and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
           </p>
@@ -1194,7 +1190,6 @@
     <section id="services" aria-labelledby="services-heading">
       <div class="services-grid">
         
-        <!-- Left Column (30%): Title + Intro -->
         <div class="services-header">
           <h2 id="services-heading" class="swiss-label on-red">How I Help</h2>
           <p class="services-intro-side">
@@ -1202,11 +1197,9 @@
           </p>
         </div>
 
-        <!-- Right Column (70%): The List -->
         <div class="services-content">
           <div class="services-list">
             
-            <!-- Service 01 -->
             <div class="service-row">
               <div class="service-num">01</div>
               <div class="service-details">
@@ -1217,7 +1210,6 @@
               </div>
             </div>
 
-            <!-- Service 02 -->
             <div class="service-row">
               <div class="service-num">02</div>
               <div class="service-details">
@@ -1228,7 +1220,6 @@
               </div>
             </div>
 
-            <!-- Service 03 -->
             <div class="service-row">
               <div class="service-num">03</div>
               <div class="service-details">
@@ -1244,7 +1235,7 @@
       </div>
     </section>
 
-   <!-- RECENT WORK (TOP-ALIGNED LEDGER) -->
+   <!-- RECENT WORK (ACCORDION INTERACTIVE VERSION) -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
       <div class="work-container">
         
@@ -1257,60 +1248,37 @@
 
           <!-- Case 1: DSV -->
           <article class="work-row">
-            <div class="work-col-left">
-              <h3 class="client-name">DSV 2025</h3>
-              <div class="work-image-wrapper">
-                <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
-              </div>
+            <!-- Visible Trigger -->
+            <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
+               <div class="trigger-col-left">
+                 <h3 class="client-name">DSV 2025</h3>
+               </div>
+               <div class="trigger-col-content">
+                 <h4 class="trigger-headline">I'm making the world's largest transport company move as one</h4>
+               </div>
+               <div class="work-icon-wrapper">
+                 <span class="work-plus-icon"></span>
+               </div>
             </div>
 
-            <div class="work-col-right">
-              <div class="case-text-content">
-                <h4 class="case-headline">I'm making the world's largest transport company move as one</h4>
-                <p class="case-body">
-                DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
-<br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
-<br><br>I'm also supporting organisational design, process development, and AI implementation.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Case 2: Saxo Bank -->
-          <article class="work-row">
-            <div class="work-col-left">
-              <h3 class="client-name">Saxo Bank 2023</h3>
-              <div class="work-image-wrapper">
-                <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
-              </div>
-            </div>
-
-            <div class="work-col-right">
-              <div class="case-text-content">
-                <!-- Main Headline -->
-                <h4 class="case-headline">I made Saxo Bank give money a voice in a category that all sounds the same</h4>
-                
-                <!-- New Narrative Stack -->
-                <div class="narrative-stack">
+            <!-- Hidden Fold -->
+            <div class="work-fold-wrapper">
+              <div class="work-fold-inner">
+                <div class="work-fold-content">
                   
-                  <div class="narrative-item">
-                    <span class="narrative-label">Problem</span>
-                    <p class="narrative-text">
-                      Saxo wanted to grow brand awareness and preference among experienced investors and traders globally. But in a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in a way that felt equally relevant in Asian, European and American markets.
-                    </p>
+                  <!-- Left Col (Image) -->
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                      <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
+                    </div>
                   </div>
-
-                  <div class="narrative-item">
-                    <span class="narrative-label">Insight</span>
-                    <p class="narrative-text">
-                      For investors, money isn’t just something to save, it’s something to activate. And with more tradable instruments than competitors, Saxo gives your money more things to do.
-                    </p>
-                  </div>
-
-                  <div class="narrative-item">
-                    <span class="narrative-label">Solution</span>
-                    <p class="narrative-text">
-                      Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.
+                  
+                  <!-- Right Col (Narrative) -->
+                  <div class="work-col-right">
+                     <p class="case-body">
+                      DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
+                      <br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
+                      <br><br>I'm also supporting organisational design, process development, and AI implementation.
                     </p>
                   </div>
 
@@ -1318,42 +1286,112 @@
               </div>
             </div>
           </article>
-          <!-- Case 3: Burger King -->
+
+          <!-- Case 2: Saxo Bank -->
           <article class="work-row">
-            <div class="work-col-left">
-              <h3 class="client-name">Burger King 2016</h3>
-              <div class="work-image-wrapper">
-                 <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
-              </div>
+             <!-- Visible Trigger -->
+            <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
+               <div class="trigger-col-left">
+                 <h3 class="client-name">Saxo Bank 2023</h3>
+               </div>
+               <div class="trigger-col-content">
+                 <h4 class="trigger-headline">I made Saxo Bank give money a voice in a category that all sounds the same</h4>
+               </div>
+               <div class="work-icon-wrapper">
+                 <span class="work-plus-icon"></span>
+               </div>
             </div>
 
-            <div class="work-col-right">
-              <div class="case-text-content">
-                <!-- Main Headline -->
-                <h4 class="case-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
-                
-                <!-- New Narrative Stack -->
-                <div class="narrative-stack">
+             <!-- Hidden Fold -->
+            <div class="work-fold-wrapper">
+              <div class="work-fold-inner">
+                <div class="work-fold-content">
                   
-                  <div class="narrative-item">
-                    <span class="narrative-label">Problem</span>
-                    <p class="narrative-text">
-                      Burger King had launched a new global brand strategy pivoting <em>Have It Your Way</em> to <em>Be Your Way</em>. But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported.
-                    </p>
+                  <!-- Left Col (Image) -->
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                      <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
+                    </div>
+                  </div>
+                  
+                  <!-- Right Col (Narrative) -->
+                  <div class="work-col-right">
+                    <div class="narrative-stack" style="margin-top:0; padding-top:0; border-top:none;">
+                      <div class="narrative-item">
+                        <span class="narrative-label">Problem</span>
+                        <p class="narrative-text">
+                          Saxo wanted to grow brand awareness and preference among experienced investors and traders globally. But in a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in a way that felt equally relevant in Asian, European and American markets.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Insight</span>
+                        <p class="narrative-text">
+                          For investors, money isn’t just something to save, it’s something to activate. And with more tradable instruments than competitors, Saxo gives your money more things to do.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Solution</span>
+                        <p class="narrative-text">
+                          Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="narrative-item">
-                    <span class="narrative-label">Insight</span>
-                    <p class="narrative-text">
-                      Burdened by expectations, British youth feel most themselves when being cheeky – taking what's expected and adding their own twist.
-                    </p>
-                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
-                  <div class="narrative-item">
-                    <span class="narrative-label">Solution</span>
-                    <p class="narrative-text">
-                      Position Burger King as the destination of cheeky detours.
-                    </p>
+          <!-- Case 3: Burger King -->
+          <article class="work-row">
+             <!-- Visible Trigger -->
+             <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
+               <div class="trigger-col-left">
+                 <h3 class="client-name">Burger King 2016</h3>
+               </div>
+               <div class="trigger-col-content">
+                 <h4 class="trigger-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
+               </div>
+               <div class="work-icon-wrapper">
+                 <span class="work-plus-icon"></span>
+               </div>
+            </div>
+
+             <!-- Hidden Fold -->
+            <div class="work-fold-wrapper">
+              <div class="work-fold-inner">
+                <div class="work-fold-content">
+                  
+                  <!-- Left Col (Image) -->
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                       <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
+                    </div>
+                  </div>
+                  
+                  <!-- Right Col (Narrative) -->
+                  <div class="work-col-right">
+                    <div class="narrative-stack" style="margin-top:0; padding-top:0; border-top:none;">
+                      <div class="narrative-item">
+                        <span class="narrative-label">Problem</span>
+                        <p class="narrative-text">
+                          Burger King had launched a new global brand strategy pivoting <em>Have It Your Way</em> to <em>Be Your Way</em>. But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Insight</span>
+                        <p class="narrative-text">
+                          Burdened by expectations, British youth feel most themselves when being cheeky – taking what's expected and adding their own twist.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Solution</span>
+                        <p class="narrative-text">
+                          Position Burger King as the destination of cheeky detours.
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                 </div>
@@ -1405,30 +1443,24 @@
       </div>
     </section>
 
-   <!-- CONTACT (UPDATED: TOP-ALIGNED LEDGER) -->
     <section id="contact" aria-labelledby="contact-heading">
       <div class="contact-grid">
         
-        <!-- Full Width Anchor -->
         <div class="contact-header">
          <h2 id="contact-heading" class="swiss-label on-white">Contact</h2>
         </div>
 
-        <!-- Full Width Action -->
         <div class="contact-content">
           
-          <!-- The "Play on Name" Copy -->
           <p class="contact-message">
             If you have a challenge or a problem and need <strong>Strategy Support</strong>, I am here to help.
           </p>
 
           <div class="contact-details">
-            <!-- The Hero Email -->
             <a href="mailto:emil@strategy-support.com" class="contact-email-link">
               emil@strategy-support.com
             </a>
 
-            <!-- The "Business Card" Footer -->
             <div class="contact-meta">
               <span>Copenhagen, DenmarK. Travel and Remote.</span>
             </div>
@@ -1445,7 +1477,8 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Animated heading
+      
+      /* --- ANIMATED HEADING --- */
       const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
       const animatedWordElement = document.querySelector('.animated-word');
       let currentWordIndex = 0;
@@ -1486,7 +1519,7 @@
 
       type();
 
-      // Fade-in animation for service and case items as user scrolls
+      /* --- SCROLL OBSERVER --- */
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1497,12 +1530,41 @@
         threshold: 0.15
       });
 
-      // Observing Service rows, Work rows, and the new Approach paragraphs
       document.querySelectorAll('.service-row, .work-row, .approach-p').forEach(item => {
         observer.observe(item);
       });
 
-      // Testimonial carousel
+      /* --- WORK ACCORDION LOGIC --- */
+      const workTriggers = document.querySelectorAll('.work-trigger');
+      
+      workTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const parentRow = trigger.closest('.work-row');
+          const isActive = parentRow.classList.contains('active');
+          
+          // Accordion Mode: Close all other rows
+          document.querySelectorAll('.work-row').forEach(row => {
+             row.classList.remove('active');
+             row.querySelector('.work-trigger').setAttribute('aria-expanded', 'false');
+          });
+
+          // If it wasn't active before, open it now
+          if (!isActive) {
+            parentRow.classList.add('active');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Keyboard accessibility (Enter/Space)
+        trigger.addEventListener('keydown', (e) => {
+           if (e.key === 'Enter' || e.key === ' ') {
+             e.preventDefault();
+             trigger.click();
+           }
+        });
+      });
+
+      /* --- TESTIMONIAL CAROUSEL --- */
       const testimonials = document.querySelectorAll('.testimonial-item');
       const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
       let currentTestimonialIndex = 0;
@@ -1543,7 +1605,7 @@
         });
       });
 
-      // Client tabs functionality
+      /* --- CLIENT LOGO TABS --- */
       const clientTabs = document.querySelectorAll('.client-tab');
       const clientGroups = document.querySelectorAll('.client-group');
       
@@ -1563,7 +1625,7 @@
             group.classList.toggle('active', group.dataset.group === groupType);
           });
           
-          // Restart animation for the active group
+          // Restart animation hack
           const activeGroup = document.querySelector(`.client-group.active`);
           const logoContainer = activeGroup.querySelector('.client-logos-container');
           const animation = logoContainer.style.animation;
@@ -1581,15 +1643,12 @@
         });
       });
 
-      // Start testimonial carousel
       startTestimonialCarousel();
       
-      // Cleanup on unload
       window.addEventListener('beforeunload', () => {
         clearInterval(testimonialInterval);
       });
       
-      // Pause carousels when tab is not visible
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           clearInterval(testimonialInterval);
