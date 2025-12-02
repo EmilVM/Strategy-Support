@@ -31,6 +31,62 @@
       width: 100%;
     }
 
+    /* --- NAVIGATION (NEW) --- */
+    .sticky-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 25px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      /* mix-blend-mode: difference inverts the color based on background 
+         White text on White bg = Black. White text on Red bg = Cyan. 
+         This creates a cool, readable effect on all sections. */
+      mix-blend-mode: difference;
+      color: #fff; 
+    }
+
+    .nav-logo { 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em; 
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .nav-links { 
+      list-style: none; 
+      display: flex; 
+      gap: 30px; 
+    }
+
+    .nav-links li {
+      display: inline-block;
+    }
+
+    .nav-links a { 
+      text-decoration: none; 
+      color: inherit; 
+      text-transform: uppercase; 
+      font-size: 0.85rem; 
+      letter-spacing: 0.05em; 
+      font-weight: 500;
+    }
+
+    @media (max-width: 700px) {
+      .sticky-nav { 
+        padding: 20px; 
+        justify-content: center;
+      } 
+      /* Hide links on mobile to keep it clean, or replace with hamburger if desired later */
+      .nav-links { 
+        display: none; 
+      } 
+    }
+
     /* --- SHARED TYPOGRAPHY --- */
     .swiss-label {
       font-family: 'Vollkorn', serif;
@@ -71,6 +127,7 @@
       padding: 20px;
       background: #FFF8F0;
       color: #1E1E24;
+      text-align: center;
     }
 
     .animated-heading {
@@ -147,6 +204,38 @@
       50% { opacity: 1; }
     }
 
+    /* Hero Subtext & CTA (NEW) */
+    .hero-sub {
+      margin-top: 30px;
+      font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+      line-height: 1.5;
+      text-align: center;
+      max-width: 650px;
+      font-weight: 400;
+      color: #1E1E24;
+      opacity: 0.85;
+    }
+
+    .hero-btn {
+      margin-top: 40px;
+      padding: 15px 35px;
+      border: 1px solid #1E1E24;
+      color: #1E1E24;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .hero-btn:hover {
+      background: #A52A2A; /* Burnt Red */
+      border-color: #A52A2A;
+      color: #FFF8F0;
+    }
+
     /* --- ABOUT ME --- */
     #about-me {
       padding: 100px 20px;
@@ -168,7 +257,7 @@
 
     .about-image-col {
       position: sticky;
-      top: 40px;
+      top: 100px; /* adjusted for nav */
     }
 
     .about-portrait {
@@ -456,7 +545,7 @@
 
     .services-header {
       position: sticky;
-      top: 40px;
+      top: 100px; /* adjusted for nav */
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -1031,12 +1120,37 @@
       }
     }
 
+    /* FOOTER & SOCIAL */
     footer {
       background: #FFF8F0;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
       font-size: 0.9rem;
       color: #1E1E24;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      border-top: 1px solid rgba(30,30,36,0.1);
+    }
+    
+    .footer-social-link {
+      color: #1E1E24;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom-color 0.3s, color 0.3s;
+      font-size: 0.95rem;
+    }
+    
+    .footer-social-link:hover {
+      border-bottom-color: #FA38B3;
+      color: #A52A2A;
+    }
+    
+    .footer-copy {
       opacity: 0.7;
     }
 
@@ -1072,6 +1186,19 @@
   </script>
 </head>
 <body>
+  
+  <!-- NEW STICKY NAVIGATION -->
+  <nav class="sticky-nav">
+    <div class="nav-logo" onclick="window.scrollTo(0,0)">STRATEGY SUPPORT</div>
+    <ul class="nav-links">
+      <li><a href="#about-me">About</a></li>
+      <li><a href="#my-approach">Approach</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#recent-work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <main>
     <section id="intro" aria-labelledby="intro-heading">
       <h1 class="animated-heading">
@@ -1083,6 +1210,13 @@
           <span class="animated-word-static">SUPPORT</span>
         </span>
       </h1>
+      
+      <!-- UPDATED HERO SUB-HEADLINE & CTA -->
+      <p class="hero-sub">
+        Big-agency thinking without the big-agency price tag or bureaucracy, directly in your team.
+      </p>
+      <a href="#contact" class="hero-btn">Get in Touch</a>
+
     </section>
 
     <section id="about-me" aria-labelledby="about-me-heading">
@@ -1472,7 +1606,8 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
+    <a href="https://www.linkedin.com/in/emilvmadsen/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+    <p class="footer-copy">&copy; 2025 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
   </footer>
 
   <script>
