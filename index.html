@@ -25,28 +25,35 @@
       color: #1E1E24; /* Raisin black */
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
+      
+      /* Fix for anchor links landing behind sticky header */
+      scroll-padding-top: 85px;
     }
 
     main {
       width: 100%;
     }
 
-    /* --- NAVIGATION (NEW) --- */
+    /* --- NAVIGATION (UPDATED: FROSTED GLASS & MOBILE MENU) --- */
     .sticky-nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 25px 40px;
+      height: 80px;
+      padding: 0 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      /* mix-blend-mode: difference inverts the color based on background 
-         White text on White bg = Black. White text on Red bg = Cyan. 
-         This creates a cool, readable effect on all sections. */
-      mix-blend-mode: difference;
-      color: #fff; 
+      
+      /* Frosted Glass Effect */
+      background: rgba(255, 248, 240, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); /* Safari support */
+      border-bottom: 1px solid rgba(30, 30, 36, 0.05);
+      color: #1E1E24;
+      transition: all 0.3s ease;
     }
 
     .nav-logo { 
@@ -55,12 +62,15 @@
       letter-spacing: 0.05em; 
       font-size: 1.1rem;
       cursor: pointer;
+      z-index: 1001; /* Ensure logo stays above mobile menu bg */
     }
 
     .nav-links { 
       list-style: none; 
       display: flex; 
       gap: 30px; 
+      margin: 0;
+      padding: 0;
     }
 
     .nav-links li {
@@ -69,22 +79,101 @@
 
     .nav-links a { 
       text-decoration: none; 
-      color: inherit; 
+      color: #1E1E24; 
       text-transform: uppercase; 
       font-size: 0.85rem; 
       letter-spacing: 0.05em; 
       font-weight: 500;
+      transition: color 0.3s;
     }
 
+    .nav-links a:hover {
+      color: #A52A2A;
+    }
+
+    /* Mobile Menu Toggle (Hidden on Desktop) */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+    }
+
+    .hamburger-icon {
+      width: 24px;
+      height: 2px;
+      background: #1E1E24;
+      position: relative;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: #1E1E24;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-icon::before { top: -8px; }
+    .hamburger-icon::after { top: 8px; }
+
+    /* Mobile Styles */
     @media (max-width: 700px) {
       .sticky-nav { 
-        padding: 20px; 
+        padding: 0 20px; 
+        height: 70px;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        background: #FFF8F0;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-      } 
-      /* Hide links on mobile to keep it clean, or replace with hamburger if desired later */
-      .nav-links { 
-        display: none; 
-      } 
+        gap: 40px;
+        transform: translateY(-100%); /* Hidden by default */
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+
+      .nav-links a {
+        font-size: 1.5rem; /* Larger touch targets */
+        font-weight: 400;
+      }
+
+      /* Hamburger Animation when Active */
+      .mobile-menu-toggle.active .hamburger-icon {
+        background: transparent;
+      }
+      .mobile-menu-toggle.active .hamburger-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+      .mobile-menu-toggle.active .hamburger-icon::after {
+        transform: rotate(-45deg);
+        top: 0;
+      }
     }
 
     /* --- SHARED TYPOGRAPHY --- */
@@ -128,6 +217,7 @@
       background: #FFF8F0;
       color: #1E1E24;
       text-align: center;
+      padding-top: 80px; /* Offset for header */
     }
 
     .animated-heading {
@@ -204,7 +294,7 @@
       50% { opacity: 1; }
     }
 
-    /* Hero Subtext & CTA (NEW) */
+    /* Hero Subtext & CTA */
     .hero-sub {
       margin-top: 30px;
       font-size: clamp(1.1rem, 1.5vw, 1.4rem);
@@ -1156,7 +1246,7 @@
 
     /* General Mobile Fixes */
     @media (max-width: 700px) {
-      #intro { padding: 16px; }
+      #intro { padding: 16px; padding-top: 80px; }
       #about-me, #my-approach, #services, #recent-work, #testimonials { padding: 50px 16px; }
       #contact { padding: 60px 16px 80px; }
       .client-logos-container { animation: scroll-mobile 15s linear infinite; width: 200%; }
@@ -1187,9 +1277,14 @@
 </head>
 <body>
   
-  <!-- NEW STICKY NAVIGATION -->
+  <!-- NEW FROSTED GLASS NAVIGATION -->
   <nav class="sticky-nav">
     <div class="nav-logo" onclick="window.scrollTo(0,0)">STRATEGY SUPPORT</div>
+    
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <span class="hamburger-icon"></span>
+    </button>
+
     <ul class="nav-links">
       <li><a href="#about-me">About</a></li>
       <li><a href="#my-approach">Approach</a></li>
@@ -1211,7 +1306,7 @@
         </span>
       </h1>
       
-      <!-- UPDATED HERO SUB-HEADLINE & CTA -->
+      <!-- HERO SUB-HEADLINE & CTA -->
       <p class="hero-sub">
         Big-agency thinking without the big-agency price tag or bureaucracy, directly in your team.
       </p>
@@ -1613,6 +1708,27 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       
+      /* --- MOBILE MENU LOGIC --- */
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const mobileLinks = document.querySelectorAll('.nav-links a');
+
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when a link is clicked
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
       /* --- ANIMATED HEADING --- */
       const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
       const animatedWordElement = document.querySelector('.animated-word');
