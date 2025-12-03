@@ -8,11 +8,11 @@
   
   <meta name="description" content="Copenhagen-based, London-trained strategist. I help brands, agencies and in-house teams with pitches, platforms and campaigns. DK / UK / Global experience.">
   <!-- Favicons -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap&font-display=swap" rel="stylesheet">
@@ -1237,7 +1237,7 @@
       border-color: #FA198B;
     }
 
-    /* --- CONTACT --- */
+    /* --- SWISS FORM (NEW) --- */
     #contact {
       padding: 120px 20px 100px;
       background: #F9F7F1;
@@ -1258,83 +1258,123 @@
 
     .contact-header {
       width: 100%;
-      padding-bottom: 0;
+      padding-bottom: 20px;
     }
 
     .contact-content {
-      display: flex;
-      flex-direction: column;
-      padding-left: 0;
-      border-left: none;
-      min-height: auto;
-      justify-content: space-between;
+      width: 100%;
+      max-width: 900px; /* Constrain width for readability of the form */
     }
 
-    .contact-message {
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-      font-weight: 500;
-      line-height: 1.3;
+    /* The Paragraph Layout */
+    .swiss-paragraph {
+      font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Large Display Type */
+      line-height: 1.5;
       color: #1F2023;
-      max-width: 750px;
-      margin-bottom: 60px;
+      font-weight: 500;
+    }
+
+    /* The Inputs */
+    .swiss-input {
+      font-family: 'Vollkorn', serif;
+      font-size: inherit;
+      color: #8A3324; /* Chestnut */
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(31, 32, 35, 0.2);
+      padding: 0 5px;
+      outline: none;
+      transition: border-color 0.3s, color 0.3s;
+      width: auto;
+      min-width: 150px;
+      max-width: 100%;
+      display: inline-block;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    .swiss-input:focus {
+      border-bottom-color: #FA198B; /* Pink on Focus */
+      border-bottom-width: 2px;
+      margin-bottom: -1px; /* Offset width change */
+    }
+
+    .swiss-input::placeholder {
+      color: #1F2023;
+      opacity: 0.3;
+      font-style: italic;
+    }
+
+    /* The Dropdown specific styling */
+    select.swiss-input {
+      cursor: pointer;
+      padding-right: 0;
+      text-align: left;
     }
     
-    /* UPDATED: Strategy Support is now Red */
-    .contact-message strong {
-      color: #8A3324;
-      font-weight: 500;
+    /* Hover effect for inputs */
+    .swiss-input:hover {
+      border-bottom-color: #8A3324;
     }
 
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    /* UPDATED: Email is now Pink, and hover is Red */
-    .contact-email-link {
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
+    /* The Stamp Button */
+    .swiss-submit-btn {
+      margin-top: 60px;
+      font-family: 'Vollkorn', serif;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #1F2023;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.3s, transform 0.3s;
+      padding: 0;
+    }
+
+    .swiss-submit-btn:hover {
       color: #FA198B; /* Pink */
-      text-decoration: none;
-      line-height: 1;
-      transition: color 0.3s ease;
-      word-break: break-word;
+      transform: translateX(10px);
     }
-
-    .contact-email-link:hover {
-      color: #8A3324; /* Swapped to Red for hover */
-    }
-
-    .contact-meta {
-      display: flex;
-      gap: 30px;
-      font-size: 1rem;
-      font-weight: 500;
+    
+    /* Fallback Link */
+    .fallback-email {
+      display: block;
+      margin-top: 40px;
+      font-size: 0.9rem;
       color: #1F2023;
       opacity: 0.6;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-top: 1px solid rgba(31, 32, 35, 0.1);
-      padding-top: 30px;
-    }
-
-    .contact-meta a {
-      color: inherit;
       text-decoration: none;
-      transition: opacity 0.3s;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s;
+      width: fit-content;
     }
     
-    .contact-meta a:hover {
+    .fallback-email:hover {
       opacity: 1;
-      text-decoration: underline;
+      border-bottom-color: #8A3324;
+      color: #8A3324;
     }
 
-    @media (max-width: 900px) {
-      .contact-message {
-        margin-bottom: 40px;
+    @media (max-width: 600px) {
+      .swiss-paragraph {
+        line-height: 1.8;
+      }
+      .swiss-input {
+        width: 100%; /* Stack on mobile */
+        display: block;
+        margin: 5px 0 15px 0;
+        border-bottom: 1px solid rgba(31, 32, 35, 0.4);
+      }
+      .swiss-submit-btn {
+        margin-top: 40px;
       }
     }
+
 
     /* FOOTER & SOCIAL */
     footer {
@@ -1808,6 +1848,7 @@
       </div>
     </section>
 
+    <!-- NEW SWISS FORM CONTACT SECTION -->
     <section id="contact" aria-labelledby="contact-heading">
       <div class="contact-grid">
         
@@ -1816,22 +1857,38 @@
         </div>
 
         <div class="contact-content">
-          
-          <p class="contact-message">
-            If you have a challenge or a problem and need <strong>Strategy Support</strong>, I am here to help.
-          </p>
+          <form id="swiss-form" onsubmit="handleSwissForm(event)">
+            <p class="swiss-paragraph">
+              Hi Emil,
+              <br><br>
+              This is 
+              <input type="text" id="s-name" placeholder="your name" class="swiss-input" required autocomplete="name"> 
+              from 
+              <input type="text" id="s-company" placeholder="company name" class="swiss-input" autocomplete="organization">.
+              <br><br>
+              We need help with 
+              <select id="s-service" class="swiss-input swiss-select">
+                <option value="Strategy">Strategy</option>
+                <option value="Planning">Planning</option>
+                <option value="Creative">Creative</option>
+                <option value="Speaking">Speaking</option>
+                <option value="Other">Something else</option>
+              </select>.
+              <br><br>
+              You can reach me at 
+              <input type="email" id="s-email" placeholder="your email" class="swiss-input" required autocomplete="email">.
+            </p>
 
-          <div class="contact-details">
-            <a href="mailto:emil@strategy-support.com" class="contact-email-link">
-              emil@strategy-support.com
-            </a>
+            <button type="submit" class="swiss-submit-btn">
+              Send Request &rarr;
+            </button>
+          </form>
 
-            <div class="contact-meta">
-              <span>Denmark, travel and remote.</span>
-            </div>
-          </div>
-
+          <a href="mailto:emil@strategy-support.com" class="fallback-email">
+            (Or click here to email me directly)
+          </a>
         </div>
+
       </div>
     </section>
   </main>
@@ -1878,6 +1935,24 @@
       });
     }
 
+    /* SWISS FORM HANDLER */
+    function handleSwissForm(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('s-name').value;
+      const company = document.getElementById('s-company').value || "their company";
+      const service = document.getElementById('s-service').value;
+      const email = document.getElementById('s-email').value;
+      
+      // Constructing the mailto link
+      const subject = encodeURIComponent(`Strategy Support Request: ${service} for ${company}`);
+      const body = encodeURIComponent(
+        `Hi Emil,\n\nThis is ${name} from ${company}.\n\nWe are looking for help with ${service}.\n\nYou can reach me at ${email} to discuss further.\n\nBest,\n${name}`
+      );
+      
+      window.location.href = `mailto:emil@strategy-support.com?subject=${subject}&body=${body}`;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       
       /* --- MOBILE MENU LOGIC --- */
@@ -1905,182 +1980,4 @@
       const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
       const animatedWordElement = document.querySelector('.animated-word');
       let currentWordIndex = 0;
-      let isDeleting = false;
-      let text = '';
-      // Increased speeds for snappy feel
-      let typingSpeed = 100; // was 150
-      let deletingSpeed = 60; // was 100
-      let pauseTime = 1500;
-
-      function type() {
-        const currentWord = words[currentWordIndex];
-        
-        if (isDeleting) {
-          text = currentWord.substring(0, text.length - 1);
-          animatedWordElement.textContent = text;
-          
-          if (text === '') {
-            isDeleting = false;
-            currentWordIndex = (currentWordIndex + 1) % words.length;
-            setTimeout(type, 350); // faster pause between words
-            return;
-          }
-          
-          setTimeout(type, deletingSpeed);
-        } else {
-          text = currentWord.substring(0, text.length + 1);
-          animatedWordElement.textContent = text;
-          
-          if (text === currentWord) {
-            isDeleting = true;
-            setTimeout(type, pauseTime);
-            return;
-          }
-          
-          setTimeout(type, typingSpeed);
-        }
-      }
-
-      type();
-
-      /* --- SCROLL OBSERVER --- */
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, {
-        threshold: 0.15
-      });
-
-      document.querySelectorAll('.service-row, .work-row, .approach-p').forEach(item => {
-        observer.observe(item);
-      });
-
-      /* --- WORK ACCORDION LOGIC --- */
-      const workTriggers = document.querySelectorAll('.work-trigger');
-      
-      workTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-          const parentRow = trigger.closest('.work-row');
-          const isActive = parentRow.classList.contains('active');
-          
-          // Accordion Mode: Close all other rows
-          document.querySelectorAll('.work-row').forEach(row => {
-             row.classList.remove('active');
-             row.querySelector('.work-trigger').setAttribute('aria-expanded', 'false');
-          });
-
-          // If it wasn't active before, open it now
-          if (!isActive) {
-            parentRow.classList.add('active');
-            trigger.setAttribute('aria-expanded', 'true');
-          }
-        });
-
-        // Keyboard accessibility (Enter/Space)
-        trigger.addEventListener('keydown', (e) => {
-           if (e.key === 'Enter' || e.key === ' ') {
-             e.preventDefault();
-             trigger.click();
-           }
-        });
-      });
-
-      /* --- TESTIMONIAL CAROUSEL --- */
-      const testimonials = document.querySelectorAll('.testimonial-item');
-      const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
-      let currentTestimonialIndex = 0;
-      let testimonialInterval;
-
-      function showTestimonial(index) {
-        testimonials.forEach((item, i) => {
-          item.classList.toggle('active', i === index);
-          testimonialDots[i].classList.toggle('active', i === index);
-          testimonialDots[i].setAttribute('aria-selected', i === index);
-        });
-      }
-
-      function nextTestimonial() {
-        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
-        showTestimonial(currentTestimonialIndex);
-      }
-
-      function startTestimonialCarousel() {
-        clearInterval(testimonialInterval);
-        testimonialInterval = setInterval(nextTestimonial, 6000);
-      }
-
-      testimonialDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          currentTestimonialIndex = index;
-          showTestimonial(currentTestimonialIndex);
-          startTestimonialCarousel();
-        });
-        
-        dot.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            currentTestimonialIndex = index;
-            showTestimonial(currentTestimonialIndex);
-            startTestimonialCarousel();
-          }
-        });
-      });
-
-      /* --- CLIENT LOGO TABS --- */
-      const clientTabs = document.querySelectorAll('.client-tab');
-      const clientGroups = document.querySelectorAll('.client-group');
-      
-      clientTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          clientTabs.forEach(t => {
-            t.classList.remove('active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-          
-          const groupType = tab.dataset.type;
-          
-          clientGroups.forEach(group => {
-            group.classList.toggle('active', group.dataset.group === groupType);
-          });
-          
-          // Restart animation hack
-          const activeGroup = document.querySelector(`.client-group.active`);
-          const logoContainer = activeGroup.querySelector('.client-logos-container');
-          const animation = logoContainer.style.animation;
-          logoContainer.style.animation = 'none';
-          setTimeout(() => {
-            logoContainer.style.animation = animation || '';
-          }, 10);
-        });
-        
-        tab.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            tab.click();
-          }
-        });
-      });
-
-      startTestimonialCarousel();
-      
-      window.addEventListener('beforeunload', () => {
-        clearInterval(testimonialInterval);
-      });
-      
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          clearInterval(testimonialInterval);
-        } else {
-          startTestimonialCarousel();
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+      let isDeleting
