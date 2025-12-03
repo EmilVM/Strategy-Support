@@ -1380,13 +1380,29 @@
     }
 
     /* Mobile Adjustments for Form */
+/* Mobile Adjustments for Form */
     @media (max-width: 600px) {
+      /* 1. New Wrapper Style: Keeps input and dot together */
+      .input-group {
+        display: flex;        /* Aligns input and dot in a row */
+        align-items: baseline; /* Ensures the dot sits on the text line, not floating up */
+        width: 100%;
+        margin: 10px 0;       /* Moves the spacing to the wrapper */
+      }
+
+      /* 2. Updated Input Style: Lets the wrapper handle the layout */
       .editorial-input, 
       .editorial-select {
-        display: block; /* Stack inputs on mobile for better usability */
+        display: block; 
         width: 100%;
-        margin: 10px 0;
         min-width: 0;
+      }
+
+      /* Specific tweak for inputs inside our new group */
+      .input-group .editorial-input {
+        margin: 0;       /* Remove margin so it fits in the wrapper */
+        flex-grow: 1;    /* Input takes up all space */
+        width: auto;     /* Let flexbox handle width */
       }
       
       .editorial-text {
@@ -1916,8 +1932,10 @@
               This is 
               <input type="text" id="ef-name" class="editorial-input" placeholder="Your Name" required aria-label="Your Name">
               from 
-              <input type="text" id="ef-company" class="editorial-input" placeholder="Company Name" required aria-label="Company Name">.
-              <br><br>
+             <span class="input-group">
+  <input type="text" id="ef-company" class="editorial-input" placeholder="Company Name" required aria-label="Company Name">.
+</span>
+<br><br>
               We need help with 
               <span class="editorial-select-wrapper">
                 <select id="ef-service" class="editorial-select" required aria-label="Service Type">
@@ -1929,8 +1947,9 @@
                 </select>
               </span>.
               <br><br>
-              You can reach me at 
-              <input type="email" id="ef-email" class="editorial-input" placeholder="your@email.com" required aria-label="Your Email">.
+            <span class="input-group">
+  <input type="email" id="ef-email" class="editorial-input" placeholder="your@email.com" required aria-label="Your Email">.
+</span>
             </p>
 
             <button type="submit" class="editorial-submit">
