@@ -802,8 +802,10 @@
       font-weight: 400;
       flex-basis: 10%;
       padding-top: 5px;
-      color: #FA198B;
+      /* UPDATED: Changed to White */
+      color: #F9F7F1;
       opacity: 1;
+      transition: color 0.3s ease; /* Added transition */
     }
 
     .service-details {
@@ -836,6 +838,11 @@
     }
 
     .service-row:hover h3 {
+      color: #FA198B;
+    }
+    
+    /* UPDATED: Service Number turns pink on hover */
+    .service-row:hover .service-num {
       color: #FA198B;
     }
 
@@ -1266,8 +1273,9 @@
       margin-bottom: 60px;
     }
     
+    /* UPDATED: Strategy Support is now Red */
     .contact-message strong {
-      color: #FA198B;
+      color: #8A3324;
       font-weight: 500;
     }
 
@@ -1277,10 +1285,11 @@
       gap: 40px;
     }
 
+    /* UPDATED: Email is now Pink, and hover is Red */
     .contact-email-link {
       font-size: clamp(1.8rem, 4vw, 3.5rem);
       font-weight: 700;
-      color: #8A3324; /* Chestnut */
+      color: #FA198B; /* Pink */
       text-decoration: none;
       line-height: 1;
       transition: color 0.3s ease;
@@ -1288,7 +1297,7 @@
     }
 
     .contact-email-link:hover {
-      color: #FA198B; /* Barbie Pink */
+      color: #8A3324; /* Swapped to Red for hover */
     }
 
     .contact-meta {
