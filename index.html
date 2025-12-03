@@ -331,7 +331,7 @@
       opacity: 0.85;
     }
 
-    /* MINIMAL CTA BUTTON */
+    /* UPDATED: Minimalist "No Box" CTA Styles */
     .minimal-copy-btn {
       margin-top: 50px;
       display: flex;
@@ -350,6 +350,7 @@
       position: relative;
     }
 
+    /* The visual elements within button */
     .btn-label {
       text-transform: uppercase;
       font-size: 0.8rem;
@@ -1236,7 +1237,7 @@
       border-color: #FA198B;
     }
 
-    /* --- SWISS FORM (NEW) --- */
+    /* --- CONTACT --- */
     #contact {
       padding: 120px 20px 100px;
       background: #F9F7F1;
@@ -1257,123 +1258,170 @@
 
     .contact-header {
       width: 100%;
-      padding-bottom: 20px;
+      padding-bottom: 0;
     }
 
     .contact-content {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      border-left: none;
+      min-height: auto;
+      justify-content: space-between;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* EDITORIAL FORM STYLES */
+    .editorial-form {
       width: 100%;
-      max-width: 900px; /* Constrain width for readability of the form */
+      max-width: 850px;
+      margin-bottom: 40px;
     }
 
-    /* The Paragraph Layout */
-    .swiss-paragraph {
-      font-size: clamp(1.5rem, 2.5vw, 2.5rem); /* Large Display Type */
-      line-height: 1.5;
-      color: #1F2023;
-      font-weight: 500;
-    }
-
-    /* The Inputs */
-    .swiss-input {
+    .editorial-text {
       font-family: 'Vollkorn', serif;
-      font-size: inherit;
-      color: #8A3324; /* Chestnut */
+      font-size: clamp(1.5rem, 3vw, 2.5rem); /* Large Display Size */
+      line-height: 1.6;
+      color: #1F2023; /* Carbon Black */
+      font-weight: 400;
+    }
+
+    /* The Invisible Inputs */
+    .editorial-input,
+    .editorial-select {
+      display: inline-block;
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(31, 32, 35, 0.2);
-      padding: 0 5px;
-      outline: none;
-      transition: border-color 0.3s, color 0.3s;
-      width: auto;
-      min-width: 150px;
-      max-width: 100%;
-      display: inline-block;
+      border-bottom: 2px solid rgba(31, 32, 35, 0.2); /* Subtle underline */
       border-radius: 0;
-      -webkit-appearance: none;
+      padding: 0 5px 5px 5px;
+      font-family: 'Vollkorn', serif;
+      font-size: inherit; /* Inherits parent huge size */
+      color: #8A3324; /* Chestnut Red (User Input) */
+      outline: none;
+      width: auto;
+      min-width: 200px;
+      transition: all 0.3s ease;
+      cursor: text;
     }
 
-    .swiss-input:focus {
-      border-bottom-color: #FA198B; /* Pink on Focus */
-      border-bottom-width: 2px;
-      margin-bottom: -1px; /* Offset width change */
-    }
-
-    .swiss-input::placeholder {
+    /* Placeholder Styling */
+    .editorial-input::placeholder {
       color: #1F2023;
       opacity: 0.3;
       font-style: italic;
     }
 
-    /* The Dropdown specific styling */
-    select.swiss-input {
-      cursor: pointer;
-      padding-right: 0;
-      text-align: left;
-    }
-    
-    /* Hover effect for inputs */
-    .swiss-input:hover {
-      border-bottom-color: #8A3324;
+    /* Focus / Active State */
+    .editorial-input:focus,
+    .editorial-select:focus {
+      border-bottom-color: #FA198B; /* Barbie Pink */
+      color: #FA198B; 
     }
 
-    /* The Stamp Button */
-    .swiss-submit-btn {
-      margin-top: 60px;
+    /* Customizing the Select Dropdown */
+    .editorial-select-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .editorial-select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      padding-right: 30px; /* Space for hidden arrow hint */
+      color: #8A3324;
+    }
+
+    .editorial-select option {
+      font-size: 1rem; /* Reset font size for the dropdown list itself */
+      color: #1F2023;
+      background: #F9F7F1;
+    }
+
+    /* The "Stamp" Button */
+    .editorial-submit {
+      margin-top: 50px;
+      background: none;
+      border: none;
       font-family: 'Vollkorn', serif;
       font-size: clamp(1.2rem, 2vw, 1.5rem);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
       color: #1F2023;
-      background: transparent;
-      border: none;
       cursor: pointer;
-      display: inline-flex;
+      padding: 10px 0;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      display: flex;
       align-items: center;
-      gap: 10px;
-      transition: color 0.3s, transform 0.3s;
-      padding: 0;
+      gap: 15px;
     }
 
-    .swiss-submit-btn:hover {
-      color: #FA198B; /* Pink */
+    .editorial-submit .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .editorial-submit:hover {
+      color: #8A3324; /* Chestnut */
+    }
+
+    .editorial-submit:hover .arrow {
       transform: translateX(10px);
-    }
-    
-    /* Fallback Link */
-    .fallback-email {
-      display: block;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #1F2023;
-      opacity: 0.6;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: all 0.3s;
-      width: fit-content;
-    }
-    
-    .fallback-email:hover {
-      opacity: 1;
-      border-bottom-color: #8A3324;
-      color: #8A3324;
+      color: #FA198B; /* Pink Arrow */
     }
 
+    /* Mobile Adjustments for Form */
     @media (max-width: 600px) {
-      .swiss-paragraph {
+      .editorial-input, 
+      .editorial-select {
+        display: block; /* Stack inputs on mobile for better usability */
+        width: 100%;
+        margin: 10px 0;
+        min-width: 0;
+      }
+      
+      .editorial-text {
         line-height: 1.8;
       }
-      .swiss-input {
-        width: 100%; /* Stack on mobile */
-        display: block;
-        margin: 5px 0 15px 0;
-        border-bottom: 1px solid rgba(31, 32, 35, 0.4);
-      }
-      .swiss-submit-btn {
-        margin-top: 40px;
-      }
     }
 
+    .contact-meta {
+      display: flex;
+      gap: 30px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1F2023;
+      opacity: 0.6;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-top: 1px solid rgba(31, 32, 35, 0.1);
+      padding-top: 30px;
+    }
+
+    .contact-meta a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .contact-meta a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .contact-message {
+        margin-bottom: 40px;
+      }
+    }
 
     /* FOOTER & SOCIAL */
     footer {
@@ -1847,7 +1895,6 @@
       </div>
     </section>
 
-    <!-- NEW SWISS FORM CONTACT SECTION -->
     <section id="contact" aria-labelledby="contact-heading">
       <div class="contact-grid">
         
@@ -1856,38 +1903,44 @@
         </div>
 
         <div class="contact-content">
-          <form id="swiss-form" onsubmit="handleSwissForm(event)">
-            <p class="swiss-paragraph">
+          
+          <!-- THE EDITORIAL FORM -->
+          <form id="editorial-form" class="editorial-form">
+            <p class="editorial-text">
               Hi Emil,
               <br><br>
               This is 
-              <input type="text" id="s-name" placeholder="your name" class="swiss-input" required autocomplete="name"> 
+              <input type="text" id="ef-name" class="editorial-input" placeholder="Your Name" required aria-label="Your Name">
               from 
-              <input type="text" id="s-company" placeholder="company name" class="swiss-input" autocomplete="organization">.
+              <input type="text" id="ef-company" class="editorial-input" placeholder="Company Name" required aria-label="Company Name">.
               <br><br>
               We need help with 
-              <select id="s-service" class="swiss-input swiss-select">
-                <option value="Strategy">Strategy</option>
-                <option value="Planning">Planning</option>
-                <option value="Creative">Creative</option>
-                <option value="Speaking">Speaking</option>
-                <option value="Other">Something else</option>
-              </select>.
+              <span class="editorial-select-wrapper">
+                <select id="ef-service" class="editorial-select" required aria-label="Service Type">
+                  <option value="" disabled selected>select a topic</option>
+                  <option value="Brand Definition">Brand Definition</option>
+                  <option value="Marketing Strategy">Marketing Strategy</option>
+                  <option value="Creative Planning">Creative Planning</option>
+                  <option value="a General Inquiry">a General Inquiry</option>
+                </select>
+              </span>.
               <br><br>
               You can reach me at 
-              <input type="email" id="s-email" placeholder="your email" class="swiss-input" required autocomplete="email">.
+              <input type="email" id="ef-email" class="editorial-input" placeholder="your@email.com" required aria-label="Your Email">.
             </p>
 
-            <button type="submit" class="swiss-submit-btn">
-              Send Request &rarr;
+            <button type="submit" class="editorial-submit">
+              Send Request <span class="arrow">→</span>
             </button>
           </form>
 
-          <a href="mailto:emil@strategy-support.com" class="fallback-email">
-            (Or click here to email me directly)
-          </a>
-        </div>
+          <!-- FALLBACK / DIRECT INFO -->
+          <div class="contact-meta">
+            <span>Or email directly: <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a></span>
+            <span style="margin-left:auto;">Denmark, travel and remote.</span>
+          </div>
 
+        </div>
       </div>
     </section>
   </main>
@@ -1932,24 +1985,6 @@
       }).catch(err => {
         console.error('Failed to copy text: ', err);
       });
-    }
-
-    /* SWISS FORM HANDLER */
-    function handleSwissForm(e) {
-      e.preventDefault();
-      
-      const name = document.getElementById('s-name').value;
-      const company = document.getElementById('s-company').value || "their company";
-      const service = document.getElementById('s-service').value;
-      const email = document.getElementById('s-email').value;
-      
-      // Constructing the mailto link
-      const subject = encodeURIComponent(`Strategy Support Request: ${service} for ${company}`);
-      const body = encodeURIComponent(
-        `Hi Emil,\n\nThis is ${name} from ${company}.\n\nWe are looking for help with ${service}.\n\nYou can reach me at ${email} to discuss further.\n\nBest,\n${name}`
-      );
-      
-      window.location.href = `mailto:emil@strategy-support.com?subject=${subject}&body=${body}`;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -2154,6 +2189,41 @@
           startTestimonialCarousel();
         }
       });
+
+      /* --- EDITORIAL FORM LOGIC --- */
+      const editorialForm = document.getElementById('editorial-form');
+      if(editorialForm) {
+        editorialForm.addEventListener('submit', function(e) {
+          e.preventDefault(); // Stop page reload
+
+          // 1. Get Values
+          const name = document.getElementById('ef-name').value;
+          const company = document.getElementById('ef-company').value;
+          const service = document.getElementById('ef-service').value;
+          const email = document.getElementById('ef-email').value;
+
+          // 2. Build the Email Content
+          const subject = `Strategy Support Inquiry: ${company}`;
+          
+          const body = `Hi Emil,
+
+This is ${name} from ${company}.
+
+We are looking for support with ${service}.
+
+You can reply to me at: ${email}
+
+------------------------------------------------
+Sent via strategy-support.com`;
+
+          // 3. Construct Mailto Link
+          const mailtoLink = `mailto:emil@strategy-support.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+          // 4. Open Email Client
+          window.location.href = mailtoLink;
+        });
+      }
+
     });
   </script>
 </body>
