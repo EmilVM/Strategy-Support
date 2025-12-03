@@ -1283,10 +1283,11 @@
       margin-bottom: 40px;
     }
 
+    /* UPDATED: Reduced font size and adjusted line height */
     .editorial-text {
       font-family: 'Vollkorn', serif;
-      font-size: clamp(1.5rem, 3vw, 2.5rem); /* Large Display Size */
-      line-height: 1.6;
+      font-size: clamp(1.15rem, 2vw, 1.5rem); /* Significantly smaller than before */
+      line-height: 1.8; /* Increased slightly to give breathability at smaller size */
       color: #1F2023; /* Carbon Black */
       font-weight: 400;
     }
@@ -1299,13 +1300,13 @@
       border: none;
       border-bottom: 2px solid rgba(31, 32, 35, 0.2); /* Subtle underline */
       border-radius: 0;
-      padding: 0 5px 5px 5px;
+      padding: 0 5px 2px 5px; /* Reduced bottom padding */
       font-family: 'Vollkorn', serif;
-      font-size: inherit; /* Inherits parent huge size */
+      font-size: inherit; /* Inherits parent size */
       color: #8A3324; /* Chestnut Red (User Input) */
       outline: none;
       width: auto;
-      min-width: 200px;
+      min-width: 150px; /* Slightly narrower min-width */
       transition: all 0.3s ease;
       cursor: text;
     }
@@ -1347,11 +1348,11 @@
 
     /* The "Stamp" Button */
     .editorial-submit {
-      margin-top: 50px;
+      margin-top: 30px; /* Reduced from 50px */
       background: none;
       border: none;
       font-family: 'Vollkorn', serif;
-      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-size: clamp(1rem, 1.5vw, 1.2rem); /* Scaled down slightly */
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -1393,9 +1394,11 @@
       }
     }
 
+    /* UPDATED: Stacked layout for contact meta */
     .contact-meta {
       display: flex;
-      gap: 30px;
+      flex-direction: column; /* Stack elements vertically */
+      gap: 5px; /* Tight gap */
       font-size: 1rem;
       font-weight: 500;
       color: #1F2023;
@@ -1404,6 +1407,7 @@
       letter-spacing: 0.05em;
       border-top: 1px solid rgba(31, 32, 35, 0.1);
       padding-top: 30px;
+      align-items: flex-start; /* Ensure left alignment */
     }
 
     .contact-meta a {
@@ -1937,7 +1941,7 @@
           <!-- FALLBACK / DIRECT INFO -->
           <div class="contact-meta">
             <span>Or email directly: <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a></span>
-            <span style="margin-left:auto;">Denmark, travel and remote.</span>
+            <span>Denmark, travel and remote.</span>
           </div>
 
         </div>
