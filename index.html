@@ -60,58 +60,84 @@
       transition: all 0.3s ease;
     }
 
-    .nav-logo { 
-      font-weight: 700; 
-      text-transform: uppercase; 
-      letter-spacing: 0.05em; 
-      font-size: 1.1rem;
-      cursor: pointer;
-      z-index: 1001; 
-    }
+   .nav-logo { 
+  font-weight: 700; 
+  letter-spacing: -0.03em; 
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1001;
+  color: #1F2023;
+}
 
-    .nav-links { 
-      list-style: none; 
-      display: flex; 
-      gap: 30px; 
-      margin: 0;
-      padding: 0;
-    }
+.pink-dash {
+  color: #FA198B;
+  font-weight: 700;
+  margin: 0 -2px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.nav-logo:hover .pink-dash {
+  transform: scale(1.1);
+}
+
+  .nav-links { 
+  list-style: none; 
+  display: flex; 
+  gap: 35px; 
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
 
     .nav-links li {
       display: inline-block;
     }
 
-    .nav-links a { 
-      text-decoration: none; 
-      color: #1F2023; 
-      text-transform: uppercase; 
-      font-size: 0.85rem; 
-      letter-spacing: 0.05em; 
-      font-weight: 500;
-      transition: color 0.3s;
-      position: relative; 
-    }
+  .nav-links a { 
+  text-decoration: none; 
+  color: #1F2023; 
+  font-size: 0.9rem; 
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative; 
+}
 
     .nav-links a:hover {
       color: #8A3324; /* Chestnut */
     }
 
     /* Micro-Interaction Underline Animation */
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 50%;
-      background-color: #8A3324; /* Chestnut */
-      transition: width 0.3s ease, left 0.3s ease;
-    }
+/* Email link styling */
+.nav-email {
+  font-size: 0.85rem !important;
+  color: #8A3324 !important;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  font-weight: 500 !important;
+}
 
-    .nav-links a:hover::after {
-      width: 100%;
-      left: 0;
-    }
+.nav-email:hover {
+  color: #FA198B !important;
+  border-bottom-color: #FA198B;
+}
+
+/* Micro-Interaction Underline Animation */
+.nav-links a:not(.nav-email)::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: #8A3324;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-links a:not(.nav-email):hover::after {
+  width: 100%;
+  left: 0;
+}
 
     /* Mobile Menu Toggle */
     .mobile-menu-toggle {
@@ -179,10 +205,21 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       }
 
-      .nav-links a {
-        font-size: 1.5rem; 
-        font-weight: 400;
-      }
+    .nav-logo {
+  font-size: 1.2rem;
+}
+
+.nav-links a {
+  font-size: 1.3rem; 
+  font-weight: 400;
+}
+
+.nav-email {
+  font-size: 1.1rem !important;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(31, 32, 35, 0.1);
+}
       
       /* Disable underline animation on mobile */
       .nav-links a::after {
@@ -1510,21 +1547,24 @@
 </head>
 <body>
   
-  <nav class="sticky-nav">
-    <div class="nav-logo" onclick="window.scrollTo(0,0)">STRATEGY SUPPORT</div>
-    
-    <button class="mobile-menu-toggle" aria-label="Toggle menu">
-      <span class="hamburger-icon"></span>
-    </button>
+ <nav class="sticky-nav">
+  <div class="nav-logo" onclick="window.scrollTo(0,0)">
+    Strategy<span class="pink-dash">-</span>Support
+  </div>
+  
+  <button class="mobile-menu-toggle" aria-label="Toggle menu">
+    <span class="hamburger-icon"></span>
+  </button>
 
-    <ul class="nav-links">
-      <li><a href="#about-me">About</a></li>
-      <li><a href="#my-approach">Approach</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#recent-work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <ul class="nav-links">
+    <li><a href="#about-me">About</a></li>
+    <li><a href="#my-approach">Approach</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#recent-work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="mailto:emil@strategy-support.com" class="nav-email">emil@strategy-support.com</a></li>
+  </ul>
+</nav>
 
   <main>
     <section id="intro" aria-labelledby="intro-heading">
