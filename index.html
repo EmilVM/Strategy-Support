@@ -626,3 +626,1652 @@
     .carousel-container {
       position: relative;
       padding: 20px 0;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .carousel-content {
+      position: relative;
+      min-height: 80px;
+      overflow: hidden;
+    }
+
+    .client-group {
+      display: none;
+      width: 100%;
+    }
+
+    .client-group.active {
+      display: block;
+    }
+
+    .client-logos-container {
+      display: flex;
+      animation: scroll 30s linear infinite;
+      width: max-content;
+      min-width: 100%;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-50%)); }
+    }
+
+    .client-logo {
+      height: 60px;
+      margin: 0 30px;
+      filter: brightness(0) invert(1); /* Logos White */
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      flex-shrink: 0;
+    }
+
+    .client-logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    .client-logos-container:hover {
+      animation-play-state: paused;
+    }
+
+    @media (max-width: 900px) {
+      .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-image-col {
+        position: static;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .about-portrait {
+        aspect-ratio: 16/10;
+      }
+
+      .client-tabs {
+        justify-content: center;
+      }
+      
+      .about-heading, .about-text, .about-label {
+        text-align: left;
+      }
+    }
+
+    /* --- APPROACH --- */
+    #my-approach {
+      padding: 120px 20px;
+      background: #F9F7F1;
+      color: #1F2023;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .approach-grid {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .approach-header {
+      width: 100%;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .approach-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding-left: 0;
+      border-left: none;
+    }
+
+    .approach-text-std {
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 750px;
+    }
+
+    .approach-text-hero {
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      line-height: 1.3;
+      font-weight: 500;
+      color: #8A3324; /* Chestnut */
+      max-width: 800px;
+    }
+
+    .approach-p {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    
+    .approach-p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .approach-content {
+        gap: 30px;
+      }
+    }
+
+    /* --- SERVICES (Black Mode) --- */
+    #services {
+      padding: 120px 20px;
+      background: #1F2023; /* Carbon Black */
+      color: #F9F7F1;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .services-grid {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .services-header {
+      position: sticky;
+      top: 100px; 
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .services-intro-side {
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      line-height: 1.5;
+      opacity: 0.9;
+      color: #F9F7F1;
+      max-width: 90%;
+    }
+
+    .services-content {
+      display: flex;
+      flex-direction: column;
+      padding-left: 40px;
+      border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white line */
+    }
+    
+    .services-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 50px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .service-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-row:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .service-num {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-weight: 400;
+      flex-basis: 10%;
+      padding-top: 5px;
+      color: #F9F7F1;
+      opacity: 0.5;
+      transition: color 0.3s ease, opacity 0.3s ease;
+    }
+
+    .service-details {
+      flex-basis: 85%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .service-row h3 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 400;
+      margin: 0;
+      color: #F9F7F1;
+      line-height: 1.1;
+      transition: color 0.3s ease;
+    }
+
+    .service-row p {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      line-height: 1.6;
+      color: #F9F7F1;
+      opacity: 0.9;
+      margin: 0;
+      max-width: 650px;
+    }
+
+    .service-row:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .service-row:hover h3 {
+      color: #FA198B; /* Pink Headline */
+    }
+    
+    .service-row:hover .service-num {
+      color: #FA198B; /* Pink Number */
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .services-header {
+        position: static;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .services-content {
+        padding-left: 0;
+        border-left: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .service-row {
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px 0;
+      }
+      .service-num {
+        margin-bottom: 5px;
+      }
+    }
+
+    /* --- RECENT WORK --- */
+    #recent-work {
+      padding: 120px 20px;
+      background: #F9F7F1;
+      color: #1F2023;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .work-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-header {
+      width: 100%;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .work-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    /* The Accordion Row */
+    .work-row {
+      border-bottom: 1px solid rgba(31, 32, 35, 0.15); /* Carbon Black RGB */
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    .work-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .work-row:last-child {
+      border-bottom: none;
+    }
+
+    /* The Trigger */
+    .work-trigger {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 30% 1fr auto;
+      gap: 60px;
+      padding: 40px 0;
+      cursor: pointer;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .work-trigger:hover .client-name {
+      color: #1F2023;
+    }
+    
+    .work-trigger:hover .work-plus-icon::before,
+    .work-trigger:hover .work-plus-icon::after {
+      background-color: #8A3324;
+    }
+
+    .client-name {
+      font-family: 'Vollkorn', serif;
+      font-size: clamp(2rem, 3vw, 3.5rem);
+      font-weight: 700;
+      color: #8A3324;
+      line-height: 1;
+      margin: 0;
+      letter-spacing: -0.02em;
+      transition: color 0.3s ease;
+    }
+
+    .trigger-headline {
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      font-weight: 400;
+      color: #1F2023;
+      line-height: 1.2;
+      margin: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* The Plus Icon */
+    .work-icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .work-plus-icon {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .work-plus-icon::before,
+    .work-plus-icon::after {
+      content: '';
+      position: absolute;
+      background-color: #FA198B;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Vertical line */
+    .work-plus-icon::before {
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+
+    /* Horizontal line */
+    .work-plus-icon::after {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+
+    .work-row.active .work-plus-icon {
+      transform: rotate(45deg);
+    }
+
+    /* The Fold (Hidden Content) */
+    .work-fold-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .work-row.active .work-fold-wrapper {
+      grid-template-rows: 1fr;
+    }
+
+    .work-fold-inner {
+      overflow: hidden;
+    }
+
+    .work-fold-content {
+      display: grid;
+      grid-template-columns: 30% 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+      align-items: start;
+    }
+
+    .work-image-wrapper {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #E5E5E5;
+      border: 1px solid rgba(31, 32, 35, 0.1);
+    }
+
+    .work-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: transform 0.8s ease, filter 0.8s ease;
+    }
+    
+    .work-row.active .work-image {
+      filter: grayscale(0%);
+    }
+
+    .case-body {
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
+      line-height: 1.6;
+      color: #1F2023;
+      opacity: 0.85;
+      margin: 0;
+      max-width: 750px;
+    }
+
+    /* Narrative Stack Inside Fold */
+    .narrative-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(31, 32, 35, 0.15);
+    }
+
+    .narrative-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .narrative-label {
+      font-family: 'Vollkorn', serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: #8A3324;
+      opacity: 0.9;
+    }
+
+    .narrative-text {
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      line-height: 1.6;
+      color: #1F2023;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .work-header {
+        border-bottom: none;
+        padding-bottom: 20px;
+      }
+
+      .work-trigger {
+        grid-template-columns: 1fr auto; 
+        gap: 20px;
+        padding: 30px 0;
+      }
+
+      .trigger-col-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .trigger-col-left {
+        grid-column: 1 / -1;
+      }
+
+      .work-icon-wrapper {
+        align-self: flex-start;
+        margin-top: 5px;
+      }
+
+      .work-fold-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-bottom: 40px;
+      }
+
+      .work-image-wrapper {
+        aspect-ratio: 16/9;
+      }
+    }
+
+    /* --- TESTIMONIALS --- */
+    .testimonials-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      background: #1F2023;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testimonials-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial-item {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .testimonial-item.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .testimonial-quote {
+      font-size: clamp(1.25rem, 2.5vw, 2rem);
+      line-height: 1.6;
+      font-style: italic;
+      max-width: 800px;
+      color: #FA198B;
+    }
+
+    .testimonial-quote span.quote-mark {
+      color: #FA198B;
+      font-size: 1.3em;
+    }
+
+    .testimonial-author {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: #FA198B;
+      margin-top: 8px;
+    }
+
+    .testimonial-role {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      opacity: 0.8;
+      color: #FA198B;
+    }
+
+    .testimonial-indicators {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #8A3324;
+      border: 2px solid #1F2023;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .indicator-dot.active {
+      background: #FA198B;
+      border-color: #FA198B;
+      transform: scale(1.2);
+    }
+
+    .indicator-dot:hover,
+    .indicator-dot:focus-visible {
+      background: #FA198B;
+      border-color: #FA198B;
+    }
+
+    /* --- CONTACT --- */
+    #contact {
+      padding: 120px 20px 100px;
+      background: #F9F7F1;
+      color: #1F2023;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .contact-grid {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-header {
+      width: 100%;
+      padding-bottom: 0;
+    }
+
+    .contact-content {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      border-left: none;
+      min-height: auto;
+      justify-content: space-between;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* EDITORIAL FORM STYLES */
+    .editorial-form {
+      width: 100%;
+      max-width: 850px;
+      margin-bottom: 40px;
+    }
+
+    .editorial-text {
+      font-family: 'Vollkorn', serif;
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      line-height: 1.8;
+      color: #1F2023;
+      font-weight: 400;
+    }
+
+    /* The Invisible Inputs */
+    .editorial-input,
+    .editorial-select {
+      display: inline-block;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid rgba(31, 32, 35, 0.2); 
+      border-radius: 0;
+      padding: 0 5px 2px 5px; 
+      font-family: 'Vollkorn', serif;
+      font-size: inherit; 
+      color: #8A3324; /* User Input is Red */
+      outline: none;
+      width: auto;
+      min-width: 150px; 
+      transition: all 0.3s ease;
+      cursor: text;
+    }
+
+    .editorial-input::placeholder {
+      color: #1F2023;
+      opacity: 0.3;
+      font-style: italic;
+    }
+
+    .editorial-input:focus,
+    .editorial-select:focus {
+      border-bottom-color: #FA198B; /* Pink Focus */
+      color: #FA198B; 
+    }
+
+    .editorial-select-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .editorial-select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      padding-right: 30px;
+      color: #8A3324;
+    }
+
+    .editorial-select option {
+      font-size: 1rem;
+      color: #1F2023;
+      background: #F9F7F1;
+    }
+
+    /* The "Stamp" Button */
+    .editorial-submit {
+      margin-top: 30px; 
+      background: none;
+      border: none;
+      font-family: 'Vollkorn', serif;
+      font-size: clamp(1rem, 1.5vw, 1.2rem); 
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #1F2023;
+      cursor: pointer;
+      padding: 10px 0;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .editorial-submit .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .editorial-submit:hover {
+      color: #8A3324;
+    }
+
+    .editorial-submit:hover .arrow {
+      transform: translateX(10px);
+      color: #FA198B;
+    }
+
+    @media (max-width: 600px) {
+      .input-group {
+        display: flex;       
+        align-items: baseline; 
+        width: 100%;
+        margin: 10px 0;       
+      }
+
+      .editorial-input, 
+      .editorial-select {
+        display: block; 
+        width: 100%;
+        min-width: 0;
+      }
+
+      .input-group .editorial-input {
+        margin: 0;       
+        flex-grow: 1;    
+        width: auto;     
+      }
+      
+      .editorial-text {
+        line-height: 1.8;
+      }
+    }
+
+    .contact-meta {
+      display: flex;
+      flex-direction: column; 
+      gap: 5px; 
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1F2023;
+      opacity: 0.6;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-top: 1px solid rgba(31, 32, 35, 0.1);
+      padding-top: 30px;
+      align-items: flex-start; 
+    }
+
+    .contact-meta a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .contact-meta a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .contact-message {
+        margin-bottom: 40px;
+      }
+    }
+
+    /* FOOTER & SOCIAL */
+    footer {
+      background: #F9F7F1;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #1F2023;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      border-top: 1px solid rgba(31, 32, 35, 0.1);
+    }
+    
+    .footer-social-link {
+      color: #1F2023;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom-color 0.3s, color 0.3s;
+      font-size: 0.95rem;
+    }
+    
+    .footer-social-link:hover {
+      border-bottom-color: #FA198B;
+      color: #8A3324;
+    }
+    
+    .footer-copy {
+      opacity: 0.7;
+    }
+
+    /* General Mobile Fixes */
+    @media (max-width: 700px) {
+      #intro { padding: 16px; padding-top: 80px; }
+      #about-me, #my-approach, #services, #recent-work, #testimonials { padding: 50px 16px; }
+      #contact { padding: 60px 16px 80px; }
+      .client-logos-container { animation: scroll-mobile 12s linear infinite; width: 200%; }
+      @keyframes scroll-mobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Emil Valdemar Madsen",
+      "jobTitle": "Freelance Brand & Marketing Strategist",
+      "description": "15 years helping global brands with brand strategy, marketing planning, and creative development",
+      "url": "https://strategy-support.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Copenhagen",
+        "addressCountry": "DK"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/emilvmadsen/"
+      ]
+    }
+  </script>
+</head>
+<body>
+  
+ <nav class="sticky-nav">
+  <div class="nav-logo" onclick="window.scrollTo(0,0)">
+    Strategy<span class="pink-dash">-</span>Support
+  </div>
+  
+  <button class="mobile-menu-toggle" aria-label="Toggle menu">
+    <span class="hamburger-icon"></span>
+  </button>
+
+  <ul class="nav-links">
+    <li><a href="#about-me">About</a></li>
+    <li><a href="#my-approach">Approach</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#recent-work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="mailto:emil@strategy-support.com" class="nav-email">emil@strategy-support.com</a></li>
+  </ul>
+</nav>
+
+  <main>
+    <section id="intro" aria-labelledby="intro-heading">
+      <h1 class="animated-heading">
+        <span class="animated-line">
+          <span class="animated-word"></span>
+        </span>
+        <span class="static-line">
+          <span class="animated-word-static">STRATEGY</span>
+          <span class="animated-word-static">SUPPORT</span>
+        </span>
+      </h1>
+      
+      <p class="hero-sub">
+        Big-agency thinking without the big-agency price tag or bureaucracy, directly in your team.
+      </p>
+      
+      <button class="minimal-copy-btn" onclick="copyEmailToClipboard(this)" aria-label="Copy email address">
+        <span class="btn-label">Get in Touch</span>
+        <span class="btn-divider">&mdash;</span>
+        <span class="btn-address">emil@strategy-support.com</span>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 7H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"></path>
+          <path d="M16 3H21V8"></path>
+          <path d="M21 3L11 13"></path>
+        </svg>
+      </button>
+      <div id="copy-feedback" class="copy-feedback-text">Click to copy</div>
+
+    </section>
+
+    <section id="about-me" aria-labelledby="about-me-heading">
+      <div class="about-container">
+        <div class="about-image-col">
+           <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" class="about-portrait" loading="eager">
+        </div>
+
+        <div class="about-content-col">
+          <span class="about-label">About Strategy Support</span>
+          <h2 id="about-me-heading" class="about-heading">Hi! I'm Emil Valdemar Madsen</h2>
+          <p class="about-text">
+            I've spent 15 years helping global brands develop breakthrough concepts, enduring platform ideas and marketing plans that cut through complexity.
+            <br><br> 
+            If you need big-agency thinking without the big-agency price tag or bureaucracy, I can bring that expertise directly into your team.
+          </p>
+
+          <div class="about-clients-wrapper">
+            <span class="clients-intro-label">Trusted By</span>
+            
+            <div class="client-tabs" role="tablist" aria-label="Client types">
+              <button class="client-tab active" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
+              <button class="client-tab" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
+            </div>
+
+            <div class="carousel-wrapper">
+              <div class="carousel-container">
+                <div class="carousel-content">
+                  
+                  <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
+                    <div class="client-logos-container">
+                      <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                      <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                      <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                      <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                      <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                      <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                      <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                      <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                      <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                      <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
+                      <!-- Loop -->
+                      <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy">
+                      <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy">
+                      <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy">
+                      <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy">
+                      <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy">
+                      <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy">
+                      <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy">
+                      <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy">
+                      <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy">
+                      <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy">
+                    </div>
+                  </div>
+                  
+                  <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab">
+                    <div class="client-logos-container">
+                      <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                      <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                      <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                      <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+                      <!-- Loop -->
+                      <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy">
+                      <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy">
+                      <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy">
+                      <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+    <section id="my-approach" aria-labelledby="my-approach-heading">
+      <div class="approach-grid">
+        
+        <div class="approach-header">
+         <h2 id="my-approach-heading" class="swiss-label on-white">Approach</h2>
+        </div>
+
+        <div class="approach-content">
+          
+          <p class="approach-p approach-text-std">
+            My approach is simple: it starts with the truth behind your business, your customers, and your competition.
+          </p>
+          
+          <p class="approach-p approach-text-hero">
+            I don’t do fluff. I provide clear direction that teams can actually execute.
+          </p>
+
+          <p class="approach-p approach-text-std">
+            This has shaped global work for brands like Burger King, Huawei, and Pepsi, and built enduring platforms such as Barclays’ ‘Make Money Work for You’ and Saxo’s ‘Be Invested’.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-labelledby="services-heading">
+      <div class="services-grid">
+        
+        <div class="services-header">
+          <!-- Switched to .on-dark for Pink label on Black BG -->
+          <h2 id="services-heading" class="swiss-label on-dark">How I Help</h2>
+          <p class="services-intro-side">
+            I help brands and agencies cut through complexity. My work typically falls into three core areas:
+          </p>
+        </div>
+
+        <div class="services-content">
+          <div class="services-list">
+            
+            <div class="service-row">
+              <div class="service-num">01</div>
+              <div class="service-details">
+                <h3>Brand Definition</h3>
+                <p>
+                  I help you articulate what makes you different and why it matters, defining your brand's purpose, positioning, and personality so every touchpoint builds long-term differentiation.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-row">
+              <div class="service-num">02</div>
+              <div class="service-details">
+                <h3>Marketing Strategy</h3>
+                <p>
+                 I diagnose where you are, identify your biggest opportunities, and build focused annual plans and go-to-market strategies that put your resources where they create impact.
+                </p>
+              </div>
+            </div>
+
+            <div class="service-row">
+              <div class="service-num">03</div>
+              <div class="service-details">
+                <h3>Creative Planning</h3>
+                <p>
+                  I help you reframe your problem and uncover insights that change how people think, then translate them into communications platforms and briefs that spark the kind of ideas creatives get excited about (and that actually work in market).
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- RECENT WORK (ACCORDION INTERACTIVE VERSION) -->
+    <section id="recent-work" aria-labelledby="recent-work-heading">
+      <div class="work-container">
+        
+        <!-- Top Header -->
+        <div class="work-header">
+          <h2 id="recent-work-heading" class="swiss-label on-white">Selected Work</h2>
+        </div>
+        
+        <div class="work-list">
+
+          <!-- Case 1: DSV -->
+          <article class="work-row">
+            <!-- Visible Trigger -->
+            <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
+               <div class="trigger-col-left">
+                 <h3 class="client-name">DSV 2025</h3>
+               </div>
+               <div class="trigger-col-content">
+                 <h4 class="trigger-headline">I'm making the world's largest transport company move as one</h4>
+               </div>
+               <div class="work-icon-wrapper">
+                 <span class="work-plus-icon"></span>
+               </div>
+            </div>
+
+            <!-- Hidden Fold -->
+            <div class="work-fold-wrapper">
+              <div class="work-fold-inner">
+                <div class="work-fold-content">
+                  
+                  <!-- Left Col (Image) -->
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                      <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
+                    </div>
+                  </div>
+                  
+                  <!-- Right Col (Narrative) -->
+                  <div class="work-col-right">
+                     <p class="case-body">
+                      DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
+                      <br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
+                      <br><br>I'm also supporting organisational design, process development, and AI implementation.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case 2: Saxo Bank -->
+          <article class="work-row">
+             <!-- Visible Trigger -->
+            <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
+               <div class="trigger-col-left">
+                 <h3 class="client-name">Saxo Bank 2023</h3>
+               </div>
+               <div class="trigger-col-content">
+                 <h4 class="trigger-headline">I made Saxo Bank give money a voice in a category that all sounds the same</h4>
+               </div>
+               <div class="work-icon-wrapper">
+                 <span class="work-plus-icon"></span>
+               </div>
+            </div>
+
+             <!-- Hidden Fold -->
+            <div class="work-fold-wrapper">
+              <div class="work-fold-inner">
+                <div class="work-fold-content">
+                  
+                  <!-- Left Col (Image) -->
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                      <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
+                    </div>
+                  </div>
+                  
+                  <!-- Right Col (Narrative) -->
+                  <div class="work-col-right">
+                    <div class="narrative-stack" style="margin-top:0; padding-top:0; border-top:none;">
+                      <div class="narrative-item">
+                        <span class="narrative-label">Problem</span>
+                        <p class="narrative-text">
+                          Saxo wanted to grow brand awareness and preference among experienced investors and traders globally. But in a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in a way that felt equally relevant in Asian, European and American markets.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Insight</span>
+                        <p class="narrative-text">
+                          For investors, money isn’t just something to save, it’s something to activate. And with more tradable instruments than competitors, Saxo gives your money more things to do.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Solution</span>
+                        <p class="narrative-text">
+                          Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case 3: Burger King -->
+          <article class="work-row">
+             <!-- Visible Trigger -->
+             <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
+               <div class="trigger-col-left">
+                 <h3 class="client-name">Burger King 2016</h3>
+               </div>
+               <div class="trigger-col-content">
+                 <h4 class="trigger-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
+               </div>
+               <div class="work-icon-wrapper">
+                 <span class="work-plus-icon"></span>
+               </div>
+            </div>
+
+             <!-- Hidden Fold -->
+            <div class="work-fold-wrapper">
+              <div class="work-fold-inner">
+                <div class="work-fold-content">
+                  
+                  <!-- Left Col (Image) -->
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                       <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
+                    </div>
+                  </div>
+                  
+                  <!-- Right Col (Narrative) -->
+                  <div class="work-col-right">
+                    <div class="narrative-stack" style="margin-top:0; padding-top:0; border-top:none;">
+                      <div class="narrative-item">
+                        <span class="narrative-label">Problem</span>
+                        <p class="narrative-text">
+                          Burger King had launched a new global brand strategy pivoting <em>Have It Your Way</em> to <em>Be Your Way</em>. But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Insight</span>
+                        <p class="narrative-text">
+                          Burdened by expectations, British youth feel most themselves when being cheeky – taking what's expected and adding their own twist.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Solution</span>
+                        <p class="narrative-text">
+                          Position Burger King as the destination of cheeky detours.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
+      <div style="width: 100%; max-width: 1200px;">
+        <h2 id="testimonials-heading" class="swiss-label on-dark">What Clients Say</h2>
+      </div>
+      <div class="testimonials-container">
+        <div class="testimonial-item active">
+          <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
+           If you need a marketing strategist that also has flair for tactical execution there is no one better than Emil. I cannot recommend Emil highly enough.
+            <span class="quote-mark">&rdquo;</span>
+          </p>
+          <div class="testimonial-author">John Veje</div>
+          <div class="testimonial-role">Group CMO, Danske Bank</div>
+        </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
+            Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He thinks laterally and inspired creative teams with his briefings. 
+            <span class="quote-mark">&rdquo;</span>
+          </p>
+          <div class="testimonial-author">Vicki Holgate</div>
+          <div class="testimonial-role">CSO, FCB Inferno London</div>
+        </div>
+        <div class="testimonial-item">
+          <p class="testimonial-quote">
+            <span class="quote-mark">&ldquo;</span>
+            Emil is a brilliant strategist. His work is meticulous and his approach is rigorous, his presentation and communications skills are second to none. 
+            <span class="quote-mark">&rdquo;</span>
+          </p>
+          <div class="testimonial-author">Nathan Cook</div>
+          <div class="testimonial-role">Global Director, Unilever</div>
+        </div>
+      </div>
+      <div class="testimonial-indicators" role="tablist" aria-label="Testimonial navigation">
+        <div class="indicator-dot active" role="tab" aria-selected="true" aria-label="Testimonial 1"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></div>
+        <div class="indicator-dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="contact-grid">
+        
+        <div class="contact-header">
+         <h2 id="contact-heading" class="swiss-label on-white">Contact</h2>
+        </div>
+
+        <div class="contact-content">
+          
+          <!-- THE EDITORIAL FORM -->
+          <form id="editorial-form" class="editorial-form">
+            <p class="editorial-text">
+              Hi Emil,
+              <br><br>
+              This is 
+              <input type="text" id="ef-name" class="editorial-input" placeholder="Your Name" required aria-label="Your Name">
+              from 
+             <span class="input-group">
+  <input type="text" id="ef-company" class="editorial-input" placeholder="Company Name" required aria-label="Company Name">.
+</span>
+<br><br>
+              We need help with 
+              <span class="editorial-select-wrapper">
+                <select id="ef-service" class="editorial-select" required aria-label="Service Type">
+                  <option value="" disabled selected>select a topic</option>
+                  <option value="Brand Definition">Brand Definition</option>
+                  <option value="Marketing Strategy">Marketing Strategy</option>
+                  <option value="Creative Planning">Creative Planning</option>
+                  <option value="a General Inquiry">a General Inquiry</option>
+                </select>
+              </span>.
+              <br><br>
+            <span class="input-group">
+  <input type="email" id="ef-email" class="editorial-input" placeholder="your@email.com" required aria-label="Your Email">.
+</span>
+            </p>
+
+            <button type="submit" class="editorial-submit">
+              Send Request <span class="arrow">→</span>
+            </button>
+          </form>
+
+          <!-- FALLBACK / DIRECT INFO -->
+          <div class="contact-meta">
+            <span>Or email directly: <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a></span>
+            <span>Denmark, travel and remote.</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.linkedin.com/in/emilvmadsen/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+    <p class="footer-copy">&copy; 2025 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
+  </footer>
+
+  <script>
+    /* UPDATED: Minimal Copy Email Functionality */
+    function copyEmailToClipboard(button) {
+      if (button.classList.contains('copied')) return;
+      
+      const email = "emil@strategy-support.com";
+      const label = button.querySelector('.btn-label');
+      const address = button.querySelector('.btn-address');
+      const feedback = document.getElementById('copy-feedback');
+      
+      navigator.clipboard.writeText(email).then(() => {
+        // Add 'copied' class for styling changes
+        button.classList.add('copied');
+        
+        // Change text content temporarily
+        const originalLabel = label.textContent;
+        const originalAddress = address.textContent;
+        
+        label.textContent = "Address";
+        address.textContent = "Copied to Clipboard";
+        feedback.textContent = "Paste it anywhere";
+        feedback.style.color = "#FA198B";
+        
+        // Reset after 2.5 seconds
+        setTimeout(() => {
+          button.classList.remove('copied');
+          label.textContent = originalLabel;
+          address.textContent = originalAddress;
+          feedback.textContent = "Click to copy";
+          feedback.style.color = "#1F2023";
+        }, 2500);
+        
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      /* --- MOBILE MENU LOGIC --- */
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const mobileLinks = document.querySelectorAll('.nav-links a');
+
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when a link is clicked
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+
+      /* --- UPDATED: ANIMATED HEADING SPEED --- */
+      const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
+      const animatedWordElement = document.querySelector('.animated-word');
+      let currentWordIndex = 0;
+      let isDeleting = false;
+      let text = '';
+      // Increased speeds for snappy feel
+      let typingSpeed = 100; // was 150
+      let deletingSpeed = 60; // was 100
+      let pauseTime = 1500;
+
+      function type() {
+        const currentWord = words[currentWordIndex];
+        
+        if (isDeleting) {
+          text = currentWord.substring(0, text.length - 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === '') {
+            isDeleting = false;
+            currentWordIndex = (currentWordIndex + 1) % words.length;
+            setTimeout(type, 350); // faster pause between words
+            return;
+          }
+          
+          setTimeout(type, deletingSpeed);
+        } else {
+          text = currentWord.substring(0, text.length + 1);
+          animatedWordElement.textContent = text;
+          
+          if (text === currentWord) {
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+            return;
+          }
+          
+          setTimeout(type, typingSpeed);
+        }
+      }
+
+      type();
+
+      /* --- SCROLL OBSERVER --- */
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      document.querySelectorAll('.service-row, .work-row, .approach-p').forEach(item => {
+        observer.observe(item);
+      });
+
+      /* --- WORK ACCORDION LOGIC --- */
+      const workTriggers = document.querySelectorAll('.work-trigger');
+      
+      workTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const parentRow = trigger.closest('.work-row');
+          const isActive = parentRow.classList.contains('active');
+          
+          // Accordion Mode: Close all other rows
+          document.querySelectorAll('.work-row').forEach(row => {
+             row.classList.remove('active');
+             row.querySelector('.work-trigger').setAttribute('aria-expanded', 'false');
+          });
+
+          // If it wasn't active before, open it now
+          if (!isActive) {
+            parentRow.classList.add('active');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Keyboard accessibility (Enter/Space)
+        trigger.addEventListener('keydown', (e) => {
+           if (e.key === 'Enter' || e.key === ' ') {
+             e.preventDefault();
+             trigger.click();
+           }
+        });
+      });
+
+      /* --- TESTIMONIAL CAROUSEL --- */
+      const testimonials = document.querySelectorAll('.testimonial-item');
+      const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
+      let currentTestimonialIndex = 0;
+      let testimonialInterval;
+
+      function showTestimonial(index) {
+        testimonials.forEach((item, i) => {
+          item.classList.toggle('active', i === index);
+          testimonialDots[i].classList.toggle('active', i === index);
+          testimonialDots[i].setAttribute('aria-selected', i === index);
+        });
+      }
+
+      function nextTestimonial() {
+        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+        showTestimonial(currentTestimonialIndex);
+      }
+
+      function startTestimonialCarousel() {
+        clearInterval(testimonialInterval);
+        testimonialInterval = setInterval(nextTestimonial, 6000);
+      }
+
+      testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentTestimonialIndex = index;
+          showTestimonial(currentTestimonialIndex);
+          startTestimonialCarousel();
+        });
+        
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentTestimonialIndex = index;
+            showTestimonial(currentTestimonialIndex);
+            startTestimonialCarousel();
+          }
+        });
+      });
+
+      /* --- CLIENT LOGO TABS --- */
+      const clientTabs = document.querySelectorAll('.client-tab');
+      const clientGroups = document.querySelectorAll('.client-group');
+      
+      clientTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          clientTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          
+          const groupType = tab.dataset.type;
+          
+          clientGroups.forEach(group => {
+            group.classList.toggle('active', group.dataset.group === groupType);
+          });
+          
+          // Restart animation hack
+          const activeGroup = document.querySelector(`.client-group.active`);
+          const logoContainer = activeGroup.querySelector('.client-logos-container');
+          const animation = logoContainer.style.animation;
+          logoContainer.style.animation = 'none';
+          setTimeout(() => {
+            logoContainer.style.animation = animation || '';
+          }, 10);
+        });
+        
+        tab.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            tab.click();
+          }
+        });
+      });
+
+      startTestimonialCarousel();
+      
+      window.addEventListener('beforeunload', () => {
+        clearInterval(testimonialInterval);
+      });
+      
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(testimonialInterval);
+        } else {
+          startTestimonialCarousel();
+        }
+      });
+
+      /* --- EDITORIAL FORM LOGIC --- */
+      const editorialForm = document.getElementById('editorial-form');
+      if(editorialForm) {
+        editorialForm.addEventListener('submit', function(e) {
+          e.preventDefault(); // Stop page reload
+
+          // 1. Get Values
+          const name = document.getElementById('ef-name').value;
+          const company = document.getElementById('ef-company').value;
+          const service = document.getElementById('ef-service').value;
+          const email = document.getElementById('ef-email').value;
+
+          // 2. Build the Email Content
+          const subject = `Strategy Support Inquiry: ${company}`;
+          
+          const body = `Hi Emil,
+
+This is ${name} from ${company}.
+
+We are looking for support with ${service}.
+
+You can reply to me at: ${email}
+
+------------------------------------------------
+Sent via strategy-support.com`;
+
+          // 3. Construct Mailto Link
+          const mailtoLink = `mailto:emil@strategy-support.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+          // 4. Open Email Client
+          window.location.href = mailtoLink;
+        });
+      }
+
+    });
+  </script>
+</body>
+</html>
