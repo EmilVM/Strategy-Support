@@ -25,16 +25,16 @@
     }
 
     html, body {
-  width: 100%;
-  min-height: 100%; /* Changed from height: 100% */
-  font-family: 'Vollkorn', serif;
-  letter-spacing: 0.02em;
-  background: #F9F7F1;
-  color: #1F2023;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  scroll-padding-top: 85px;
-}
+      width: 100%;
+      min-height: 100%;
+      font-family: 'Vollkorn', serif;
+      letter-spacing: 0.02em;
+      background: #F9F7F1;
+      color: #1F2023;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      scroll-padding-top: 85px;
+    }
 
     main {
       width: 100%;
@@ -60,84 +60,83 @@
       transition: all 0.3s ease;
     }
 
-   .nav-logo { 
-  font-weight: 700; 
-  letter-spacing: -0.03em; 
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 1001;
-  color: #1F2023;
-}
+    .nav-logo { 
+      font-weight: 700; 
+      letter-spacing: -0.03em; 
+      font-size: 1.4rem;
+      cursor: pointer;
+      z-index: 1001;
+      color: #1F2023;
+    }
 
-.pink-dash {
-  color: #FA198B;
-  font-weight: 700;
-  margin: 0 -2px;
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
+    .pink-dash {
+      color: #FA198B;
+      font-weight: 700;
+      margin: 0 -2px;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
 
-.nav-logo:hover .pink-dash {
-  transform: scale(1.1);
-}
+    .nav-logo:hover .pink-dash {
+      transform: scale(1.1);
+    }
 
-  .nav-links { 
-  list-style: none; 
-  display: flex; 
-  gap: 35px; 
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
+    .nav-links { 
+      list-style: none; 
+      display: flex; 
+      gap: 35px; 
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
 
     .nav-links li {
       display: inline-block;
     }
 
-  .nav-links a { 
-  text-decoration: none; 
-  color: #1F2023; 
-  font-size: 0.9rem; 
-  font-weight: 500;
-  transition: color 0.3s;
-  position: relative; 
-}
+    .nav-links a { 
+      text-decoration: none; 
+      color: #1F2023; 
+      font-size: 0.9rem; 
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative; 
+    }
 
     .nav-links a:hover {
       color: #8A3324; /* Chestnut */
     }
 
+    /* Email link styling */
+    .nav-email {
+      font-size: 0.85rem !important;
+      color: #8A3324 !important;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      font-weight: 500 !important;
+    }
+
+    .nav-email:hover {
+      color: #FA198B !important;
+      border-bottom-color: #FA198B;
+    }
+
     /* Micro-Interaction Underline Animation */
-/* Email link styling */
-.nav-email {
-  font-size: 0.85rem !important;
-  color: #8A3324 !important;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
-  font-weight: 500 !important;
-}
+    .nav-links a:not(.nav-email)::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background-color: #8A3324;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
 
-.nav-email:hover {
-  color: #FA198B !important;
-  border-bottom-color: #FA198B;
-}
-
-/* Micro-Interaction Underline Animation */
-.nav-links a:not(.nav-email)::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 50%;
-  background-color: #8A3324;
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.nav-links a:not(.nav-email):hover::after {
-  width: 100%;
-  left: 0;
-}
+    .nav-links a:not(.nav-email):hover::after {
+      width: 100%;
+      left: 0;
+    }
 
     /* Mobile Menu Toggle */
     .mobile-menu-toggle {
@@ -205,21 +204,21 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       }
 
-    .nav-logo {
-  font-size: 1.2rem;
-}
+      .nav-logo {
+        font-size: 1.2rem;
+      }
 
-.nav-links a {
-  font-size: 1.3rem; 
-  font-weight: 400;
-}
+      .nav-links a {
+        font-size: 1.3rem; 
+        font-weight: 400;
+      }
 
-.nav-email {
-  font-size: 1.1rem !important;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(31, 32, 35, 0.1);
-}
+      .nav-email {
+        font-size: 1.1rem !important;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(31, 32, 35, 0.1);
+      }
       
       /* Disable underline animation on mobile */
       .nav-links a::after {
@@ -253,9 +252,10 @@
       text-align: left;
     }
 
+    /* Updated Swiss Labels for Contrast */
     .swiss-label.on-white {
       color: #8A3324;
-      border-bottom: 1px solid rgba(138, 51, 36, 0.3);
+      border-bottom: 1px solid #1F2023; /* Sharper black line for Swiss feel */
     }
 
     .swiss-label.on-red {
@@ -264,7 +264,7 @@
     }
 
     .swiss-label.on-dark {
-      color: #FA198B;
+      color: #FA198B; /* Pink on Dark */
       border-bottom: 1px solid rgba(250, 25, 139, 0.3);
     }
 
@@ -368,7 +368,7 @@
       opacity: 0.85;
     }
 
-    /* UPDATED: Minimalist "No Box" CTA Styles */
+    /* Minimalist CTA Styles */
     .minimal-copy-btn {
       margin-top: 50px;
       display: flex;
@@ -377,7 +377,6 @@
       gap: 15px;
       background: transparent;
       border: none;
-      /* Subtle underline spanning the text width */
       border-bottom: 1px solid rgba(31, 32, 35, 0.2); 
       padding: 10px 10px;
       cursor: pointer;
@@ -387,7 +386,6 @@
       position: relative;
     }
 
-    /* The visual elements within button */
     .btn-label {
       text-transform: uppercase;
       font-size: 0.8rem;
@@ -415,9 +413,8 @@
       transition: all 0.3s ease;
     }
 
-    /* Hover State */
     .minimal-copy-btn:hover {
-      border-bottom-color: #8A3324; /* Chestnut */
+      border-bottom-color: #8A3324;
       transform: translateY(-2px);
     }
     
@@ -431,9 +428,8 @@
       color: #8A3324;
     }
 
-    /* Success / Copied State */
     .minimal-copy-btn.copied {
-      border-bottom-color: #FA198B; /* Barbie Pink */
+      border-bottom-color: #FA198B;
     }
     
     .minimal-copy-btn.copied .btn-label,
@@ -452,13 +448,12 @@
       opacity: 0.5;
     }
 
-    /* Helper text below button */
     .copy-feedback-text {
       margin-top: 15px;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      opacity: 0; /* Hidden by default */
+      opacity: 0;
       transition: opacity 0.3s, transform 0.3s;
       transform: translateY(-5px);
     }
@@ -468,7 +463,6 @@
       transform: translateY(0);
     }
 
-    /* Mobile Responsiveness for CTA */
     @media (max-width: 600px) {
       .minimal-copy-btn {
         flex-direction: column;
@@ -484,11 +478,11 @@
     }
 
 
-    /* --- ABOUT ME --- */
+    /* --- ABOUT ME (REDO: Off-White) --- */
     #about-me {
       padding: 100px 20px;
-      background: #8A3324; /* Chestnut */
-      color: #F9F7F1;
+      background: #F9F7F1; /* Switched to Off-White */
+      color: #1F2023;      /* Switched to Black */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -505,7 +499,7 @@
 
     .about-image-col {
       position: sticky;
-      top: 100px; /* adjusted for nav */
+      top: 100px; 
     }
 
     .about-portrait {
@@ -513,7 +507,7 @@
       aspect-ratio: 3/4;
       object-fit: cover;
       border-radius: 0;
-      border: 1px solid rgba(249, 247, 241, 0.3);
+      border: 1px solid rgba(31, 32, 35, 0.1); /* Dark border */
       filter: grayscale(100%);
       transition: filter 0.5s ease;
     }
@@ -536,8 +530,8 @@
       letter-spacing: 0.05em;
       opacity: 0.7;
       margin-bottom: 20px;
-      color: #F9F7F1;
-      border-bottom: 1px solid rgba(249, 247, 241, 0.3);
+      color: #8A3324; /* Red accent text */
+      border-bottom: 1px solid rgba(31, 32, 35, 0.15); /* Dark line */
       padding-bottom: 20px;
       display: inline-block;
       width: 100%;
@@ -548,7 +542,7 @@
       font-weight: 400;
       line-height: 1.1;
       margin-bottom: 30px;
-      color: #F9F7F1;
+      color: #1F2023;
     }
 
     .about-text {
@@ -557,13 +551,12 @@
       margin-bottom: 60px;
       opacity: 0.9;
       max-width: 700px;
-      color: #F9F7F1;
+      color: #1F2023;
     }
 
-    /* Integrated Tabs & Carousel */
     .about-clients-wrapper {
       margin-top: 10px;
-      border-top: 1px solid rgba(249, 247, 241, 0.3);
+      border-top: 1px solid rgba(31, 32, 35, 0.15); /* Dark line */
       padding-top: 40px;
     }
     
@@ -574,7 +567,7 @@
       opacity: 0.7;
       margin-bottom: 20px;
       display: block;
-      color: #F9F7F1;
+      color: #1F2023;
     }
 
     .client-tabs {
@@ -598,17 +591,19 @@
       font-weight: 400;
       position: relative;
       z-index: 1;
-      opacity: 0.5;
-      color: #F9F7F1;
+      opacity: 0.4;
+      color: #1F2023; /* Dark text */
     }
 
     .client-tab:hover {
-      opacity: 0.8;
+      opacity: 1;
+      color: #8A3324;
     }
 
     .client-tab.active {
       opacity: 1;
       font-weight: 500;
+      color: #1F2023;
     }
 
     .client-tab.active::after {
@@ -617,8 +612,8 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 1px;
-      background: #F9F7F1;
+      height: 2px;
+      background: #8A3324; /* Red Underline */
     }
 
     .carousel-wrapper {
@@ -665,7 +660,7 @@
     .client-logo {
       height: 60px;
       margin: 0 30px;
-      filter: brightness(0) invert(1);
+      filter: grayscale(100%); /* Logos now black/grey on white bg */
       opacity: 0.8;
       transition: opacity 0.3s;
       flex-shrink: 0;
@@ -674,6 +669,7 @@
     .client-logo:hover {
       opacity: 1;
       transform: scale(1.05);
+      filter: grayscale(0%);
     }
     
     .client-logos-container:hover {
@@ -770,10 +766,10 @@
       }
     }
 
-    /* --- SERVICES --- */
+    /* --- SERVICES (REDO: Black Mode) --- */
     #services {
       padding: 120px 20px;
-      background: #8A3324; /* Chestnut */
+      background: #1F2023; /* Changed from Chestnut to Carbon Black */
       color: #F9F7F1;
       width: 100%;
       max-width: 100%;
@@ -793,7 +789,7 @@
 
     .services-header {
       position: sticky;
-      top: 100px; /* adjusted for nav */
+      top: 100px; 
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -811,7 +807,7 @@
       display: flex;
       flex-direction: column;
       padding-left: 40px;
-      border-left: 1px solid rgba(249, 247, 241, 0.3); 
+      border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white line */
     }
     
     .services-list {
@@ -825,7 +821,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 0;
-      border-top: 1px solid rgba(249, 247, 241, 0.3);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
       opacity: 0;
       transform: translateY(20px);
@@ -837,7 +833,7 @@
     }
 
     .service-row:last-child {
-      border-bottom: 1px solid rgba(249, 247, 241, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .service-num {
@@ -845,10 +841,9 @@
       font-weight: 400;
       flex-basis: 10%;
       padding-top: 5px;
-      /* UPDATED: Changed to White */
       color: #F9F7F1;
-      opacity: 1;
-      transition: color 0.3s ease; /* Added transition */
+      opacity: 0.5;
+      transition: color 0.3s ease, opacity 0.3s ease;
     }
 
     .service-details {
@@ -881,12 +876,12 @@
     }
 
     .service-row:hover h3 {
-      color: #FA198B;
+      color: #FA198B; /* Pink Headline */
     }
     
-    /* UPDATED: Service Number turns pink on hover */
     .service-row:hover .service-num {
-      color: #FA198B;
+      color: #FA198B; /* Pink Number */
+      opacity: 1;
     }
 
     @media (max-width: 900px) {
@@ -1320,12 +1315,11 @@
       margin-bottom: 40px;
     }
 
-    /* UPDATED: Reduced font size and adjusted line height */
     .editorial-text {
       font-family: 'Vollkorn', serif;
-      font-size: clamp(1.15rem, 2vw, 1.5rem); /* Significantly smaller than before */
-      line-height: 1.8; /* Increased slightly to give breathability at smaller size */
-      color: #1F2023; /* Carbon Black */
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      line-height: 1.8;
+      color: #1F2023;
       font-weight: 400;
     }
 
@@ -1335,34 +1329,31 @@
       display: inline-block;
       background: transparent;
       border: none;
-      border-bottom: 2px solid rgba(31, 32, 35, 0.2); /* Subtle underline */
+      border-bottom: 2px solid rgba(31, 32, 35, 0.2); 
       border-radius: 0;
-      padding: 0 5px 2px 5px; /* Reduced bottom padding */
+      padding: 0 5px 2px 5px; 
       font-family: 'Vollkorn', serif;
-      font-size: inherit; /* Inherits parent size */
-      color: #8A3324; /* Chestnut Red (User Input) */
+      font-size: inherit; 
+      color: #8A3324; /* User Input is Red */
       outline: none;
       width: auto;
-      min-width: 150px; /* Slightly narrower min-width */
+      min-width: 150px; 
       transition: all 0.3s ease;
       cursor: text;
     }
 
-    /* Placeholder Styling */
     .editorial-input::placeholder {
       color: #1F2023;
       opacity: 0.3;
       font-style: italic;
     }
 
-    /* Focus / Active State */
     .editorial-input:focus,
     .editorial-select:focus {
-      border-bottom-color: #FA198B; /* Barbie Pink */
+      border-bottom-color: #FA198B; /* Pink Focus */
       color: #FA198B; 
     }
 
-    /* Customizing the Select Dropdown */
     .editorial-select-wrapper {
       position: relative;
       display: inline-block;
@@ -1373,23 +1364,23 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       cursor: pointer;
-      padding-right: 30px; /* Space for hidden arrow hint */
+      padding-right: 30px;
       color: #8A3324;
     }
 
     .editorial-select option {
-      font-size: 1rem; /* Reset font size for the dropdown list itself */
+      font-size: 1rem;
       color: #1F2023;
       background: #F9F7F1;
     }
 
     /* The "Stamp" Button */
     .editorial-submit {
-      margin-top: 30px; /* Reduced from 50px */
+      margin-top: 30px; 
       background: none;
       border: none;
       font-family: 'Vollkorn', serif;
-      font-size: clamp(1rem, 1.5vw, 1.2rem); /* Scaled down slightly */
+      font-size: clamp(1rem, 1.5vw, 1.2rem); 
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -1408,26 +1399,22 @@
     }
 
     .editorial-submit:hover {
-      color: #8A3324; /* Chestnut */
+      color: #8A3324;
     }
 
     .editorial-submit:hover .arrow {
       transform: translateX(10px);
-      color: #FA198B; /* Pink Arrow */
+      color: #FA198B;
     }
 
-    /* Mobile Adjustments for Form */
-/* Mobile Adjustments for Form */
     @media (max-width: 600px) {
-      /* 1. New Wrapper Style: Keeps input and dot together */
       .input-group {
-        display: flex;        /* Aligns input and dot in a row */
-        align-items: baseline; /* Ensures the dot sits on the text line, not floating up */
+        display: flex;       
+        align-items: baseline; 
         width: 100%;
-        margin: 10px 0;       /* Moves the spacing to the wrapper */
+        margin: 10px 0;       
       }
 
-      /* 2. Updated Input Style: Lets the wrapper handle the layout */
       .editorial-input, 
       .editorial-select {
         display: block; 
@@ -1435,11 +1422,10 @@
         min-width: 0;
       }
 
-      /* Specific tweak for inputs inside our new group */
       .input-group .editorial-input {
-        margin: 0;       /* Remove margin so it fits in the wrapper */
-        flex-grow: 1;    /* Input takes up all space */
-        width: auto;     /* Let flexbox handle width */
+        margin: 0;       
+        flex-grow: 1;    
+        width: auto;     
       }
       
       .editorial-text {
@@ -1447,11 +1433,10 @@
       }
     }
 
-    /* UPDATED: Stacked layout for contact meta */
     .contact-meta {
       display: flex;
-      flex-direction: column; /* Stack elements vertically */
-      gap: 5px; /* Tight gap */
+      flex-direction: column; 
+      gap: 5px; 
       font-size: 1rem;
       font-weight: 500;
       color: #1F2023;
@@ -1460,7 +1445,7 @@
       letter-spacing: 0.05em;
       border-top: 1px solid rgba(31, 32, 35, 0.1);
       padding-top: 30px;
-      align-items: flex-start; /* Ensure left alignment */
+      align-items: flex-start; 
     }
 
     .contact-meta a {
@@ -1582,7 +1567,6 @@
         Big-agency thinking without the big-agency price tag or bureaucracy, directly in your team.
       </p>
       
-      <!-- UPDATED: Minimalist "No Box" CTA -->
       <button class="minimal-copy-btn" onclick="copyEmailToClipboard(this)" aria-label="Copy email address">
         <span class="btn-label">Get in Touch</span>
         <span class="btn-divider">&mdash;</span>
@@ -1703,7 +1687,8 @@
       <div class="services-grid">
         
         <div class="services-header">
-          <h2 id="services-heading" class="swiss-label on-red">How I Help</h2>
+          <!-- Switched to .on-dark for Pink label on Black BG -->
+          <h2 id="services-heading" class="swiss-label on-dark">How I Help</h2>
           <p class="services-intro-side">
             I help brands and agencies cut through complexity. My work typically falls into three core areas:
           </p>
@@ -1917,8 +1902,8 @@
 
     <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
       <div style="width: 100%; max-width: 1200px;">
-  <h2 id="testimonials-heading" class="swiss-label on-dark">What Clients Say</h2>
-</div>
+        <h2 id="testimonials-heading" class="swiss-label on-dark">What Clients Say</h2>
+      </div>
       <div class="testimonials-container">
         <div class="testimonial-item active">
           <p class="testimonial-quote">
