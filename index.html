@@ -263,9 +263,10 @@
       border-bottom: 1px solid rgba(249, 247, 241, 0.3);
     }
 
+    /* UPDATED: Swiss Label on Dark to Red + Light Line */
     .swiss-label.on-dark {
-      color: #FA198B; /* Pink on Dark */
-      border-bottom: 1px solid rgba(250, 25, 139, 0.3);
+      color: #8A3324; /* Was Pink, now Red */
+      border-bottom: 1px solid rgba(249, 247, 241, 0.2); /* Was Pink line, now standard light line */
     }
 
     /* --- HERO SECTION --- */
@@ -523,6 +524,7 @@
       min-width: 0;
     }
 
+    /* UPDATED: About Label to Red + Light Line */
     .about-label {
       font-family: 'Vollkorn', serif;
       font-size: 0.9rem;
@@ -530,8 +532,8 @@
       letter-spacing: 0.05em;
       opacity: 0.9;
       margin-bottom: 20px;
-      color: #FA198B; /* Pink accent text for Dark Mode */
-      border-bottom: 1px solid rgba(250, 25, 139, 0.3); /* Pink dim line */
+      color: #8A3324; /* Was Pink, now Red */
+      border-bottom: 1px solid rgba(249, 247, 241, 0.2); /* Was Pink line, now light line */
       padding-bottom: 20px;
       display: inline-block;
       width: 100%;
@@ -579,6 +581,7 @@
       flex-wrap: wrap;
     }
 
+    /* UPDATED: Client Tabs to Red Hover/Active */
     .client-tab {
       font-size: clamp(1.2rem, 2vw, 1.5rem);
       background: none;
@@ -597,7 +600,7 @@
 
     .client-tab:hover {
       opacity: 1;
-      color: #FA198B; /* Pink Hover */
+      color: #8A3324; /* Was Pink, now Red */
     }
 
     .client-tab.active {
@@ -613,7 +616,7 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: #FA198B; /* Pink Underline */
+      background: #8A3324; /* Was Pink, now Red */
     }
 
     .carousel-wrapper {
@@ -874,12 +877,13 @@
       background-color: rgba(255, 255, 255, 0.05);
     }
 
+    /* UPDATED: Service Hover to Red */
     .service-row:hover h3 {
-      color: #FA198B; /* Pink Headline */
+      color: #8A3324; /* Was Pink, now Red */
     }
     
     .service-row:hover .service-num {
-      color: #FA198B; /* Pink Number */
+      color: #8A3324; /* Was Pink, now Red */
       opacity: 1;
     }
 
@@ -1214,29 +1218,30 @@
       pointer-events: auto;
     }
 
+    /* UPDATED: Testimonial Colors to Red */
     .testimonial-quote {
       font-size: clamp(1.25rem, 2.5vw, 2rem);
       line-height: 1.6;
       font-style: italic;
       max-width: 800px;
-      color: #FA198B;
+      color: #8A3324; /* Was Pink, now Red */
     }
 
     .testimonial-quote span.quote-mark {
-      color: #FA198B;
+      color: #8A3324; /* Was Pink, now Red */
       font-size: 1.3em;
     }
 
     .testimonial-author {
       font-size: clamp(1rem, 2vw, 1.3rem);
-      color: #FA198B;
+      color: #8A3324; /* Was Pink, now Red */
       margin-top: 8px;
     }
 
     .testimonial-role {
       font-size: clamp(0.9rem, 1.8vw, 1.1rem);
       opacity: 0.8;
-      color: #FA198B;
+      color: #8A3324; /* Was Pink, now Red */
     }
 
     .testimonial-indicators {
@@ -1256,16 +1261,17 @@
       transition: all 0.3s;
     }
 
+    /* UPDATED: Dots to Red on Active */
     .indicator-dot.active {
-      background: #FA198B;
-      border-color: #FA198B;
+      background: #8A3324; /* Was Pink, now Red */
+      border-color: #8A3324;
       transform: scale(1.2);
     }
 
     .indicator-dot:hover,
     .indicator-dot:focus-visible {
-      background: #FA198B;
-      border-color: #FA198B;
+      background: #8A3324; /* Was Pink, now Red */
+      border-color: #8A3324;
     }
 
     /* --- CONTACT --- */
@@ -1686,7 +1692,7 @@
       <div class="services-grid">
         
         <div class="services-header">
-          <!-- Switched to .on-dark for Pink label on Black BG -->
+          <!-- Switched to .on-dark for Red label on Black BG -->
           <h2 id="services-heading" class="swiss-label on-dark">How I Help</h2>
           <p class="services-intro-side">
             I help brands and agencies cut through complexity. My work typically falls into three core areas:
