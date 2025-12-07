@@ -477,12 +477,12 @@
     /* --- ABOUT ME (REDO: Copenhagen Light) --- */
     #about-me {
       padding: 100px 20px;
-      background: var(--bg-cream); /* Light cream */
-      color: var(--text-carbon);   /* Dark text */
+      /* UPDATED: Changed from var(--bg-cream) to var(--bg-stone) */
+      background: var(--bg-stone); 
+      color: var(--text-carbon);
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* Subtle border to separate from Hero */
       border-top: 1px solid var(--line-light);
     }
 
@@ -1183,16 +1183,24 @@
 
     /* --- TESTIMONIALS (Updated to Light/Editorial) --- */
     .testimonials-section {
-      padding-top: 80px;
-      padding-bottom: 80px;
-      /* Light background now */
-      background: var(--bg-cream);
+      /* UPDATED: Added side padding so lines don't hit edge */
+      padding: 120px 20px;
+      /* UPDATED: Changed from var(--bg-cream) to var(--bg-stone) */
+      background: var(--bg-stone);
       display: flex;
       flex-direction: column;
       align-items: center;
       /* Border to frame it */
       border-top: 1px solid var(--line-strong);
       border-bottom: 1px solid var(--line-strong);
+    }
+    
+    /* NEW: Dedicated header container */
+    .testimonials-header {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 40px;
     }
 
     .testimonials-container {
@@ -1912,7 +1920,8 @@
     </section>
 
     <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
-      <div style="width: 100%; max-width: 1200px;">
+      <!-- UPDATED: Replaced inline style with clean class -->
+      <div class="testimonials-header">
         <h2 id="testimonials-heading" class="swiss-label">What Clients Say</h2>
       </div>
       <div class="testimonials-container">
