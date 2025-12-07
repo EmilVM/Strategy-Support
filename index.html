@@ -22,8 +22,8 @@
       /* Base: Warm Paper */
       --bg-cream: #F9F7F1;
       
-      /* Secondary: Warm Taupe (Limestone) - Provides contrast while maintaining warmth */
-      --bg-stone: #E6E0D5; 
+      /* Secondary: CHANGED TO RED (Previously Stone) */
+      --bg-stone: #A84632; 
       
       /* Anchor: Deep Ink */
       --text-carbon: #1F2023;
@@ -37,6 +37,9 @@
       /* Lines: Subtly adjusted for the warmer backgrounds */
       --line-light: rgba(31, 32, 35, 0.08);
       --line-strong: rgba(31, 32, 35, 0.15);
+      
+      /* New: Lines for Red Backgrounds */
+      --line-on-red: rgba(249, 247, 241, 0.2);
     }
 
     * {
@@ -268,9 +271,9 @@
       padding-bottom: 20px;
       display: block;
       width: 100%;
-      font-weight: 600; /* Increased weight for the lighter Terracotta */
+      font-weight: 600;
       text-align: left;
-      /* Unified Style for Tonal Theme */
+      /* Default Color (overridden in red sections) */
       color: var(--accent-red);
       border-bottom: 1px solid var(--text-carbon); 
     }
@@ -485,16 +488,15 @@
     }
 
 
-    /* --- ABOUT ME (REDO: Warm Taupe Stone) --- */
+    /* --- ABOUT ME (UPDATED: Red Background) --- */
     #about-me {
       padding: 100px 20px;
-      /* UPDATED: Uses the new warm taupe stone color */
-      background: var(--bg-stone); 
-      color: var(--text-carbon);
+      background: var(--bg-stone); /* Now Red (#A84632) */
+      color: var(--bg-cream);      /* Text is now Light */
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-top: 1px solid var(--line-light);
+      border-top: 1px solid var(--line-on-red); /* Semi-transparent border */
     }
 
     .about-container {
@@ -540,8 +542,9 @@
       letter-spacing: 0.05em;
       opacity: 0.9;
       margin-bottom: 20px;
-      color: var(--accent-red);
-      border-bottom: 1px solid var(--line-strong);
+      /* On Red background, label is Cream */
+      color: var(--bg-cream);
+      border-bottom: 1px solid var(--line-on-red);
       padding-bottom: 20px;
       display: inline-block;
       width: 100%;
@@ -552,7 +555,7 @@
       font-weight: 400;
       line-height: 1.1;
       margin-bottom: 30px;
-      color: var(--text-carbon);
+      color: var(--bg-cream);
     }
 
     .about-text {
@@ -561,12 +564,12 @@
       margin-bottom: 60px;
       opacity: 0.9;
       max-width: 700px;
-      color: var(--text-carbon);
+      color: var(--bg-cream);
     }
 
     .about-clients-wrapper {
       margin-top: 10px;
-      border-top: 1px solid var(--line-light);
+      border-top: 1px solid var(--line-on-red);
       padding-top: 40px;
     }
     
@@ -577,7 +580,7 @@
       opacity: 0.7;
       margin-bottom: 20px;
       display: block;
-      color: var(--text-carbon);
+      color: var(--bg-cream);
     }
 
     .client-tabs {
@@ -601,19 +604,20 @@
       font-weight: 400;
       position: relative;
       z-index: 1;
-      opacity: 0.4;
-      color: var(--text-carbon);
+      opacity: 0.5;
+      /* Text is cream on red background */
+      color: var(--bg-cream);
     }
 
     .client-tab:hover {
       opacity: 1;
-      color: var(--accent-red);
+      color: var(--bg-cream);
     }
 
     .client-tab.active {
       opacity: 1;
       font-weight: 500;
-      color: var(--text-carbon);
+      color: var(--bg-cream);
     }
 
     /* Active brand/agency underline is Pink (The Digital Accent) */
@@ -672,9 +676,9 @@
     .client-logo {
       height: 60px;
       margin: 0 30px;
-      /* IMPORTANT: Filter changed to make logos black (ink on paper) */
-      filter: brightness(0); 
-      opacity: 0.7;
+      /* INVERTED: Because background is Red, we make logos White */
+      filter: brightness(0) invert(1); 
+      opacity: 0.8;
       transition: all 0.3s;
       flex-shrink: 0;
     }
@@ -780,11 +784,11 @@
       }
     }
 
-    /* --- SERVICES (Warm Stone Taupe) --- */
+    /* --- SERVICES (UPDATED: Red Background) --- */
     #services {
       padding: 120px 20px;
-      background: var(--bg-stone); 
-      color: var(--text-carbon);
+      background: var(--bg-stone); /* Red */
+      color: var(--bg-cream);      /* White Text */
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -808,12 +812,18 @@
       flex-direction: column;
       gap: 30px;
     }
+    
+    /* Specific override for label inside Red sections */
+    #services .swiss-label {
+      color: var(--bg-cream);
+      border-bottom-color: var(--line-on-red);
+    }
 
     .services-intro-side {
       font-size: clamp(1.1rem, 1.5vw, 1.3rem);
       line-height: 1.5;
-      opacity: 0.8;
-      color: var(--text-carbon);
+      opacity: 0.9;
+      color: var(--bg-cream);
       max-width: 90%;
     }
 
@@ -821,7 +831,7 @@
       display: flex;
       flex-direction: column;
       padding-left: 40px;
-      border-left: 1px solid var(--line-light); 
+      border-left: 1px solid var(--line-on-red); 
     }
     
     .services-list {
@@ -835,8 +845,8 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 0;
-      /* Use line-strong for the darker stone background */
-      border-top: 1px solid var(--line-strong);
+      /* Use line-on-red for the darker red background */
+      border-top: 1px solid var(--line-on-red);
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
       opacity: 0;
       transform: translateY(20px);
@@ -848,7 +858,7 @@
     }
 
     .service-row:last-child {
-      border-bottom: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-on-red);
     }
 
     .service-num {
@@ -856,7 +866,7 @@
       font-weight: 400;
       flex-basis: 10%;
       padding-top: 5px;
-      color: var(--text-carbon);
+      color: var(--bg-cream);
       opacity: 0.5;
       transition: color 0.3s ease, opacity 0.3s ease;
     }
@@ -872,7 +882,7 @@
       font-size: clamp(2rem, 3vw, 2.8rem);
       font-weight: 400;
       margin: 0;
-      color: var(--text-carbon);
+      color: var(--bg-cream);
       line-height: 1.1;
       transition: color 0.3s ease;
     }
@@ -880,22 +890,24 @@
     .service-row p {
       font-size: clamp(1rem, 1.5vw, 1.25rem);
       line-height: 1.6;
-      color: var(--text-carbon);
+      color: var(--bg-cream);
       opacity: 0.9;
       margin: 0;
       max-width: 650px;
     }
 
+    /* Hover effect on Red: White overlay */
     .service-row:hover {
-      background-color: rgba(31, 32, 35, 0.04);
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
+    /* On Hover, text turns Pink to disrupt the Red */
     .service-row:hover h3 {
-      color: var(--accent-red);
+      color: var(--accent-pink);
     }
     
     .service-row:hover .service-num {
-      color: var(--accent-red);
+      color: var(--accent-pink);
       opacity: 1;
     }
 
