@@ -505,9 +505,9 @@
       aspect-ratio: 3/4;
       object-fit: cover;
       border-radius: 0;
-      /* Remove border, add sharp architectural shadow */
+      /* CHANGE 3: Remove border, REMOVED architectural shadow as requested */
       border: none;
-      box-shadow: 12px 12px 0px rgba(31, 32, 35, 0.06);
+      box-shadow: none; 
       filter: grayscale(100%);
       transition: filter 0.5s ease;
     }
@@ -606,6 +606,7 @@
       color: var(--text-carbon);
     }
 
+    /* CHANGE 2: Line under active brand/agency is now Pink */
     .client-tab.active::after {
       content: '';
       position: absolute;
@@ -613,7 +614,7 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: var(--accent-red);
+      background: var(--accent-pink); 
     }
 
     .carousel-wrapper {
@@ -982,13 +983,25 @@
       position: relative;
     }
 
+    /* CHANGE 5: Client Name turns Pink when interacted with */
     .work-trigger:hover .client-name {
-      color: var(--text-carbon);
+      color: var(--accent-pink);
     }
     
+    /* Also ensure it stays pink if active */
+    .work-row.active .client-name {
+      color: var(--accent-pink);
+    }
+    
+    /* CHANGE 4: Plus icon background color logic */
     .work-trigger:hover .work-plus-icon::before,
     .work-trigger:hover .work-plus-icon::after {
-      background-color: var(--accent-red);
+      background-color: var(--accent-pink);
+    }
+    
+    .work-row.active .work-plus-icon::before,
+    .work-row.active .work-plus-icon::after {
+      background-color: var(--accent-pink);
     }
 
     .client-name {
@@ -1028,11 +1041,12 @@
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
+    /* CHANGE 4: Default Plus icon is RED */
     .work-plus-icon::before,
     .work-plus-icon::after {
       content: '';
       position: absolute;
-      background-color: var(--accent-pink);
+      background-color: var(--accent-red);
       transition: background-color 0.3s ease;
     }
 
@@ -1272,11 +1286,13 @@
       height: 12px;
       border-radius: 50%;
       background: transparent;
-      border: 2px solid var(--text-carbon);
+      /* CHANGE 6: Dots are Red by default */
+      border: 2px solid var(--accent-red);
       cursor: pointer;
       transition: all 0.3s;
     }
 
+    /* CHANGE 6: Dots are Pink when active/interacted */
     .indicator-dot.active {
       background: var(--accent-pink);
       border-color: var(--accent-pink);
@@ -1451,6 +1467,25 @@
       .editorial-text {
         line-height: 1.8;
       }
+    }
+    
+    /* CHANGE 1: Styles for the Moved Direct Email Link */
+    .contact-direct-link {
+      margin-top: 30px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-carbon);
+      margin-bottom: 30px; /* Space before the dividing line */
+    }
+    
+    .contact-direct-link a {
+      color: var(--accent-red);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-direct-link a:hover {
+      color: var(--accent-pink);
     }
 
     .contact-meta {
@@ -2002,9 +2037,13 @@
             </button>
           </form>
 
-          <!-- FALLBACK / DIRECT INFO -->
+          <!-- CHANGE 1: DIRECT EMAIL LINK MOVED HERE -->
+          <div class="contact-direct-link">
+            Or email directly: <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
+          </div>
+
+          <!-- FALLBACK / DIRECT INFO (Border Top Starts Here) -->
           <div class="contact-meta">
-            <span>Or email directly: <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a></span>
             <span>Denmark, travel and remote.</span>
           </div>
 
