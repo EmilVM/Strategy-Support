@@ -409,6 +409,13 @@
       opacity: 0.4;
       font-size: 1rem;
     }
+    
+    /* Wrapper to keep address and icon together on mobile */
+    .btn-address-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
     .btn-address {
       font-size: 1.1rem;
@@ -421,6 +428,8 @@
       height: 18px;
       opacity: 0.6;
       transition: all 0.3s ease;
+      /* Remove default margin as it's handled by gap now */
+      display: block;
     }
 
     .minimal-copy-btn:hover {
@@ -482,9 +491,7 @@
       .btn-divider {
         display: none;
       }
-      .btn-icon {
-        margin-top: 5px;
-      }
+      /* Icon margin handled by .btn-address-group gap now */
     }
 
 
@@ -921,6 +928,8 @@
         position: static;
         border-bottom: none;
         padding-bottom: 0;
+        /* FIXED: Reduce gap to align text better on mobile, relying on label margin */
+        gap: 0;
       }
 
       .services-content {
@@ -1685,12 +1694,15 @@
       <button class="minimal-copy-btn" onclick="copyEmailToClipboard(this)" aria-label="Copy email address">
         <span class="btn-label">Get in Touch</span>
         <span class="btn-divider">&mdash;</span>
-        <span class="btn-address">emil@strategy-support.com</span>
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M8 7H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"></path>
-          <path d="M16 3H21V8"></path>
-          <path d="M21 3L11 13"></path>
-        </svg>
+        <!-- Updated: Wrapped Address and Icon to keep them together on mobile -->
+        <span class="btn-address-group">
+          <span class="btn-address">emil@strategy-support.com</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 7H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"></path>
+            <path d="M16 3H21V8"></path>
+            <path d="M21 3L11 13"></path>
+          </svg>
+        </span>
       </button>
       <div id="copy-feedback" class="copy-feedback-text">Click to copy</div>
 
@@ -2099,7 +2111,10 @@
                 This is 
                 <input type="text" id="ef-name" class="editorial-input" placeholder="Name" required aria-label="Your Name">
                 from 
-                <input type="text" id="ef-company" class="editorial-input" placeholder="Company" required aria-label="Company Name">.
+                <!-- Updated: Wrapped input+dot in nowrap span to keep dot on same line -->
+                <span style="white-space: nowrap;">
+                  <input type="text" id="ef-company" class="editorial-input" placeholder="Company" required aria-label="Company Name">.
+                </span>
                 <br><br>
                 We are looking for support with 
                 <span class="editorial-select-wrapper">
@@ -2115,7 +2130,10 @@
                 and would love to chat.
                 <br><br>
                 You can reach me at 
-                <input type="email" id="ef-email" class="editorial-input" placeholder="email address" required aria-label="Your Email">.
+                <!-- Updated: Wrapped input+dot in nowrap span to keep dot on same line -->
+                <span style="white-space: nowrap;">
+                  <input type="email" id="ef-email" class="editorial-input" placeholder="email address" required aria-label="Your Email">.
+                </span>
               </p>
 
               <button type="submit" class="editorial-submit">
