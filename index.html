@@ -131,18 +131,9 @@
       color: var(--accent-red);
     }
 
-    /* Email link styling */
-    .nav-email {
-      font-size: 0.85rem !important;
-      color: var(--accent-red) !important;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
-      font-weight: 500 !important;
-    }
-
-    .nav-email:hover {
+    /* Active Section Highlight (Scroll Spy) */
+    .nav-links a.active-section {
       color: var(--accent-pink) !important;
-      border-bottom-color: var(--accent-pink);
     }
 
     /* Micro-Interaction Underline Animation */
@@ -160,6 +151,24 @@
     .nav-links a:not(.nav-email):hover::after {
       width: 100%;
       left: 0;
+    }
+
+    /* Email link styling - HIDDEN ON DESKTOP BY DEFAULT */
+    .nav-email-li {
+      display: none;
+    }
+
+    .nav-email {
+      font-size: 0.85rem !important;
+      color: var(--accent-red) !important;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      font-weight: 500 !important;
+    }
+
+    .nav-email:hover {
+      color: var(--accent-pink) !important;
+      border-bottom-color: var(--accent-pink);
     }
 
     /* Mobile Menu Toggle */
@@ -237,11 +246,19 @@
         font-weight: 400;
       }
 
+      /* Email Link - SHOWN ON MOBILE */
+      .nav-email-li {
+        display: block; /* Show list item */
+        width: 100%;
+        text-align: center;
+      }
+
       .nav-email {
         font-size: 1.1rem !important;
         margin-top: 20px;
         padding-top: 20px;
         border-top: 1px solid var(--line-light);
+        display: inline-block;
       }
       
       .nav-links a::after {
@@ -1441,7 +1458,7 @@
       border-left: 1px solid var(--line-light); 
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      /* justify-content: space-between; removed to allow natural stacking with headline */
     }
 
     /* EDITORIAL FORM STYLES */
@@ -1685,7 +1702,8 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#recent-work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="mailto:emil@strategy-support.com" class="nav-email">emil@strategy-support.com</a></li>
+    <!-- Email hidden on desktop, visible on mobile -->
+    <li class="nav-email-li"><a href="mailto:emil@strategy-support.com" class="nav-email">emil@strategy-support.com</a></li>
   </ul>
 </nav>
 
@@ -2118,6 +2136,10 @@
 
           <!-- RIGHT: Action (The Form) -->
           <div class="contact-form-area">
+            
+            <!-- ADDED: Headline/Title for Form -->
+            <span class="narrative-label" style="display:block; margin-bottom:20px;">Send a Message</span>
+
             <form id="editorial-form" class="editorial-form">
               <p class="editorial-text">
                 Hi Emil,
@@ -2162,7 +2184,7 @@
   </main>
 
   <footer>
-    <a href="https://www.linkedin.com/in/emilvmadsen/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+    <!-- Removed LinkedIn Link from here -->
     <p class="footer-copy">&copy; 2025 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
   </footer>
 
@@ -2439,6 +2461,33 @@ Sent via strategy-support.com`;
           window.location.href = mailtoLink;
         });
       }
+
+      /* --- SCROLL SPY (Active Nav Highlight) --- */
+      const sections = document.querySelectorAll('section[id]');
+      const navItems = document.querySelectorAll('.nav-links a');
+
+      // Detect which section is in the middle of the viewport
+      const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            navItems.forEach(link => {
+              link.classList.remove('active-section');
+              // If this link points to the intersecting section, add class
+              if (link.getAttribute('href') === '#' + entry.target.id) {
+                link.classList.add('active-section');
+              }
+            });
+          }
+        });
+      }, {
+        // Trigger when the element intersects the middle of the screen
+        rootMargin: "-45% 0px -45% 0px"
+      });
+
+      sections.forEach(section => {
+        scrollSpyObserver.observe(section);
+      });
 
     });
   </script>
