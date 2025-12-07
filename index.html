@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap&font-display=swap" rel="stylesheet">
   <style>
-    /* --- GLOBAL RESET & VARIABLES --- */
+  
     :root {
       /* Base: Warm Paper */
       --bg-cream: #F9F7F1;
@@ -1334,7 +1334,7 @@
       border-color: var(--accent-pink);
     }
 
-    /* --- CONTACT --- */
+    /* --- CONTACT SECTION (UPDATED: SPLIT GRID) --- */
     #contact {
       padding: 120px 20px 100px;
       background: var(--bg-cream);
@@ -1358,19 +1358,81 @@
       padding-bottom: 0;
     }
 
-    .contact-content {
-      display: flex;
-      flex-direction: column;
-      padding-left: 0;
-      border-left: none;
-      min-height: auto;
-      justify-content: space-between;
+    /* New Grid Layout for Contact */
+    .contact-layout-wrapper {
+      display: grid;
+      grid-template-columns: 30% 1fr; /* Matches Services grid */
+      gap: 60px;
+      width: 100%;
+      padding-top: 20px;
+      border-top: 1px solid transparent; 
     }
 
-    .contact-details {
+    /* LEFT SIDEBAR STYLING */
+    .contact-sidebar {
       display: flex;
       flex-direction: column;
-      gap: 40px;
+      gap: 50px;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-block .narrative-label {
+      color: var(--accent-red);
+      font-size: 0.8rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .contact-static-text {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--text-carbon);
+    }
+
+    .contact-big-link {
+      font-size: 1.1rem;
+      line-height: 1.4;
+      font-weight: 500;
+      color: var(--text-carbon);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      word-break: break-word; 
+    }
+
+    .contact-big-link:hover {
+      color: var(--accent-pink);
+    }
+
+    .contact-text-link {
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: var(--text-carbon);
+      border-bottom: 1px solid var(--line-strong);
+      display: inline-block;
+      width: max-content;
+      padding-bottom: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-text-link:hover {
+      border-bottom-color: var(--accent-pink);
+      color: var(--accent-pink);
+    }
+
+    /* RIGHT FORM AREA */
+    .contact-form-area {
+      padding-left: 40px;
+      border-left: 1px solid var(--line-light); 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     /* EDITORIAL FORM STYLES */
@@ -1402,7 +1464,7 @@
       color: var(--accent-red);
       outline: none;
       width: auto;
-      min-width: 150px; 
+      min-width: 100px; 
       transition: all 0.3s ease;
       cursor: text;
     }
@@ -1410,7 +1472,7 @@
     .editorial-input::placeholder {
       color: var(--text-carbon);
       opacity: 0.3;
-      font-style: italic;
+      font-style: normal;
     }
 
     .editorial-input:focus,
@@ -1472,6 +1534,28 @@
       color: var(--accent-pink);
     }
 
+    @media (max-width: 900px) {
+      .contact-layout-wrapper {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 60px;
+      }
+      
+      .contact-form-area {
+        padding-left: 0;
+        border-left: none;
+        order: 1; /* Keep form first on mobile */
+      }
+
+      .contact-sidebar {
+        order: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2-column info on mobile */
+        gap: 30px;
+        border-top: 1px solid var(--line-light);
+        padding-top: 40px;
+      }
+    }
+
     @media (max-width: 600px) {
       .input-group {
         display: flex;       
@@ -1486,66 +1570,13 @@
         width: 100%;
         min-width: 0;
       }
-
-      .input-group .editorial-input {
-        margin: 0;       
-        flex-grow: 1;    
-        width: auto;     
-      }
       
       .editorial-text {
         line-height: 1.8;
       }
-    }
-    
-    /* Direct Email Link */
-    .contact-direct-link {
-      margin-top: 30px;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-carbon);
-      margin-bottom: 30px; 
-    }
-    
-    .contact-direct-link a {
-      color: var(--accent-red);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .contact-direct-link a:hover {
-      color: var(--accent-pink);
-    }
-
-    .contact-meta {
-      display: flex;
-      flex-direction: column; 
-      gap: 5px; 
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-carbon);
-      opacity: 0.6;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-top: 1px solid var(--line-light);
-      padding-top: 30px;
-      align-items: flex-start; 
-    }
-
-    .contact-meta a {
-      color: inherit;
-      text-decoration: none;
-      transition: opacity 0.3s;
-    }
-    
-    .contact-meta a:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
-
-    @media (max-width: 900px) {
-      .contact-message {
-        margin-bottom: 40px;
+      
+      .contact-sidebar {
+        grid-template-columns: 1fr; /* Single column info on very small screens */
       }
     }
 
@@ -2031,49 +2062,66 @@
          <h2 id="contact-heading" class="swiss-label">Contact</h2>
         </div>
 
-        <div class="contact-content">
+        <!-- NEW SPLIT LAYOUT FOR CONTACT -->
+        <div class="contact-layout-wrapper">
           
-          <!-- THE EDITORIAL FORM -->
-          <form id="editorial-form" class="editorial-form">
-            <p class="editorial-text">
-              Hi Emil,
-              <br><br>
-              This is 
-              <input type="text" id="ef-name" class="editorial-input" placeholder="Your Name" required aria-label="Your Name">
-              from 
-             <span class="input-group">
-  <input type="text" id="ef-company" class="editorial-input" placeholder="Company Name" required aria-label="Company Name">.
-</span>
-<br><br>
-              We need help with 
-              <span class="editorial-select-wrapper">
-                <select id="ef-service" class="editorial-select" required aria-label="Service Type">
-                  <option value="" disabled selected>select a topic</option>
-                  <option value="Brand Definition">Brand Definition</option>
-                  <option value="Marketing Strategy">Marketing Strategy</option>
-                  <option value="Creative Planning">Creative Planning</option>
-                  <option value="a General Inquiry">a General Inquiry</option>
-                </select>
-              </span>.
-              <br><br>
-            <span class="input-group">
-  <input type="email" id="ef-email" class="editorial-input" placeholder="your@email.com" required aria-label="Your Email">.
-</span>
-            </p>
+          <!-- LEFT: Static Info -->
+          <aside class="contact-sidebar">
+            
+            <div class="contact-block">
+              <span class="narrative-label">Location</span>
+              <p class="contact-static-text">
+                Based in Copenhagen.<br>
+                Available for travel &amp; remote.
+              </p>
+            </div>
 
-            <button type="submit" class="editorial-submit">
-              Send Request <span class="arrow">→</span>
-            </button>
-          </form>
+            <div class="contact-block">
+              <span class="narrative-label">Direct Email</span>
+              <a href="mailto:emil@strategy-support.com" class="contact-big-link">
+                emil@<br>strategy-support.com
+              </a>
+            </div>
 
-          <!-- DIRECT EMAIL LINK -->
-          <div class="contact-direct-link">
-            Or email directly: <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
-          </div>
+            <div class="contact-block">
+              <span class="narrative-label">Social</span>
+              <a href="https://www.linkedin.com/in/emilvmadsen/" target="_blank" class="contact-text-link">LinkedIn Profile ↗</a>
+            </div>
 
-          <!-- FALLBACK / DIRECT INFO -->
-          <div class="contact-meta">
-            <span>Denmark, travel and remote.</span>
+          </aside>
+
+          <!-- RIGHT: Action (The Form) -->
+          <div class="contact-form-area">
+            <form id="editorial-form" class="editorial-form">
+              <p class="editorial-text">
+                Hi Emil,
+                <br><br>
+                This is 
+                <input type="text" id="ef-name" class="editorial-input" placeholder="Name" required aria-label="Your Name">
+                from 
+                <input type="text" id="ef-company" class="editorial-input" placeholder="Company" required aria-label="Company Name">.
+                <br><br>
+                We are looking for support with 
+                <span class="editorial-select-wrapper">
+                  <select id="ef-service" class="editorial-select" required aria-label="Service Type">
+                    <option value="" disabled selected>select a topic</option>
+                    <option value="Brand Definition">Brand Definition</option>
+                    <option value="Marketing Strategy">Marketing Strategy</option>
+                    <option value="Creative Planning">Creative Planning</option>
+                    <option value="a General Inquiry">a General Inquiry</option>
+                  </select>
+                </span>
+                <br>
+                and would love to chat.
+                <br><br>
+                You can reach me at 
+                <input type="email" id="ef-email" class="editorial-input" placeholder="email address" required aria-label="Your Email">.
+              </p>
+
+              <button type="submit" class="editorial-submit">
+                Create Email Draft <span class="arrow">→</span>
+              </button>
+            </form>
           </div>
 
         </div>
