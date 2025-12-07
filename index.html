@@ -1,5 +1,3 @@
-<!-- START OF FILE index (75).html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1205,15 +1203,15 @@
       }
     }
 
-    /* --- TESTIMONIALS (Warm Stone) --- */
+    /* --- TESTIMONIALS (Updated: Black Background, White Text) --- */
     .testimonials-section {
       padding: 120px 20px;
-      /* Uses Warm Stone */
-      background: var(--bg-stone);
+      /* Changed to black (Deep Ink) */
+      background: var(--text-carbon);
+      color: var(--bg-cream); /* White text */
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* Border to frame it */
       border-top: 1px solid var(--line-strong);
       border-bottom: 1px solid var(--line-strong);
     }
@@ -1223,6 +1221,12 @@
       max-width: 1200px;
       margin: 0 auto;
       margin-bottom: 40px;
+    }
+
+    /* Specific override for the label inside the black section */
+    .testimonials-section .swiss-label {
+      color: var(--bg-cream);
+      border-bottom-color: rgba(249, 247, 241, 0.3); /* Subtle white line */
     }
 
     .testimonials-container {
@@ -1261,25 +1265,30 @@
       line-height: 1.6;
       font-style: italic;
       max-width: 800px;
-      color: var(--accent-red);
+      /* Changed to white (Cream) */
+      color: var(--bg-cream);
       font-weight: 500;
     }
 
     .testimonial-quote span.quote-mark {
-      color: var(--accent-red);
+      /* Keep quote marks slightly distinct or same color. 
+         Using cream to match "text should be white" instruction. */
+      color: var(--bg-cream);
       font-size: 1.3em;
     }
 
     .testimonial-author {
       font-size: clamp(1rem, 2vw, 1.3rem);
-      color: var(--text-carbon);
+      /* Changed to white (Cream) */
+      color: var(--bg-cream);
       margin-top: 8px;
     }
 
     .testimonial-role {
       font-size: clamp(0.9rem, 1.8vw, 1.1rem);
       opacity: 0.8;
-      color: var(--text-carbon);
+      /* Changed to white (Cream) */
+      color: var(--bg-cream);
     }
 
     .testimonial-indicators {
@@ -1294,13 +1303,13 @@
       height: 12px;
       border-radius: 50%;
       background: transparent;
-      /* Dots are Terracotta by default */
-      border: 2px solid var(--accent-red);
+      /* Changed default border to white */
+      border: 2px solid var(--bg-cream);
       cursor: pointer;
       transition: all 0.3s;
     }
 
-    /* Dots are Pink when active/interacted */
+    /* Dots are Pink when active/interacted (Remains unchanged) */
     .indicator-dot.active {
       background: var(--accent-pink);
       border-color: var(--accent-pink);
