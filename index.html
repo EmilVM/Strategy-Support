@@ -1587,6 +1587,20 @@
       .contact-sidebar {
         grid-template-columns: 1fr; /* Single column info on very small screens */
       }
+
+      /* FIX FOR MOBILE DOTS BREAKING LINE */
+      .input-wrapper {
+        display: flex;
+        align-items: baseline;
+        width: 100%;
+      }
+      
+      /* Target the input specifically when it is inside the wrapper to override 100% width */
+      .input-wrapper .editorial-input {
+        flex: 1;        
+        width: auto;    
+        min-width: 0;   
+      }
     }
 
     /* FOOTER & SOCIAL */
@@ -2111,8 +2125,8 @@
                 This is 
                 <input type="text" id="ef-name" class="editorial-input" placeholder="Name" required aria-label="Your Name">
                 from 
-                <!-- Updated: Wrapped input+dot in nowrap span to keep dot on same line -->
-                <span style="white-space: nowrap;">
+                <!-- Updated: Wrapped input+dot in input-wrapper to keep dot together -->
+                <span class="input-wrapper">
                   <input type="text" id="ef-company" class="editorial-input" placeholder="Company" required aria-label="Company Name">.
                 </span>
                 <br><br>
@@ -2130,8 +2144,8 @@
                 and would love to chat.
                 <br><br>
                 You can reach me at 
-                <!-- Updated: Wrapped input+dot in nowrap span to keep dot on same line -->
-                <span style="white-space: nowrap;">
+                <!-- Updated: Wrapped input+dot in input-wrapper to keep dot together -->
+                <span class="input-wrapper">
                   <input type="email" id="ef-email" class="editorial-input" placeholder="email address" required aria-label="Your Email">.
                 </span>
               </p>
