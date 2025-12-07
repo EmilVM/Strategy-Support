@@ -1,3 +1,5 @@
+<!-- START OF FILE index (75).html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +21,24 @@
   <style>
     /* --- GLOBAL RESET & VARIABLES --- */
     :root {
+      /* Base: Warm Paper */
       --bg-cream: #F9F7F1;
-      --bg-stone: #ECE8DE; /* The "Architect" secondary color */
+      
+      /* Secondary: Warm Taupe (Limestone) - Provides contrast while maintaining warmth */
+      --bg-stone: #E6E0D5; 
+      
+      /* Anchor: Deep Ink */
       --text-carbon: #1F2023;
-      --accent-red: #8A3324;
+      
+      /* Accent 1: Terracotta (Fired Clay) - Grounded, architectural authority */
+      --accent-red: #A84632;
+      
+      /* Accent 2: Neon (The Glitch) - Digital disruption */
       --accent-pink: #FA198B;
-      --line-light: rgba(31, 32, 35, 0.1);
-      --line-strong: rgba(31, 32, 35, 0.2);
+      
+      /* Lines: Subtly adjusted for the warmer backgrounds */
+      --line-light: rgba(31, 32, 35, 0.08);
+      --line-strong: rgba(31, 32, 35, 0.15);
     }
 
     * {
@@ -257,7 +270,7 @@
       padding-bottom: 20px;
       display: block;
       width: 100%;
-      font-weight: 500;
+      font-weight: 600; /* Increased weight for the lighter Terracotta */
       text-align: left;
       /* Unified Style for Tonal Theme */
       color: var(--accent-red);
@@ -474,10 +487,10 @@
     }
 
 
-    /* --- ABOUT ME (REDO: Copenhagen Light) --- */
+    /* --- ABOUT ME (REDO: Warm Taupe Stone) --- */
     #about-me {
       padding: 100px 20px;
-      /* UPDATED: Changed from var(--bg-cream) to var(--bg-stone) */
+      /* UPDATED: Uses the new warm taupe stone color */
       background: var(--bg-stone); 
       color: var(--text-carbon);
       display: flex;
@@ -505,7 +518,6 @@
       aspect-ratio: 3/4;
       object-fit: cover;
       border-radius: 0;
-      /* CHANGE 3: Remove border, REMOVED architectural shadow as requested */
       border: none;
       box-shadow: none; 
       filter: grayscale(100%);
@@ -606,7 +618,7 @@
       color: var(--text-carbon);
     }
 
-    /* CHANGE 2: Line under active brand/agency is now Pink */
+    /* Active brand/agency underline is Pink (The Digital Accent) */
     .client-tab.active::after {
       content: '';
       position: absolute;
@@ -770,10 +782,9 @@
       }
     }
 
-    /* --- SERVICES (Architect Tone: Warm Stone) --- */
+    /* --- SERVICES (Warm Stone Taupe) --- */
     #services {
       padding: 120px 20px;
-      /* The "Stone" color gives it weight without being dark */
       background: var(--bg-stone); 
       color: var(--text-carbon);
       width: 100%;
@@ -812,7 +823,6 @@
       display: flex;
       flex-direction: column;
       padding-left: 40px;
-      /* Darker dividing line */
       border-left: 1px solid var(--line-light); 
     }
     
@@ -827,7 +837,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 0;
-      /* Darker dividing lines */
+      /* Use line-strong for the darker stone background */
       border-top: 1px solid var(--line-strong);
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
       opacity: 0;
@@ -983,7 +993,7 @@
       position: relative;
     }
 
-    /* CHANGE 5: Client Name turns Pink when interacted with */
+    /* Client Name turns Pink when interacted with */
     .work-trigger:hover .client-name {
       color: var(--accent-pink);
     }
@@ -993,7 +1003,7 @@
       color: var(--accent-pink);
     }
     
-    /* CHANGE 4: Plus icon background color logic */
+    /* Plus icon background color logic */
     .work-trigger:hover .work-plus-icon::before,
     .work-trigger:hover .work-plus-icon::after {
       background-color: var(--accent-pink);
@@ -1041,7 +1051,7 @@
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* CHANGE 4: Default Plus icon is RED */
+    /* Default Plus icon is Terracotta RED */
     .work-plus-icon::before,
     .work-plus-icon::after {
       content: '';
@@ -1195,11 +1205,10 @@
       }
     }
 
-    /* --- TESTIMONIALS (Updated to Light/Editorial) --- */
+    /* --- TESTIMONIALS (Warm Stone) --- */
     .testimonials-section {
-      /* UPDATED: Added side padding so lines don't hit edge */
       padding: 120px 20px;
-      /* UPDATED: Changed from var(--bg-cream) to var(--bg-stone) */
+      /* Uses Warm Stone */
       background: var(--bg-stone);
       display: flex;
       flex-direction: column;
@@ -1209,7 +1218,6 @@
       border-bottom: 1px solid var(--line-strong);
     }
     
-    /* NEW: Dedicated header container */
     .testimonials-header {
       width: 100%;
       max-width: 1200px;
@@ -1286,13 +1294,13 @@
       height: 12px;
       border-radius: 50%;
       background: transparent;
-      /* CHANGE 6: Dots are Red by default */
+      /* Dots are Terracotta by default */
       border: 2px solid var(--accent-red);
       cursor: pointer;
       transition: all 0.3s;
     }
 
-    /* CHANGE 6: Dots are Pink when active/interacted */
+    /* Dots are Pink when active/interacted */
     .indicator-dot.active {
       background: var(--accent-pink);
       border-color: var(--accent-pink);
@@ -1469,13 +1477,13 @@
       }
     }
     
-    /* CHANGE 1: Styles for the Moved Direct Email Link */
+    /* Direct Email Link */
     .contact-direct-link {
       margin-top: 30px;
       font-size: 1rem;
       font-weight: 500;
       color: var(--text-carbon);
-      margin-bottom: 30px; /* Space before the dividing line */
+      margin-bottom: 30px; 
     }
     
     .contact-direct-link a {
@@ -2037,12 +2045,12 @@
             </button>
           </form>
 
-          <!-- CHANGE 1: DIRECT EMAIL LINK MOVED HERE -->
+          <!-- DIRECT EMAIL LINK -->
           <div class="contact-direct-link">
             Or email directly: <a href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
           </div>
 
-          <!-- FALLBACK / DIRECT INFO (Border Top Starts Here) -->
+          <!-- FALLBACK / DIRECT INFO -->
           <div class="contact-meta">
             <span>Denmark, travel and remote.</span>
           </div>
@@ -2058,7 +2066,7 @@
   </footer>
 
   <script>
-    /* UPDATED: Minimal Copy Email Functionality */
+    /* Minimal Copy Email Functionality */
     function copyEmailToClipboard(button) {
       if (button.classList.contains('copied')) return;
       
@@ -2117,7 +2125,7 @@
         });
       });
 
-      /* --- UPDATED: ANIMATED HEADING SPEED --- */
+      /* --- ANIMATED HEADING SPEED --- */
       const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
       const animatedWordElement = document.querySelector('.animated-word');
       let currentWordIndex = 0;
