@@ -18,6 +18,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&display=swap&font-display=swap" rel="stylesheet">
   <style>
     /* --- GLOBAL RESET & VARIABLES --- */
+    :root {
+      --bg-cream: #F9F7F1;
+      --bg-stone: #ECE8DE; /* The "Architect" secondary color */
+      --text-carbon: #1F2023;
+      --accent-red: #8A3324;
+      --accent-pink: #FA198B;
+      --line-light: rgba(31, 32, 35, 0.1);
+      --line-strong: rgba(31, 32, 35, 0.2);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -29,8 +39,8 @@
       min-height: 100%;
       font-family: 'Vollkorn', serif;
       letter-spacing: 0.02em;
-      background: #F9F7F1;
-      color: #1F2023;
+      background: var(--bg-cream);
+      color: var(--text-carbon);
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       scroll-padding-top: 85px;
@@ -55,8 +65,8 @@
       background: rgba(249, 247, 241, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(31, 32, 35, 0.05);
-      color: #1F2023;
+      border-bottom: 1px solid var(--line-light);
+      color: var(--text-carbon);
       transition: all 0.3s ease;
     }
 
@@ -66,11 +76,11 @@
       font-size: 1.4rem;
       cursor: pointer;
       z-index: 1001;
-      color: #1F2023;
+      color: var(--text-carbon);
     }
 
     .pink-dash {
-      color: #FA198B;
+      color: var(--accent-pink);
       font-weight: 700;
       margin: 0 -2px;
       transition: transform 0.3s ease;
@@ -96,7 +106,7 @@
 
     .nav-links a { 
       text-decoration: none; 
-      color: #1F2023; 
+      color: var(--text-carbon); 
       font-size: 0.9rem; 
       font-weight: 500;
       transition: color 0.3s;
@@ -104,21 +114,21 @@
     }
 
     .nav-links a:hover {
-      color: #8A3324; /* Chestnut */
+      color: var(--accent-red);
     }
 
     /* Email link styling */
     .nav-email {
       font-size: 0.85rem !important;
-      color: #8A3324 !important;
+      color: var(--accent-red) !important;
       border-bottom: 1px solid transparent;
       padding-bottom: 2px;
       font-weight: 500 !important;
     }
 
     .nav-email:hover {
-      color: #FA198B !important;
-      border-bottom-color: #FA198B;
+      color: var(--accent-pink) !important;
+      border-bottom-color: var(--accent-pink);
     }
 
     /* Micro-Interaction Underline Animation */
@@ -129,7 +139,7 @@
       height: 2px;
       bottom: -5px;
       left: 50%;
-      background-color: #8A3324;
+      background-color: var(--accent-red);
       transition: width 0.3s ease, left 0.3s ease;
     }
 
@@ -151,7 +161,7 @@
     .hamburger-icon {
       width: 24px;
       height: 2px;
-      background: #1F2023;
+      background: var(--text-carbon);
       position: relative;
       display: block;
       transition: all 0.3s ease;
@@ -163,7 +173,7 @@
       position: absolute;
       width: 24px;
       height: 2px;
-      background: #1F2023;
+      background: var(--text-carbon);
       left: 0;
       transition: all 0.3s ease;
     }
@@ -189,7 +199,7 @@
         width: 100%;
         height: 100vh;
         height: 100dvh;
-        background: #F9F7F1;
+        background: var(--bg-cream);
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -201,7 +211,7 @@
 
       .nav-links.active {
         transform: translateY(0);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       }
 
       .nav-logo {
@@ -217,10 +227,9 @@
         font-size: 1.1rem !important;
         margin-top: 20px;
         padding-top: 20px;
-        border-top: 1px solid rgba(31, 32, 35, 0.1);
+        border-top: 1px solid var(--line-light);
       }
       
-      /* Disable underline animation on mobile */
       .nav-links a::after {
         display: none;
       }
@@ -248,25 +257,11 @@
       padding-bottom: 20px;
       display: block;
       width: 100%;
-      font-weight: 400;
+      font-weight: 500;
       text-align: left;
-    }
-
-    /* Updated Swiss Labels for Contrast */
-    .swiss-label.on-white {
-      color: #8A3324;
-      border-bottom: 1px solid #1F2023; /* Sharper black line for Swiss feel */
-    }
-
-    .swiss-label.on-red {
-      color: #F9F7F1;
-      border-bottom: 1px solid rgba(249, 247, 241, 0.3);
-    }
-
-    /* UPDATED: Swiss Label on Dark to Red + Light Line */
-    .swiss-label.on-dark {
-      color: #8A3324; /* Was Pink, now Red */
-      border-bottom: 1px solid rgba(249, 247, 241, 0.2); /* Was Pink line, now standard light line */
+      /* Unified Style for Tonal Theme */
+      color: var(--accent-red);
+      border-bottom: 1px solid var(--text-carbon); 
     }
 
     /* --- HERO SECTION --- */
@@ -278,8 +273,8 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      background: #F9F7F1;
-      color: #1F2023;
+      background: var(--bg-cream);
+      color: var(--text-carbon);
       text-align: center;
       padding-top: 80px;
     }
@@ -349,7 +344,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #FA198B;
+      background: var(--accent-pink);
       animation: blink 0.7s infinite;
     }
     
@@ -365,7 +360,7 @@
       text-align: center;
       max-width: 650px;
       font-weight: 400;
-      color: #1F2023;
+      color: var(--text-carbon);
       opacity: 0.85;
     }
 
@@ -378,11 +373,11 @@
       gap: 15px;
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(31, 32, 35, 0.2); 
+      border-bottom: 1px solid var(--line-strong); 
       padding: 10px 10px;
       cursor: pointer;
       font-family: 'Vollkorn', serif;
-      color: #1F2023;
+      color: var(--text-carbon);
       transition: all 0.3s ease;
       position: relative;
     }
@@ -415,37 +410,37 @@
     }
 
     .minimal-copy-btn:hover {
-      border-bottom-color: #8A3324;
+      border-bottom-color: var(--accent-red);
       transform: translateY(-2px);
     }
     
     .minimal-copy-btn:hover .btn-label,
     .minimal-copy-btn:hover .btn-address {
-      color: #8A3324;
+      color: var(--accent-red);
     }
     
     .minimal-copy-btn:hover .btn-icon {
       opacity: 1;
-      color: #8A3324;
+      color: var(--accent-red);
     }
 
     .minimal-copy-btn.copied {
-      border-bottom-color: #FA198B;
+      border-bottom-color: var(--accent-pink);
     }
     
     .minimal-copy-btn.copied .btn-label,
     .minimal-copy-btn.copied .btn-address {
-      color: #FA198B;
+      color: var(--accent-pink);
     }
     
     .minimal-copy-btn.copied .btn-icon {
-      color: #FA198B;
+      color: var(--accent-pink);
       opacity: 1;
       transform: scale(1.1);
     }
     
     .minimal-copy-btn.copied .btn-divider {
-      color: #FA198B;
+      color: var(--accent-pink);
       opacity: 0.5;
     }
 
@@ -479,14 +474,16 @@
     }
 
 
-    /* --- ABOUT ME (REDO: Dark Mode) --- */
+    /* --- ABOUT ME (REDO: Copenhagen Light) --- */
     #about-me {
       padding: 100px 20px;
-      background: #1F2023; /* Carbon Black */
-      color: #F9F7F1;      /* Off White Text */
+      background: var(--bg-cream); /* Light cream */
+      color: var(--text-carbon);   /* Dark text */
       display: flex;
       flex-direction: column;
       align-items: center;
+      /* Subtle border to separate from Hero */
+      border-top: 1px solid var(--line-light);
     }
 
     .about-container {
@@ -508,7 +505,9 @@
       aspect-ratio: 3/4;
       object-fit: cover;
       border-radius: 0;
-      border: 1px solid rgba(249, 247, 241, 0.2); /* Light border for dark bg */
+      /* Remove border, add sharp architectural shadow */
+      border: none;
+      box-shadow: 12px 12px 0px rgba(31, 32, 35, 0.06);
       filter: grayscale(100%);
       transition: filter 0.5s ease;
     }
@@ -524,7 +523,6 @@
       min-width: 0;
     }
 
-    /* UPDATED: About Label to Red + Light Line */
     .about-label {
       font-family: 'Vollkorn', serif;
       font-size: 0.9rem;
@@ -532,8 +530,8 @@
       letter-spacing: 0.05em;
       opacity: 0.9;
       margin-bottom: 20px;
-      color: #8A3324; /* Was Pink, now Red */
-      border-bottom: 1px solid rgba(249, 247, 241, 0.2); /* Was Pink line, now light line */
+      color: var(--accent-red);
+      border-bottom: 1px solid var(--line-strong);
       padding-bottom: 20px;
       display: inline-block;
       width: 100%;
@@ -544,7 +542,7 @@
       font-weight: 400;
       line-height: 1.1;
       margin-bottom: 30px;
-      color: #F9F7F1;
+      color: var(--text-carbon);
     }
 
     .about-text {
@@ -553,12 +551,12 @@
       margin-bottom: 60px;
       opacity: 0.9;
       max-width: 700px;
-      color: #F9F7F1;
+      color: var(--text-carbon);
     }
 
     .about-clients-wrapper {
       margin-top: 10px;
-      border-top: 1px solid rgba(249, 247, 241, 0.2); /* Light line */
+      border-top: 1px solid var(--line-light);
       padding-top: 40px;
     }
     
@@ -569,7 +567,7 @@
       opacity: 0.7;
       margin-bottom: 20px;
       display: block;
-      color: #F9F7F1;
+      color: var(--text-carbon);
     }
 
     .client-tabs {
@@ -581,7 +579,6 @@
       flex-wrap: wrap;
     }
 
-    /* UPDATED: Client Tabs to Red Hover/Active */
     .client-tab {
       font-size: clamp(1.2rem, 2vw, 1.5rem);
       background: none;
@@ -595,18 +592,18 @@
       position: relative;
       z-index: 1;
       opacity: 0.4;
-      color: #F9F7F1; /* White text */
+      color: var(--text-carbon);
     }
 
     .client-tab:hover {
       opacity: 1;
-      color: #8A3324; /* Was Pink, now Red */
+      color: var(--accent-red);
     }
 
     .client-tab.active {
       opacity: 1;
       font-weight: 500;
-      color: #F9F7F1;
+      color: var(--text-carbon);
     }
 
     .client-tab.active::after {
@@ -616,7 +613,7 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: #8A3324; /* Was Pink, now Red */
+      background: var(--accent-red);
     }
 
     .carousel-wrapper {
@@ -629,6 +626,7 @@
     .carousel-container {
       position: relative;
       padding: 20px 0;
+      /* Mask updated for light background */
       mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
@@ -663,9 +661,10 @@
     .client-logo {
       height: 60px;
       margin: 0 30px;
-      filter: brightness(0) invert(1); /* Logos White */
-      opacity: 0.8;
-      transition: opacity 0.3s;
+      /* IMPORTANT: Filter changed to make logos black (ink on paper) */
+      filter: brightness(0); 
+      opacity: 0.7;
+      transition: all 0.3s;
       flex-shrink: 0;
     }
 
@@ -706,13 +705,15 @@
     /* --- APPROACH --- */
     #my-approach {
       padding: 120px 20px;
-      background: #F9F7F1;
-      color: #1F2023;
+      background: var(--bg-cream);
+      color: var(--text-carbon);
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
       display: flex;
       justify-content: center;
+      /* Subtle border separation */
+      border-top: 1px solid var(--line-light);
     }
 
     .approach-grid {
@@ -747,7 +748,7 @@
       font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       line-height: 1.3;
       font-weight: 500;
-      color: #8A3324; /* Chestnut */
+      color: var(--accent-red);
       max-width: 800px;
     }
 
@@ -768,11 +769,12 @@
       }
     }
 
-    /* --- SERVICES (Black Mode) --- */
+    /* --- SERVICES (Architect Tone: Warm Stone) --- */
     #services {
       padding: 120px 20px;
-      background: #1F2023; /* Carbon Black */
-      color: #F9F7F1;
+      /* The "Stone" color gives it weight without being dark */
+      background: var(--bg-stone); 
+      color: var(--text-carbon);
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -800,8 +802,8 @@
     .services-intro-side {
       font-size: clamp(1.1rem, 1.5vw, 1.3rem);
       line-height: 1.5;
-      opacity: 0.9;
-      color: #F9F7F1;
+      opacity: 0.8;
+      color: var(--text-carbon);
       max-width: 90%;
     }
 
@@ -809,7 +811,8 @@
       display: flex;
       flex-direction: column;
       padding-left: 40px;
-      border-left: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white line */
+      /* Darker dividing line */
+      border-left: 1px solid var(--line-light); 
     }
     
     .services-list {
@@ -823,7 +826,8 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      /* Darker dividing lines */
+      border-top: 1px solid var(--line-strong);
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
       opacity: 0;
       transform: translateY(20px);
@@ -835,7 +839,7 @@
     }
 
     .service-row:last-child {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--line-strong);
     }
 
     .service-num {
@@ -843,7 +847,7 @@
       font-weight: 400;
       flex-basis: 10%;
       padding-top: 5px;
-      color: #F9F7F1;
+      color: var(--text-carbon);
       opacity: 0.5;
       transition: color 0.3s ease, opacity 0.3s ease;
     }
@@ -859,7 +863,7 @@
       font-size: clamp(2rem, 3vw, 2.8rem);
       font-weight: 400;
       margin: 0;
-      color: #F9F7F1;
+      color: var(--text-carbon);
       line-height: 1.1;
       transition: color 0.3s ease;
     }
@@ -867,23 +871,22 @@
     .service-row p {
       font-size: clamp(1rem, 1.5vw, 1.25rem);
       line-height: 1.6;
-      color: #F9F7F1;
+      color: var(--text-carbon);
       opacity: 0.9;
       margin: 0;
       max-width: 650px;
     }
 
     .service-row:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: rgba(31, 32, 35, 0.04);
     }
 
-    /* UPDATED: Service Hover to Red */
     .service-row:hover h3 {
-      color: #8A3324; /* Was Pink, now Red */
+      color: var(--accent-red);
     }
     
     .service-row:hover .service-num {
-      color: #8A3324; /* Was Pink, now Red */
+      color: var(--accent-red);
       opacity: 1;
     }
 
@@ -919,8 +922,8 @@
     /* --- RECENT WORK --- */
     #recent-work {
       padding: 120px 20px;
-      background: #F9F7F1;
-      color: #1F2023;
+      background: var(--bg-cream);
+      color: var(--text-carbon);
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -949,7 +952,8 @@
 
     /* The Accordion Row */
     .work-row {
-      border-bottom: 1px solid rgba(31, 32, 35, 0.15); /* Carbon Black RGB */
+      /* Stronger divider for "Architect" vibe */
+      border-bottom: 2px solid var(--line-strong); 
       display: flex;
       flex-direction: column;
       opacity: 0;
@@ -963,7 +967,7 @@
     }
     
     .work-row:last-child {
-      border-bottom: none;
+      border-bottom: 2px solid var(--line-strong); 
     }
 
     /* The Trigger */
@@ -979,19 +983,19 @@
     }
 
     .work-trigger:hover .client-name {
-      color: #1F2023;
+      color: var(--text-carbon);
     }
     
     .work-trigger:hover .work-plus-icon::before,
     .work-trigger:hover .work-plus-icon::after {
-      background-color: #8A3324;
+      background-color: var(--accent-red);
     }
 
     .client-name {
       font-family: 'Vollkorn', serif;
       font-size: clamp(2rem, 3vw, 3.5rem);
       font-weight: 700;
-      color: #8A3324;
+      color: var(--accent-red);
       line-height: 1;
       margin: 0;
       letter-spacing: -0.02em;
@@ -1001,7 +1005,7 @@
     .trigger-headline {
       font-size: clamp(1.5rem, 2.2vw, 2rem);
       font-weight: 400;
-      color: #1F2023;
+      color: var(--text-carbon);
       line-height: 1.2;
       margin: 0;
       transition: opacity 0.3s ease;
@@ -1028,7 +1032,7 @@
     .work-plus-icon::after {
       content: '';
       position: absolute;
-      background-color: #FA198B;
+      background-color: var(--accent-pink);
       transition: background-color 0.3s ease;
     }
 
@@ -1082,7 +1086,7 @@
       aspect-ratio: 4/3;
       overflow: hidden;
       background: #E5E5E5;
-      border: 1px solid rgba(31, 32, 35, 0.1);
+      border: 1px solid var(--line-light);
     }
 
     .work-image {
@@ -1100,7 +1104,7 @@
     .case-body {
       font-size: clamp(1rem, 1.2vw, 1.2rem);
       line-height: 1.6;
-      color: #1F2023;
+      color: var(--text-carbon);
       opacity: 0.85;
       margin: 0;
       max-width: 750px;
@@ -1113,7 +1117,7 @@
       gap: 25px;
       margin-top: 30px;
       padding-top: 30px;
-      border-top: 1px solid rgba(31, 32, 35, 0.15);
+      border-top: 1px solid var(--line-light);
     }
 
     .narrative-item {
@@ -1128,14 +1132,14 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-weight: 700;
-      color: #8A3324;
+      color: var(--accent-red);
       opacity: 0.9;
     }
 
     .narrative-text {
       font-size: clamp(1rem, 1.2vw, 1.15rem);
       line-height: 1.6;
-      color: #1F2023;
+      color: var(--text-carbon);
       margin: 0;
     }
 
@@ -1177,14 +1181,18 @@
       }
     }
 
-    /* --- TESTIMONIALS --- */
+    /* --- TESTIMONIALS (Updated to Light/Editorial) --- */
     .testimonials-section {
       padding-top: 80px;
       padding-bottom: 80px;
-      background: #1F2023;
+      /* Light background now */
+      background: var(--bg-cream);
       display: flex;
       flex-direction: column;
       align-items: center;
+      /* Border to frame it */
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
     }
 
     .testimonials-container {
@@ -1218,30 +1226,30 @@
       pointer-events: auto;
     }
 
-    /* UPDATED: Testimonial Colors to Red */
     .testimonial-quote {
       font-size: clamp(1.25rem, 2.5vw, 2rem);
       line-height: 1.6;
       font-style: italic;
       max-width: 800px;
-      color: #8A3324; /* Was Pink, now Red */
+      color: var(--accent-red);
+      font-weight: 500;
     }
 
     .testimonial-quote span.quote-mark {
-      color: #8A3324; /* Was Pink, now Red */
+      color: var(--accent-red);
       font-size: 1.3em;
     }
 
     .testimonial-author {
       font-size: clamp(1rem, 2vw, 1.3rem);
-      color: #8A3324; /* Was Pink, now Red */
+      color: var(--text-carbon);
       margin-top: 8px;
     }
 
     .testimonial-role {
       font-size: clamp(0.9rem, 1.8vw, 1.1rem);
       opacity: 0.8;
-      color: #8A3324; /* Was Pink, now Red */
+      color: var(--text-carbon);
     }
 
     .testimonial-indicators {
@@ -1255,30 +1263,29 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: #8A3324;
-      border: 2px solid #1F2023;
+      background: transparent;
+      border: 2px solid var(--text-carbon);
       cursor: pointer;
       transition: all 0.3s;
     }
 
-    /* UPDATED: Dots to Red on Active */
     .indicator-dot.active {
-      background: #8A3324; /* Was Pink, now Red */
-      border-color: #8A3324;
+      background: var(--accent-pink);
+      border-color: var(--accent-pink);
       transform: scale(1.2);
     }
 
     .indicator-dot:hover,
     .indicator-dot:focus-visible {
-      background: #8A3324; /* Was Pink, now Red */
-      border-color: #8A3324;
+      background: var(--accent-pink);
+      border-color: var(--accent-pink);
     }
 
     /* --- CONTACT --- */
     #contact {
       padding: 120px 20px 100px;
-      background: #F9F7F1;
-      color: #1F2023;
+      background: var(--bg-cream);
+      color: var(--text-carbon);
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -1324,7 +1331,7 @@
       font-family: 'Vollkorn', serif;
       font-size: clamp(1.15rem, 2vw, 1.5rem);
       line-height: 1.8;
-      color: #1F2023;
+      color: var(--text-carbon);
       font-weight: 400;
     }
 
@@ -1334,12 +1341,12 @@
       display: inline-block;
       background: transparent;
       border: none;
-      border-bottom: 2px solid rgba(31, 32, 35, 0.2); 
+      border-bottom: 2px solid var(--line-strong); 
       border-radius: 0;
       padding: 0 5px 2px 5px; 
       font-family: 'Vollkorn', serif;
       font-size: inherit; 
-      color: #8A3324; /* User Input is Red */
+      color: var(--accent-red);
       outline: none;
       width: auto;
       min-width: 150px; 
@@ -1348,15 +1355,15 @@
     }
 
     .editorial-input::placeholder {
-      color: #1F2023;
+      color: var(--text-carbon);
       opacity: 0.3;
       font-style: italic;
     }
 
     .editorial-input:focus,
     .editorial-select:focus {
-      border-bottom-color: #FA198B; /* Pink Focus */
-      color: #FA198B; 
+      border-bottom-color: var(--accent-pink);
+      color: var(--accent-pink);
     }
 
     .editorial-select-wrapper {
@@ -1370,13 +1377,13 @@
       -moz-appearance: none;
       cursor: pointer;
       padding-right: 30px;
-      color: #8A3324;
+      color: var(--accent-red);
     }
 
     .editorial-select option {
       font-size: 1rem;
-      color: #1F2023;
-      background: #F9F7F1;
+      color: var(--text-carbon);
+      background: var(--bg-cream);
     }
 
     /* The "Stamp" Button */
@@ -1389,7 +1396,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: #1F2023;
+      color: var(--text-carbon);
       cursor: pointer;
       padding: 10px 0;
       border-bottom: 2px solid transparent;
@@ -1404,12 +1411,12 @@
     }
 
     .editorial-submit:hover {
-      color: #8A3324;
+      color: var(--accent-red);
     }
 
     .editorial-submit:hover .arrow {
       transform: translateX(10px);
-      color: #FA198B;
+      color: var(--accent-pink);
     }
 
     @media (max-width: 600px) {
@@ -1444,11 +1451,11 @@
       gap: 5px; 
       font-size: 1rem;
       font-weight: 500;
-      color: #1F2023;
+      color: var(--text-carbon);
       opacity: 0.6;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      border-top: 1px solid rgba(31, 32, 35, 0.1);
+      border-top: 1px solid var(--line-light);
       padding-top: 30px;
       align-items: flex-start; 
     }
@@ -1472,20 +1479,20 @@
 
     /* FOOTER & SOCIAL */
     footer {
-      background: #F9F7F1;
+      background: var(--bg-cream);
       padding: 40px 20px;
       text-align: center;
       font-size: 0.9rem;
-      color: #1F2023;
+      color: var(--text-carbon);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
-      border-top: 1px solid rgba(31, 32, 35, 0.1);
+      border-top: 1px solid var(--line-light);
     }
     
     .footer-social-link {
-      color: #1F2023;
+      color: var(--text-carbon);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -1496,8 +1503,8 @@
     }
     
     .footer-social-link:hover {
-      border-bottom-color: #FA198B;
-      color: #8A3324;
+      border-bottom-color: var(--accent-pink);
+      color: var(--accent-red);
     }
     
     .footer-copy {
@@ -1667,7 +1674,7 @@
       <div class="approach-grid">
         
         <div class="approach-header">
-         <h2 id="my-approach-heading" class="swiss-label on-white">Approach</h2>
+         <h2 id="my-approach-heading" class="swiss-label">Approach</h2>
         </div>
 
         <div class="approach-content">
@@ -1692,8 +1699,7 @@
       <div class="services-grid">
         
         <div class="services-header">
-          <!-- Switched to .on-dark for Red label on Black BG -->
-          <h2 id="services-heading" class="swiss-label on-dark">How I Help</h2>
+          <h2 id="services-heading" class="swiss-label">How I Help</h2>
           <p class="services-intro-side">
             I help brands and agencies cut through complexity. My work typically falls into three core areas:
           </p>
@@ -1743,7 +1749,7 @@
         
         <!-- Top Header -->
         <div class="work-header">
-          <h2 id="recent-work-heading" class="swiss-label on-white">Selected Work</h2>
+          <h2 id="recent-work-heading" class="swiss-label">Selected Work</h2>
         </div>
         
         <div class="work-list">
@@ -1907,7 +1913,7 @@
 
     <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading">
       <div style="width: 100%; max-width: 1200px;">
-        <h2 id="testimonials-heading" class="swiss-label on-dark">What Clients Say</h2>
+        <h2 id="testimonials-heading" class="swiss-label">What Clients Say</h2>
       </div>
       <div class="testimonials-container">
         <div class="testimonial-item active">
@@ -1949,7 +1955,7 @@
       <div class="contact-grid">
         
         <div class="contact-header">
-         <h2 id="contact-heading" class="swiss-label on-white">Contact</h2>
+         <h2 id="contact-heading" class="swiss-label">Contact</h2>
         </div>
 
         <div class="contact-content">
@@ -2024,7 +2030,7 @@
         label.textContent = "Address";
         address.textContent = "Copied to Clipboard";
         feedback.textContent = "Paste it anywhere";
-        feedback.style.color = "#FA198B";
+        feedback.style.color = "var(--accent-pink)";
         
         // Reset after 2.5 seconds
         setTimeout(() => {
@@ -2032,7 +2038,7 @@
           label.textContent = originalLabel;
           address.textContent = originalAddress;
           feedback.textContent = "Click to copy";
-          feedback.style.color = "#1F2023";
+          feedback.style.color = "var(--text-carbon)";
         }, 2500);
         
       }).catch(err => {
