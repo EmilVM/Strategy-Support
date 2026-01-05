@@ -36,17 +36,17 @@
       /* A cooler, cleaner off-white (#FDFFFC) */
       --bg-cream: #FDFFFC;
       
-      /* Secondary: Rust Brown (Previously Red) */
-      /* Used for Section Backgrounds (#A44200) */
-      --bg-stone: #A44200; 
+      /* Secondary: Oxidized Iron (Previously Rust Brown) */
+      /* Used for Section Backgrounds (#9B2915) */
+      --bg-stone: #9B2915; 
       
       /* Anchor: Shadow Grey (Previously Black/Deep Ink) */
       /* Used for Text and Dark Backgrounds (#161925) */
       --text-carbon: #161925;
       
-      /* Accent 1: Rust Brown (Previously Red) */
+      /* Accent 1: Oxidized Iron (Previously Rust Brown) */
       /* Used for Lines, Borders, Highlights */
-      --accent-red: #A44200;
+      --accent-red: #9B2915;
       
       /* Accent 2: Electric Rose (Previously Neon Pink) */
       /* Used for Hovers and The Glitch (#E0479E) */
@@ -56,7 +56,7 @@
       --line-light: rgba(22, 25, 37, 0.08);
       --line-strong: rgba(22, 25, 37, 0.15);
       
-      /* New: Lines for Rust Brown Backgrounds (Porcelain opacity) */
+      /* New: Lines for Oxidized Iron Backgrounds (Porcelain opacity) */
       --line-on-red: rgba(253, 255, 252, 0.2);
     }
 
@@ -314,7 +314,7 @@
       width: 100%;
       font-weight: 600;
       text-align: left;
-      /* Default Color (overridden in Rust Brown sections) */
+      /* Default Color (overridden in Red sections) */
       color: var(--accent-red);
       border-bottom: 1px solid var(--text-carbon); 
     }
@@ -540,10 +540,10 @@
     }
 
 
-    /* --- ABOUT ME (UPDATED: Rust Brown Background) --- */
+    /* --- ABOUT ME (UPDATED: Oxidized Iron Background) --- */
     #about-me {
       padding: 100px 20px;
-      /* Now Rust Brown (#A44200) */
+      /* Now Oxidized Iron (#9B2915) */
       background: var(--bg-stone);
       color: var(--bg-cream);
       display: flex;
@@ -595,7 +595,7 @@
       letter-spacing: 0.1em;
       opacity: 0.9;
       margin-bottom: 20px;
-      /* On Rust Brown, label is Porcelain */
+      /* On Red, label is Porcelain */
       color: var(--bg-cream);
       border-bottom: 1px solid var(--line-on-red);
       padding-bottom: 20px;
@@ -659,7 +659,7 @@
       position: relative;
       z-index: 1;
       opacity: 0.5;
-      /* Text is Porcelain on Rust Brown */
+      /* Text is Porcelain on Red */
       color: var(--bg-cream);
     }
 
@@ -729,7 +729,7 @@
     .client-logo {
       height: 60px;
       margin: 0 30px;
-      /* INVERTED: Because background is Rust Brown, we make logos White */
+      /* INVERTED: Because background is Red, we make logos White */
       filter: brightness(0) invert(1); 
       opacity: 0.8;
       transition: all 0.3s;
@@ -836,10 +836,10 @@
       }
     }
 
-    /* --- SERVICES (UPDATED: Rust Brown Background) --- */
+    /* --- SERVICES (UPDATED: Oxidized Iron Background) --- */
     #services {
       padding: 120px 20px;
-      background: var(--bg-stone); /* Rust Brown */
+      background: var(--bg-stone); /* Oxidized Iron */
       color: var(--bg-cream);      /* Porcelain Text */
       width: 100%;
       max-width: 100%;
@@ -865,7 +865,7 @@
       gap: 30px;
     }
     
-    /* Specific override for label inside Rust Brown sections */
+    /* Specific override for label inside Red sections */
     #services .swiss-label {
       color: var(--bg-cream);
       border-bottom-color: var(--line-on-red);
@@ -949,12 +949,12 @@
       max-width: 650px;
     }
 
-    /* Hover effect on Rust Brown: White overlay */
+    /* Hover effect on Red: White overlay */
     .service-row:hover {
       background-color: rgba(255, 255, 255, 0.05);
     }
 
-    /* On Hover, text turns Electric Rose to disrupt the Rust */
+    /* On Hover, text turns Electric Rose to disrupt the Red */
     .service-row:hover h3 {
       color: var(--accent-pink);
     }
@@ -1113,7 +1113,7 @@
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Default Plus icon is Rust Brown */
+    /* Default Plus icon is Oxidized Iron */
     .work-plus-icon::before,
     .work-plus-icon::after {
       content: '';
@@ -1486,7 +1486,7 @@
       width: 100%;
       max-width: 600px;
       
-      /* The "Branded Stationery" Top Border is now Rust Brown */
+      /* The "Branded Stationery" Top Border is now Oxidized Iron */
       border-top: 4px solid var(--accent-red);
       
       /* Subtle depth based on Shadow Grey */
@@ -1623,8 +1623,8 @@
     .editorial-submit:hover {
       background: var(--accent-red);
       transform: translateY(-2px);
-      /* Updated Shadow to Rust Brown base */
-      box-shadow: 0 10px 20px rgba(164, 66, 0, 0.2);
+      /* Updated Shadow to Oxidized Iron base */
+      box-shadow: 0 10px 20px rgba(155, 41, 21, 0.2);
     }
 
     .editorial-submit:hover .arrow {
