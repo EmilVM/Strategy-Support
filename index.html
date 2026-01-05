@@ -6,7 +6,7 @@
   
   <title>Freelance Brand & Marketing Strategist | Emil Valdemar Madsen | Denmark, Travel & Remote</title>
   
-  <meta name="description" content="Copenhagen-based, London-trained strategist. I help brands, agencies and in-house teams with strategy, planning and briefings. DK / UK / Global experience.">
+  <meta name="description" content="Copenhagen-based, London-trained strategist. I help brands, agencies and in-house teams with pitches, platforms and campaigns. DK / UK / Global experience.">
   
   <!-- Standard Favicons -->
   <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96" />
@@ -2384,4 +2384,208 @@
           setTimeout(type, deletingSpeed);
         } else {
           text = currentWord.substring(0, text.length + 1);
-          animatedWordElement.textContent
+          animatedWordElement.textContent = text;
+          
+          if (text === currentWord) {
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+            return;
+          }
+          
+          setTimeout(type, typingSpeed);
+        }
+      }
+
+      type();
+
+      /* --- SCROLL OBSERVER --- */
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      document.querySelectorAll('.service-row, .work-row, .approach-p').forEach(item => {
+        observer.observe(item);
+      });
+
+      /* --- WORK ACCORDION LOGIC --- */
+      const workTriggers = document.querySelectorAll('.work-trigger');
+      
+      workTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const parentRow = trigger.closest('.work-row');
+          const isActive = parentRow.classList.contains('active');
+          
+          document.querySelectorAll('.work-row').forEach(row => {
+             row.classList.remove('active');
+             row.querySelector('.work-trigger').setAttribute('aria-expanded', 'false');
+          });
+
+          if (!isActive) {
+            parentRow.classList.add('active');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        trigger.addEventListener('keydown', (e) => {
+           if (e.key === 'Enter' || e.key === ' ') {
+             e.preventDefault();
+             trigger.click();
+           }
+        });
+      });
+
+      /* --- TESTIMONIAL CAROUSEL --- */
+      const testimonials = document.querySelectorAll('.testimonial-item');
+      const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
+      let currentTestimonialIndex = 0;
+      let testimonialInterval;
+
+      function showTestimonial(index) {
+        testimonials.forEach((item, i) => {
+          item.classList.toggle('active', i === index);
+          testimonialDots[i].classList.toggle('active', i === index);
+          testimonialDots[i].setAttribute('aria-selected', i === index);
+        });
+      }
+
+      function nextTestimonial() {
+        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+        showTestimonial(currentTestimonialIndex);
+      }
+
+      function startTestimonialCarousel() {
+        clearInterval(testimonialInterval);
+        testimonialInterval = setInterval(nextTestimonial, 6000);
+      }
+
+      testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentTestimonialIndex = index;
+          showTestimonial(currentTestimonialIndex);
+          startTestimonialCarousel();
+        });
+        
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            currentTestimonialIndex = index;
+            showTestimonial(currentTestimonialIndex);
+            startTestimonialCarousel();
+          }
+        });
+      });
+
+      /* --- CLIENT LOGO TABS --- */
+      const clientTabs = document.querySelectorAll('.client-tab');
+      const clientGroups = document.querySelectorAll('.client-group');
+      
+      clientTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          clientTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          
+          const groupType = tab.dataset.type;
+          
+          clientGroups.forEach(group => {
+            group.classList.toggle('active', group.dataset.group === groupType);
+          });
+          
+          const activeGroup = document.querySelector(`.client-group.active`);
+          const logoContainer = activeGroup.querySelector('.client-logos-container');
+          const animation = logoContainer.style.animation;
+          logoContainer.style.animation = 'none';
+          setTimeout(() => {
+            logoContainer.style.animation = animation || '';
+          }, 10);
+        });
+        
+        tab.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            tab.click();
+          }
+        });
+      });
+
+      startTestimonialCarousel();
+      
+      window.addEventListener('beforeunload', () => {
+        clearInterval(testimonialInterval);
+      });
+      
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearInterval(testimonialInterval);
+        } else {
+          startTestimonialCarousel();
+        }
+      });
+
+      /* --- EDITORIAL FORM LOGIC --- */
+      const editorialForm = document.getElementById('editorial-form');
+      if(editorialForm) {
+        editorialForm.addEventListener('submit', function(e) {
+          e.preventDefault(); 
+
+          const name = document.getElementById('ef-name').value;
+          const company = document.getElementById('ef-company').value;
+          const service = document.getElementById('ef-service').value;
+          const email = document.getElementById('ef-email').value;
+
+          const subject = `Strategy Support Inquiry: ${company}`;
+          
+          const body = `Hi Emil,
+
+This is ${name} from ${company}.
+
+We are looking for support with ${service}.
+
+You can reply to me at: ${email}
+
+------------------------------------------------
+Sent via strategy-support.com`;
+
+          const mailtoLink = `mailto:emil@strategy-support.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+          window.location.href = mailtoLink;
+        });
+      }
+
+      /* --- SCROLL SPY --- */
+      const sections = document.querySelectorAll('section[id]');
+      const navItems = document.querySelectorAll('.nav-links a');
+
+      const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navItems.forEach(link => {
+              link.classList.remove('active-section');
+              if (link.getAttribute('href') === '#' + entry.target.id) {
+                link.classList.add('active-section');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: "-45% 0px -45% 0px"
+      });
+
+      sections.forEach(section => {
+        scrollSpyObserver.observe(section);
+      });
+
+    });
+  </script>
+</body>
+</html>
