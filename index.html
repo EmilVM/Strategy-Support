@@ -954,13 +954,13 @@
       background-color: rgba(255, 255, 255, 0.05);
     }
 
-    /* On Hover, text turns Electric Rose to disrupt the Red */
+    /* On Hover, text stays Cream (instead of Pink) to ensure contrast on Red background */
     .service-row:hover h3 {
-      color: var(--accent-pink);
+      color: var(--bg-cream);
     }
     
     .service-row:hover .service-num {
-      color: var(--accent-pink);
+      color: var(--bg-cream);
       opacity: 1;
     }
 
@@ -2003,9 +2003,9 @@
         <div class="work-list">
 
           <!-- Case 1: DSV -->
-          <article class="work-row">
+          <article class="work-row active">
             <!-- Visible Trigger -->
-            <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
+            <div class="work-trigger" role="button" aria-expanded="true" tabindex="0">
                <div class="trigger-col-left">
                  <h3 class="client-name">DSV 2025</h3>
                </div>
