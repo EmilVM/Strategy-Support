@@ -30,34 +30,29 @@
       --font-voice: 'Vollkorn', serif;      /* Narrative, Emotion, Headlines */
       --font-system: 'IBM Plex Sans', sans-serif; /* UI, Data, Navigation, Labels */
 
-      /* --- NEW PALETTE IMPLEMENTATION --- */
+      /* --- UPDATED PALETTE --- */
       
-      /* Base: Porcelain (Previously Cream) */
-      /* A cooler, cleaner off-white (#FDFFFC) */
+      /* Base: Porcelain */
       --bg-cream: #FDFFFC;
       
-      /* Secondary: Oxidized Iron (Previously Rust Brown) */
-      /* Used for Section Backgrounds (#9B2915) */
-      --bg-stone: #9B2915; 
+      /* Secondary: Deep Madder Red (Updated from #9B2915 to #8C271E) */
+      --bg-stone: #8C271E; 
       
-      /* Anchor: Shadow Grey (Previously Black/Deep Ink) */
-      /* Used for Text and Dark Backgrounds (#161925) */
+      /* Anchor: Shadow Grey */
       --text-carbon: #161925;
       
-      /* Accent 1: Oxidized Iron (Previously Rust Brown) */
-      /* Used for Lines, Borders, Highlights */
-      --accent-red: #9B2915;
+      /* Accent 1: Deep Madder Red (Updated from #9B2915 to #8C271E) */
+      --accent-red: #8C271E;
       
-      /* Accent 2: Electric Rose (Previously Neon Pink) */
-      /* Used for Hovers and The Glitch (#E0479E) */
+      /* Accent 2: Electric Rose */
       --accent-pink: #E0479E;
       
       /* Lines: Adjusted for Shadow Grey base */
       --line-light: rgba(22, 25, 37, 0.08);
       --line-strong: rgba(22, 25, 37, 0.15);
       
-      /* New: Lines for Oxidized Iron Backgrounds (Porcelain opacity) */
-      --line-on-red: rgba(253, 255, 252, 0.2);
+      /* Adjusted for the new deeper Red background */
+      --line-on-red: rgba(253, 255, 252, 0.15);
     }
 
     * {
@@ -94,7 +89,6 @@
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      /* Updated to Porcelain base */
       background: rgba(253, 255, 252, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -154,12 +148,10 @@
       color: var(--accent-red);
     }
 
-    /* Active Section Highlight */
     .nav-links a.active-section {
       color: var(--accent-pink) !important;
     }
 
-    /* Micro-Interaction Underline Animation */
     .nav-links a:not(.nav-email)::after {
       content: '';
       position: absolute;
@@ -176,7 +168,6 @@
       left: 0;
     }
 
-    /* Email link styling */
     .nav-email-li {
       display: none;
     }
@@ -194,7 +185,6 @@
       border-bottom-color: var(--accent-pink);
     }
 
-    /* Mobile Menu Toggle */
     .mobile-menu-toggle {
       display: none;
       background: none;
@@ -227,7 +217,6 @@
     .hamburger-icon::before { top: -8px; }
     .hamburger-icon::after { top: 8px; }
 
-    /* Mobile Styles */
     @media (max-width: 700px) {
       .sticky-nav { 
         padding: 0 20px; 
@@ -314,7 +303,6 @@
       width: 100%;
       font-weight: 600;
       text-align: left;
-      /* Default Color (overridden in Red sections) */
       color: var(--accent-red);
       border-bottom: 1px solid var(--text-carbon); 
     }
@@ -540,10 +528,9 @@
     }
 
 
-    /* --- ABOUT ME (UPDATED: Oxidized Iron Background) --- */
+    /* --- ABOUT ME --- */
     #about-me {
       padding: 100px 20px;
-      /* Now Oxidized Iron (#9B2915) */
       background: var(--bg-stone);
       color: var(--bg-cream);
       display: flex;
@@ -595,7 +582,6 @@
       letter-spacing: 0.1em;
       opacity: 0.9;
       margin-bottom: 20px;
-      /* On Red, label is Porcelain */
       color: var(--bg-cream);
       border-bottom: 1px solid var(--line-on-red);
       padding-bottom: 20px;
@@ -659,7 +645,6 @@
       position: relative;
       z-index: 1;
       opacity: 0.5;
-      /* Text is Porcelain on Red */
       color: var(--bg-cream);
     }
 
@@ -674,7 +659,6 @@
       color: var(--bg-cream);
     }
 
-    /* Active brand/agency underline is Electric Rose */
     .client-tab.active::after {
       content: '';
       position: absolute;
@@ -729,7 +713,6 @@
     .client-logo {
       height: 60px;
       margin: 0 30px;
-      /* INVERTED: Because background is Red, we make logos White */
       filter: brightness(0) invert(1); 
       opacity: 0.8;
       transition: all 0.3s;
@@ -836,11 +819,11 @@
       }
     }
 
-    /* --- SERVICES (UPDATED: Oxidized Iron Background) --- */
+    /* --- SERVICES --- */
     #services {
       padding: 120px 20px;
-      background: var(--bg-stone); /* Oxidized Iron */
-      color: var(--bg-cream);      /* Porcelain Text */
+      background: var(--bg-stone);
+      color: var(--bg-cream);      
       width: 100%;
       max-width: 100%;
       margin: 0 auto;
@@ -865,7 +848,6 @@
       gap: 30px;
     }
     
-    /* Specific override for label inside Red sections */
     #services .swiss-label {
       color: var(--bg-cream);
       border-bottom-color: var(--line-on-red);
@@ -949,12 +931,10 @@
       max-width: 650px;
     }
 
-    /* Hover effect on Red: White overlay */
     .service-row:hover {
       background-color: rgba(255, 255, 255, 0.05);
     }
 
-    /* On Hover, text stays Cream (instead of Pink) to ensure contrast on Red background */
     .service-row:hover h3 {
       color: var(--bg-cream);
     }
@@ -1025,7 +1005,6 @@
       width: 100%;
     }
 
-    /* The Accordion Row */
     .work-row {
       border-bottom: 2px solid var(--line-strong); 
       display: flex;
@@ -1044,7 +1023,6 @@
       border-bottom: 2px solid var(--line-strong); 
     }
 
-    /* The Trigger */
     .work-trigger {
       width: 100%;
       display: grid;
@@ -1056,7 +1034,6 @@
       position: relative;
     }
 
-    /* Client Name turns Electric Rose when interacted with */
     .work-trigger:hover .client-name {
       color: var(--accent-pink);
     }
@@ -1065,7 +1042,6 @@
       color: var(--accent-pink);
     }
     
-    /* Plus icon background color logic */
     .work-trigger:hover .work-plus-icon::before,
     .work-trigger:hover .work-plus-icon::after {
       background-color: var(--accent-pink);
@@ -1096,7 +1072,6 @@
       transition: opacity 0.3s ease;
     }
 
-    /* The Plus Icon */
     .work-icon-wrapper {
       display: flex;
       align-items: center;
@@ -1113,7 +1088,6 @@
       transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Default Plus icon is Oxidized Iron */
     .work-plus-icon::before,
     .work-plus-icon::after {
       content: '';
@@ -1122,7 +1096,6 @@
       transition: background-color 0.3s ease;
     }
 
-    /* Vertical line */
     .work-plus-icon::before {
       top: 0;
       left: 50%;
@@ -1131,7 +1104,6 @@
       transform: translateX(-50%);
     }
 
-    /* Horizontal line */
     .work-plus-icon::after {
       top: 50%;
       left: 0;
@@ -1144,7 +1116,6 @@
       transform: rotate(45deg);
     }
 
-    /* The Fold (Hidden Content) */
     .work-fold-wrapper {
       display: grid;
       grid-template-rows: 0fr;
@@ -1196,7 +1167,6 @@
       max-width: 750px;
     }
 
-    /* Narrative Stack Inside Fold */
     .narrative-stack {
       display: flex;
       flex-direction: column;
@@ -1267,12 +1237,11 @@
       }
     }
 
-    /* --- TESTIMONIALS (Updated: Shadow Grey Background) --- */
+    /* --- TESTIMONIALS --- */
     .testimonials-section {
       padding: 120px 20px;
-      /* Changed to Shadow Grey (#161925) */
       background: var(--text-carbon);
-      color: var(--bg-cream); /* Porcelain text */
+      color: var(--bg-cream); 
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1287,7 +1256,6 @@
       margin-bottom: 40px;
     }
 
-    /* Specific override for the label inside the dark section */
     .testimonials-section .swiss-label {
       color: var(--bg-cream);
       border-bottom-color: rgba(253, 255, 252, 0.3);
@@ -1412,7 +1380,6 @@
       border-top: 1px solid transparent; 
     }
 
-    /* LEFT SIDEBAR STYLING */
     .contact-sidebar {
       display: flex;
       flex-direction: column;
@@ -1471,7 +1438,6 @@
       color: var(--accent-pink);
     }
 
-    /* RIGHT FORM AREA */
     .contact-form-area {
       padding-left: 0;
       border-left: none;
@@ -1479,19 +1445,13 @@
       flex-direction: column;
     }
 
-    /* EDITORIAL FORM STYLES */
     .editorial-form {
       background: #FFFFFF;
       padding: 40px;
       width: 100%;
       max-width: 600px;
-      
-      /* The "Branded Stationery" Top Border is now Oxidized Iron */
       border-top: 4px solid var(--accent-red);
-      
-      /* Subtle depth based on Shadow Grey */
       box-shadow: 0 20px 60px rgba(22, 25, 37, 0.08);
-      
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -1541,7 +1501,6 @@
       font-weight: 400;
     }
 
-    /* The Inputs */
     .editorial-input,
     .editorial-select {
       display: inline-block;
@@ -1593,11 +1552,9 @@
       background: #FFFFFF;
     }
 
-    /* The "Stamp" Button */
     .editorial-submit {
       align-self: flex-end; 
       margin-top: 10px;
-      
       background: var(--text-carbon);
       color: #FFFFFF;
       padding: 12px 24px;
@@ -1608,7 +1565,6 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       cursor: pointer;
-      
       display: flex;
       align-items: center;
       gap: 12px;
@@ -1623,8 +1579,7 @@
     .editorial-submit:hover {
       background: var(--accent-red);
       transform: translateY(-2px);
-      /* Updated Shadow to Oxidized Iron base */
-      box-shadow: 0 10px 20px rgba(155, 41, 21, 0.2);
+      box-shadow: 0 10px 20px rgba(140, 39, 30, 0.2);
     }
 
     .editorial-submit:hover .arrow {
@@ -1739,7 +1694,6 @@
       font-size: 0.75rem;
     }
 
-    /* General Mobile Fixes */
     @media (max-width: 700px) {
       #intro { padding: 16px; padding-top: 80px; }
       #about-me, #my-approach, #services, #recent-work, #testimonials { padding: 50px 16px; }
@@ -1752,7 +1706,6 @@
     }
   </style>
 
-  <!-- --- UPDATED STRUCTURED DATA --- -->
   <script type="application/ld+json">
   [
     {
@@ -1991,11 +1944,9 @@
       </div>
     </section>
 
-   <!-- RECENT WORK (ACCORDION INTERACTIVE VERSION) -->
     <section id="recent-work" aria-labelledby="recent-work-heading">
       <div class="work-container">
         
-        <!-- Top Header -->
         <div class="work-header">
           <h2 id="recent-work-heading" class="swiss-label">Selected Work</h2>
         </div>
@@ -2004,32 +1955,28 @@
 
           <!-- Case 1: DSV -->
           <article class="work-row active">
-            <!-- Visible Trigger -->
             <div class="work-trigger" role="button" aria-expanded="true" tabindex="0">
                <div class="trigger-col-left">
                  <h3 class="client-name">DSV 2025</h3>
                </div>
                <div class="trigger-col-content">
-                 <h4 class="trigger-headline">I Built a Marketing Operating System for the World's Largest Transport Company</h4>
+                 <h4 class="trigger-headline">I Build a Marketing Operating System for the World's Largest Transport Company</h4>
                </div>
                <div class="work-icon-wrapper">
                  <span class="work-plus-icon"></span>
                </div>
             </div>
 
-            <!-- Hidden Fold -->
             <div class="work-fold-wrapper">
               <div class="work-fold-inner">
                 <div class="work-fold-content">
                   
-                  <!-- Left Col (Image) -->
                   <div class="work-col-left">
                     <div class="work-image-wrapper">
                       <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
                     </div>
                   </div>
                   
-                  <!-- Right Col (Narrative) -->
                   <div class="work-col-right">
                      <p class="case-body">
                       DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
@@ -2045,7 +1992,6 @@
 
           <!-- Case 2: Saxo Bank -->
           <article class="work-row">
-             <!-- Visible Trigger -->
             <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
                <div class="trigger-col-left">
                  <h3 class="client-name">Saxo Bank 2023</h3>
@@ -2058,19 +2004,16 @@
                </div>
             </div>
 
-             <!-- Hidden Fold -->
             <div class="work-fold-wrapper">
               <div class="work-fold-inner">
                 <div class="work-fold-content">
                   
-                  <!-- Left Col (Image) -->
                   <div class="work-col-left">
                     <div class="work-image-wrapper">
                       <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
                     </div>
                   </div>
                   
-                  <!-- Right Col (Narrative) -->
                   <div class="work-col-right">
                     <div class="narrative-stack" style="margin-top:0; padding-top:0; border-top:none;">
                       <div class="narrative-item">
@@ -2101,7 +2044,6 @@
 
           <!-- Case 3: Burger King -->
           <article class="work-row">
-             <!-- Visible Trigger -->
              <div class="work-trigger" role="button" aria-expanded="false" tabindex="0">
                <div class="trigger-col-left">
                  <h3 class="client-name">Burger King 2016</h3>
@@ -2114,19 +2056,16 @@
                </div>
             </div>
 
-             <!-- Hidden Fold -->
             <div class="work-fold-wrapper">
               <div class="work-fold-inner">
                 <div class="work-fold-content">
                   
-                  <!-- Left Col (Image) -->
                   <div class="work-col-left">
                     <div class="work-image-wrapper">
                        <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
                     </div>
                   </div>
                   
-                  <!-- Right Col (Narrative) -->
                   <div class="work-col-right">
                     <div class="narrative-stack" style="margin-top:0; padding-top:0; border-top:none;">
                       <div class="narrative-item">
@@ -2206,10 +2145,8 @@
          <h2 id="contact-heading" class="swiss-label">Contact</h2>
         </div>
 
-        <!-- NEW SPLIT LAYOUT FOR CONTACT -->
         <div class="contact-layout-wrapper">
           
-          <!-- LEFT: Static Info -->
           <aside class="contact-sidebar">
             
             <div class="contact-block">
@@ -2234,7 +2171,6 @@
 
           </aside>
 
-          <!-- RIGHT: Action (The Form) -->
           <div class="contact-form-area">
             
             <form id="editorial-form" class="editorial-form">
@@ -2292,11 +2228,10 @@
   </main>
 
   <footer>
-    <p class="footer-copy">&copy; 2025 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
+    <p class="footer-copy">&copy; 2026 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
   </footer>
 
   <script>
-    /* Minimal Copy Email Functionality */
     function copyEmailToClipboard(button) {
       if (button.classList.contains('copied')) return;
       
@@ -2331,13 +2266,11 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       
-      /* --- DATE SCRIPT FOR FORM --- */
       const dateElement = document.getElementById('current-date');
       if (dateElement) {
         dateElement.textContent = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase();
       }
 
-      /* --- MOBILE MENU LOGIC --- */
       const menuToggle = document.querySelector('.mobile-menu-toggle');
       const navLinks = document.querySelector('.nav-links');
       const mobileLinks = document.querySelectorAll('.nav-links a');
@@ -2357,7 +2290,6 @@
         });
       });
 
-      /* --- ANIMATED HEADING SPEED --- */
       const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
       const animatedWordElement = document.querySelector('.animated-word');
       let currentWordIndex = 0;
@@ -2398,7 +2330,6 @@
 
       type();
 
-      /* --- SCROLL OBSERVER --- */
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -2413,7 +2344,6 @@
         observer.observe(item);
       });
 
-      /* --- WORK ACCORDION LOGIC --- */
       const workTriggers = document.querySelectorAll('.work-trigger');
       
       workTriggers.forEach(trigger => {
@@ -2440,7 +2370,6 @@
         });
       });
 
-      /* --- TESTIMONIAL CAROUSEL --- */
       const testimonials = document.querySelectorAll('.testimonial-item');
       const testimonialDots = document.querySelectorAll('.testimonial-indicators .indicator-dot');
       let currentTestimonialIndex = 0;
@@ -2481,7 +2410,6 @@
         });
       });
 
-      /* --- CLIENT LOGO TABS --- */
       const clientTabs = document.querySelectorAll('.client-tab');
       const clientGroups = document.querySelectorAll('.client-group');
       
@@ -2532,7 +2460,6 @@
         }
       });
 
-      /* --- EDITORIAL FORM LOGIC --- */
       const editorialForm = document.getElementById('editorial-form');
       if(editorialForm) {
         editorialForm.addEventListener('submit', function(e) {
@@ -2562,7 +2489,6 @@ Sent via strategy-support.com`;
         });
       }
 
-      /* --- SCROLL SPY --- */
       const sections = document.querySelectorAll('section[id]');
       const navItems = document.querySelectorAll('.nav-links a');
 
