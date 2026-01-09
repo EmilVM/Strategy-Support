@@ -30,19 +30,19 @@
       --font-voice: 'Vollkorn', serif;      /* Narrative, Emotion, Headlines */
       --font-system: 'IBM Plex Sans', sans-serif; /* UI, Data, Navigation, Labels */
 
-      /* --- UPDATED PALETTE --- */
+      /* --- UPDATED PALETTE (British Racing Green Theme) --- */
       
       /* Base: Porcelain */
       --bg-cream: #FDFFFC;
       
-      /* Secondary: Deep Ruby (Updated to #8B2635) */
-      --bg-stone: #8B2635; 
+      /* Secondary: British Racing Green (Updated to #1B3022) */
+      --bg-dark-green: #1B3022; 
       
       /* Anchor: Shadow Grey */
       --text-carbon: #161925;
       
-      /* Accent 1: Deep Ruby (Updated to #8B2635) */
-      --accent-red: #8B2635;
+      /* Accent 1: British Racing Green (Updated to #1B3022) */
+      --accent-green: #1B3022;
       
       /* Accent 2: Electric Rose */
       --accent-pink: #E0479E;
@@ -51,8 +51,8 @@
       --line-light: rgba(22, 25, 37, 0.08);
       --line-strong: rgba(22, 25, 37, 0.15);
       
-      /* Adjusted for the new deeper Red background */
-      --line-on-red: rgba(253, 255, 252, 0.15);
+      /* Adjusted for the new Racing Green background */
+      --line-on-dark: rgba(253, 255, 252, 0.15);
     }
 
     * {
@@ -145,7 +145,7 @@
     }
 
     .nav-links a:hover {
-      color: var(--accent-red);
+      color: var(--accent-green);
     }
 
     .nav-links a.active-section {
@@ -159,7 +159,7 @@
       height: 2px;
       bottom: -5px;
       left: 50%;
-      background-color: var(--accent-red);
+      background-color: var(--accent-green);
       transition: width 0.3s ease, left 0.3s ease;
     }
 
@@ -174,7 +174,7 @@
 
     .nav-email {
       font-size: 0.8rem !important;
-      color: var(--accent-red) !important;
+      color: var(--accent-green) !important;
       border-bottom: 1px solid transparent;
       padding-bottom: 2px;
       font-weight: 600 !important;
@@ -303,7 +303,7 @@
       width: 100%;
       font-weight: 600;
       text-align: left;
-      color: var(--accent-red);
+      color: var(--accent-green);
       border-bottom: 1px solid var(--text-carbon); 
     }
 
@@ -463,18 +463,18 @@
     }
 
     .minimal-copy-btn:hover {
-      border-color: var(--accent-red);
+      border-color: var(--accent-green);
       transform: translateY(-2px);
     }
     
     .minimal-copy-btn:hover .btn-label,
     .minimal-copy-btn:hover .btn-address {
-      color: var(--accent-red);
+      color: var(--accent-green);
     }
     
     .minimal-copy-btn:hover .btn-icon {
       opacity: 1;
-      color: var(--accent-red);
+      color: var(--accent-green);
     }
 
     .minimal-copy-btn.copied {
@@ -531,12 +531,12 @@
     /* --- ABOUT ME --- */
     #about-me {
       padding: 100px 20px;
-      background: var(--bg-stone);
+      background: var(--bg-dark-green);
       color: var(--bg-cream);
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-top: 1px solid var(--line-on-red);
+      border-top: 1px solid var(--line-on-dark);
     }
 
     .about-container {
@@ -583,7 +583,7 @@
       opacity: 0.9;
       margin-bottom: 20px;
       color: var(--bg-cream);
-      border-bottom: 1px solid var(--line-on-red);
+      border-bottom: 1px solid var(--line-on-dark);
       padding-bottom: 20px;
       display: inline-block;
       width: 100%;
@@ -608,7 +608,7 @@
 
     .about-clients-wrapper {
       margin-top: 10px;
-      border-top: 1px solid var(--line-on-red);
+      border-top: 1px solid var(--line-on-dark);
       padding-top: 40px;
     }
     
@@ -798,7 +798,7 @@
       font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       line-height: 1.3;
       font-weight: 500;
-      color: var(--accent-red);
+      color: var(--accent-green);
       max-width: 800px;
     }
 
@@ -822,7 +822,7 @@
     /* --- SERVICES --- */
     #services {
       padding: 120px 20px;
-      background: var(--bg-stone);
+      background: var(--bg-dark-green);
       color: var(--bg-cream);      
       width: 100%;
       max-width: 100%;
@@ -850,7 +850,7 @@
     
     #services .swiss-label {
       color: var(--bg-cream);
-      border-bottom-color: var(--line-on-red);
+      border-bottom-color: var(--line-on-dark);
     }
 
     .services-intro-side {
@@ -865,7 +865,7 @@
       display: flex;
       flex-direction: column;
       padding-left: 40px;
-      border-left: 1px solid var(--line-on-red); 
+      border-left: 1px solid var(--line-on-dark); 
     }
     
     .services-list {
@@ -879,7 +879,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 50px 0;
-      border-top: 1px solid var(--line-on-red);
+      border-top: 1px solid var(--line-on-dark);
       transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
       opacity: 0;
       transform: translateY(20px);
@@ -891,7 +891,7 @@
     }
 
     .service-row:last-child {
-      border-bottom: 1px solid var(--line-on-red);
+      border-bottom: 1px solid var(--line-on-dark);
     }
 
     .service-num {
@@ -1056,7 +1056,7 @@
       font-family: var(--font-voice);
       font-size: clamp(2rem, 3vw, 3.5rem);
       font-weight: 700;
-      color: var(--accent-red);
+      color: var(--accent-green);
       line-height: 1;
       margin: 0;
       letter-spacing: -0.02em;
@@ -1092,7 +1092,7 @@
     .work-plus-icon::after {
       content: '';
       position: absolute;
-      background-color: var(--accent-red);
+      background-color: var(--accent-green);
       transition: background-color 0.3s ease;
     }
 
@@ -1188,7 +1188,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 600;
-      color: var(--accent-red);
+      color: var(--accent-green);
       opacity: 0.9;
     }
 
@@ -1393,7 +1393,7 @@
     }
 
     .contact-block .narrative-label {
-      color: var(--accent-red);
+      color: var(--accent-green);
       font-size: 0.75rem;
       opacity: 0.8;
       text-transform: uppercase;
@@ -1450,7 +1450,7 @@
       padding: 40px;
       width: 100%;
       max-width: 600px;
-      border-top: 4px solid var(--accent-red);
+      border-top: 4px solid var(--accent-green);
       box-shadow: 0 20px 60px rgba(22, 25, 37, 0.08);
       display: flex;
       flex-direction: column;
@@ -1481,7 +1481,7 @@
     }
 
     .header-label {
-      color: var(--accent-red);
+      color: var(--accent-green);
       font-weight: 700;
       opacity: 0.8;
       font-family: var(--font-system);
@@ -1577,9 +1577,9 @@
     }
 
     .editorial-submit:hover {
-      background: var(--accent-red);
+      background: var(--accent-green);
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(139, 38, 53, 0.2);
+      box-shadow: 0 10px 20px rgba(27, 48, 34, 0.2);
     }
 
     .editorial-submit:hover .arrow {
@@ -1685,7 +1685,7 @@
     
     .footer-social-link:hover {
       border-bottom-color: var(--accent-pink);
-      color: var(--accent-red);
+      color: var(--accent-green);
     }
     
     .footer-copy {
