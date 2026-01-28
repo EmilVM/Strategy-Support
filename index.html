@@ -30,18 +30,18 @@
       --font-voice: 'Vollkorn', serif;      /* Narrative, Emotion, Headlines */
       --font-system: 'IBM Plex Sans', sans-serif; /* UI, Data, Navigation, Labels */
 
-      /* --- UPDATED PALETTE (British Racing Green Theme) --- */
+      /* --- UPDATED PALETTE (Pure White + Racing Green) --- */
       
-      /* Base: Porcelain */
-      --bg-cream: #FDFFFC;
+      /* Base: Pure White (Updated from #FDFFFC) */
+      --bg-cream: #FFFFFF;
       
-      /* Secondary: British Racing Green (Updated to #1B3022) */
+      /* Secondary: British Racing Green */
       --bg-dark-green: #1B3022; 
       
       /* Anchor: Shadow Grey */
       --text-carbon: #161925;
       
-      /* Accent 1: British Racing Green (Updated to #1B3022) */
+      /* Accent 1: British Racing Green */
       --accent-green: #1B3022;
       
       /* Accent 2: Electric Rose */
@@ -51,8 +51,8 @@
       --line-light: rgba(22, 25, 37, 0.08);
       --line-strong: rgba(22, 25, 37, 0.15);
       
-      /* Adjusted for the new Racing Green background */
-      --line-on-dark: rgba(253, 255, 252, 0.15);
+      /* Adjusted for the new Racing Green background (Pure White Alpha) */
+      --line-on-dark: rgba(255, 255, 255, 0.15);
     }
 
     * {
@@ -89,7 +89,8 @@
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      background: rgba(253, 255, 252, 0.95);
+      /* Updated to Pure White RGB (255, 255, 255) */
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line-light);
@@ -1258,7 +1259,8 @@
 
     .testimonials-section .swiss-label {
       color: var(--bg-cream);
-      border-bottom-color: rgba(253, 255, 252, 0.3);
+      /* Updated to Pure White RGB (255, 255, 255) */
+      border-bottom-color: rgba(255, 255, 255, 0.3);
     }
 
     .testimonials-container {
