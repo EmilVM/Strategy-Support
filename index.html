@@ -261,7 +261,7 @@
       font-weight: 600;
       text-align: left;
       color: var(--accent-green);
-      border-bottom: 1px solid var(--text-carbon); 
+      border-bottom: 1px solid var(--line-strong);
     }
 
     /* --- HERO SECTION --- */
@@ -1117,11 +1117,35 @@
     @media (max-width: 700px) {
       #intro { padding: 16px; padding-top: 80px; }
       #about-me, #services, #recent-work, #testimonials { padding: 50px 16px; }
-      #contact { padding: 80px 16px 80px; }
+      #contact { padding: 60px 16px 60px; }
       .client-logos-container { animation: scroll-mobile 12s linear infinite; width: 200%; }
       @keyframes scroll-mobile {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
+      }
+
+      /* Contact: keep email readable without breaking mid-word */
+      .giant-email {
+        font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+        letter-spacing: 0;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+
+      /* Contact: stack meta items vertically, drop the pipe */
+      .contact-content {
+        margin-top: 30px;
+        gap: 20px;
+      }
+
+      .contact-meta {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .pipe-sep {
+        display: none;
       }
     }
   </style>
@@ -1489,7 +1513,7 @@
           
           <div class="contact-meta">
             <span>Based in Copenhagen. Available globally.</span>
-            <span style="opacity:0.4;">|</span>
+            <span class="pipe-sep" aria-hidden="true" style="opacity:0.4;">|</span>
             <a href="https://www.linkedin.com/in/emilvmadsen/" target="_blank">LinkedIn Profile ↗</a>
           </div>
         </div>
