@@ -63,6 +63,11 @@
       --line-on-dark: rgba(255, 255, 255, 0.15);
     }
 
+    /* --- SCROLL ANCHOR OFFSET (accounts for 80px fixed nav) --- */
+    #intro, #about-me, #services, #recent-work, #testimonials, #contact {
+      scroll-margin-top: 90px;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -245,9 +250,9 @@
       }
 
       .nav-links a {
-        font-family: var(--font-voice);
-        font-size: 1.5rem; 
-        font-weight: 400;
+        font-family: var(--font-system);
+        font-size: 1.3rem;
+        font-weight: 500;
         text-transform: none;
       }
       
@@ -418,10 +423,10 @@
       border-radius: 0;
       border: none;
       box-shadow: none; 
-      filter: grayscale(100%);
+      filter: grayscale(15%);
       transition: filter 0.5s ease;
     }
-    
+
     .about-portrait:hover {
       filter: grayscale(0%);
     }
@@ -576,8 +581,8 @@
     .client-logo {
       height: 60px;
       margin: 0 30px;
-      filter: brightness(0) invert(1); 
-      opacity: 0.8;
+      filter: brightness(0) invert(1);
+      opacity: 1;
       transition: all 0.3s;
       flex-shrink: 0;
     }
@@ -649,7 +654,7 @@
     
     #services .swiss-label {
       color: var(--bg-cream);
-      border-bottom-color: var(--line-on-dark);
+      border-bottom-color: var(--accent-pink);
     }
 
     .services-intro-side {
@@ -695,12 +700,12 @@
 
     .service-num {
       font-family: var(--font-system);
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
       font-weight: 500;
       flex-basis: 10%;
       padding-top: 8px;
       color: var(--bg-cream);
-      opacity: 0.5;
+      opacity: 0.75;
       transition: color 0.3s ease, opacity 0.3s ease;
       font-variant-numeric: tabular-nums;
     }
@@ -814,6 +819,11 @@
       padding-bottom: 60px;
     }
     
+    .work-row:hover {
+      background-color: rgba(22, 25, 37, 0.02);
+      transition: background-color 0.3s ease;
+    }
+
     .work-row.visible {
       opacity: 1;
       transform: translateY(0);
@@ -845,6 +855,28 @@
       margin: 0;
     }
 
+    .work-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .work-tag {
+      display: inline-block;
+      font-family: var(--font-system);
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-pink);
+      border: 1px solid var(--accent-pink);
+      border-radius: 2px;
+      padding: 3px 8px;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+
     .work-fold-content {
       display: grid;
       grid-template-columns: 30% 1fr;
@@ -864,10 +896,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%);
+      filter: grayscale(15%);
       transition: transform 0.8s ease, filter 0.5s ease;
     }
-    
+
     .work-row:hover .work-image {
       filter: grayscale(0%);
     }
@@ -953,7 +985,7 @@
 
     .testimonials-section .swiss-label {
       color: var(--bg-cream);
-      border-bottom-color: rgba(255, 255, 255, 0.3);
+      border-bottom-color: var(--accent-pink);
     }
 
     .testimonials-container {
@@ -1077,7 +1109,7 @@
 
     .giant-email {
       font-family: var(--font-voice);
-      font-size: clamp(1.8rem, 5vw, 4.5rem);
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
       font-weight: 700;
       color: var(--accent-green);
       text-decoration: none;
@@ -1408,7 +1440,10 @@
           <!-- Case 1: DSV -->
           <article class="work-row">
             <div class="work-header-static">
-               <h3 class="client-name">DSV 2025</h3>
+              <div class="work-title-group">
+                <h3 class="client-name">DSV 2025</h3>
+                <span class="work-tag">Marketing Ops</span>
+              </div>
                <h4 class="trigger-headline">I Build a Marketing Operating System for the World's Largest Transport Company</h4>
             </div>
 
@@ -1431,7 +1466,10 @@
           <!-- Case 2: Saxo Bank -->
           <article class="work-row">
             <div class="work-header-static">
-               <h3 class="client-name">Saxo Bank 2023</h3>
+              <div class="work-title-group">
+                <h3 class="client-name">Saxo Bank 2023</h3>
+                <span class="work-tag">Brand Strategy</span>
+              </div>
                <h4 class="trigger-headline">I made Saxo Bank give money a voice in a category that all sounds the same</h4>
             </div>
 
@@ -1469,7 +1507,10 @@
           <!-- Case 3: Burger King -->
           <article class="work-row">
              <div class="work-header-static">
-               <h3 class="client-name">Burger King 2016</h3>
+              <div class="work-title-group">
+                <h3 class="client-name">Burger King 2016</h3>
+                <span class="work-tag">Creative Planning</span>
+              </div>
                <h4 class="trigger-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
             </div>
 
@@ -1673,7 +1714,7 @@
 
       function startTestimonialCarousel() {
         clearInterval(testimonialInterval);
-        testimonialInterval = setInterval(nextTestimonial, 6000);
+        testimonialInterval = setInterval(nextTestimonial, 9000);
       }
 
       testimonialDots.forEach((dot, index) => {
