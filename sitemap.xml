@@ -4,13 +4,12 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://strategy-support.com/</loc>
-  <lastmod>2025-09-22T06:42:37+00:00</lastmod>
+  <lastmod>2026-03-11</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
 </url>
-
 
 </urlset>
