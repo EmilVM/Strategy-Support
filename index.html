@@ -962,6 +962,39 @@
       filter: grayscale(0%);
     }
 
+    /* Collapsible cases */
+    .work-row.collapsible .work-fold-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                  opacity 0.4s ease;
+      padding-bottom: 0;
+    }
+
+    .work-row.collapsible.open .work-fold-content {
+      max-height: 800px;
+      opacity: 1;
+    }
+
+    .work-row.collapsible .work-header-static {
+      cursor: pointer;
+    }
+
+    .work-row.collapsible .trigger-headline::after {
+      content: '+';
+      display: inline-block;
+      margin-left: 12px;
+      font-weight: 300;
+      font-size: 1.2em;
+      opacity: 0.4;
+      transition: transform 0.3s ease;
+    }
+
+    .work-row.collapsible.open .trigger-headline::after {
+      content: '\2212';
+    }
+
     .case-body {
       font-size: clamp(1rem, 1.2vw, 1.2rem);
       line-height: 1.6;
@@ -1545,7 +1578,7 @@
           </article>
 
           <!-- Case 2: Saxo Bank -->
-          <article class="work-row">
+          <article class="work-row collapsible">
             <div class="work-header-static">
               <div class="work-title-group">
                 <h3 class="client-name">Saxo Bank 2023</h3>
@@ -1586,7 +1619,7 @@
           </article>
 
           <!-- Case 3: Burger King -->
-          <article class="work-row">
+          <article class="work-row collapsible">
              <div class="work-header-static">
               <div class="work-title-group">
                 <h3 class="client-name">Burger King 2016</h3>
@@ -1678,7 +1711,7 @@
         <div class="contact-content">
           <p class="contact-lead">Let's think it through.</p>
           
-          <a href="mailto:emil@strategy-support.com" class="giant-email">emil@strategy-support.com</a>
+          <a href="/cdn-cgi/l/email-protection#b5d0d8dcd9f5c6c1c7d4c1d0d2cc98c6c0c5c5dac7c19bd6dad8" class="giant-email"><span class="__cf_email__" data-cfemail="82e7efebeec2f1f6f0e3f6e7e5fbaff1f7f2f2edf0f6ace1edef">[email&#160;protected]</span></a>
           
           <div class="contact-meta">
             <span>Based in Copenhagen. Available globally.</span>
@@ -1695,7 +1728,7 @@
     <p class="footer-copy">&copy; 2026 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.addEventListener('DOMContentLoaded', () => {
 
       // Masthead: live date + Copenhagen time
@@ -1791,6 +1824,13 @@
 
       document.querySelectorAll('.service-row, .work-row').forEach(item => {
         observer.observe(item);
+      });
+
+      // Expand/collapse cases
+      document.querySelectorAll('.work-row.collapsible .work-header-static').forEach(header => {
+        header.addEventListener('click', () => {
+          header.closest('.work-row').classList.toggle('open');
+        });
       });
 
       // Testimonial Carousel
@@ -1895,20 +1935,4 @@
             navItems.forEach(link => {
               link.classList.remove('active-section');
               if (link.getAttribute('href') === '#' + entry.target.id) {
-                link.classList.add('active-section');
-              }
-            });
-          }
-        });
-      }, {
-        rootMargin: "-45% 0px -45% 0px"
-      });
-
-      sections.forEach(section => {
-        scrollSpyObserver.observe(section);
-      });
-
-    });
-  </script>
-</body>
-</html>
+                link.classList.add('active-s
