@@ -836,7 +836,7 @@
       }
     }
 
-    /* --- RECENT WORK (STATIC & VISIBLE) --- */
+    /* --- RECENT WORK (ACCORDION) --- */
     #recent-work {
       padding: 120px 20px;
       background: var(--bg-cream);
@@ -873,13 +873,13 @@
       flex-direction: column;
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-      padding-bottom: 60px;
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                  transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                  background-color 0.3s ease;
     }
     
     .work-row:hover {
       background-color: rgba(22, 25, 37, 0.02);
-      transition: background-color 0.3s ease;
     }
 
     .work-row.visible {
@@ -887,12 +887,20 @@
       transform: translateY(0);
     }
 
-    .work-header-static {
+    /* Interactive Header/Trigger */
+    .work-header-trigger {
+      width: 100%;
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-family: inherit;
       display: grid;
-      grid-template-columns: 30% 1fr;
+      grid-template-columns: 30% 1fr auto;
       gap: 60px;
       padding: 50px 0 40px 0;
       align-items: baseline;
+      cursor: pointer;
+      outline: none;
     }
 
     .client-name {
@@ -935,11 +943,69 @@
       line-height: 1.4;
     }
 
+    /* Accordion Icon (+ / -) */
+    .accordion-icon {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-line {
+      position: absolute;
+      background-color: var(--accent-green);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+    }
+
+    .icon-line.horizontal { width: 100%; height: 2px; }
+    .icon-line.vertical { height: 100%; width: 2px; }
+
+    .work-row:hover .icon-line {
+      background-color: var(--accent-pink);
+    }
+
+    /* Accordion Body & Animation */
+    .work-accordion-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .work-accordion-inner {
+      overflow: hidden;
+      padding-bottom: 0;
+      transition: padding 0.6s ease;
+    }
+
+    .work-row.is-open .work-accordion-body {
+      grid-template-rows: 1fr;
+    }
+
+    .work-row.is-open .work-accordion-inner {
+      padding-bottom: 60px;
+    }
+
+    .work-row.is-open .icon-line.vertical {
+      transform: rotate(90deg);
+    }
+
     .work-fold-content {
       display: grid;
       grid-template-columns: 30% 1fr;
       gap: 60px;
       align-items: start;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+    }
+
+    .work-row.is-open .work-fold-content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .work-image-wrapper {
@@ -962,39 +1028,6 @@
       filter: grayscale(0%);
     }
 
-    /* Collapsible cases */
-    .work-row.collapsible .work-fold-content {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-                  opacity 0.4s ease;
-      padding-bottom: 0;
-    }
-
-    .work-row.collapsible.open .work-fold-content {
-      max-height: 800px;
-      opacity: 1;
-    }
-
-    .work-row.collapsible .work-header-static {
-      cursor: pointer;
-    }
-
-    .work-row.collapsible .trigger-headline::after {
-      content: '+';
-      display: inline-block;
-      margin-left: 12px;
-      font-weight: 300;
-      font-size: 1.2em;
-      opacity: 0.4;
-      transition: transform 0.3s ease;
-    }
-
-    .work-row.collapsible.open .trigger-headline::after {
-      content: '\2212';
-    }
-
     .case-body {
       font-size: clamp(1rem, 1.2vw, 1.2rem);
       line-height: 1.6;
@@ -1004,17 +1037,8 @@
       max-width: 750px;
     }
 
-    .narrative-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .narrative-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .narrative-stack { display: flex; flex-direction: column; gap: 25px; }
+    .narrative-item { display: flex; flex-direction: column; gap: 8px; }
 
     .narrative-label {
       font-family: var(--font-system);
@@ -1034,25 +1058,23 @@
     }
 
     @media (max-width: 900px) {
-      .work-header {
-        border-bottom: none;
-        padding-bottom: 20px;
-      }
+      .work-header { border-bottom: none; padding-bottom: 20px; }
 
-      .work-header-static {
-        grid-template-columns: 1fr;
+      .work-header-trigger {
+        grid-template-columns: 1fr auto;
         gap: 15px;
         padding: 40px 0 20px 0;
       }
+
+      .work-title-group { grid-column: 1 / -1; }
+      .trigger-headline { grid-column: 1; }
+      .accordion-icon { grid-column: 2; grid-row: 2; }
 
       .work-fold-content {
         grid-template-columns: 1fr;
         gap: 30px;
       }
-
-      .work-image-wrapper {
-        aspect-ratio: 16/9;
-      }
+      .work-image-wrapper { aspect-ratio: 16/9; }
     }
 
     /* --- TESTIMONIALS --- */
@@ -1551,108 +1573,132 @@
         
         <div class="work-list">
 
-          <!-- Case 1: DSV -->
-          <article class="work-row">
-            <div class="work-header-static">
+          <!-- Case 1: DSV (OPEN BY DEFAULT) -->
+          <article class="work-row is-open">
+            <button class="work-header-trigger" aria-expanded="true">
               <div class="work-title-group">
                 <h3 class="client-name">DSV 2025</h3>
                 <span class="work-tag">Marketing Ops</span>
               </div>
-               <h4 class="trigger-headline">I Built the Global Marketing Strategy for the World's Largest Transport Company</h4>
-            </div>
-
-            <div class="work-fold-content">
-              <div class="work-col-left">
-                <div class="work-image-wrapper">
-                  <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
-                </div>
+              <h4 class="trigger-headline">I Built the Global Marketing Strategy for the World's Largest Transport Company</h4>
+              <div class="accordion-icon">
+                <span class="icon-line horizontal"></span>
+                <span class="icon-line vertical"></span>
               </div>
-              <div class="work-col-right">
-                 <p class="case-body">
-                  DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
-                  <br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
-                  <br><br>I'm also supporting organisational design, process development, and AI implementation.
-                </p>
+            </button>
+
+            <div class="work-accordion-body">
+              <div class="work-accordion-inner">
+                <div class="work-fold-content">
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                      <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="work-col-right">
+                     <p class="case-body">
+                      DSV is the world's largest transport and logistics company. I'm helping them develop a marketing strategy that unifies six industry verticals, four product divisions, and multiple customer segments across 90+ markets into a coherent approach that works for global, regional, and local stakeholders alike.
+                      <br><br>Working directly with the global CMO, I'm building frameworks grounded in what actually drives purchase decisions in B2B logistics, from acquisition and retention through to how the brand shows up at trade fairs and major industry moments.
+                      <br><br>I'm also supporting organisational design, process development, and AI implementation.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Case 2: Saxo Bank -->
-          <article class="work-row collapsible">
-            <div class="work-header-static">
+          <!-- Case 2: Saxo Bank (CLOSED) -->
+          <article class="work-row">
+            <button class="work-header-trigger" aria-expanded="false">
               <div class="work-title-group">
                 <h3 class="client-name">Saxo Bank 2023</h3>
                 <span class="work-tag">Brand Strategy</span>
               </div>
-               <h4 class="trigger-headline">I made Saxo Bank give money a voice in a category that all sound the same</h4>
-            </div>
-
-            <div class="work-fold-content">
-              <div class="work-col-left">
-                <div class="work-image-wrapper">
-                  <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
-                </div>
+              <h4 class="trigger-headline">I made Saxo Bank give money a voice in a category that all sound the same</h4>
+              <div class="accordion-icon">
+                <span class="icon-line horizontal"></span>
+                <span class="icon-line vertical"></span>
               </div>
-              <div class="work-col-right">
-                <div class="narrative-stack">
-                  <div class="narrative-item">
-                    <span class="narrative-label">Problem</span>
-                    <p class="narrative-text">
-                      Saxo wanted to grow brand awareness and preference among experienced investors and traders globally. But in a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in a way that felt equally relevant in Asian, European and American markets.
-                    </p>
+            </button>
+
+            <div class="work-accordion-body">
+              <div class="work-accordion-inner">
+                <div class="work-fold-content">
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                      <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
+                    </div>
                   </div>
-                  <div class="narrative-item">
-                    <span class="narrative-label">Insight</span>
-                    <p class="narrative-text">
-                      For investors, money isn’t just something to save, it’s something to activate. And with more tradable instruments than competitors, Saxo gives your money more things to do.
-                    </p>
-                  </div>
-                  <div class="narrative-item">
-                    <span class="narrative-label">Solution</span>
-                    <p class="narrative-text">
-                      Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.
-                    </p>
+                  <div class="work-col-right">
+                    <div class="narrative-stack">
+                      <div class="narrative-item">
+                        <span class="narrative-label">Problem</span>
+                        <p class="narrative-text">
+                          Saxo wanted to grow brand awareness and preference among experienced investors and traders globally. But in a crowded, price-driven category full of bland, bank-like ads, Saxo needed to stand out in a way that felt equally relevant in Asian, European and American markets.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Insight</span>
+                        <p class="narrative-text">
+                          For investors, money isn’t just something to save, it’s something to activate. And with more tradable instruments than competitors, Saxo gives your money more things to do.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Solution</span>
+                        <p class="narrative-text">
+                          Dramatise the product benefit of 75,000+ tradable instruments by showing that if your money had a choice, it would choose Saxo.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Case 3: Burger King -->
-          <article class="work-row collapsible">
-             <div class="work-header-static">
+          <!-- Case 3: Burger King (CLOSED) -->
+          <article class="work-row">
+             <button class="work-header-trigger" aria-expanded="false">
               <div class="work-title-group">
                 <h3 class="client-name">Burger King 2016</h3>
                 <span class="work-tag">Creative Planning</span>
               </div>
-               <h4 class="trigger-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
-            </div>
-
-            <div class="work-fold-content">
-              <div class="work-col-left">
-                <div class="work-image-wrapper">
-                   <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
-                </div>
+              <h4 class="trigger-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
+              <div class="accordion-icon">
+                <span class="icon-line horizontal"></span>
+                <span class="icon-line vertical"></span>
               </div>
-              <div class="work-col-right">
-                <div class="narrative-stack">
-                  <div class="narrative-item">
-                    <span class="narrative-label">Problem</span>
-                    <p class="narrative-text">
-                      Burger King had launched a new global brand strategy pivoting <em>Have It Your Way</em> to <em>Be Your Way</em>. But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported.
-                    </p>
+            </button>
+
+            <div class="work-accordion-body">
+              <div class="work-accordion-inner">
+                <div class="work-fold-content">
+                  <div class="work-col-left">
+                    <div class="work-image-wrapper">
+                       <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
+                    </div>
                   </div>
-                  <div class="narrative-item">
-                    <span class="narrative-label">Insight</span>
-                    <p class="narrative-text">
-                      Burdened by expectations, British youth feel most themselves when being cheeky – taking what's expected and adding their own twist.
-                    </p>
-                  </div>
-                  <div class="narrative-item">
-                    <span class="narrative-label">Solution</span>
-                    <p class="narrative-text">
-                      Position Burger King as the destination of cheeky detours.
-                    </p>
+                  <div class="work-col-right">
+                    <div class="narrative-stack">
+                      <div class="narrative-item">
+                        <span class="narrative-label">Problem</span>
+                        <p class="narrative-text">
+                          Burger King had launched a new global brand strategy pivoting <em>Have It Your Way</em> to <em>Be Your Way</em>. But in a market where celebrating diversity was starting to become the norm, the platform risked feeling generic and imported.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Insight</span>
+                        <p class="narrative-text">
+                          Burdened by expectations, British youth feel most themselves when being cheeky – taking what's expected and adding their own twist.
+                        </p>
+                      </div>
+                      <div class="narrative-item">
+                        <span class="narrative-label">Solution</span>
+                        <p class="narrative-text">
+                          Position Burger King as the destination of cheeky detours.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1711,7 +1757,7 @@
         <div class="contact-content">
           <p class="contact-lead">Let's think it through.</p>
           
-          <a href="/cdn-cgi/l/email-protection#b5d0d8dcd9f5c6c1c7d4c1d0d2cc98c6c0c5c5dac7c19bd6dad8" class="giant-email"><span class="__cf_email__" data-cfemail="82e7efebeec2f1f6f0e3f6e7e5fbaff1f7f2f2edf0f6ace1edef">[email&#160;protected]</span></a>
+          <a href="mailto:emil@strategy-support.com" class="giant-email">emil@strategy-support.com</a>
           
           <div class="contact-meta">
             <span>Based in Copenhagen. Available globally.</span>
@@ -1728,7 +1774,7 @@
     <p class="footer-copy">&copy; 2026 Strategy Support, an Independent Strategy Studio in Copenhagen, Denmark, CVR 33320817</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
 
       // Masthead: live date + Copenhagen time
@@ -1824,13 +1870,6 @@
 
       document.querySelectorAll('.service-row, .work-row').forEach(item => {
         observer.observe(item);
-      });
-
-      // Expand/collapse cases
-      document.querySelectorAll('.work-row.collapsible .work-header-static').forEach(header => {
-        header.addEventListener('click', () => {
-          header.closest('.work-row').classList.toggle('open');
-        });
       });
 
       // Testimonial Carousel
@@ -1935,4 +1974,50 @@
             navItems.forEach(link => {
               link.classList.remove('active-section');
               if (link.getAttribute('href') === '#' + entry.target.id) {
-                link.classList.add('active-s
+                link.classList.add('active-section');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: "-45% 0px -45% 0px"
+      });
+
+      sections.forEach(section => {
+        scrollSpyObserver.observe(section);
+      });
+
+      // Work Section Accordion
+      const workTriggers = document.querySelectorAll('.work-header-trigger');
+      
+      workTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const parentRow = trigger.closest('.work-row');
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+          // Close all other cases when one is opened
+          document.querySelectorAll('.work-row').forEach(row => {
+             row.classList.remove('is-open');
+             row.querySelector('.work-header-trigger').setAttribute('aria-expanded', 'false');
+          });
+
+          // Toggle clicked state
+          if (!isExpanded) {
+            parentRow.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+            
+            // Smoothly scroll to the opened case if it's pushed out of view
+            setTimeout(() => {
+              parentRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
+          } else {
+            parentRow.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
