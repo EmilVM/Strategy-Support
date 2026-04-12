@@ -347,7 +347,7 @@
       border-bottom: 1px solid var(--text-carbon); 
     }
 
-    /* --- HERO SECTION (OP-ED) --- */
+    /* --- HERO SECTION (STATEMENT) --- */
     #intro {
       min-height: 100vh;
       min-height: 100dvh;
@@ -357,47 +357,25 @@
       justify-content: center;
       padding: 120px 20px 20px;
       background: var(--bg-cream);
-      color: var(--text-carbon);
     }
 
     .hero-container {
       width: 100%;
-      max-width: 1200px;
-      display: grid;
-      grid-template-columns: 30% 1fr; /* Standardized Grid */
-      gap: 60px;
-      align-items: start;
-    }
-
-    .hero-label-col {
-      padding-top: 25px; /* Optically align with the massive serif text */
-    }
-
-    .hero-label {
-      font-family: var(--font-system);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-      color: var(--accent-pink); 
-      margin: 0;
-      line-height: 1.6;
-      opacity: 0; /* Handled by JS animation */
-    }
-
-    .hero-text-col {
+      max-width: 1400px; /* Expanded wider than the rest of the site for maximum impact */
+      text-align: center;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
     }
 
     .hero-headline {
       font-family: var(--font-voice);
-      font-size: clamp(3rem, 6.5vw, 6.5rem);
+      /* Massive scale: minimum 4rem, scales with viewport width, caps at 10rem */
+      font-size: clamp(4rem, 11vw, 10rem); 
       font-weight: 400;
-      line-height: 1.05;
+      line-height: 0.95; /* Ultra-tight leading for a high-end print poster feel */
       color: var(--accent-green);
       margin: 0;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       text-wrap: balance;
     }
 
@@ -405,8 +383,8 @@
     .reveal-line {
       display: block;
       overflow: hidden; /* Masks the text before it slides up */
-      padding-bottom: 5px; /* Prevents descenders (like g, y) from clipping */
-      margin-bottom: -5px;
+      padding-bottom: 12px; /* Extra padding to prevent clipping large descenders (like 'g', 'y') */
+      margin-bottom: -12px;
     }
 
     .reveal-text {
@@ -424,35 +402,6 @@
     .hero-container.is-loaded .reveal-text {
       transform: translateY(0);
       opacity: 1;
-    }
-
-    .hero-container.is-loaded .hero-label {
-      animation: fade-in-up 1s cubic-bezier(0.25, 1, 0.2, 1) 0.8s forwards;
-    }
-
-    @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 900px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .hero-label-col {
-        padding-top: 0;
-        border-bottom: 1px solid var(--line-strong);
-        padding-bottom: 20px;
-        margin-bottom: 10px;
-      }
-      .hero-label {
-        display: flex;
-        gap: 15px;
-        flex-direction: row;
-        align-items: center;
-      }
-      .hero-label br { display: none; } /* Turns stacked text into a horizontal line on mobile */
     }
 
     /* --- IMAGE WRAPPER (EDITORIAL TREATMENT) --- */
@@ -1417,16 +1366,11 @@
   <main>
     <section id="intro" aria-labelledby="intro-heading">
       <div class="hero-container" id="hero-container">
-        <div class="hero-label-col">
-          <p class="hero-label">Independent Strategy<br>&mdash;<br>CPH / LDN</p>
-        </div>
-        <div class="hero-text-col">
-          <h1 id="intro-heading" class="hero-headline">
-            <span class="reveal-line"><span class="reveal-text">The thinking</span></span>
-            <span class="reveal-line"><span class="reveal-text">your agency</span></span>
-            <span class="reveal-line"><span class="reveal-text">won't do.</span></span>
-          </h1>
-        </div>
+        <h1 id="intro-heading" class="hero-headline">
+          <span class="reveal-line"><span class="reveal-text">The thinking</span></span>
+          <span class="reveal-line"><span class="reveal-text">your agency</span></span>
+          <span class="reveal-line"><span class="reveal-text">won't do.</span></span>
+        </h1>
       </div>
     </section>
 
