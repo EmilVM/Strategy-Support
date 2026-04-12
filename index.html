@@ -347,7 +347,7 @@
       border-bottom: 1px solid var(--text-carbon); 
     }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO SECTION (OP-ED) --- */
     #intro {
       min-height: 100vh;
       min-height: 100dvh;
@@ -355,97 +355,103 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 120px 20px 20px;
       background: var(--bg-cream);
       color: var(--text-carbon);
-      text-align: center;
-      padding-top: 120px;
     }
 
-    .animated-heading {
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.1;
+    .hero-container {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 30% 1fr; /* Standardized Grid */
+      gap: 60px;
+      align-items: start;
+    }
+
+    .hero-label-col {
+      padding-top: 25px; /* Optically align with the massive serif text */
+    }
+
+    .hero-label {
+      font-family: var(--font-system);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: var(--accent-pink); 
+      margin: 0;
+      line-height: 1.6;
+      opacity: 0; /* Handled by JS animation */
+    }
+
+    .hero-text-col {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.15em;
-      letter-spacing: -0.03em;
     }
 
-    @media (min-width: 1024px) {
-      .animated-heading {
-        font-size: clamp(3.5rem, 8vw, 8rem);
-      }
-    }
-
-    .animated-line {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 1.2em;
-    }
-    .static-line {
-      display: flex;
-      gap: 0.2em;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .animated-word,
-    .animated-word-static {
-      display: inline-block;
-    }
-
-    @media (min-width: 701px) {
-      .static-line {
-        flex-direction: row;
-      }
-    }
-
-     @media (max-width: 700px) {
-      .static-line {
-        flex-direction: column;
-        gap: 0.1em;
-      }
-      .animated-heading {
-        font-size: clamp(2.2rem, 10vw, 3.5rem);
-      }
-    }
-    
-    .animated-word {
-      position: relative;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    
-    .animated-word::after {
-      content: '';
-      position: absolute;
-      right: -2px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--accent-pink);
-      animation: blink 0.7s infinite;
-    }
-    
-    @keyframes blink {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
-
-    .hero-sub {
-      margin-top: 30px;
-      font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-      line-height: 1.5;
-      text-align: center;
-      max-width: 650px;
+    .hero-headline {
+      font-family: var(--font-voice);
+      font-size: clamp(3rem, 6.5vw, 6.5rem);
       font-weight: 400;
-      color: var(--text-carbon);
-      opacity: 0.85;
+      line-height: 1.05;
+      color: var(--accent-green);
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    /* Cinematic Reveal Animation */
+    .reveal-line {
+      display: block;
+      overflow: hidden; /* Masks the text before it slides up */
+      padding-bottom: 5px; /* Prevents descenders (like g, y) from clipping */
+      margin-bottom: -5px;
+    }
+
+    .reveal-text {
+      display: block;
+      transform: translateY(110%);
+      opacity: 0;
+      transition: transform 1.2s cubic-bezier(0.25, 1, 0.2, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.2, 1);
+    }
+
+    /* Staggered Delay */
+    .hero-container.is-loaded .reveal-line:nth-child(1) .reveal-text { transition-delay: 0.1s; }
+    .hero-container.is-loaded .reveal-line:nth-child(2) .reveal-text { transition-delay: 0.3s; }
+    .hero-container.is-loaded .reveal-line:nth-child(3) .reveal-text { transition-delay: 0.5s; }
+
+    .hero-container.is-loaded .reveal-text {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .hero-container.is-loaded .hero-label {
+      animation: fade-in-up 1s cubic-bezier(0.25, 1, 0.2, 1) 0.8s forwards;
+    }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .hero-label-col {
+        padding-top: 0;
+        border-bottom: 1px solid var(--line-strong);
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+      }
+      .hero-label {
+        display: flex;
+        gap: 15px;
+        flex-direction: row;
+        align-items: center;
+      }
+      .hero-label br { display: none; } /* Turns stacked text into a horizontal line on mobile */
     }
 
     /* --- DUOTONE IMAGE WRAPPER (EDITORIAL TREATMENT) --- */
@@ -1282,7 +1288,7 @@
     }
 
     @media (max-width: 700px) {
-      #intro { padding: 16px; padding-top: 80px; }
+      #intro { padding: 120px 16px 40px; }
       #about-me, #services, #recent-work, #testimonials { padding: 50px 16px; }
       #contact { padding: 80px 16px 80px; }
       .contact-divider { display: none; }
@@ -1421,19 +1427,18 @@
 
   <main>
     <section id="intro" aria-labelledby="intro-heading">
-      <h1 class="animated-heading">
-        <span class="animated-line">
-          <span class="animated-word"></span>
-        </span>
-        <span class="static-line">
-          <span class="animated-word-static">STRATEGY</span>
-          <span class="animated-word-static">SUPPORT</span>
-        </span>
-      </h1>
-      
-      <p class="hero-sub">
-        The thinking your agency won't do.
-      </p>
+      <div class="hero-container" id="hero-container">
+        <div class="hero-label-col">
+          <p class="hero-label">Independent Strategy<br>&mdash;<br>CPH / LDN</p>
+        </div>
+        <div class="hero-text-col">
+          <h1 id="intro-heading" class="hero-headline">
+            <span class="reveal-line"><span class="reveal-text">The thinking</span></span>
+            <span class="reveal-line"><span class="reveal-text">your agency</span></span>
+            <span class="reveal-line"><span class="reveal-text">won't do.</span></span>
+          </h1>
+        </div>
+      </div>
     </section>
 
     <section id="about-me" aria-labelledby="about-me-heading">
@@ -1779,6 +1784,14 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
+      // Trigger hero cinematic reveal
+      setTimeout(() => {
+        const heroContainer = document.getElementById('hero-container');
+        if (heroContainer) {
+          heroContainer.classList.add('is-loaded');
+        }
+      }, 100);
+
       // Masthead: live date + Copenhagen time
       const dateEl = document.getElementById('masthead-date');
       const timeEl = document.getElementById('masthead-time');
@@ -1817,47 +1830,6 @@
           navLinks.classList.remove('active');
         });
       });
-
-      // Hero Typing Animation
-      const words = ['MARKETING', 'BRAND', 'CREATIVE', 'COMMUNICATIONS', 'GROWTH', 'IN-HOUSE'];
-      const animatedWordElement = document.querySelector('.animated-word');
-      let currentWordIndex = 0;
-      let isDeleting = false;
-      let text = '';
-      let typingSpeed = 100;
-      let deletingSpeed = 60;
-      let pauseTime = 1500;
-
-      function type() {
-        const currentWord = words[currentWordIndex];
-        
-        if (isDeleting) {
-          text = currentWord.substring(0, text.length - 1);
-          animatedWordElement.textContent = text;
-          
-          if (text === '') {
-            isDeleting = false;
-            currentWordIndex = (currentWordIndex + 1) % words.length;
-            setTimeout(type, 350); 
-            return;
-          }
-          
-          setTimeout(type, deletingSpeed);
-        } else {
-          text = currentWord.substring(0, text.length + 1);
-          animatedWordElement.textContent = text;
-          
-          if (text === currentWord) {
-            isDeleting = true;
-            setTimeout(type, pauseTime);
-            return;
-          }
-          
-          setTimeout(type, typingSpeed);
-        }
-      }
-
-      type();
 
       // Scroll Fade-in Observer
       const observer = new IntersectionObserver((entries) => {
