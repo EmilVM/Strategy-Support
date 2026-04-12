@@ -448,6 +448,44 @@
       opacity: 0.85;
     }
 
+    /* --- DUOTONE IMAGE WRAPPER (EDITORIAL TREATMENT) --- */
+    .duotone-wrapper {
+      position: relative;
+      background-color: var(--bg-dark-green);
+      overflow: hidden;
+      width: 100%;
+    }
+    .duotone-wrapper img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: luminosity;
+      filter: contrast(1.1) brightness(0.9);
+      opacity: 0.85;
+      transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .duotone-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: var(--bg-cream);
+      mix-blend-mode: lighten;
+      pointer-events: none;
+      transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Hover States for Duotone Elements */
+    .about-image-col:hover .duotone-wrapper img,
+    .work-row:hover .duotone-wrapper img {
+      mix-blend-mode: normal;
+      filter: contrast(1) brightness(1);
+      opacity: 1;
+    }
+    .about-image-col:hover .duotone-wrapper::after,
+    .work-row:hover .duotone-wrapper::after {
+      opacity: 0;
+    }
 
     /* --- ABOUT ME --- */
     #about-me {
@@ -464,8 +502,8 @@
       width: 100%;
       max-width: 1200px;
       display: grid;
-      grid-template-columns: 35% 1fr;
-      gap: 80px;
+      grid-template-columns: 30% 1fr; /* Standardized Grid */
+      gap: 60px;
       align-items: start;
     }
 
@@ -474,19 +512,8 @@
       top: 100px; 
     }
 
-    .about-portrait {
-      width: 100%;
+    .about-image-wrapper {
       aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: 0;
-      border: none;
-      box-shadow: none; 
-      filter: grayscale(15%);
-      transition: filter 0.5s ease;
-    }
-
-    .about-portrait:hover {
-      filter: grayscale(0%);
     }
 
     .about-content-col {
@@ -666,7 +693,7 @@
         margin: 0 auto;
       }
 
-      .about-portrait {
+      .about-image-wrapper {
         aspect-ratio: 16/10;
       }
 
@@ -697,7 +724,7 @@
       width: 100%;
       max-width: 1200px;
       display: grid;
-      grid-template-columns: 30% 1fr;
+      grid-template-columns: 30% 1fr; /* Standardized Grid */
       gap: 60px;
       align-items: start;
     }
@@ -895,52 +922,41 @@
       text-align: left;
       font-family: inherit;
       display: grid;
-      grid-template-columns: 30% 1fr auto;
+      grid-template-columns: 30% 1fr auto; /* Standardized Grid mapping */
       gap: 60px;
       padding: 50px 0 40px 0;
-      align-items: baseline;
+      align-items: start;
       cursor: pointer;
       outline: none;
     }
 
+    .work-title-group {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 8px; /* Aligns kicker with large headline visually */
+    }
+
     .client-name {
-      font-family: var(--font-voice);
-      font-size: clamp(2rem, 3vw, 3.5rem);
-      font-weight: 700;
+      font-family: var(--font-system);
+      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: var(--accent-green);
-      line-height: 1;
+      line-height: 1.4;
       margin: 0;
-      letter-spacing: -0.02em;
+      opacity: 0.8;
     }
 
     .trigger-headline {
-      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      font-family: var(--font-voice);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
       font-weight: 400;
       color: var(--text-carbon);
-      line-height: 1.2;
+      line-height: 1.1;
       margin: 0;
-    }
-
-    .work-title-group {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .work-tag {
-      display: inline-block;
-      font-family: var(--font-system);
-      font-size: 0.7rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent-pink);
-      border: 1px solid var(--accent-pink);
-      border-radius: 2px;
-      padding: 3px 8px;
-      white-space: nowrap;
-      line-height: 1.4;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
     }
 
     /* Accordion Icon (+ / -) */
@@ -953,6 +969,7 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      margin-top: 10px; /* Optical alignment with headline */
     }
 
     .icon-line {
@@ -995,7 +1012,7 @@
 
     .work-fold-content {
       display: grid;
-      grid-template-columns: 30% 1fr;
+      grid-template-columns: 30% 1fr; /* Standardized Grid */
       gap: 60px;
       align-items: start;
       opacity: 0;
@@ -1009,23 +1026,8 @@
     }
 
     .work-image-wrapper {
-      width: 100%;
       aspect-ratio: 4/3;
-      overflow: hidden;
-      background: #E5E5E5;
       border: 1px solid var(--line-light);
-    }
-
-    .work-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(15%);
-      transition: transform 0.8s ease, filter 0.5s ease;
-    }
-
-    .work-row:hover .work-image {
-      filter: grayscale(0%);
     }
 
     .case-body {
@@ -1066,9 +1068,9 @@
         padding: 40px 0 20px 0;
       }
 
-      .work-title-group { grid-column: 1 / -1; }
-      .trigger-headline { grid-column: 1; }
-      .accordion-icon { grid-column: 2; grid-row: 2; }
+      .work-title-group { grid-column: 1 / -1; padding-top: 0; }
+      .trigger-headline { grid-column: 1; font-size: clamp(1.5rem, 5vw, 2rem); }
+      .accordion-icon { grid-column: 2; grid-row: 2; align-self: center; margin-top: 0; }
 
       .work-fold-content {
         grid-template-columns: 1fr;
@@ -1080,13 +1082,13 @@
     /* --- TESTIMONIALS --- */
     .testimonials-section {
       padding: 120px 20px;
-      background: var(--text-carbon);
+      background: var(--bg-dark-green); /* Updated */
       color: var(--bg-cream); 
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-top: 1px solid var(--line-strong);
-      border-bottom: 1px solid var(--line-strong);
+      border-top: 1px solid var(--accent-pink); /* Elegant boundary */
+      border-bottom: 1px solid var(--accent-pink); /* Elegant boundary */
     }
     
     .testimonials-header {
@@ -1436,8 +1438,11 @@
 
     <section id="about-me" aria-labelledby="about-me-heading">
       <div class="about-container">
+        
         <div class="about-image-col">
-           <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" class="about-portrait" loading="eager">
+           <div class="duotone-wrapper about-image-wrapper">
+             <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" class="about-portrait" loading="eager">
+           </div>
         </div>
 
         <div class="about-content-col">
@@ -1577,8 +1582,7 @@
           <article class="work-row is-open">
             <button class="work-header-trigger" aria-expanded="true">
               <div class="work-title-group">
-                <h3 class="client-name">DSV 2025</h3>
-                <span class="work-tag">Marketing Ops</span>
+                <h3 class="client-name">DSV Logistics &mdash; 2025</h3>
               </div>
               <h4 class="trigger-headline">I Built the Global Marketing Strategy for the World's Largest Transport Company</h4>
               <div class="accordion-icon">
@@ -1591,7 +1595,7 @@
               <div class="work-accordion-inner">
                 <div class="work-fold-content">
                   <div class="work-col-left">
-                    <div class="work-image-wrapper">
+                    <div class="duotone-wrapper work-image-wrapper">
                       <img src="assets/dsv-case.png" alt="DSV Logistics Strategy" class="work-image" loading="lazy">
                     </div>
                   </div>
@@ -1611,8 +1615,7 @@
           <article class="work-row">
             <button class="work-header-trigger" aria-expanded="false">
               <div class="work-title-group">
-                <h3 class="client-name">Saxo Bank 2023</h3>
-                <span class="work-tag">Brand Strategy</span>
+                <h3 class="client-name">Saxo Bank &mdash; 2023</h3>
               </div>
               <h4 class="trigger-headline">I made Saxo Bank give money a voice in a category that all sound the same</h4>
               <div class="accordion-icon">
@@ -1625,7 +1628,7 @@
               <div class="work-accordion-inner">
                 <div class="work-fold-content">
                   <div class="work-col-left">
-                    <div class="work-image-wrapper">
+                    <div class="duotone-wrapper work-image-wrapper">
                       <img src="assets/saxo-bank-case.png" alt="Saxo Bank Brand Platform" class="work-image" loading="lazy">
                     </div>
                   </div>
@@ -1660,8 +1663,7 @@
           <article class="work-row">
              <button class="work-header-trigger" aria-expanded="false">
               <div class="work-title-group">
-                <h3 class="client-name">Burger King 2016</h3>
-                <span class="work-tag">Creative Planning</span>
+                <h3 class="client-name">Burger King &mdash; 2016</h3>
               </div>
               <h4 class="trigger-headline">I helped Burger King UK turn a global strategy into cheeky rebellion</h4>
               <div class="accordion-icon">
@@ -1674,7 +1676,7 @@
               <div class="work-accordion-inner">
                 <div class="work-fold-content">
                   <div class="work-col-left">
-                    <div class="work-image-wrapper">
+                    <div class="duotone-wrapper work-image-wrapper">
                        <img src="assets/burger-king-case.png" alt="Burger King UK Campaign" class="work-image" loading="lazy">
                     </div>
                   </div>
