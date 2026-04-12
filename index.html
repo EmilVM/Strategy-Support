@@ -383,13 +383,17 @@
     .reveal-line {
       display: block;
       overflow: hidden; /* Masks the text before it slides up */
-      padding-bottom: 12px; /* Extra padding to prevent clipping large descenders (like 'g', 'y') */
-      margin-bottom: -12px;
+      /* Use 'em' units so the expansion scales perfectly with the massive typography */
+      padding-top: 0.1em;
+      margin-top: -0.1em;
+      padding-bottom: 0.4em; 
+      margin-bottom: -0.4em;
     }
 
     .reveal-text {
       display: block;
-      transform: translateY(110%);
+      /* Increased from 110% to 150% so the text fully hides inside the newly expanded padding area */
+      transform: translateY(150%);
       opacity: 0;
       transition: transform 1.2s cubic-bezier(0.25, 1, 0.2, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.2, 1);
     }
