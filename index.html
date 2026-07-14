@@ -296,19 +296,12 @@
       width: max-content;
       min-width: 0;
       max-width: none;
-      animation: client-logo-scroll 34s linear infinite;
+      transform: translate3d(0, 0, 0);
       will-change: transform;
     }
 
-    .client-group[data-group="agencies"] .client-logos-container { animation-duration: 22s; }
     .client-logo { width: auto; height: 58px; margin: 0 30px; flex: 0 0 auto; filter: brightness(0) invert(1); opacity: 0.62; transition: opacity 0.25s ease, transform 0.25s ease; }
     .client-logo:hover { opacity: 1; transform: scale(1.04); }
-    .client-logos-container:hover { animation-play-state: paused; }
-
-    @keyframes client-logo-scroll {
-      from { transform: translate3d(0, 0, 0); }
-      to { transform: translate3d(-50%, 0, 0); }
-    }
 
     #services {
       padding: var(--section-space) 20px;
@@ -359,7 +352,8 @@
     }
 
     .client-name { padding-top: 7px; color: var(--ink); font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; line-height: 1.4; text-transform: uppercase; }
-    .trigger-headline { min-width: 0; color: var(--text); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.08; overflow-wrap: anywhere; text-wrap: balance; }
+    .trigger-headline { min-width: 0; color: var(--text); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.08; overflow-wrap: anywhere; text-wrap: balance; transition: color 0.25s ease; }
+    .work-row.is-open .trigger-headline { color: var(--pink); }
     .accordion-icon { position: relative; width: 20px; height: 20px; margin-top: 12px; }
     .icon-line { position: absolute; inset: 50% auto auto 50%; display: block; background: var(--ink); transform: translate(-50%, -50%); transition: transform 0.25s ease; }
     .icon-line.horizontal { width: 20px; height: 2px; }
@@ -453,8 +447,6 @@
       .about-clients-wrapper { margin-top: 38px; padding-top: 26px; }
       .client-tabs { margin-bottom: 16px; }
       .carousel-container { padding: 10px 0; }
-      .client-logos-container { animation-duration: 20s; }
-      .client-group[data-group="agencies"] .client-logos-container { animation-duration: 14s; }
       .client-logo { height: 48px; margin: 0 22px; }
       .work-header-trigger { padding: 34px 0 26px; }
       .work-fold-content { padding-bottom: 42px; }
@@ -831,34 +823,65 @@
 
       const clientTabs = document.querySelectorAll(".client-tab");
       const clientGroups = document.querySelectorAll(".client-group");
+      const logoTracks = Array.from(document.querySelectorAll(".client-logos-container"));
+      const logoOffsets = new WeakMap();
+      let previousLogoFrame = performance.now();
 
-      function restartLogoAnimation(group) {
+      logoTracks.forEach((track) => logoOffsets.set(track, 0));
+
+      function resetLogoTrack(group) {
         const track = group.querySelector(".client-logos-container");
         if (!track) return;
-        track.style.animationName = "none";
-        void track.offsetWidth;
-        track.style.animationName = "client-logo-scroll";
+        logoOffsets.set(track, 0);
+        track.style.transform = "translate3d(0, 0, 0)";
+      }
+
+      function moveLogoTracks(now) {
+        const elapsed = Math.min(now - previousLogoFrame, 50);
+        previousLogoFrame = now;
+
+        logoTracks.forEach((track) => {
+          const group = track.closest(".client-group");
+          if (!group || group.hidden || !group.classList.contains("active")) return;
+
+          const loopWidth = track.scrollWidth / 2;
+          if (!loopWidth) return;
+
+          const isAgencyTrack = group.dataset.group === "agencies";
+          const pixelsPerSecond = window.innerWidth <= 700
+            ? (isAgencyTrack ? 42 : 32)
+            : (isAgencyTrack ? 34 : 25);
+
+          let offset = (logoOffsets.get(track) || 0) + (pixelsPerSecond * elapsed / 1000);
+          if (offset >= loopWidth) offset %= loopWidth;
+
+          logoOffsets.set(track, offset);
+          track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+        });
+
+        window.requestAnimationFrame(moveLogoTracks);
       }
 
       clientTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
           const selectedType = tab.dataset.type;
+
           clientTabs.forEach((item) => {
             const isSelected = item === tab;
             item.classList.toggle("active", isSelected);
             item.setAttribute("aria-selected", String(isSelected));
           });
+
           clientGroups.forEach((group) => {
             const isSelected = group.dataset.group === selectedType;
             group.classList.toggle("active", isSelected);
             group.hidden = !isSelected;
-            if (isSelected) window.requestAnimationFrame(() => restartLogoAnimation(group));
+            if (isSelected) resetLogoTrack(group);
           });
         });
       });
 
-      const activeClientGroup = document.querySelector(".client-group.active");
-      if (activeClientGroup) restartLogoAnimation(activeClientGroup);
+      window.requestAnimationFrame(moveLogoTracks);
 
       const workTriggers = document.querySelectorAll(".work-header-trigger");
       workTriggers.forEach((trigger) => {
