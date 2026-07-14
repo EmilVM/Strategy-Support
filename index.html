@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
@@ -1233,17 +1234,25 @@
         scroll-behavior: auto;
       }
 
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
+      /*
+        The typewriter is intentionally left running here.
+        The previous version disabled it on devices with Reduce Motion enabled,
+        which is why it could remain stuck on BRAND on iPhone.
+      */
 
-      .hero-cursor {
-        display: none !important;
+      .nav-links,
+      .nav-links a::after,
+      .hamburger-icon,
+      .hamburger-icon::before,
+      .hamburger-icon::after,
+      .client-logo,
+      .trigger-headline,
+      .icon-line,
+      .work-accordion-body,
+      .testimonial-item,
+      .testimonial-control,
+      .testimonial-control::after {
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -1369,7 +1378,7 @@
 
               <span class="hero-changing-live">
                 <span class="hero-changing-word" id="hero-changing-word">BRAND</span>
-                <span class="hero-cursor" id="hero-cursor"></span>
+                <span class="hero-cursor is-blinking" id="hero-cursor"></span>
               </span>
             </span>
 
@@ -1666,21 +1675,25 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      /*
+        TYPEWRITER
+        The old version stopped on BRAND whenever iOS reported
+        "prefers-reduced-motion: reduce". This version uses a small,
+        self-contained timer loop and runs consistently in Safari.
+      */
       const heroChangingWord = document.getElementById("hero-changing-word");
       const heroCursor = document.getElementById("hero-cursor");
-      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
       const heroWords = ["BRAND", "MARKETING", "CREATIVE"];
-      const typingSpeed = 80;
-      const deletingSpeed = 50;
-      const completedWordPause = 1750;
-      const betweenWordsPause = 180;
+
+      const typingSpeed = 85;
+      const deletingSpeed = 55;
+      const completedWordPause = 1550;
+      const betweenWordsPause = 240;
 
       let heroWordIndex = 0;
-      let heroCharacterIndex = 0;
-      let heroPhase = "typing";
+      let heroCharacterIndex = heroWords[0].length;
+      let heroIsDeleting = true;
       let heroTimer = null;
-      let heroIsRunning = false;
 
       function clearHeroTimer() {
         if (heroTimer !== null) {
@@ -1689,78 +1702,51 @@
         }
       }
 
-      function setCursorBlinking(shouldBlink) {
+      function setHeroCursorBlinking(isBlinking) {
         if (!heroCursor) return;
-        heroCursor.classList.toggle("is-blinking", shouldBlink);
+        heroCursor.classList.toggle("is-blinking", isBlinking);
       }
 
-      function scheduleHeroStep(delay) {
+      function scheduleHeroTick(delay) {
         clearHeroTimer();
-        heroTimer = window.setTimeout(stepHeroTypewriter, delay);
+        heroTimer = window.setTimeout(runHeroTypewriter, delay);
       }
 
-      function showStaticHero() {
-        clearHeroTimer();
-        heroIsRunning = false;
-
-        if (heroChangingWord) {
-          heroChangingWord.textContent = "BRAND";
-        }
-
-        if (heroCursor) {
-          heroCursor.hidden = true;
-          setCursorBlinking(false);
-        }
-      }
-
-      function stepHeroTypewriter() {
-        if (!heroIsRunning || !heroChangingWord || !heroCursor) return;
-
-        if (reducedMotionQuery.matches) {
-          showStaticHero();
-          return;
-        }
+      function runHeroTypewriter() {
+        if (!heroChangingWord || !heroCursor) return;
 
         const currentWord = heroWords[heroWordIndex];
         heroCursor.hidden = false;
 
-        if (heroPhase === "typing") {
-          setCursorBlinking(false);
-
-          if (heroCharacterIndex < currentWord.length) {
-            heroCharacterIndex += 1;
-            heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-            scheduleHeroStep(typingSpeed);
-            return;
-          }
-
-          heroPhase = "paused";
-          setCursorBlinking(true);
-          scheduleHeroStep(completedWordPause);
-          return;
-        }
-
-        if (heroPhase === "paused") {
-          setCursorBlinking(false);
-          heroPhase = "deleting";
-          scheduleHeroStep(0);
-          return;
-        }
-
-        if (heroPhase === "deleting") {
-          setCursorBlinking(false);
+        if (heroIsDeleting) {
+          setHeroCursorBlinking(false);
 
           if (heroCharacterIndex > 0) {
             heroCharacterIndex -= 1;
             heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-            scheduleHeroStep(deletingSpeed);
+            scheduleHeroTick(deletingSpeed);
             return;
           }
 
           heroWordIndex = (heroWordIndex + 1) % heroWords.length;
-          heroPhase = "typing";
-          scheduleHeroStep(betweenWordsPause);
+          heroIsDeleting = false;
+          scheduleHeroTick(betweenWordsPause);
+          return;
         }
+
+        const nextWord = heroWords[heroWordIndex];
+
+        if (heroCharacterIndex < nextWord.length) {
+          setHeroCursorBlinking(false);
+          heroCharacterIndex += 1;
+          heroChangingWord.textContent = nextWord.slice(0, heroCharacterIndex);
+          scheduleHeroTick(typingSpeed);
+          return;
+        }
+
+        heroIsDeleting = true;
+        setHeroCursorBlinking(true);
+        scheduleHeroTick(completedWordPause);
       }
 
       function startHeroTypewriter() {
@@ -1768,40 +1754,32 @@
 
         if (!heroChangingWord || !heroCursor) return;
 
-        if (reducedMotionQuery.matches) {
-          showStaticHero();
-          return;
-        }
-
         heroWordIndex = 0;
-        heroCharacterIndex = 0;
-        heroPhase = "typing";
-        heroIsRunning = true;
-        heroChangingWord.textContent = "";
+        heroCharacterIndex = heroWords[0].length;
+        heroIsDeleting = true;
+        heroChangingWord.textContent = heroWords[0];
         heroCursor.hidden = false;
-        setCursorBlinking(false);
-        scheduleHeroStep(0);
-      }
+        setHeroCursorBlinking(true);
 
-      function handleMotionPreferenceChange() {
-        startHeroTypewriter();
-      }
-
-      if (typeof reducedMotionQuery.addEventListener === "function") {
-        reducedMotionQuery.addEventListener("change", handleMotionPreferenceChange);
-      } else if (typeof reducedMotionQuery.addListener === "function") {
-        reducedMotionQuery.addListener(handleMotionPreferenceChange);
+        scheduleHeroTick(completedWordPause);
       }
 
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
           clearHeroTimer();
-          heroIsRunning = false;
-          setCursorBlinking(false);
+          setHeroCursorBlinking(false);
         } else {
           startHeroTypewriter();
         }
       });
+
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          startHeroTypewriter();
+        }
+      });
+
+      window.addEventListener("pagehide", clearHeroTimer);
 
       startHeroTypewriter();
 
