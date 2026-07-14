@@ -251,7 +251,9 @@
     }
 
     #intro {
+      height: 100vh;
       min-height: 100vh;
+      height: 100svh;
       min-height: 100svh;
       padding: calc(var(--nav-height) + 24px) 20px 24px;
       display: flex;
@@ -267,6 +269,8 @@
       max-width: 1600px;
       min-width: 0;
       margin: 0 auto;
+      display: flex;
+      justify-content: center;
     }
 
     .hero-headline {
@@ -277,21 +281,24 @@
       font-weight: 700;
       letter-spacing: -0.055em;
       line-height: 0.84;
+      text-align: center;
     }
 
     .hero-main {
-      display: grid;
-      grid-template-columns: max-content max-content;
+      width: 100%;
+      display: flex;
       align-items: baseline;
       justify-content: center;
-      column-gap: 0.18em;
+      gap: 0.18em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .hero-changing-slot {
       position: relative;
-      display: grid;
-      min-width: 0;
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: baseline center;
     }
 
     .hero-changing-reserve,
@@ -303,17 +310,19 @@
       visibility: hidden;
       pointer-events: none;
       white-space: nowrap;
+      user-select: none;
     }
 
     .hero-changing-live {
       position: relative;
-      justify-self: start;
       display: inline-block;
+      justify-self: center;
       white-space: nowrap;
     }
 
     .hero-changing-word {
       display: inline-block;
+      min-height: 0.84em;
       white-space: nowrap;
     }
 
@@ -327,6 +336,7 @@
       background: var(--pink);
       opacity: 1;
       pointer-events: none;
+      transform: translateZ(0);
     }
 
     .hero-cursor[hidden] {
@@ -339,6 +349,7 @@
 
     .hero-fixed {
       display: inline-block;
+      flex: 0 0 auto;
       white-space: nowrap;
     }
 
@@ -350,6 +361,7 @@
       font-weight: 400;
       letter-spacing: -0.025em;
       line-height: 1.05;
+      text-align: center;
     }
 
     @keyframes hero-cursor-blink {
@@ -1026,14 +1038,17 @@
       }
 
       .hero-main {
-        grid-template-columns: minmax(0, 1fr);
-        justify-items: center;
-        row-gap: 0.08em;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.08em;
+        white-space: normal;
       }
 
       .hero-changing-slot,
       .hero-fixed {
-        grid-column: 1;
+        margin-right: auto;
+        margin-left: auto;
       }
 
       .hero-subline {
@@ -1067,6 +1082,7 @@
         left: 0;
         z-index: -1;
         width: 100%;
+        min-height: calc(100vh - var(--nav-height));
         min-height: calc(100dvh - var(--nav-height));
         padding: 24px 20px;
         flex-direction: column;
@@ -1092,12 +1108,20 @@
       }
 
       #intro {
+        height: 100vh;
         min-height: 100vh;
+        height: 100svh;
         min-height: 100svh;
         padding: calc(var(--nav-height) + 18px) 16px 18px;
       }
 
+      .hero-container {
+        width: 100%;
+        max-width: 100%;
+      }
+
       .hero-headline {
+        width: 100%;
         max-width: 100%;
         font-size: clamp(3.15rem, 14.5vw, 5.8rem);
         letter-spacing: -0.052em;
@@ -1105,7 +1129,18 @@
       }
 
       .hero-main {
-        row-gap: 0.1em;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 0.1em;
+      }
+
+      .hero-changing-slot {
+        max-width: 100%;
+      }
+
+      .hero-changing-live {
+        justify-self: center;
       }
 
       .hero-subline {
@@ -1187,15 +1222,15 @@
       }
     }
 
-    @media (max-width: 360px) {
+    @media (max-width: 380px) {
       .hero-headline {
-        font-size: clamp(2.85rem, 14vw, 3.35rem);
+        font-size: clamp(2.8rem, 14vw, 3.35rem);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html {
-        scroll-behavior: auto;
+        scroll-behaviour: auto;
       }
 
       *,
@@ -1331,13 +1366,16 @@
           <span class="hero-main" aria-hidden="true">
             <span class="hero-changing-slot">
               <span class="hero-changing-reserve">MARKETING</span>
+
               <span class="hero-changing-live">
                 <span class="hero-changing-word" id="hero-changing-word">BRAND</span>
                 <span class="hero-cursor" id="hero-cursor"></span>
               </span>
             </span>
+
             <span class="hero-fixed">STRATEGY</span>
           </span>
+
           <span class="hero-subline" aria-hidden="true">Made simple.</span>
         </h1>
       </div>
@@ -1352,12 +1390,11 @@
         </div>
 
         <div class="about-content">
-          <h2 id="about-me-heading" class="about-heading">I help businesses make the choices that make everything else easier.</h2>
+          <h2 id="about-me-heading" class="about-heading">I’ve spent 15 years working on both sides of the brief.</h2>
 
           <div class="about-text">
-            <p>That might mean defining what the brand should stand for, deciding where marketing can make the biggest difference, or finding the idea that unlocks a difficult brief.</p>
-            <p>I’ve spent 15 years working with global brands, in-house teams and agencies in Copenhagen and London.</p>
-            <p>My job is to cut through the complexity, find what matters most and turn it into something people can use.</p>
+            <p>I’ve led strategy at London agencies and run brand and marketing inside global businesses. So I understand both what the business needs to achieve and what creative teams need to make something good.</p>
+            <p>Sometimes that means bringing order to a global marketing organisation. Sometimes it means finding the thought that unlocks a difficult brief. My role is to work out what really matters, make it clear and help people do something useful with it.</p>
           </div>
 
           <div class="about-clients-wrapper">
@@ -1643,6 +1680,7 @@
       let heroCharacterIndex = 0;
       let heroIsDeleting = false;
       let heroAnimationTimer = null;
+      let heroAnimationRunning = false;
 
       function clearHeroAnimationTimer() {
         if (heroAnimationTimer !== null) {
@@ -1658,6 +1696,7 @@
 
       function showStaticHero() {
         clearHeroAnimationTimer();
+        heroAnimationRunning = false;
 
         if (heroChangingWord) {
           heroChangingWord.textContent = "BRAND";
@@ -1669,66 +1708,66 @@
         }
       }
 
+      function scheduleHeroTick(delay) {
+        clearHeroAnimationTimer();
+
+        heroAnimationTimer = window.setTimeout(() => {
+          window.requestAnimationFrame(runHeroTypewriter);
+        }, delay);
+      }
+
       function runHeroTypewriter() {
-        if (!heroChangingWord || !heroCursor) return;
+        if (!heroChangingWord || !heroCursor || !heroAnimationRunning) return;
 
         if (reducedMotionQuery.matches) {
           showStaticHero();
           return;
         }
 
-        heroCursor.hidden = false;
-
         const currentWord = heroWords[heroWordIndex];
 
+        heroCursor.hidden = false;
+
         if (!heroIsDeleting) {
+          setCursorBlinking(false);
+
           if (heroCharacterIndex < currentWord.length) {
             heroCharacterIndex += 1;
             heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-            setCursorBlinking(false);
-
-            heroAnimationTimer = window.setTimeout(
-              runHeroTypewriter,
-              typingSpeed
-            );
-
+            scheduleHeroTick(typingSpeed);
             return;
           }
 
           setCursorBlinking(true);
 
+          scheduleHeroTick(completedWordPause);
+
           heroAnimationTimer = window.setTimeout(() => {
+            if (!heroAnimationRunning) return;
+
             setCursorBlinking(false);
             heroIsDeleting = true;
-            runHeroTypewriter();
+            window.requestAnimationFrame(runHeroTypewriter);
           }, completedWordPause);
 
           return;
         }
 
+        setCursorBlinking(false);
+
         if (heroCharacterIndex > 0) {
           heroCharacterIndex -= 1;
           heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-          setCursorBlinking(false);
-
-          heroAnimationTimer = window.setTimeout(
-            runHeroTypewriter,
-            deletingSpeed
-          );
-
+          scheduleHeroTick(deletingSpeed);
           return;
         }
 
         heroIsDeleting = false;
         heroWordIndex = (heroWordIndex + 1) % heroWords.length;
-
-        heroAnimationTimer = window.setTimeout(
-          runHeroTypewriter,
-          betweenWordsPause
-        );
+        scheduleHeroTick(betweenWordsPause);
       }
 
-      function startHeroTypewriter() {
+      function startHeroTypewriter(reset = true) {
         clearHeroAnimationTimer();
 
         if (!heroChangingWord || !heroCursor) return;
@@ -1738,28 +1777,57 @@
           return;
         }
 
-        heroWordIndex = 0;
-        heroCharacterIndex = 0;
-        heroIsDeleting = false;
-        heroChangingWord.textContent = "";
+        if (reset) {
+          heroWordIndex = 0;
+          heroCharacterIndex = 0;
+          heroIsDeleting = false;
+          heroChangingWord.textContent = "";
+        }
+
+        heroAnimationRunning = true;
         heroCursor.hidden = false;
         setCursorBlinking(false);
-        runHeroTypewriter();
+
+        window.requestAnimationFrame(runHeroTypewriter);
+      }
+
+      function restartHeroForMotionPreference() {
+        startHeroTypewriter(true);
       }
 
       if (typeof reducedMotionQuery.addEventListener === "function") {
-        reducedMotionQuery.addEventListener("change", startHeroTypewriter);
+        reducedMotionQuery.addEventListener("change", restartHeroForMotionPreference);
       } else if (typeof reducedMotionQuery.addListener === "function") {
-        reducedMotionQuery.addListener(startHeroTypewriter);
+        reducedMotionQuery.addListener(restartHeroForMotionPreference);
       }
 
-      startHeroTypewriter();
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearHeroAnimationTimer();
+          heroAnimationRunning = false;
+          setCursorBlinking(false);
+        } else {
+          startHeroTypewriter(true);
+        }
+      });
+
+      function initialiseHero() {
+        startHeroTypewriter(true);
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(initialiseHero).catch(initialiseHero);
+      } else {
+        initialiseHero();
+      }
 
       const menuToggle = document.querySelector(".mobile-menu-toggle");
       const navLinks = document.querySelector(".nav-links");
       const mobileLinks = document.querySelectorAll(".nav-links a");
 
       function closeMenu() {
+        if (!menuToggle || !navLinks) return;
+
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open menu");
         menuToggle.classList.remove("active");
@@ -1767,15 +1835,17 @@
         document.body.classList.remove("menu-open");
       }
 
-      menuToggle.addEventListener("click", () => {
-        const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
 
-        menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-        menuToggle.setAttribute("aria-label", isExpanded ? "Open menu" : "Close menu");
-        menuToggle.classList.toggle("active", !isExpanded);
-        navLinks.classList.toggle("active", !isExpanded);
-        document.body.classList.toggle("menu-open", !isExpanded);
-      });
+          menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+          menuToggle.setAttribute("aria-label", isExpanded ? "Open menu" : "Close menu");
+          menuToggle.classList.toggle("active", !isExpanded);
+          navLinks.classList.toggle("active", !isExpanded);
+          document.body.classList.toggle("menu-open", !isExpanded);
+        });
+      }
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", closeMenu);
@@ -1788,24 +1858,26 @@
       const sections = document.querySelectorAll("section[id]");
       const navItems = document.querySelectorAll(".nav-links a");
 
-      const scrollSpyObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+      if ("IntersectionObserver" in window) {
+        const scrollSpyObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
 
-          navItems.forEach((link) => {
-            link.classList.toggle(
-              "active-section",
-              link.getAttribute("href") === "#" + entry.target.id
-            );
+            navItems.forEach((link) => {
+              link.classList.toggle(
+                "active-section",
+                link.getAttribute("href") === "#" + entry.target.id
+              );
+            });
           });
+        }, {
+          rootMargin: "-45% 0px -45% 0px"
         });
-      }, {
-        rootMargin: "-45% 0px -45% 0px"
-      });
 
-      sections.forEach((section) => {
-        scrollSpyObserver.observe(section);
-      });
+        sections.forEach((section) => {
+          scrollSpyObserver.observe(section);
+        });
+      }
 
       const clientTabs = document.querySelectorAll(".client-tab");
       const clientGroups = document.querySelectorAll(".client-group");
@@ -1895,10 +1967,15 @@
 
           document.querySelectorAll(".work-row").forEach((row) => {
             row.classList.remove("is-open");
-            row.querySelector(".work-header-trigger").setAttribute("aria-expanded", "false");
+
+            const rowTrigger = row.querySelector(".work-header-trigger");
+
+            if (rowTrigger) {
+              rowTrigger.setAttribute("aria-expanded", "false");
+            }
           });
 
-          if (!isExpanded) {
+          if (!isExpanded && currentRow) {
             currentRow.classList.add("is-open");
             trigger.setAttribute("aria-expanded", "true");
           }
