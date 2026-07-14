@@ -1230,7 +1230,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       html {
-        scroll-behaviour: auto;
+        scroll-behavior: auto;
       }
 
       *,
@@ -1678,14 +1678,14 @@
 
       let heroWordIndex = 0;
       let heroCharacterIndex = 0;
-      let heroIsDeleting = false;
-      let heroAnimationTimer = null;
-      let heroAnimationRunning = false;
+      let heroPhase = "typing";
+      let heroTimer = null;
+      let heroIsRunning = false;
 
-      function clearHeroAnimationTimer() {
-        if (heroAnimationTimer !== null) {
-          window.clearTimeout(heroAnimationTimer);
-          heroAnimationTimer = null;
+      function clearHeroTimer() {
+        if (heroTimer !== null) {
+          window.clearTimeout(heroTimer);
+          heroTimer = null;
         }
       }
 
@@ -1694,9 +1694,14 @@
         heroCursor.classList.toggle("is-blinking", shouldBlink);
       }
 
+      function scheduleHeroStep(delay) {
+        clearHeroTimer();
+        heroTimer = window.setTimeout(stepHeroTypewriter, delay);
+      }
+
       function showStaticHero() {
-        clearHeroAnimationTimer();
-        heroAnimationRunning = false;
+        clearHeroTimer();
+        heroIsRunning = false;
 
         if (heroChangingWord) {
           heroChangingWord.textContent = "BRAND";
@@ -1708,16 +1713,8 @@
         }
       }
 
-      function scheduleHeroTick(delay) {
-        clearHeroAnimationTimer();
-
-        heroAnimationTimer = window.setTimeout(() => {
-          window.requestAnimationFrame(runHeroTypewriter);
-        }, delay);
-      }
-
-      function runHeroTypewriter() {
-        if (!heroChangingWord || !heroCursor || !heroAnimationRunning) return;
+      function stepHeroTypewriter() {
+        if (!heroIsRunning || !heroChangingWord || !heroCursor) return;
 
         if (reducedMotionQuery.matches) {
           showStaticHero();
@@ -1725,50 +1722,49 @@
         }
 
         const currentWord = heroWords[heroWordIndex];
-
         heroCursor.hidden = false;
 
-        if (!heroIsDeleting) {
+        if (heroPhase === "typing") {
           setCursorBlinking(false);
 
           if (heroCharacterIndex < currentWord.length) {
             heroCharacterIndex += 1;
             heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-            scheduleHeroTick(typingSpeed);
+            scheduleHeroStep(typingSpeed);
             return;
           }
 
+          heroPhase = "paused";
           setCursorBlinking(true);
-
-          scheduleHeroTick(completedWordPause);
-
-          heroAnimationTimer = window.setTimeout(() => {
-            if (!heroAnimationRunning) return;
-
-            setCursorBlinking(false);
-            heroIsDeleting = true;
-            window.requestAnimationFrame(runHeroTypewriter);
-          }, completedWordPause);
-
+          scheduleHeroStep(completedWordPause);
           return;
         }
 
-        setCursorBlinking(false);
-
-        if (heroCharacterIndex > 0) {
-          heroCharacterIndex -= 1;
-          heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-          scheduleHeroTick(deletingSpeed);
+        if (heroPhase === "paused") {
+          setCursorBlinking(false);
+          heroPhase = "deleting";
+          scheduleHeroStep(0);
           return;
         }
 
-        heroIsDeleting = false;
-        heroWordIndex = (heroWordIndex + 1) % heroWords.length;
-        scheduleHeroTick(betweenWordsPause);
+        if (heroPhase === "deleting") {
+          setCursorBlinking(false);
+
+          if (heroCharacterIndex > 0) {
+            heroCharacterIndex -= 1;
+            heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
+            scheduleHeroStep(deletingSpeed);
+            return;
+          }
+
+          heroWordIndex = (heroWordIndex + 1) % heroWords.length;
+          heroPhase = "typing";
+          scheduleHeroStep(betweenWordsPause);
+        }
       }
 
-      function startHeroTypewriter(reset = true) {
-        clearHeroAnimationTimer();
+      function startHeroTypewriter() {
+        clearHeroTimer();
 
         if (!heroChangingWord || !heroCursor) return;
 
@@ -1777,49 +1773,37 @@
           return;
         }
 
-        if (reset) {
-          heroWordIndex = 0;
-          heroCharacterIndex = 0;
-          heroIsDeleting = false;
-          heroChangingWord.textContent = "";
-        }
-
-        heroAnimationRunning = true;
+        heroWordIndex = 0;
+        heroCharacterIndex = 0;
+        heroPhase = "typing";
+        heroIsRunning = true;
+        heroChangingWord.textContent = "";
         heroCursor.hidden = false;
         setCursorBlinking(false);
-
-        window.requestAnimationFrame(runHeroTypewriter);
+        scheduleHeroStep(0);
       }
 
-      function restartHeroForMotionPreference() {
-        startHeroTypewriter(true);
+      function handleMotionPreferenceChange() {
+        startHeroTypewriter();
       }
 
       if (typeof reducedMotionQuery.addEventListener === "function") {
-        reducedMotionQuery.addEventListener("change", restartHeroForMotionPreference);
+        reducedMotionQuery.addEventListener("change", handleMotionPreferenceChange);
       } else if (typeof reducedMotionQuery.addListener === "function") {
-        reducedMotionQuery.addListener(restartHeroForMotionPreference);
+        reducedMotionQuery.addListener(handleMotionPreferenceChange);
       }
 
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-          clearHeroAnimationTimer();
-          heroAnimationRunning = false;
+          clearHeroTimer();
+          heroIsRunning = false;
           setCursorBlinking(false);
         } else {
-          startHeroTypewriter(true);
+          startHeroTypewriter();
         }
       });
 
-      function initialiseHero() {
-        startHeroTypewriter(true);
-      }
-
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(initialiseHero).catch(initialiseHero);
-      } else {
-        initialiseHero();
-      }
+      startHeroTypewriter();
 
       const menuToggle = document.querySelector(".mobile-menu-toggle");
       const navLinks = document.querySelector(".nav-links");
