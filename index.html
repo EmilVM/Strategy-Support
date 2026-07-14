@@ -124,7 +124,7 @@
       height: var(--masthead-height);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 0 40px;
       background: var(--bg-dark);
       border-bottom: 1px solid var(--line-on-dark);
@@ -136,19 +136,11 @@
       text-transform: uppercase;
     }
 
-    .masthead-message,
-    .masthead-status {
+    .masthead-message {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--pink);
-      box-shadow: 0 0 0 3px rgba(249, 0, 144, 0.16);
+      justify-content: center;
+      text-align: center;
     }
 
     /* Navigation */
@@ -292,41 +284,6 @@
       border-bottom-color: rgba(255, 241, 229, 0.3);
     }
 
-    .button-row {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 1px solid var(--ink);
-      color: var(--ink);
-      text-decoration: none;
-      font-family: var(--font-system);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-    }
-
-    .button.primary {
-      background: var(--ink);
-      color: var(--bg-cream);
-    }
-
-    .button:hover {
-      background: var(--pink);
-      border-color: var(--pink);
-      color: #ffffff;
-    }
 
     /* Hero */
     #intro {
@@ -345,40 +302,17 @@
       max-width: 1280px;
     }
 
-    .hero-kicker {
-      margin-bottom: 26px;
-      color: var(--ink);
-      font-family: var(--font-system);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
     .hero-headline {
-      max-width: 1150px;
+      max-width: 1100px;
       margin: 0 auto;
       color: var(--ink);
-      font-size: clamp(4rem, 9vw, 8.6rem);
+      font-size: clamp(4.5rem, 11vw, 10rem);
       font-weight: 400;
       letter-spacing: -0.045em;
       line-height: 0.93;
       text-wrap: balance;
     }
 
-    .hero-headline em {
-      color: var(--pink);
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    .hero-subhead {
-      max-width: 780px;
-      margin: 34px auto 0;
-      font-size: clamp(1.15rem, 2vw, 1.55rem);
-      line-height: 1.5;
-      text-wrap: balance;
-    }
 
     /* Proof */
     .proof-section {
@@ -402,30 +336,41 @@
       text-wrap: balance;
     }
 
-    .brand-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 16px;
-      align-items: center;
+    .carousel-wrapper {
+      width: 100%;
+      overflow: hidden;
     }
 
-    .brand-item {
-      min-height: 92px;
+    .carousel-container {
+      overflow: hidden;
+      padding: 18px 0;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .client-logos-container {
       display: flex;
+      width: max-content;
       align-items: center;
-      justify-content: center;
-      padding: 16px;
-      border: 1px solid var(--line-light);
-      background: rgba(255, 255, 255, 0.18);
+      animation: logo-scroll 32s linear infinite;
     }
 
-    .brand-item img {
-      display: block;
+    .client-logo {
       width: auto;
-      max-width: 100%;
-      max-height: 48px;
+      height: 58px;
+      margin: 0 30px;
+      flex: 0 0 auto;
       filter: grayscale(1) contrast(1.1);
-      opacity: 0.78;
+      opacity: 0.72;
+    }
+
+    .client-logos-container:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes logo-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .brands-note {
@@ -747,26 +692,36 @@
       margin: 0 auto;
     }
 
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
+    .testimonial-stage {
+      position: relative;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .testimonial-card {
-      min-height: 100%;
-      padding: 34px;
-      border: 1px solid var(--line-strong);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 36px;
-      background: rgba(255, 255, 255, 0.18);
+    .testimonial-item {
+      position: absolute;
+      width: 100%;
+      max-width: 900px;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      text-align: center;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .testimonial-item.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     .testimonial-quote {
+      max-width: 860px;
+      margin: 0 auto;
       color: var(--ink);
-      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      font-size: clamp(1.35rem, 2.7vw, 2rem);
       font-style: italic;
       line-height: 1.55;
     }
@@ -784,6 +739,29 @@
 
     .testimonial-role {
       opacity: 0.7;
+    }
+
+    .testimonial-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .indicator-dot.active {
+      background: var(--pink);
+      border-color: var(--pink);
+      transform: scale(1.15);
     }
 
     /* Contact */
@@ -810,13 +788,6 @@
       text-wrap: balance;
     }
 
-    .contact-lead {
-      max-width: 700px;
-      margin: 28px auto 0;
-      font-size: clamp(1.15rem, 2vw, 1.45rem);
-      line-height: 1.55;
-      opacity: 0.9;
-    }
 
     .giant-email {
       display: inline-block;
@@ -872,9 +843,6 @@
     }
 
     @media (max-width: 980px) {
-      .brand-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
 
       .work-header-trigger,
       .work-fold-content {
@@ -928,9 +896,6 @@
         aspect-ratio: 16 / 10;
       }
 
-      .testimonial-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 700px) {
@@ -1000,9 +965,6 @@
         font-size: clamp(3.7rem, 17vw, 6rem);
       }
 
-      .hero-subhead {
-        font-size: 1.12rem;
-      }
 
       .button {
         width: 100%;
@@ -1018,9 +980,6 @@
         padding-right: 16px;
       }
 
-      .brand-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
 
       .work-header-trigger {
         padding: 38px 0 28px;
@@ -1035,9 +994,6 @@
         gap: 12px;
       }
 
-      .testimonial-card {
-        padding: 28px;
-      }
 
       .contact-meta {
         flex-direction: column;
@@ -1152,10 +1108,7 @@
     <div class="masthead-message">
       <span>Copenhagen-based · London-trained · Working globally</span>
     </div>
-    <div class="masthead-status">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span>Available</span>
-    </div>
+    
   </div>
 
   <nav class="sticky-nav" aria-label="Primary navigation">
@@ -1185,22 +1138,9 @@
   <main>
     <section id="intro" aria-labelledby="intro-heading">
       <div class="hero-container">
-        <p class="hero-kicker">Independent brand &amp; marketing strategy</p>
-
         <h1 id="intro-heading" class="hero-headline">
-          Most strategy adds more.
-          <br />
-          I find the thought that lets you do <em>less</em> — and do it better.
+          The thinking that lets you do less.
         </h1>
-
-        <p class="hero-subhead">
-          I help brands, agencies and in-house teams make clearer choices, find a sharper way forward and create better work.
-        </p>
-
-        <div class="button-row" aria-label="Introductory actions">
-          <a class="button primary" href="#recent-work">View selected work</a>
-          <a class="button" href="#contact">Start a conversation</a>
-        </div>
       </div>
     </section>
 
@@ -1212,24 +1152,31 @@
           15 years across global brands, in-house teams and leading agencies in Copenhagen and London.
         </p>
 
-        <div class="brand-grid" aria-label="Selected brands Emil has helped">
-          <div class="brand-item">
-            <img src="assets/brand2.png" alt="Burger King" width="240" height="120" loading="lazy" />
-          </div>
-          <div class="brand-item">
-            <img src="assets/brand3.png" alt="Barclays" width="240" height="120" loading="lazy" />
-          </div>
-          <div class="brand-item">
-            <img src="assets/brand1.png" alt="Huawei" width="240" height="120" loading="lazy" />
-          </div>
-          <div class="brand-item">
-            <img src="assets/brand5.png" alt="PepsiCo" width="240" height="120" loading="lazy" />
-          </div>
-          <div class="brand-item">
-            <img src="assets/brand8.png" alt="Danske Bank" width="240" height="120" loading="lazy" />
-          </div>
-          <div class="brand-item">
-            <img src="assets/brand6.png" alt="Saxo Bank" width="240" height="120" loading="lazy" />
+        <div class="carousel-wrapper" aria-label="Selected brands Emil has helped">
+          <div class="carousel-container">
+            <div class="client-logos-container">
+              <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy" />
+              <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy" />
+              <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy" />
+              <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy" />
+              <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy" />
+              <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy" />
+              <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy" />
+              <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy" />
+              <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy" />
+              <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy" />
+
+              <img src="assets/brand1.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand2.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand3.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand4.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand5.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand6.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand7.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand8.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand9.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+              <img src="assets/brand10.png" alt="" class="client-logo" aria-hidden="true" loading="lazy" />
+            </div>
           </div>
         </div>
 
@@ -1441,7 +1388,7 @@
     <section id="services" aria-labelledby="services-heading">
       <div class="services-grid">
         <div class="services-header">
-          <h2 id="services-heading" class="section-label on-dark">When to call me</h2>
+          <h2 id="services-heading" class="section-label on-dark">How I help</h2>
           <p class="services-intro">
             Clients usually bring me in when something important has become difficult to explain, prioritise or turn into good work.
           </p>
@@ -1532,8 +1479,8 @@
       <div class="testimonials-container">
         <h2 id="testimonials-heading" class="section-label">What clients and colleagues say</h2>
 
-        <div class="testimonial-grid">
-          <figure class="testimonial-card">
+        <div class="testimonial-stage">
+          <figure class="testimonial-item active">
             <blockquote class="testimonial-quote">
               “If you need a marketing strategist who also has a flair for tactical execution, there is no one better than Emil. I cannot recommend him highly enough.”
             </blockquote>
@@ -1543,7 +1490,7 @@
             </figcaption>
           </figure>
 
-          <figure class="testimonial-card">
+          <figure class="testimonial-item">
             <blockquote class="testimonial-quote">
               “Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He thinks laterally and inspires creative teams with his briefings.”
             </blockquote>
@@ -1553,7 +1500,7 @@
             </figcaption>
           </figure>
 
-          <figure class="testimonial-card">
+          <figure class="testimonial-item">
             <blockquote class="testimonial-quote">
               “Emil is a brilliant strategist. His work is meticulous, his approach is rigorous, and his presentation and communication skills are second to none.”
             </blockquote>
@@ -1562,6 +1509,12 @@
               <span class="testimonial-role">Global Director, Unilever</span>
             </figcaption>
           </figure>
+        </div>
+
+        <div class="testimonial-indicators" aria-label="Testimonial navigation">
+          <button class="indicator-dot active" type="button" aria-label="Show testimonial 1" aria-pressed="true"></button>
+          <button class="indicator-dot" type="button" aria-label="Show testimonial 2" aria-pressed="false"></button>
+          <button class="indicator-dot" type="button" aria-label="Show testimonial 3" aria-pressed="false"></button>
         </div>
       </div>
     </section>
@@ -1574,9 +1527,6 @@
           Got a difficult brand or marketing problem?
         </h2>
 
-        <p class="contact-lead">
-          Send me the messy version. I will tell you whether I can help.
-        </p>
 
         <a class="giant-email" href="mailto:emil@strategy-support.com">
           emil@strategy-support.com
@@ -1671,6 +1621,45 @@
           }
         });
       });
+
+
+      const testimonials = document.querySelectorAll(".testimonial-item");
+      const testimonialDots = document.querySelectorAll(".indicator-dot");
+      let currentTestimonial = 0;
+      let testimonialTimer;
+
+      function showTestimonial(index) {
+        testimonials.forEach((item, itemIndex) => {
+          item.classList.toggle("active", itemIndex === index);
+        });
+
+        testimonialDots.forEach((dot, dotIndex) => {
+          const isActive = dotIndex === index;
+          dot.classList.toggle("active", isActive);
+          dot.setAttribute("aria-pressed", String(isActive));
+        });
+
+        currentTestimonial = index;
+      }
+
+      function startTestimonialTimer() {
+        clearInterval(testimonialTimer);
+        testimonialTimer = setInterval(() => {
+          showTestimonial((currentTestimonial + 1) % testimonials.length);
+        }, 9000);
+      }
+
+      testimonialDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          showTestimonial(index);
+          startTestimonialTimer();
+        });
+      });
+
+      if (testimonials.length) {
+        showTestimonial(0);
+        startTestimonialTimer();
+      }
 
       const currentYear = document.getElementById("current-year");
       if (currentYear) {
