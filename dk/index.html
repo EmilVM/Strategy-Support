@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="da-DK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Freelance brand- og marketingstrateg i København | Strategy Support</title>
+  <meta name="description" content="Freelance brand- og marketingstrateg Emil Valdemar Madsen hjælper brands, bureauer og marketingteams med at træffe klarere valg og skabe bedre arbejde." />
+  <link rel="canonical" href="https://strategy-support.com/dk/" />
+  <link rel="alternate" hreflang="en" href="https://strategy-support.com/" />
+  <link rel="alternate" hreflang="da" href="https://strategy-support.com/dk/" />
+  <link rel="alternate" hreflang="x-default" href="https://strategy-support.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://strategy-support.com/dk/" />
+  <meta property="og:title" content="Freelance brand- og marketingstrateg i København | Emil Valdemar Madsen" />
+  <meta property="og:description" content="Jeg hjælper brands, bureauer og interne marketingteams med at finde den tanke, der gør den næste beslutning lettere." />
+  <meta property="og:image" content="https://strategy-support.com/assets/emilmadsen.JPG" />
+  <meta property="og:image:alt" content="Emil Valdemar Madsen — freelance brand- og marketingstrateg" />
+  <meta property="og:site_name" content="Strategy Support" />
+  <meta property="og:locale" content="da_DK" />
+  <meta property="og:locale:alternate" content="en_GB" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Freelance brand- og marketingstrateg i København | Emil Valdemar Madsen" />
+  <meta name="twitter:description" content="Freelance brand- og marketingstrategi for brands, bureauer og marketingteams." />
+  <meta name="twitter:image" content="https://strategy-support.com/assets/emilmadsen.JPG" />
+  <meta name="twitter:image:alt" content="Emil Valdemar Madsen — freelance brand- og marketingstrateg" />
+
+  <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/site.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/web-app-manifest-192x192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --font-voice: "Source Serif 4", Georgia, serif;
+      --font-system: "Inter", system-ui, sans-serif;
+      --bg-cream: #fff1e5;
+      --bg-dark: #3d0814;
+      --text: #000;
+      --ink: #3d0814;
+      --pink: #f90090;
+      --line-light: rgba(61, 8, 20, 0.12);
+      --line-strong: rgba(61, 8, 20, 0.28);
+      --line-on-dark: rgba(255, 241, 229, 0.2);
+      --page-width: 1200px;
+      --nav-height: 68px;
+      --section-space: clamp(84px, 9vw, 118px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      width: 100%;
+      max-width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      background: var(--bg-cream);
+      color: var(--text);
+      font-family: var(--font-voice);
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    main,
+    section,
+    nav,
+    footer {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--pink);
+      outline-offset: 4px;
+    }
+
+    section[id] {
+      scroll-margin-top: 90px;
+    }
+
+    .sticky-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 241, 229, 0.9);
+      border-bottom: 1px solid var(--line-light);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      position: relative;
+      z-index: 1003;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .pink-dash {
+      display: inline-block;
+      margin: 0 -2px;
+      color: var(--pink);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text);
+      text-decoration: none;
+      font-family: var(--font-system);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 100%;
+      height: 2px;
+      background: var(--pink);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active-section::after {
+      transform: scaleX(1);
+    }
+
+    .mobile-menu-toggle {
+      position: relative;
+      z-index: 1003;
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .hamburger-icon,
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .hamburger-icon {
+      position: relative;
+      margin: auto;
+    }
+
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .hamburger-icon::before {
+      top: -8px;
+    }
+
+    .hamburger-icon::after {
+      top: 8px;
+    }
+
+    .mobile-menu-toggle.active .hamburger-icon {
+      background: transparent;
+    }
+
+    .mobile-menu-toggle.active .hamburger-icon::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .mobile-menu-toggle.active .hamburger-icon::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+
+    #intro {
+      height: 100vh;
+      min-height: 100vh;
+      height: 100svh;
+      min-height: 100svh;
+      padding: calc(var(--nav-height) + 24px) 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--bg-cream);
+      text-align: center;
+    }
+
+    .hero-container {
+      width: 100%;
+      max-width: 1600px;
+      min-width: 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-headline {
+      width: 100%;
+      margin: 0 auto;
+      color: var(--ink);
+      font-size: clamp(4rem, 8.8vw, 9.75rem);
+      font-weight: 700;
+      letter-spacing: -0.055em;
+      line-height: 0.84;
+      text-align: center;
+    }
+
+    .hero-main {
+      width: 100%;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-changing-slot {
+      position: relative;
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: baseline center;
+    }
+
+    .hero-changing-reserve,
+    .hero-changing-live {
+      grid-area: 1 / 1;
+    }
+
+    .hero-changing-reserve {
+      visibility: hidden;
+      pointer-events: none;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .hero-changing-live {
+      position: relative;
+      display: inline-block;
+      justify-self: center;
+      white-space: nowrap;
+    }
+
+    .hero-changing-word {
+      display: inline-block;
+      min-height: 0.84em;
+      white-space: nowrap;
+    }
+
+    .hero-cursor {
+      position: absolute;
+      top: 0.07em;
+      left: calc(100% + 0.055em);
+      width: 0.034em;
+      min-width: 2px;
+      height: 0.78em;
+      background: var(--pink);
+      opacity: 1;
+      pointer-events: none;
+      transform: translateZ(0);
+    }
+
+    .hero-cursor[hidden] {
+      display: none;
+    }
+
+    .hero-cursor.is-blinking {
+      animation: hero-cursor-blink 0.82s steps(1, end) infinite;
+    }
+
+    .hero-fixed {
+      display: inline-block;
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .hero-subline {
+      display: block;
+      margin-top: clamp(16px, 2vw, 28px);
+      color: var(--pink);
+      font-size: clamp(1.4rem, 2.35vw, 2.45rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      text-align: center;
+    }
+
+    @keyframes hero-cursor-blink {
+      0%,
+      46% {
+        opacity: 1;
+      }
+
+      47%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #about-me {
+      padding: var(--section-space) 20px;
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--bg-cream);
+    }
+
+    .about-container {
+      width: 100%;
+      max-width: var(--page-width);
+      min-width: 0;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 32% minmax(0, 1fr);
+      gap: clamp(42px, 5vw, 64px);
+      align-items: start;
+    }
+
+    .about-image-col,
+    .about-content {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .about-image-col {
+      position: sticky;
+      top: 108px;
+    }
+
+    .about-image-wrapper {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .about-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .about-heading {
+      margin-bottom: 28px;
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .about-text {
+      max-width: 760px;
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+      line-height: 1.7;
+      opacity: 0.94;
+    }
+
+    .about-text p + p {
+      margin-top: 22px;
+    }
+
+    .about-clients-wrapper {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      margin-top: 44px;
+      padding-top: 30px;
+      overflow: hidden;
+      border-top: 1px solid var(--line-on-dark);
+    }
+
+    .clients-intro-label {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--bg-cream);
+      font-family: var(--font-system);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .client-tabs {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      margin-bottom: 22px;
+    }
+
+    .client-tab {
+      position: relative;
+      padding: 0 0 6px;
+      border: 0;
+      background: transparent;
+      color: var(--bg-cream);
+      font-family: var(--font-system);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      opacity: 0.5;
+    }
+
+    .client-tab:hover,
+    .client-tab.active {
+      opacity: 1;
+    }
+
+    .client-tab.active::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--pink);
+    }
+
+    .carousel-wrapper,
+    .carousel-container,
+    .carousel-content,
+    .client-group {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      position: relative;
+      padding: 14px 0;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .carousel-content {
+      position: relative;
+      min-height: 76px;
+    }
+
+    .client-logos-container {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      min-width: 0;
+      max-width: none;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+
+    .client-logo {
+      width: auto;
+      height: 58px;
+      margin: 0 30px;
+      flex: 0 0 auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.62;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .client-logo:hover {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+
+    #services {
+      padding: clamp(100px, 10vw, 140px) 20px;
+      overflow: hidden;
+      background: var(--bg-cream);
+      color: var(--ink);
+      border-top: 2px solid var(--line-strong);
+    }
+
+    .services-grid {
+      width: 100%;
+      max-width: var(--page-width);
+      min-width: 0;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(48px, 6vw, 80px);
+      align-items: start;
+    }
+
+    .services-header,
+    .services-content {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .services-header {
+      position: sticky;
+      top: 108px;
+    }
+
+    .services-intro {
+      max-width: none;
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      opacity: 1;
+      text-wrap: balance;
+    }
+
+    .services-intro .pink-highlight {
+      color: var(--pink);
+    }
+
+    .services-content {
+      padding-left: 40px;
+      border-left: 1px solid var(--line-strong);
+    }
+
+    .service-row {
+      padding: 46px 0;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .service-row:first-child {
+      padding-top: 34px;
+    }
+
+    .service-row:last-child {
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .service-kicker {
+      display: block;
+      margin-bottom: 10px;
+      font-family: var(--font-system);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .service-row h3 {
+      margin-bottom: 14px;
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      font-weight: 400;
+      line-height: 1.05;
+      text-wrap: balance;
+    }
+
+    .service-row p {
+      max-width: 700px;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      line-height: 1.65;
+      opacity: 0.9;
+    }
+
+    #recent-work {
+      padding: clamp(100px, 10vw, 140px) 20px;
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--bg-cream);
+      border-top: 2px solid rgba(255, 241, 229, 0.2);
+    }
+
+    .work-container {
+      width: 100%;
+      max-width: var(--page-width);
+      min-width: 0;
+      margin: 0 auto;
+    }
+
+
+    .work-row {
+      border-bottom: 2px solid rgba(255, 241, 229, 0.28);
+    }
+
+    .work-header-trigger {
+      width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 27% minmax(0, 1fr) auto;
+      gap: 48px;
+      align-items: start;
+      padding: 42px 0 34px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .client-name {
+      padding-top: 7px;
+      color: var(--bg-cream);
+      font-family: var(--font-system);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .trigger-headline {
+      min-width: 0;
+      color: var(--bg-cream);
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      overflow-wrap: anywhere;
+      text-wrap: balance;
+      transition: color 0.25s ease;
+    }
+
+    .work-row.is-open .trigger-headline {
+      color: var(--pink);
+    }
+
+    .accordion-icon {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      margin-top: 12px;
+    }
+
+    .icon-line {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      display: block;
+      background: var(--bg-cream);
+      transform: translate(-50%, -50%);
+      transition: transform 0.25s ease;
+    }
+
+    .icon-line.horizontal {
+      width: 20px;
+      height: 2px;
+    }
+
+    .icon-line.vertical {
+      width: 2px;
+      height: 20px;
+    }
+
+    .work-row.is-open .icon-line.vertical {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .work-accordion-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      min-width: 0;
+      transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .work-row.is-open .work-accordion-body {
+      grid-template-rows: 1fr;
+    }
+
+    .work-accordion-inner {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .work-fold-content {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 27% minmax(0, 1fr);
+      gap: 48px;
+      padding: 0 0 52px;
+    }
+
+    .work-image-wrapper {
+      min-width: 0;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid rgba(255, 241, 229, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .work-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .narrative-stack {
+      min-width: 0;
+      max-width: 780px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .narrative-item {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .narrative-label {
+      color: var(--bg-cream);
+      font-family: var(--font-system);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .narrative-text {
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
+
+    #testimonials {
+      padding: clamp(100px, 10vw, 140px) 20px;
+      overflow: hidden;
+      background: var(--bg-cream);
+      color: var(--text);
+      border-top: 2px solid var(--line-strong);
+    }
+
+    .testimonials-container {
+      width: 100%;
+      max-width: var(--page-width);
+      min-width: 0;
+      margin: 0 auto;
+    }
+
+    .testimonial-stage {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial-item {
+      position: absolute;
+      width: 100%;
+      max-width: 900px;
+      min-width: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      text-align: center;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .testimonial-item.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .testimonial-quote {
+      max-width: 860px;
+      margin: 0 auto;
+      color: var(--ink);
+      font-size: clamp(1.35rem, 2.7vw, 2rem);
+      font-style: italic;
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+
+    .testimonial-author {
+      margin-top: 26px;
+      font-family: var(--font-system);
+      font-size: 0.83rem;
+      line-height: 1.5;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-role {
+      opacity: 0.7;
+    }
+
+    .testimonial-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .testimonial-control {
+      position: relative;
+      padding: 8px 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-system);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0.45;
+      transition: opacity 0.25s ease;
+    }
+
+    .testimonial-control::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 1px;
+      left: 0;
+      height: 2px;
+      background: var(--pink);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .testimonial-control:hover,
+    .testimonial-control.active {
+      opacity: 1;
+    }
+
+    .testimonial-control.active::after {
+      transform: scaleX(1);
+    }
+
+    #contact {
+      padding: clamp(100px, 10vw, 136px) 20px clamp(84px, 8vw, 108px);
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--bg-cream);
+      text-align: center;
+    }
+
+    .contact-container {
+      width: 100%;
+      max-width: 960px;
+      min-width: 0;
+      margin: 0 auto;
+    }
+
+    .contact-heading {
+      max-width: 820px;
+      margin: 0 auto;
+      font-size: clamp(3rem, 7vw, 6.8rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 0.98;
+      overflow-wrap: anywhere;
+      text-wrap: balance;
+    }
+
+    .giant-email {
+      display: inline-block;
+      max-width: 100%;
+      margin-top: 38px;
+      color: var(--bg-cream);
+      text-decoration: none;
+      font-size: clamp(1.65rem, 4vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      border-bottom: 2px solid var(--pink);
+    }
+
+    .giant-email:hover {
+      color: var(--pink);
+    }
+
+    .contact-meta {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-family: var(--font-system);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .contact-meta a {
+      color: var(--bg-cream);
+      text-decoration: none;
+    }
+
+    .contact-meta a:hover {
+      color: var(--pink);
+    }
+
+    footer {
+      padding: 30px 20px;
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--bg-cream);
+      border-top: 1px solid var(--line-on-dark);
+      text-align: center;
+    }
+
+    .footer-copy {
+      font-family: var(--font-system);
+      font-size: 0.72rem;
+      opacity: 0.68;
+    }
+
+    @media (max-width: 980px) {
+      .work-header-trigger {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+      }
+
+      .work-header-trigger .client-name {
+        grid-column: 1 / -1;
+      }
+
+      .trigger-headline {
+        grid-column: 1;
+      }
+
+      .accordion-icon {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .work-fold-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+      }
+
+      .work-image-wrapper {
+        width: 100%;
+        max-width: 640px;
+        aspect-ratio: 16 / 9;
+      }
+
+      .services-grid,
+      .about-container {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .services-header,
+      .about-image-col {
+        position: static;
+      }
+
+      .services-intro {
+        max-width: 650px;
+      }
+
+      .services-content {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .about-image-wrapper {
+        width: 100%;
+        max-width: 480px;
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-headline {
+        font-size: clamp(4.2rem, 12.5vw, 7rem);
+        line-height: 0.82;
+      }
+
+      .hero-main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.08em;
+        white-space: normal;
+      }
+
+      .hero-changing-slot,
+      .hero-fixed {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .hero-subline {
+        margin-top: clamp(20px, 3vw, 28px);
+      }
+    }
+
+    @media (max-width: 700px) {
+      :root {
+        --nav-height: 64px;
+        --section-space: 72px;
+      }
+
+      .sticky-nav {
+        padding: 0 18px;
+      }
+
+      .nav-logo {
+        font-size: 1.2rem;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        min-height: calc(100vh - var(--nav-height));
+        min-height: calc(100dvh - var(--nav-height));
+        padding: 24px 20px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 34px;
+        background: var(--bg-cream);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-16px);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      }
+
+      .nav-links.active {
+        z-index: 1001;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        font-size: 1.25rem;
+        text-transform: none;
+      }
+
+      #intro {
+        height: 100vh;
+        min-height: 100vh;
+        height: 100svh;
+        min-height: 100svh;
+        padding: calc(var(--nav-height) + 18px) 16px 18px;
+      }
+
+      .hero-container {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .hero-headline {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(3.15rem, 14.5vw, 5.8rem);
+        letter-spacing: -0.052em;
+        line-height: 0.84;
+      }
+
+      .hero-main {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 0.1em;
+      }
+
+      .hero-changing-slot {
+        max-width: 100%;
+      }
+
+      .hero-changing-live {
+        justify-self: center;
+      }
+
+      .hero-subline {
+        margin-top: clamp(18px, 5vw, 24px);
+        font-size: clamp(1.3rem, 6.2vw, 1.75rem);
+      }
+
+      #recent-work,
+      #services,
+      #about-me,
+      #testimonials,
+      #contact {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      #services,
+      #recent-work,
+      #testimonials {
+        padding-top: 84px;
+        padding-bottom: 84px;
+      }
+
+
+      .about-container,
+      .services-grid {
+        display: block;
+      }
+
+      .services-header {
+        margin-bottom: 44px;
+      }
+
+      .about-image-col {
+        margin-bottom: 40px;
+      }
+
+      .about-image-wrapper {
+        max-width: 100%;
+      }
+
+      .about-heading {
+        margin-bottom: 24px;
+      }
+
+      .about-clients-wrapper {
+        margin-top: 38px;
+        padding-top: 26px;
+      }
+
+      .client-tabs {
+        margin-bottom: 16px;
+      }
+
+      .carousel-container {
+        padding: 10px 0;
+      }
+
+      .client-logo {
+        height: 48px;
+        margin: 0 22px;
+      }
+
+      .work-header-trigger {
+        padding: 34px 0 26px;
+      }
+
+      .work-fold-content {
+        padding-bottom: 42px;
+      }
+
+      .service-row {
+        padding: 38px 0;
+      }
+
+      .service-row:first-child {
+        padding-top: 28px;
+      }
+
+      .testimonial-stage {
+        min-height: 360px;
+      }
+
+      .testimonial-controls {
+        gap: 10px 20px;
+      }
+
+      .contact-meta {
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-headline {
+        font-size: clamp(2.8rem, 14vw, 3.35rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      /*
+        The typewriter is intentionally left running here.
+        The previous version disabled it on devices with Reduce Motion enabled,
+        which is why it could remain stuck on BRAND on iPhone.
+      */
+
+      .nav-links,
+      .nav-links a::after,
+      .hamburger-icon,
+      .hamburger-icon::before,
+      .hamburger-icon::after,
+      .client-logo,
+      .trigger-headline,
+      .icon-line,
+      .work-accordion-body,
+      .testimonial-item,
+      .testimonial-control,
+      .testimonial-control::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Emil Valdemar Madsen",
+      "jobTitle": "Freelance brand- og marketingstrateg",
+      "description": "Freelance brand- og marketingstrateg med 15 års erfaring fra globale brands, marketingteams og førende bureauer i København og London.",
+      "url": "https://strategy-support.com/dk/",
+      "image": "https://strategy-support.com/assets/emilmadsen.JPG",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "København",
+        "addressCountry": "DK"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/emilvmadsen/"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Strategy Support",
+        "url": "https://strategy-support.com"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Strategy Support",
+      "url": "https://strategy-support.com/dk/",
+      "inLanguage": "da-DK",
+      "alternateName": "Strategy-Support.com"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Strategy Support",
+      "url": "https://strategy-support.com/dk/",
+      "image": "https://strategy-support.com/assets/emilmadsen.JPG",
+      "description": "Freelance brand- og marketingrådgivning, der hjælper brands, bureauer og marketingteams med at træffe klarere valg og skabe bedre arbejde.",
+      "founder": {
+        "@type": "Person",
+        "name": "Emil Valdemar Madsen"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "København",
+        "addressCountry": "DK"
+      },
+      "areaServed": [
+        "DK",
+        "GB",
+        "Global"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Strategiydelser",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Branddefinition",
+              "description": "Brandpositionering, propositioner og brandplatforme til virksomheder, der har brug for et tydeligere ståsted."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Marketingstrategi",
+              "description": "Fokuserede marketingvalg og planer med afsæt i forretningens prioriteter."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Kreativ strategi",
+              "description": "Kreativ strategi, kommunikationsplatforme og briefs, der giver kreative teams noget brugbart at arbejde ud fra."
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/emilvmadsen/"
+      ]
+    }
+  ]
+  </script>
+</head>
+
+<body>
+  <nav class="sticky-nav" aria-label="Primær navigation">
+    <a class="nav-logo" href="#intro" aria-label="Strategy Support forside">Strategy<span class="pink-dash">-</span>Support</a>
+
+    <button class="mobile-menu-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="hamburger-icon" aria-hidden="true"></span>
+    </button>
+
+    <ul class="nav-links" id="primary-navigation">
+      <li><a href="#about-me">Om mig</a></li>
+      <li><a href="#services">Sådan hjælper jeg</a></li>
+      <li><a href="#recent-work">Cases</a></li>
+      <li><a href="#testimonials">Kunder</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="intro" aria-labelledby="intro-heading">
+      <div class="hero-container">
+        <h1
+          id="intro-heading"
+          class="hero-headline"
+          aria-label="Brand-, marketing- og kreativ strategi, gjort enkelt."
+        >
+          <span class="hero-main" aria-hidden="true">
+            <span class="hero-changing-slot">
+              <span class="hero-changing-reserve">MARKETING</span>
+
+              <span class="hero-changing-live">
+                <span class="hero-changing-word" id="hero-changing-word">BRAND</span>
+                <span class="hero-cursor is-blinking" id="hero-cursor"></span>
+              </span>
+            </span>
+
+            <span class="hero-fixed">STRATEGI</span>
+          </span>
+
+          <span class="hero-subline" aria-hidden="true">Gjort enkelt.</span>
+        </h1>
+      </div>
+    </section>
+
+    <section id="about-me" aria-labelledby="about-me-heading">
+      <div class="about-container">
+        <div class="about-image-col">
+          <div class="about-image-wrapper">
+            <img src="/assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" width="1200" height="1600" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="about-content">
+          <h2 id="about-me-heading" class="about-heading">Jeg har brugt 15 år på begge sider af briefet.</h2>
+
+          <div class="about-text">
+            <p>Hej! Jeg hedder Emil Valdemar Madsen. Jeg har ledet strategi på bureauer i London og haft ansvaret for brand og marketing i globale virksomheder. Derfor forstår jeg både, hvad forretningen skal opnå, og hvad kreative teams skal bruge for at skabe godt arbejde.</p>
+            <p>Nogle gange betyder det at skabe orden i en global marketingorganisation. Andre gange handler det om at finde den tanke, der låser et svært brief op. Min rolle er at finde ud af, hvad der virkelig betyder noget, gøre det klart og hjælpe teams med at bruge det.</p>
+          </div>
+
+          <div class="about-clients-wrapper">
+            <span class="clients-intro-label">Brands og bureauer, jeg har hjulpet</span>
+
+            <div class="client-tabs" role="tablist" aria-label="Kundetyper">
+              <button class="client-tab active" id="brands-tab" type="button" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
+              <button class="client-tab" id="agencies-tab" type="button" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Bureauer</button>
+            </div>
+
+            <div class="carousel-wrapper">
+              <div class="carousel-container">
+                <div class="carousel-content">
+                  <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
+                    <div class="client-logos-container">
+                      <img src="/assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand9.png" alt="ATP" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand1.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand2.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand3.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand4.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand5.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand6.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand7.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand8.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand9.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand10.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                    </div>
+                  </div>
+
+                  <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab" hidden>
+                    <div class="client-logos-container">
+                      <img src="/assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand12.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand13.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand14.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="/assets/brand15.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-label="Sådan hjælper jeg">
+      <div class="services-grid">
+        <div class="services-header">
+          <p class="services-intro">Kunder henter mig typisk ind, <span class="pink-highlight">når noget vigtigt er blevet svært</span> at forklare, prioritere eller omsætte til godt arbejde.</p>
+        </div>
+
+        <div class="services-content">
+          <div class="service-row">
+            <span class="service-kicker">Branddefinition</span>
+            <h3>Når brandet er blevet svært at forklare</h3>
+            <p>Når et brand har samlet for mange budskaber, målgrupper og ambitioner, hjælper jeg med at finde den ene idé, der binder det hele sammen. Resultatet er en klar position, som folk kan huske, bruge og bygge videre på.</p>
+          </div>
+
+          <div class="service-row">
+            <span class="service-kicker">Marketingstrategi</span>
+            <h3>Når marketing har brug for et skarpere fokus</h3>
+            <p>Jeg hjælper med at omsætte kommercielle ambitioner til meningsfulde marketingvalg: hvem der betyder mest, hvad der skal ændres, og hvor ressourcerne kan gøre den største forskel.</p>
+          </div>
+
+          <div class="service-row">
+            <span class="service-kicker">Kreativ strategi</span>
+            <h3>Når arbejdet har brug for en bedre idé bag sig</h3>
+            <p>Jeg finder den sandhed, der giver briefet en ny retning, og omsætter den til en platform, der kan skabe mere end én kampagne. Klar nok til at fokusere arbejdet. Åben nok til at inspirere det.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recent-work" aria-label="Udvalgte cases">
+      <div class="work-container">
+        <div class="work-list">
+          <article class="work-row">
+            <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="dsv-case" id="dsv-trigger">
+              <span class="client-name">DSV Logistics — 2025</span>
+              <span class="trigger-headline">Én marketingtilgang til en forretning, der ikke lader sig standardisere</span>
+              <span class="accordion-icon" aria-hidden="true">
+                <span class="icon-line horizontal"></span>
+                <span class="icon-line vertical"></span>
+              </span>
+            </button>
+
+            <div class="work-accordion-body" id="dsv-case" role="region" aria-labelledby="dsv-trigger">
+              <div class="work-accordion-inner">
+                <div class="work-fold-content">
+                  <div class="work-image-wrapper">
+                    <img src="/assets/dsv-case.png" alt="Globalt marketingstrategiarbejde for DSV" width="1200" height="900" loading="lazy" />
+                  </div>
+
+                  <div class="narrative-stack">
+                    <div class="narrative-item">
+                      <span class="narrative-label">Situationen</span>
+                      <p class="narrative-text">DSV er verdens største transport- og logistikvirksomhed. Marketing skal fungere på tværs af seks brancher, fire produktdivisioner, flere kundesegmenter og mere end 90 markeder.</p>
+                    </div>
+
+                    <div class="narrative-item">
+                      <span class="narrative-label">Udfordringen</span>
+                      <p class="narrative-text">Opgaven var ikke bare at skrive endnu en global strategi. Den var at skabe en sammenhængende tilgang, der kunne styre globale, regionale og lokale beslutninger uden at overse forskellene mellem brancher, produkter og markeder.</p>
+                    </div>
+
+                    <div class="narrative-item">
+                      <span class="narrative-label">Strategien</span>
+                      <p class="narrative-text">I direkte samarbejde med den globale CMO udvikler jeg marketingstrategien og de rammer, der forbinder forretningens prioriteter med det, der faktisk driver købsbeslutninger i B2B-logistik — fra at vinde og fastholde kunder til messer og store branchebegivenheder.</p>
+                    </div>
+
+                    <div class="narrative-item">
+                      <span class="narrative-label">Sideløbende</span>
+                      <p class="narrative-text">Jeg understøtter også organisationsdesign, procesudvikling og implementeringen af AI på tværs af marketingorganisationen.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-row">
+            <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="saxo-case" id="saxo-trigger">
+              <span class="client-name">Saxo Bank — 2023</span>
+              <span class="trigger-headline">At gøre Saxo til den platform, pengene selv ville vælge</span>
+              <span class="accordion-icon" aria-hidden="true">
+                <span class="icon-line horizontal"></span>
+                <span class="icon-line vertical"></span>
+              </span>
+            </button>
+
+            <div class="work-accordion-body" id="saxo-case" role="region" aria-labelledby="saxo-trigger">
+              <div class="work-accordion-inner">
+                <div class="work-fold-content">
+                  <div class="work-image-wrapper">
+                    <img src="/assets/saxo-bank-case.png" alt="Brandplatform for Saxo Bank" width="1200" height="900" loading="lazy" />
+                  </div>
+
+                  <div class="narrative-stack">
+                    <div class="narrative-item">
+                      <span class="narrative-label">Situationen</span>
+                      <p class="narrative-text">Saxo ville øge kendskabet og få flere erfarne investorer og tradere verden over til at foretrække platformen. Men banken konkurrerede i en overfyldt, prisdrevet kategori, hvor reklamerne lignede hinanden.</p>
+                    </div>
+
+                    <div class="narrative-item">
+                      <span class="narrative-label">Det afgørende greb</span>
+                      <p class="narrative-text">Investorer vil ikke kun beskytte deres penge. De vil sætte dem i arbejde. Og med flere investeringsprodukter end konkurrenterne giver Saxo pengene mere at lave.</p>
+                    </div>
+
+                    <div class="narrative-item">
+                      <span class="narrative-label">Strategien</span>
+                      <p class="narrative-text">Vi dramatiserede produktfordelen med mere end 75.000 investeringsprodukter ved at give pengene en stemme — og vise, at de ville vælge Saxo, hvis de selv kunne bestemme.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-row">
+            <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="burger-king-case" id="burger-king-trigger">
+              <span class="client-name">Burger King — 2016</span>
+              <span class="trigger-headline">At give Burger Kings globale strategi en britisk attitude</span>
+              <span class="accordion-icon" aria-hidden="true">
+                <span class="icon-line horizontal"></span>
+                <span class="icon-line vertical"></span>
+              </span>
+            </button>
+
+            <div class="work-accordion-body" id="burger-king-case" role="region" aria-labelledby="burger-king-trigger">
+              <div class="work-accordion-inner">
+                <div class="work-fold-content">
+                  <div class="work-image-wrapper">
+                    <img src="/assets/burger-king-case.png" alt="Britisk brandstrategiarbejde for Burger King" width="1200" height="900" loading="lazy" />
+                  </div>
+
+                  <div class="narrative-stack">
+                    <div class="narrative-item">
+                      <span class="narrative-label">Situationen</span>
+                      <p class="narrative-text">Burger King havde ændret sin globale brandstrategi fra <em>Have It Your Way</em> til <em>Be Your Way</em>. Men efterhånden som flere brands begyndte at hylde individualitet, risikerede platformen at føles generisk og importeret i Storbritannien.</p>
+                    </div>
+
+                    <div class="narrative-item">
+                      <span class="narrative-label">Det afgørende greb</span>
+                      <p class="narrative-text">Britiske unge udtrykker ikke altid individualitet gennem store oprør. Oftere gør de det ved at være frække — ved at tage det forventede og give det deres eget twist.</p>
+                    </div>
+
+                    <div class="narrative-item">
+                      <span class="narrative-label">Strategien</span>
+                      <p class="narrative-text">Vi positionerede Burger King som stedet for frække afstikkere: en britisk fortolkning af den globale brandidé, som føltes naturlig for produktet, målgruppen og kulturen.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" aria-label="Det siger kunderne">
+      <div class="testimonials-container">
+        <div class="testimonial-stage">
+          <figure class="testimonial-item active">
+            <blockquote class="testimonial-quote">“Hvis du har brug for en marketingstrateg, der også har flair for taktisk eksekvering, findes der ingen bedre end Emil. Jeg kan ikke anbefale ham nok.”</blockquote>
+            <figcaption class="testimonial-author">
+              <strong>John Veje</strong>
+              <span class="testimonial-role">Group CMO, Danske Bank</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-item">
+            <blockquote class="testimonial-quote">“Emil er en moderne strateg, der kombinerer grundig strategisk tænkning med evnen til ubesværet at eksekvere på tværs af alle kanaler. Han tænker utraditionelt og inspirerer kreative teams med sine briefinger.”</blockquote>
+            <figcaption class="testimonial-author">
+              <strong>Vicki Holgate</strong>
+              <span class="testimonial-role">CSO, FCB Inferno London</span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-item">
+            <blockquote class="testimonial-quote">“Emil er en fremragende strateg. Hans arbejde er minutiøst, hans tilgang er grundig, og hans evne til at præsentere og kommunikere er i særklasse.”</blockquote>
+            <figcaption class="testimonial-author">
+              <strong>Nathan Cook</strong>
+              <span class="testimonial-role">Global Director, Unilever</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="testimonial-controls" aria-label="Navigation mellem kundeudtalelser">
+          <button class="testimonial-control active" type="button" aria-label="Vis udtalelse fra John Veje" aria-pressed="true">John Veje</button>
+          <button class="testimonial-control" type="button" aria-label="Vis udtalelse fra Vicki Holgate" aria-pressed="false">Vicki Holgate</button>
+          <button class="testimonial-control" type="button" aria-label="Vis udtalelse fra Nathan Cook" aria-pressed="false">Nathan Cook</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="contact-container">
+        <h2 id="contact-heading" class="contact-heading">Har du et svært brand- eller marketingproblem?</h2>
+        <a class="giant-email" href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
+
+        <div class="contact-meta">
+          <span>Baseret i København · Arbejder globalt</span>
+          <a href="https://www.linkedin.com/in/emilvmadsen/" target="_blank" rel="noopener noreferrer">LinkedIn-profil ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-copy">&copy; <span id="current-year"></span> Strategy Support, et uafhængigt strategibureau i København. CVR 33320817.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      /*
+        TYPEWRITER
+        The old version stopped on BRAND whenever iOS reported
+        "prefers-reduced-motion: reduce". This version uses a small,
+        self-contained timer loop and runs consistently in Safari.
+      */
+      const heroChangingWord = document.getElementById("hero-changing-word");
+      const heroCursor = document.getElementById("hero-cursor");
+      const heroWords = ["BRAND", "MARKETING", "KREATIV"];
+
+      const typingSpeed = 85;
+      const deletingSpeed = 55;
+      const completedWordPause = 1550;
+      const betweenWordsPause = 240;
+
+      let heroWordIndex = 0;
+      let heroCharacterIndex = heroWords[0].length;
+      let heroIsDeleting = true;
+      let heroTimer = null;
+
+      function clearHeroTimer() {
+        if (heroTimer !== null) {
+          window.clearTimeout(heroTimer);
+          heroTimer = null;
+        }
+      }
+
+      function setHeroCursorBlinking(isBlinking) {
+        if (!heroCursor) return;
+        heroCursor.classList.toggle("is-blinking", isBlinking);
+      }
+
+      function scheduleHeroTick(delay) {
+        clearHeroTimer();
+        heroTimer = window.setTimeout(runHeroTypewriter, delay);
+      }
+
+      function runHeroTypewriter() {
+        if (!heroChangingWord || !heroCursor) return;
+
+        const currentWord = heroWords[heroWordIndex];
+        heroCursor.hidden = false;
+
+        if (heroIsDeleting) {
+          setHeroCursorBlinking(false);
+
+          if (heroCharacterIndex > 0) {
+            heroCharacterIndex -= 1;
+            heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
+            scheduleHeroTick(deletingSpeed);
+            return;
+          }
+
+          heroWordIndex = (heroWordIndex + 1) % heroWords.length;
+          heroIsDeleting = false;
+          scheduleHeroTick(betweenWordsPause);
+          return;
+        }
+
+        const nextWord = heroWords[heroWordIndex];
+
+        if (heroCharacterIndex < nextWord.length) {
+          setHeroCursorBlinking(false);
+          heroCharacterIndex += 1;
+          heroChangingWord.textContent = nextWord.slice(0, heroCharacterIndex);
+          scheduleHeroTick(typingSpeed);
+          return;
+        }
+
+        heroIsDeleting = true;
+        setHeroCursorBlinking(true);
+        scheduleHeroTick(completedWordPause);
+      }
+
+      function startHeroTypewriter() {
+        clearHeroTimer();
+
+        if (!heroChangingWord || !heroCursor) return;
+
+        heroWordIndex = 0;
+        heroCharacterIndex = heroWords[0].length;
+        heroIsDeleting = true;
+        heroChangingWord.textContent = heroWords[0];
+        heroCursor.hidden = false;
+        setHeroCursorBlinking(true);
+
+        scheduleHeroTick(completedWordPause);
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearHeroTimer();
+          setHeroCursorBlinking(false);
+        } else {
+          startHeroTypewriter();
+        }
+      });
+
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+          startHeroTypewriter();
+        }
+      });
+
+      window.addEventListener("pagehide", clearHeroTimer);
+
+      startHeroTypewriter();
+
+      const menuToggle = document.querySelector(".mobile-menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      const mobileLinks = document.querySelectorAll(".nav-links a");
+
+      function closeMenu() {
+        if (!menuToggle || !navLinks) return;
+
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Åbn menu");
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
+        document.body.classList.remove("menu-open");
+      }
+
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+
+          menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+          menuToggle.setAttribute("aria-label", isExpanded ? "Åbn menu" : "Luk menu");
+          menuToggle.classList.toggle("active", !isExpanded);
+          navLinks.classList.toggle("active", !isExpanded);
+          document.body.classList.toggle("menu-open", !isExpanded);
+        });
+      }
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+
+      const sections = document.querySelectorAll("section[id]");
+      const navItems = document.querySelectorAll(".nav-links a");
+
+      if ("IntersectionObserver" in window) {
+        const scrollSpyObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            navItems.forEach((link) => {
+              link.classList.toggle(
+                "active-section",
+                link.getAttribute("href") === "#" + entry.target.id
+              );
+            });
+          });
+        }, {
+          rootMargin: "-45% 0px -45% 0px"
+        });
+
+        sections.forEach((section) => {
+          scrollSpyObserver.observe(section);
+        });
+      }
+
+      const clientTabs = document.querySelectorAll(".client-tab");
+      const clientGroups = document.querySelectorAll(".client-group");
+      const logoTracks = Array.from(document.querySelectorAll(".client-logos-container"));
+      const logoOffsets = new WeakMap();
+      let previousLogoFrame = performance.now();
+
+      logoTracks.forEach((track) => {
+        logoOffsets.set(track, 0);
+      });
+
+      function resetLogoTrack(group) {
+        const track = group.querySelector(".client-logos-container");
+
+        if (!track) return;
+
+        logoOffsets.set(track, 0);
+        track.style.transform = "translate3d(0, 0, 0)";
+      }
+
+      function moveLogoTracks(now) {
+        const elapsed = Math.min(now - previousLogoFrame, 50);
+        previousLogoFrame = now;
+
+        logoTracks.forEach((track) => {
+          const group = track.closest(".client-group");
+
+          if (!group || group.hidden || !group.classList.contains("active")) {
+            return;
+          }
+
+          const loopWidth = track.scrollWidth / 2;
+
+          if (!loopWidth) return;
+
+          const isAgencyTrack = group.dataset.group === "agencies";
+
+          const pixelsPerSecond = window.innerWidth <= 700
+            ? (isAgencyTrack ? 42 : 32)
+            : (isAgencyTrack ? 34 : 25);
+
+          let offset = (logoOffsets.get(track) || 0) + (pixelsPerSecond * elapsed / 1000);
+
+          if (offset >= loopWidth) {
+            offset %= loopWidth;
+          }
+
+          logoOffsets.set(track, offset);
+          track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+        });
+
+        window.requestAnimationFrame(moveLogoTracks);
+      }
+
+      clientTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const selectedType = tab.dataset.type;
+
+          clientTabs.forEach((item) => {
+            const isSelected = item === tab;
+
+            item.classList.toggle("active", isSelected);
+            item.setAttribute("aria-selected", String(isSelected));
+          });
+
+          clientGroups.forEach((group) => {
+            const isSelected = group.dataset.group === selectedType;
+
+            group.classList.toggle("active", isSelected);
+            group.hidden = !isSelected;
+
+            if (isSelected) {
+              resetLogoTrack(group);
+            }
+          });
+        });
+      });
+
+      window.requestAnimationFrame(moveLogoTracks);
+
+      const workTriggers = document.querySelectorAll(".work-header-trigger");
+
+      workTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          const currentRow = trigger.closest(".work-row");
+          const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+          document.querySelectorAll(".work-row").forEach((row) => {
+            row.classList.remove("is-open");
+
+            const rowTrigger = row.querySelector(".work-header-trigger");
+
+            if (rowTrigger) {
+              rowTrigger.setAttribute("aria-expanded", "false");
+            }
+          });
+
+          if (!isExpanded && currentRow) {
+            currentRow.classList.add("is-open");
+            trigger.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+
+      const testimonials = Array.from(document.querySelectorAll(".testimonial-item"));
+      const testimonialControls = Array.from(document.querySelectorAll(".testimonial-control"));
+
+      let currentTestimonial = 0;
+      let testimonialTimer = null;
+
+      function showTestimonial(index) {
+        if (!testimonials.length) return;
+
+        currentTestimonial = (index + testimonials.length) % testimonials.length;
+
+        testimonials.forEach((item, itemIndex) => {
+          const isActive = itemIndex === currentTestimonial;
+
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-hidden", String(!isActive));
+        });
+
+        testimonialControls.forEach((control, controlIndex) => {
+          const isActive = controlIndex === currentTestimonial;
+
+          control.classList.toggle("active", isActive);
+          control.setAttribute("aria-pressed", String(isActive));
+        });
+      }
+
+      function stopTestimonialTimer() {
+        if (testimonialTimer !== null) {
+          window.clearInterval(testimonialTimer);
+          testimonialTimer = null;
+        }
+      }
+
+      function startTestimonialTimer() {
+        stopTestimonialTimer();
+
+        if (testimonials.length > 1) {
+          testimonialTimer = window.setInterval(() => {
+            showTestimonial(currentTestimonial + 1);
+          }, 7000);
+        }
+      }
+
+      testimonialControls.forEach((control, index) => {
+        control.addEventListener("click", () => {
+          showTestimonial(index);
+          startTestimonialTimer();
+        });
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stopTestimonialTimer();
+        } else {
+          startTestimonialTimer();
+        }
+      });
+
+      showTestimonial(0);
+      startTestimonialTimer();
+
+      const currentYear = document.getElementById("current-year");
+
+      if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
+</body>
+</html>
