@@ -2,3 +2,22 @@ User-agent: *
 Allow: /
 
 Sitemap: https://strategy-support.com/sitemap.xml
+User-agent: *
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://strategy-support.com/sitemap.xml
