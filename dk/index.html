@@ -7,8 +7,8 @@
   <title>Freelance brand- og marketingstrateg i København | Strategy Support</title>
   <meta name="description" content="Freelance brand- og marketingstrateg Emil Valdemar Madsen hjælper brands, bureauer og marketingteams med at træffe klarere valg og skabe bedre arbejde." />
   <link rel="canonical" href="https://strategy-support.com/dk/" />
-  <link rel="alternate" hreflang="en" href="https://strategy-support.com/" />
-  <link rel="alternate" hreflang="da" href="https://strategy-support.com/dk/" />
+  <link rel="alternate" hreflang="en-GB" href="https://strategy-support.com/" />
+  <link rel="alternate" hreflang="da-DK" href="https://strategy-support.com/dk/" />
   <link rel="alternate" hreflang="x-default" href="https://strategy-support.com/" />
 
   <meta property="og:type" content="website" />
@@ -178,6 +178,52 @@
     .nav-links a:hover::after,
     .nav-links a.active-section::after {
       transform: scaleX(1);
+    }
+
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-left: 4px;
+      font-family: var(--font-system);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+
+    .language-switch a,
+    .language-switch .language-current {
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+      text-transform: uppercase;
+    }
+
+    .language-switch .language-current {
+      color: var(--pink);
+    }
+
+    .language-switch .language-separator {
+      color: var(--text);
+      opacity: 0.35;
+    }
+
+    .language-switch a {
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .language-switch a:hover {
+      color: var(--pink);
+      opacity: 1;
+    }
+
+    .language-switch a::after {
+      display: none;
     }
 
     .mobile-menu-toggle {
@@ -1104,6 +1150,19 @@
         text-transform: none;
       }
 
+
+      .language-switch {
+        margin-top: 8px;
+        margin-left: 0;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
+
+      .language-switch a,
+      .language-switch .language-current {
+        font-size: 0.9rem;
+      }
+
       #intro {
         height: 100vh;
         min-height: 100vh;
@@ -1370,6 +1429,11 @@
       <li><a href="#recent-work">Cases</a></li>
       <li><a href="#testimonials">Kunder</a></li>
       <li><a href="#contact">Kontakt</a></li>
+      <li class="language-switch" aria-label="Vælg sprog">
+        <a href="/" lang="en-GB" hreflang="en-GB" aria-label="View the site in English">EN</a>
+        <span class="language-separator" aria-hidden="true">/</span>
+        <span class="language-current" aria-current="page">DA</span>
+      </li>
     </ul>
   </nav>
 
