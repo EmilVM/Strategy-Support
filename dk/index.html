@@ -180,7 +180,6 @@
       transform: scaleX(1);
     }
 
-
     .language-switch {
       display: flex;
       align-items: center;
@@ -280,7 +279,6 @@
       top: 0;
       transform: rotate(-45deg);
     }
-
 
     #intro {
       height: 100vh;
@@ -678,6 +676,16 @@
       margin: 0 auto;
     }
 
+    .work-section-title {
+      max-width: 820px;
+      margin-bottom: clamp(44px, 6vw, 72px);
+      color: var(--bg-cream);
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
 
     .work-row {
       border-bottom: 2px solid rgba(255, 241, 229, 0.28);
@@ -1159,7 +1167,6 @@
         text-transform: none;
       }
 
-
       .language-switch {
         margin-top: 8px;
         margin-left: 0;
@@ -1229,7 +1236,6 @@
         padding-bottom: 84px;
       }
 
-
       .about-container,
       .services-grid {
         display: block;
@@ -1267,6 +1273,10 @@
       .client-logo {
         height: 48px;
         margin: 0 22px;
+      }
+
+      .work-section-title {
+        margin-bottom: 34px;
       }
 
       .work-header-trigger {
@@ -1484,7 +1494,7 @@
           <h2 id="about-me-heading" class="about-heading">Jeg har arbejdet på begge sider af briefet i 15 år.</h2>
 
           <div class="about-text">
-            <p>Hej, jeg hedder Emil Valdemar Madsen. Jeg har ledet strategi på bureauer i London og haft ansvar for brand og marketing i globale virksomheder. Derfor forstår jeg både forretningens behov og hvad kreative teams har brug for for at skabe arbejde, der både er godt og rentabelt.</p>
+            <p>Hej, jeg hedder Emil Valdemar Madsen. Jeg er en freelance marketing- og brandstrateg, der har ledet strategi på bureauer i London og haft ansvar for brand og marketing i globale virksomheder.</p>
             <p>Nogle gange handler det om at skabe retning i en marketingorganisation. Andre gange om at finde den tanke, der gør et svært brief enkelt. Min rolle er at gøre det komplekse og svære enkelt og inspirerende.</p>
           </div>
 
@@ -1572,13 +1582,15 @@
       </div>
     </section>
 
-    <section id="recent-work" aria-label="Udvalgte cases">
+    <section id="recent-work" aria-labelledby="recent-work-heading">
       <div class="work-container">
+        <h2 id="recent-work-heading" class="work-section-title">Eksempler på mit arbejde.</h2>
+
         <div class="work-list">
           <article class="work-row">
             <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="dsv-case" id="dsv-trigger">
               <span class="client-name">DSV Logistics — 2025</span>
-              <span class="trigger-headline">At skabe én marketingretning på tværs af 90 markeder</span>
+              <span class="trigger-headline">DSV fik én marketingstrategi på tværs af 90+ markeder</span>
               <span class="accordion-icon" aria-hidden="true">
                 <span class="icon-line horizontal"></span>
                 <span class="icon-line vertical"></span>
@@ -1621,7 +1633,7 @@
           <article class="work-row">
             <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="saxo-case" id="saxo-trigger">
               <span class="client-name">Saxo Bank — 2023</span>
-              <span class="trigger-headline">At gøre Saxo til den platform, pengene selv ville vælge</span>
+              <span class="trigger-headline">Saxo blev den platform, pengene selv ville vælge</span>
               <span class="accordion-icon" aria-hidden="true">
                 <span class="icon-line horizontal"></span>
                 <span class="icon-line vertical"></span>
@@ -1659,7 +1671,7 @@
           <article class="work-row">
             <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="burger-king-case" id="burger-king-trigger">
               <span class="client-name">Burger King — 2016</span>
-              <span class="trigger-headline">At give Burger Kings globale strategi en britisk attitude</span>
+              <span class="trigger-headline">Burger Kings globale strategi fik en britisk attitude</span>
               <span class="accordion-icon" aria-hidden="true">
                 <span class="icon-line horizontal"></span>
                 <span class="icon-line vertical"></span>
@@ -1737,7 +1749,7 @@
 
     <section id="contact" aria-labelledby="contact-heading">
       <div class="contact-container">
-        <h2 id="contact-heading" class="contact-heading">Sidder du med et svært brand- eller marketingproblem?</h2>
+        <h2 id="contact-heading" class="contact-heading">Har du et svært brand- eller marketingproblem?</h2>
         <a class="giant-email" href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
 
         <div class="contact-meta">
@@ -1749,7 +1761,7 @@
   </main>
 
   <footer>
-    <p class="footer-copy">&copy; <span id="current-year"></span> Strategy Support · Uafhængig brand- og marketingstrateg i København · CVR 33320817.</p>
+    <p class="footer-copy">&copy; <span id="current-year"></span> Strategy Support · Freelance brand- og marketingstrateg i København · CVR 33320817.</p>
   </footer>
 
   <script>
