@@ -400,8 +400,8 @@
     /*
       THE POINT
       The full stop and the character are the same HTML element.
-      It begins inline after “Made simple”, then JavaScript moves
-      it into .point-home and reveals the face.
+      It begins inline after “Made simple”, then lifts out of the
+      sentence, grows as it travels, looks around, winks and settles.
     */
     .the-point {
       position: relative;
@@ -410,15 +410,18 @@
       height: 0.2em;
       margin-left: 0.045em;
       overflow: hidden;
+      isolation: isolate;
       border-radius: 50%;
       vertical-align: 0.015em;
       background:
-        radial-gradient(circle at 50% 42%, #ff4bb9 0%, #ff1ca5 23%, var(--pink) 54%, #d7007d 78%, #aa005f 100%);
+        radial-gradient(circle at 39% 30%, #ff62c4 0%, #ff2bad 20%, var(--pink) 52%, #d7007d 78%, #a9005e 100%);
       box-shadow:
-        inset 0.03em 0.035em 0.055em rgba(255, 255, 255, 0.24),
-        inset -0.035em -0.045em 0.07em rgba(91, 0, 48, 0.2),
-        0 0.05em 0.12em rgba(249, 0, 144, 0.18);
+        inset 0.03em 0.035em 0.055em rgba(255, 255, 255, 0.3),
+        inset -0.035em -0.045em 0.07em rgba(91, 0, 48, 0.22),
+        0 0.05em 0.12em rgba(249, 0, 144, 0.2);
       transform-origin: center;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       will-change: transform;
     }
 
@@ -432,23 +435,24 @@
     }
 
     .the-point::before {
-      top: 10%;
-      left: 14%;
-      width: 42%;
-      height: 31%;
+      z-index: 1;
+      top: 8%;
+      left: 12%;
+      width: 46%;
+      height: 34%;
       border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.36) 43%, rgba(255, 255, 255, 0) 72%);
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.42) 42%, rgba(255, 255, 255, 0) 72%);
       filter: blur(0.6px);
       transform: rotate(-24deg);
     }
 
     .the-point::after {
-      right: 8%;
-      bottom: 7%;
-      width: 58%;
-      height: 48%;
+      right: 6%;
+      bottom: 5%;
+      width: 62%;
+      height: 50%;
       border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(82, 0, 42, 0.24) 0%, rgba(82, 0, 42, 0) 72%);
+      background: radial-gradient(ellipse at center, rgba(82, 0, 42, 0.26) 0%, rgba(82, 0, 42, 0) 72%);
       filter: blur(1px);
       transform: rotate(-28deg);
     }
@@ -469,11 +473,25 @@
     }
 
     .the-point__eye {
-      top: 43%;
+      top: 42.5%;
       width: 8.5%;
       height: 10%;
+      overflow: hidden;
       border-radius: 50%;
       transform-origin: center;
+    }
+
+    .the-point__eye::after {
+      content: "";
+      position: absolute;
+      top: 15%;
+      left: 18%;
+      width: 24%;
+      height: 24%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.82);
+      opacity: 0;
+      transition: opacity 180ms ease;
     }
 
     .the-point__eye--left {
@@ -482,15 +500,20 @@
 
     .the-point__eye--right {
       right: 30%;
-      top: 42%;
+      top: 41.8%;
+      width: 8%;
+      height: 9.5%;
     }
 
     .the-point__mouth {
-      top: 62%;
-      left: 41%;
-      width: 18%;
-      height: 3.4%;
+      top: 62.5%;
+      left: 42%;
+      width: 16%;
+      height: 3.2%;
       border-radius: 999px;
+      transform: rotate(-2deg);
+      transform-origin: center;
+      transition: transform 220ms ease, width 220ms ease, left 220ms ease;
     }
 
     .the-point--awake::before,
@@ -499,16 +522,36 @@
       opacity: 1;
     }
 
-    .the-point--floating {
-      position: fixed;
-      z-index: 2000;
-      margin: 0;
-      vertical-align: initial;
-      pointer-events: none;
+    .the-point--awake .the-point__eye::after {
+      opacity: 0.68;
+    }
+
+    /*
+      Safari-safe entrance. The Point is moved into its final home first,
+      then visually held at the punctuation position with an inverse
+      transform. A normal CSS keyframe animation carries it across.
+    */
+    .point-home .the-point--entering {
+      animation-name: point-arrive;
+      animation-duration: var(--point-entry-duration, 1700ms);
+      animation-delay: var(--point-entry-delay, 160ms);
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
     }
 
     .the-point--looking .the-point__eye {
-      animation: point-look-around 620ms cubic-bezier(0.45, 0, 0.2, 1) both;
+      animation: point-look-around 650ms cubic-bezier(0.45, 0, 0.2, 1) both;
+    }
+
+    .the-point--winking .the-point__eye--right {
+      animation: point-wink-once 430ms cubic-bezier(0.4, 0, 0.2, 1) both !important;
+    }
+
+    .the-point--pleased .the-point__mouth {
+      left: 42.5%;
+      width: 15%;
+      transform: translateY(-7%) rotate(-5deg);
     }
 
     .point-home {
@@ -529,9 +572,9 @@
       margin: 0;
       vertical-align: initial;
       box-shadow:
-        inset 6px 7px 14px rgba(255, 255, 255, 0.24),
-        inset -8px -10px 18px rgba(91, 0, 48, 0.22),
-        0 12px 28px rgba(249, 0, 144, 0.2);
+        inset 6px 7px 14px rgba(255, 255, 255, 0.28),
+        inset -8px -10px 18px rgba(91, 0, 48, 0.24),
+        0 14px 30px rgba(249, 0, 144, 0.22);
     }
 
     .point-home .the-point::before {
@@ -547,7 +590,7 @@
     }
 
     .point-home .the-point--settled .the-point__eye {
-      animation: point-blink 5.6s ease-in-out infinite;
+      animation: point-blink 6.4s ease-in-out infinite;
     }
 
     @keyframes hero-cursor-blink {
@@ -562,50 +605,109 @@
       }
     }
 
-    @keyframes point-look-around {
-      0%,
-      12% {
-        transform: translateX(0) scaleY(1);
+    @keyframes point-arrive {
+      0% {
+        transform:
+          translate3d(var(--point-x0), var(--point-y0), 0)
+          scale(var(--point-s0));
+        animation-timing-function: cubic-bezier(0.3, 0, 0.7, 1);
       }
 
-      34% {
-        transform: translateX(24%) scaleY(1);
+      13% {
+        transform:
+          translate3d(var(--point-x1), var(--point-y1), 0)
+          rotate(-2deg)
+          scale(var(--point-s1x), var(--point-s1y));
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      38% {
+        transform:
+          translate3d(var(--point-x2), var(--point-y2), 0)
+          rotate(-4deg)
+          scale(0.36, 0.31);
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      72% {
+        transform:
+          translate3d(var(--point-x3), var(--point-y3), 0)
+          rotate(2.5deg)
+          scale(0.82, 0.98);
+        animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.22);
+      }
+
+      89% {
+        transform:
+          translate3d(-5px, 3px, 0)
+          rotate(-1.5deg)
+          scale(1.065, 0.945);
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0) rotate(0) scale(1);
+      }
+    }
+
+    @keyframes point-look-around {
+      0%,
+      14% {
+        transform: translate(0, 0) scaleY(1);
+      }
+
+      36% {
+        transform: translate(22%, -2%) scaleY(1);
       }
 
       62% {
-        transform: translateX(-15%) scaleY(1);
+        transform: translate(-14%, 2%) scaleY(1);
       }
 
-      78% {
-        transform: translateX(-15%) scaleY(0.12);
+      76% {
+        transform: translate(-14%, 2%) scaleY(0.16);
       }
 
       86%,
       100% {
-        transform: translateX(0) scaleY(1);
+        transform: translate(0, 0) scaleY(1);
+      }
+    }
+
+    @keyframes point-wink-once {
+      0%,
+      22%,
+      78%,
+      100% {
+        transform: scaleY(1);
+      }
+
+      44%,
+      62% {
+        transform: scaleY(0.08);
       }
     }
 
     @keyframes point-breathe {
       0%,
       100% {
-        transform: scale(1);
+        transform: translateY(0) scale(1);
       }
 
       50% {
-        transform: scale(1.018, 0.988);
+        transform: translateY(-1px) scale(1.018, 0.988);
       }
     }
 
     @keyframes point-blink {
       0%,
-      44%,
-      48%,
+      43%,
+      47%,
       100% {
         transform: scaleY(1);
       }
 
-      46% {
+      45% {
         transform: scaleY(0.12);
       }
     }
@@ -1540,8 +1642,7 @@
       }
 
       .point-home .the-point--settled,
-      .point-home .the-point--settled .the-point__eye,
-      .the-point--looking .the-point__eye {
+      .point-home .the-point--settled .the-point__eye {
         animation: none !important;
       }
     }
@@ -1984,34 +2085,91 @@
       const point = document.getElementById("the-point");
       const pointHome = document.getElementById("point-home");
       let pointHasBeenReleased = false;
+      let pointReleaseScheduled = false;
       let pointLookTimer = null;
+      let pointFallbackTimer = null;
 
-      function clearPointLookTimer() {
-        if (pointLookTimer !== null) {
+      function clearPointTimer(timerName) {
+        if (timerName === "look" && pointLookTimer !== null) {
           window.clearTimeout(pointLookTimer);
           pointLookTimer = null;
         }
+
+        if (timerName === "fallback" && pointFallbackTimer !== null) {
+          window.clearTimeout(pointFallbackTimer);
+          pointFallbackTimer = null;
+        }
       }
 
-      async function releasePoint() {
-        if (pointHasBeenReleased || !point || !pointHome) return;
-
-        pointHasBeenReleased = true;
-
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        if (reducedMotion || typeof point.animate !== "function") {
-          point.classList.add("the-point--awake", "the-point--settled");
-          pointHome.appendChild(point);
+      function finishPointEntrance() {
+        if (!point || !pointHome || point.classList.contains("the-point--settled")) {
           return;
         }
 
-        const start = point.getBoundingClientRect();
-        const destination = pointHome.getBoundingClientRect();
+        clearPointTimer("fallback");
 
-        if (!start.width || !destination.width) {
-          point.classList.add("the-point--awake", "the-point--settled");
+        point.classList.remove(
+          "the-point--entering",
+          "the-point--looking",
+          "the-point--winking",
+          "the-point--pleased"
+        );
+        point.classList.add("the-point--awake", "the-point--settled");
+
+        [
+          "--point-x0",
+          "--point-y0",
+          "--point-s0",
+          "--point-x1",
+          "--point-y1",
+          "--point-s1x",
+          "--point-s1y",
+          "--point-x2",
+          "--point-y2",
+          "--point-x3",
+          "--point-y3",
+          "--point-entry-duration",
+          "--point-entry-delay"
+        ].forEach((property) => point.style.removeProperty(property));
+
+        /* Let it register the room, then give one restrained wink. */
+        window.setTimeout(() => {
+          if (!point.classList.contains("the-point--settled")) return;
+
+          point.classList.add("the-point--winking", "the-point--pleased");
+
+          window.setTimeout(() => {
+            point.classList.remove("the-point--winking", "the-point--pleased");
+          }, 460);
+        }, 260);
+      }
+
+      function releasePoint() {
+        if (pointHasBeenReleased || !point || !pointHome) return;
+
+        pointHasBeenReleased = true;
+        pointReleaseScheduled = false;
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const start = point.getBoundingClientRect();
+
+        if (!start.width) {
           pointHome.appendChild(point);
+          point.classList.add("the-point--awake", "the-point--settled");
+          return;
+        }
+
+        /*
+          FLIP: move the Point into its final home, measure that position,
+          then animate from an inverse transform that puts it visually back
+          where the full stop was. This avoids the Safari teleport.
+        */
+        pointHome.appendChild(point);
+
+        const destination = point.getBoundingClientRect();
+
+        if (!destination.width) {
+          point.classList.add("the-point--awake", "the-point--settled");
           return;
         }
 
@@ -2020,77 +2178,60 @@
         const destinationCentreX = destination.left + destination.width / 2;
         const destinationCentreY = destination.top + destination.height / 2;
 
-        const destinationX = destinationCentreX - startCentreX;
-        const destinationY = destinationCentreY - startCentreY;
-        const finalScale = destination.width / start.width;
+        const deltaX = startCentreX - destinationCentreX;
+        const deltaY = startCentreY - destinationCentreY;
+        const startScale = Math.max(0.035, start.width / destination.width);
 
-        point.classList.add("the-point--floating");
-        point.style.left = `${start.left}px`;
-        point.style.top = `${start.top}px`;
-        point.style.width = `${start.width}px`;
-        point.style.height = `${start.height}px`;
+        point.style.setProperty("--point-x0", `${deltaX}px`);
+        point.style.setProperty("--point-y0", `${deltaY}px`);
+        point.style.setProperty("--point-s0", startScale.toFixed(4));
 
-        document.body.appendChild(point);
+        point.style.setProperty("--point-x1", `${deltaX + 9}px`);
+        point.style.setProperty("--point-y1", `${deltaY - 12}px`);
+        point.style.setProperty("--point-s1x", (startScale * 2.5).toFixed(4));
+        point.style.setProperty("--point-s1y", (startScale * 2.18).toFixed(4));
 
-        const movement = point.animate(
-          [
-            {
-              transform: "translate3d(0, 0, 0) scale(1)",
-              offset: 0
-            },
-            {
-              transform: "translate3d(9px, -12px, 0) scale(2.55, 2.25)",
-              offset: 0.18
-            },
-            {
-              transform: "translate3d(12px, -15px, 0) scale(3.35, 3.05)",
-              offset: 0.34
-            },
-            {
-              transform: `translate3d(${destinationX * 0.72}px, ${destinationY * 0.72}px, 0) scale(${finalScale * 0.84}, ${finalScale * 1.03})`,
-              offset: 0.72
-            },
-            {
-              transform: `translate3d(${destinationX}px, ${destinationY}px, 0) scale(${finalScale * 1.055}, ${finalScale * 0.965})`,
-              offset: 0.9
-            },
-            {
-              transform: `translate3d(${destinationX}px, ${destinationY}px, 0) scale(${finalScale})`,
-              offset: 1
-            }
-          ],
-          {
-            duration: 1480,
-            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-            fill: "forwards"
-          }
-        );
+        point.style.setProperty("--point-x2", `${deltaX * 0.76}px`);
+        point.style.setProperty("--point-y2", `${deltaY * 0.76 - 18}px`);
+        point.style.setProperty("--point-x3", `${deltaX * 0.27}px`);
+        point.style.setProperty("--point-y3", `${deltaY * 0.27 - 13}px`);
 
+        const entryDuration = reducedMotion ? 900 : 1700;
+        const entryDelay = reducedMotion ? 80 : 160;
+
+        point.style.setProperty("--point-entry-duration", `${entryDuration}ms`);
+        point.style.setProperty("--point-entry-delay", `${entryDelay}ms`);
+
+        point.classList.remove("the-point--settled");
+        point.classList.add("the-point--entering");
+
+        /* The face arrives only once the punctuation has become a character. */
         window.setTimeout(() => {
           point.classList.add("the-point--awake", "the-point--looking");
 
-          clearPointLookTimer();
+          clearPointTimer("look");
           pointLookTimer = window.setTimeout(() => {
             point.classList.remove("the-point--looking");
-          }, 680);
-        }, 245);
+          }, reducedMotion ? 430 : 690);
+        }, entryDelay + (reducedMotion ? 190 : 430));
 
-        try {
-          await movement.finished;
-        } catch (error) {
-          /* If the page is briefly suspended, restore a clean final state. */
-        }
+        const onEntranceEnd = (event) => {
+          if (event.animationName !== "point-arrive") return;
 
-        pointHome.appendChild(point);
-        movement.cancel();
+          point.removeEventListener("animationend", onEntranceEnd);
+          point.removeEventListener("webkitAnimationEnd", onEntranceEnd);
+          finishPointEntrance();
+        };
 
-        point.classList.remove("the-point--floating", "the-point--looking");
-        point.classList.add("the-point--awake", "the-point--settled");
+        point.addEventListener("animationend", onEntranceEnd);
+        point.addEventListener("webkitAnimationEnd", onEntranceEnd);
 
-        point.style.removeProperty("left");
-        point.style.removeProperty("top");
-        point.style.removeProperty("width");
-        point.style.removeProperty("height");
+        /* Safety net for older Safari versions that miss animationend. */
+        clearPointTimer("fallback");
+        pointFallbackTimer = window.setTimeout(
+          finishPointEntrance,
+          entryDelay + entryDuration + 180
+        );
       }
 
       /*
@@ -2162,8 +2303,19 @@
           return;
         }
 
-        if (nextWord === "CREATIVE" && !pointHasBeenReleased) {
+        if (
+          nextWord === "CREATIVE" &&
+          !pointHasBeenReleased &&
+          !pointReleaseScheduled
+        ) {
+          pointReleaseScheduled = true;
           releasePoint();
+
+          /* Keep CREATIVE in place while the Point makes its entrance. */
+          heroIsDeleting = true;
+          setHeroCursorBlinking(true);
+          scheduleHeroTick(2450);
+          return;
         }
 
         heroIsDeleting = true;
