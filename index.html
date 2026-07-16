@@ -668,6 +668,24 @@
       --point-face-rotate: -3.2deg;
     }
 
+    .the-point.is-looking-left .the-point__body::before,
+    .the-point.is-admiring-simple .the-point__body::before {
+      transform: translateX(-7%) rotate(-32deg);
+    }
+
+    .the-point.is-looking-right .the-point__body::before {
+      transform: translateX(7%) rotate(-18deg);
+    }
+
+    .the-point.is-looking-left .the-point__body::after,
+    .the-point.is-admiring-simple .the-point__body::after {
+      transform: translateX(-5%) rotate(-32deg);
+    }
+
+    .the-point.is-looking-right .the-point__body::after {
+      transform: translateX(5%) rotate(-20deg);
+    }
+
     .the-point.is-working .the-point__mouth {
       left: 44%;
       width: 12%;
@@ -2283,9 +2301,77 @@
         });
       }
 
+      function getPointOrientationState() {
+        if (!point) {
+          return {
+            bodyRotate: 0,
+            bodyTranslateX: 0,
+            bodyTranslateY: 0,
+            bodyScaleX: 1,
+            bodyScaleY: 1
+          };
+        }
+
+        if (point.classList.contains("is-admiring-simple")) {
+          return {
+            bodyRotate: -12,
+            bodyTranslateX: -2.6,
+            bodyTranslateY: -0.4,
+            bodyScaleX: 0.94,
+            bodyScaleY: 1.045
+          };
+        }
+
+        if (point.classList.contains("is-looking-left")) {
+          return {
+            bodyRotate: -10,
+            bodyTranslateX: -2.1,
+            bodyTranslateY: 0,
+            bodyScaleX: 0.95,
+            bodyScaleY: 1.04
+          };
+        }
+
+        if (point.classList.contains("is-looking-right")) {
+          return {
+            bodyRotate: 10,
+            bodyTranslateX: 2.1,
+            bodyTranslateY: 0,
+            bodyScaleX: 0.95,
+            bodyScaleY: 1.04
+          };
+        }
+
+        if (point.classList.contains("is-looking-up")) {
+          return {
+            bodyRotate: -2,
+            bodyTranslateX: 0,
+            bodyTranslateY: -0.8,
+            bodyScaleX: 1.01,
+            bodyScaleY: 1.02
+          };
+        }
+
+        return {
+          bodyRotate: 0,
+          bodyTranslateX: 0,
+          bodyTranslateY: 0,
+          bodyScaleX: 1,
+          bodyScaleY: 1
+        };
+      }
+
       function setPointBodyTransform(scaleX = 1, scaleY = 1, rotation = 0, y = 0) {
         if (!pointBody) return;
-        pointBody.style.transform = `translate3d(0, ${y}px, 0) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`;
+
+        const orientation = getPointOrientationState();
+        const finalScaleX = scaleX * orientation.bodyScaleX;
+        const finalScaleY = scaleY * orientation.bodyScaleY;
+        const finalRotation = rotation + orientation.bodyRotate;
+        const finalX = orientation.bodyTranslateX;
+        const finalY = y + orientation.bodyTranslateY;
+
+        pointBody.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) rotate(${finalRotation}deg) scale(${finalScaleX}, ${finalScaleY})`;
       }
 
       function clearPointGaze() {
@@ -2334,7 +2420,16 @@
 
         clearPointGaze();
         point.classList.add("is-looking-left");
-        await sleep(reducedMotion ? 120 : 300);
+        await animateFrame(reducedMotion ? 150 : 320, (progress) => {
+          const eased = easeInOutCubic(progress);
+          setPointBodyTransform(
+            1 - eased * 0.015,
+            1 + eased * 0.03,
+            0,
+            eased * -0.8
+          );
+        });
+        await sleep(reducedMotion ? 140 : 340);
 
         await animateFrame(reducedMotion ? 220 : 460, (progress) => {
           const eased = easeInOutCubic(progress);
@@ -2467,10 +2562,25 @@
       async function finishPointPerformance(reducedMotion) {
         if (!point) return;
 
-        /* It lands, turns back to the result and quietly admires it. */
+        /* It comes home, then deliberately turns to face “Simple”. */
+        clearPointGaze();
+        point.classList.add("is-looking-left");
+
+        await animateFrame(reducedMotion ? 170 : 320, (progress) => {
+          const eased = easeInOutCubic(progress);
+          setPointBodyTransform(
+            1 - eased * 0.02,
+            1 + eased * 0.03,
+            0,
+            eased * -0.5
+          );
+        });
+
+        await sleep(reducedMotion ? 180 : 340);
+
         clearPointGaze();
         point.classList.add("is-admiring-simple", "is-satisfied");
-        await sleep(reducedMotion ? 220 : 620);
+        await sleep(reducedMotion ? 340 : 820);
 
         /* The wink is aimed at the finished word, not at the viewer. */
         point.classList.add("is-winking");
@@ -2525,11 +2635,22 @@
           await eraseLetter(letter, journey, reducedMotion);
         }
 
-        /* From the far side, it turns to inspect the cleaner line. */
+        /* From the far side, it properly turns to face and admire “Simple”. */
         point.classList.remove("is-working");
         clearPointGaze();
         point.classList.add("is-looking-right", "is-satisfied");
-        await sleep(reducedMotion ? 160 : 460);
+
+        await animateFrame(reducedMotion ? 180 : 360, (progress) => {
+          const pulse = Math.sin(Math.PI * progress);
+          setPointBodyTransform(
+            1 - pulse * 0.035,
+            1 + pulse * 0.055,
+            pulse * 0.8,
+            pulse * -0.6
+          );
+        });
+
+        await sleep(reducedMotion ? 260 : 700);
         point.classList.remove("is-satisfied");
 
         await collapseMade();
