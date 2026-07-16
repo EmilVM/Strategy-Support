@@ -386,7 +386,14 @@
       white-space: nowrap;
     }
 
+    /*
+      THE POINT
+      The full stop after “Made simple” wakes up, pulls the word “Made”
+      into itself, and leaves the sharper result: “Simple.”
+      Everything is HTML, CSS and JavaScript — no character image file.
+    */
     .hero-subline {
+      position: relative;
       display: block;
       margin-top: clamp(16px, 2vw, 28px);
       color: var(--pink);
@@ -395,202 +402,265 @@
       letter-spacing: -0.025em;
       line-height: 1.05;
       text-align: center;
+      white-space: nowrap;
     }
 
-    /*
-      THE POINT
-      The full stop and the character are the same HTML element.
-      It begins inline after “Made simple”, then lifts out of the
-      sentence, grows as it travels, looks around, winks and settles.
-    */
+    .hero-made-wrap,
+    .hero-made,
+    .hero-made-letter,
+    .hero-simple,
+    .the-point {
+      display: inline-block;
+    }
+
+    .hero-made-wrap {
+      width: auto;
+      overflow: visible;
+      white-space: nowrap;
+      vertical-align: baseline;
+      transition:
+        width 620ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 260ms ease,
+        margin-right 620ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: width, margin-right;
+    }
+
+    .hero-made-wrap.is-collapsing {
+      width: 0 !important;
+      margin-right: 0 !important;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .hero-made-letter {
+      position: relative;
+      z-index: 3;
+      transform-origin: center;
+      will-change: transform, opacity, filter;
+    }
+
+    .hero-made-letter.is-absorbing {
+      animation: point-absorb-letter 760ms cubic-bezier(0.45, 0, 0.1, 1) both;
+      animation-delay: var(--absorb-delay, 0ms);
+    }
+
+    .hero-simple {
+      position: relative;
+      z-index: 2;
+    }
+
+    .point-ink-trail {
+      position: absolute;
+      z-index: 1;
+      height: 3px;
+      border-radius: 999px;
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(249, 0, 144, 0.05),
+        rgba(249, 0, 144, 0.6) 18%,
+        #f90090 74%,
+        #ff5fc0 100%
+      );
+      box-shadow:
+        0 0 8px rgba(249, 0, 144, 0.32),
+        0 1px 0 rgba(255, 255, 255, 0.36) inset;
+      transform: scaleX(0);
+      transform-origin: right center;
+      will-change: transform, opacity;
+    }
+
+    .point-ink-trail.is-reaching {
+      animation: point-trail-reach 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .point-ink-trail.is-retracting {
+      animation: point-trail-retract 520ms cubic-bezier(0.65, 0, 0.35, 1) both;
+    }
+
+    /* Outer shell controls punctuation size and layout. */
     .the-point {
       position: relative;
-      display: inline-block;
+      z-index: 4;
       width: 0.2em;
       height: 0.2em;
       margin-left: 0.045em;
+      top: 0.015em;
+      vertical-align: baseline;
+      transform-origin: center;
+      transition:
+        width 720ms cubic-bezier(0.16, 1, 0.3, 1),
+        height 720ms cubic-bezier(0.16, 1, 0.3, 1),
+        top 720ms cubic-bezier(0.16, 1, 0.3, 1),
+        margin-left 720ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: width, height, top;
+    }
+
+    .the-point.is-awake {
+      width: 1.18em;
+      height: 1.18em;
+      margin-left: 0.12em;
+      top: 0.32em;
+    }
+
+    .the-point__body {
+      position: absolute;
+      inset: 0;
       overflow: hidden;
       isolation: isolate;
       border-radius: 50%;
-      vertical-align: 0.015em;
       background:
-        radial-gradient(circle at 39% 30%, #ff62c4 0%, #ff2bad 20%, var(--pink) 52%, #d7007d 78%, #a9005e 100%);
+        radial-gradient(circle at 31% 23%, rgba(255, 255, 255, 0.98) 0 4%, rgba(255, 255, 255, 0.42) 5%, transparent 18%),
+        radial-gradient(circle at 39% 31%, #ff70cb 0%, #ff2bad 18%, var(--pink) 51%, #d8007f 76%, #9e0058 100%);
       box-shadow:
-        inset 0.03em 0.035em 0.055em rgba(255, 255, 255, 0.3),
-        inset -0.035em -0.045em 0.07em rgba(91, 0, 48, 0.22),
-        0 0.05em 0.12em rgba(249, 0, 144, 0.2);
+        inset 0.05em 0.055em 0.09em rgba(255, 255, 255, 0.3),
+        inset -0.07em -0.085em 0.13em rgba(92, 0, 49, 0.26),
+        0 0.15em 0.3em rgba(249, 0, 144, 0.22);
+      transform: translateZ(0) scale(1);
       transform-origin: center;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
       will-change: transform;
     }
 
-    .the-point::before,
-    .the-point::after {
+    .the-point__body::before,
+    .the-point__body::after {
       content: "";
       position: absolute;
       pointer-events: none;
-      opacity: 0;
-      transition: opacity 220ms ease;
     }
 
-    .the-point::before {
+    .the-point__body::before {
       z-index: 1;
-      top: 8%;
-      left: 12%;
-      width: 46%;
-      height: 34%;
+      top: 5%;
+      left: 10%;
+      width: 51%;
+      height: 38%;
       border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.42) 42%, rgba(255, 255, 255, 0) 72%);
-      filter: blur(0.6px);
-      transform: rotate(-24deg);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(255, 255, 255, 0.34) 44%,
+        transparent 72%
+      );
+      filter: blur(0.7px);
+      transform: rotate(-25deg);
     }
 
-    .the-point::after {
-      right: 6%;
-      bottom: 5%;
-      width: 62%;
-      height: 50%;
+    .the-point__body::after {
+      right: 5%;
+      bottom: 3%;
+      width: 64%;
+      height: 52%;
       border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(82, 0, 42, 0.26) 0%, rgba(82, 0, 42, 0) 72%);
-      filter: blur(1px);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(74, 0, 38, 0.27) 0%,
+        rgba(74, 0, 38, 0) 72%
+      );
+      filter: blur(1.4px);
       transform: rotate(-28deg);
     }
 
     .the-point__face {
       position: absolute;
       inset: 0;
-      z-index: 2;
+      z-index: 3;
       opacity: 0;
-      transition: opacity 180ms ease;
+      transform: translateY(3%);
+      transition: opacity 220ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .the-point.is-awake .the-point__face {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .the-point__eye,
     .the-point__mouth {
       position: absolute;
       display: block;
-      background: #110007;
+      color: #130008;
     }
 
     .the-point__eye {
-      top: 42.5%;
-      width: 8.5%;
-      height: 10%;
+      top: 41%;
+      width: 10%;
+      height: 12%;
       overflow: hidden;
       border-radius: 50%;
+      background: currentColor;
       transform-origin: center;
+      transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .the-point__eye::after {
       content: "";
       position: absolute;
-      top: 15%;
-      left: 18%;
-      width: 24%;
-      height: 24%;
+      top: 13%;
+      left: 17%;
+      width: 28%;
+      height: 28%;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.82);
-      opacity: 0;
-      transition: opacity 180ms ease;
+      background: rgba(255, 255, 255, 0.88);
     }
 
     .the-point__eye--left {
-      left: 31.5%;
+      left: 30%;
     }
 
     .the-point__eye--right {
-      right: 30%;
-      top: 41.8%;
-      width: 8%;
-      height: 9.5%;
+      right: 29%;
+      top: 40.2%;
+      width: 9.4%;
+      height: 11.4%;
     }
 
     .the-point__mouth {
-      top: 62.5%;
+      top: 61%;
       left: 42%;
       width: 16%;
-      height: 3.2%;
-      border-radius: 999px;
-      transform: rotate(-2deg);
+      height: 8%;
+      border-bottom: 2px solid currentColor;
+      border-radius: 0 0 999px 999px;
+      transform: rotate(-3deg);
       transform-origin: center;
-      transition: transform 220ms ease, width 220ms ease, left 220ms ease;
+      transition: transform 260ms ease, width 260ms ease, left 260ms ease;
     }
 
-    .the-point--awake::before,
-    .the-point--awake::after,
-    .the-point--awake .the-point__face {
-      opacity: 1;
+    .the-point.is-looking-left .the-point__eye {
+      transform: translateX(-24%);
     }
 
-    .the-point--awake .the-point__eye::after {
-      opacity: 0.68;
+    .the-point.is-pleased .the-point__mouth {
+      left: 41%;
+      width: 18%;
+      transform: translateY(-3%) rotate(-7deg);
     }
 
-    /*
-      Safari-safe entrance. The Point is moved into its final home first,
-      then visually held at the punctuation position with an inverse
-      transform. A normal CSS keyframe animation carries it across.
-    */
-    .point-home .the-point--entering {
-      animation-name: point-arrive;
-      animation-duration: var(--point-entry-duration, 1700ms);
-      animation-delay: var(--point-entry-delay, 160ms);
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-iteration-count: 1;
+    .the-point__body.is-waking {
+      animation: point-wake 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
-    .the-point--looking .the-point__eye {
-      animation: point-look-around 650ms cubic-bezier(0.45, 0, 0.2, 1) both;
+    .the-point__body.is-gulping {
+      animation: point-gulp 360ms cubic-bezier(0.2, 0.9, 0.25, 1.25) both;
     }
 
-    .the-point--winking .the-point__eye--right {
-      animation: point-wink-once 430ms cubic-bezier(0.4, 0, 0.2, 1) both !important;
+    .the-point.is-winking .the-point__eye--right {
+      animation: point-wink 520ms cubic-bezier(0.4, 0, 0.2, 1) both;
     }
 
-    .the-point--pleased .the-point__mouth {
-      left: 42.5%;
-      width: 15%;
-      transform: translateY(-7%) rotate(-5deg);
+    .the-point.is-settled .the-point__body {
+      animation: point-idle 5.2s ease-in-out infinite;
     }
 
-    .point-home {
-      position: absolute;
-      z-index: 3;
-      top: 50%;
-      right: clamp(28px, 5vw, 90px);
-      width: clamp(76px, 6.2vw, 104px);
-      aspect-ratio: 1;
-      transform: translateY(-50%);
-      pointer-events: none;
+    .the-point.is-settled .the-point__eye--left {
+      animation: point-blink-left 6.8s ease-in-out infinite;
     }
 
-    .point-home .the-point {
-      display: block;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      vertical-align: initial;
-      box-shadow:
-        inset 6px 7px 14px rgba(255, 255, 255, 0.28),
-        inset -8px -10px 18px rgba(91, 0, 48, 0.24),
-        0 14px 30px rgba(249, 0, 144, 0.22);
-    }
-
-    .point-home .the-point::before {
-      filter: blur(1.4px);
-    }
-
-    .point-home .the-point::after {
-      filter: blur(2px);
-    }
-
-    .point-home .the-point--settled {
-      animation: point-breathe 4.8s ease-in-out infinite;
-    }
-
-    .point-home .the-point--settled .the-point__eye {
-      animation: point-blink 6.4s ease-in-out infinite;
+    .the-point.is-settled .the-point__eye--right {
+      animation: point-blink-right 6.8s ease-in-out infinite;
     }
 
     @keyframes hero-cursor-blink {
@@ -605,110 +675,140 @@
       }
     }
 
-    @keyframes point-arrive {
+    @keyframes point-wake {
       0% {
-        transform:
-          translate3d(var(--point-x0), var(--point-y0), 0)
-          scale(var(--point-s0));
-        animation-timing-function: cubic-bezier(0.3, 0, 0.7, 1);
-      }
-
-      13% {
-        transform:
-          translate3d(var(--point-x1), var(--point-y1), 0)
-          rotate(-2deg)
-          scale(var(--point-s1x), var(--point-s1y));
-        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+        transform: scale(0.86);
       }
 
       38% {
-        transform:
-          translate3d(var(--point-x2), var(--point-y2), 0)
-          rotate(-4deg)
-          scale(0.36, 0.31);
-        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+        transform: scale(1.1, 0.92) rotate(-2deg);
       }
 
-      72% {
-        transform:
-          translate3d(var(--point-x3), var(--point-y3), 0)
-          rotate(2.5deg)
-          scale(0.82, 0.98);
-        animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.22);
-      }
-
-      89% {
-        transform:
-          translate3d(-5px, 3px, 0)
-          rotate(-1.5deg)
-          scale(1.065, 0.945);
-        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      68% {
+        transform: scale(0.97, 1.04) rotate(1deg);
       }
 
       100% {
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    @keyframes point-absorb-letter {
+      0% {
+        opacity: 1;
+        filter: blur(0);
         transform: translate3d(0, 0, 0) rotate(0) scale(1);
       }
-    }
 
-    @keyframes point-look-around {
-      0%,
-      14% {
-        transform: translate(0, 0) scaleY(1);
+      24% {
+        opacity: 1;
+        transform: translate3d(0.12em, -0.2em, 0) rotate(var(--letter-tilt, 5deg)) scale(0.96);
       }
 
-      36% {
-        transform: translate(22%, -2%) scaleY(1);
+      68% {
+        opacity: 0.82;
+        filter: blur(0.4px);
+        transform: translate3d(var(--letter-x-mid), var(--letter-arc), 0) rotate(var(--letter-spin)) scale(0.58);
       }
 
-      62% {
-        transform: translate(-14%, 2%) scaleY(1);
-      }
-
-      76% {
-        transform: translate(-14%, 2%) scaleY(0.16);
-      }
-
-      86%,
       100% {
-        transform: translate(0, 0) scaleY(1);
+        opacity: 0;
+        filter: blur(2px);
+        transform: translate3d(var(--letter-x), var(--letter-y), 0) rotate(var(--letter-spin)) scale(0.06);
       }
     }
 
-    @keyframes point-wink-once {
+    @keyframes point-trail-reach {
+      0% {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      18% {
+        opacity: 0.85;
+      }
+
+      100% {
+        opacity: 0.9;
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes point-trail-retract {
+      0% {
+        opacity: 0.9;
+        transform: scaleX(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+    }
+
+    @keyframes point-gulp {
       0%,
-      22%,
-      78%,
+      100% {
+        transform: scale(1);
+      }
+
+      34% {
+        transform: scale(1.12, 0.91) rotate(-1.5deg);
+      }
+
+      68% {
+        transform: scale(0.96, 1.055) rotate(0.8deg);
+      }
+    }
+
+    @keyframes point-wink {
+      0%,
+      18%,
+      82%,
       100% {
         transform: scaleY(1);
       }
 
-      44%,
+      42%,
       62% {
-        transform: scaleY(0.08);
+        transform: scaleY(0.08) translateY(20%);
       }
     }
 
-    @keyframes point-breathe {
+    @keyframes point-idle {
       0%,
       100% {
         transform: translateY(0) scale(1);
       }
 
       50% {
-        transform: translateY(-1px) scale(1.018, 0.988);
+        transform: translateY(-1px) scale(1.018);
       }
     }
 
-    @keyframes point-blink {
+    @keyframes point-blink-left {
       0%,
-      43%,
-      47%,
+      44%,
+      48%,
       100% {
         transform: scaleY(1);
       }
 
-      45% {
-        transform: scaleY(0.12);
+      46% {
+        transform: scaleY(0.08);
+      }
+    }
+
+    @keyframes point-blink-right {
+      0%,
+      44.4%,
+      48.4%,
+      100% {
+        transform: scaleY(1);
+      }
+
+      46.4% {
+        transform: scaleY(0.08);
       }
     }
 
@@ -1400,14 +1500,6 @@
       .hero-subline {
         margin-top: clamp(20px, 3vw, 28px);
       }
-
-      .point-home {
-        top: auto;
-        right: clamp(24px, 7vw, 60px);
-        bottom: clamp(54px, 10svh, 104px);
-        width: clamp(64px, 9vw, 80px);
-        transform: none;
-      }
     }
 
     @media (max-width: 700px) {
@@ -1512,12 +1604,6 @@
       .hero-subline {
         margin-top: clamp(18px, 5vw, 24px);
         font-size: clamp(1.3rem, 6.2vw, 1.75rem);
-      }
-
-      .point-home {
-        right: 20px;
-        bottom: 9svh;
-        width: clamp(56px, 16vw, 66px);
       }
 
       #recent-work,
@@ -1633,16 +1719,33 @@
       .work-accordion-body,
       .testimonial-item,
       .testimonial-control,
-      .testimonial-control::after,
-      .the-point,
-      .the-point::before,
-      .the-point::after,
-      .the-point__face {
+      .testimonial-control::after {
         transition-duration: 0.01ms !important;
       }
 
-      .point-home .the-point--settled,
-      .point-home .the-point--settled .the-point__eye {
+
+      .hero-made-letter.is-absorbing {
+        animation-duration: 260ms;
+      }
+
+      .point-ink-trail {
+        display: none;
+      }
+
+      .the-point,
+      .the-point__face,
+      .hero-made-wrap {
+        transition-duration: 260ms !important;
+      }
+
+      .the-point__body.is-waking,
+      .the-point__body.is-gulping,
+      .the-point.is-winking .the-point__eye--right {
+        animation-duration: 300ms !important;
+      }
+
+      .the-point.is-settled .the-point__body,
+      .the-point.is-settled .the-point__eye {
         animation: none !important;
       }
     }
@@ -1781,19 +1884,24 @@
             <span class="hero-fixed">STRATEGY</span>
           </span>
 
-          <span class="hero-subline" aria-hidden="true">
-            Made simple<span class="the-point" id="the-point">
-              <span class="the-point__face">
-                <span class="the-point__eye the-point__eye--left"></span>
-                <span class="the-point__eye the-point__eye--right"></span>
-                <span class="the-point__mouth"></span>
+          <span class="hero-subline" id="hero-subline" aria-hidden="true">
+            <span class="hero-made-wrap" id="hero-made-wrap">
+              <span class="hero-made" id="hero-made">
+                <span class="hero-made-letter">M</span><span class="hero-made-letter">a</span><span class="hero-made-letter">d</span><span class="hero-made-letter">e</span>
+              </span><span class="hero-made-gap">&nbsp;</span>
+            </span><span class="hero-simple" id="hero-simple">Simple</span><span class="the-point" id="the-point">
+              <span class="the-point__body" id="the-point-body">
+                <span class="the-point__face">
+                  <span class="the-point__eye the-point__eye--left"></span>
+                  <span class="the-point__eye the-point__eye--right"></span>
+                  <span class="the-point__mouth"></span>
+                </span>
               </span>
             </span>
+            <span class="point-ink-trail" id="point-ink-trail"></span>
           </span>
         </h1>
       </div>
-
-      <div class="point-home" id="point-home" aria-hidden="true"></div>
     </section>
 
     <section id="about-me" aria-labelledby="about-me-heading">
@@ -2078,160 +2186,164 @@
     document.addEventListener("DOMContentLoaded", () => {
       /*
         THE POINT
-        The character starts as the full stop after “Made simple”.
-        The first time CREATIVE is fully typed, it detaches, wakes up,
-        looks around, expands and settles beside the headline.
+        The full stop wakes up after CREATIVE appears for the first time.
+        It draws the letters in “Made” into itself, collapses the empty
+        space, and leaves the line saying “Simple.”
       */
+      const heroSubline = document.getElementById("hero-subline");
+      const madeWrap = document.getElementById("hero-made-wrap");
+      const madeWord = document.getElementById("hero-made");
+      const madeLetters = Array.from(document.querySelectorAll(".hero-made-letter"));
       const point = document.getElementById("the-point");
-      const pointHome = document.getElementById("point-home");
-      let pointHasBeenReleased = false;
-      let pointReleaseScheduled = false;
-      let pointLookTimer = null;
-      let pointFallbackTimer = null;
+      const pointBody = document.getElementById("the-point-body");
+      const pointTrail = document.getElementById("point-ink-trail");
 
-      function clearPointTimer(timerName) {
-        if (timerName === "look" && pointLookTimer !== null) {
-          window.clearTimeout(pointLookTimer);
-          pointLookTimer = null;
-        }
+      const pointEditPause = 3900;
+      let pointHasEdited = false;
+      let pointEditScheduled = false;
+      const pointTimers = [];
 
-        if (timerName === "fallback" && pointFallbackTimer !== null) {
-          window.clearTimeout(pointFallbackTimer);
-          pointFallbackTimer = null;
-        }
+      function schedulePointAction(callback, delay) {
+        const timer = window.setTimeout(callback, delay);
+        pointTimers.push(timer);
+        return timer;
       }
 
-      function finishPointEntrance() {
-        if (!point || !pointHome || point.classList.contains("the-point--settled")) {
+      function restartClassAnimation(element, className) {
+        if (!element) return;
+
+        element.classList.remove(className);
+        void element.offsetWidth;
+        element.classList.add(className);
+      }
+
+      function gulpPoint() {
+        restartClassAnimation(pointBody, "is-gulping");
+
+        schedulePointAction(() => {
+          pointBody?.classList.remove("is-gulping");
+        }, 380);
+      }
+
+      function positionPointTrail() {
+        if (!heroSubline || !madeWord || !point || !pointTrail) return;
+
+        const sublineRect = heroSubline.getBoundingClientRect();
+        const madeRect = madeWord.getBoundingClientRect();
+        const pointRect = point.getBoundingClientRect();
+
+        const left = madeRect.left - sublineRect.left + madeRect.width * 0.48;
+        const right = pointRect.left - sublineRect.left + pointRect.width * 0.34;
+        const width = Math.max(0, right - left);
+        const top = madeRect.bottom - sublineRect.top + 4;
+
+        pointTrail.style.left = `${left}px`;
+        pointTrail.style.width = `${width}px`;
+        pointTrail.style.top = `${top}px`;
+      }
+
+      function prepareLetterPaths() {
+        if (!point || !madeLetters.length) return;
+
+        const pointRect = point.getBoundingClientRect();
+        const pointTargetX = pointRect.left + pointRect.width * 0.48;
+        const pointTargetY = pointRect.top + pointRect.height * 0.53;
+
+        const reverseOrder = [...madeLetters].reverse();
+
+        reverseOrder.forEach((letter, orderIndex) => {
+          const letterRect = letter.getBoundingClientRect();
+          const letterX = letterRect.left + letterRect.width / 2;
+          const letterY = letterRect.top + letterRect.height / 2;
+
+          const travelX = pointTargetX - letterX;
+          letter.style.setProperty("--letter-x", `${travelX}px`);
+          letter.style.setProperty("--letter-x-mid", `${travelX * 0.72}px`);
+          letter.style.setProperty("--letter-y", `${pointTargetY - letterY}px`);
+          letter.style.setProperty("--letter-arc", `${orderIndex % 2 === 0 ? -8 : 5}px`);
+          letter.style.setProperty("--letter-spin", `${orderIndex % 2 === 0 ? 18 : -14}deg`);
+          letter.style.setProperty("--letter-tilt", `${orderIndex % 2 === 0 ? -5 : 6}deg`);
+          letter.style.setProperty("--absorb-delay", `${orderIndex * 135}ms`);
+        });
+      }
+
+      function collapseMadeWord() {
+        if (!madeWrap) return;
+
+        const currentWidth = madeWrap.getBoundingClientRect().width;
+        madeWrap.style.width = `${currentWidth}px`;
+        madeWrap.style.marginRight = "0px";
+        void madeWrap.offsetWidth;
+        madeWrap.classList.add("is-collapsing");
+      }
+
+      function finishPointEdit() {
+        if (!point) return;
+
+        point.classList.remove("is-looking-left");
+        point.classList.add("is-pleased");
+
+        schedulePointAction(() => {
+          point.classList.add("is-winking");
+        }, 250);
+
+        schedulePointAction(() => {
+          point.classList.remove("is-winking", "is-pleased");
+          point.classList.add("is-settled");
+        }, 820);
+      }
+
+      function startPointEdit() {
+        if (
+          pointHasEdited ||
+          !point ||
+          !pointBody ||
+          !madeWrap ||
+          !madeLetters.length
+        ) {
           return;
         }
 
-        clearPointTimer("fallback");
-
-        point.classList.remove(
-          "the-point--entering",
-          "the-point--looking",
-          "the-point--winking",
-          "the-point--pleased"
-        );
-        point.classList.add("the-point--awake", "the-point--settled");
-
-        [
-          "--point-x0",
-          "--point-y0",
-          "--point-s0",
-          "--point-x1",
-          "--point-y1",
-          "--point-s1x",
-          "--point-s1y",
-          "--point-x2",
-          "--point-y2",
-          "--point-x3",
-          "--point-y3",
-          "--point-entry-duration",
-          "--point-entry-delay"
-        ].forEach((property) => point.style.removeProperty(property));
-
-        /* Let it register the room, then give one restrained wink. */
-        window.setTimeout(() => {
-          if (!point.classList.contains("the-point--settled")) return;
-
-          point.classList.add("the-point--winking", "the-point--pleased");
-
-          window.setTimeout(() => {
-            point.classList.remove("the-point--winking", "the-point--pleased");
-          }, 460);
-        }, 260);
-      }
-
-      function releasePoint() {
-        if (pointHasBeenReleased || !point || !pointHome) return;
-
-        pointHasBeenReleased = true;
-        pointReleaseScheduled = false;
+        pointHasEdited = true;
+        pointEditScheduled = false;
 
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const start = point.getBoundingClientRect();
+        const wakeDelay = reducedMotion ? 180 : 520;
+        const trailDelay = reducedMotion ? 300 : 780;
+        const absorbDelay = reducedMotion ? 400 : 1110;
+        const collapseDelay = reducedMotion ? 980 : 2360;
+        const finishDelay = reducedMotion ? 1280 : 3060;
 
-        if (!start.width) {
-          pointHome.appendChild(point);
-          point.classList.add("the-point--awake", "the-point--settled");
-          return;
-        }
+        point.classList.add("is-awake");
+        restartClassAnimation(pointBody, "is-waking");
 
-        /*
-          FLIP: move the Point into its final home, measure that position,
-          then animate from an inverse transform that puts it visually back
-          where the full stop was. This avoids the Safari teleport.
-        */
-        pointHome.appendChild(point);
+        schedulePointAction(() => {
+          point.classList.add("is-looking-left");
+        }, wakeDelay);
 
-        const destination = point.getBoundingClientRect();
+        schedulePointAction(() => {
+          positionPointTrail();
+          pointTrail?.classList.add("is-reaching");
+        }, trailDelay);
 
-        if (!destination.width) {
-          point.classList.add("the-point--awake", "the-point--settled");
-          return;
-        }
+        schedulePointAction(() => {
+          prepareLetterPaths();
 
-        const startCentreX = start.left + start.width / 2;
-        const startCentreY = start.top + start.height / 2;
-        const destinationCentreX = destination.left + destination.width / 2;
-        const destinationCentreY = destination.top + destination.height / 2;
+          const reverseOrder = [...madeLetters].reverse();
 
-        const deltaX = startCentreX - destinationCentreX;
-        const deltaY = startCentreY - destinationCentreY;
-        const startScale = Math.max(0.035, start.width / destination.width);
+          reverseOrder.forEach((letter, orderIndex) => {
+            letter.classList.add("is-absorbing");
+            schedulePointAction(gulpPoint, orderIndex * 135 + 610);
+          });
+        }, absorbDelay);
 
-        point.style.setProperty("--point-x0", `${deltaX}px`);
-        point.style.setProperty("--point-y0", `${deltaY}px`);
-        point.style.setProperty("--point-s0", startScale.toFixed(4));
+        schedulePointAction(() => {
+          pointTrail?.classList.remove("is-reaching");
+          pointTrail?.classList.add("is-retracting");
+          collapseMadeWord();
+        }, collapseDelay);
 
-        point.style.setProperty("--point-x1", `${deltaX + 9}px`);
-        point.style.setProperty("--point-y1", `${deltaY - 12}px`);
-        point.style.setProperty("--point-s1x", (startScale * 2.5).toFixed(4));
-        point.style.setProperty("--point-s1y", (startScale * 2.18).toFixed(4));
-
-        point.style.setProperty("--point-x2", `${deltaX * 0.76}px`);
-        point.style.setProperty("--point-y2", `${deltaY * 0.76 - 18}px`);
-        point.style.setProperty("--point-x3", `${deltaX * 0.27}px`);
-        point.style.setProperty("--point-y3", `${deltaY * 0.27 - 13}px`);
-
-        const entryDuration = reducedMotion ? 900 : 1700;
-        const entryDelay = reducedMotion ? 80 : 160;
-
-        point.style.setProperty("--point-entry-duration", `${entryDuration}ms`);
-        point.style.setProperty("--point-entry-delay", `${entryDelay}ms`);
-
-        point.classList.remove("the-point--settled");
-        point.classList.add("the-point--entering");
-
-        /* The face arrives only once the punctuation has become a character. */
-        window.setTimeout(() => {
-          point.classList.add("the-point--awake", "the-point--looking");
-
-          clearPointTimer("look");
-          pointLookTimer = window.setTimeout(() => {
-            point.classList.remove("the-point--looking");
-          }, reducedMotion ? 430 : 690);
-        }, entryDelay + (reducedMotion ? 190 : 430));
-
-        const onEntranceEnd = (event) => {
-          if (event.animationName !== "point-arrive") return;
-
-          point.removeEventListener("animationend", onEntranceEnd);
-          point.removeEventListener("webkitAnimationEnd", onEntranceEnd);
-          finishPointEntrance();
-        };
-
-        point.addEventListener("animationend", onEntranceEnd);
-        point.addEventListener("webkitAnimationEnd", onEntranceEnd);
-
-        /* Safety net for older Safari versions that miss animationend. */
-        clearPointTimer("fallback");
-        pointFallbackTimer = window.setTimeout(
-          finishPointEntrance,
-          entryDelay + entryDuration + 180
-        );
+        schedulePointAction(finishPointEdit, finishDelay);
       }
 
       /*
@@ -2305,16 +2417,16 @@
 
         if (
           nextWord === "CREATIVE" &&
-          !pointHasBeenReleased &&
-          !pointReleaseScheduled
+          !pointHasEdited &&
+          !pointEditScheduled
         ) {
-          pointReleaseScheduled = true;
-          releasePoint();
+          pointEditScheduled = true;
+          startPointEdit();
 
-          /* Keep CREATIVE in place while the Point makes its entrance. */
+          /* Keep CREATIVE visible while The Point edits the subline. */
           heroIsDeleting = true;
           setHeroCursorBlinking(true);
-          scheduleHeroTick(2450);
+          scheduleHeroTick(pointEditPause);
           return;
         }
 
