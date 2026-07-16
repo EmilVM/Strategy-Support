@@ -469,6 +469,11 @@
     }
 
     .the-point {
+      --point-gaze-x: 0%;
+      --point-gaze-y: 0%;
+      --point-face-x: 0%;
+      --point-face-y: 0%;
+      --point-face-rotate: 0deg;
       position: absolute;
       inset: 0;
       display: block;
@@ -552,14 +557,29 @@
       inset: 0;
       z-index: 3;
       opacity: 0;
-      transform: translateY(5%);
-      transition: opacity 220ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      transform:
+        translate3d(
+          var(--point-face-x),
+          calc(5% + var(--point-face-y)),
+          0
+        )
+        rotate(var(--point-face-rotate));
+      transition:
+        opacity 220ms ease,
+        transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
     }
 
     .point-home.is-awake .the-point__face,
     .the-point.is-awake .the-point__face {
       opacity: 1;
-      transform: translateY(0);
+      transform:
+        translate3d(
+          var(--point-face-x),
+          var(--point-face-y),
+          0
+        )
+        rotate(var(--point-face-rotate));
     }
 
     .the-point__eye,
@@ -570,14 +590,18 @@
     }
 
     .the-point__eye {
-      top: 40%;
+      top: calc(40% + var(--point-gaze-y));
       width: 11.5%;
       height: 13.5%;
       overflow: hidden;
       border-radius: 50%;
       background: currentColor;
       transform-origin: center;
-      transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+      transition:
+        top 300ms cubic-bezier(0.22, 1, 0.36, 1),
+        left 300ms cubic-bezier(0.22, 1, 0.36, 1),
+        right 300ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 180ms ease;
     }
 
     .the-point__eye::after {
@@ -592,12 +616,12 @@
     }
 
     .the-point__eye--left {
-      left: 31%;
+      left: calc(31% + var(--point-gaze-x));
     }
 
     .the-point__eye--right {
-      right: 30%;
-      top: 39.2%;
+      right: calc(30% - var(--point-gaze-x));
+      top: calc(39.2% + var(--point-gaze-y));
       width: 10.8%;
       height: 12.8%;
     }
@@ -614,12 +638,34 @@
       transition: transform 220ms ease, width 220ms ease, left 220ms ease, height 220ms ease;
     }
 
-    .the-point.is-looking-left .the-point__eye {
-      transform: translateX(-25%);
+    .the-point.is-looking-up {
+      --point-gaze-y: -4.6%;
+      --point-face-y: -1.8%;
+      --point-face-rotate: -0.5deg;
     }
 
-    .the-point.is-looking-right .the-point__eye {
-      transform: translateX(22%);
+    .the-point.is-looking-left {
+      --point-gaze-x: -3.9%;
+      --point-gaze-y: -0.7%;
+      --point-face-x: -2.2%;
+      --point-face-y: -0.4%;
+      --point-face-rotate: -2.8deg;
+    }
+
+    .the-point.is-looking-right {
+      --point-gaze-x: 3.5%;
+      --point-gaze-y: -0.4%;
+      --point-face-x: 1.9%;
+      --point-face-y: -0.2%;
+      --point-face-rotate: 2.3deg;
+    }
+
+    .the-point.is-admiring-simple {
+      --point-gaze-x: -4.4%;
+      --point-gaze-y: -1.8%;
+      --point-face-x: -2.8%;
+      --point-face-y: -1.1%;
+      --point-face-rotate: -3.2deg;
     }
 
     .the-point.is-working .the-point__mouth {
@@ -645,6 +691,10 @@
       animation: point-idle 5.4s ease-in-out infinite;
     }
 
+    .the-point.is-settled.is-admiring-simple .the-point__body {
+      animation: point-admire 4.8s ease-in-out infinite;
+    }
+
     .the-point.is-settled .the-point__eye--left {
       animation: point-blink-left 7.2s ease-in-out infinite;
     }
@@ -661,6 +711,12 @@
     @keyframes point-idle {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-1px) scale(1.018); }
+    }
+
+    @keyframes point-admire {
+      0%, 100% { transform: translateY(0) rotate(-1.2deg) scale(1); }
+      45% { transform: translateY(-1px) rotate(-2.2deg) scale(1.018, 1.008); }
+      70% { transform: translateY(0) rotate(-1.5deg) scale(1.006, 1.012); }
     }
 
     @keyframes point-blink-left {
@@ -2185,9 +2241,9 @@
     document.addEventListener("DOMContentLoaded", () => {
       /*
         THE POINT
-        A proper character performance: it wakes, notices “Made”,
-        leaves its punctuation position, rolls across the letters and
-        wipes them away under its body, then returns and winks.
+        A character performance: it wakes, scans the headline, turns
+        towards “Made”, rolls across and removes it, then returns to
+        admire “Simple” and gives the finished word a small wink.
       */
       const heroSubline = document.getElementById("hero-subline");
       const madeWrap = document.getElementById("hero-made-wrap");
@@ -2232,9 +2288,51 @@
         pointBody.style.transform = `translate3d(0, ${y}px, 0) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`;
       }
 
+      function clearPointGaze() {
+        if (!point) return;
+        point.classList.remove(
+          "is-looking-up",
+          "is-looking-left",
+          "is-looking-right",
+          "is-admiring-simple"
+        );
+      }
+
+      async function letPointLookAround(reducedMotion) {
+        if (!point || !pointBody) return;
+
+        /* First notice the changing strategy headline above. */
+        clearPointGaze();
+        point.classList.add("is-looking-up");
+
+        await animateFrame(reducedMotion ? 180 : 420, (progress) => {
+          const lift = Math.sin(Math.PI * progress);
+          setPointBodyTransform(
+            1 - lift * 0.025,
+            1 + lift * 0.035,
+            lift * -0.8,
+            lift * -1.4
+          );
+        });
+
+        await sleep(reducedMotion ? 90 : 260);
+
+        /* A quick glance out into the page makes it feel observant. */
+        clearPointGaze();
+        point.classList.add("is-looking-right");
+        await sleep(reducedMotion ? 100 : 300);
+
+        /* Then it spots the unnecessary word and commits to it. */
+        clearPointGaze();
+        point.classList.add("is-looking-left");
+        await sleep(reducedMotion ? 170 : 520);
+        setPointBodyTransform();
+      }
+
       async function anticipatePoint(reducedMotion) {
         if (!point || !pointBody) return;
 
+        clearPointGaze();
         point.classList.add("is-looking-left");
         await sleep(reducedMotion ? 120 : 300);
 
@@ -2346,7 +2444,7 @@
         if (!point || !pointHome || !journey) return;
 
         const homeRect = pointHome.getBoundingClientRect();
-        point.classList.remove("is-looking-left");
+        clearPointGaze();
         point.classList.add("is-looking-right");
 
         await movePoint(journey, homeRect.left, homeRect.top, {
@@ -2357,7 +2455,7 @@
         });
 
         pointHome.appendChild(point);
-        point.classList.remove("is-roaming", "is-looking-right", "is-working");
+        point.classList.remove("is-roaming", "is-working");
         point.style.removeProperty("left");
         point.style.removeProperty("top");
         point.style.removeProperty("width");
@@ -2369,11 +2467,15 @@
       async function finishPointPerformance(reducedMotion) {
         if (!point) return;
 
-        point.classList.add("is-satisfied");
-        await sleep(reducedMotion ? 120 : 320);
+        /* It lands, turns back to the result and quietly admires it. */
+        clearPointGaze();
+        point.classList.add("is-admiring-simple", "is-satisfied");
+        await sleep(reducedMotion ? 220 : 620);
+
+        /* The wink is aimed at the finished word, not at the viewer. */
         point.classList.add("is-winking");
         await sleep(reducedMotion ? 420 : 700);
-        point.classList.remove("is-winking", "is-satisfied");
+        point.classList.remove("is-winking");
         point.classList.add("is-settled");
       }
 
@@ -2397,8 +2499,9 @@
         pointHome.classList.add("is-awake");
         point.classList.add("is-awake");
 
-        /* Let the punctuation visibly become a character before it acts. */
-        await sleep(reducedMotion ? 260 : 700);
+        /* Let the punctuation wake, scan the page and notice “Made”. */
+        await sleep(reducedMotion ? 180 : 520);
+        await letPointLookAround(reducedMotion);
         await anticipatePoint(reducedMotion);
 
         const journey = detachPoint();
@@ -2422,9 +2525,12 @@
           await eraseLetter(letter, journey, reducedMotion);
         }
 
-        /* A brief look at the cleared space makes the intention readable. */
+        /* From the far side, it turns to inspect the cleaner line. */
         point.classList.remove("is-working");
-        await sleep(reducedMotion ? 80 : 240);
+        clearPointGaze();
+        point.classList.add("is-looking-right", "is-satisfied");
+        await sleep(reducedMotion ? 160 : 460);
+        point.classList.remove("is-satisfied");
 
         await collapseMade();
         await returnPointHome(journey, reducedMotion);
