@@ -179,7 +179,6 @@
       transform: scaleX(1);
     }
 
-
     .language-switch {
       display: flex;
       align-items: center;
@@ -280,8 +279,8 @@
       transform: rotate(-45deg);
     }
 
-
     #intro {
+      position: relative;
       height: 100vh;
       min-height: 100vh;
       height: 100svh;
@@ -293,9 +292,12 @@
       overflow: hidden;
       background: var(--bg-cream);
       text-align: center;
+      isolation: isolate;
     }
 
     .hero-container {
+      position: relative;
+      z-index: 2;
       width: 100%;
       max-width: 1600px;
       min-width: 0;
@@ -395,6 +397,159 @@
       text-align: center;
     }
 
+    /*
+      THE POINT
+      The full stop and the character are the same HTML element.
+      It begins inline after “Made simple”, then JavaScript moves
+      it into .point-home and reveals the face.
+    */
+    .the-point {
+      position: relative;
+      display: inline-block;
+      width: 0.2em;
+      height: 0.2em;
+      margin-left: 0.045em;
+      overflow: hidden;
+      border-radius: 50%;
+      vertical-align: 0.015em;
+      background:
+        radial-gradient(circle at 50% 42%, #ff4bb9 0%, #ff1ca5 23%, var(--pink) 54%, #d7007d 78%, #aa005f 100%);
+      box-shadow:
+        inset 0.03em 0.035em 0.055em rgba(255, 255, 255, 0.24),
+        inset -0.035em -0.045em 0.07em rgba(91, 0, 48, 0.2),
+        0 0.05em 0.12em rgba(249, 0, 144, 0.18);
+      transform-origin: center;
+      will-change: transform;
+    }
+
+    .the-point::before,
+    .the-point::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+
+    .the-point::before {
+      top: 10%;
+      left: 14%;
+      width: 42%;
+      height: 31%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.36) 43%, rgba(255, 255, 255, 0) 72%);
+      filter: blur(0.6px);
+      transform: rotate(-24deg);
+    }
+
+    .the-point::after {
+      right: 8%;
+      bottom: 7%;
+      width: 58%;
+      height: 48%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(82, 0, 42, 0.24) 0%, rgba(82, 0, 42, 0) 72%);
+      filter: blur(1px);
+      transform: rotate(-28deg);
+    }
+
+    .the-point__face {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .the-point__eye,
+    .the-point__mouth {
+      position: absolute;
+      display: block;
+      background: #110007;
+    }
+
+    .the-point__eye {
+      top: 43%;
+      width: 8.5%;
+      height: 10%;
+      border-radius: 50%;
+      transform-origin: center;
+    }
+
+    .the-point__eye--left {
+      left: 31.5%;
+    }
+
+    .the-point__eye--right {
+      right: 30%;
+      top: 42%;
+    }
+
+    .the-point__mouth {
+      top: 62%;
+      left: 41%;
+      width: 18%;
+      height: 3.4%;
+      border-radius: 999px;
+    }
+
+    .the-point--awake::before,
+    .the-point--awake::after,
+    .the-point--awake .the-point__face {
+      opacity: 1;
+    }
+
+    .the-point--floating {
+      position: fixed;
+      z-index: 2000;
+      margin: 0;
+      vertical-align: initial;
+      pointer-events: none;
+    }
+
+    .the-point--looking .the-point__eye {
+      animation: point-look-around 620ms cubic-bezier(0.45, 0, 0.2, 1) both;
+    }
+
+    .point-home {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      right: clamp(28px, 5vw, 90px);
+      width: clamp(76px, 6.2vw, 104px);
+      aspect-ratio: 1;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .point-home .the-point {
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      vertical-align: initial;
+      box-shadow:
+        inset 6px 7px 14px rgba(255, 255, 255, 0.24),
+        inset -8px -10px 18px rgba(91, 0, 48, 0.22),
+        0 12px 28px rgba(249, 0, 144, 0.2);
+    }
+
+    .point-home .the-point::before {
+      filter: blur(1.4px);
+    }
+
+    .point-home .the-point::after {
+      filter: blur(2px);
+    }
+
+    .point-home .the-point--settled {
+      animation: point-breathe 4.8s ease-in-out infinite;
+    }
+
+    .point-home .the-point--settled .the-point__eye {
+      animation: point-blink 5.6s ease-in-out infinite;
+    }
+
     @keyframes hero-cursor-blink {
       0%,
       46% {
@@ -404,6 +559,54 @@
       47%,
       100% {
         opacity: 0;
+      }
+    }
+
+    @keyframes point-look-around {
+      0%,
+      12% {
+        transform: translateX(0) scaleY(1);
+      }
+
+      34% {
+        transform: translateX(24%) scaleY(1);
+      }
+
+      62% {
+        transform: translateX(-15%) scaleY(1);
+      }
+
+      78% {
+        transform: translateX(-15%) scaleY(0.12);
+      }
+
+      86%,
+      100% {
+        transform: translateX(0) scaleY(1);
+      }
+    }
+
+    @keyframes point-breathe {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.018, 0.988);
+      }
+    }
+
+    @keyframes point-blink {
+      0%,
+      44%,
+      48%,
+      100% {
+        transform: scaleY(1);
+      }
+
+      46% {
+        transform: scaleY(0.12);
       }
     }
 
@@ -676,7 +879,6 @@
       min-width: 0;
       margin: 0 auto;
     }
-
 
     .work-row {
       border-bottom: 2px solid rgba(255, 241, 229, 0.28);
@@ -1096,6 +1298,14 @@
       .hero-subline {
         margin-top: clamp(20px, 3vw, 28px);
       }
+
+      .point-home {
+        top: auto;
+        right: clamp(24px, 7vw, 60px);
+        bottom: clamp(54px, 10svh, 104px);
+        width: clamp(64px, 9vw, 80px);
+        transform: none;
+      }
     }
 
     @media (max-width: 700px) {
@@ -1148,7 +1358,6 @@
         font-size: 1.25rem;
         text-transform: none;
       }
-
 
       .language-switch {
         margin-top: 8px;
@@ -1203,6 +1412,12 @@
         font-size: clamp(1.3rem, 6.2vw, 1.75rem);
       }
 
+      .point-home {
+        right: 20px;
+        bottom: 9svh;
+        width: clamp(56px, 16vw, 66px);
+      }
+
       #recent-work,
       #services,
       #about-me,
@@ -1218,7 +1433,6 @@
         padding-top: 84px;
         padding-bottom: 84px;
       }
-
 
       .about-container,
       .services-grid {
@@ -1317,8 +1531,18 @@
       .work-accordion-body,
       .testimonial-item,
       .testimonial-control,
-      .testimonial-control::after {
+      .testimonial-control::after,
+      .the-point,
+      .the-point::before,
+      .the-point::after,
+      .the-point__face {
         transition-duration: 0.01ms !important;
+      }
+
+      .point-home .the-point--settled,
+      .point-home .the-point--settled .the-point__eye,
+      .the-point--looking .the-point__eye {
+        animation: none !important;
       }
     }
   </style>
@@ -1456,9 +1680,19 @@
             <span class="hero-fixed">STRATEGY</span>
           </span>
 
-          <span class="hero-subline" aria-hidden="true">Made simple.</span>
+          <span class="hero-subline" aria-hidden="true">
+            Made simple<span class="the-point" id="the-point">
+              <span class="the-point__face">
+                <span class="the-point__eye the-point__eye--left"></span>
+                <span class="the-point__eye the-point__eye--right"></span>
+                <span class="the-point__mouth"></span>
+              </span>
+            </span>
+          </span>
         </h1>
       </div>
+
+      <div class="point-home" id="point-home" aria-hidden="true"></div>
     </section>
 
     <section id="about-me" aria-labelledby="about-me-heading">
@@ -1742,6 +1976,124 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       /*
+        THE POINT
+        The character starts as the full stop after “Made simple”.
+        The first time CREATIVE is fully typed, it detaches, wakes up,
+        looks around, expands and settles beside the headline.
+      */
+      const point = document.getElementById("the-point");
+      const pointHome = document.getElementById("point-home");
+      let pointHasBeenReleased = false;
+      let pointLookTimer = null;
+
+      function clearPointLookTimer() {
+        if (pointLookTimer !== null) {
+          window.clearTimeout(pointLookTimer);
+          pointLookTimer = null;
+        }
+      }
+
+      async function releasePoint() {
+        if (pointHasBeenReleased || !point || !pointHome) return;
+
+        pointHasBeenReleased = true;
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (reducedMotion || typeof point.animate !== "function") {
+          point.classList.add("the-point--awake", "the-point--settled");
+          pointHome.appendChild(point);
+          return;
+        }
+
+        const start = point.getBoundingClientRect();
+        const destination = pointHome.getBoundingClientRect();
+
+        if (!start.width || !destination.width) {
+          point.classList.add("the-point--awake", "the-point--settled");
+          pointHome.appendChild(point);
+          return;
+        }
+
+        const startCentreX = start.left + start.width / 2;
+        const startCentreY = start.top + start.height / 2;
+        const destinationCentreX = destination.left + destination.width / 2;
+        const destinationCentreY = destination.top + destination.height / 2;
+
+        const destinationX = destinationCentreX - startCentreX;
+        const destinationY = destinationCentreY - startCentreY;
+        const finalScale = destination.width / start.width;
+
+        point.classList.add("the-point--floating");
+        point.style.left = `${start.left}px`;
+        point.style.top = `${start.top}px`;
+        point.style.width = `${start.width}px`;
+        point.style.height = `${start.height}px`;
+
+        document.body.appendChild(point);
+
+        const movement = point.animate(
+          [
+            {
+              transform: "translate3d(0, 0, 0) scale(1)",
+              offset: 0
+            },
+            {
+              transform: "translate3d(9px, -12px, 0) scale(2.55, 2.25)",
+              offset: 0.18
+            },
+            {
+              transform: "translate3d(12px, -15px, 0) scale(3.35, 3.05)",
+              offset: 0.34
+            },
+            {
+              transform: `translate3d(${destinationX * 0.72}px, ${destinationY * 0.72}px, 0) scale(${finalScale * 0.84}, ${finalScale * 1.03})`,
+              offset: 0.72
+            },
+            {
+              transform: `translate3d(${destinationX}px, ${destinationY}px, 0) scale(${finalScale * 1.055}, ${finalScale * 0.965})`,
+              offset: 0.9
+            },
+            {
+              transform: `translate3d(${destinationX}px, ${destinationY}px, 0) scale(${finalScale})`,
+              offset: 1
+            }
+          ],
+          {
+            duration: 1480,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+            fill: "forwards"
+          }
+        );
+
+        window.setTimeout(() => {
+          point.classList.add("the-point--awake", "the-point--looking");
+
+          clearPointLookTimer();
+          pointLookTimer = window.setTimeout(() => {
+            point.classList.remove("the-point--looking");
+          }, 680);
+        }, 245);
+
+        try {
+          await movement.finished;
+        } catch (error) {
+          /* If the page is briefly suspended, restore a clean final state. */
+        }
+
+        pointHome.appendChild(point);
+        movement.cancel();
+
+        point.classList.remove("the-point--floating", "the-point--looking");
+        point.classList.add("the-point--awake", "the-point--settled");
+
+        point.style.removeProperty("left");
+        point.style.removeProperty("top");
+        point.style.removeProperty("width");
+        point.style.removeProperty("height");
+      }
+
+      /*
         TYPEWRITER
         The old version stopped on BRAND whenever iOS reported
         "prefers-reduced-motion: reduce". This version uses a small,
@@ -1810,6 +2162,10 @@
           return;
         }
 
+        if (nextWord === "CREATIVE" && !pointHasBeenReleased) {
+          releasePoint();
+        }
+
         heroIsDeleting = true;
         setHeroCursorBlinking(true);
         scheduleHeroTick(completedWordPause);
@@ -1845,7 +2201,10 @@
         }
       });
 
-      window.addEventListener("pagehide", clearHeroTimer);
+      window.addEventListener("pagehide", () => {
+        clearHeroTimer();
+        clearPointLookTimer();
+      });
 
       startHeroTypewriter();
 
