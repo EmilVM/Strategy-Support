@@ -676,14 +676,43 @@
     .client-tab.active::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: var(--pink); }
     .carousel-wrapper,.carousel-container,.carousel-content,.client-group { width: 100%; max-width: 100%; min-width: 0; overflow: hidden; }
     .carousel-container { position: relative; padding: 14px 0; mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); }
-    .carousel-content { position: relative; min-height: 86px; }
+    .carousel-content { position: relative; min-height: 82px; }
     .client-group[hidden] { display: none; }
-    .client-logos-container { display: flex; align-items: center; width: max-content; min-width: 0; max-width: none; transform: translate3d(0, 0, 0); will-change: transform; }
-    .client-group.active .client-logos-container.is-marquee-ready { animation: client-logo-marquee var(--marquee-duration, 28s) linear infinite; }
-    .about-clients-wrapper:not(.is-in-view) .client-logos-container,
-    .client-group:hover .client-logos-container,
-    .client-group:focus-within .client-logos-container { animation-play-state: paused; }
-    .client-logo { width: 180px; height: 58px; margin: 0 24px; flex: 0 0 auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.62; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .client-logos-container {
+      --logo-gap: clamp(34px, 4vw, 52px);
+      display: flex;
+      align-items: center;
+      width: max-content;
+      min-width: 100%;
+      max-width: none;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .client-logo-set {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      gap: var(--logo-gap);
+      padding-right: var(--logo-gap);
+    }
+    .client-group.active .client-logos-container.is-marquee-ready {
+      animation: client-logo-marquee var(--marquee-duration, 28s) linear infinite;
+    }
+    .about-clients-wrapper:not(.is-in-view) .client-logos-container {
+      animation-play-state: paused;
+    }
+    .client-logo {
+      width: clamp(118px, 11vw, 148px);
+      height: 54px;
+      margin: 0;
+      flex: 0 0 auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.62;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
     .client-logo:hover { opacity: 1; transform: scale(1.04); }
     @keyframes client-logo-marquee {
       from { transform: translate3d(0, 0, 0); }
@@ -807,6 +836,8 @@
       .hero-headline { font-size: clamp(2.75rem, 11.9vw, 5.4rem); letter-spacing: -0.052em; }
       .hero-lead { margin-bottom: 0.34em; font-size: 0.31em; letter-spacing: 0.025em; }
       .hero-word-stage { margin-bottom: 0.085em; }
+      .client-logos-container { --logo-gap: 30px; }
+      .client-logo { width: 116px; height: 46px; }
       #recent-work,#services,#about-me,#testimonials,#contact { padding-left: 16px; padding-right: 16px; }
       #services,#recent-work,#testimonials { padding-top: 84px; padding-bottom: 84px; }
       .about-container,.services-grid { display: block; }
@@ -910,24 +941,28 @@
 <div class="carousel-content">
 <div aria-labelledby="client-tab-brands" class="client-group active" data-group="brands" id="client-panel-brands" role="tabpanel" tabindex="0">
 <div class="client-logos-container">
-<img alt="Huawei" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand1.png" width="180"/>
-<img alt="Burger King" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand2.png" width="180"/>
-<img alt="Barclays" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand3.png" width="180"/>
-<img alt="Arla Foods" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand4.png" width="180"/>
-<img alt="PepsiCo" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand5.png" width="180"/>
-<img alt="Saxo Bank" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand6.png" width="180"/>
-<img alt="Mr Green" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand7.png" width="180"/>
-<img alt="Danske Bank" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand8.png" width="180"/>
-<img alt="ATP" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand9.png" width="180"/>
-<img alt="Kellogg's" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand10.png" width="180"/>
+<div class="client-logo-set">
+<img alt="Huawei" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand1.png" width="180"/>
+<img alt="Burger King" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand2.png" width="180"/>
+<img alt="Barclays" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand3.png" width="180"/>
+<img alt="Arla Foods" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand4.png" width="180"/>
+<img alt="PepsiCo" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand5.png" width="180"/>
+<img alt="Saxo Bank" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand6.png" width="180"/>
+<img alt="Mr Green" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand7.png" width="180"/>
+<img alt="Danske Bank" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand8.png" width="180"/>
+<img alt="ATP" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand9.png" width="180"/>
+<img alt="Kellogg's" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand10.png" width="180"/>
+</div>
 </div>
 </div>
 <div aria-labelledby="client-tab-agencies" class="client-group" data-group="agencies" hidden="" id="client-panel-agencies" role="tabpanel" tabindex="0">
 <div class="client-logos-container">
-<img alt="Worth Your While Agency" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand12.png" width="180"/>
-<img alt="Dentsu Creative London" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand13.png" width="180"/>
-<img alt="Edelman London" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand14.png" width="180"/>
-<img alt="FCB London" class="client-logo" decoding="async" height="58" loading="lazy" src="assets/brand15.png" width="180"/>
+<div class="client-logo-set">
+<img alt="Worth Your While Agency" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand12.png" width="180"/>
+<img alt="Dentsu Creative London" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand13.png" width="180"/>
+<img alt="Edelman London" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand14.png" width="180"/>
+<img alt="FCB London" class="client-logo" decoding="async" height="58" loading="eager" src="assets/brand15.png" width="180"/>
+</div>
 </div>
 </div>
 </div>
@@ -1594,35 +1629,75 @@ document.addEventListener("DOMContentLoaded", () => {
   const clientGroups = [...document.querySelectorAll(".client-group")];
   const clientsWrapper = document.querySelector(".about-clients-wrapper");
   let marqueeResizeTimer = 0;
+  const marqueeSources = new WeakMap();
 
   function prepareMarquee(group) {
     const track = group?.querySelector(".client-logos-container");
     if (!track || group.hidden) return;
 
     track.classList.remove("is-marquee-ready");
-    track.querySelectorAll('[data-marquee-clone="true"]').forEach((clone) => clone.remove());
+    track.querySelectorAll('.client-logo-set[data-marquee-clone="true"]').forEach((clone) => clone.remove());
 
-    const originals = [...track.children];
-    if (!originals.length) return;
-    const originalWidth = track.scrollWidth;
-    if (!originalWidth) return;
+    const sourceSet = track.querySelector(".client-logo-set");
+    if (!sourceSet) return;
 
-    let copies = 0;
-    do {
-      originals.forEach((original) => {
-        const clone = original.cloneNode(true);
-        clone.dataset.marqueeClone = "true";
-        clone.setAttribute("aria-hidden", "true");
-        clone.setAttribute("alt", "");
-        track.appendChild(clone);
+    if (!marqueeSources.has(track)) {
+      const templates = [...sourceSet.children]
+        .filter((element) => element.classList.contains("client-logo"))
+        .map((element) => element.cloneNode(true));
+      marqueeSources.set(track, templates);
+    }
+
+    const templates = marqueeSources.get(track);
+    if (!templates?.length) return;
+
+    sourceSet.replaceChildren();
+
+    function appendLogoRound(isPrimaryRound) {
+      templates.forEach((template) => {
+        const image = template.cloneNode(true);
+        image.loading = "eager";
+        image.decoding = "async";
+
+        if (!isPrimaryRound) {
+          image.setAttribute("aria-hidden", "true");
+          image.alt = "";
+        }
+
+        sourceSet.appendChild(image);
       });
-      copies += 1;
-    } while (track.scrollWidth < group.clientWidth + originalWidth * 2 && copies < 4);
+    }
 
-    const pixelsPerSecond = 38;
-    track.style.setProperty("--marquee-distance", `${originalWidth}px`);
-    track.style.setProperty("--marquee-duration", `${Math.max(originalWidth / pixelsPerSecond, 18)}s`);
-    requestAnimationFrame(() => track.classList.add("is-marquee-ready"));
+    appendLogoRound(true);
+
+    const requiredWidth = Math.max(group.getBoundingClientRect().width + 120, 1);
+    let rounds = 1;
+
+    while (sourceSet.getBoundingClientRect().width < requiredWidth && rounds < 8) {
+      appendLogoRound(false);
+      rounds += 1;
+    }
+
+    const cloneSet = sourceSet.cloneNode(true);
+    cloneSet.dataset.marqueeClone = "true";
+    cloneSet.setAttribute("aria-hidden", "true");
+    cloneSet.querySelectorAll("img").forEach((image) => {
+      image.alt = "";
+      image.loading = "eager";
+      image.setAttribute("aria-hidden", "true");
+    });
+    track.appendChild(cloneSet);
+
+    const distance = sourceSet.getBoundingClientRect().width;
+    if (!distance) return;
+
+    const pixelsPerSecond = 34;
+    track.style.setProperty("--marquee-distance", `${distance}px`);
+    track.style.setProperty("--marquee-duration", `${Math.max(distance / pixelsPerSecond, 20)}s`);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => track.classList.add("is-marquee-ready"));
+    });
   }
 
   function activateClientTab(tab, moveFocus = false) {
