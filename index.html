@@ -386,7 +386,6 @@
       transform: rotate(-45deg);
     }
 
-    /* NEW LANDING PAGE */
     #intro {
       position: relative;
       height: 100vh;
@@ -608,8 +607,23 @@
       transform-origin: center;
     }
 
-    .hero-point.is-looking-up {
-      --point-face-y: -4%;
+    .hero-point.is-looking-word {
+      --point-face-x: -7%;
+      --point-face-y: -10%;
+    }
+
+    .hero-point.is-looking-word .hero-point__face {
+      transform:
+        translate3d(var(--point-face-x), var(--point-face-y), 0)
+        rotate(-5deg);
+    }
+
+    .hero-point.is-looking-word .hero-point__eye {
+      transform: scaleY(1.08);
+    }
+
+    .hero-point.is-looking-word .hero-point__body {
+      transform: rotate(-5deg) scale(0.98, 1.025);
     }
 
     .hero-point.is-looking-left {
@@ -657,1327 +671,160 @@
       46% { transform: scaleY(0.06); }
     }
 
-    #about-me {
-      padding: var(--section-space) 20px;
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-    }
-
-    .about-container {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 32% minmax(0, 1fr);
-      gap: clamp(42px, 5vw, 64px);
-      align-items: start;
-    }
-
-    .about-image-col,
-    .about-content {
-      min-width: 0;
-      max-width: 100%;
-    }
-
-    .about-image-col {
-      position: sticky;
-      top: 108px;
-    }
-
-    .about-image-wrapper {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .about-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .about-heading {
-      margin-bottom: 28px;
-      font-size: clamp(2.6rem, 5vw, 4.4rem);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      text-wrap: balance;
-    }
-
-    .about-text {
-      max-width: 760px;
-      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-      line-height: 1.7;
-      opacity: 0.94;
-    }
-
-    .about-text p + p {
-      margin-top: 22px;
-    }
-
-    .about-clients-wrapper {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      margin-top: 44px;
-      padding-top: 30px;
-      overflow: hidden;
-      border-top: 1px solid var(--line-on-dark);
-    }
-
-    .clients-intro-label {
-      display: block;
-      margin-bottom: 20px;
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 0.74rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.72;
-    }
-
-    .client-tabs {
-      display: flex;
-      align-items: center;
-      gap: 38px;
-      margin-bottom: 22px;
-    }
-
-    .client-tab {
-      position: relative;
-      padding: 0 0 6px;
-      border: 0;
-      background: transparent;
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      opacity: 0.5;
-    }
-
-    .client-tab:hover,
-    .client-tab.active {
-      opacity: 1;
-    }
-
-    .client-tab.active::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      background: var(--pink);
-    }
-
-    .carousel-wrapper,
-    .carousel-container,
-    .carousel-content,
-    .client-group {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .carousel-container {
-      position: relative;
-      padding: 14px 0;
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    }
-
-    .carousel-content {
-      position: relative;
-      min-height: 76px;
-    }
-
-    .client-logos-container {
-      display: flex;
-      align-items: center;
-      width: max-content;
-      min-width: 0;
-      max-width: none;
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
-    }
-
-    .client-logo {
-      width: auto;
-      height: 58px;
-      margin: 0 30px;
-      flex: 0 0 auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.62;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    .client-logo:hover {
-      opacity: 1;
-      transform: scale(1.04);
-    }
-
-    #services {
-      padding: clamp(100px, 10vw, 140px) 20px;
-      overflow: hidden;
-      background: var(--bg-cream);
-      color: var(--ink);
-      border-top: 2px solid var(--line-strong);
-    }
-
-    .services-grid {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: clamp(48px, 6vw, 80px);
-      align-items: start;
-    }
-
-    .services-header,
-    .services-content {
-      min-width: 0;
-      max-width: 100%;
-    }
-
-    .services-header {
-      position: sticky;
-      top: 108px;
-    }
-
-    .services-intro {
-      max-width: none;
-      font-size: clamp(2.6rem, 5vw, 4.4rem);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      opacity: 1;
-      text-wrap: balance;
-    }
-
-    .services-intro .pink-highlight {
-      color: var(--pink);
-    }
-
-    .services-content {
-      padding-left: 40px;
-      border-left: 1px solid var(--line-strong);
-    }
-
-    .service-row {
-      padding: 46px 0;
-      border-top: 1px solid var(--line-strong);
-    }
-
-    .service-row:first-child {
-      padding-top: 34px;
-    }
-
-    .service-row:last-child {
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .service-kicker {
-      display: block;
-      margin-bottom: 10px;
-      font-family: var(--font-system);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    .service-row h3 {
-      margin-bottom: 14px;
-      font-size: clamp(2rem, 3.6vw, 3rem);
-      font-weight: 400;
-      line-height: 1.05;
-      text-wrap: balance;
-    }
-
-    .service-row p {
-      max-width: 700px;
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      line-height: 1.65;
-      opacity: 0.9;
-    }
-
-    #recent-work {
-      padding: clamp(100px, 10vw, 140px) 20px;
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-      border-top: 2px solid rgba(255, 241, 229, 0.2);
-    }
-
-    .work-container {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-    }
-
-    .work-row {
-      border-bottom: 2px solid rgba(255, 241, 229, 0.28);
-    }
-
-    .work-header-trigger {
-      width: 100%;
-      min-width: 0;
-      display: grid;
-      grid-template-columns: 27% minmax(0, 1fr) auto;
-      gap: 48px;
-      align-items: start;
-      padding: 42px 0 34px;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .client-name {
-      padding-top: 7px;
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      line-height: 1.4;
-      text-transform: uppercase;
-    }
-
-    .trigger-headline {
-      min-width: 0;
-      color: var(--bg-cream);
-      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      line-height: 1.08;
-      overflow-wrap: anywhere;
-      text-wrap: balance;
-      transition: color 0.25s ease;
-    }
-
-    .work-row.is-open .trigger-headline {
-      color: var(--pink);
-    }
-
-    .accordion-icon {
-      position: relative;
-      width: 20px;
-      height: 20px;
-      margin-top: 12px;
-    }
-
-    .icon-line {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      display: block;
-      background: var(--bg-cream);
-      transform: translate(-50%, -50%);
-      transition: transform 0.25s ease;
-    }
-
-    .icon-line.horizontal {
-      width: 20px;
-      height: 2px;
-    }
-
-    .icon-line.vertical {
-      width: 2px;
-      height: 20px;
-    }
-
-    .work-row.is-open .icon-line.vertical {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .work-accordion-body {
-      display: grid;
-      grid-template-rows: 0fr;
-      min-width: 0;
-      transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .work-row.is-open .work-accordion-body {
-      grid-template-rows: 1fr;
-    }
-
-    .work-accordion-inner {
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .work-fold-content {
-      min-width: 0;
-      display: grid;
-      grid-template-columns: 27% minmax(0, 1fr);
-      gap: 48px;
-      padding: 0 0 52px;
-    }
-
-    .work-image-wrapper {
-      min-width: 0;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border: 1px solid rgba(255, 241, 229, 0.18);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .work-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .narrative-stack {
-      min-width: 0;
-      max-width: 780px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .narrative-item {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .narrative-label {
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .narrative-text {
-      font-size: clamp(1rem, 1.5vw, 1.18rem);
-      line-height: 1.65;
-      overflow-wrap: anywhere;
-    }
-
-    #testimonials {
-      padding: clamp(100px, 10vw, 140px) 20px;
-      overflow: hidden;
-      background: var(--bg-cream);
-      color: var(--text);
-      border-top: 2px solid var(--line-strong);
-    }
-
-    .testimonials-container {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-    }
-
-    .testimonial-stage {
-      position: relative;
-      min-height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .testimonial-item {
-      position: absolute;
-      width: 100%;
-      max-width: 900px;
-      min-width: 0;
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      text-align: center;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .testimonial-item.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .testimonial-quote {
-      max-width: 860px;
-      margin: 0 auto;
-      color: var(--ink);
-      font-size: clamp(1.35rem, 2.7vw, 2rem);
-      font-style: italic;
-      line-height: 1.55;
-      overflow-wrap: anywhere;
-    }
-
-    .testimonial-author {
-      margin-top: 26px;
-      font-family: var(--font-system);
-      font-size: 0.83rem;
-      line-height: 1.5;
-    }
-
-    .testimonial-author strong {
-      display: block;
-      font-size: 0.9rem;
-    }
-
-    .testimonial-role {
-      opacity: 0.7;
-    }
-
-    .testimonial-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 28px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-
-    .testimonial-control {
-      position: relative;
-      padding: 8px 0;
-      border: 0;
-      background: transparent;
-      color: var(--ink);
-      font-family: var(--font-system);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      opacity: 0.45;
-      transition: opacity 0.25s ease;
-    }
-
-    .testimonial-control::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 1px;
-      left: 0;
-      height: 2px;
-      background: var(--pink);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
-
-    .testimonial-control:hover,
-    .testimonial-control.active {
-      opacity: 1;
-    }
-
-    .testimonial-control.active::after {
-      transform: scaleX(1);
-    }
-
-    #contact {
-      padding: clamp(100px, 10vw, 136px) 20px clamp(84px, 8vw, 108px);
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-      text-align: center;
-    }
-
-    .contact-container {
-      width: 100%;
-      max-width: 960px;
-      min-width: 0;
-      margin: 0 auto;
-    }
-
-    .contact-email-stage {
-      position: relative;
-      width: 100%;
-      margin-top: 34px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .contact-point {
-      --contact-point-face-y: 0%;
-      position: relative;
-      z-index: 2;
-      display: block;
-      width: clamp(72px, 7vw, 94px);
-      aspect-ratio: 1;
-      opacity: 0;
-      transform: translateY(16px) scale(0.72);
-      transform-origin: 50% 100%;
-      pointer-events: none;
-      perspective: 300px;
-      transition:
-        opacity 480ms ease,
-        transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .contact-point.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .contact-point__body {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      overflow: hidden;
-      isolation: isolate;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.98) 0 4%, rgba(255, 255, 255, 0.48) 5%, transparent 18%),
-        radial-gradient(circle at 40% 32%, #ff7fd2 0%, #ff2daf 20%, var(--pink) 53%, #d5007c 78%, #92004f 100%);
-      box-shadow:
-        inset 4px 5px 9px rgba(255, 255, 255, 0.34),
-        inset -7px -8px 13px rgba(87, 0, 45, 0.27),
-        0 11px 22px rgba(0, 0, 0, 0.18),
-        0 8px 26px rgba(249, 0, 144, 0.2);
-      transform: translateZ(0) scale(1);
-      transform-origin: 50% 76%;
-      transition:
-        transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        border-radius 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 420ms ease;
-      will-change: transform;
-    }
-
-    .contact-point__body::before,
-    .contact-point__body::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      transition:
-        transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        top 420ms ease,
-        bottom 420ms ease;
-    }
-
-    .contact-point__body::before {
-      z-index: 1;
-      top: 5%;
-      left: 9%;
-      width: 53%;
-      height: 39%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(255, 255, 255, 0.98) 0%,
-        rgba(255, 255, 255, 0.35) 44%,
-        transparent 72%
-      );
-      filter: blur(0.7px);
-      transform: rotate(-25deg);
-    }
-
-    .contact-point__body::after {
-      right: 4%;
-      bottom: 2%;
-      width: 66%;
-      height: 54%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(69, 0, 35, 0.28) 0%,
-        rgba(69, 0, 35, 0) 72%
-      );
-      filter: blur(1.4px);
-      transform: rotate(-28deg);
-    }
-
-    .contact-point__face {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      transform: translateY(var(--contact-point-face-y));
-      transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .contact-point__eye,
-    .contact-point__mouth {
-      position: absolute;
-      display: block;
-      color: #130008;
-    }
-
-    .contact-point__eye {
-      top: 39%;
-      width: 11.5%;
-      height: 13.5%;
-      overflow: hidden;
-      border-radius: 50%;
-      background: currentColor;
-      transform-origin: center;
-      transition:
-        top 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        left 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        right 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 180ms ease;
-    }
-
-    .contact-point__eye::after {
-      content: "";
-      position: absolute;
-      top: 12%;
-      left: 18%;
-      width: 29%;
-      height: 29%;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    .contact-point__eye--left {
-      left: 31%;
-    }
-
-    .contact-point__eye--right {
-      right: 30%;
-      top: 38.2%;
-      width: 10.8%;
-      height: 12.8%;
-    }
-
-    .contact-point__mouth {
-      top: 61%;
-      left: 41%;
-      width: 18%;
-      height: 8%;
-      border-bottom: 2px solid currentColor;
-      border-radius: 0 0 999px 999px;
-      transform: rotate(-4deg);
-      transition:
-        top 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 220ms ease,
-        width 220ms ease,
-        left 220ms ease;
-    }
-
-    .contact-point__pointer {
-      position: absolute;
-      z-index: 1;
-      top: 67%;
-      left: 54%;
-      width: 25px;
-      height: 45px;
-      border-radius: 48% 52% 62% 38% / 28% 30% 76% 72%;
-      background:
-        radial-gradient(circle at 34% 16%, rgba(255, 255, 255, 0.32) 0 8%, transparent 24%),
-        linear-gradient(155deg, #ff42b9 0%, var(--pink) 50%, #c60071 100%);
-      box-shadow:
-        inset 2px 2px 4px rgba(255, 255, 255, 0.18),
-        inset -3px -4px 6px rgba(87, 0, 45, 0.18),
-        0 8px 16px rgba(249, 0, 144, 0.18);
-      opacity: 0;
-      transform: translate(-50%, -4px) rotate(-8deg) scale(0.28, 0.06);
-      transform-origin: 50% 0;
-      transition:
-        opacity 220ms ease,
-        transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
-        border-radius 520ms cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-    }
-
-    .contact-point__pointer::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -3px;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 34% 28%, #ff55c1 0%, var(--pink) 56%, #c60071 100%);
-      box-shadow: inset -2px -2px 4px rgba(87, 0, 45, 0.15);
-      transform: translateX(-50%) scale(0.78, 0.62);
-    }
-
-    .contact-point.is-looking-email {
-      --contact-point-face-y: 8%;
-    }
-
-    .contact-point.is-looking-email .contact-point__body {
-      border-radius: 48% 48% 52% 52% / 43% 43% 57% 57%;
-      transform: translateY(4px) rotateX(9deg) scale(1.055, 0.92);
-      box-shadow:
-        inset 4px 4px 8px rgba(255, 255, 255, 0.3),
-        inset -7px -6px 12px rgba(87, 0, 45, 0.26),
-        0 8px 18px rgba(0, 0, 0, 0.18),
-        0 7px 22px rgba(249, 0, 144, 0.18);
-    }
-
-    .contact-point.is-looking-email .contact-point__body::before {
-      top: 10%;
-      transform: translateY(5%) rotate(-25deg) scale(1.08, 0.82);
-    }
-
-    .contact-point.is-looking-email .contact-point__body::after {
-      bottom: -2%;
-      transform: translateY(4%) rotate(-28deg) scale(1.08, 0.9);
-    }
-
-    .contact-point.is-looking-email .contact-point__eye {
-      top: 44%;
-      transform: scaleY(0.88);
-    }
-
-    .contact-point.is-looking-email .contact-point__eye--right {
-      top: 43.2%;
-    }
-
-    .contact-point.is-looking-email .contact-point__mouth {
-      top: 65%;
-    }
-
-    .contact-point.is-looking-user {
-      --contact-point-face-y: -1%;
-    }
-
-    .contact-point.is-looking-user .contact-point__body {
-      border-radius: 50%;
-      transform: translateY(-1px) rotateX(-3deg) scale(0.985, 1.035);
-    }
-
-    .contact-point.is-looking-user .contact-point__eye {
-      top: 38%;
-    }
-
-    .contact-point.is-looking-user .contact-point__eye--right {
-      top: 37.3%;
-    }
-
-    .contact-point.is-pointing .contact-point__pointer {
-      opacity: 1;
-      border-radius: 46% 54% 64% 36% / 25% 30% 78% 72%;
-      transform: translate(-50%, 0) rotate(-7deg) scale(0.82, 1);
-    }
-
-    .contact-point.is-pointing .contact-point__body {
-      border-radius: 48% 47% 55% 52% / 40% 40% 61% 60%;
-      transform: translateY(7px) rotateX(10deg) rotateZ(-1.5deg) scale(1.075, 0.87);
-    }
-
-    .contact-point.is-pointing .contact-point__mouth {
-      left: 39.5%;
-      width: 21%;
-      transform: rotate(-6deg);
-    }
-
-    .contact-point.is-nodding .contact-point__body {
-      animation: contact-point-nod 720ms cubic-bezier(0.36, 0, 0.2, 1) both;
-    }
-
-    .contact-point.is-settled .contact-point__body {
-      animation: contact-point-idle 5.2s ease-in-out infinite;
-    }
-
-    .contact-point.is-settled .contact-point__eye--left,
-    .contact-point.is-settled .contact-point__eye--right {
-      animation: contact-point-blink 6.8s ease-in-out infinite;
-    }
-
-    .contact-email-stage:hover .contact-point:not(.is-performing) .contact-point__body,
-    .contact-email-stage:focus-within .contact-point:not(.is-performing) .contact-point__body {
-      transform: translateY(3px) rotateX(7deg) scale(1.04, 0.94);
-    }
-
-    @keyframes contact-point-nod {
-      0%, 100% {
-        transform: translateY(7px) rotateX(10deg) rotateZ(-1.5deg) scale(1.075, 0.87);
-      }
-      30% {
-        transform: translateY(12px) rotateX(15deg) rotateZ(-2deg) scale(1.105, 0.82);
-      }
-      56% {
-        transform: translateY(3px) rotateX(6deg) rotateZ(-0.5deg) scale(1.035, 0.95);
-      }
-      78% {
-        transform: translateY(9px) rotateX(12deg) rotateZ(-1.5deg) scale(1.085, 0.85);
-      }
-    }
-
-    @keyframes contact-point-idle {
-      0%, 100% {
-        transform: translateY(4px) rotateX(9deg) scale(1.055, 0.92);
-      }
-      50% {
-        transform: translateY(2px) rotateX(7deg) scale(1.04, 0.94);
-      }
-    }
-
-    @keyframes contact-point-blink {
-      0%, 44%, 48%, 100% {
-        transform: scaleY(1);
-      }
-      46% {
-        transform: scaleY(0.06);
-      }
-    }
-
-    .contact-heading {
-      max-width: 820px;
-      margin: 0 auto;
-      font-size: clamp(3rem, 7vw, 6.8rem);
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 0.98;
-      overflow-wrap: anywhere;
-      text-wrap: balance;
-    }
-
-    .giant-email {
-      display: inline-block;
-      max-width: 100%;
-      margin-top: 0;
-      color: var(--bg-cream);
-      text-decoration: none;
-      font-size: clamp(1.65rem, 4vw, 3.2rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      border-bottom: 2px solid var(--pink);
-    }
-
-    .giant-email:hover {
-      color: var(--pink);
-    }
-
-    .contact-meta {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      font-family: var(--font-system);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .contact-meta a {
-      color: var(--bg-cream);
-      text-decoration: none;
-    }
-
-    .contact-meta a:hover {
-      color: var(--pink);
-    }
-
-    footer {
-      padding: 30px 20px;
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-      border-top: 1px solid var(--line-on-dark);
-      text-align: center;
-    }
-
-    .footer-copy {
-      font-family: var(--font-system);
-      font-size: 0.72rem;
-      opacity: 0.68;
-    }
+    #about-me { padding: var(--section-space) 20px; overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); }
+    .about-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; display: grid; grid-template-columns: 32% minmax(0, 1fr); gap: clamp(42px, 5vw, 64px); align-items: start; }
+    .about-image-col,.about-content { min-width: 0; max-width: 100%; }
+    .about-image-col { position: sticky; top: 108px; }
+    .about-image-wrapper { width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: rgba(255, 255, 255, 0.08); }
+    .about-image-wrapper img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .about-heading { margin-bottom: 28px; font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.02; text-wrap: balance; }
+    .about-text { max-width: 760px; font-size: clamp(1.1rem, 1.6vw, 1.3rem); line-height: 1.7; opacity: 0.94; }
+    .about-text p + p { margin-top: 22px; }
+    .about-clients-wrapper { width: 100%; max-width: 100%; min-width: 0; margin-top: 44px; padding-top: 30px; overflow: hidden; border-top: 1px solid var(--line-on-dark); }
+    .clients-intro-label { display: block; margin-bottom: 20px; color: var(--bg-cream); font-family: var(--font-system); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.72; }
+    .client-tabs { display: flex; align-items: center; gap: 38px; margin-bottom: 22px; }
+    .client-tab { position: relative; padding: 0 0 6px; border: 0; background: transparent; color: var(--bg-cream); font-family: var(--font-system); font-size: 1rem; font-weight: 500; cursor: pointer; opacity: 0.5; }
+    .client-tab:hover,.client-tab.active { opacity: 1; }
+    .client-tab.active::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: var(--pink); }
+    .carousel-wrapper,.carousel-container,.carousel-content,.client-group { width: 100%; max-width: 100%; min-width: 0; overflow: hidden; }
+    .carousel-container { position: relative; padding: 14px 0; mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); }
+    .carousel-content { position: relative; min-height: 76px; }
+    .client-logos-container { display: flex; align-items: center; width: max-content; min-width: 0; max-width: none; transform: translate3d(0, 0, 0); will-change: transform; }
+    .client-logo { width: auto; height: 58px; margin: 0 30px; flex: 0 0 auto; filter: brightness(0) invert(1); opacity: 0.62; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .client-logo:hover { opacity: 1; transform: scale(1.04); }
+
+    #services { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-cream); color: var(--ink); border-top: 2px solid var(--line-strong); }
+    .services-grid { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(48px, 6vw, 80px); align-items: start; }
+    .services-header,.services-content { min-width: 0; max-width: 100%; }
+    .services-header { position: sticky; top: 108px; }
+    .services-intro { max-width: none; font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.02; opacity: 1; text-wrap: balance; }
+    .services-intro .pink-highlight { color: var(--pink); }
+    .services-content { padding-left: 40px; border-left: 1px solid var(--line-strong); }
+    .service-row { padding: 46px 0; border-top: 1px solid var(--line-strong); }
+    .service-row:first-child { padding-top: 34px; }
+    .service-row:last-child { border-bottom: 1px solid var(--line-strong); }
+    .service-kicker { display: block; margin-bottom: 10px; font-family: var(--font-system); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
+    .service-row h3 { margin-bottom: 14px; font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 400; line-height: 1.05; text-wrap: balance; }
+    .service-row p { max-width: 700px; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.65; opacity: 0.9; }
+
+    #recent-work { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); border-top: 2px solid rgba(255, 241, 229, 0.2); }
+    .work-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; }
+    .work-row { border-bottom: 2px solid rgba(255, 241, 229, 0.28); }
+    .work-header-trigger { width: 100%; min-width: 0; display: grid; grid-template-columns: 27% minmax(0, 1fr) auto; gap: 48px; align-items: start; padding: 42px 0 34px; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+    .client-name { padding-top: 7px; color: var(--bg-cream); font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; line-height: 1.4; text-transform: uppercase; }
+    .trigger-headline { min-width: 0; color: var(--bg-cream); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.08; overflow-wrap: anywhere; text-wrap: balance; transition: color 0.25s ease; }
+    .work-row.is-open .trigger-headline { color: var(--pink); }
+    .accordion-icon { position: relative; width: 20px; height: 20px; margin-top: 12px; }
+    .icon-line { position: absolute; inset: 50% auto auto 50%; display: block; background: var(--bg-cream); transform: translate(-50%, -50%); transition: transform 0.25s ease; }
+    .icon-line.horizontal { width: 20px; height: 2px; }
+    .icon-line.vertical { width: 2px; height: 20px; }
+    .work-row.is-open .icon-line.vertical { transform: translate(-50%, -50%) rotate(90deg); }
+    .work-accordion-body { display: grid; grid-template-rows: 0fr; min-width: 0; transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1); }
+    .work-row.is-open .work-accordion-body { grid-template-rows: 1fr; }
+    .work-accordion-inner { min-width: 0; overflow: hidden; }
+    .work-fold-content { min-width: 0; display: grid; grid-template-columns: 27% minmax(0, 1fr); gap: 48px; padding: 0 0 52px; }
+    .work-image-wrapper { min-width: 0; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid rgba(255, 241, 229, 0.18); background: rgba(255, 255, 255, 0.08); }
+    .work-image-wrapper img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .narrative-stack { min-width: 0; max-width: 780px; display: flex; flex-direction: column; gap: 24px; }
+    .narrative-item { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+    .narrative-label { color: var(--bg-cream); font-family: var(--font-system); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .narrative-text { font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.65; overflow-wrap: anywhere; }
+
+    #testimonials { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-cream); color: var(--text); border-top: 2px solid var(--line-strong); }
+    .testimonials-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; }
+    .testimonial-stage { position: relative; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+    .testimonial-item { position: absolute; width: 100%; max-width: 900px; min-width: 0; opacity: 0; transform: translateY(10px); pointer-events: none; text-align: center; transition: opacity 0.5s ease, transform 0.5s ease; }
+    .testimonial-item.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .testimonial-quote { max-width: 860px; margin: 0 auto; color: var(--ink); font-size: clamp(1.35rem, 2.7vw, 2rem); font-style: italic; line-height: 1.55; overflow-wrap: anywhere; }
+    .testimonial-author { margin-top: 26px; font-family: var(--font-system); font-size: 0.83rem; line-height: 1.5; }
+    .testimonial-author strong { display: block; font-size: 0.9rem; }
+    .testimonial-role { opacity: 0.7; }
+    .testimonial-controls { display: flex; justify-content: center; align-items: center; gap: 28px; margin-top: 18px; flex-wrap: wrap; }
+    .testimonial-control { position: relative; padding: 8px 0; border: 0; background: transparent; color: var(--ink); font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; cursor: pointer; opacity: 0.45; transition: opacity 0.25s ease; }
+    .testimonial-control::after { content: ""; position: absolute; right: 0; bottom: 1px; left: 0; height: 2px; background: var(--pink); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+    .testimonial-control:hover,.testimonial-control.active { opacity: 1; }
+    .testimonial-control.active::after { transform: scaleX(1); }
+
+    #contact { padding: clamp(100px, 10vw, 136px) 20px clamp(84px, 8vw, 108px); overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); text-align: center; }
+    .contact-container { width: 100%; max-width: 960px; min-width: 0; margin: 0 auto; }
+    .contact-email-stage { position: relative; width: 100%; margin-top: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+    .contact-point { --contact-point-face-y: 0%; position: relative; z-index: 2; display: block; width: clamp(72px, 7vw, 94px); aspect-ratio: 1; opacity: 0; transform: translateY(16px) scale(0.72); transform-origin: 50% 100%; pointer-events: none; perspective: 300px; transition: opacity 480ms ease, transform 620ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .contact-point.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+    .contact-point__body { position: absolute; inset: 0; z-index: 2; overflow: hidden; isolation: isolate; border-radius: 50%; background: radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.98) 0 4%, rgba(255, 255, 255, 0.48) 5%, transparent 18%), radial-gradient(circle at 40% 32%, #ff7fd2 0%, #ff2daf 20%, var(--pink) 53%, #d5007c 78%, #92004f 100%); box-shadow: inset 4px 5px 9px rgba(255, 255, 255, 0.34), inset -7px -8px 13px rgba(87, 0, 45, 0.27), 0 11px 22px rgba(0, 0, 0, 0.18), 0 8px 26px rgba(249, 0, 144, 0.2); transform: translateZ(0) scale(1); transform-origin: 50% 76%; transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), border-radius 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 420ms ease; will-change: transform; }
+    .contact-point__face { position: absolute; inset: 0; z-index: 4; transform: translateY(var(--contact-point-face-y)); transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .contact-point__eye,.contact-point__mouth { position: absolute; display: block; color: #130008; }
+    .contact-point__eye { top: 39%; width: 11.5%; height: 13.5%; overflow: hidden; border-radius: 50%; background: currentColor; transform-origin: center; }
+    .contact-point__eye::after { content: ""; position: absolute; top: 12%; left: 18%; width: 29%; height: 29%; border-radius: 50%; background: rgba(255, 255, 255, 0.92); }
+    .contact-point__eye--left { left: 31%; }
+    .contact-point__eye--right { right: 30%; top: 38.2%; width: 10.8%; height: 12.8%; }
+    .contact-point__mouth { top: 61%; left: 41%; width: 18%; height: 8%; border-bottom: 2px solid currentColor; border-radius: 0 0 999px 999px; transform: rotate(-4deg); }
+    .contact-point__pointer { position: absolute; z-index: 1; top: 67%; left: 54%; width: 25px; height: 45px; border-radius: 48% 52% 62% 38% / 28% 30% 76% 72%; background: radial-gradient(circle at 34% 16%, rgba(255, 255, 255, 0.32) 0 8%, transparent 24%), linear-gradient(155deg, #ff42b9 0%, var(--pink) 50%, #c60071 100%); opacity: 0; transform: translate(-50%, -4px) rotate(-8deg) scale(0.28, 0.06); transform-origin: 50% 0; transition: opacity 220ms ease, transform 520ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .contact-point.is-looking-email { --contact-point-face-y: 8%; }
+    .contact-point.is-looking-user { --contact-point-face-y: -1%; }
+    .contact-point.is-pointing .contact-point__pointer { opacity: 1; transform: translate(-50%, 0) rotate(-7deg) scale(0.82, 1); }
+    .contact-point.is-nodding .contact-point__body { animation: contact-point-nod 720ms cubic-bezier(0.36, 0, 0.2, 1) both; }
+    .contact-point.is-settled .contact-point__body { animation: contact-point-idle 5.2s ease-in-out infinite; }
+    .contact-point.is-settled .contact-point__eye--left,.contact-point.is-settled .contact-point__eye--right { animation: contact-point-blink 6.8s ease-in-out infinite; }
+    @keyframes contact-point-nod { 0%,100%{transform:translateY(7px) scale(1.075,.87)} 50%{transform:translateY(3px) scale(1.035,.95)} }
+    @keyframes contact-point-idle { 0%,100%{transform:translateY(4px) scale(1.055,.92)} 50%{transform:translateY(2px) scale(1.04,.94)} }
+    @keyframes contact-point-blink { 0%,44%,48%,100%{transform:scaleY(1)} 46%{transform:scaleY(.06)} }
+
+    .contact-heading { max-width: 820px; margin: 0 auto; font-size: clamp(3rem, 7vw, 6.8rem); font-weight: 400; letter-spacing: -0.04em; line-height: 0.98; overflow-wrap: anywhere; text-wrap: balance; }
+    .giant-email { display: inline-block; max-width: 100%; margin-top: 0; color: var(--bg-cream); text-decoration: none; font-size: clamp(1.65rem, 4vw, 3.2rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; overflow-wrap: anywhere; word-break: break-word; border-bottom: 2px solid var(--pink); }
+    .giant-email:hover { color: var(--pink); }
+    .contact-meta { margin-top: 30px; display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .contact-meta a { color: var(--bg-cream); text-decoration: none; }
+    .contact-meta a:hover { color: var(--pink); }
+
+    footer { padding: 30px 20px; overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); border-top: 1px solid var(--line-on-dark); text-align: center; }
+    .footer-copy { font-family: var(--font-system); font-size: 0.72rem; opacity: 0.68; }
 
     @media (max-width: 980px) {
-      .work-header-trigger {
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 18px;
-      }
-
-      .work-header-trigger .client-name {
-        grid-column: 1 / -1;
-      }
-
-      .trigger-headline {
-        grid-column: 1;
-      }
-
-      .accordion-icon {
-        grid-column: 2;
-        grid-row: 2;
-      }
-
-      .work-fold-content {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 28px;
-      }
-
-      .work-image-wrapper {
-        width: 100%;
-        max-width: 640px;
-        aspect-ratio: 16 / 9;
-      }
-
-      .services-grid,
-      .about-container {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .services-header,
-      .about-image-col {
-        position: static;
-      }
-
-      .services-intro {
-        max-width: 650px;
-      }
-
-      .services-content {
-        padding-left: 0;
-        border-left: 0;
-      }
-
-      .about-image-wrapper {
-        width: 100%;
-        max-width: 480px;
-        aspect-ratio: 16 / 10;
-      }
+      .work-header-trigger { grid-template-columns: minmax(0, 1fr) auto; gap: 18px; }
+      .work-header-trigger .client-name { grid-column: 1 / -1; }
+      .trigger-headline { grid-column: 1; }
+      .accordion-icon { grid-column: 2; grid-row: 2; }
+      .work-fold-content { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .work-image-wrapper { width: 100%; max-width: 640px; aspect-ratio: 16 / 9; }
+      .services-grid,.about-container { grid-template-columns: minmax(0, 1fr); }
+      .services-header,.about-image-col { position: static; }
+      .services-intro { max-width: 650px; }
+      .services-content { padding-left: 0; border-left: 0; }
+      .about-image-wrapper { width: 100%; max-width: 480px; aspect-ratio: 16 / 10; }
     }
 
     @media (max-width: 700px) {
-      :root {
-        --nav-height: 64px;
-        --section-space: 72px;
-      }
-
-      .sticky-nav {
-        padding: 0 18px;
-      }
-
-      .nav-logo {
-        font-size: 1.28rem;
-        gap: 0.1em;
-      }
-
-      .nav-point {
-        width: 0.88em;
-        height: 0.88em;
-      }
-
-      .mobile-menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: var(--nav-height);
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        width: 100%;
-        min-height: calc(100vh - var(--nav-height));
-        min-height: calc(100dvh - var(--nav-height));
-        padding: 24px 20px;
-        flex-direction: column;
-        justify-content: center;
-        gap: 34px;
-        background: var(--bg-cream);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-16px);
-        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-      }
-
-      .nav-links.active {
-        z-index: 1001;
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .nav-links a {
-        font-size: 1.25rem;
-        text-transform: none;
-      }
-
-      .language-switch {
-        margin-top: 8px;
-        margin-left: 0;
-        gap: 8px;
-        font-size: 0.9rem;
-      }
-
-      .language-switch a,
-      .language-switch .language-current {
-        font-size: 0.9rem;
-      }
-
-      #intro {
-        height: 100vh;
-        min-height: 100vh;
-        height: 100svh;
-        min-height: 100svh;
-        padding: calc(var(--nav-height) + 18px) 12px 18px;
-      }
-
-      .hero-headline {
-        font-size: clamp(2.75rem, 11.9vw, 5.4rem);
-        letter-spacing: -0.052em;
-      }
-
-      .hero-lead {
-        margin-bottom: 0.34em;
-        font-size: 0.31em;
-        letter-spacing: 0.025em;
-      }
-
-      .hero-word-stage {
-        margin-bottom: 0.085em;
-      }
-
-      #recent-work,
-      #services,
-      #about-me,
-      #testimonials,
-      #contact {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      #services,
-      #recent-work,
-      #testimonials {
-        padding-top: 84px;
-        padding-bottom: 84px;
-      }
-
-      .about-container,
-      .services-grid {
-        display: block;
-      }
-
-      .services-header {
-        margin-bottom: 44px;
-      }
-
-      .about-image-col {
-        margin-bottom: 40px;
-      }
-
-      .about-image-wrapper {
-        max-width: 100%;
-      }
-
-      .about-heading {
-        margin-bottom: 24px;
-      }
-
-      .about-clients-wrapper {
-        margin-top: 38px;
-        padding-top: 26px;
-      }
-
-      .client-tabs {
-        margin-bottom: 16px;
-      }
-
-      .carousel-container {
-        padding: 10px 0;
-      }
-
-      .client-logo {
-        height: 48px;
-        margin: 0 22px;
-      }
-
-      .work-header-trigger {
-        padding: 34px 0 26px;
-      }
-
-      .work-fold-content {
-        padding-bottom: 42px;
-      }
-
-      .service-row {
-        padding: 38px 0;
-      }
-
-      .service-row:first-child {
-        padding-top: 28px;
-      }
-
-      .testimonial-stage {
-        min-height: 360px;
-      }
-
-      .testimonial-controls {
-        gap: 10px 20px;
-      }
-
-      .contact-email-stage {
-        margin-top: 30px;
-        gap: 13px;
-      }
-
-      .contact-point {
-        width: 66px;
-      }
-
-      .contact-point__pointer {
-        width: 21px;
-        height: 38px;
-      }
-
-      .contact-meta {
-        flex-direction: column;
-        gap: 14px;
-      }
+      :root { --nav-height: 64px; --section-space: 72px; }
+      .sticky-nav { padding: 0 18px; }
+      .nav-logo { font-size: 1.28rem; gap: 0.1em; }
+      .nav-point { width: 0.88em; height: 0.88em; }
+      .mobile-menu-toggle { display: block; }
+      .nav-links { position: fixed; top: var(--nav-height); right: 0; bottom: 0; left: 0; z-index: -1; width: 100%; min-height: calc(100dvh - var(--nav-height)); padding: 24px 20px; flex-direction: column; justify-content: center; gap: 34px; background: var(--bg-cream); opacity: 0; visibility: hidden; transform: translateY(-16px); transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease; }
+      .nav-links.active { z-index: 1001; opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav-links a { font-size: 1.25rem; text-transform: none; }
+      .language-switch { margin-top: 8px; margin-left: 0; gap: 8px; font-size: 0.9rem; }
+      #intro { height: 100svh; min-height: 100svh; padding: calc(var(--nav-height) + 18px) 12px 18px; }
+      .hero-headline { font-size: clamp(2.75rem, 11.9vw, 5.4rem); letter-spacing: -0.052em; }
+      .hero-lead { margin-bottom: 0.34em; font-size: 0.31em; letter-spacing: 0.025em; }
+      .hero-word-stage { margin-bottom: 0.085em; }
+      #recent-work,#services,#about-me,#testimonials,#contact { padding-left: 16px; padding-right: 16px; }
+      #services,#recent-work,#testimonials { padding-top: 84px; padding-bottom: 84px; }
+      .about-container,.services-grid { display: block; }
+      .services-header { margin-bottom: 44px; }
+      .about-image-col { margin-bottom: 40px; }
+      .contact-point { width: 66px; }
+      .contact-meta { flex-direction: column; gap: 14px; }
     }
 
     @media (max-width: 380px) {
-      .hero-headline {
-        font-size: clamp(2.55rem, 11.6vw, 3.1rem);
-      }
+      .hero-headline { font-size: clamp(2.55rem, 11.6vw, 3.1rem); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .nav-links,
-      .nav-links a::after,
-      .hamburger-icon,
-      .hamburger-icon::before,
-      .hamburger-icon::after,
-      .client-logo,
-      .trigger-headline,
-      .icon-line,
-      .work-accordion-body,
-      .testimonial-item,
-      .testimonial-control,
-      .testimonial-control::after {
-        transition-duration: 0.01ms !important;
-      }
-
-      .hero-point,
-      .hero-point__body,
-      .hero-point__face,
-      .hero-word {
-        animation: none !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .contact-point,
-      .contact-point__body,
-      .contact-point__face,
-      .contact-point__eye,
-      .contact-point__mouth,
-      .contact-point__pointer {
-        transition-duration: 240ms !important;
-      }
-
-      .contact-point.is-settled .contact-point__body,
-      .contact-point.is-settled .contact-point__eye {
-        animation: none !important;
-      }
+      html { scroll-behavior: auto; }
+      .hero-point,.hero-point__body,.hero-point__face,.hero-word { animation: none !important; transition-duration: 0.01ms !important; }
     }
   </style>
-
-  <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Emil Valdemar Madsen",
-      "jobTitle": "Freelance Brand & Marketing Strategist",
-      "description": "Independent brand and marketing strategist with 15 years of experience across global brands, in-house teams and leading agencies in Copenhagen and London.",
-      "url": "https://strategy-support.com",
-      "image": "https://strategy-support.com/assets/emilmadsen.JPG",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Copenhagen",
-        "addressCountry": "DK"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/emilvmadsen/"
-      ],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Strategy Support",
-        "url": "https://strategy-support.com"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Strategy Support",
-      "url": "https://strategy-support.com",
-      "alternateName": "Strategy-Support.com"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Strategy Support",
-      "url": "https://strategy-support.com",
-      "image": "https://strategy-support.com/assets/emilmadsen.JPG",
-      "description": "Independent brand and marketing strategy consultancy helping brands, agencies and in-house teams make clearer choices and create better work.",
-      "founder": {
-        "@type": "Person",
-        "name": "Emil Valdemar Madsen"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Copenhagen",
-        "addressCountry": "DK"
-      },
-      "areaServed": [
-        "DK",
-        "GB",
-        "Global"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Strategy Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Brand Definition",
-              "description": "Brand positioning, propositions and brand platforms for businesses that need a clearer point of view."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Marketing Strategy",
-              "description": "Focused marketing choices and plans grounded in business priorities."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Creative Planning",
-              "description": "Creative strategy, communication platforms and briefs that give creative teams something useful to push against."
-            }
-          }
-        ]
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/emilvmadsen/"
-      ]
-    }
-  ]
-  </script>
 </head>
 
 <body>
@@ -2008,7 +855,7 @@
       <li class="language-switch" aria-label="Choose language">
         <span class="language-current" aria-current="page">EN</span>
         <span class="language-separator" aria-hidden="true">/</span>
-        <a href="/dk/" lang="da" hreflang="da-DK" aria-label="Se siden på dansk">DA</a>
+        <a href="/dk/" lang="da" hreflang="da-DK">DA</a>
       </li>
     </ul>
   </nav>
@@ -2016,21 +863,15 @@
   <main>
     <section id="intro" aria-labelledby="intro-heading">
       <div class="hero-container">
-        <h1
-          id="intro-heading"
-          class="hero-headline"
-          aria-label="Support for difficult brand, marketing or creative problems."
-        >
+        <h1 id="intro-heading" class="hero-headline" aria-label="Support for difficult brand, marketing or creative problems.">
           <span class="hero-copy" aria-hidden="true">
             <span class="hero-lead">Support for difficult</span>
-
             <span class="hero-word-stage" id="hero-word-stage">
               <span class="hero-word-reserve">Marketing</span>
               <span class="hero-word-layer" id="hero-word-layer">
-                <span class="hero-word" id="hero-word">Brand</span>
+                <span class="hero-word">Brand</span>
               </span>
             </span>
-
             <span class="hero-problems-line">
               <span>Problems</span>
               <span class="hero-point-home" id="hero-point-home">
@@ -2057,10 +898,8 @@
             <img src="assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" width="1200" height="1600" loading="lazy" />
           </div>
         </div>
-
         <div class="about-content">
           <h2 id="about-me-heading" class="about-heading">I’ve spent 15 years working on both sides of the brief.</h2>
-
           <div class="about-text">
             <p>Hi! I’m Emil Valdemar Madsen. I’ve led strategy at London agencies and run brand and marketing inside global businesses. So I understand both what the business needs to achieve and what creative teams need to make something good.</p>
             <p>Sometimes that means bringing order to a global marketing organisation. Sometimes it means finding the thought that unlocks a difficult brief. My role is to work out what really matters, make it clear and help people do something useful with it.</p>
@@ -2068,50 +907,33 @@
 
           <div class="about-clients-wrapper">
             <span class="clients-intro-label">Brands and agencies I’ve helped</span>
-
-            <div class="client-tabs" role="tablist" aria-label="Client types">
-              <button class="client-tab active" id="brands-tab" type="button" data-type="brands" role="tab" aria-selected="true" aria-controls="brands-group">Brands</button>
-              <button class="client-tab" id="agencies-tab" type="button" data-type="agencies" role="tab" aria-selected="false" aria-controls="agencies-group">Agencies</button>
+            <div class="client-tabs">
+              <button class="client-tab active" data-type="brands">Brands</button>
+              <button class="client-tab" data-type="agencies">Agencies</button>
             </div>
-
             <div class="carousel-wrapper">
               <div class="carousel-container">
                 <div class="carousel-content">
-                  <div class="client-group active" id="brands-group" data-group="brands" role="tabpanel" aria-labelledby="brands-tab">
+                  <div class="client-group active" data-group="brands">
                     <div class="client-logos-container">
-                      <img src="assets/brand1.png" alt="Huawei" class="client-logo" loading="lazy" />
-                      <img src="assets/brand2.png" alt="Burger King" class="client-logo" loading="lazy" />
-                      <img src="assets/brand3.png" alt="Barclays" class="client-logo" loading="lazy" />
-                      <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" loading="lazy" />
-                      <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" loading="lazy" />
-                      <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" loading="lazy" />
-                      <img src="assets/brand7.png" alt="Mr Green" class="client-logo" loading="lazy" />
-                      <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" loading="lazy" />
-                      <img src="assets/brand9.png" alt="ATP" class="client-logo" loading="lazy" />
-                      <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" loading="lazy" />
-                      <img src="assets/brand1.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand2.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand3.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand4.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand5.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand6.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand7.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand8.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand9.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand10.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="assets/brand1.png" alt="Huawei" class="client-logo" />
+                      <img src="assets/brand2.png" alt="Burger King" class="client-logo" />
+                      <img src="assets/brand3.png" alt="Barclays" class="client-logo" />
+                      <img src="assets/brand4.png" alt="Arla Foods" class="client-logo" />
+                      <img src="assets/brand5.png" alt="PepsiCo" class="client-logo" />
+                      <img src="assets/brand6.png" alt="Saxo Bank" class="client-logo" />
+                      <img src="assets/brand7.png" alt="Mr Green" class="client-logo" />
+                      <img src="assets/brand8.png" alt="Danske Bank" class="client-logo" />
+                      <img src="assets/brand9.png" alt="ATP" class="client-logo" />
+                      <img src="assets/brand10.png" alt="Kellogg's" class="client-logo" />
                     </div>
                   </div>
-
-                  <div class="client-group" id="agencies-group" data-group="agencies" role="tabpanel" aria-labelledby="agencies-tab" hidden>
+                  <div class="client-group" data-group="agencies" hidden>
                     <div class="client-logos-container">
-                      <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" loading="lazy" />
-                      <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" loading="lazy" />
-                      <img src="assets/brand14.png" alt="Edelman London" class="client-logo" loading="lazy" />
-                      <img src="assets/brand15.png" alt="FCB London" class="client-logo" loading="lazy" />
-                      <img src="assets/brand12.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand13.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand14.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
-                      <img src="assets/brand15.png" alt="" aria-hidden="true" class="client-logo" loading="lazy" />
+                      <img src="assets/brand12.png" alt="Worth Your While Agency" class="client-logo" />
+                      <img src="assets/brand13.png" alt="Dentsu Creative London" class="client-logo" />
+                      <img src="assets/brand14.png" alt="Edelman London" class="client-logo" />
+                      <img src="assets/brand15.png" alt="FCB London" class="client-logo" />
                     </div>
                   </div>
                 </div>
@@ -2122,202 +944,48 @@
       </div>
     </section>
 
-    <section id="services" aria-label="How I help">
+    <section id="services">
       <div class="services-grid">
         <div class="services-header">
           <p class="services-intro">Clients usually bring me in <span class="pink-highlight">when something important has become difficult</span> to explain, prioritise or turn into good work.</p>
         </div>
-
         <div class="services-content">
-          <div class="service-row">
-            <span class="service-kicker">Brand definition</span>
-            <h3>When the brand has become hard to explain</h3>
-            <p>When a brand has accumulated too many messages, audiences and ambitions, I help find the single idea that holds it together. The result is a clear position people can remember, use and build from.</p>
-          </div>
-
-          <div class="service-row">
-            <span class="service-kicker">Marketing strategy</span>
-            <h3>When marketing needs a sharper focus</h3>
-            <p>I help turn commercial ambitions into meaningful marketing choices: who matters, what needs to change and where your resources can make the greatest difference.</p>
-          </div>
-
-          <div class="service-row">
-            <span class="service-kicker">Creative planning</span>
-            <h3>When the work needs a better idea behind it</h3>
-            <p>I find the truth that reframes the brief and turn it into a platform capable of producing more than one campaign. Clear enough to focus the work. Open enough to inspire it.</p>
-          </div>
+          <div class="service-row"><span class="service-kicker">Brand definition</span><h3>When the brand has become hard to explain</h3><p>When a brand has accumulated too many messages, audiences and ambitions, I help find the single idea that holds it together. The result is a clear position people can remember, use and build from.</p></div>
+          <div class="service-row"><span class="service-kicker">Marketing strategy</span><h3>When marketing needs a sharper focus</h3><p>I help turn commercial ambitions into meaningful marketing choices: who matters, what needs to change and where your resources can make the greatest difference.</p></div>
+          <div class="service-row"><span class="service-kicker">Creative planning</span><h3>When the work needs a better idea behind it</h3><p>I find the truth that reframes the brief and turn it into a platform capable of producing more than one campaign. Clear enough to focus the work. Open enough to inspire it.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="recent-work" aria-label="Selected work">
+    <section id="recent-work">
       <div class="work-container">
-        <div class="work-list">
-          <article class="work-row">
-            <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="dsv-case" id="dsv-trigger">
-              <span class="client-name">DSV Logistics — 2025</span>
-              <span class="trigger-headline">One marketing approach for a business that resists standardisation</span>
-              <span class="accordion-icon" aria-hidden="true">
-                <span class="icon-line horizontal"></span>
-                <span class="icon-line vertical"></span>
-              </span>
-            </button>
-
-            <div class="work-accordion-body" id="dsv-case" role="region" aria-labelledby="dsv-trigger">
-              <div class="work-accordion-inner">
-                <div class="work-fold-content">
-                  <div class="work-image-wrapper">
-                    <img src="assets/dsv-case.png" alt="DSV global marketing strategy work" width="1200" height="900" loading="lazy" />
-                  </div>
-
-                  <div class="narrative-stack">
-                    <div class="narrative-item">
-                      <span class="narrative-label">The situation</span>
-                      <p class="narrative-text">DSV is the world’s largest transport and logistics company. Its marketing has to work across six industry verticals, four product divisions, multiple customer segments and more than 90 markets.</p>
-                    </div>
-
-                    <div class="narrative-item">
-                      <span class="narrative-label">The challenge</span>
-                      <p class="narrative-text">The job was not simply to write another global strategy. It was to build a coherent approach that could guide global, regional and local decisions without ignoring the differences between industries, products and markets.</p>
-                    </div>
-
-                    <div class="narrative-item">
-                      <span class="narrative-label">The strategy</span>
-                      <p class="narrative-text">Working directly with the global CMO, I am developing the marketing strategy and the frameworks that connect business priorities with what actually drives purchase decisions in B2B logistics — from acquisition and retention to trade fairs and major industry moments.</p>
-                    </div>
-
-                    <div class="narrative-item">
-                      <span class="narrative-label">Alongside the strategy</span>
-                      <p class="narrative-text">I am also supporting organisational design, process development and the implementation of AI across the marketing organisation.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-row">
-            <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="saxo-case" id="saxo-trigger">
-              <span class="client-name">Saxo Bank — 2023</span>
-              <span class="trigger-headline">Making Saxo the platform money would choose for itself</span>
-              <span class="accordion-icon" aria-hidden="true">
-                <span class="icon-line horizontal"></span>
-                <span class="icon-line vertical"></span>
-              </span>
-            </button>
-
-            <div class="work-accordion-body" id="saxo-case" role="region" aria-labelledby="saxo-trigger">
-              <div class="work-accordion-inner">
-                <div class="work-fold-content">
-                  <div class="work-image-wrapper">
-                    <img src="assets/saxo-bank-case.png" alt="Saxo Bank brand platform" width="1200" height="900" loading="lazy" />
-                  </div>
-
-                  <div class="narrative-stack">
-                    <div class="narrative-item">
-                      <span class="narrative-label">The situation</span>
-                      <p class="narrative-text">Saxo wanted to grow awareness and preference among experienced investors and traders globally. But it was competing in a crowded, price-driven category full of bland, bank-like advertising.</p>
-                    </div>
-
-                    <div class="narrative-item">
-                      <span class="narrative-label">The unlock</span>
-                      <p class="narrative-text">Investors do not only want to protect their money. They want to put it to work. And with more tradable instruments than its competitors, Saxo gives money more things to do.</p>
-                    </div>
-
-                    <div class="narrative-item">
-                      <span class="narrative-label">The strategy</span>
-                      <p class="narrative-text">We dramatised the product advantage of more than 75,000 tradable instruments by giving money a voice — and showing that, if it had a choice, it would choose Saxo.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-row">
-            <button class="work-header-trigger" type="button" aria-expanded="false" aria-controls="burger-king-case" id="burger-king-trigger">
-              <span class="client-name">Burger King — 2016</span>
-              <span class="trigger-headline">Giving Burger King’s global strategy a British attitude</span>
-              <span class="accordion-icon" aria-hidden="true">
-                <span class="icon-line horizontal"></span>
-                <span class="icon-line vertical"></span>
-              </span>
-            </button>
-
-            <div class="work-accordion-body" id="burger-king-case" role="region" aria-labelledby="burger-king-trigger">
-              <div class="work-accordion-inner">
-                <div class="work-fold-content">
-                  <div class="work-image-wrapper">
-                    <img src="assets/burger-king-case.png" alt="Burger King UK brand strategy work" width="1200" height="900" loading="lazy" />
-                  </div>
-
-                  <div class="narrative-stack">
-                    <div class="narrative-item">
-                      <span class="narrative-label">The situation</span>
-                      <p class="narrative-text">Burger King had shifted its global brand strategy from <em>Have It Your Way</em> to <em>Be Your Way</em>. But as more brands began celebrating individuality, the platform risked feeling generic and imported in the UK.</p>
-                    </div>
-
-                    <div class="narrative-item">
-                      <span class="narrative-label">The unlock</span>
-                      <p class="narrative-text">British youth do not always express individuality through grand rebellion. More often, they do it by being cheeky — taking what is expected and giving it their own twist.</p>
-                    </div>
-
-                    <div class="narrative-item">
-                      <span class="narrative-label">The strategy</span>
-                      <p class="narrative-text">We positioned Burger King as the destination for cheeky detours: a British expression of the global brand idea that felt natural to the product, the audience and the culture.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
+        <article class="work-row"><button class="work-header-trigger" type="button" aria-expanded="false"><span class="client-name">DSV Logistics — 2025</span><span class="trigger-headline">One marketing approach for a business that resists standardisation</span><span class="accordion-icon"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div class="work-accordion-body"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img src="assets/dsv-case.png" alt="DSV global marketing strategy work" /></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The situation</span><p class="narrative-text">DSV is the world’s largest transport and logistics company. Its marketing has to work across six industry verticals, four product divisions, multiple customer segments and more than 90 markets.</p></div></div></div></div></div></article>
+        <article class="work-row"><button class="work-header-trigger" type="button" aria-expanded="false"><span class="client-name">Saxo Bank — 2023</span><span class="trigger-headline">Making Saxo the platform money would choose for itself</span><span class="accordion-icon"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div class="work-accordion-body"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img src="assets/saxo-bank-case.png" alt="Saxo Bank brand platform" /></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">We dramatised the product advantage of more than 75,000 tradable instruments by giving money a voice — and showing that, if it had a choice, it would choose Saxo.</p></div></div></div></div></div></article>
+        <article class="work-row"><button class="work-header-trigger" type="button" aria-expanded="false"><span class="client-name">Burger King — 2016</span><span class="trigger-headline">Giving Burger King’s global strategy a British attitude</span><span class="accordion-icon"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div class="work-accordion-body"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img src="assets/burger-king-case.png" alt="Burger King UK brand strategy work" /></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">We positioned Burger King as the destination for cheeky detours: a British expression of the global brand idea that felt natural to the product, the audience and the culture.</p></div></div></div></div></div></article>
       </div>
     </section>
 
-    <section id="testimonials" aria-label="What clients say">
+    <section id="testimonials">
       <div class="testimonials-container">
         <div class="testimonial-stage">
-          <figure class="testimonial-item active">
-            <blockquote class="testimonial-quote">“If you need a marketing strategist who also has a flair for tactical execution, there is no one better than Emil. I cannot recommend him highly enough.”</blockquote>
-            <figcaption class="testimonial-author">
-              <strong>John Veje</strong>
-              <span class="testimonial-role">Group CMO, Danske Bank</span>
-            </figcaption>
-          </figure>
-
-          <figure class="testimonial-item">
-            <blockquote class="testimonial-quote">“Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel. He thinks laterally and inspires creative teams with his briefings.”</blockquote>
-            <figcaption class="testimonial-author">
-              <strong>Vicki Holgate</strong>
-              <span class="testimonial-role">CSO, FCB Inferno London</span>
-            </figcaption>
-          </figure>
-
-          <figure class="testimonial-item">
-            <blockquote class="testimonial-quote">“Emil is a brilliant strategist. His work is meticulous, his approach is rigorous, and his presentation and communication skills are second to none.”</blockquote>
-            <figcaption class="testimonial-author">
-              <strong>Nathan Cook</strong>
-              <span class="testimonial-role">Global Director, Unilever</span>
-            </figcaption>
-          </figure>
+          <figure class="testimonial-item active"><blockquote class="testimonial-quote">“If you need a marketing strategist who also has a flair for tactical execution, there is no one better than Emil. I cannot recommend him highly enough.”</blockquote><figcaption class="testimonial-author"><strong>John Veje</strong><span class="testimonial-role">Group CMO, Danske Bank</span></figcaption></figure>
+          <figure class="testimonial-item"><blockquote class="testimonial-quote">“Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel.”</blockquote><figcaption class="testimonial-author"><strong>Vicki Holgate</strong><span class="testimonial-role">CSO, FCB Inferno London</span></figcaption></figure>
+          <figure class="testimonial-item"><blockquote class="testimonial-quote">“Emil is a brilliant strategist. His work is meticulous, his approach is rigorous, and his presentation and communication skills are second to none.”</blockquote><figcaption class="testimonial-author"><strong>Nathan Cook</strong><span class="testimonial-role">Global Director, Unilever</span></figcaption></figure>
         </div>
-
-        <div class="testimonial-controls" aria-label="Testimonial navigation">
-          <button class="testimonial-control active" type="button" aria-label="Show testimonial from John Veje" aria-pressed="true">John Veje</button>
-          <button class="testimonial-control" type="button" aria-label="Show testimonial from Vicki Holgate" aria-pressed="false">Vicki Holgate</button>
-          <button class="testimonial-control" type="button" aria-label="Show testimonial from Nathan Cook" aria-pressed="false">Nathan Cook</button>
+        <div class="testimonial-controls">
+          <button class="testimonial-control active" type="button">John Veje</button>
+          <button class="testimonial-control" type="button">Vicki Holgate</button>
+          <button class="testimonial-control" type="button">Nathan Cook</button>
         </div>
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-heading">
+    <section id="contact">
       <div class="contact-container">
-        <h2 id="contact-heading" class="contact-heading">Got a difficult brand or marketing problem?</h2>
-
-        <div class="contact-email-stage" id="contact-email-stage">
-          <span class="contact-point" id="contact-point" aria-hidden="true">
-            <span class="contact-point__pointer" aria-hidden="true"></span>
+        <h2 class="contact-heading">Got a difficult brand or marketing problem?</h2>
+        <div class="contact-email-stage">
+          <span class="contact-point is-visible is-looking-email is-settled">
+            <span class="contact-point__pointer"></span>
             <span class="contact-point__body">
               <span class="contact-point__face">
                 <span class="contact-point__eye contact-point__eye--left"></span>
@@ -2326,30 +994,21 @@
               </span>
             </span>
           </span>
-
-          <a class="giant-email" id="contact-email" href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
+          <a class="giant-email" href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
         </div>
-
-        <div class="contact-meta">
-          <span>Copenhagen-based · Working globally</span>
-          <a href="https://www.linkedin.com/in/emilvmadsen/" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>
-        </div>
+        <div class="contact-meta"><span>Copenhagen-based · Working globally</span><a href="https://www.linkedin.com/in/emilvmadsen/">LinkedIn profile ↗</a></div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p class="footer-copy">&copy; <span id="current-year"></span> Strategy Support, an independent strategy studio in Copenhagen, Denmark. CVR 33320817.</p>
-  </footer>
+  <footer><p class="footer-copy">&copy; <span id="current-year"></span> Strategy Support, an independent strategy studio in Copenhagen, Denmark. CVR 33320817.</p></footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const sleep = (delay) => new Promise((resolve) => window.setTimeout(resolve, delay));
       const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
       const lerp = (start, end, amount) => start + (end - start) * amount;
-      const easeInOutCubic = (t) => t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
       const easeOutBack = (t) => {
         const c1 = 1.70158;
         const c3 = c1 + 1;
@@ -2359,28 +1018,16 @@
       function animateFrame(duration, update) {
         return new Promise((resolve) => {
           const startedAt = performance.now();
-
           function frame(now) {
             const progress = clamp((now - startedAt) / duration, 0, 1);
             update(progress);
-
-            if (progress < 1) {
-              window.requestAnimationFrame(frame);
-            } else {
-              resolve();
-            }
+            if (progress < 1) requestAnimationFrame(frame);
+            else resolve();
           }
-
-          window.requestAnimationFrame(frame);
+          requestAnimationFrame(frame);
         });
       }
 
-      /*
-        HERO POINT
-        The Point begins as the full stop. It wakes, grows into a character,
-        jumps into the headline, bumps the current problem out of the way,
-        introduces the next one and returns to its punctuation position.
-      */
       const heroWords = ["Brand", "Marketing", "Creative"];
       const heroWordLayer = document.getElementById("hero-word-layer");
       const heroWordStage = document.getElementById("hero-word-stage");
@@ -2395,23 +1042,19 @@
 
       function setPointDirection(direction) {
         if (!heroPoint) return;
-        heroPoint.classList.remove("is-looking-up", "is-looking-left", "is-looking-right");
+        heroPoint.classList.remove("is-looking-word", "is-looking-left", "is-looking-right");
         if (direction) heroPoint.classList.add(direction);
       }
 
       function setPointBodyTransform(scaleX = 1, scaleY = 1, rotation = 0, y = 0) {
-        if (!heroPointBody) return;
         heroPointBody.style.transform = `translate3d(0, ${y}px, 0) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`;
       }
 
       function resetPointBodyTransform() {
-        if (!heroPointBody) return;
         heroPointBody.style.removeProperty("transform");
       }
 
       function detachHeroPoint() {
-        if (!heroPoint || !heroPointHome || !heroWordStage) return null;
-
         const homeRect = heroPointHome.getBoundingClientRect();
         const stageRect = heroWordStage.getBoundingClientRect();
         const pointSize = clamp(stageRect.height * 0.78, 54, 118);
@@ -2420,16 +1063,14 @@
         const startTop = homeRect.top + homeRect.height / 2 - pointSize / 2;
 
         heroPoint.classList.add("is-flying");
-        heroPoint.classList.remove("is-resting");
         heroPoint.style.left = `${startLeft}px`;
         heroPoint.style.top = `${startTop}px`;
         heroPoint.style.width = `${pointSize}px`;
         heroPoint.style.height = `${pointSize}px`;
-        heroPoint.style.transform = `translate3d(0, 0, 0) scale(${startScale})`;
+        heroPoint.style.transform = `translate3d(0,0,0) scale(${startScale})`;
         document.body.appendChild(heroPoint);
 
         return {
-          homeRect,
           pointSize,
           startScale,
           originLeft: startLeft,
@@ -2441,8 +1082,6 @@
       }
 
       async function animateHeroPoint(journey, targetLeft, targetTop, options = {}) {
-        if (!heroPoint || !journey) return;
-
         const startLeft = journey.currentLeft;
         const startTop = journey.currentTop;
         const startScale = journey.currentScale;
@@ -2474,34 +1113,34 @@
       }
 
       async function wakeHeroPoint(journey, reducedMotion) {
-        if (!heroPoint || !journey) return;
-
         heroPoint.classList.add("is-awake");
-        setPointDirection("is-looking-up");
 
-        await animateFrame(reducedMotion ? 180 : 520, (rawProgress) => {
+        await animateFrame(reducedMotion ? 160 : 420, (rawProgress) => {
           const progress = easeOutBack(rawProgress);
           const scale = lerp(journey.startScale, 1, progress);
           const bounce = Math.sin(Math.PI * rawProgress);
-
-          heroPoint.style.transform = `translate3d(0, ${-bounce * 5}px, 0) scale(${scale})`;
-          setPointBodyTransform(
-            1 + bounce * 0.15,
-            1 - bounce * 0.1,
-            bounce * -2,
-            bounce * 2
-          );
+          heroPoint.style.transform = `translate3d(0, ${-bounce * 4}px, 0) scale(${scale})`;
+          setPointBodyTransform(1 + bounce * 0.12, 1 - bounce * 0.08, bounce * -1.5, bounce * 2);
         });
 
         journey.currentScale = 1;
-        heroPoint.style.transform = "translate3d(0, 0, 0) scale(1)";
+        heroPoint.style.transform = "translate3d(0,0,0) scale(1)";
         resetPointBodyTransform();
-        await sleep(reducedMotion ? 100 : 300);
+
+        setPointDirection("is-looking-word");
+        await sleep(reducedMotion ? 100 : 480);
+
+        await animateFrame(reducedMotion ? 100 : 220, (rawProgress) => {
+          const progress = easeInOutCubic(rawProgress);
+          heroPoint.style.transform = `translate3d(${progress * 3}px, ${progress * 7}px, 0) rotate(${progress * 4}deg) scale(${1 + progress * 0.08}, ${1 - progress * 0.13})`;
+          setPointBodyTransform(1 + progress * 0.1, 1 - progress * 0.09, progress * 2, progress * 2);
+        });
+
+        resetPointBodyTransform();
+        await sleep(reducedMotion ? 20 : 80);
       }
 
       async function impactWord(nextWord, journey, reducedMotion) {
-        if (!heroWordLayer || !heroWordStage || !heroPoint || !heroPointBody) return;
-
         const currentWord = heroWordLayer.querySelector(".hero-word");
         if (!currentWord) return;
 
@@ -2509,77 +1148,73 @@
         nextWordElement.className = "hero-word";
         nextWordElement.textContent = nextWord;
         nextWordElement.style.opacity = "0";
-        nextWordElement.style.transform = "translate3d(0.52em, -0.08em, 0) rotate(3deg) scale(0.94)";
+        nextWordElement.style.transform = "translate3d(0.48em, 0.03em, 0) rotate(2deg) scale(0.96)";
         heroWordLayer.appendChild(nextWordElement);
 
         heroPoint.classList.add("is-working");
         setPointDirection("is-looking-left");
+        await sleep(reducedMotion ? 20 : 120);
+
+        const restingLeft = journey.currentLeft;
+        const restingTop = journey.currentTop;
+        const collisionDistance = clamp(journey.pointSize * 0.19, 11, 23);
 
         const currentAnimation = currentWord.animate([
-          {
-            opacity: 1,
-            transform: "translate3d(0, 0, 0) rotate(0deg) scale(1)",
-            filter: "blur(0)"
-          },
-          {
-            opacity: 1,
-            transform: "translate3d(-0.08em, 0.02em, 0) rotate(-1deg) scale(1.03, 0.97)",
-            filter: "blur(0)"
-          },
-          {
-            opacity: 0,
-            transform: "translate3d(-0.92em, 0.14em, 0) rotate(-7deg) scale(0.82)",
-            filter: "blur(2px)"
-          }
+          { opacity: 1, transform: "translate3d(0,0,0) rotate(0deg) scale(1)", filter: "blur(0)" },
+          { opacity: 1, transform: "translate3d(-0.045em,0.01em,0) rotate(-0.5deg) scale(0.985,1.025)", filter: "blur(0)", offset: 0.2 },
+          { opacity: 1, transform: "translate3d(-0.14em,0.025em,0) rotate(-1.4deg) scale(1.025,0.975)", filter: "blur(0)", offset: 0.38 },
+          { opacity: 0, transform: "translate3d(-0.92em,0.13em,0) rotate(-7deg) scale(0.82)", filter: "blur(2px)" }
         ], {
-          duration: reducedMotion ? 180 : 520,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          duration: reducedMotion ? 180 : 560,
+          easing: "cubic-bezier(0.22,1,0.36,1)",
           fill: "forwards"
         });
 
         const nextAnimation = nextWordElement.animate([
-          {
-            opacity: 0,
-            transform: "translate3d(0.52em, -0.08em, 0) rotate(3deg) scale(0.94)"
-          },
-          {
-            opacity: 1,
-            transform: "translate3d(-0.03em, 0.015em, 0) rotate(-0.5deg) scale(1.02, 0.98)",
-            offset: 0.72
-          },
-          {
-            opacity: 1,
-            transform: "translate3d(0, 0, 0) rotate(0deg) scale(1)"
-          }
+          { opacity: 0, transform: "translate3d(0.48em,0.03em,0) rotate(2deg) scale(0.96)" },
+          { opacity: 0, transform: "translate3d(0.34em,0.02em,0) rotate(1.5deg) scale(0.97)", offset: 0.34 },
+          { opacity: 1, transform: "translate3d(-0.035em,0.01em,0) rotate(-0.6deg) scale(1.025,0.98)", offset: 0.78 },
+          { opacity: 1, transform: "translate3d(0,0,0) rotate(0deg) scale(1)" }
         ], {
-          duration: reducedMotion ? 180 : 560,
-          delay: reducedMotion ? 0 : 90,
-          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          duration: reducedMotion ? 180 : 620,
+          delay: reducedMotion ? 0 : 55,
+          easing: "cubic-bezier(0.22,1,0.36,1)",
           fill: "forwards"
         });
 
-        await animateFrame(reducedMotion ? 180 : 420, (progress) => {
-          const impact = Math.sin(Math.PI * progress);
-          setPointBodyTransform(
-            1 - impact * 0.2,
-            1 + impact * 0.24,
-            impact * 4,
-            impact * -1
-          );
+        await animateFrame(reducedMotion ? 130 : 270, (rawProgress) => {
+          let x;
+          let compression;
+
+          if (rawProgress < 0.52) {
+            const strikeProgress = easeInOutCubic(rawProgress / 0.52);
+            x = lerp(0, -collisionDistance, strikeProgress);
+            compression = strikeProgress;
+          } else {
+            const recoveryProgress = easeOutBack((rawProgress - 0.52) / 0.48);
+            x = lerp(-collisionDistance, collisionDistance * 0.16, recoveryProgress);
+            compression = 1 - recoveryProgress;
+          }
+
+          heroPoint.style.transform = `translate3d(${restingLeft - journey.originLeft + x}px, ${restingTop - journey.originTop}px, 0) scale(1)`;
+          setPointBodyTransform(1 - compression * 0.18, 1 + compression * 0.22, compression * 3, 0);
         });
+
+        const settledLeft = restingLeft + collisionDistance * 0.16;
+        journey.currentLeft = settledLeft;
+        journey.currentTop = restingTop;
+        heroPoint.style.transform = `translate3d(${settledLeft - journey.originLeft}px, ${restingTop - journey.originTop}px, 0) scale(1)`;
+        resetPointBodyTransform();
 
         await Promise.all([currentAnimation.finished, nextAnimation.finished]);
         currentWord.remove();
         nextWordElement.getAnimations().forEach((animation) => animation.cancel());
         nextWordElement.style.removeProperty("opacity");
         nextWordElement.style.removeProperty("transform");
-        resetPointBodyTransform();
         heroPoint.classList.remove("is-working");
       }
 
       async function returnHeroPointHome(journey, reducedMotion) {
-        if (!heroPoint || !heroPointHome || !journey) return;
-
         const homeRect = heroPointHome.getBoundingClientRect();
         const targetLeft = homeRect.left + homeRect.width / 2 - journey.pointSize / 2;
         const targetTop = homeRect.top + homeRect.height / 2 - journey.pointSize / 2;
@@ -2594,61 +1229,40 @@
         });
 
         heroPointHome.appendChild(heroPoint);
-        heroPoint.classList.remove("is-flying", "is-awake", "is-looking-up", "is-looking-left", "is-looking-right", "is-working", "is-winking", "is-resting");
-        heroPoint.style.removeProperty("left");
-        heroPoint.style.removeProperty("top");
-        heroPoint.style.removeProperty("width");
-        heroPoint.style.removeProperty("height");
-        heroPoint.style.removeProperty("transform");
+        heroPoint.className = "hero-point";
+        heroPoint.removeAttribute("style");
         resetPointBodyTransform();
       }
 
       async function performHeroChange(token) {
-        if (
-          heroAnimationRunning ||
-          !heroWordLayer ||
-          !heroWordStage ||
-          !heroPointHome ||
-          !heroPoint ||
-          !heroPointBody
-        ) {
-          return;
-        }
-
+        if (heroAnimationRunning) return;
         heroAnimationRunning = true;
+
         const reducedMotion = reducedMotionQuery.matches;
         const nextIndex = (heroWordIndex + 1) % heroWords.length;
         const nextWord = heroWords[nextIndex];
         const journey = detachHeroPoint();
 
-        if (!journey) {
-          heroAnimationRunning = false;
-          return;
-        }
-
         await wakeHeroPoint(journey, reducedMotion);
         if (token !== heroLoopToken) return;
 
         const activeWord = heroWordLayer.querySelector(".hero-word");
-        const activeWordRect = activeWord
-          ? activeWord.getBoundingClientRect()
-          : heroWordStage.getBoundingClientRect();
-        const targetLeft = activeWordRect.right - journey.pointSize * 0.43;
-        const targetTop = activeWordRect.top + activeWordRect.height * 0.5 - journey.pointSize / 2;
+        const activeWordRect = activeWord.getBoundingClientRect();
+        const sideGap = clamp(journey.pointSize * 0.1, 6, 13);
+        const targetLeft = activeWordRect.right + sideGap;
+        const targetTop = activeWordRect.top + activeWordRect.height * 0.53 - journey.pointSize / 2;
 
         await animateHeroPoint(journey, targetLeft, targetTop, {
-          duration: reducedMotion ? 220 : 720,
-          arc: reducedMotion ? -10 : -86,
-          rotation: -12,
-          stretch: reducedMotion ? 0.06 : 0.23,
+          duration: reducedMotion ? 220 : 680,
+          arc: reducedMotion ? -8 : -72,
+          rotation: -9,
+          stretch: reducedMotion ? 0.05 : 0.18,
           scale: 1
         });
-        if (token !== heroLoopToken) return;
 
         await impactWord(nextWord, journey, reducedMotion);
         heroWordIndex = nextIndex;
 
-        setPointDirection("is-looking-left");
         await sleep(reducedMotion ? 80 : 320);
         heroPoint.classList.add("is-winking");
         await sleep(reducedMotion ? 120 : 520);
@@ -2661,7 +1275,6 @@
       async function runHeroLoop() {
         heroLoopToken += 1;
         const token = heroLoopToken;
-
         while (token === heroLoopToken) {
           await sleep(reducedMotionQuery.matches ? 2600 : 3400);
           if (document.hidden || token !== heroLoopToken) continue;
@@ -2669,439 +1282,47 @@
         }
       }
 
-      function restartHeroLoop() {
-        heroLoopToken += 1;
-        heroAnimationRunning = false;
-
-        if (heroPoint && heroPointHome && !heroPointHome.contains(heroPoint)) {
-          heroPointHome.appendChild(heroPoint);
-        }
-
-        if (heroPoint) {
-          heroPoint.className = "hero-point";
-          heroPoint.removeAttribute("style");
-        }
-
-        if (heroWordLayer) {
-          heroWordLayer.innerHTML = `<span class="hero-word">${heroWords[heroWordIndex]}</span>`;
-        }
-
-        resetPointBodyTransform();
-        runHeroLoop();
-      }
-
-      if (heroWordLayer && heroPoint) {
-        runHeroLoop();
-
-        document.addEventListener("visibilitychange", () => {
-          if (!document.hidden) restartHeroLoop();
-        });
-
-        window.addEventListener("pageshow", (event) => {
-          if (event.persisted) restartHeroLoop();
-        });
-      }
+      runHeroLoop();
 
       const menuToggle = document.querySelector(".mobile-menu-toggle");
       const navLinks = document.querySelector(".nav-links");
-      const mobileLinks = document.querySelectorAll(".nav-links a");
-
-      function closeMenu() {
-        if (!menuToggle || !navLinks) return;
-
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open menu");
-        menuToggle.classList.remove("active");
-        navLinks.classList.remove("active");
-        document.body.classList.remove("menu-open");
-      }
-
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", () => {
-          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-
-          menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-          menuToggle.setAttribute("aria-label", isExpanded ? "Open menu" : "Close menu");
-          menuToggle.classList.toggle("active", !isExpanded);
-          navLinks.classList.toggle("active", !isExpanded);
-          document.body.classList.toggle("menu-open", !isExpanded);
-        });
-      }
-
-      mobileLinks.forEach((link) => {
-        link.addEventListener("click", closeMenu);
+      menuToggle.addEventListener("click", () => {
+        const open = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!open));
+        menuToggle.classList.toggle("active", !open);
+        navLinks.classList.toggle("active", !open);
       });
 
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeMenu();
-      });
-
-      const sections = document.querySelectorAll("section[id]");
-      const navItems = document.querySelectorAll(".nav-links a");
-
-      if ("IntersectionObserver" in window) {
-        const scrollSpyObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            navItems.forEach((link) => {
-              link.classList.toggle(
-                "active-section",
-                link.getAttribute("href") === "#" + entry.target.id
-              );
-            });
-          });
-        }, {
-          rootMargin: "-45% 0px -45% 0px"
-        });
-
-        sections.forEach((section) => {
-          scrollSpyObserver.observe(section);
-        });
-      }
-
-      const clientTabs = document.querySelectorAll(".client-tab");
-      const clientGroups = document.querySelectorAll(".client-group");
-      const logoTracks = Array.from(document.querySelectorAll(".client-logos-container"));
-      const logoOffsets = new WeakMap();
-      let previousLogoFrame = performance.now();
-
-      logoTracks.forEach((track) => {
-        logoOffsets.set(track, 0);
-      });
-
-      function resetLogoTrack(group) {
-        const track = group.querySelector(".client-logos-container");
-
-        if (!track) return;
-
-        logoOffsets.set(track, 0);
-        track.style.transform = "translate3d(0, 0, 0)";
-      }
-
-      function moveLogoTracks(now) {
-        const elapsed = Math.min(now - previousLogoFrame, 50);
-        previousLogoFrame = now;
-
-        logoTracks.forEach((track) => {
-          const group = track.closest(".client-group");
-
-          if (!group || group.hidden || !group.classList.contains("active")) {
-            return;
-          }
-
-          const loopWidth = track.scrollWidth / 2;
-
-          if (!loopWidth) return;
-
-          const isAgencyTrack = group.dataset.group === "agencies";
-
-          const pixelsPerSecond = window.innerWidth <= 700
-            ? (isAgencyTrack ? 42 : 32)
-            : (isAgencyTrack ? 34 : 25);
-
-          let offset = (logoOffsets.get(track) || 0) + (pixelsPerSecond * elapsed / 1000);
-
-          if (offset >= loopWidth) {
-            offset %= loopWidth;
-          }
-
-          logoOffsets.set(track, offset);
-          track.style.transform = `translate3d(${-offset}px, 0, 0)`;
-        });
-
-        window.requestAnimationFrame(moveLogoTracks);
-      }
-
-      clientTabs.forEach((tab) => {
+      document.querySelectorAll(".client-tab").forEach((tab) => {
         tab.addEventListener("click", () => {
-          const selectedType = tab.dataset.type;
-
-          clientTabs.forEach((item) => {
-            const isSelected = item === tab;
-
-            item.classList.toggle("active", isSelected);
-            item.setAttribute("aria-selected", String(isSelected));
-          });
-
-          clientGroups.forEach((group) => {
-            const isSelected = group.dataset.group === selectedType;
-
-            group.classList.toggle("active", isSelected);
-            group.hidden = !isSelected;
-
-            if (isSelected) {
-              resetLogoTrack(group);
-            }
+          document.querySelectorAll(".client-tab").forEach((item) => item.classList.toggle("active", item === tab));
+          document.querySelectorAll(".client-group").forEach((group) => {
+            const active = group.dataset.group === tab.dataset.type;
+            group.hidden = !active;
+            group.classList.toggle("active", active);
           });
         });
       });
 
-      window.requestAnimationFrame(moveLogoTracks);
-
-      const workTriggers = document.querySelectorAll(".work-header-trigger");
-
-      workTriggers.forEach((trigger) => {
+      document.querySelectorAll(".work-header-trigger").forEach((trigger) => {
         trigger.addEventListener("click", () => {
-          const currentRow = trigger.closest(".work-row");
-          const isExpanded = trigger.getAttribute("aria-expanded") === "true";
-
-          document.querySelectorAll(".work-row").forEach((row) => {
-            row.classList.remove("is-open");
-
-            const rowTrigger = row.querySelector(".work-header-trigger");
-
-            if (rowTrigger) {
-              rowTrigger.setAttribute("aria-expanded", "false");
-            }
-          });
-
-          if (!isExpanded && currentRow) {
-            currentRow.classList.add("is-open");
-            trigger.setAttribute("aria-expanded", "true");
-          }
+          const row = trigger.closest(".work-row");
+          const isOpen = row.classList.contains("is-open");
+          document.querySelectorAll(".work-row").forEach((item) => item.classList.remove("is-open"));
+          if (!isOpen) row.classList.add("is-open");
         });
       });
 
-      const contactSection = document.getElementById("contact");
-      const contactEmailStage = document.getElementById("contact-email-stage");
-      const contactEmail = document.getElementById("contact-email");
-      const contactPoint = document.getElementById("contact-point");
-
-      let contactPointHasEntered = false;
-      let contactPointIsPerforming = false;
-      let contactPointLoopActive = false;
-      let contactPointLoopToken = 0;
-
-      function clearContactPointDirection() {
-        if (!contactPoint) return;
-        contactPoint.classList.remove("is-looking-email", "is-looking-user");
-      }
-
-      async function waitForContactPoint(delay, token) {
-        await sleep(delay);
-        return contactPointLoopActive && token === contactPointLoopToken;
-      }
-
-      async function performContactPointCycle({ initial = false, token = contactPointLoopToken } = {}) {
-        if (!contactPoint || contactPointIsPerforming) return false;
-
-        contactPointIsPerforming = true;
-        contactPoint.classList.add("is-performing");
-        contactPoint.classList.remove("is-settled", "is-pointing", "is-nodding");
-
-        const reducedMotion = reducedMotionQuery.matches;
-
-        if (initial) {
-          contactPoint.classList.add("is-visible");
-          if (!(await waitForContactPoint(reducedMotion ? 180 : 520, token))) {
-            contactPointIsPerforming = false;
-            return false;
-          }
-        }
-
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email");
-        if (!(await waitForContactPoint(reducedMotion ? 360 : 1250, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-user");
-        if (!(await waitForContactPoint(reducedMotion ? 360 : 1050, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email");
-        if (!(await waitForContactPoint(reducedMotion ? 180 : 430, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        contactPoint.classList.add("is-pointing");
-        if (!(await waitForContactPoint(reducedMotion ? 220 : 520, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        contactPoint.classList.add("is-nodding");
-        if (!(await waitForContactPoint(reducedMotion ? 300 : 760, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-        contactPoint.classList.remove("is-nodding");
-
-        if (!(await waitForContactPoint(reducedMotion ? 240 : 720, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        contactPoint.classList.remove("is-pointing", "is-performing");
-        contactPoint.classList.add("is-looking-email", "is-settled");
-        contactPointIsPerforming = false;
-
-        return true;
-      }
-
-      async function runContactPointLoop({ initial = false } = {}) {
-        if (!contactPoint || !contactPointLoopActive) return;
-
-        const token = contactPointLoopToken;
-        let firstCycle = initial;
-
-        while (contactPointLoopActive && token === contactPointLoopToken) {
-          const completed = await performContactPointCycle({
-            initial: firstCycle,
-            token
-          });
-
-          firstCycle = false;
-
-          if (!completed || !contactPointLoopActive || token !== contactPointLoopToken) {
-            break;
-          }
-
-          const reducedMotion = reducedMotionQuery.matches;
-          if (!(await waitForContactPoint(reducedMotion ? 900 : 1900, token))) {
-            break;
-          }
-        }
-      }
-
-      function startContactPointLoop({ initial = false } = {}) {
-        if (!contactPoint || contactPointLoopActive) return;
-
-        contactPointLoopActive = true;
-        contactPointLoopToken += 1;
-        runContactPointLoop({ initial });
-      }
-
-      function stopContactPointLoop() {
-        contactPointLoopActive = false;
-        contactPointLoopToken += 1;
-        contactPointIsPerforming = false;
-
-        if (!contactPoint) return;
-
-        contactPoint.classList.remove("is-performing", "is-pointing", "is-nodding");
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email", "is-settled");
-      }
-
-      if (contactSection && contactPoint) {
-        if ("IntersectionObserver" in window) {
-          const contactPointObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const isFirstEntry = !contactPointHasEntered;
-                contactPointHasEntered = true;
-                startContactPointLoop({ initial: isFirstEntry });
-              } else if (contactPointHasEntered) {
-                stopContactPointLoop();
-              }
-            });
-          }, {
-            threshold: 0.34
-          });
-
-          contactPointObserver.observe(contactSection);
-        } else {
-          contactPointHasEntered = true;
-          startContactPointLoop({ initial: true });
-        }
-      }
-
-      function encourageContactPoint() {
-        if (!contactPointHasEntered || !contactPointLoopActive || contactPointIsPerforming) return;
-
-        contactPoint.classList.remove("is-settled");
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email", "is-pointing", "is-nodding");
-
-        window.setTimeout(() => {
-          if (!contactPoint || contactPointIsPerforming) return;
-          contactPoint.classList.remove("is-pointing", "is-nodding");
-          contactPoint.classList.add("is-looking-email", "is-settled");
-        }, 760);
-      }
-
-      if (contactEmailStage) {
-        contactEmailStage.addEventListener("mouseenter", encourageContactPoint);
-      }
-
-      if (contactEmail) {
-        contactEmail.addEventListener("focus", encourageContactPoint);
-      }
-
-      const testimonials = Array.from(document.querySelectorAll(".testimonial-item"));
-      const testimonialControls = Array.from(document.querySelectorAll(".testimonial-control"));
-
-      let currentTestimonial = 0;
-      let testimonialTimer = null;
-
-      function showTestimonial(index) {
-        if (!testimonials.length) return;
-
-        currentTestimonial = (index + testimonials.length) % testimonials.length;
-
-        testimonials.forEach((item, itemIndex) => {
-          const isActive = itemIndex === currentTestimonial;
-
-          item.classList.toggle("active", isActive);
-          item.setAttribute("aria-hidden", String(!isActive));
-        });
-
-        testimonialControls.forEach((control, controlIndex) => {
-          const isActive = controlIndex === currentTestimonial;
-
-          control.classList.toggle("active", isActive);
-          control.setAttribute("aria-pressed", String(isActive));
-        });
-      }
-
-      function stopTestimonialTimer() {
-        if (testimonialTimer !== null) {
-          window.clearInterval(testimonialTimer);
-          testimonialTimer = null;
-        }
-      }
-
-      function startTestimonialTimer() {
-        stopTestimonialTimer();
-
-        if (testimonials.length > 1) {
-          testimonialTimer = window.setInterval(() => {
-            showTestimonial(currentTestimonial + 1);
-          }, 7000);
-        }
-      }
-
-      testimonialControls.forEach((control, index) => {
+      const testimonials = [...document.querySelectorAll(".testimonial-item")];
+      const controls = [...document.querySelectorAll(".testimonial-control")];
+      controls.forEach((control, index) => {
         control.addEventListener("click", () => {
-          showTestimonial(index);
-          startTestimonialTimer();
+          testimonials.forEach((item, i) => item.classList.toggle("active", i === index));
+          controls.forEach((item, i) => item.classList.toggle("active", i === index));
         });
       });
 
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          stopTestimonialTimer();
-        } else {
-          startTestimonialTimer();
-        }
-      });
-
-      showTestimonial(0);
-      startTestimonialTimer();
-
-      const currentYear = document.getElementById("current-year");
-
-      if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
-      }
+      document.getElementById("current-year").textContent = new Date().getFullYear();
     });
   </script>
 </body>
