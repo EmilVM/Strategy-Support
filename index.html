@@ -763,8 +763,10 @@
     .contact-point.is-looking-user { --contact-point-face-y: -1%; }
     .contact-point.is-pointing .contact-point__pointer { opacity: 1; transform: translate(-50%, 0) rotate(-7deg) scale(0.82, 1); }
     .contact-point.is-nodding .contact-point__body { animation: contact-point-nod 720ms cubic-bezier(0.36, 0, 0.2, 1) both; }
+    .contact-point.is-winking .contact-point__eye--right { animation: contact-point-wink 620ms cubic-bezier(0.4, 0, 0.2, 1) both; }
     .contact-point.is-settled .contact-point__body { animation: contact-point-idle 5.2s ease-in-out infinite; }
     .contact-point.is-settled .contact-point__eye--left,.contact-point.is-settled .contact-point__eye--right { animation: contact-point-blink 6.8s ease-in-out infinite; }
+    @keyframes contact-point-wink { 0%,18%,82%,100%{transform:scaleY(1)} 42%,62%{transform:scaleY(.06) translateY(22%)} }
     @keyframes contact-point-nod { 0%,100%{transform:translateY(7px) scale(1.075,.87)} 50%{transform:translateY(3px) scale(1.035,.95)} }
     @keyframes contact-point-idle { 0%,100%{transform:translateY(4px) scale(1.055,.92)} 50%{transform:translateY(2px) scale(1.04,.94)} }
     @keyframes contact-point-blink { 0%,44%,48%,100%{transform:scaleY(1)} 46%{transform:scaleY(.06)} }
@@ -984,7 +986,7 @@
       <div class="contact-container">
         <h2 class="contact-heading">Got a difficult brand or marketing problem?</h2>
         <div class="contact-email-stage">
-          <span class="contact-point is-visible is-looking-email is-settled">
+          <span class="contact-point">
             <span class="contact-point__pointer"></span>
             <span class="contact-point__body">
               <span class="contact-point__face">
@@ -1153,54 +1155,81 @@
 
         heroPoint.classList.add("is-working");
         setPointDirection("is-looking-left");
-        await sleep(reducedMotion ? 20 : 120);
+        await sleep(reducedMotion ? 20 : 130);
 
         const restingLeft = journey.currentLeft;
         const restingTop = journey.currentTop;
-        const collisionDistance = clamp(journey.pointSize * 0.19, 11, 23);
+        const windUpDistance = clamp(journey.pointSize * 0.17, 10, 20);
+        const impactDistance = clamp(journey.pointSize * 0.2, 14, 25);
+        const reboundDistance = clamp(journey.pointSize * 0.38, 26, 46);
+        const settleOffset = clamp(journey.pointSize * 0.055, 4, 7);
+        const baseX = restingLeft - journey.originLeft;
+        const baseY = restingTop - journey.originTop;
+
+        await animateFrame(reducedMotion ? 50 : 170, (rawProgress) => {
+          const progress = easeInOutCubic(rawProgress);
+          const x = lerp(0, windUpDistance, progress);
+          const dip = Math.sin(Math.PI * progress) * 3;
+
+          heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY + dip}px, 0) rotate(${progress * 3}deg) scale(1)`;
+          setPointBodyTransform(1 + progress * 0.08, 1 - progress * 0.1, progress * 2, progress * 2);
+        });
+
+        await animateFrame(reducedMotion ? 70 : 145, (rawProgress) => {
+          const acceleration = rawProgress * rawProgress * rawProgress;
+          const x = lerp(windUpDistance, -impactDistance, acceleration);
+
+          heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY}px, 0) rotate(${-acceleration * 5}deg) scale(1)`;
+          setPointBodyTransform(1 + acceleration * 0.2, 1 - acceleration * 0.14, -acceleration * 3, 0);
+        });
+
+        heroPoint.style.transform = `translate3d(${baseX - impactDistance}px, ${baseY}px, 0) rotate(-4deg) scale(1)`;
+        setPointBodyTransform(0.7, 1.28, -4, 0);
 
         const currentAnimation = currentWord.animate([
           { opacity: 1, transform: "translate3d(0,0,0) rotate(0deg) scale(1)", filter: "blur(0)" },
-          { opacity: 1, transform: "translate3d(-0.045em,0.01em,0) rotate(-0.5deg) scale(0.985,1.025)", filter: "blur(0)", offset: 0.2 },
-          { opacity: 1, transform: "translate3d(-0.14em,0.025em,0) rotate(-1.4deg) scale(1.025,0.975)", filter: "blur(0)", offset: 0.38 },
-          { opacity: 0, transform: "translate3d(-0.92em,0.13em,0) rotate(-7deg) scale(0.82)", filter: "blur(2px)" }
+          { opacity: 1, transform: "translate3d(-0.055em,0.01em,0) rotate(-0.8deg) scale(0.965,1.045)", filter: "blur(0)", offset: 0.1 },
+          { opacity: 1, transform: "translate3d(-0.2em,0.035em,0) rotate(-2deg) scale(1.04,0.96)", filter: "blur(0)", offset: 0.27 },
+          { opacity: 0, transform: "translate3d(-0.96em,0.14em,0) rotate(-8deg) scale(0.81)", filter: "blur(2px)" }
         ], {
-          duration: reducedMotion ? 180 : 560,
+          duration: reducedMotion ? 180 : 530,
           easing: "cubic-bezier(0.22,1,0.36,1)",
           fill: "forwards"
         });
 
         const nextAnimation = nextWordElement.animate([
           { opacity: 0, transform: "translate3d(0.48em,0.03em,0) rotate(2deg) scale(0.96)" },
-          { opacity: 0, transform: "translate3d(0.34em,0.02em,0) rotate(1.5deg) scale(0.97)", offset: 0.34 },
-          { opacity: 1, transform: "translate3d(-0.035em,0.01em,0) rotate(-0.6deg) scale(1.025,0.98)", offset: 0.78 },
+          { opacity: 0, transform: "translate3d(0.34em,0.02em,0) rotate(1.5deg) scale(0.97)", offset: 0.25 },
+          { opacity: 1, transform: "translate3d(-0.045em,0.01em,0) rotate(-0.7deg) scale(1.03,0.975)", offset: 0.78 },
           { opacity: 1, transform: "translate3d(0,0,0) rotate(0deg) scale(1)" }
         ], {
-          duration: reducedMotion ? 180 : 620,
-          delay: reducedMotion ? 0 : 55,
+          duration: reducedMotion ? 180 : 570,
+          delay: reducedMotion ? 0 : 105,
           easing: "cubic-bezier(0.22,1,0.36,1)",
           fill: "forwards"
         });
 
-        await animateFrame(reducedMotion ? 130 : 270, (rawProgress) => {
-          let x;
-          let compression;
+        await sleep(reducedMotion ? 10 : 55);
 
-          if (rawProgress < 0.52) {
-            const strikeProgress = easeInOutCubic(rawProgress / 0.52);
-            x = lerp(0, -collisionDistance, strikeProgress);
-            compression = strikeProgress;
-          } else {
-            const recoveryProgress = easeOutBack((rawProgress - 0.52) / 0.48);
-            x = lerp(-collisionDistance, collisionDistance * 0.16, recoveryProgress);
-            compression = 1 - recoveryProgress;
-          }
+        await animateFrame(reducedMotion ? 80 : 285, (rawProgress) => {
+          const progress = easeOutBack(rawProgress);
+          const x = lerp(-impactDistance, reboundDistance, progress);
+          const verticalBounce = Math.sin(Math.PI * rawProgress) * -5;
 
-          heroPoint.style.transform = `translate3d(${restingLeft - journey.originLeft + x}px, ${restingTop - journey.originTop}px, 0) scale(1)`;
-          setPointBodyTransform(1 - compression * 0.18, 1 + compression * 0.22, compression * 3, 0);
+          heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY + verticalBounce}px, 0) rotate(${lerp(-4, 7, progress)}deg) scale(1)`;
+          setPointBodyTransform(lerp(0.7, 1, progress), lerp(1.28, 1, progress), lerp(-4, 2, progress), verticalBounce * 0.25);
         });
 
-        const settledLeft = restingLeft + collisionDistance * 0.16;
+        await animateFrame(reducedMotion ? 60 : 230, (rawProgress) => {
+          const progress = easeInOutCubic(rawProgress);
+          const x = lerp(reboundDistance, settleOffset, progress);
+          const wobble = Math.sin(rawProgress * Math.PI * 2) * (1 - rawProgress);
+
+          heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY + wobble * 2}px, 0) rotate(${wobble * 3}deg) scale(1)`;
+          setPointBodyTransform(1 + wobble * 0.035, 1 - wobble * 0.025, wobble * 2, 0);
+        });
+
+        const settledLeft = restingLeft + settleOffset;
         journey.currentLeft = settledLeft;
         journey.currentTop = restingTop;
         heroPoint.style.transform = `translate3d(${settledLeft - journey.originLeft}px, ${restingTop - journey.originTop}px, 0) scale(1)`;
@@ -1248,7 +1277,7 @@
 
         const activeWord = heroWordLayer.querySelector(".hero-word");
         const activeWordRect = activeWord.getBoundingClientRect();
-        const sideGap = clamp(journey.pointSize * 0.1, 6, 13);
+        const sideGap = clamp(journey.pointSize * 0.045, 3, 6);
         const targetLeft = activeWordRect.right + sideGap;
         const targetTop = activeWordRect.top + activeWordRect.height * 0.53 - journey.pointSize / 2;
 
@@ -1283,6 +1312,55 @@
       }
 
       runHeroLoop();
+
+      const contactSection = document.getElementById("contact");
+      const contactPoint = document.querySelector(".contact-point");
+      let contactSequencePlayed = false;
+      let contactSequenceRunning = false;
+
+      async function playContactPointSequence() {
+        if (!contactPoint || contactSequenceRunning) return;
+
+        contactSequenceRunning = true;
+        contactPoint.classList.remove("is-settled", "is-pointing", "is-nodding", "is-winking", "is-looking-user");
+        contactPoint.classList.add("is-visible", "is-looking-email");
+
+        await sleep(550);
+        contactPoint.classList.add("is-pointing");
+        await sleep(650);
+
+        contactPoint.classList.add("is-nodding");
+        await sleep(720);
+        contactPoint.classList.remove("is-nodding");
+
+        await sleep(180);
+        contactPoint.classList.add("is-winking");
+        await sleep(620);
+        contactPoint.classList.remove("is-winking");
+
+        await sleep(260);
+        contactPoint.classList.remove("is-pointing", "is-looking-email");
+        contactPoint.classList.add("is-looking-user");
+        await sleep(520);
+
+        contactPoint.classList.remove("is-looking-user");
+        contactPoint.classList.add("is-looking-email", "is-settled");
+        contactSequenceRunning = false;
+      }
+
+      if (contactSection && contactPoint) {
+        const contactObserver = new IntersectionObserver((entries, observer) => {
+          const entry = entries[0];
+          if (!entry.isIntersecting || contactSequencePlayed) return;
+          contactSequencePlayed = true;
+          observer.disconnect();
+          playContactPointSequence();
+        }, {
+          threshold: 0.35
+        });
+
+        contactObserver.observe(contactSection);
+      }
 
       const menuToggle = document.querySelector(".mobile-menu-toggle");
       const navLinks = document.querySelector(".nav-links");
