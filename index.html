@@ -386,6 +386,7 @@
       transform: rotate(-45deg);
     }
 
+    /* NEW LANDING PAGE */
     #intro {
       position: relative;
       height: 100vh;
@@ -417,301 +418,164 @@
       width: 100%;
       margin: 0 auto;
       color: var(--ink);
-      font-size: clamp(4rem, 8.8vw, 9.75rem);
+      font-size: clamp(3.15rem, 10.7vw, 9.75rem);
       font-weight: 700;
-      letter-spacing: -0.055em;
-      line-height: 0.84;
+      letter-spacing: -0.057em;
+      line-height: 0.82;
       text-align: center;
+      text-transform: uppercase;
     }
 
-    .hero-main {
+    .hero-copy {
       width: 100%;
       display: flex;
-      align-items: baseline;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 0.18em;
-      text-transform: uppercase;
+    }
+
+    .hero-lead {
+      display: block;
+      margin-bottom: 0.22em;
+      font-family: var(--font-system);
+      font-size: 0.285em;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1;
       white-space: nowrap;
     }
 
-    .hero-changing-slot {
+    .hero-word-stage {
       position: relative;
       display: inline-grid;
-      flex: 0 0 auto;
-      place-items: baseline center;
+      place-items: center;
+      min-width: 0;
+      height: 0.87em;
+      margin: 0.015em 0 0.045em;
+      overflow: visible;
+      isolation: isolate;
     }
 
-    .hero-changing-reserve,
-    .hero-changing-live {
+    .hero-word-reserve,
+    .hero-word-layer {
       grid-area: 1 / 1;
     }
 
-    .hero-changing-reserve {
+    .hero-word-reserve {
       visibility: hidden;
       pointer-events: none;
-      white-space: nowrap;
       user-select: none;
+      white-space: nowrap;
     }
 
-    .hero-changing-live {
+    .hero-word-layer {
       position: relative;
-      display: inline-block;
-      justify-self: center;
-      white-space: nowrap;
-    }
-
-    .hero-changing-word {
-      display: inline-block;
-      min-height: 0.84em;
-      white-space: nowrap;
-    }
-
-    .hero-cursor {
-      position: absolute;
-      top: 0.07em;
-      left: calc(100% + 0.055em);
-      width: 0.034em;
-      min-width: 2px;
-      height: 0.78em;
-      background: var(--pink);
-      opacity: 1;
-      pointer-events: none;
-      transform: translateZ(0);
-    }
-
-    .hero-cursor[hidden] {
-      display: none;
-    }
-
-    .hero-cursor.is-blinking {
-      animation: hero-cursor-blink 0.82s steps(1, end) infinite;
-    }
-
-    .hero-fixed {
-      display: inline-block;
-      flex: 0 0 auto;
-      white-space: nowrap;
-    }
-
-    /*
-      THE POINT
-      The punctuation wakes up, notices the unnecessary word “Made”,
-      physically rolls across it, wipes the letters away under its body,
-      then returns to become the full stop after “Simple”.
-    */
-    .hero-subline {
-      position: relative;
-      display: block;
-      margin-top: clamp(16px, 2vw, 28px);
-      color: var(--pink);
-      font-size: clamp(1.4rem, 2.35vw, 2.45rem);
-      font-weight: 400;
-      letter-spacing: -0.025em;
-      line-height: 1.05;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .hero-made-wrap,
-    .hero-made,
-    .hero-made-letter,
-    .hero-simple,
-    .point-home {
-      display: inline-block;
-    }
-
-    .hero-made-wrap {
-      width: auto;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
       overflow: visible;
+    }
+
+    .hero-word {
+      position: absolute;
+      display: inline-block;
       white-space: nowrap;
-      vertical-align: baseline;
-      transition:
-        width 640ms cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 320ms ease,
-        margin-right 640ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: width, margin-right;
-    }
-
-    .hero-made-wrap.is-collapsing {
-      width: 0 !important;
-      margin-right: 0 !important;
-      opacity: 0;
-      overflow: hidden;
-    }
-
-    .hero-made-letter {
-      position: relative;
-      z-index: 2;
       transform-origin: 50% 72%;
       will-change: transform, opacity, filter;
     }
 
-    .hero-simple {
-      position: relative;
-      z-index: 1;
+    .hero-problems-line {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      white-space: nowrap;
     }
 
-    /* The home reserves the final punctuation position while the character roams. */
-    .point-home {
+    .hero-point-home {
       position: relative;
-      z-index: 4;
-      width: 0.2em;
-      height: 0.2em;
-      margin-left: 0.045em;
-      top: 0.015em;
+      display: inline-block;
+      width: 0.17em;
+      height: 0.17em;
+      margin-left: 0.055em;
+      top: 0.01em;
+      flex: 0 0 auto;
       vertical-align: baseline;
-      transform-origin: center;
-      transition:
-        width 660ms cubic-bezier(0.16, 1, 0.3, 1),
-        height 660ms cubic-bezier(0.16, 1, 0.3, 1),
-        top 660ms cubic-bezier(0.16, 1, 0.3, 1),
-        margin-left 660ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .point-home.is-awake {
-      width: 1.24em;
-      height: 1.24em;
-      margin-left: 0.12em;
-      top: 0.35em;
-    }
-
-    .the-point {
-      --point-gaze-x: 0%;
-      --point-gaze-y: 0%;
+    .hero-point {
       --point-face-x: 0%;
       --point-face-y: 0%;
-      --point-face-rotate: 0deg;
       position: absolute;
       inset: 0;
+      z-index: 10;
       display: block;
       width: 100%;
       height: 100%;
-      z-index: 4;
-      transform-origin: center;
       pointer-events: none;
-      will-change: transform, left, top;
+      transform-origin: center;
+      will-change: transform, left, top, width, height;
     }
 
-    .the-point.is-roaming {
+    .hero-point.is-flying {
       position: fixed;
       inset: auto;
       z-index: 2500;
-      margin: 0;
-      pointer-events: none;
     }
 
-    .the-point__body {
+    .hero-point__body {
       position: absolute;
       inset: 0;
       overflow: hidden;
-      isolation: isolate;
       border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.98) 0 4%, rgba(255, 255, 255, 0.48) 5%, transparent 18%),
-        radial-gradient(circle at 40% 32%, #ff7fd2 0%, #ff2daf 20%, var(--pink) 53%, #d5007c 78%, #92004f 100%);
-      box-shadow:
-        inset 0.05em 0.055em 0.09em rgba(255, 255, 255, 0.34),
-        inset -0.075em -0.09em 0.14em rgba(87, 0, 45, 0.27),
-        0 0.15em 0.32em rgba(249, 0, 144, 0.25);
-      transform: translateZ(0) scale(1);
+      background: var(--pink);
+      box-shadow: none;
+      transform: translateZ(0);
       transform-origin: center;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      will-change: transform;
+      will-change: transform, border-radius, box-shadow;
     }
 
-    .the-point__body::before,
-    .the-point__body::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
+    .hero-point.is-awake .hero-point__body {
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.88) 0 4%, rgba(255, 255, 255, 0.28) 5%, transparent 18%),
+        radial-gradient(circle at 42% 34%, #ff43b8 0%, var(--pink) 55%, #d6007c 82%, #980057 100%);
+      box-shadow:
+        inset 0.05em 0.055em 0.09em rgba(255, 255, 255, 0.26),
+        inset -0.075em -0.09em 0.14em rgba(87, 0, 45, 0.22),
+        0 0.15em 0.28em rgba(61, 8, 20, 0.2);
     }
 
-    .the-point__body::before {
-      z-index: 1;
-      top: 5%;
-      left: 9%;
-      width: 53%;
-      height: 39%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(255, 255, 255, 0.98) 0%,
-        rgba(255, 255, 255, 0.35) 44%,
-        transparent 72%
-      );
-      filter: blur(0.7px);
-      transform: rotate(-25deg);
-    }
-
-    .the-point__body::after {
-      right: 4%;
-      bottom: 2%;
-      width: 66%;
-      height: 54%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(69, 0, 35, 0.28) 0%,
-        rgba(69, 0, 35, 0) 72%
-      );
-      filter: blur(1.4px);
-      transform: rotate(-28deg);
-    }
-
-    .the-point__face {
+    .hero-point__face {
       position: absolute;
       inset: 0;
-      z-index: 3;
+      z-index: 2;
       opacity: 0;
-      transform:
-        translate3d(
-          var(--point-face-x),
-          calc(5% + var(--point-face-y)),
-          0
-        )
-        rotate(var(--point-face-rotate));
-      transition:
-        opacity 220ms ease,
-        transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform;
+      transform: translate3d(var(--point-face-x), var(--point-face-y), 0);
+      transition: opacity 170ms ease, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .point-home.is-awake .the-point__face,
-    .the-point.is-awake .the-point__face {
+    .hero-point.is-awake .hero-point__face {
       opacity: 1;
-      transform:
-        translate3d(
-          var(--point-face-x),
-          var(--point-face-y),
-          0
-        )
-        rotate(var(--point-face-rotate));
     }
 
-    .the-point__eye,
-    .the-point__mouth {
+    .hero-point__eye,
+    .hero-point__mouth {
       position: absolute;
       display: block;
       color: #130008;
     }
 
-    .the-point__eye {
-      top: calc(40% + var(--point-gaze-y));
+    .hero-point__eye {
+      top: 39%;
       width: 11.5%;
-      height: 13.5%;
+      height: 14%;
       overflow: hidden;
       border-radius: 50%;
       background: currentColor;
       transform-origin: center;
-      transition:
-        top 300ms cubic-bezier(0.22, 1, 0.36, 1),
-        left 300ms cubic-bezier(0.22, 1, 0.36, 1),
-        right 300ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 180ms ease;
     }
 
-    .the-point__eye::after {
+    .hero-point__eye::after {
       content: "";
       position: absolute;
       top: 12%;
@@ -722,285 +586,75 @@
       background: rgba(255, 255, 255, 0.92);
     }
 
-    .the-point__eye--left {
-      left: calc(31% + var(--point-gaze-x));
+    .hero-point__eye--left {
+      left: 31%;
     }
 
-    .the-point__eye--right {
-      right: calc(30% - var(--point-gaze-x));
-      top: calc(39.2% + var(--point-gaze-y));
+    .hero-point__eye--right {
+      right: 30%;
+      top: 38.2%;
       width: 10.8%;
-      height: 12.8%;
+      height: 13%;
     }
 
-    .the-point__mouth {
+    .hero-point__mouth {
       top: 61%;
-      left: 42.5%;
-      width: 15%;
+      left: 41.5%;
+      width: 17%;
       height: 8%;
       border-bottom: 2px solid currentColor;
       border-radius: 0 0 999px 999px;
       transform: rotate(-5deg);
       transform-origin: center;
-      transition: transform 220ms ease, width 220ms ease, left 220ms ease, height 220ms ease;
     }
 
-    .the-point.is-looking-up {
-      --point-gaze-y: -4.6%;
-      --point-face-y: -1.8%;
-      --point-face-rotate: -0.5deg;
+    .hero-point.is-looking-up {
+      --point-face-y: -4%;
     }
 
-    .the-point.is-looking-left {
-      --point-gaze-x: -3.9%;
-      --point-gaze-y: -0.7%;
-      --point-face-x: -2.2%;
-      --point-face-y: -0.4%;
-      --point-face-rotate: -2.8deg;
+    .hero-point.is-looking-left {
+      --point-face-x: -3.5%;
     }
 
-    .the-point.is-looking-right {
-      --point-gaze-x: 3.5%;
-      --point-gaze-y: -0.4%;
-      --point-face-x: 1.9%;
-      --point-face-y: -0.2%;
-      --point-face-rotate: 2.3deg;
+    .hero-point.is-looking-right {
+      --point-face-x: 3.5%;
     }
 
-    .the-point.is-admiring-simple {
-      --point-gaze-x: -4.4%;
-      --point-gaze-y: -1.8%;
-      --point-face-x: -2.8%;
-      --point-face-y: -1.1%;
-      --point-face-rotate: -3.2deg;
-    }
-
-    .the-point.is-looking-left .the-point__body::before,
-    .the-point.is-admiring-simple .the-point__body::before {
-      transform: translateX(-7%) rotate(-32deg);
-    }
-
-    .the-point.is-looking-right .the-point__body::before {
-      transform: translateX(7%) rotate(-18deg);
-    }
-
-    .the-point.is-looking-left .the-point__body::after,
-    .the-point.is-admiring-simple .the-point__body::after {
-      transform: translateX(-5%) rotate(-32deg);
-    }
-
-    .the-point.is-looking-right .the-point__body::after {
-      transform: translateX(5%) rotate(-20deg);
-    }
-
-    .the-point.is-working .the-point__mouth {
+    .hero-point.is-working .hero-point__mouth {
       left: 44%;
       width: 12%;
       height: 11%;
       border: 2px solid currentColor;
       border-radius: 50%;
-      transform: rotate(0) scale(0.72, 0.9);
+      transform: scale(0.72, 0.9);
     }
 
-    .the-point.is-satisfied .the-point__mouth {
-      left: 40.5%;
-      width: 19%;
-      transform: translateY(-4%) rotate(-8deg);
+    .hero-point.is-winking .hero-point__eye--right {
+      animation: hero-point-wink 620ms cubic-bezier(0.4, 0, 0.2, 1) both;
     }
 
-    .the-point.is-winking .the-point__eye--right {
-      animation: point-wink 640ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    .hero-point.is-resting .hero-point__body {
+      animation: hero-point-breathe 4.8s ease-in-out infinite;
     }
 
-    .the-point.is-settled .the-point__body {
-      animation: point-idle 5.4s ease-in-out infinite;
+    .hero-point.is-resting .hero-point__eye--left,
+    .hero-point.is-resting .hero-point__eye--right {
+      animation: hero-point-blink 6.7s ease-in-out infinite;
     }
 
-    .the-point.is-settled.is-admiring-simple .the-point__body {
-      animation: point-admire 4.8s ease-in-out infinite;
-    }
-
-    .the-point.is-settled .the-point__eye--left {
-      animation: point-blink-left 7.2s ease-in-out infinite;
-    }
-
-    .the-point.is-settled .the-point__eye--right {
-      animation: point-blink-right 7.2s ease-in-out infinite;
-    }
-
-    @keyframes point-wink {
+    @keyframes hero-point-wink {
       0%, 18%, 82%, 100% { transform: scaleY(1); }
-      42%, 62% { transform: scaleY(0.06) translateY(24%); }
+      42%, 62% { transform: scaleY(0.06) translateY(22%); }
     }
 
-    @keyframes point-idle {
+    @keyframes hero-point-breathe {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-1px) scale(1.018); }
     }
 
-    @keyframes point-admire {
-      0%, 100% { transform: translateY(0) rotate(-1.2deg) scale(1); }
-      45% { transform: translateY(-1px) rotate(-2.2deg) scale(1.018, 1.008); }
-      70% { transform: translateY(0) rotate(-1.5deg) scale(1.006, 1.012); }
-    }
-
-    @keyframes point-blink-left {
-      0%, 43%, 47%, 100% { transform: scaleY(1); }
-      45% { transform: scaleY(0.06); }
-    }
-
-    @keyframes point-blink-right {
-      0%, 43.4%, 47.4%, 100% { transform: scaleY(1); }
-      45.4% { transform: scaleY(0.06); }
-    }
-
-    @keyframes hero-cursor-blink {
-      0%,
-      46% {
-        opacity: 1;
-      }
-
-      47%,
-      100% {
-        opacity: 0;
-      }
-    }
-
-    @keyframes point-wake {
-      0% {
-        transform: scale(0.86);
-      }
-
-      38% {
-        transform: scale(1.1, 0.92) rotate(-2deg);
-      }
-
-      68% {
-        transform: scale(0.97, 1.04) rotate(1deg);
-      }
-
-      100% {
-        transform: scale(1) rotate(0);
-      }
-    }
-
-    @keyframes point-absorb-letter {
-      0% {
-        opacity: 1;
-        filter: blur(0);
-        transform: translate3d(0, 0, 0) rotate(0) scale(1);
-      }
-
-      24% {
-        opacity: 1;
-        transform: translate3d(0.12em, -0.2em, 0) rotate(var(--letter-tilt, 5deg)) scale(0.96);
-      }
-
-      68% {
-        opacity: 0.82;
-        filter: blur(0.4px);
-        transform: translate3d(var(--letter-x-mid), var(--letter-arc), 0) rotate(var(--letter-spin)) scale(0.58);
-      }
-
-      100% {
-        opacity: 0;
-        filter: blur(2px);
-        transform: translate3d(var(--letter-x), var(--letter-y), 0) rotate(var(--letter-spin)) scale(0.06);
-      }
-    }
-
-    @keyframes point-trail-reach {
-      0% {
-        opacity: 0;
-        transform: scaleX(0);
-      }
-
-      18% {
-        opacity: 0.85;
-      }
-
-      100% {
-        opacity: 0.9;
-        transform: scaleX(1);
-      }
-    }
-
-    @keyframes point-trail-retract {
-      0% {
-        opacity: 0.9;
-        transform: scaleX(1);
-      }
-
-      100% {
-        opacity: 0;
-        transform: scaleX(0);
-      }
-    }
-
-    @keyframes point-gulp {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      34% {
-        transform: scale(1.12, 0.91) rotate(-1.5deg);
-      }
-
-      68% {
-        transform: scale(0.96, 1.055) rotate(0.8deg);
-      }
-    }
-
-    @keyframes point-wink {
-      0%,
-      18%,
-      82%,
-      100% {
-        transform: scaleY(1);
-      }
-
-      42%,
-      62% {
-        transform: scaleY(0.08) translateY(20%);
-      }
-    }
-
-    @keyframes point-idle {
-      0%,
-      100% {
-        transform: translateY(0) scale(1);
-      }
-
-      50% {
-        transform: translateY(-1px) scale(1.018);
-      }
-    }
-
-    @keyframes point-blink-left {
-      0%,
-      44%,
-      48%,
-      100% {
-        transform: scaleY(1);
-      }
-
-      46% {
-        transform: scaleY(0.08);
-      }
-    }
-
-    @keyframes point-blink-right {
-      0%,
-      44.4%,
-      48.4%,
-      100% {
-        transform: scaleY(1);
-      }
-
-      46.4% {
-        transform: scaleY(0.08);
-      }
+    @keyframes hero-point-blink {
+      0%, 44%, 48%, 100% { transform: scaleY(1); }
+      46% { transform: scaleY(0.06); }
     }
 
     #about-me {
@@ -1712,10 +1366,6 @@
         left 220ms ease;
     }
 
-    /*
-      A soft extension of the ink body—not a separate arrow.
-      It begins hidden behind the Point and grows into a rounded tendril.
-    */
     .contact-point__pointer {
       position: absolute;
       z-index: 1;
@@ -1999,31 +1649,6 @@
       }
     }
 
-    @media (max-width: 900px) {
-      .hero-headline {
-        font-size: clamp(4.2rem, 12.5vw, 7rem);
-        line-height: 0.82;
-      }
-
-      .hero-main {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.08em;
-        white-space: normal;
-      }
-
-      .hero-changing-slot,
-      .hero-fixed {
-        margin-right: auto;
-        margin-left: auto;
-      }
-
-      .hero-subline {
-        margin-top: clamp(20px, 3vw, 28px);
-      }
-    }
-
     @media (max-width: 700px) {
       :root {
         --nav-height: 64px;
@@ -2098,40 +1723,22 @@
         min-height: 100vh;
         height: 100svh;
         min-height: 100svh;
-        padding: calc(var(--nav-height) + 18px) 16px 18px;
-      }
-
-      .hero-container {
-        width: 100%;
-        max-width: 100%;
+        padding: calc(var(--nav-height) + 18px) 12px 18px;
       }
 
       .hero-headline {
-        width: 100%;
-        max-width: 100%;
-        font-size: clamp(3.15rem, 14.5vw, 5.8rem);
+        font-size: clamp(2.75rem, 11.9vw, 5.4rem);
         letter-spacing: -0.052em;
-        line-height: 0.84;
       }
 
-      .hero-main {
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        gap: 0.1em;
+      .hero-lead {
+        margin-bottom: 0.34em;
+        font-size: 0.31em;
+        letter-spacing: 0.025em;
       }
 
-      .hero-changing-slot {
-        max-width: 100%;
-      }
-
-      .hero-changing-live {
-        justify-self: center;
-      }
-
-      .hero-subline {
-        margin-top: clamp(18px, 5vw, 24px);
-        font-size: clamp(1.3rem, 6.2vw, 1.75rem);
+      .hero-word-stage {
+        margin-bottom: 0.085em;
       }
 
       #recent-work,
@@ -2235,7 +1842,7 @@
 
     @media (max-width: 380px) {
       .hero-headline {
-        font-size: clamp(2.8rem, 14vw, 3.35rem);
+        font-size: clamp(2.55rem, 11.6vw, 3.1rem);
       }
     }
 
@@ -2243,12 +1850,6 @@
       html {
         scroll-behavior: auto;
       }
-
-      /*
-        The typewriter is intentionally left running here.
-        The previous version disabled it on devices with Reduce Motion enabled,
-        which is why it could remain stuck on BRAND on iPhone.
-      */
 
       .nav-links,
       .nav-links a::after,
@@ -2265,20 +1866,12 @@
         transition-duration: 0.01ms !important;
       }
 
-
-      .point-home,
-      .the-point__face,
-      .hero-made-wrap {
-        transition-duration: 180ms !important;
-      }
-
-      .the-point.is-winking .the-point__eye--right {
-        animation-duration: 360ms !important;
-      }
-
-      .the-point.is-settled .the-point__body,
-      .the-point.is-settled .the-point__eye {
+      .hero-point,
+      .hero-point__body,
+      .hero-point__face,
+      .hero-word {
         animation: none !important;
+        transition-duration: 0.01ms !important;
       }
 
       .contact-point,
@@ -2426,35 +2019,32 @@
         <h1
           id="intro-heading"
           class="hero-headline"
-          aria-label="Brand, marketing and creative strategy, made simple."
+          aria-label="Support for difficult brand, marketing or creative problems."
         >
-          <span class="hero-main" aria-hidden="true">
-            <span class="hero-changing-slot">
-              <span class="hero-changing-reserve">MARKETING</span>
+          <span class="hero-copy" aria-hidden="true">
+            <span class="hero-lead">Support for difficult</span>
 
-              <span class="hero-changing-live">
-                <span class="hero-changing-word" id="hero-changing-word">BRAND</span>
-                <span class="hero-cursor is-blinking" id="hero-cursor"></span>
+            <span class="hero-word-stage" id="hero-word-stage">
+              <span class="hero-word-reserve">Marketing</span>
+              <span class="hero-word-layer" id="hero-word-layer">
+                <span class="hero-word" id="hero-word">Brand</span>
               </span>
             </span>
 
-            <span class="hero-fixed">STRATEGY</span>
-          </span>
-
-          <span class="hero-subline" id="hero-subline" aria-hidden="true">
-            <span class="hero-made-wrap" id="hero-made-wrap">
-              <span class="hero-made" id="hero-made">
-                <span class="hero-made-letter">M</span><span class="hero-made-letter">a</span><span class="hero-made-letter">d</span><span class="hero-made-letter">e</span>
-              </span><span class="hero-made-gap">&nbsp;</span>
-            </span><span class="hero-simple" id="hero-simple">Simple</span><span class="point-home" id="point-home"><span class="the-point" id="the-point">
-              <span class="the-point__body" id="the-point-body">
-                <span class="the-point__face">
-                  <span class="the-point__eye the-point__eye--left"></span>
-                  <span class="the-point__eye the-point__eye--right"></span>
-                  <span class="the-point__mouth"></span>
+            <span class="hero-problems-line">
+              <span>Problems</span>
+              <span class="hero-point-home" id="hero-point-home">
+                <span class="hero-point" id="hero-point">
+                  <span class="hero-point__body" id="hero-point-body">
+                    <span class="hero-point__face">
+                      <span class="hero-point__eye hero-point__eye--left"></span>
+                      <span class="hero-point__eye hero-point__eye--right"></span>
+                      <span class="hero-point__mouth"></span>
+                    </span>
+                  </span>
                 </span>
               </span>
-            </span></span>
+            </span>
           </span>
         </h1>
       </div>
@@ -2754,40 +2344,27 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      /*
-        THE POINT
-        A character performance: it wakes, scans the headline, turns
-        towards “Made”, rolls across and removes it, then returns to
-        admire “Simple” and gives the finished word a small wink.
-      */
-      const heroSubline = document.getElementById("hero-subline");
-      const madeWrap = document.getElementById("hero-made-wrap");
-      const madeLetters = Array.from(document.querySelectorAll(".hero-made-letter"));
-      const pointHome = document.getElementById("point-home");
-      const point = document.getElementById("the-point");
-      const pointBody = document.getElementById("the-point-body");
-
-      const pointEditPause = 8600;
-      let pointHasEdited = false;
-      let pointEditScheduled = false;
-
       const sleep = (delay) => new Promise((resolve) => window.setTimeout(resolve, delay));
       const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
       const lerp = (start, end, amount) => start + (end - start) * amount;
-      const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
       const easeInOutCubic = (t) => t < 0.5
         ? 4 * t * t * t
         : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      const easeOutBack = (t) => {
+        const c1 = 1.70158;
+        const c3 = c1 + 1;
+        return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+      };
 
       function animateFrame(duration, update) {
         return new Promise((resolve) => {
           const startedAt = performance.now();
 
           function frame(now) {
-            const rawProgress = clamp((now - startedAt) / duration, 0, 1);
-            update(rawProgress);
+            const progress = clamp((now - startedAt) / duration, 0, 1);
+            update(progress);
 
-            if (rawProgress < 1) {
+            if (progress < 1) {
               window.requestAnimationFrame(frame);
             } else {
               resolve();
@@ -2798,488 +2375,332 @@
         });
       }
 
-      function getPointOrientationState() {
-        if (!point) {
-          return {
-            bodyRotate: 0,
-            bodyTranslateX: 0,
-            bodyTranslateY: 0,
-            bodyScaleX: 1,
-            bodyScaleY: 1
-          };
-        }
+      /*
+        HERO POINT
+        The Point begins as the full stop. It wakes, grows into a character,
+        jumps into the headline, bumps the current problem out of the way,
+        introduces the next one and returns to its punctuation position.
+      */
+      const heroWords = ["Brand", "Marketing", "Creative"];
+      const heroWordLayer = document.getElementById("hero-word-layer");
+      const heroWordStage = document.getElementById("hero-word-stage");
+      const heroPointHome = document.getElementById("hero-point-home");
+      const heroPoint = document.getElementById("hero-point");
+      const heroPointBody = document.getElementById("hero-point-body");
+      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-        if (point.classList.contains("is-admiring-simple")) {
-          return {
-            bodyRotate: -12,
-            bodyTranslateX: -2.6,
-            bodyTranslateY: -0.4,
-            bodyScaleX: 0.94,
-            bodyScaleY: 1.045
-          };
-        }
+      let heroWordIndex = 0;
+      let heroAnimationRunning = false;
+      let heroLoopToken = 0;
 
-        if (point.classList.contains("is-looking-left")) {
-          return {
-            bodyRotate: -10,
-            bodyTranslateX: -2.1,
-            bodyTranslateY: 0,
-            bodyScaleX: 0.95,
-            bodyScaleY: 1.04
-          };
-        }
-
-        if (point.classList.contains("is-looking-right")) {
-          return {
-            bodyRotate: 10,
-            bodyTranslateX: 2.1,
-            bodyTranslateY: 0,
-            bodyScaleX: 0.95,
-            bodyScaleY: 1.04
-          };
-        }
-
-        if (point.classList.contains("is-looking-up")) {
-          return {
-            bodyRotate: -2,
-            bodyTranslateX: 0,
-            bodyTranslateY: -0.8,
-            bodyScaleX: 1.01,
-            bodyScaleY: 1.02
-          };
-        }
-
-        return {
-          bodyRotate: 0,
-          bodyTranslateX: 0,
-          bodyTranslateY: 0,
-          bodyScaleX: 1,
-          bodyScaleY: 1
-        };
+      function setPointDirection(direction) {
+        if (!heroPoint) return;
+        heroPoint.classList.remove("is-looking-up", "is-looking-left", "is-looking-right");
+        if (direction) heroPoint.classList.add(direction);
       }
 
       function setPointBodyTransform(scaleX = 1, scaleY = 1, rotation = 0, y = 0) {
-        if (!pointBody) return;
-
-        const orientation = getPointOrientationState();
-        const finalScaleX = scaleX * orientation.bodyScaleX;
-        const finalScaleY = scaleY * orientation.bodyScaleY;
-        const finalRotation = rotation + orientation.bodyRotate;
-        const finalX = orientation.bodyTranslateX;
-        const finalY = y + orientation.bodyTranslateY;
-
-        pointBody.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) rotate(${finalRotation}deg) scale(${finalScaleX}, ${finalScaleY})`;
+        if (!heroPointBody) return;
+        heroPointBody.style.transform = `translate3d(0, ${y}px, 0) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`;
       }
 
-      function clearPointGaze() {
-        if (!point) return;
-        point.classList.remove(
-          "is-looking-up",
-          "is-looking-left",
-          "is-looking-right",
-          "is-admiring-simple"
-        );
+      function resetPointBodyTransform() {
+        if (!heroPointBody) return;
+        heroPointBody.style.removeProperty("transform");
       }
 
-      async function letPointLookAround(reducedMotion) {
-        if (!point || !pointBody) return;
+      function detachHeroPoint() {
+        if (!heroPoint || !heroPointHome || !heroWordStage) return null;
 
-        /* First notice the changing strategy headline above. */
-        clearPointGaze();
-        point.classList.add("is-looking-up");
+        const homeRect = heroPointHome.getBoundingClientRect();
+        const stageRect = heroWordStage.getBoundingClientRect();
+        const pointSize = clamp(stageRect.height * 0.78, 54, 118);
+        const startScale = Math.max(homeRect.width / pointSize, 0.08);
+        const startLeft = homeRect.left + homeRect.width / 2 - pointSize / 2;
+        const startTop = homeRect.top + homeRect.height / 2 - pointSize / 2;
 
-        await animateFrame(reducedMotion ? 180 : 420, (progress) => {
-          const lift = Math.sin(Math.PI * progress);
-          setPointBodyTransform(
-            1 - lift * 0.025,
-            1 + lift * 0.035,
-            lift * -0.8,
-            lift * -1.4
-          );
-        });
-
-        await sleep(reducedMotion ? 90 : 260);
-
-        /* A quick glance out into the page makes it feel observant. */
-        clearPointGaze();
-        point.classList.add("is-looking-right");
-        await sleep(reducedMotion ? 100 : 300);
-
-        /* Then it spots the unnecessary word and commits to it. */
-        clearPointGaze();
-        point.classList.add("is-looking-left");
-        await sleep(reducedMotion ? 170 : 520);
-        setPointBodyTransform();
-      }
-
-      async function anticipatePoint(reducedMotion) {
-        if (!point || !pointBody) return;
-
-        clearPointGaze();
-        point.classList.add("is-looking-left");
-        await animateFrame(reducedMotion ? 150 : 320, (progress) => {
-          const eased = easeInOutCubic(progress);
-          setPointBodyTransform(
-            1 - eased * 0.015,
-            1 + eased * 0.03,
-            0,
-            eased * -0.8
-          );
-        });
-        await sleep(reducedMotion ? 140 : 340);
-
-        await animateFrame(reducedMotion ? 220 : 460, (progress) => {
-          const eased = easeInOutCubic(progress);
-          const pulse = Math.sin(Math.PI * progress);
-          setPointBodyTransform(
-            1 + pulse * 0.11,
-            1 - pulse * 0.07,
-            lerp(0, -7, eased),
-            pulse * 1.5
-          );
-        });
-
-        setPointBodyTransform();
-      }
-
-      function detachPoint() {
-        if (!point || !pointHome) return null;
-
-        const rect = point.getBoundingClientRect();
-
-        point.classList.add("is-roaming", "is-awake", "is-working");
-        point.style.left = `${rect.left}px`;
-        point.style.top = `${rect.top}px`;
-        point.style.width = `${rect.width}px`;
-        point.style.height = `${rect.height}px`;
-        point.style.transform = "translate3d(0, 0, 0)";
-        document.body.appendChild(point);
+        heroPoint.classList.add("is-flying");
+        heroPoint.classList.remove("is-resting");
+        heroPoint.style.left = `${startLeft}px`;
+        heroPoint.style.top = `${startTop}px`;
+        heroPoint.style.width = `${pointSize}px`;
+        heroPoint.style.height = `${pointSize}px`;
+        heroPoint.style.transform = `translate3d(0, 0, 0) scale(${startScale})`;
+        document.body.appendChild(heroPoint);
 
         return {
-          originLeft: rect.left,
-          originTop: rect.top,
-          currentLeft: rect.left,
-          currentTop: rect.top,
-          size: rect.width
+          homeRect,
+          pointSize,
+          startScale,
+          originLeft: startLeft,
+          originTop: startTop,
+          currentLeft: startLeft,
+          currentTop: startTop,
+          currentScale: startScale
         };
       }
 
-      async function movePoint(journey, targetLeft, targetTop, options = {}) {
-        if (!point || !pointBody || !journey) return;
+      async function animateHeroPoint(journey, targetLeft, targetTop, options = {}) {
+        if (!heroPoint || !journey) return;
 
         const startLeft = journey.currentLeft;
         const startTop = journey.currentTop;
-        const duration = options.duration || 440;
-        const arc = options.arc || -10;
-        const tilt = options.tilt || -5;
-        const stretch = options.stretch || 0.16;
+        const startScale = journey.currentScale;
+        const endScale = options.scale ?? 1;
+        const duration = options.duration ?? 650;
+        const arc = options.arc ?? -70;
+        const rotation = options.rotation ?? -8;
+        const stretch = options.stretch ?? 0.2;
 
-        await animateFrame(duration, (progress) => {
-          const eased = easeInOutCubic(progress);
-          const lift = Math.sin(Math.PI * progress);
-          const left = lerp(startLeft, targetLeft, eased);
-          const top = lerp(startTop, targetTop, eased) + lift * arc;
-          const rotation = lift * tilt;
+        await animateFrame(duration, (rawProgress) => {
+          const progress = easeInOutCubic(rawProgress);
+          const lift = Math.sin(Math.PI * rawProgress);
+          const left = lerp(startLeft, targetLeft, progress);
+          const top = lerp(startTop, targetTop, progress) + lift * arc;
+          const scale = lerp(startScale, endScale, easeOutBack(rawProgress));
+          const containerRotation = lift * rotation;
           const scaleX = 1 + lift * stretch;
-          const scaleY = 1 - lift * stretch * 0.58;
+          const scaleY = 1 - lift * stretch * 0.55;
 
-          point.style.transform = `translate3d(${left - journey.originLeft}px, ${top - journey.originTop}px, 0) rotate(${rotation}deg)`;
-          setPointBodyTransform(scaleX, scaleY, rotation * -0.22, lift * -1.5);
+          heroPoint.style.transform = `translate3d(${left - journey.originLeft}px, ${top - journey.originTop}px, 0) rotate(${containerRotation}deg) scale(${scale})`;
+          setPointBodyTransform(scaleX, scaleY, containerRotation * -0.18, lift * -2);
         });
 
         journey.currentLeft = targetLeft;
         journey.currentTop = targetTop;
-        point.style.transform = `translate3d(${targetLeft - journey.originLeft}px, ${targetTop - journey.originTop}px, 0)`;
-        setPointBodyTransform();
+        journey.currentScale = endScale;
+        heroPoint.style.transform = `translate3d(${targetLeft - journey.originLeft}px, ${targetTop - journey.originTop}px, 0) scale(${endScale})`;
+        resetPointBodyTransform();
       }
 
-      async function eraseLetter(letter, journey, reducedMotion) {
-        if (!letter || !pointBody) return;
+      async function wakeHeroPoint(journey, reducedMotion) {
+        if (!heroPoint || !journey) return;
 
-        const duration = reducedMotion ? 180 : 320;
+        heroPoint.classList.add("is-awake");
+        setPointDirection("is-looking-up");
 
-        await animateFrame(duration, (progress) => {
-          const impact = Math.sin(Math.PI * progress);
-          const vanish = easeOutQuint(progress);
+        await animateFrame(reducedMotion ? 180 : 520, (rawProgress) => {
+          const progress = easeOutBack(rawProgress);
+          const scale = lerp(journey.startScale, 1, progress);
+          const bounce = Math.sin(Math.PI * rawProgress);
 
+          heroPoint.style.transform = `translate3d(0, ${-bounce * 5}px, 0) scale(${scale})`;
           setPointBodyTransform(
-            1 + impact * 0.22,
-            1 - impact * 0.18,
-            impact * -2.2,
-            impact * 2
-          );
-
-          letter.style.opacity = String(1 - vanish);
-          letter.style.filter = `blur(${vanish * 1.4}px)`;
-          letter.style.transform = `translateY(${vanish * 0.16}em) scale(${1 - vanish * 0.72}) rotate(${vanish * -8}deg)`;
-        });
-
-        letter.style.opacity = "0";
-        letter.style.transform = "scale(0.01)";
-        setPointBodyTransform();
-
-        await sleep(reducedMotion ? 30 : 75);
-      }
-
-      async function collapseMade() {
-        if (!madeWrap) return;
-
-        const currentWidth = madeWrap.getBoundingClientRect().width;
-        madeWrap.style.width = `${currentWidth}px`;
-        madeWrap.style.marginRight = "0px";
-        void madeWrap.offsetWidth;
-        madeWrap.classList.add("is-collapsing");
-        await sleep(680);
-      }
-
-      async function returnPointHome(journey, reducedMotion) {
-        if (!point || !pointHome || !journey) return;
-
-        const homeRect = pointHome.getBoundingClientRect();
-        clearPointGaze();
-        point.classList.add("is-looking-right");
-
-        await movePoint(journey, homeRect.left, homeRect.top, {
-          duration: reducedMotion ? 320 : 760,
-          arc: reducedMotion ? -4 : -18,
-          tilt: 5,
-          stretch: reducedMotion ? 0.07 : 0.18
-        });
-
-        pointHome.appendChild(point);
-        point.classList.remove("is-roaming", "is-working");
-        point.style.removeProperty("left");
-        point.style.removeProperty("top");
-        point.style.removeProperty("width");
-        point.style.removeProperty("height");
-        point.style.removeProperty("transform");
-        pointBody.style.removeProperty("transform");
-      }
-
-      async function finishPointPerformance(reducedMotion) {
-        if (!point) return;
-
-        /* It comes home, then deliberately turns to face “Simple”. */
-        clearPointGaze();
-        point.classList.add("is-looking-left");
-
-        await animateFrame(reducedMotion ? 170 : 320, (progress) => {
-          const eased = easeInOutCubic(progress);
-          setPointBodyTransform(
-            1 - eased * 0.02,
-            1 + eased * 0.03,
-            0,
-            eased * -0.5
+            1 + bounce * 0.15,
+            1 - bounce * 0.1,
+            bounce * -2,
+            bounce * 2
           );
         });
 
-        await sleep(reducedMotion ? 180 : 340);
-
-        clearPointGaze();
-        point.classList.add("is-admiring-simple", "is-satisfied");
-        await sleep(reducedMotion ? 340 : 820);
-
-        /* The wink is aimed at the finished word, not at the viewer. */
-        point.classList.add("is-winking");
-        await sleep(reducedMotion ? 420 : 700);
-        point.classList.remove("is-winking");
-        point.classList.add("is-settled");
+        journey.currentScale = 1;
+        heroPoint.style.transform = "translate3d(0, 0, 0) scale(1)";
+        resetPointBodyTransform();
+        await sleep(reducedMotion ? 100 : 300);
       }
 
-      async function startPointEdit() {
-        if (
-          pointHasEdited ||
-          !point ||
-          !pointBody ||
-          !pointHome ||
-          !madeWrap ||
-          !madeLetters.length
-        ) {
-          return;
-        }
+      async function impactWord(nextWord, journey, reducedMotion) {
+        if (!heroWordLayer || !heroWordStage || !heroPoint || !heroPointBody) return;
 
-        pointHasEdited = true;
-        pointEditScheduled = false;
+        const currentWord = heroWordLayer.querySelector(".hero-word");
+        if (!currentWord) return;
 
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const nextWordElement = document.createElement("span");
+        nextWordElement.className = "hero-word";
+        nextWordElement.textContent = nextWord;
+        nextWordElement.style.opacity = "0";
+        nextWordElement.style.transform = "translate3d(0.52em, -0.08em, 0) rotate(3deg) scale(0.94)";
+        heroWordLayer.appendChild(nextWordElement);
 
-        pointHome.classList.add("is-awake");
-        point.classList.add("is-awake");
+        heroPoint.classList.add("is-working");
+        setPointDirection("is-looking-left");
 
-        /* Let the punctuation wake, scan the page and notice “Made”. */
-        await sleep(reducedMotion ? 180 : 520);
-        await letPointLookAround(reducedMotion);
-        await anticipatePoint(reducedMotion);
-
-        const journey = detachPoint();
-        if (!journey) return;
-
-        const reverseLetters = [...madeLetters].reverse();
-
-        for (let index = 0; index < reverseLetters.length; index += 1) {
-          const letter = reverseLetters[index];
-          const rect = letter.getBoundingClientRect();
-          const targetLeft = rect.left + rect.width / 2 - journey.size / 2;
-          const targetTop = rect.top + rect.height * 0.48 - journey.size / 2;
-
-          await movePoint(journey, targetLeft, targetTop, {
-            duration: reducedMotion ? 230 : 430,
-            arc: reducedMotion ? -3 : -9 - index * 1.5,
-            tilt: index % 2 === 0 ? -5 : 4,
-            stretch: reducedMotion ? 0.07 : 0.15
-          });
-
-          await eraseLetter(letter, journey, reducedMotion);
-        }
-
-        /* From the far side, it properly turns to face and admire “Simple”. */
-        point.classList.remove("is-working");
-        clearPointGaze();
-        point.classList.add("is-looking-right", "is-satisfied");
-
-        await animateFrame(reducedMotion ? 180 : 360, (progress) => {
-          const pulse = Math.sin(Math.PI * progress);
-          setPointBodyTransform(
-            1 - pulse * 0.035,
-            1 + pulse * 0.055,
-            pulse * 0.8,
-            pulse * -0.6
-          );
-        });
-
-        await sleep(reducedMotion ? 260 : 700);
-        point.classList.remove("is-satisfied");
-
-        await collapseMade();
-        await returnPointHome(journey, reducedMotion);
-        await finishPointPerformance(reducedMotion);
-      }
-
-      /*
-        TYPEWRITER
-        The old version stopped on BRAND whenever iOS reported
-        "prefers-reduced-motion: reduce". This version uses a small,
-        self-contained timer loop and runs consistently in Safari.
-      */
-      const heroChangingWord = document.getElementById("hero-changing-word");
-      const heroCursor = document.getElementById("hero-cursor");
-      const heroWords = ["BRAND", "MARKETING", "CREATIVE"];
-
-      const typingSpeed = 85;
-      const deletingSpeed = 55;
-      const completedWordPause = 1550;
-      const betweenWordsPause = 240;
-
-      let heroWordIndex = 0;
-      let heroCharacterIndex = heroWords[0].length;
-      let heroIsDeleting = true;
-      let heroTimer = null;
-
-      function clearHeroTimer() {
-        if (heroTimer !== null) {
-          window.clearTimeout(heroTimer);
-          heroTimer = null;
-        }
-      }
-
-      function setHeroCursorBlinking(isBlinking) {
-        if (!heroCursor) return;
-        heroCursor.classList.toggle("is-blinking", isBlinking);
-      }
-
-      function scheduleHeroTick(delay) {
-        clearHeroTimer();
-        heroTimer = window.setTimeout(runHeroTypewriter, delay);
-      }
-
-      function runHeroTypewriter() {
-        if (!heroChangingWord || !heroCursor) return;
-
-        const currentWord = heroWords[heroWordIndex];
-        heroCursor.hidden = false;
-
-        if (heroIsDeleting) {
-          setHeroCursorBlinking(false);
-
-          if (heroCharacterIndex > 0) {
-            heroCharacterIndex -= 1;
-            heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-            scheduleHeroTick(deletingSpeed);
-            return;
+        const currentAnimation = currentWord.animate([
+          {
+            opacity: 1,
+            transform: "translate3d(0, 0, 0) rotate(0deg) scale(1)",
+            filter: "blur(0)"
+          },
+          {
+            opacity: 1,
+            transform: "translate3d(-0.08em, 0.02em, 0) rotate(-1deg) scale(1.03, 0.97)",
+            filter: "blur(0)"
+          },
+          {
+            opacity: 0,
+            transform: "translate3d(-0.92em, 0.14em, 0) rotate(-7deg) scale(0.82)",
+            filter: "blur(2px)"
           }
+        ], {
+          duration: reducedMotion ? 180 : 520,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          fill: "forwards"
+        });
 
-          heroWordIndex = (heroWordIndex + 1) % heroWords.length;
-          heroIsDeleting = false;
-          scheduleHeroTick(betweenWordsPause);
-          return;
-        }
+        const nextAnimation = nextWordElement.animate([
+          {
+            opacity: 0,
+            transform: "translate3d(0.52em, -0.08em, 0) rotate(3deg) scale(0.94)"
+          },
+          {
+            opacity: 1,
+            transform: "translate3d(-0.03em, 0.015em, 0) rotate(-0.5deg) scale(1.02, 0.98)",
+            offset: 0.72
+          },
+          {
+            opacity: 1,
+            transform: "translate3d(0, 0, 0) rotate(0deg) scale(1)"
+          }
+        ], {
+          duration: reducedMotion ? 180 : 560,
+          delay: reducedMotion ? 0 : 90,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          fill: "forwards"
+        });
 
-        const nextWord = heroWords[heroWordIndex];
+        await animateFrame(reducedMotion ? 180 : 420, (progress) => {
+          const impact = Math.sin(Math.PI * progress);
+          setPointBodyTransform(
+            1 - impact * 0.2,
+            1 + impact * 0.24,
+            impact * 4,
+            impact * -1
+          );
+        });
 
-        if (heroCharacterIndex < nextWord.length) {
-          setHeroCursorBlinking(false);
-          heroCharacterIndex += 1;
-          heroChangingWord.textContent = nextWord.slice(0, heroCharacterIndex);
-          scheduleHeroTick(typingSpeed);
-          return;
-        }
+        await Promise.all([currentAnimation.finished, nextAnimation.finished]);
+        currentWord.remove();
+        nextWordElement.getAnimations().forEach((animation) => animation.cancel());
+        nextWordElement.style.removeProperty("opacity");
+        nextWordElement.style.removeProperty("transform");
+        resetPointBodyTransform();
+        heroPoint.classList.remove("is-working");
+      }
 
+      async function returnHeroPointHome(journey, reducedMotion) {
+        if (!heroPoint || !heroPointHome || !journey) return;
+
+        const homeRect = heroPointHome.getBoundingClientRect();
+        const targetLeft = homeRect.left + homeRect.width / 2 - journey.pointSize / 2;
+        const targetTop = homeRect.top + homeRect.height / 2 - journey.pointSize / 2;
+
+        setPointDirection("is-looking-right");
+        await animateHeroPoint(journey, targetLeft, targetTop, {
+          duration: reducedMotion ? 220 : 680,
+          arc: reducedMotion ? -8 : -58,
+          rotation: 9,
+          stretch: reducedMotion ? 0.06 : 0.2,
+          scale: journey.startScale
+        });
+
+        heroPointHome.appendChild(heroPoint);
+        heroPoint.classList.remove("is-flying", "is-awake", "is-looking-up", "is-looking-left", "is-looking-right", "is-working", "is-winking", "is-resting");
+        heroPoint.style.removeProperty("left");
+        heroPoint.style.removeProperty("top");
+        heroPoint.style.removeProperty("width");
+        heroPoint.style.removeProperty("height");
+        heroPoint.style.removeProperty("transform");
+        resetPointBodyTransform();
+      }
+
+      async function performHeroChange(token) {
         if (
-          nextWord === "CREATIVE" &&
-          !pointHasEdited &&
-          !pointEditScheduled
+          heroAnimationRunning ||
+          !heroWordLayer ||
+          !heroWordStage ||
+          !heroPointHome ||
+          !heroPoint ||
+          !heroPointBody
         ) {
-          pointEditScheduled = true;
-          startPointEdit();
-
-          /* Keep CREATIVE visible while The Point edits the subline. */
-          heroIsDeleting = true;
-          setHeroCursorBlinking(true);
-          scheduleHeroTick(pointEditPause);
           return;
         }
 
-        heroIsDeleting = true;
-        setHeroCursorBlinking(true);
-        scheduleHeroTick(completedWordPause);
+        heroAnimationRunning = true;
+        const reducedMotion = reducedMotionQuery.matches;
+        const nextIndex = (heroWordIndex + 1) % heroWords.length;
+        const nextWord = heroWords[nextIndex];
+        const journey = detachHeroPoint();
+
+        if (!journey) {
+          heroAnimationRunning = false;
+          return;
+        }
+
+        await wakeHeroPoint(journey, reducedMotion);
+        if (token !== heroLoopToken) return;
+
+        const activeWord = heroWordLayer.querySelector(".hero-word");
+        const activeWordRect = activeWord
+          ? activeWord.getBoundingClientRect()
+          : heroWordStage.getBoundingClientRect();
+        const targetLeft = activeWordRect.right - journey.pointSize * 0.43;
+        const targetTop = activeWordRect.top + activeWordRect.height * 0.5 - journey.pointSize / 2;
+
+        await animateHeroPoint(journey, targetLeft, targetTop, {
+          duration: reducedMotion ? 220 : 720,
+          arc: reducedMotion ? -10 : -86,
+          rotation: -12,
+          stretch: reducedMotion ? 0.06 : 0.23,
+          scale: 1
+        });
+        if (token !== heroLoopToken) return;
+
+        await impactWord(nextWord, journey, reducedMotion);
+        heroWordIndex = nextIndex;
+
+        setPointDirection("is-looking-left");
+        await sleep(reducedMotion ? 80 : 320);
+        heroPoint.classList.add("is-winking");
+        await sleep(reducedMotion ? 120 : 520);
+        heroPoint.classList.remove("is-winking");
+
+        await returnHeroPointHome(journey, reducedMotion);
+        heroAnimationRunning = false;
       }
 
-      function startHeroTypewriter() {
-        clearHeroTimer();
+      async function runHeroLoop() {
+        heroLoopToken += 1;
+        const token = heroLoopToken;
 
-        if (!heroChangingWord || !heroCursor) return;
-
-        heroWordIndex = 0;
-        heroCharacterIndex = heroWords[0].length;
-        heroIsDeleting = true;
-        heroChangingWord.textContent = heroWords[0];
-        heroCursor.hidden = false;
-        setHeroCursorBlinking(true);
-
-        scheduleHeroTick(completedWordPause);
+        while (token === heroLoopToken) {
+          await sleep(reducedMotionQuery.matches ? 2600 : 3400);
+          if (document.hidden || token !== heroLoopToken) continue;
+          await performHeroChange(token);
+        }
       }
 
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          clearHeroTimer();
-          setHeroCursorBlinking(false);
-        } else {
-          startHeroTypewriter();
+      function restartHeroLoop() {
+        heroLoopToken += 1;
+        heroAnimationRunning = false;
+
+        if (heroPoint && heroPointHome && !heroPointHome.contains(heroPoint)) {
+          heroPointHome.appendChild(heroPoint);
         }
-      });
 
-      window.addEventListener("pageshow", (event) => {
-        if (event.persisted) {
-          startHeroTypewriter();
+        if (heroPoint) {
+          heroPoint.className = "hero-point";
+          heroPoint.removeAttribute("style");
         }
-      });
 
-      window.addEventListener("pagehide", () => {
-        clearHeroTimer();
-        clearPointLookTimer();
-      });
+        if (heroWordLayer) {
+          heroWordLayer.innerHTML = `<span class="hero-word">${heroWords[heroWordIndex]}</span>`;
+        }
 
-      startHeroTypewriter();
+        resetPointBodyTransform();
+        runHeroLoop();
+      }
+
+      if (heroWordLayer && heroPoint) {
+        runHeroLoop();
+
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden) restartHeroLoop();
+        });
+
+        window.addEventListener("pageshow", (event) => {
+          if (event.persisted) restartHeroLoop();
+        });
+      }
 
       const menuToggle = document.querySelector(".mobile-menu-toggle");
       const navLinks = document.querySelector(".nav-links");
@@ -3442,12 +2863,6 @@
         });
       });
 
-      /*
-        CONTACT POINT
-        While the contact section is visible, the Point calmly loops between
-        the email and the visitor. Its pointing gesture is a soft extension
-        of its ink body rather than a separate arrow.
-      */
       const contactSection = document.getElementById("contact");
       const contactEmailStage = document.getElementById("contact-email-stage");
       const contactEmail = document.getElementById("contact-email");
@@ -3475,7 +2890,7 @@
         contactPoint.classList.add("is-performing");
         contactPoint.classList.remove("is-settled", "is-pointing", "is-nodding");
 
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reducedMotion = reducedMotionQuery.matches;
 
         if (initial) {
           contactPoint.classList.add("is-visible");
@@ -3485,7 +2900,6 @@
           }
         }
 
-        /* Look down at the action and hold long enough to be understood. */
         clearContactPointDirection();
         contactPoint.classList.add("is-looking-email");
         if (!(await waitForContactPoint(reducedMotion ? 360 : 1250, token))) {
@@ -3493,7 +2907,6 @@
           return false;
         }
 
-        /* Look back up at the visitor, as if checking they noticed. */
         clearContactPointDirection();
         contactPoint.classList.add("is-looking-user");
         if (!(await waitForContactPoint(reducedMotion ? 360 : 1050, token))) {
@@ -3501,7 +2914,6 @@
           return false;
         }
 
-        /* Return attention to the email and let the ink body point naturally. */
         clearContactPointDirection();
         contactPoint.classList.add("is-looking-email");
         if (!(await waitForContactPoint(reducedMotion ? 180 : 430, token))) {
@@ -3552,8 +2964,7 @@
             break;
           }
 
-          /* A quiet resting beat before it checks in again. */
-          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          const reducedMotion = reducedMotionQuery.matches;
           if (!(await waitForContactPoint(reducedMotion ? 900 : 1900, token))) {
             break;
           }
