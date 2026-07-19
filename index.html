@@ -142,10 +142,10 @@
       gap: 0;
       color: var(--text);
       text-decoration: none;
-      font-family: var(--font-system);
-      font-size: 1.13rem;
+      font-family: var(--font-voice);
+      font-size: 1.12rem;
       font-weight: 700;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.04em;
       line-height: 1;
       text-transform: uppercase;
       white-space: nowrap;
@@ -158,12 +158,21 @@
     .nav-point {
       display: inline-block;
       flex: 0 0 auto;
-      width: 0.76em;
-      height: 0.76em;
-      margin: 0 0.045em 0 0.035em;
+      width: 0.72em;
+      height: 0.72em;
+      margin: 0 0.03em 0 0.02em;
       border-radius: 50%;
       background: var(--pink);
-      transform: translateY(0.015em);
+      transform: translateY(0.018em);
+    }
+
+    /* Match the circle to the actual capital height of the logo typeface. */
+    @supports (width: 1cap) {
+      .nav-point {
+        width: 1cap;
+        height: 1cap;
+        transform: translateY(0.015cap);
+      }
     }
 
     .nav-links {
@@ -761,8 +770,7 @@
     @media (max-width: 700px) {
       :root { --nav-height: 64px; --section-space: 72px; }
       .sticky-nav { padding: 0 18px; }
-      .nav-logo { font-size: 1.02rem; }
-      .nav-point { width: 0.76em; height: 0.76em; }
+      .nav-logo { font-size: 1rem; }
       .mobile-menu-toggle { display: block; }
       .nav-links { position: fixed; top: var(--nav-height); right: 0; bottom: 0; left: 0; z-index: -1; width: 100%; min-height: calc(100dvh - var(--nav-height)); padding: 24px 20px; flex-direction: column; justify-content: center; gap: 34px; background: var(--bg-cream); opacity: 0; visibility: hidden; transform: translateY(-16px); transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease; }
       .nav-links.active { z-index: 1001; opacity: 1; visibility: visible; transform: translateY(0); }
