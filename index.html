@@ -133,7 +133,7 @@
       -webkit-backdrop-filter: blur(8px);
     }
 
-    /* Simplified logo: The Point is now a flat pink O, not a character. */
+    /* Simplified logo: The Point is a noticeable pink full stop after the name. */
     .nav-logo {
       position: relative;
       z-index: 1003;
@@ -158,20 +158,21 @@
     .nav-point {
       display: inline-block;
       flex: 0 0 auto;
-      width: 0.72em;
-      height: 0.72em;
-      margin: 0 0.03em 0 0.02em;
+      width: 0.4em;
+      height: 0.4em;
+      margin-left: 0.12em;
       border-radius: 50%;
       background: var(--pink);
-      transform: translateY(0.018em);
+      transform: translateY(0.25em);
     }
 
-    /* Match the circle to the actual capital height of the logo typeface. */
+    /* Keep the dot optically consistent with the capital height of the typeface. */
     @supports (width: 1cap) {
       .nav-point {
-        width: 1cap;
-        height: 1cap;
-        transform: translateY(0.015cap);
+        width: 0.43cap;
+        height: 0.43cap;
+        margin-left: 0.14cap;
+        transform: translateY(0.29cap);
       }
     }
 
@@ -804,7 +805,7 @@
 <body>
 <nav aria-label="Primary navigation" class="sticky-nav">
 <a aria-label="Strategy Support home" class="nav-logo" href="#intro">
-<span class="nav-logo__word">Strategy&nbsp;Supp</span><span aria-hidden="true" class="nav-point"></span><span class="nav-logo__word">rt</span>
+<span class="nav-logo__word">Strategy&nbsp;Support</span><span aria-hidden="true" class="nav-point"></span>
 </a>
 <button aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu" class="mobile-menu-toggle" type="button">
 <span aria-hidden="true" class="hamburger-icon"></span>
