@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="da-DK">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><script>document.documentElement.classList.add("js");</script>
 <title>Freelance brand- og marketingstrateg i København | Strategy Support</title>
 <meta content="Freelance brand- og marketingstrateg Emil Valdemar Madsen hjælper brands, bureauer og marketingteams med at træffe klarere valg og skabe bedre arbejde." name="description"/>
 <link href="https://strategy-support.com/dk/" rel="canonical"/>
@@ -102,6 +101,18 @@
       outline-offset: 4px;
     }
 
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
     section[id] {
       scroll-margin-top: 90px;
     }
@@ -122,18 +133,22 @@
       -webkit-backdrop-filter: blur(8px);
     }
 
+    /* Simplified logo: The Point is a noticeable pink full stop after the name. */
     .nav-logo {
       position: relative;
       z-index: 1003;
       display: inline-flex;
       align-items: center;
-      gap: 0.12em;
+      gap: 0;
       color: var(--text);
       text-decoration: none;
-      font-size: 1.52rem;
+      font-family: var(--font-voice);
+      font-size: 1.12rem;
       font-weight: 700;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
       line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .nav-logo__word {
@@ -141,108 +156,24 @@
     }
 
     .nav-point {
-      position: relative;
+      display: inline-block;
       flex: 0 0 auto;
-      width: 0.92em;
-      height: 0.92em;
-      margin: 0 0.02em;
-      transform-origin: center;
-    }
-
-    .nav-point__body {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
+      width: 0.4em;
+      height: 0.4em;
+      margin-left: 0.12em;
       border-radius: 50%;
-      background:
-        radial-gradient(circle at 31% 23%, rgba(255, 255, 255, 0.98) 0 6%, rgba(255, 255, 255, 0.4) 7%, transparent 20%),
-        radial-gradient(circle at 43% 36%, #ff6fca 0%, #ff27ab 23%, var(--pink) 56%, #d6007c 81%, #8f004f 100%);
-      box-shadow:
-        inset 0.05em 0.055em 0.08em rgba(255, 255, 255, 0.34),
-        inset -0.07em -0.085em 0.12em rgba(96, 0, 48, 0.24),
-        0 0.08em 0.18em rgba(249, 0, 144, 0.18);
-      transform-origin: center;
-      animation: nav-point-breathe 5.6s ease-in-out infinite;
+      background: var(--pink);
+      transform: translateY(0.25em);
     }
 
-    .nav-point__face {
-      position: absolute;
-      inset: 0;
-      animation: nav-point-face 6.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    .nav-point__eye {
-      position: absolute;
-      top: 39%;
-      width: 12.5%;
-      height: 14%;
-      border-radius: 50%;
-      background: #140008;
-      overflow: hidden;
-    }
-
-    .nav-point__eye::after {
-      content: "";
-      position: absolute;
-      top: 14%;
-      left: 18%;
-      width: 28%;
-      height: 28%;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .nav-point__eye--left {
-      left: 31%;
-      animation: nav-point-blink-left 7.2s ease-in-out infinite;
-    }
-
-    .nav-point__eye--right {
-      right: 30%;
-      top: 38.2%;
-      width: 11.5%;
-      height: 13%;
-      animation: nav-point-blink-right 7.2s ease-in-out infinite;
-    }
-
-    .nav-point__mouth {
-      position: absolute;
-      left: 40.5%;
-      top: 60.5%;
-      width: 19%;
-      height: 8%;
-      border-bottom: 1.8px solid #140008;
-      border-radius: 0 0 999px 999px;
-      transform: rotate(-7deg);
-    }
-
-    .nav-logo:hover .nav-point__body,
-    .nav-logo:focus-visible .nav-point__body {
-      animation-duration: 3.8s;
-      transform: scale(1.04);
-    }
-
-    @keyframes nav-point-breathe {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-0.02em) scale(1.028); }
-    }
-
-    @keyframes nav-point-face {
-      0%, 16%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-      24%, 36% { transform: translate3d(-5%, -1%, 0) rotate(-7deg); }
-      46%, 62% { transform: translate3d(3%, -1%, 0) rotate(4deg); }
-      72%, 86% { transform: translate3d(-2%, -2%, 0) rotate(-3deg); }
-    }
-
-    @keyframes nav-point-blink-left {
-      0%, 44%, 48%, 100% { transform: scaleY(1); }
-      46% { transform: scaleY(0.08); }
-    }
-
-    @keyframes nav-point-blink-right {
-      0%, 44.4%, 48.4%, 100% { transform: scaleY(1); }
-      46.4% { transform: scaleY(0.08); }
+    /* Keep the dot optically consistent with the capital height of the typeface. */
+    @supports (width: 1cap) {
+      .nav-point {
+        width: 0.43cap;
+        height: 0.43cap;
+        margin-left: 0.14cap;
+        transform: translateY(0.29cap);
+      }
     }
 
     .nav-links {
@@ -412,301 +343,164 @@
       width: 100%;
       margin: 0 auto;
       color: var(--ink);
-      font-size: clamp(4rem, 8.8vw, 9.75rem);
+      font-size: clamp(3.15rem, 10.7vw, 9.75rem);
       font-weight: 700;
-      letter-spacing: -0.055em;
-      line-height: 0.84;
+      letter-spacing: -0.057em;
+      line-height: 0.82;
       text-align: center;
+      text-transform: uppercase;
     }
 
-    .hero-main {
+    .hero-copy {
       width: 100%;
       display: flex;
-      align-items: baseline;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 0.18em;
-      text-transform: uppercase;
+    }
+
+    .hero-lead {
+      display: block;
+      margin-bottom: 0.22em;
+      font-family: var(--font-system);
+      font-size: 0.285em;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1;
       white-space: nowrap;
     }
 
-    .hero-changing-slot {
+    .hero-word-stage {
       position: relative;
       display: inline-grid;
-      flex: 0 0 auto;
-      place-items: baseline center;
+      place-items: center;
+      min-width: 0;
+      height: 0.87em;
+      margin: 0.015em 0 0.045em;
+      overflow: visible;
+      isolation: isolate;
     }
 
-    .hero-changing-reserve,
-    .hero-changing-live {
+    .hero-word-reserve,
+    .hero-word-layer {
       grid-area: 1 / 1;
     }
 
-    .hero-changing-reserve {
+    .hero-word-reserve {
       visibility: hidden;
       pointer-events: none;
-      white-space: nowrap;
       user-select: none;
+      white-space: nowrap;
     }
 
-    .hero-changing-live {
+    .hero-word-layer {
       position: relative;
-      display: inline-block;
-      justify-self: center;
-      white-space: nowrap;
-    }
-
-    .hero-changing-word {
-      display: inline-block;
-      min-height: 0.84em;
-      white-space: nowrap;
-    }
-
-    .hero-cursor {
-      position: absolute;
-      top: 0.07em;
-      left: calc(100% + 0.055em);
-      width: 0.034em;
-      min-width: 2px;
-      height: 0.78em;
-      background: var(--pink);
-      opacity: 1;
-      pointer-events: none;
-      transform: translateZ(0);
-    }
-
-    .hero-cursor[hidden] {
-      display: none;
-    }
-
-    .hero-cursor.is-blinking {
-      animation: hero-cursor-blink 0.82s steps(1, end) infinite;
-    }
-
-    .hero-fixed {
-      display: inline-block;
-      flex: 0 0 auto;
-      white-space: nowrap;
-    }
-
-    /*
-      THE POINT
-      The punctuation wakes up, notices the unnecessary word “Made”,
-      physically rolls across it, wipes the letters away under its body,
-      then returns to become the full stop after “Simple”.
-    */
-    .hero-subline {
-      position: relative;
-      display: block;
-      margin-top: clamp(16px, 2vw, 28px);
-      color: var(--pink);
-      font-size: clamp(1.4rem, 2.35vw, 2.45rem);
-      font-weight: 400;
-      letter-spacing: -0.025em;
-      line-height: 1.05;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .hero-made-wrap,
-    .hero-made,
-    .hero-made-letter,
-    .hero-simple,
-    .point-home {
-      display: inline-block;
-    }
-
-    .hero-made-wrap {
-      width: auto;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
       overflow: visible;
+    }
+
+    .hero-word {
+      position: absolute;
+      display: inline-block;
       white-space: nowrap;
-      vertical-align: baseline;
-      transition:
-        width 640ms cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 320ms ease,
-        margin-right 640ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: width, margin-right;
-    }
-
-    .hero-made-wrap.is-collapsing {
-      width: 0 !important;
-      margin-right: 0 !important;
-      opacity: 0;
-      overflow: hidden;
-    }
-
-    .hero-made-letter {
-      position: relative;
-      z-index: 2;
       transform-origin: 50% 72%;
       will-change: transform, opacity, filter;
     }
 
-    .hero-simple {
-      position: relative;
-      z-index: 1;
+    .hero-problems-line {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      white-space: nowrap;
     }
 
-    /* The home reserves the final punctuation position while the character roams. */
-    .point-home {
+    .hero-point-home {
       position: relative;
-      z-index: 4;
-      width: 0.2em;
-      height: 0.2em;
-      margin-left: 0.045em;
-      top: 0.015em;
+      display: inline-block;
+      width: 0.17em;
+      height: 0.17em;
+      margin-left: 0.055em;
+      top: 0.01em;
+      flex: 0 0 auto;
       vertical-align: baseline;
-      transform-origin: center;
-      transition:
-        width 660ms cubic-bezier(0.16, 1, 0.3, 1),
-        height 660ms cubic-bezier(0.16, 1, 0.3, 1),
-        top 660ms cubic-bezier(0.16, 1, 0.3, 1),
-        margin-left 660ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .point-home.is-awake {
-      width: 1.24em;
-      height: 1.24em;
-      margin-left: 0.12em;
-      top: 0.35em;
-    }
-
-    .the-point {
-      --point-gaze-x: 0%;
-      --point-gaze-y: 0%;
+    .hero-point {
       --point-face-x: 0%;
       --point-face-y: 0%;
-      --point-face-rotate: 0deg;
       position: absolute;
       inset: 0;
+      z-index: 10;
       display: block;
       width: 100%;
       height: 100%;
-      z-index: 4;
-      transform-origin: center;
       pointer-events: none;
-      will-change: transform, left, top;
+      transform-origin: center;
+      will-change: transform, left, top, width, height;
     }
 
-    .the-point.is-roaming {
+    .hero-point.is-flying {
       position: fixed;
       inset: auto;
       z-index: 2500;
-      margin: 0;
-      pointer-events: none;
     }
 
-    .the-point__body {
+    .hero-point__body {
       position: absolute;
       inset: 0;
       overflow: hidden;
-      isolation: isolate;
       border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.98) 0 4%, rgba(255, 255, 255, 0.48) 5%, transparent 18%),
-        radial-gradient(circle at 40% 32%, #ff7fd2 0%, #ff2daf 20%, var(--pink) 53%, #d5007c 78%, #92004f 100%);
-      box-shadow:
-        inset 0.05em 0.055em 0.09em rgba(255, 255, 255, 0.34),
-        inset -0.075em -0.09em 0.14em rgba(87, 0, 45, 0.27),
-        0 0.15em 0.32em rgba(249, 0, 144, 0.25);
-      transform: translateZ(0) scale(1);
+      background: var(--pink);
+      box-shadow: none;
+      transform: translateZ(0);
       transform-origin: center;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      will-change: transform;
+      will-change: transform, border-radius, box-shadow;
     }
 
-    .the-point__body::before,
-    .the-point__body::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
+    .hero-point.is-awake .hero-point__body {
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.88) 0 4%, rgba(255, 255, 255, 0.28) 5%, transparent 18%),
+        radial-gradient(circle at 42% 34%, #ff43b8 0%, var(--pink) 55%, #d6007c 82%, #980057 100%);
+      box-shadow:
+        inset 0.05em 0.055em 0.09em rgba(255, 255, 255, 0.26),
+        inset -0.075em -0.09em 0.14em rgba(87, 0, 45, 0.22),
+        0 0.15em 0.28em rgba(61, 8, 20, 0.2);
     }
 
-    .the-point__body::before {
-      z-index: 1;
-      top: 5%;
-      left: 9%;
-      width: 53%;
-      height: 39%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(255, 255, 255, 0.98) 0%,
-        rgba(255, 255, 255, 0.35) 44%,
-        transparent 72%
-      );
-      filter: blur(0.7px);
-      transform: rotate(-25deg);
-    }
-
-    .the-point__body::after {
-      right: 4%;
-      bottom: 2%;
-      width: 66%;
-      height: 54%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(69, 0, 35, 0.28) 0%,
-        rgba(69, 0, 35, 0) 72%
-      );
-      filter: blur(1.4px);
-      transform: rotate(-28deg);
-    }
-
-    .the-point__face {
+    .hero-point__face {
       position: absolute;
       inset: 0;
-      z-index: 3;
+      z-index: 2;
       opacity: 0;
-      transform:
-        translate3d(
-          var(--point-face-x),
-          calc(5% + var(--point-face-y)),
-          0
-        )
-        rotate(var(--point-face-rotate));
-      transition:
-        opacity 220ms ease,
-        transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform;
+      transform: translate3d(var(--point-face-x), var(--point-face-y), 0);
+      transition: opacity 170ms ease, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .point-home.is-awake .the-point__face,
-    .the-point.is-awake .the-point__face {
+    .hero-point.is-awake .hero-point__face {
       opacity: 1;
-      transform:
-        translate3d(
-          var(--point-face-x),
-          var(--point-face-y),
-          0
-        )
-        rotate(var(--point-face-rotate));
     }
 
-    .the-point__eye,
-    .the-point__mouth {
+    .hero-point__eye,
+    .hero-point__mouth {
       position: absolute;
       display: block;
       color: #130008;
     }
 
-    .the-point__eye {
-      top: calc(40% + var(--point-gaze-y));
+    .hero-point__eye {
+      top: 39%;
       width: 11.5%;
-      height: 13.5%;
+      height: 14%;
       overflow: hidden;
       border-radius: 50%;
       background: currentColor;
       transform-origin: center;
-      transition:
-        top 300ms cubic-bezier(0.22, 1, 0.36, 1),
-        left 300ms cubic-bezier(0.22, 1, 0.36, 1),
-        right 300ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 180ms ease;
     }
 
-    .the-point__eye::after {
+    .hero-point__eye::after {
       content: "";
       position: absolute;
       top: 12%;
@@ -717,1606 +511,297 @@
       background: rgba(255, 255, 255, 0.92);
     }
 
-    .the-point__eye--left {
-      left: calc(31% + var(--point-gaze-x));
+    .hero-point__eye--left {
+      left: 31%;
     }
 
-    .the-point__eye--right {
-      right: calc(30% - var(--point-gaze-x));
-      top: calc(39.2% + var(--point-gaze-y));
+    .hero-point__eye--right {
+      right: 30%;
+      top: 38.2%;
       width: 10.8%;
-      height: 12.8%;
+      height: 13%;
     }
 
-    .the-point__mouth {
+    .hero-point__mouth {
       top: 61%;
-      left: 42.5%;
-      width: 15%;
+      left: 41.5%;
+      width: 17%;
       height: 8%;
       border-bottom: 2px solid currentColor;
       border-radius: 0 0 999px 999px;
       transform: rotate(-5deg);
       transform-origin: center;
-      transition: transform 220ms ease, width 220ms ease, left 220ms ease, height 220ms ease;
     }
 
-    .the-point.is-looking-up {
-      --point-gaze-y: -4.6%;
-      --point-face-y: -1.8%;
-      --point-face-rotate: -0.5deg;
+    .hero-point.is-looking-word {
+      --point-face-x: -7%;
+      --point-face-y: -10%;
     }
 
-    .the-point.is-looking-left {
-      --point-gaze-x: -3.9%;
-      --point-gaze-y: -0.7%;
-      --point-face-x: -2.2%;
-      --point-face-y: -0.4%;
-      --point-face-rotate: -2.8deg;
+    .hero-point.is-looking-word .hero-point__face {
+      transform:
+        translate3d(var(--point-face-x), var(--point-face-y), 0)
+        rotate(-5deg);
     }
 
-    .the-point.is-looking-right {
-      --point-gaze-x: 3.5%;
-      --point-gaze-y: -0.4%;
-      --point-face-x: 1.9%;
-      --point-face-y: -0.2%;
-      --point-face-rotate: 2.3deg;
+    .hero-point.is-looking-word .hero-point__eye {
+      transform: scaleY(1.08);
     }
 
-    .the-point.is-admiring-simple {
-      --point-gaze-x: -4.4%;
-      --point-gaze-y: -1.8%;
-      --point-face-x: -2.8%;
-      --point-face-y: -1.1%;
-      --point-face-rotate: -3.2deg;
+    .hero-point.is-looking-word .hero-point__body {
+      transform: rotate(-5deg) scale(0.98, 1.025);
     }
 
-    .the-point.is-looking-left .the-point__body::before,
-    .the-point.is-admiring-simple .the-point__body::before {
-      transform: translateX(-7%) rotate(-32deg);
+    .hero-point.is-looking-left {
+      --point-face-x: -3.5%;
     }
 
-    .the-point.is-looking-right .the-point__body::before {
-      transform: translateX(7%) rotate(-18deg);
+    .hero-point.is-looking-right {
+      --point-face-x: 3.5%;
     }
 
-    .the-point.is-looking-left .the-point__body::after,
-    .the-point.is-admiring-simple .the-point__body::after {
-      transform: translateX(-5%) rotate(-32deg);
-    }
-
-    .the-point.is-looking-right .the-point__body::after {
-      transform: translateX(5%) rotate(-20deg);
-    }
-
-    .the-point.is-working .the-point__mouth {
+    .hero-point.is-working .hero-point__mouth {
       left: 44%;
       width: 12%;
       height: 11%;
       border: 2px solid currentColor;
       border-radius: 50%;
-      transform: rotate(0) scale(0.72, 0.9);
+      transform: scale(0.72, 0.9);
     }
 
-    .the-point.is-satisfied .the-point__mouth {
-      left: 40.5%;
-      width: 19%;
-      transform: translateY(-4%) rotate(-8deg);
+    .hero-point.is-winking .hero-point__eye--right {
+      animation: hero-point-wink 620ms cubic-bezier(0.4, 0, 0.2, 1) both;
     }
 
-    .the-point.is-winking .the-point__eye--right {
-      animation: point-wink 640ms cubic-bezier(0.4, 0, 0.2, 1) both;
-    }
-
-    .the-point.is-settled .the-point__body {
-      animation: point-idle 5.4s ease-in-out infinite;
-    }
-
-    .the-point.is-settled.is-admiring-simple .the-point__body {
-      animation: point-admire 4.8s ease-in-out infinite;
-    }
-
-    .the-point.is-settled .the-point__eye--left {
-      animation: point-blink-left 7.2s ease-in-out infinite;
-    }
-
-    .the-point.is-settled .the-point__eye--right {
-      animation: point-blink-right 7.2s ease-in-out infinite;
-    }
-
-    @keyframes point-wink {
+    @keyframes hero-point-wink {
       0%, 18%, 82%, 100% { transform: scaleY(1); }
-      42%, 62% { transform: scaleY(0.06) translateY(24%); }
+      42%, 62% { transform: scaleY(0.06) translateY(22%); }
     }
 
-    @keyframes point-idle {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-1px) scale(1.018); }
-    }
-
-    @keyframes point-admire {
-      0%, 100% { transform: translateY(0) rotate(-1.2deg) scale(1); }
-      45% { transform: translateY(-1px) rotate(-2.2deg) scale(1.018, 1.008); }
-      70% { transform: translateY(0) rotate(-1.5deg) scale(1.006, 1.012); }
-    }
-
-    @keyframes point-blink-left {
-      0%, 43%, 47%, 100% { transform: scaleY(1); }
-      45% { transform: scaleY(0.06); }
-    }
-
-    @keyframes point-blink-right {
-      0%, 43.4%, 47.4%, 100% { transform: scaleY(1); }
-      45.4% { transform: scaleY(0.06); }
-    }
-
-    @keyframes hero-cursor-blink {
-      0%,
-      46% {
-        opacity: 1;
-      }
-
-      47%,
-      100% {
-        opacity: 0;
-      }
-    }
-
-    @keyframes point-wake {
-      0% {
-        transform: scale(0.86);
-      }
-
-      38% {
-        transform: scale(1.1, 0.92) rotate(-2deg);
-      }
-
-      68% {
-        transform: scale(0.97, 1.04) rotate(1deg);
-      }
-
-      100% {
-        transform: scale(1) rotate(0);
-      }
-    }
-
-    @keyframes point-absorb-letter {
-      0% {
-        opacity: 1;
-        filter: blur(0);
-        transform: translate3d(0, 0, 0) rotate(0) scale(1);
-      }
-
-      24% {
-        opacity: 1;
-        transform: translate3d(0.12em, -0.2em, 0) rotate(var(--letter-tilt, 5deg)) scale(0.96);
-      }
-
-      68% {
-        opacity: 0.82;
-        filter: blur(0.4px);
-        transform: translate3d(var(--letter-x-mid), var(--letter-arc), 0) rotate(var(--letter-spin)) scale(0.58);
-      }
-
-      100% {
-        opacity: 0;
-        filter: blur(2px);
-        transform: translate3d(var(--letter-x), var(--letter-y), 0) rotate(var(--letter-spin)) scale(0.06);
-      }
-    }
-
-    @keyframes point-trail-reach {
-      0% {
-        opacity: 0;
-        transform: scaleX(0);
-      }
-
-      18% {
-        opacity: 0.85;
-      }
-
-      100% {
-        opacity: 0.9;
-        transform: scaleX(1);
-      }
-    }
-
-    @keyframes point-trail-retract {
-      0% {
-        opacity: 0.9;
-        transform: scaleX(1);
-      }
-
-      100% {
-        opacity: 0;
-        transform: scaleX(0);
-      }
-    }
-
-    @keyframes point-gulp {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      34% {
-        transform: scale(1.12, 0.91) rotate(-1.5deg);
-      }
-
-      68% {
-        transform: scale(0.96, 1.055) rotate(0.8deg);
-      }
-    }
-
-    @keyframes point-wink {
-      0%,
-      18%,
-      82%,
-      100% {
-        transform: scaleY(1);
-      }
-
-      42%,
-      62% {
-        transform: scaleY(0.08) translateY(20%);
-      }
-    }
-
-    @keyframes point-idle {
-      0%,
-      100% {
-        transform: translateY(0) scale(1);
-      }
-
-      50% {
-        transform: translateY(-1px) scale(1.018);
-      }
-    }
-
-    @keyframes point-blink-left {
-      0%,
-      44%,
-      48%,
-      100% {
-        transform: scaleY(1);
-      }
-
-      46% {
-        transform: scaleY(0.08);
-      }
-    }
-
-    @keyframes point-blink-right {
-      0%,
-      44.4%,
-      48.4%,
-      100% {
-        transform: scaleY(1);
-      }
-
-      46.4% {
-        transform: scaleY(0.08);
-      }
-    }
-
-    #about-me {
-      padding: var(--section-space) 20px;
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-    }
-
-    .about-container {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 32% minmax(0, 1fr);
-      gap: clamp(42px, 5vw, 64px);
-      align-items: start;
-    }
-
-    .about-image-col,
-    .about-content {
-      min-width: 0;
-      max-width: 100%;
-    }
-
-    .about-image-col {
-      position: sticky;
-      top: 108px;
-    }
-
-    .about-image-wrapper {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .about-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .about-heading {
-      margin-bottom: 28px;
-      font-size: clamp(2.6rem, 5vw, 4.4rem);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      text-wrap: balance;
-    }
-
-    .about-text {
-      max-width: 760px;
-      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-      line-height: 1.7;
-      opacity: 0.94;
-    }
-
-    .about-text p + p {
-      margin-top: 22px;
-    }
-
-    .about-clients-wrapper {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      margin-top: 44px;
-      padding-top: 30px;
-      overflow: hidden;
-      border-top: 1px solid var(--line-on-dark);
-    }
-
-    .clients-intro-label {
-      display: block;
-      margin-bottom: 20px;
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 0.74rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.72;
-    }
-
-    .client-tabs {
-      display: flex;
-      align-items: center;
-      gap: 38px;
-      margin-bottom: 22px;
-    }
-
-    .client-tab {
-      position: relative;
-      padding: 0 0 6px;
-      border: 0;
-      background: transparent;
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      opacity: 0.5;
-    }
-
-    .client-tab:hover,
-    .client-tab.active {
-      opacity: 1;
-    }
-
-    .client-tab.active::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      background: var(--pink);
-    }
-
-    .carousel-wrapper,
-    .carousel-container,
-    .carousel-content,
-    .client-group {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .carousel-container {
-      position: relative;
-      padding: 14px 0;
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    }
-
-    .carousel-content {
-      position: relative;
-      min-height: 76px;
-    }
-
+    #about-me { padding: var(--section-space) 20px; overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); }
+    .about-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; display: grid; grid-template-columns: 32% minmax(0, 1fr); gap: clamp(42px, 5vw, 64px); align-items: start; }
+    .about-image-col,.about-content { min-width: 0; max-width: 100%; }
+    .about-image-col { position: sticky; top: 108px; }
+    .about-image-wrapper { width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: rgba(255, 255, 255, 0.08); }
+    .about-image-wrapper img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .about-heading { margin-bottom: 28px; font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.02; text-wrap: balance; }
+    .about-text { max-width: 760px; font-size: clamp(1.1rem, 1.6vw, 1.3rem); line-height: 1.7; opacity: 0.94; }
+    .about-text p + p { margin-top: 22px; }
+    .about-clients-wrapper { width: 100%; max-width: 100%; min-width: 0; margin-top: 44px; padding-top: 30px; overflow: hidden; border-top: 1px solid var(--line-on-dark); }
+    .clients-intro-label { display: block; margin-bottom: 20px; color: var(--bg-cream); font-family: var(--font-system); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.72; }
+    .client-tabs { display: flex; align-items: center; gap: 38px; margin-bottom: 22px; }
+    .client-tab { position: relative; padding: 0 0 6px; border: 0; background: transparent; color: var(--bg-cream); font-family: var(--font-system); font-size: 1rem; font-weight: 500; cursor: pointer; opacity: 0.5; }
+    .client-tab:hover,.client-tab.active { opacity: 1; }
+    .client-tab.active::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: var(--pink); }
+    .carousel-wrapper,.carousel-container,.carousel-content,.client-group { width: 100%; max-width: 100%; min-width: 0; overflow: hidden; }
+    .carousel-container { position: relative; padding: 14px 0; mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent); }
+    .carousel-content { position: relative; min-height: 82px; }
+    .client-group[hidden] { display: none; }
     .client-logos-container {
+      --logo-gap: clamp(34px, 4vw, 52px);
       display: flex;
       align-items: center;
       width: max-content;
-      min-width: 0;
+      min-width: 100%;
       max-width: none;
       transform: translate3d(0, 0, 0);
       will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
-
-    .client-logo {
-      width: auto;
-      height: 58px;
-      margin: 0 30px;
+    .client-logo-set {
+      display: flex;
+      align-items: center;
       flex: 0 0 auto;
+      gap: var(--logo-gap);
+      padding-right: var(--logo-gap);
+    }
+    .client-group.active .client-logos-container.is-marquee-ready {
+      animation: client-logo-marquee var(--marquee-duration, 28s) linear infinite;
+    }
+    .about-clients-wrapper:not(.is-in-view) .client-logos-container {
+      animation-play-state: paused;
+    }
+    .client-logo {
+      width: clamp(118px, 11vw, 148px);
+      height: 54px;
+      margin: 0;
+      flex: 0 0 auto;
+      object-fit: contain;
       filter: brightness(0) invert(1);
       opacity: 0.62;
       transition: opacity 0.25s ease, transform 0.25s ease;
     }
-
-    .client-logo:hover {
-      opacity: 1;
-      transform: scale(1.04);
-    }
-
-    #services {
-      padding: clamp(100px, 10vw, 140px) 20px;
-      overflow: hidden;
-      background: var(--bg-cream);
-      color: var(--ink);
-      border-top: 2px solid var(--line-strong);
-    }
-
-    .services-grid {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: clamp(48px, 6vw, 80px);
-      align-items: start;
-    }
-
-    .services-header,
-    .services-content {
-      min-width: 0;
-      max-width: 100%;
-    }
-
-    .services-header {
-      position: sticky;
-      top: 108px;
-    }
-
-    .services-intro {
-      max-width: none;
-      font-size: clamp(2.6rem, 5vw, 4.4rem);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      opacity: 1;
-      text-wrap: balance;
-    }
-
-    .services-intro .pink-highlight {
-      color: var(--pink);
-    }
-
-    .services-content {
-      padding-left: 40px;
-      border-left: 1px solid var(--line-strong);
-    }
-
-    .service-row {
-      padding: 46px 0;
-      border-top: 1px solid var(--line-strong);
-    }
-
-    .service-row:first-child {
-      padding-top: 34px;
-    }
-
-    .service-row:last-child {
-      border-bottom: 1px solid var(--line-strong);
-    }
-
-    .service-kicker {
-      display: block;
-      margin-bottom: 10px;
-      font-family: var(--font-system);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    .service-row h3 {
-      margin-bottom: 14px;
-      font-size: clamp(2rem, 3.6vw, 3rem);
-      font-weight: 400;
-      line-height: 1.05;
-      text-wrap: balance;
-    }
-
-    .service-row p {
-      max-width: 700px;
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      line-height: 1.65;
-      opacity: 0.9;
-    }
-
-    #recent-work {
-      padding: clamp(100px, 10vw, 140px) 20px;
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-      border-top: 2px solid rgba(255, 241, 229, 0.2);
-    }
-
-    .work-container {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-    }
-
-    .work-section-title {
-      max-width: 820px;
-      margin-bottom: clamp(44px, 6vw, 72px);
-      color: var(--bg-cream);
-      font-size: clamp(2.6rem, 5vw, 4.4rem);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      text-wrap: balance;
-    }
-
-    .work-row {
-      border-bottom: 2px solid rgba(255, 241, 229, 0.28);
-    }
-
-    .work-header-trigger {
-      width: 100%;
-      min-width: 0;
-      display: grid;
-      grid-template-columns: 27% minmax(0, 1fr) auto;
-      gap: 48px;
-      align-items: start;
-      padding: 42px 0 34px;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .client-name {
-      padding-top: 7px;
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      line-height: 1.4;
-      text-transform: uppercase;
-    }
-
-    .trigger-headline {
-      min-width: 0;
-      color: var(--bg-cream);
-      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      line-height: 1.08;
-      overflow-wrap: anywhere;
-      text-wrap: balance;
-      transition: color 0.25s ease;
-    }
-
-    .work-row.is-open .trigger-headline {
-      color: var(--pink);
-    }
-
-    .accordion-icon {
-      position: relative;
-      width: 20px;
-      height: 20px;
-      margin-top: 12px;
-    }
-
-    .icon-line {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      display: block;
-      background: var(--bg-cream);
-      transform: translate(-50%, -50%);
-      transition: transform 0.25s ease;
-    }
-
-    .icon-line.horizontal {
-      width: 20px;
-      height: 2px;
-    }
-
-    .icon-line.vertical {
-      width: 2px;
-      height: 20px;
-    }
-
-    .work-row.is-open .icon-line.vertical {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-
-    .work-accordion-body {
-      display: grid;
-      grid-template-rows: 0fr;
-      min-width: 0;
-      transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .work-row.is-open .work-accordion-body {
-      grid-template-rows: 1fr;
-    }
-
-    .work-accordion-inner {
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .work-fold-content {
-      min-width: 0;
-      display: grid;
-      grid-template-columns: 27% minmax(0, 1fr);
-      gap: 48px;
-      padding: 0 0 52px;
-    }
-
-    .work-image-wrapper {
-      min-width: 0;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border: 1px solid rgba(255, 241, 229, 0.18);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .work-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .narrative-stack {
-      min-width: 0;
-      max-width: 780px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .narrative-item {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .narrative-label {
-      color: var(--bg-cream);
-      font-family: var(--font-system);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .narrative-text {
-      font-size: clamp(1rem, 1.5vw, 1.18rem);
-      line-height: 1.65;
-      overflow-wrap: anywhere;
-    }
-
-    #testimonials {
-      padding: clamp(100px, 10vw, 140px) 20px;
-      overflow: hidden;
-      background: var(--bg-cream);
-      color: var(--text);
-      border-top: 2px solid var(--line-strong);
-    }
-
-    .testimonials-container {
-      width: 100%;
-      max-width: var(--page-width);
-      min-width: 0;
-      margin: 0 auto;
-    }
-
-    .testimonial-stage {
-      position: relative;
-      min-height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .testimonial-item {
-      position: absolute;
-      width: 100%;
-      max-width: 900px;
-      min-width: 0;
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      text-align: center;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .testimonial-item.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .testimonial-quote {
-      max-width: 860px;
-      margin: 0 auto;
-      color: var(--ink);
-      font-size: clamp(1.35rem, 2.7vw, 2rem);
-      font-style: italic;
-      line-height: 1.55;
-      overflow-wrap: anywhere;
-    }
-
-    .testimonial-author {
-      margin-top: 26px;
-      font-family: var(--font-system);
-      font-size: 0.83rem;
-      line-height: 1.5;
-    }
-
-    .testimonial-author strong {
-      display: block;
-      font-size: 0.9rem;
-    }
-
-    .testimonial-role {
-      opacity: 0.7;
-    }
-
-    .testimonial-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 28px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-
-    .testimonial-control {
-      position: relative;
-      padding: 8px 0;
-      border: 0;
-      background: transparent;
-      color: var(--ink);
-      font-family: var(--font-system);
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-      opacity: 0.45;
-      transition: opacity 0.25s ease;
-    }
-
-    .testimonial-control::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: 1px;
-      left: 0;
-      height: 2px;
-      background: var(--pink);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
-
-    .testimonial-control:hover,
-    .testimonial-control.active {
-      opacity: 1;
-    }
-
-    .testimonial-control.active::after {
-      transform: scaleX(1);
-    }
-
-    .testimonial-translation-note {
-      margin-top: 18px;
-      font-family: var(--font-system);
-      font-size: 0.7rem;
-      letter-spacing: 0.04em;
-      opacity: 0.5;
-      text-align: center;
-    }
-
-    #contact {
-      padding: clamp(100px, 10vw, 136px) 20px clamp(84px, 8vw, 108px);
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-      text-align: center;
-    }
-
-    .contact-container {
-      width: 100%;
-      max-width: 960px;
-      min-width: 0;
-      margin: 0 auto;
-    }
-
-    .contact-email-stage {
-      position: relative;
-      width: 100%;
-      margin-top: 34px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .contact-point {
-      --contact-point-face-y: 0%;
-      position: relative;
-      z-index: 2;
-      display: block;
-      width: clamp(72px, 7vw, 94px);
-      aspect-ratio: 1;
-      opacity: 0;
-      transform: translateY(16px) scale(0.72);
-      transform-origin: 50% 100%;
-      pointer-events: none;
-      perspective: 300px;
-      transition:
-        opacity 480ms ease,
-        transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .contact-point.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .contact-point__body {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      overflow: hidden;
-      isolation: isolate;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.98) 0 4%, rgba(255, 255, 255, 0.48) 5%, transparent 18%),
-        radial-gradient(circle at 40% 32%, #ff7fd2 0%, #ff2daf 20%, var(--pink) 53%, #d5007c 78%, #92004f 100%);
-      box-shadow:
-        inset 4px 5px 9px rgba(255, 255, 255, 0.34),
-        inset -7px -8px 13px rgba(87, 0, 45, 0.27),
-        0 11px 22px rgba(0, 0, 0, 0.18),
-        0 8px 26px rgba(249, 0, 144, 0.2);
-      transform: translateZ(0) scale(1);
-      transform-origin: 50% 76%;
-      transition:
-        transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        border-radius 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 420ms ease;
-      will-change: transform;
-    }
-
-    .contact-point__body::before,
-    .contact-point__body::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      transition:
-        transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-        top 420ms ease,
-        bottom 420ms ease;
-    }
-
-    .contact-point__body::before {
-      z-index: 1;
-      top: 5%;
-      left: 9%;
-      width: 53%;
-      height: 39%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(255, 255, 255, 0.98) 0%,
-        rgba(255, 255, 255, 0.35) 44%,
-        transparent 72%
-      );
-      filter: blur(0.7px);
-      transform: rotate(-25deg);
-    }
-
-    .contact-point__body::after {
-      right: 4%;
-      bottom: 2%;
-      width: 66%;
-      height: 54%;
-      border-radius: 50%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba(69, 0, 35, 0.28) 0%,
-        rgba(69, 0, 35, 0) 72%
-      );
-      filter: blur(1.4px);
-      transform: rotate(-28deg);
-    }
-
-    .contact-point__face {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      transform: translateY(var(--contact-point-face-y));
-      transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .contact-point__eye,
-    .contact-point__mouth {
-      position: absolute;
-      display: block;
-      color: #130008;
-    }
-
-    .contact-point__eye {
-      top: 39%;
-      width: 11.5%;
-      height: 13.5%;
-      overflow: hidden;
-      border-radius: 50%;
-      background: currentColor;
-      transform-origin: center;
-      transition:
-        top 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        left 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        right 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 180ms ease;
-    }
-
-    .contact-point__eye::after {
-      content: "";
-      position: absolute;
-      top: 12%;
-      left: 18%;
-      width: 29%;
-      height: 29%;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    .contact-point__eye--left {
-      left: 31%;
-    }
-
-    .contact-point__eye--right {
-      right: 30%;
-      top: 38.2%;
-      width: 10.8%;
-      height: 12.8%;
-    }
-
-    .contact-point__mouth {
-      top: 61%;
-      left: 41%;
-      width: 18%;
-      height: 8%;
-      border-bottom: 2px solid currentColor;
-      border-radius: 0 0 999px 999px;
-      transform: rotate(-4deg);
-      transition:
-        top 340ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 220ms ease,
-        width 220ms ease,
-        left 220ms ease;
-    }
-
-    /*
-      A soft extension of the ink body—not a separate arrow.
-      It begins hidden behind the Point and grows into a rounded tendril.
-    */
+    .client-logo:hover { opacity: 1; transform: scale(1.04); }
+    @keyframes client-logo-marquee {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(calc(-1 * var(--marquee-distance)), 0, 0); }
+    }
+
+    #services { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-cream); color: var(--ink); border-top: 2px solid var(--line-strong); }
+    .services-grid { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(48px, 6vw, 80px); align-items: start; }
+    .services-header,.services-content { min-width: 0; max-width: 100%; }
+    .services-header { position: sticky; top: 108px; }
+    .services-intro { max-width: none; font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.02; opacity: 1; text-wrap: balance; }
+    .services-intro .pink-highlight { color: var(--pink); }
+    .services-content { padding-left: 40px; border-left: 1px solid var(--line-strong); }
+    .service-row { padding: 46px 0; border-top: 1px solid var(--line-strong); }
+    .service-row:first-child { padding-top: 34px; }
+    .service-row:last-child { border-bottom: 1px solid var(--line-strong); }
+    .service-kicker { display: block; margin-bottom: 10px; font-family: var(--font-system); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; }
+    .service-row h3 { margin-bottom: 14px; font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 400; line-height: 1.05; text-wrap: balance; }
+    .service-row p { max-width: 700px; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.65; opacity: 0.9; }
+
+    #recent-work { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); border-top: 2px solid rgba(255, 241, 229, 0.2); }
+    .work-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; }
+    .work-row { border-bottom: 2px solid rgba(255, 241, 229, 0.28); }
+    .work-header-trigger { width: 100%; min-width: 0; display: grid; grid-template-columns: 27% minmax(0, 1fr) auto; gap: 48px; align-items: start; padding: 42px 0 34px; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+    .client-name { padding-top: 7px; color: var(--bg-cream); font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; line-height: 1.4; text-transform: uppercase; }
+    .trigger-headline { min-width: 0; color: var(--bg-cream); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.08; overflow-wrap: anywhere; text-wrap: balance; transition: color 0.25s ease; }
+    .work-row.is-open .trigger-headline { color: var(--pink); }
+    .accordion-icon { position: relative; width: 20px; height: 20px; margin-top: 12px; }
+    .icon-line { position: absolute; inset: 50% auto auto 50%; display: block; background: var(--bg-cream); transform: translate(-50%, -50%); transition: transform 0.25s ease; }
+    .icon-line.horizontal { width: 20px; height: 2px; }
+    .icon-line.vertical { width: 2px; height: 20px; }
+    .work-row.is-open .icon-line.vertical { transform: translate(-50%, -50%) rotate(90deg); }
+    .work-accordion-body { display: grid; grid-template-rows: 0fr; min-width: 0; transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1); }
+    .work-row.is-open .work-accordion-body { grid-template-rows: 1fr; }
+    .work-accordion-inner { min-width: 0; overflow: hidden; }
+    .work-fold-content { min-width: 0; display: grid; grid-template-columns: 27% minmax(0, 1fr); gap: 48px; padding: 0 0 52px; }
+    .work-image-wrapper { min-width: 0; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid rgba(255, 241, 229, 0.18); background: rgba(255, 255, 255, 0.08); }
+    .work-image-wrapper img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .narrative-stack { min-width: 0; max-width: 780px; display: flex; flex-direction: column; gap: 24px; }
+    .narrative-item { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+    .narrative-label { color: var(--bg-cream); font-family: var(--font-system); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .narrative-text { font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.65; overflow-wrap: anywhere; }
+
+    #testimonials { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-cream); color: var(--text); border-top: 2px solid var(--line-strong); }
+    .testimonials-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; }
+    .testimonial-stage { position: relative; min-height: 300px; display: flex; align-items: center; justify-content: center; }
+    .testimonial-item { position: absolute; width: 100%; max-width: 900px; min-width: 0; opacity: 0; transform: translateY(10px); pointer-events: none; text-align: center; transition: opacity 0.5s ease, transform 0.5s ease; }
+    .testimonial-item.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .testimonial-quote { max-width: 860px; margin: 0 auto; color: var(--ink); font-size: clamp(1.35rem, 2.7vw, 2rem); font-style: italic; line-height: 1.55; overflow-wrap: anywhere; }
+    .testimonial-author { margin-top: 26px; font-family: var(--font-system); font-size: 0.83rem; line-height: 1.5; }
+    .testimonial-author strong { display: block; font-size: 0.9rem; }
+    .testimonial-role { opacity: 0.7; }
+    .testimonial-controls { display: flex; justify-content: center; align-items: center; gap: 28px; margin-top: 18px; flex-wrap: wrap; }
+    .testimonial-control { position: relative; padding: 8px 0; border: 0; background: transparent; color: var(--ink); font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; cursor: pointer; opacity: 0.45; transition: opacity 0.25s ease; }
+    .testimonial-control::after { content: ""; position: absolute; right: 0; bottom: 1px; left: 0; height: 2px; background: var(--pink); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+    .testimonial-control:hover,.testimonial-control.active { opacity: 1; }
+    .testimonial-control.active::after { transform: scaleX(1); }
+
+    #contact { padding: clamp(100px, 10vw, 136px) 20px clamp(84px, 8vw, 108px); overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); text-align: center; }
+    .contact-container { width: 100%; max-width: 960px; min-width: 0; margin: 0 auto; }
+    .contact-email-stage { position: relative; width: 100%; margin-top: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+    .contact-point { --contact-point-face-y: 0%; position: relative; z-index: 2; display: block; width: clamp(72px, 7vw, 94px); aspect-ratio: 1; opacity: 1; transform: translateY(0) scale(1); transform-origin: 50% 100%; pointer-events: none; perspective: 300px; transition: opacity 480ms ease, transform 620ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .js .contact-point { opacity: 0; transform: translateY(16px) scale(0.72); }
+    .js .contact-point.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+    .contact-point__body { position: absolute; inset: 0; z-index: 2; overflow: hidden; isolation: isolate; border-radius: 50%; background: radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.98) 0 4%, rgba(255, 255, 255, 0.48) 5%, transparent 18%), radial-gradient(circle at 40% 32%, #ff7fd2 0%, #ff2daf 20%, var(--pink) 53%, #d5007c 78%, #92004f 100%); box-shadow: inset 4px 5px 9px rgba(255, 255, 255, 0.34), inset -7px -8px 13px rgba(87, 0, 45, 0.27), 0 11px 22px rgba(0, 0, 0, 0.18), 0 8px 26px rgba(249, 0, 144, 0.2); transform: translateZ(0) scale(1); transform-origin: 50% 76%; transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), border-radius 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 420ms ease; will-change: transform; }
+    .contact-point__face { position: absolute; inset: 0; z-index: 4; transform: translateY(var(--contact-point-face-y)); transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .contact-point__eye,.contact-point__mouth { position: absolute; display: block; color: #130008; }
+    .contact-point__eye { top: 39%; width: 11.5%; height: 13.5%; overflow: hidden; border-radius: 50%; background: currentColor; transform-origin: center; }
+    .contact-point__eye::after { content: ""; position: absolute; top: 12%; left: 18%; width: 29%; height: 29%; border-radius: 50%; background: rgba(255, 255, 255, 0.92); }
+    .contact-point__eye--left { left: 31%; }
+    .contact-point__eye--right { right: 30%; top: 38.2%; width: 10.8%; height: 12.8%; }
+    .contact-point__mouth { top: 61%; left: 41%; width: 18%; height: 8%; border-bottom: 2px solid currentColor; border-radius: 0 0 999px 999px; transform: rotate(-4deg); }
     .contact-point__pointer {
       position: absolute;
       z-index: 1;
-      top: 67%;
-      left: 54%;
-      width: 25px;
-      height: 45px;
-      border-radius: 48% 52% 62% 38% / 28% 30% 76% 72%;
+      top: 59%;
+      left: 66%;
+      width: 30px;
+      height: 21px;
+      border-radius: 72% 28% 62% 38% / 52% 38% 62% 48%;
       background:
-        radial-gradient(circle at 34% 16%, rgba(255, 255, 255, 0.32) 0 8%, transparent 24%),
-        linear-gradient(155deg, #ff42b9 0%, var(--pink) 50%, #c60071 100%);
+        radial-gradient(circle at 24% 28%, rgba(255, 255, 255, 0.3) 0 7%, transparent 24%),
+        linear-gradient(145deg, #ff42b9 0%, var(--pink) 52%, #c60071 100%);
       box-shadow:
         inset 2px 2px 4px rgba(255, 255, 255, 0.18),
-        inset -3px -4px 6px rgba(87, 0, 45, 0.18),
-        0 8px 16px rgba(249, 0, 144, 0.18);
+        inset -3px -3px 5px rgba(87, 0, 45, 0.17);
       opacity: 0;
-      transform: translate(-50%, -4px) rotate(-8deg) scale(0.28, 0.06);
-      transform-origin: 50% 0;
+      transform: translate(-30%, -30%) rotate(38deg) scale(0.25, 0.38);
+      transform-origin: 12% 50%;
       transition:
-        opacity 220ms ease,
-        transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
-        border-radius 520ms cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
+        opacity 160ms ease,
+        transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    .contact-point__pointer::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -3px;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 34% 28%, #ff55c1 0%, var(--pink) 56%, #c60071 100%);
-      box-shadow: inset -2px -2px 4px rgba(87, 0, 45, 0.15);
-      transform: translateX(-50%) scale(0.78, 0.62);
-    }
-
-    .contact-point.is-looking-email {
-      --contact-point-face-y: 8%;
-    }
-
-    .contact-point.is-looking-email .contact-point__body {
-      border-radius: 48% 48% 52% 52% / 43% 43% 57% 57%;
-      transform: translateY(4px) rotateX(9deg) scale(1.055, 0.92);
-      box-shadow:
-        inset 4px 4px 8px rgba(255, 255, 255, 0.3),
-        inset -7px -6px 12px rgba(87, 0, 45, 0.26),
-        0 8px 18px rgba(0, 0, 0, 0.18),
-        0 7px 22px rgba(249, 0, 144, 0.18);
-    }
-
-    .contact-point.is-looking-email .contact-point__body::before {
-      top: 10%;
-      transform: translateY(5%) rotate(-25deg) scale(1.08, 0.82);
-    }
-
-    .contact-point.is-looking-email .contact-point__body::after {
-      bottom: -2%;
-      transform: translateY(4%) rotate(-28deg) scale(1.08, 0.9);
-    }
-
-    .contact-point.is-looking-email .contact-point__eye {
-      top: 44%;
-      transform: scaleY(0.88);
-    }
-
-    .contact-point.is-looking-email .contact-point__eye--right {
-      top: 43.2%;
-    }
-
-    .contact-point.is-looking-email .contact-point__mouth {
-      top: 65%;
-    }
-
-    .contact-point.is-looking-user {
-      --contact-point-face-y: -1%;
-    }
-
-    .contact-point.is-looking-user .contact-point__body {
-      border-radius: 50%;
-      transform: translateY(-1px) rotateX(-3deg) scale(0.985, 1.035);
-    }
-
-    .contact-point.is-looking-user .contact-point__eye {
-      top: 38%;
-    }
-
-    .contact-point.is-looking-user .contact-point__eye--right {
-      top: 37.3%;
-    }
-
+    .contact-point.is-looking-email { --contact-point-face-y: 8%; }
+    .contact-point.is-looking-user { --contact-point-face-y: -1%; }
     .contact-point.is-pointing .contact-point__pointer {
       opacity: 1;
-      border-radius: 46% 54% 64% 36% / 25% 30% 78% 72%;
-      transform: translate(-50%, 0) rotate(-7deg) scale(0.82, 1);
+      transform: translate(-18%, -18%) rotate(38deg) scale(1);
     }
-
     .contact-point.is-pointing .contact-point__body {
-      border-radius: 48% 47% 55% 52% / 40% 40% 61% 60%;
-      transform: translateY(7px) rotateX(10deg) rotateZ(-1.5deg) scale(1.075, 0.87);
+      border-radius: 49% 51% 47% 53% / 48% 47% 53% 52%;
+      transform: translateY(1px) rotate(1.5deg) scale(1.025, 0.985);
     }
+    .contact-point.is-nodding .contact-point__body { animation: contact-point-nod 720ms cubic-bezier(0.36, 0, 0.2, 1) both; }
+    .contact-point.is-winking .contact-point__eye--right { animation: contact-point-wink 620ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .contact-point.is-settled .contact-point__body { animation: contact-point-idle 5.2s ease-in-out infinite; }
+    .contact-point.is-settled .contact-point__eye--left,.contact-point.is-settled .contact-point__eye--right { animation: contact-point-blink 6.8s ease-in-out infinite; }
+    @keyframes contact-point-wink { 0%,18%,82%,100%{transform:scaleY(1)} 42%,62%{transform:scaleY(.06) translateY(22%)} }
+    @keyframes contact-point-nod { 0%,100%{transform:translateY(7px) scale(1.075,.87)} 50%{transform:translateY(3px) scale(1.035,.95)} }
+    @keyframes contact-point-idle { 0%,100%{transform:translateY(4px) scale(1.055,.92)} 50%{transform:translateY(2px) scale(1.04,.94)} }
+    @keyframes contact-point-blink { 0%,44%,48%,100%{transform:scaleY(1)} 46%{transform:scaleY(.06)} }
 
-    .contact-point.is-pointing .contact-point__mouth {
-      left: 39.5%;
-      width: 21%;
-      transform: rotate(-6deg);
-    }
+    .contact-heading { max-width: 820px; margin: 0 auto; font-size: clamp(3rem, 7vw, 6.8rem); font-weight: 400; letter-spacing: -0.04em; line-height: 0.98; overflow-wrap: anywhere; text-wrap: balance; }
+    .giant-email { display: inline-block; max-width: 100%; margin-top: 0; color: var(--bg-cream); text-decoration: none; font-size: clamp(1.65rem, 4vw, 3.2rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; overflow-wrap: anywhere; word-break: break-word; border-bottom: 2px solid var(--pink); }
+    .giant-email:hover { color: var(--pink); }
+    .contact-meta { margin-top: 30px; display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .contact-meta a { color: var(--bg-cream); text-decoration: none; }
+    .contact-meta a:hover { color: var(--pink); }
 
-    .contact-point.is-nodding .contact-point__body {
-      animation: contact-point-nod 720ms cubic-bezier(0.36, 0, 0.2, 1) both;
-    }
-
-    .contact-point.is-settled .contact-point__body {
-      animation: contact-point-idle 5.2s ease-in-out infinite;
-    }
-
-    .contact-point.is-settled .contact-point__eye--left,
-    .contact-point.is-settled .contact-point__eye--right {
-      animation: contact-point-blink 6.8s ease-in-out infinite;
-    }
-
-    .contact-email-stage:hover .contact-point:not(.is-performing) .contact-point__body,
-    .contact-email-stage:focus-within .contact-point:not(.is-performing) .contact-point__body {
-      transform: translateY(3px) rotateX(7deg) scale(1.04, 0.94);
-    }
-
-    @keyframes contact-point-nod {
-      0%, 100% {
-        transform: translateY(7px) rotateX(10deg) rotateZ(-1.5deg) scale(1.075, 0.87);
-      }
-      30% {
-        transform: translateY(12px) rotateX(15deg) rotateZ(-2deg) scale(1.105, 0.82);
-      }
-      56% {
-        transform: translateY(3px) rotateX(6deg) rotateZ(-0.5deg) scale(1.035, 0.95);
-      }
-      78% {
-        transform: translateY(9px) rotateX(12deg) rotateZ(-1.5deg) scale(1.085, 0.85);
-      }
-    }
-
-    @keyframes contact-point-idle {
-      0%, 100% {
-        transform: translateY(4px) rotateX(9deg) scale(1.055, 0.92);
-      }
-      50% {
-        transform: translateY(2px) rotateX(7deg) scale(1.04, 0.94);
-      }
-    }
-
-    @keyframes contact-point-blink {
-      0%, 44%, 48%, 100% {
-        transform: scaleY(1);
-      }
-      46% {
-        transform: scaleY(0.06);
-      }
-    }
-
-    .contact-heading {
-      max-width: 820px;
-      margin: 0 auto;
-      font-size: clamp(3rem, 7vw, 6.8rem);
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      line-height: 0.98;
-      overflow-wrap: anywhere;
-      text-wrap: balance;
-    }
-
-    .giant-email {
-      display: inline-block;
-      max-width: 100%;
-      margin-top: 0;
-      color: var(--bg-cream);
-      text-decoration: none;
-      font-size: clamp(1.65rem, 4vw, 3.2rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-      border-bottom: 2px solid var(--pink);
-    }
-
-    .giant-email:hover {
-      color: var(--pink);
-    }
-
-    .contact-meta {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      font-family: var(--font-system);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .contact-meta a {
-      color: var(--bg-cream);
-      text-decoration: none;
-    }
-
-    .contact-meta a:hover {
-      color: var(--pink);
-    }
-
-    footer {
-      padding: 30px 20px;
-      overflow: hidden;
-      background: var(--bg-dark);
-      color: var(--bg-cream);
-      border-top: 1px solid var(--line-on-dark);
-      text-align: center;
-    }
-
-    .footer-copy {
-      font-family: var(--font-system);
-      font-size: 0.72rem;
-      opacity: 0.68;
-    }
+    footer { padding: 30px 20px; overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); border-top: 1px solid var(--line-on-dark); text-align: center; }
+    .footer-copy { font-family: var(--font-system); font-size: 0.72rem; opacity: 0.68; }
 
     @media (max-width: 980px) {
-      .work-header-trigger {
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 18px;
-      }
-
-      .work-header-trigger .client-name {
-        grid-column: 1 / -1;
-      }
-
-      .trigger-headline {
-        grid-column: 1;
-      }
-
-      .accordion-icon {
-        grid-column: 2;
-        grid-row: 2;
-      }
-
-      .work-fold-content {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 28px;
-      }
-
-      .work-image-wrapper {
-        width: 100%;
-        max-width: 640px;
-        aspect-ratio: 16 / 9;
-      }
-
-      .services-grid,
-      .about-container {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .services-header,
-      .about-image-col {
-        position: static;
-      }
-
-      .services-intro {
-        max-width: 650px;
-      }
-
-      .services-content {
-        padding-left: 0;
-        border-left: 0;
-      }
-
-      .about-image-wrapper {
-        width: 100%;
-        max-width: 480px;
-        aspect-ratio: 16 / 10;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .hero-headline {
-        font-size: clamp(4.2rem, 12.5vw, 7rem);
-        line-height: 0.82;
-      }
-
-      .hero-main {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.08em;
-        white-space: normal;
-      }
-
-      .hero-changing-slot,
-      .hero-fixed {
-        margin-right: auto;
-        margin-left: auto;
-      }
-
-      .hero-subline {
-        margin-top: clamp(20px, 3vw, 28px);
-      }
+      .work-header-trigger { grid-template-columns: minmax(0, 1fr) auto; gap: 18px; }
+      .work-header-trigger .client-name { grid-column: 1 / -1; }
+      .trigger-headline { grid-column: 1; }
+      .accordion-icon { grid-column: 2; grid-row: 2; }
+      .work-fold-content { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .work-image-wrapper { width: 100%; max-width: 640px; aspect-ratio: 16 / 9; }
+      .services-grid,.about-container { grid-template-columns: minmax(0, 1fr); }
+      .services-header,.about-image-col { position: static; }
+      .services-intro { max-width: 650px; }
+      .services-content { padding-left: 0; border-left: 0; }
+      .about-image-wrapper { width: 100%; max-width: 480px; aspect-ratio: 16 / 10; }
     }
 
     @media (max-width: 700px) {
-      :root {
-        --nav-height: 64px;
-        --section-space: 72px;
-      }
-
-      .sticky-nav {
-        padding: 0 18px;
-      }
-
-      .nav-logo {
-        font-size: 1.28rem;
-        gap: 0.1em;
-      }
-
-      .nav-point {
-        width: 0.88em;
-        height: 0.88em;
-      }
-
-      .mobile-menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: var(--nav-height);
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        width: 100%;
-        min-height: calc(100vh - var(--nav-height));
-        min-height: calc(100dvh - var(--nav-height));
-        padding: 24px 20px;
-        flex-direction: column;
-        justify-content: center;
-        gap: 34px;
-        background: var(--bg-cream);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-16px);
-        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-      }
-
-      .nav-links.active {
-        z-index: 1001;
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .nav-links a {
-        font-size: 1.25rem;
-        text-transform: none;
-      }
-
-      .language-switch {
-        margin-top: 8px;
-        margin-left: 0;
-        gap: 8px;
-        font-size: 0.9rem;
-      }
-
-      .language-switch a,
-      .language-switch .language-current {
-        font-size: 0.9rem;
-      }
-
-      #intro {
-        height: 100vh;
-        min-height: 100vh;
-        height: 100svh;
-        min-height: 100svh;
-        padding: calc(var(--nav-height) + 18px) 16px 18px;
-      }
-
-      .hero-container {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .hero-headline {
-        width: 100%;
-        max-width: 100%;
-        font-size: clamp(3.15rem, 14.5vw, 5.8rem);
-        letter-spacing: -0.052em;
-        line-height: 0.84;
-      }
-
-      .hero-main {
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        gap: 0.1em;
-      }
-
-      .hero-changing-slot {
-        max-width: 100%;
-      }
-
-      .hero-changing-live {
-        justify-self: center;
-      }
-
-      .hero-subline {
-        margin-top: clamp(18px, 5vw, 24px);
-        font-size: clamp(1.3rem, 6.2vw, 1.75rem);
-      }
-
-      #recent-work,
-      #services,
-      #about-me,
-      #testimonials,
-      #contact {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      #services,
-      #recent-work,
-      #testimonials {
-        padding-top: 84px;
-        padding-bottom: 84px;
-      }
-
-      .about-container,
-      .services-grid {
-        display: block;
-      }
-
-      .services-header {
-        margin-bottom: 44px;
-      }
-
-      .about-image-col {
-        margin-bottom: 40px;
-      }
-
-      .about-image-wrapper {
-        max-width: 100%;
-      }
-
-      .about-heading {
-        margin-bottom: 24px;
-      }
-
-      .about-clients-wrapper {
-        margin-top: 38px;
-        padding-top: 26px;
-      }
-
-      .client-tabs {
-        margin-bottom: 16px;
-      }
-
-      .carousel-container {
-        padding: 10px 0;
-      }
-
-      .client-logo {
-        height: 48px;
-        margin: 0 22px;
-      }
-
-      .work-section-title {
-        margin-bottom: 34px;
-      }
-
-      .work-header-trigger {
-        padding: 34px 0 26px;
-      }
-
-      .work-fold-content {
-        padding-bottom: 42px;
-      }
-
-      .service-row {
-        padding: 38px 0;
-      }
-
-      .service-row:first-child {
-        padding-top: 28px;
-      }
-
-      .testimonial-stage {
-        min-height: 360px;
-      }
-
-      .testimonial-controls {
-        gap: 10px 20px;
-      }
-
-      .contact-email-stage {
-        margin-top: 30px;
-        gap: 13px;
-      }
-
-      .contact-point {
-        width: 66px;
-      }
-
-      .contact-point__pointer {
-        width: 21px;
-        height: 38px;
-      }
-
-      .contact-meta {
-        flex-direction: column;
-        gap: 14px;
-      }
+      :root { --nav-height: 64px; --section-space: 72px; }
+      .sticky-nav { padding: 0 18px; }
+      .nav-logo { font-size: 1rem; }
+      .mobile-menu-toggle { display: block; }
+      .nav-links { position: fixed; top: var(--nav-height); right: 0; bottom: 0; left: 0; z-index: -1; width: 100%; min-height: calc(100dvh - var(--nav-height)); padding: 24px 20px; flex-direction: column; justify-content: center; gap: 34px; background: var(--bg-cream); opacity: 0; visibility: hidden; transform: translateY(-16px); transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease; }
+      .nav-links.active { z-index: 1001; opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav-links a { font-size: 1.25rem; text-transform: none; }
+      .language-switch { margin-top: 8px; margin-left: 0; gap: 8px; font-size: 0.9rem; }
+      #intro { height: 100svh; min-height: 100svh; padding: calc(var(--nav-height) + 18px) 12px 18px; }
+      .hero-headline { font-size: clamp(2.75rem, 11.9vw, 5.4rem); letter-spacing: -0.052em; }
+      .hero-lead { margin-bottom: 0.34em; font-size: 0.31em; letter-spacing: 0.025em; }
+      .hero-word-stage { margin-bottom: 0.085em; }
+      .client-logos-container { --logo-gap: 30px; }
+      .client-logo { width: 116px; height: 46px; }
+      #recent-work,#services,#about-me,#testimonials,#contact { padding-left: 16px; padding-right: 16px; }
+      #services,#recent-work,#testimonials { padding-top: 84px; padding-bottom: 84px; }
+      .about-container,.services-grid { display: block; }
+      .services-header { margin-bottom: 44px; }
+      .about-image-col { margin-bottom: 40px; }
+      .contact-point { width: 66px; }
+      .contact-meta { flex-direction: column; gap: 14px; }
     }
 
     @media (max-width: 380px) {
-      .hero-headline {
-        font-size: clamp(2.8rem, 14vw, 3.35rem);
-      }
+      .hero-headline { font-size: clamp(2.55rem, 11.6vw, 3.1rem); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      /*
-        The typewriter is intentionally left running here.
-        The previous version disabled it on devices with Reduce Motion enabled,
-        which is why it could remain stuck on BRAND on iPhone.
-      */
-
-      .nav-links,
-      .nav-links a::after,
-      .hamburger-icon,
-      .hamburger-icon::before,
-      .hamburger-icon::after,
-      .client-logo,
-      .trigger-headline,
-      .icon-line,
-      .work-accordion-body,
-      .testimonial-item,
-      .testimonial-control,
-      .testimonial-control::after {
-        transition-duration: 0.01ms !important;
-      }
-
-
-      .point-home,
-      .the-point__face,
-      .hero-made-wrap {
-        transition-duration: 180ms !important;
-      }
-
-      .the-point.is-winking .the-point__eye--right {
-        animation-duration: 360ms !important;
-      }
-
-      .the-point.is-settled .the-point__body,
-      .the-point.is-settled .the-point__eye {
-        animation: none !important;
-      }
-
-      .contact-point,
-      .contact-point__body,
-      .contact-point__face,
-      .contact-point__eye,
-      .contact-point__mouth,
-      .contact-point__pointer {
-        transition-duration: 240ms !important;
-      }
-
-      .contact-point.is-settled .contact-point__body,
-      .contact-point.is-settled .contact-point__eye {
-        animation: none !important;
-      }
+      html { scroll-behavior: auto; }
+      .hero-point,.hero-point__body,.hero-point__face,.hero-word { animation: none !important; transition-duration: 0.01ms !important; }
     }
   </style>
-<script type="application/ld+json">
-[
+<script type="application/ld+json">[
   {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -2402,22 +887,11 @@
       "https://www.linkedin.com/in/emilvmadsen/"
     ]
   }
-]
-</script>
-</head>
+]</script></head>
 <body>
 <nav aria-label="Primær navigation" class="sticky-nav">
 <a aria-label="Strategy Support forside" class="nav-logo" href="#intro">
-<span class="nav-logo__word">Strategy</span>
-<span aria-hidden="true" class="nav-point">
-<span class="nav-point__body"></span>
-<span class="nav-point__face">
-<span class="nav-point__eye nav-point__eye--left"></span>
-<span class="nav-point__eye nav-point__eye--right"></span>
-<span class="nav-point__mouth"></span>
-</span>
-</span>
-<span class="nav-logo__word">Support</span>
+<span class="nav-logo__word">Strategy Support</span><span aria-hidden="true" class="nav-point"></span>
 </a>
 <button aria-controls="primary-navigation" aria-expanded="false" aria-label="Åbn menu" class="mobile-menu-toggle" type="button">
 <span aria-hidden="true" class="hamburger-icon"></span>
@@ -2434,29 +908,29 @@
 <main>
 <section aria-labelledby="intro-heading" id="intro">
 <div class="hero-container">
-<h1 aria-label="Brand-, marketing- og kreativ strategi. Enkelt." class="hero-headline" id="intro-heading">
-<span aria-hidden="true" class="hero-main">
-<span class="hero-changing-slot">
-<span class="hero-changing-reserve">MARKETING</span>
-<span class="hero-changing-live">
-<span class="hero-changing-word" id="hero-changing-word">BRAND</span>
-<span class="hero-cursor is-blinking" id="hero-cursor"></span>
+<h1 aria-label="Hjælp til svære brand-, marketing- eller kreative problemer." class="hero-headline" id="intro-heading">
+<span aria-hidden="true" class="hero-copy">
+<span class="hero-lead">Hjælp til svære</span>
+<span class="hero-word-stage" id="hero-word-stage">
+<span class="hero-word-reserve">Marketing</span>
+<span class="hero-word-layer" id="hero-word-layer">
+<span class="hero-word">Brand</span>
 </span>
 </span>
-<span class="hero-fixed">STRATEGI</span>
-</span>
-<span aria-hidden="true" class="hero-subline" id="hero-subline">
-<span class="hero-made-wrap" id="hero-made-wrap">
-<span class="hero-made" id="hero-made"><span class="hero-made-letter">H</span><span class="hero-made-letter">e</span><span class="hero-made-letter">l</span><span class="hero-made-letter">t</span></span><span class="hero-made-gap"> </span>
-</span><span class="hero-simple" id="hero-simple">enkelt</span><span class="point-home" id="point-home"><span class="the-point" id="the-point">
-<span class="the-point__body" id="the-point-body">
-<span class="the-point__face">
-<span class="the-point__eye the-point__eye--left"></span>
-<span class="the-point__eye the-point__eye--right"></span>
-<span class="the-point__mouth"></span>
+<span class="hero-problems-line">
+<span>Problemer</span>
+<span class="hero-point-home" id="hero-point-home">
+<span class="hero-point" id="hero-point">
+<span class="hero-point__body" id="hero-point-body">
+<span class="hero-point__face">
+<span class="hero-point__eye hero-point__eye--left"></span>
+<span class="hero-point__eye hero-point__eye--right"></span>
+<span class="hero-point__mouth"></span>
 </span>
 </span>
-</span></span>
+</span>
+</span>
+</span>
 </span>
 </h1>
 </div>
@@ -2465,58 +939,48 @@
 <div class="about-container">
 <div class="about-image-col">
 <div class="about-image-wrapper">
-<img alt="Emil Valdemar Madsen" height="1600" loading="lazy" src="/assets/emilmadsen.JPG" width="1200"/>
+<img alt="Emil Valdemar Madsen" decoding="async" height="1600" loading="lazy" src="/assets/emilmadsen.JPG" width="1200"/>
 </div>
 </div>
 <div class="about-content">
 <h2 class="about-heading" id="about-me-heading">Jeg har arbejdet på begge sider af briefet i 15 år.</h2>
 <div class="about-text">
-<p>Hej, jeg hedder Emil Valdemar Madsen. Jeg er en freelance marketing- og brandstrateg, der har ledet strategi på bureauer i London og haft ansvar for brand og marketing i globale virksomheder.</p>
-<p>Nogle gange handler det om at skabe retning i en marketingorganisation. Andre gange om at finde den tanke, der gør et svært brief enkelt. Min rolle er at gøre det komplekse og svære enkelt og inspirerende.</p>
+<p>Hej, jeg hedder Emil Valdemar Madsen. Jeg har ledet strategi på bureauer i London og haft ansvar for brand og marketing i globale virksomheder. Derfor forstår jeg både forretningens behov og hvad kreative teams har brug for for at skabe godt arbejde.</p>
+<p>Nogle gange handler det om at skabe retning i en global marketingorganisation. Andre gange om at finde den tanke, der åbner et svært brief. Min rolle er at finde ud af, hvad der virkelig betyder noget, gøre det klart og hjælpe folk med at omsætte det til noget brugbart.</p>
 </div>
 <div class="about-clients-wrapper">
 <span class="clients-intro-label">Brands og bureauer, jeg har hjulpet</span>
-<div aria-label="Kundetyper" class="client-tabs" role="tablist">
-<button aria-controls="brands-group" aria-selected="true" class="client-tab active" data-type="brands" id="brands-tab" role="tab" type="button">Brands</button>
-<button aria-controls="agencies-group" aria-selected="false" class="client-tab" data-type="agencies" id="agencies-tab" role="tab" type="button">Bureauer</button>
+<div aria-label="Kundetype" class="client-tabs" role="tablist">
+<button aria-controls="client-panel-brands" aria-selected="true" class="client-tab active" data-type="brands" id="client-tab-brands" role="tab" tabindex="0" type="button">Brands</button>
+<button aria-controls="client-panel-agencies" aria-selected="false" class="client-tab" data-type="agencies" id="client-tab-agencies" role="tab" tabindex="-1" type="button">Bureauer</button>
 </div>
 <div class="carousel-wrapper">
 <div class="carousel-container">
 <div class="carousel-content">
-<div aria-labelledby="brands-tab" class="client-group active" data-group="brands" id="brands-group" role="tabpanel">
+<div aria-labelledby="client-tab-brands" class="client-group active" data-group="brands" id="client-panel-brands" role="tabpanel" tabindex="0">
 <div class="client-logos-container">
-<img alt="Huawei" class="client-logo" loading="lazy" src="/assets/brand1.png"/>
-<img alt="Burger King" class="client-logo" loading="lazy" src="/assets/brand2.png"/>
-<img alt="Barclays" class="client-logo" loading="lazy" src="/assets/brand3.png"/>
-<img alt="Arla Foods" class="client-logo" loading="lazy" src="/assets/brand4.png"/>
-<img alt="PepsiCo" class="client-logo" loading="lazy" src="/assets/brand5.png"/>
-<img alt="Saxo Bank" class="client-logo" loading="lazy" src="/assets/brand6.png"/>
-<img alt="Mr Green" class="client-logo" loading="lazy" src="/assets/brand7.png"/>
-<img alt="Danske Bank" class="client-logo" loading="lazy" src="/assets/brand8.png"/>
-<img alt="ATP" class="client-logo" loading="lazy" src="/assets/brand9.png"/>
-<img alt="Kellogg's" class="client-logo" loading="lazy" src="/assets/brand10.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand1.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand2.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand3.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand4.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand5.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand6.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand7.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand8.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand9.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand10.png"/>
+<div class="client-logo-set">
+<img alt="Huawei" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand1.png" width="180"/>
+<img alt="Burger King" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand2.png" width="180"/>
+<img alt="Barclays" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand3.png" width="180"/>
+<img alt="Arla Foods" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand4.png" width="180"/>
+<img alt="PepsiCo" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand5.png" width="180"/>
+<img alt="Saxo Bank" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand6.png" width="180"/>
+<img alt="Mr Green" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand7.png" width="180"/>
+<img alt="Danske Bank" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand8.png" width="180"/>
+<img alt="ATP" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand9.png" width="180"/>
+<img alt="Kellogg's" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand10.png" width="180"/>
 </div>
 </div>
-<div aria-labelledby="agencies-tab" class="client-group" data-group="agencies" hidden="" id="agencies-group" role="tabpanel">
+</div>
+<div aria-labelledby="client-tab-agencies" class="client-group" data-group="agencies" hidden="" id="client-panel-agencies" role="tabpanel" tabindex="0">
 <div class="client-logos-container">
-<img alt="Worth Your While Agency" class="client-logo" loading="lazy" src="/assets/brand12.png"/>
-<img alt="Dentsu Creative London" class="client-logo" loading="lazy" src="/assets/brand13.png"/>
-<img alt="Edelman London" class="client-logo" loading="lazy" src="/assets/brand14.png"/>
-<img alt="FCB London" class="client-logo" loading="lazy" src="/assets/brand15.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand12.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand13.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand14.png"/>
-<img alt="" aria-hidden="true" class="client-logo" loading="lazy" src="/assets/brand15.png"/>
+<div class="client-logo-set">
+<img alt="Worth Your While Agency" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand12.png" width="180"/>
+<img alt="Dentsu Creative London" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand13.png" width="180"/>
+<img alt="Edelman London" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand14.png" width="180"/>
+<img alt="FCB London" class="client-logo" decoding="async" height="58" loading="eager" src="/assets/brand15.png" width="180"/>
+</div>
 </div>
 </div>
 </div>
@@ -2526,177 +990,45 @@
 </div>
 </div>
 </section>
-<section aria-label="Sådan hjælper jeg" id="services">
-<div class="services-grid">
+<section aria-labelledby="services-heading" id="services">
+<div class="services-grid"><h2 class="visually-hidden" id="services-heading">Sådan hjælper jeg</h2>
 <div class="services-header">
-<p class="services-intro">Kunder bringer mig typisk ind, <span class="pink-highlight">når noget vigtigt er blevet svært</span> at forklare, prioritere eller få omsat til arbejde, der virker.</p>
+<p class="services-intro">Kunder henter mig typisk ind, <span class="pink-highlight">når noget vigtigt er blevet svært</span> at forklare, prioritere eller omsætte til godt arbejde.</p>
 </div>
 <div class="services-content">
-<div class="service-row">
-<span class="service-kicker">Brandstrategi</span>
-<h3>Når brandet er blevet svært at forklare</h3>
-<p>Når et brand har fået for mange budskaber, målgrupper og ambitioner, hjælper jeg med at finde den idé, der samler det hele. Resultatet er en klar position, som folk kan forstå, huske og bruge.</p>
-</div>
-<div class="service-row">
-<span class="service-kicker">Marketingstrategi</span>
-<h3>Når marketing har brug for et skarpere fokus</h3>
-<p>Jeg omsætter kommercielle ambitioner til klare valg: hvem vi skal fokusere på, hvad der skal ændre sig, og hvor marketing kan gøre størst forskel.</p>
-</div>
-<div class="service-row">
-<span class="service-kicker">Kreativ strategi</span>
-<h3>Når det kreative arbejde mangler en stærkere idé</h3>
-<p>Jeg finder det oversete, der giver briefet en ny retning, og gør det til en platform, der kan bære mere end én kampagne. Klar nok til at styre arbejdet. Åben nok til at inspirere det.</p>
-</div>
+<div class="service-row"><span class="service-kicker">Brandstrategi</span><h3>Når brandet er blevet svært at forklare</h3><p>Når et brand har fået for mange budskaber, målgrupper og ambitioner, hjælper jeg med at finde den ene idé, der holder det hele sammen. Resultatet er en klar position, som folk kan huske, bruge og bygge videre på.</p></div>
+<div class="service-row"><span class="service-kicker">Marketingstrategi</span><h3>Når marketing har brug for et skarpere fokus</h3><p>Jeg omsætter kommercielle ambitioner til klare marketingvalg: hvem der betyder mest, hvad der skal ændre sig, og hvor ressourcerne kan gøre den største forskel.</p></div>
+<div class="service-row"><span class="service-kicker">Kreativ strategi</span><h3>Når arbejdet har brug for en bedre idé</h3><p>Jeg finder den sandhed, der giver briefet en ny retning, og gør den til en platform, der kan bære mere end én kampagne. Klar nok til at fokusere arbejdet. Åben nok til at inspirere det.</p></div>
 </div>
 </div>
 </section>
 <section aria-labelledby="recent-work-heading" id="recent-work">
-<div class="work-container"><h2 class="work-section-title" id="recent-work-heading">Eksempler på mit arbejde.</h2>
-<div class="work-list">
-<article class="work-row">
-<button aria-controls="dsv-case" aria-expanded="false" class="work-header-trigger" id="dsv-trigger" type="button">
-<span class="client-name">DSV Logistics — 2025</span>
-<span class="trigger-headline">DSV fik én marketingstrategi på tværs af 90+ markeder</span>
-<span aria-hidden="true" class="accordion-icon">
-<span class="icon-line horizontal"></span>
-<span class="icon-line vertical"></span>
-</span>
-</button>
-<div aria-labelledby="dsv-trigger" class="work-accordion-body" id="dsv-case" role="region">
-<div class="work-accordion-inner">
-<div class="work-fold-content">
-<div class="work-image-wrapper">
-<img alt="Globalt marketingstrategiarbejde for DSV" height="900" loading="lazy" src="/assets/dsv-case.png" width="1200"/>
-</div>
-<div class="narrative-stack">
-<div class="narrative-item">
-<span class="narrative-label">Situationen</span>
-<p class="narrative-text">DSV er verdens største transport- og logistikvirksomhed. Marketing skal fungere på tværs af seks brancher, fire produktdivisioner, flere kundesegmenter og mere end 90 markeder.</p>
-</div>
-<div class="narrative-item">
-<span class="narrative-label">Udfordringen</span>
-<p class="narrative-text">Opgaven var ikke bare at skrive endnu en global strategi. Den var at skabe en fælles retning, der kunne hjælpe globale, regionale og lokale teams med at træffe bedre valg uden at udviske de reelle forskelle mellem brancher, produkter og markeder.</p>
-</div>
-<div class="narrative-item">
-<span class="narrative-label">Strategien</span>
-<p class="narrative-text">I tæt samarbejde med den globale CMO udvikler jeg marketingstrategien og de principper og værktøjer, der forbinder forretningens prioriteter med det, der faktisk påvirker kundernes valg i B2B-logistik — fra nye kunder og fastholdelse til messer og store branchebegivenheder.</p>
-</div>
-<div class="narrative-item">
-<span class="narrative-label">Sideløbende</span>
-<p class="narrative-text">Jeg understøtter også organisationsdesign, procesudvikling og implementeringen af AI på tværs af marketingorganisationen.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</article>
-<article class="work-row">
-<button aria-controls="saxo-case" aria-expanded="false" class="work-header-trigger" id="saxo-trigger" type="button">
-<span class="client-name">Saxo Bank — 2023</span>
-<span class="trigger-headline">Saxo blev den platform, pengene selv ville vælge</span>
-<span aria-hidden="true" class="accordion-icon">
-<span class="icon-line horizontal"></span>
-<span class="icon-line vertical"></span>
-</span>
-</button>
-<div aria-labelledby="saxo-trigger" class="work-accordion-body" id="saxo-case" role="region">
-<div class="work-accordion-inner">
-<div class="work-fold-content">
-<div class="work-image-wrapper">
-<img alt="Brandplatform for Saxo Bank" height="900" loading="lazy" src="/assets/saxo-bank-case.png" width="1200"/>
-</div>
-<div class="narrative-stack">
-<div class="narrative-item">
-<span class="narrative-label">Situationen</span>
-<p class="narrative-text">Saxo ville øge kendskabet og blive foretrukket af flere erfarne investorer og tradere verden over. Men virksomheden konkurrerede på et marked præget af pris og kommunikation, der lignede alt andet i kategorien.</p>
-</div>
-<div class="narrative-item">
-<span class="narrative-label">Det afgørende greb</span>
-<p class="narrative-text">Investorer vil ikke bare passe på deres penge. De vil have dem til at arbejde. Og med flere investeringsmuligheder end konkurrenterne gav Saxo pengene mere at lave.</p>
-</div>
-<div class="narrative-item">
-<span class="narrative-label">Strategien</span>
-<p class="narrative-text">Vi dramatiserede fordelen ved mere end 75.000 investeringsmuligheder ved at give pengene en stemme — og vise, at de ville vælge Saxo, hvis de selv kunne bestemme.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</article>
-<article class="work-row">
-<button aria-controls="burger-king-case" aria-expanded="false" class="work-header-trigger" id="burger-king-trigger" type="button">
-<span class="client-name">Burger King — 2016</span>
-<span class="trigger-headline">Burger Kings globale strategi fik en britisk attitude</span>
-<span aria-hidden="true" class="accordion-icon">
-<span class="icon-line horizontal"></span>
-<span class="icon-line vertical"></span>
-</span>
-</button>
-<div aria-labelledby="burger-king-trigger" class="work-accordion-body" id="burger-king-case" role="region">
-<div class="work-accordion-inner">
-<div class="work-fold-content">
-<div class="work-image-wrapper">
-<img alt="Britisk brandstrategiarbejde for Burger King" height="900" loading="lazy" src="/assets/burger-king-case.png" width="1200"/>
-</div>
-<div class="narrative-stack">
-<div class="narrative-item">
-<span class="narrative-label">Situationen</span>
-<p class="narrative-text">Burger King havde ændret sin globale brandstrategi fra <em>Have It Your Way</em> til <em>Be Your Way</em>. Men efterhånden som flere brands begyndte at hylde individualitet, risikerede platformen at føles generisk og importeret i Storbritannien.</p>
-</div>
-<div class="narrative-item">
-<span class="narrative-label">Det afgørende greb</span>
-<p class="narrative-text">Britiske unge viser ikke altid individualitet gennem store oprør. Oftere gør de det med et glimt i øjet: ved at tage det forventede og dreje det på deres egen måde.</p>
-</div>
-<div class="narrative-item">
-<span class="narrative-label">Strategien</span>
-<p class="narrative-text">Vi gjorde Burger King til stedet for små, frække afstikkere — en britisk fortolkning af den globale idé, som passede naturligt til produktet, målgruppen og kulturen.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</article>
-</div>
+<div class="work-container"><h2 class="visually-hidden" id="recent-work-heading">Eksempler på mit arbejde</h2>
+<article class="work-row"><button aria-controls="work-panel-1" aria-expanded="false" class="work-header-trigger" id="work-trigger-1" type="button"><span class="client-name">DSV Logistics — 2025</span><span class="trigger-headline">Én marketingtilgang til en virksomhed, der ikke kan standardiseres</span><span aria-hidden="true" class="accordion-icon"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div aria-hidden="true" aria-labelledby="work-trigger-1" class="work-accordion-body" id="work-panel-1" inert="" role="region"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img alt="Globalt marketingstrategiarbejde for DSV" decoding="async" height="1200" loading="lazy" src="/assets/dsv-case.png" width="1600"/></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">Situationen</span><p class="narrative-text">DSV er verdens største transport- og logistikvirksomhed. Marketing skal fungere på tværs af seks brancher, fire produktdivisioner, flere kundesegmenter og mere end 90 markeder.</p></div><div class="narrative-item"><span class="narrative-label">Udfordringen</span><p class="narrative-text">Opgaven var ikke bare at skrive endnu en global strategi. Den var at skabe en sammenhængende tilgang, der kunne guide globale, regionale og lokale valg uden at overse forskellene mellem brancher, produkter og markeder.</p></div><div class="narrative-item"><span class="narrative-label">Strategien</span><p class="narrative-text">I tæt samarbejde med den globale CMO udvikler jeg marketingstrategien og de rammer, der forbinder forretningens prioriteter med det, der faktisk driver køb i B2B-logistik — fra nye kunder og fastholdelse til messer og store branchebegivenheder.</p></div><div class="narrative-item"><span class="narrative-label">Sideløbende</span><p class="narrative-text">Jeg understøtter også organisationsdesign, procesudvikling og implementeringen af AI på tværs af marketingorganisationen.</p></div></div></div></div></div></article>
+<article class="work-row"><button aria-controls="work-panel-2" aria-expanded="false" class="work-header-trigger" id="work-trigger-2" type="button"><span class="client-name">Saxo Bank — 2023</span><span class="trigger-headline">Saxo blev den platform, pengene selv ville vælge</span><span aria-hidden="true" class="accordion-icon"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div aria-hidden="true" aria-labelledby="work-trigger-2" class="work-accordion-body" id="work-panel-2" inert="" role="region"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img alt="Brandplatform for Saxo Bank" decoding="async" height="1200" loading="lazy" src="/assets/saxo-bank-case.png" width="1600"/></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">Situationen</span><p class="narrative-text">Saxo ville øge kendskabet og blive foretrukket af flere erfarne investorer og tradere verden over. Men virksomheden konkurrerede i en tæt, prisdrevet kategori fuld af kedelig, bankagtig kommunikation.</p></div><div class="narrative-item"><span class="narrative-label">Det afgørende greb</span><p class="narrative-text">Investorer vil ikke bare passe på deres penge. De vil have dem til at arbejde. Og med flere investeringsmuligheder end konkurrenterne giver Saxo pengene mere at lave.</p></div><div class="narrative-item"><span class="narrative-label">Strategien</span><p class="narrative-text">Vi dramatiserede produktfordelen ved mere end 75.000 investeringsmuligheder ved at give pengene en stemme — og vise, at de ville vælge Saxo, hvis de selv kunne bestemme.</p></div></div></div></div></div></article>
+<article class="work-row"><button aria-controls="work-panel-3" aria-expanded="false" class="work-header-trigger" id="work-trigger-3" type="button"><span class="client-name">Burger King — 2016</span><span class="trigger-headline">Burger Kings globale strategi fik en britisk attitude</span><span aria-hidden="true" class="accordion-icon"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div aria-hidden="true" aria-labelledby="work-trigger-3" class="work-accordion-body" id="work-panel-3" inert="" role="region"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img alt="Britisk brandstrategiarbejde for Burger King" decoding="async" height="1200" loading="lazy" src="/assets/burger-king-case.png" width="1600"/></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">Situationen</span><p class="narrative-text">Burger King havde ændret sin globale brandstrategi fra <em>Have It Your Way</em> til <em>Be Your Way</em>. Men efterhånden som flere brands begyndte at hylde individualitet, risikerede platformen at føles generisk og importeret i Storbritannien.</p></div><div class="narrative-item"><span class="narrative-label">Det afgørende greb</span><p class="narrative-text">Britiske unge viser ikke altid individualitet gennem store oprør. Oftere gør de det med et glimt i øjet: ved at tage det forventede og dreje det på deres egen måde.</p></div><div class="narrative-item"><span class="narrative-label">Strategien</span><p class="narrative-text">Vi gjorde Burger King til stedet for små, frække afstikkere — en britisk fortolkning af den globale idé, som passede naturligt til produktet, målgruppen og kulturen.</p></div></div></div></div></div></article>
 </div>
 </section>
-<section aria-label="Anbefalinger fra kunder" id="testimonials">
-<div class="testimonials-container">
-<div class="testimonial-stage">
-<figure class="testimonial-item active">
-<blockquote class="testimonial-quote">“Hvis du har brug for en marketingstrateg, der også har flair for taktisk eksekvering, findes der ingen bedre end Emil. Jeg kan ikke anbefale ham nok.”</blockquote>
-<figcaption class="testimonial-author">
-<strong>John Veje</strong>
-<span class="testimonial-role">Group CMO, Danske Bank</span>
-</figcaption>
-</figure>
-<figure class="testimonial-item">
-<blockquote class="testimonial-quote">“Emil er en moderne strateg, der kombinerer grundig strategisk tænkning med evnen til ubesværet at eksekvere på tværs af alle kanaler. Han tænker utraditionelt og inspirerer kreative teams med sine briefinger.”</blockquote>
-<figcaption class="testimonial-author">
-<strong>Vicki Holgate</strong>
-<span class="testimonial-role">CSO, FCB Inferno London</span>
-</figcaption>
-</figure>
-<figure class="testimonial-item">
-<blockquote class="testimonial-quote">“Emil er en fremragende strateg. Hans arbejde er minutiøst, hans tilgang er grundig, og hans evne til at præsentere og kommunikere er i særklasse.”</blockquote>
-<figcaption class="testimonial-author">
-<strong>Nathan Cook</strong>
-<span class="testimonial-role">Global Director, Unilever</span>
-</figcaption>
-</figure>
+<section aria-labelledby="testimonials-heading" id="testimonials">
+<div class="testimonials-container"><h2 class="visually-hidden" id="testimonials-heading">Det siger kunderne</h2>
+<div aria-live="polite" class="testimonial-stage">
+<figure aria-hidden="false" aria-labelledby="testimonial-tab-1" class="testimonial-item active" id="testimonial-panel-1" role="tabpanel"><blockquote class="testimonial-quote">“Hvis du har brug for en marketingstrateg, der også har flair for taktisk eksekvering, findes der ingen bedre end Emil. Jeg kan ikke anbefale ham nok.”</blockquote><figcaption class="testimonial-author"><strong>John Veje</strong><span class="testimonial-role">Group CMO, Danske Bank</span></figcaption></figure>
+<figure aria-hidden="true" aria-labelledby="testimonial-tab-2" class="testimonial-item" id="testimonial-panel-2" inert="" role="tabpanel"><blockquote class="testimonial-quote">“Emil er en moderne strateg, der kombinerer grundig strategisk tænkning med evnen til ubesværet at eksekvere på tværs af alle kanaler.”</blockquote><figcaption class="testimonial-author"><strong>Vicki Holgate</strong><span class="testimonial-role">CSO, FCB Inferno London</span></figcaption></figure>
+<figure aria-hidden="true" aria-labelledby="testimonial-tab-3" class="testimonial-item" id="testimonial-panel-3" inert="" role="tabpanel"><blockquote class="testimonial-quote">“Emil er en fremragende strateg. Hans arbejde er minutiøst, hans tilgang er grundig, og hans evne til at præsentere og kommunikere er i særklasse.”</blockquote><figcaption class="testimonial-author"><strong>Nathan Cook</strong><span class="testimonial-role">Global Director, Unilever</span></figcaption></figure>
 </div>
-<div aria-label="Navigation mellem kundeudtalelser" class="testimonial-controls">
-<button aria-label="Vis udtalelse fra John Veje" aria-pressed="true" class="testimonial-control active" type="button">John Veje</button>
-<button aria-label="Vis udtalelse fra Vicki Holgate" aria-pressed="false" class="testimonial-control" type="button">Vicki Holgate</button>
-<button aria-label="Vis udtalelse fra Nathan Cook" aria-pressed="false" class="testimonial-control" type="button">Nathan Cook</button>
+<div aria-label="Navigation mellem kundeudtalelser" class="testimonial-controls" role="tablist">
+<button aria-controls="testimonial-panel-1" aria-label="Vis udtalelse fra John Veje" aria-selected="true" class="testimonial-control active" id="testimonial-tab-1" role="tab" tabindex="0" type="button">John Veje</button>
+<button aria-controls="testimonial-panel-2" aria-label="Vis udtalelse fra Vicki Holgate" aria-selected="false" class="testimonial-control" id="testimonial-tab-2" role="tab" tabindex="-1" type="button">Vicki Holgate</button>
+<button aria-controls="testimonial-panel-3" aria-label="Vis udtalelse fra Nathan Cook" aria-selected="false" class="testimonial-control" id="testimonial-tab-3" role="tab" tabindex="-1" type="button">Nathan Cook</button>
 </div>
-<p class="testimonial-translation-note">Oversat fra engelsk.</p></div>
+</div>
 </section>
 <section aria-labelledby="contact-heading" id="contact">
 <div class="contact-container">
 <h2 class="contact-heading" id="contact-heading">Har du et svært brand- eller marketingproblem?</h2>
-<div class="contact-email-stage" id="contact-email-stage">
-<span aria-hidden="true" class="contact-point" id="contact-point">
-<span aria-hidden="true" class="contact-point__pointer"></span>
+<div class="contact-email-stage">
+<span aria-hidden="true" class="contact-point">
+<span class="contact-point__pointer"></span>
 <span class="contact-point__body">
 <span class="contact-point__face">
 <span class="contact-point__eye contact-point__eye--left"></span>
@@ -2705,963 +1037,976 @@
 </span>
 </span>
 </span>
-<a class="giant-email" href="mailto:emil@strategy-support.com" id="contact-email">emil@strategy-support.com</a>
+<a class="giant-email" href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
 </div>
-<div class="contact-meta">
-<span>Fra København · For kunder over hele verden</span>
-<a href="https://www.linkedin.com/in/emilvmadsen/" rel="noopener noreferrer" target="_blank">LinkedIn-profil ↗</a>
-</div>
+<div class="contact-meta"><span>Fra København · For kunder over hele verden</span><a href="https://www.linkedin.com/in/emilvmadsen/">LinkedIn-profil ↗</a></div>
 </div>
 </section>
 </main>
-<footer>
-<p class="footer-copy">© <span id="current-year"></span> Strategy Support · Freelance brand- og marketingstrateg i København · CVR 33320817.</p>
-</footer>
+<footer><p class="footer-copy">© <span id="current-year"></span> Strategy Support · Freelance brand- og marketingstrateg i København · CVR 33320817.</p></footer>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      /*
-        THE POINT
-        A character performance: it wakes, scans the headline, turns
-        towards “Helt”, rolls across and removes it, then returns to
-        admire “Enkelt” and gives the finished word a small wink.
-      */
-      const heroSubline = document.getElementById("hero-subline");
-      const heroSimple = document.getElementById("hero-simple");
-      const madeWrap = document.getElementById("hero-made-wrap");
-      const madeLetters = Array.from(document.querySelectorAll(".hero-made-letter"));
-      const pointHome = document.getElementById("point-home");
-      const point = document.getElementById("the-point");
-      const pointBody = document.getElementById("the-point-body");
+document.addEventListener("DOMContentLoaded", () => {
+  const sleep = (delay) => new Promise((resolve) => window.setTimeout(resolve, delay));
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const lerp = (start, end, amount) => start + (end - start) * amount;
+  const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const easeOutBack = (t) => {
+    const c1 = 1.70158;
+    const c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  };
 
-      const pointEditPause = 8600;
-      let pointHasEdited = false;
-      let pointEditScheduled = false;
+  const timings = {
+    hero: {
+      loop: 3400,
+      loopReduced: 2600,
+      wake: 420,
+      wakeReduced: 160,
+      inspect: 480,
+      inspectReduced: 100,
+      crouch: 220,
+      crouchReduced: 100,
+      leap: 680,
+      leapReduced: 220,
+      windUp: 170,
+      windUpReduced: 50,
+      strike: 145,
+      strikeReduced: 70,
+      impactHold: 55,
+      impactHoldReduced: 10,
+      rebound: 285,
+      reboundReduced: 80,
+      settle: 230,
+      settleReduced: 60,
+      winkDelay: 320,
+      winkDelayReduced: 80,
+      wink: 520,
+      winkReduced: 120
+    },
+    contact: {
+      arrive: 550,
+      point: 650,
+      nod: 720,
+      pause: 180,
+      wink: 620,
+      acknowledge: 260,
+      lookUser: 520,
+      reminderMin: 7000,
+      reminderMax: 12000,
+      reminderPoint: 850,
+      reminderPause: 280
+    }
+  };
 
-      const sleep = (delay) => new Promise((resolve) => window.setTimeout(resolve, delay));
-      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-      const lerp = (start, end, amount) => start + (end - start) * amount;
-      const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
-      const easeInOutCubic = (t) => t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-      function animateFrame(duration, update) {
-        return new Promise((resolve) => {
-          const startedAt = performance.now();
-
-          function frame(now) {
-            const rawProgress = clamp((now - startedAt) / duration, 0, 1);
-            update(rawProgress);
-
-            if (rawProgress < 1) {
-              window.requestAnimationFrame(frame);
-            } else {
-              resolve();
-            }
-          }
-
-          window.requestAnimationFrame(frame);
-        });
-      }
-
-      function getPointOrientationState() {
-        if (!point) {
-          return {
-            bodyRotate: 0,
-            bodyTranslateX: 0,
-            bodyTranslateY: 0,
-            bodyScaleX: 1,
-            bodyScaleY: 1
-          };
-        }
-
-        if (point.classList.contains("is-admiring-simple")) {
-          return {
-            bodyRotate: -12,
-            bodyTranslateX: -2.6,
-            bodyTranslateY: -0.4,
-            bodyScaleX: 0.94,
-            bodyScaleY: 1.045
-          };
-        }
-
-        if (point.classList.contains("is-looking-left")) {
-          return {
-            bodyRotate: -10,
-            bodyTranslateX: -2.1,
-            bodyTranslateY: 0,
-            bodyScaleX: 0.95,
-            bodyScaleY: 1.04
-          };
-        }
-
-        if (point.classList.contains("is-looking-right")) {
-          return {
-            bodyRotate: 10,
-            bodyTranslateX: 2.1,
-            bodyTranslateY: 0,
-            bodyScaleX: 0.95,
-            bodyScaleY: 1.04
-          };
-        }
-
-        if (point.classList.contains("is-looking-up")) {
-          return {
-            bodyRotate: -2,
-            bodyTranslateX: 0,
-            bodyTranslateY: -0.8,
-            bodyScaleX: 1.01,
-            bodyScaleY: 1.02
-          };
-        }
-
-        return {
-          bodyRotate: 0,
-          bodyTranslateX: 0,
-          bodyTranslateY: 0,
-          bodyScaleX: 1,
-          bodyScaleY: 1
-        };
-      }
-
-      function setPointBodyTransform(scaleX = 1, scaleY = 1, rotation = 0, y = 0) {
-        if (!pointBody) return;
-
-        const orientation = getPointOrientationState();
-        const finalScaleX = scaleX * orientation.bodyScaleX;
-        const finalScaleY = scaleY * orientation.bodyScaleY;
-        const finalRotation = rotation + orientation.bodyRotate;
-        const finalX = orientation.bodyTranslateX;
-        const finalY = y + orientation.bodyTranslateY;
-
-        pointBody.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) rotate(${finalRotation}deg) scale(${finalScaleX}, ${finalScaleY})`;
-      }
-
-      function clearPointGaze() {
-        if (!point) return;
-        point.classList.remove(
-          "is-looking-up",
-          "is-looking-left",
-          "is-looking-right",
-          "is-admiring-simple"
-        );
-      }
-
-      async function letPointLookAround(reducedMotion) {
-        if (!point || !pointBody) return;
-
-        /* First notice the changing strategy headline above. */
-        clearPointGaze();
-        point.classList.add("is-looking-up");
-
-        await animateFrame(reducedMotion ? 180 : 420, (progress) => {
-          const lift = Math.sin(Math.PI * progress);
-          setPointBodyTransform(
-            1 - lift * 0.025,
-            1 + lift * 0.035,
-            lift * -0.8,
-            lift * -1.4
-          );
-        });
-
-        await sleep(reducedMotion ? 90 : 260);
-
-        /* A quick glance out into the page makes it feel observant. */
-        clearPointGaze();
-        point.classList.add("is-looking-right");
-        await sleep(reducedMotion ? 100 : 300);
-
-        /* Then it spots the unnecessary word and commits to it. */
-        clearPointGaze();
-        point.classList.add("is-looking-left");
-        await sleep(reducedMotion ? 170 : 520);
-        setPointBodyTransform();
-      }
-
-      async function anticipatePoint(reducedMotion) {
-        if (!point || !pointBody) return;
-
-        clearPointGaze();
-        point.classList.add("is-looking-left");
-        await animateFrame(reducedMotion ? 150 : 320, (progress) => {
-          const eased = easeInOutCubic(progress);
-          setPointBodyTransform(
-            1 - eased * 0.015,
-            1 + eased * 0.03,
-            0,
-            eased * -0.8
-          );
-        });
-        await sleep(reducedMotion ? 140 : 340);
-
-        await animateFrame(reducedMotion ? 220 : 460, (progress) => {
-          const eased = easeInOutCubic(progress);
-          const pulse = Math.sin(Math.PI * progress);
-          setPointBodyTransform(
-            1 + pulse * 0.11,
-            1 - pulse * 0.07,
-            lerp(0, -7, eased),
-            pulse * 1.5
-          );
-        });
-
-        setPointBodyTransform();
-      }
-
-      function detachPoint() {
-        if (!point || !pointHome) return null;
-
-        const rect = point.getBoundingClientRect();
-
-        point.classList.add("is-roaming", "is-awake", "is-working");
-        point.style.left = `${rect.left}px`;
-        point.style.top = `${rect.top}px`;
-        point.style.width = `${rect.width}px`;
-        point.style.height = `${rect.height}px`;
-        point.style.transform = "translate3d(0, 0, 0)";
-        document.body.appendChild(point);
-
-        return {
-          originLeft: rect.left,
-          originTop: rect.top,
-          currentLeft: rect.left,
-          currentTop: rect.top,
-          size: rect.width
-        };
-      }
-
-      async function movePoint(journey, targetLeft, targetTop, options = {}) {
-        if (!point || !pointBody || !journey) return;
-
-        const startLeft = journey.currentLeft;
-        const startTop = journey.currentTop;
-        const duration = options.duration || 440;
-        const arc = options.arc || -10;
-        const tilt = options.tilt || -5;
-        const stretch = options.stretch || 0.16;
-
-        await animateFrame(duration, (progress) => {
-          const eased = easeInOutCubic(progress);
-          const lift = Math.sin(Math.PI * progress);
-          const left = lerp(startLeft, targetLeft, eased);
-          const top = lerp(startTop, targetTop, eased) + lift * arc;
-          const rotation = lift * tilt;
-          const scaleX = 1 + lift * stretch;
-          const scaleY = 1 - lift * stretch * 0.58;
-
-          point.style.transform = `translate3d(${left - journey.originLeft}px, ${top - journey.originTop}px, 0) rotate(${rotation}deg)`;
-          setPointBodyTransform(scaleX, scaleY, rotation * -0.22, lift * -1.5);
-        });
-
-        journey.currentLeft = targetLeft;
-        journey.currentTop = targetTop;
-        point.style.transform = `translate3d(${targetLeft - journey.originLeft}px, ${targetTop - journey.originTop}px, 0)`;
-        setPointBodyTransform();
-      }
-
-      async function eraseLetter(letter, journey, reducedMotion) {
-        if (!letter || !pointBody) return;
-
-        const duration = reducedMotion ? 180 : 320;
-
-        await animateFrame(duration, (progress) => {
-          const impact = Math.sin(Math.PI * progress);
-          const vanish = easeOutQuint(progress);
-
-          setPointBodyTransform(
-            1 + impact * 0.22,
-            1 - impact * 0.18,
-            impact * -2.2,
-            impact * 2
-          );
-
-          letter.style.opacity = String(1 - vanish);
-          letter.style.filter = `blur(${vanish * 1.4}px)`;
-          letter.style.transform = `translateY(${vanish * 0.16}em) scale(${1 - vanish * 0.72}) rotate(${vanish * -8}deg)`;
-        });
-
-        letter.style.opacity = "0";
-        letter.style.transform = "scale(0.01)";
-        setPointBodyTransform();
-
-        await sleep(reducedMotion ? 30 : 75);
-      }
-
-      async function collapseMade() {
-        if (!madeWrap) return;
-
-        const currentWidth = madeWrap.getBoundingClientRect().width;
-        madeWrap.style.width = `${currentWidth}px`;
-        madeWrap.style.marginRight = "0px";
-        void madeWrap.offsetWidth;
-        madeWrap.classList.add("is-collapsing");
-        await sleep(680);
-
-        if (heroSimple) {
-          heroSimple.textContent = "Enkelt";
-        }
-      }
-
-      async function returnPointHome(journey, reducedMotion) {
-        if (!point || !pointHome || !journey) return;
-
-        const homeRect = pointHome.getBoundingClientRect();
-        clearPointGaze();
-        point.classList.add("is-looking-right");
-
-        await movePoint(journey, homeRect.left, homeRect.top, {
-          duration: reducedMotion ? 320 : 760,
-          arc: reducedMotion ? -4 : -18,
-          tilt: 5,
-          stretch: reducedMotion ? 0.07 : 0.18
-        });
-
-        pointHome.appendChild(point);
-        point.classList.remove("is-roaming", "is-working");
-        point.style.removeProperty("left");
-        point.style.removeProperty("top");
-        point.style.removeProperty("width");
-        point.style.removeProperty("height");
-        point.style.removeProperty("transform");
-        pointBody.style.removeProperty("transform");
-      }
-
-      async function finishPointPerformance(reducedMotion) {
-        if (!point) return;
-
-        /* It comes home, then deliberately turns to face “Enkelt”. */
-        clearPointGaze();
-        point.classList.add("is-looking-left");
-
-        await animateFrame(reducedMotion ? 170 : 320, (progress) => {
-          const eased = easeInOutCubic(progress);
-          setPointBodyTransform(
-            1 - eased * 0.02,
-            1 + eased * 0.03,
-            0,
-            eased * -0.5
-          );
-        });
-
-        await sleep(reducedMotion ? 180 : 340);
-
-        clearPointGaze();
-        point.classList.add("is-admiring-simple", "is-satisfied");
-        await sleep(reducedMotion ? 340 : 820);
-
-        /* The wink is aimed at the finished word, not at the viewer. */
-        point.classList.add("is-winking");
-        await sleep(reducedMotion ? 420 : 700);
-        point.classList.remove("is-winking");
-        point.classList.add("is-settled");
-      }
-
-      async function startPointEdit() {
-        if (
-          pointHasEdited ||
-          !point ||
-          !pointBody ||
-          !pointHome ||
-          !madeWrap ||
-          !madeLetters.length
-        ) {
+  function animateFrame(duration, update, isCancelled = () => false) {
+    return new Promise((resolve) => {
+      const startedAt = performance.now();
+      function frame(now) {
+        if (isCancelled()) {
+          resolve(false);
           return;
         }
-
-        pointHasEdited = true;
-        pointEditScheduled = false;
-
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        pointHome.classList.add("is-awake");
-        point.classList.add("is-awake");
-
-        /* Let the punctuation wake, scan the page and notice “Helt”. */
-        await sleep(reducedMotion ? 180 : 520);
-        await letPointLookAround(reducedMotion);
-        await anticipatePoint(reducedMotion);
-
-        const journey = detachPoint();
-        if (!journey) return;
-
-        const reverseLetters = [...madeLetters].reverse();
-
-        for (let index = 0; index < reverseLetters.length; index += 1) {
-          const letter = reverseLetters[index];
-          const rect = letter.getBoundingClientRect();
-          const targetLeft = rect.left + rect.width / 2 - journey.size / 2;
-          const targetTop = rect.top + rect.height * 0.48 - journey.size / 2;
-
-          await movePoint(journey, targetLeft, targetTop, {
-            duration: reducedMotion ? 230 : 430,
-            arc: reducedMotion ? -3 : -9 - index * 1.5,
-            tilt: index % 2 === 0 ? -5 : 4,
-            stretch: reducedMotion ? 0.07 : 0.15
-          });
-
-          await eraseLetter(letter, journey, reducedMotion);
-        }
-
-        /* From the far side, it properly turns to face and admire “Enkelt”. */
-        point.classList.remove("is-working");
-        clearPointGaze();
-        point.classList.add("is-looking-right", "is-satisfied");
-
-        await animateFrame(reducedMotion ? 180 : 360, (progress) => {
-          const pulse = Math.sin(Math.PI * progress);
-          setPointBodyTransform(
-            1 - pulse * 0.035,
-            1 + pulse * 0.055,
-            pulse * 0.8,
-            pulse * -0.6
-          );
-        });
-
-        await sleep(reducedMotion ? 260 : 700);
-        point.classList.remove("is-satisfied");
-
-        await collapseMade();
-        await returnPointHome(journey, reducedMotion);
-        await finishPointPerformance(reducedMotion);
+        const progress = clamp((now - startedAt) / duration, 0, 1);
+        update(progress);
+        if (progress < 1) requestAnimationFrame(frame);
+        else resolve(true);
       }
-
-      /*
-        TYPEWRITER
-        The old version stopped on BRAND whenever iOS reported
-        "prefers-reduced-motion: reduce". This version uses a small,
-        self-contained timer loop and runs consistently in Safari.
-      */
-      const heroChangingWord = document.getElementById("hero-changing-word");
-      const heroCursor = document.getElementById("hero-cursor");
-      const heroWords = ["BRAND", "MARKETING", "KREATIV"];
-
-      const typingSpeed = 85;
-      const deletingSpeed = 55;
-      const completedWordPause = 1550;
-      const betweenWordsPause = 240;
-
-      let heroWordIndex = 0;
-      let heroCharacterIndex = heroWords[0].length;
-      let heroIsDeleting = true;
-      let heroTimer = null;
-
-      function clearHeroTimer() {
-        if (heroTimer !== null) {
-          window.clearTimeout(heroTimer);
-          heroTimer = null;
-        }
-      }
-
-      function setHeroCursorBlinking(isBlinking) {
-        if (!heroCursor) return;
-        heroCursor.classList.toggle("is-blinking", isBlinking);
-      }
-
-      function scheduleHeroTick(delay) {
-        clearHeroTimer();
-        heroTimer = window.setTimeout(runHeroTypewriter, delay);
-      }
-
-      function runHeroTypewriter() {
-        if (!heroChangingWord || !heroCursor) return;
-
-        const currentWord = heroWords[heroWordIndex];
-        heroCursor.hidden = false;
-
-        if (heroIsDeleting) {
-          setHeroCursorBlinking(false);
-
-          if (heroCharacterIndex > 0) {
-            heroCharacterIndex -= 1;
-            heroChangingWord.textContent = currentWord.slice(0, heroCharacterIndex);
-            scheduleHeroTick(deletingSpeed);
-            return;
-          }
-
-          heroWordIndex = (heroWordIndex + 1) % heroWords.length;
-          heroIsDeleting = false;
-          scheduleHeroTick(betweenWordsPause);
-          return;
-        }
-
-        const nextWord = heroWords[heroWordIndex];
-
-        if (heroCharacterIndex < nextWord.length) {
-          setHeroCursorBlinking(false);
-          heroCharacterIndex += 1;
-          heroChangingWord.textContent = nextWord.slice(0, heroCharacterIndex);
-          scheduleHeroTick(typingSpeed);
-          return;
-        }
-
-        if (
-          nextWord === "CREATIVE" &&
-          !pointHasEdited &&
-          !pointEditScheduled
-        ) {
-          pointEditScheduled = true;
-          startPointEdit();
-
-          /* Keep CREATIVE visible while The Point edits the subline. */
-          heroIsDeleting = true;
-          setHeroCursorBlinking(true);
-          scheduleHeroTick(pointEditPause);
-          return;
-        }
-
-        heroIsDeleting = true;
-        setHeroCursorBlinking(true);
-        scheduleHeroTick(completedWordPause);
-      }
-
-      function startHeroTypewriter() {
-        clearHeroTimer();
-
-        if (!heroChangingWord || !heroCursor) return;
-
-        heroWordIndex = 0;
-        heroCharacterIndex = heroWords[0].length;
-        heroIsDeleting = true;
-        heroChangingWord.textContent = heroWords[0];
-        heroCursor.hidden = false;
-        setHeroCursorBlinking(true);
-
-        scheduleHeroTick(completedWordPause);
-      }
-
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          clearHeroTimer();
-          setHeroCursorBlinking(false);
-        } else {
-          startHeroTypewriter();
-        }
-      });
-
-      window.addEventListener("pageshow", (event) => {
-        if (event.persisted) {
-          startHeroTypewriter();
-        }
-      });
-
-      window.addEventListener("pagehide", () => {
-        clearHeroTimer();
-        clearPointLookTimer();
-      });
-
-      startHeroTypewriter();
-
-      const menuToggle = document.querySelector(".mobile-menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-      const mobileLinks = document.querySelectorAll(".nav-links a");
-
-      function closeMenu() {
-        if (!menuToggle || !navLinks) return;
-
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Åbn menu");
-        menuToggle.classList.remove("active");
-        navLinks.classList.remove("active");
-        document.body.classList.remove("menu-open");
-      }
-
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", () => {
-          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-
-          menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-          menuToggle.setAttribute("aria-label", isExpanded ? "Åbn menu" : "Luk menu");
-          menuToggle.classList.toggle("active", !isExpanded);
-          navLinks.classList.toggle("active", !isExpanded);
-          document.body.classList.toggle("menu-open", !isExpanded);
-        });
-      }
-
-      mobileLinks.forEach((link) => {
-        link.addEventListener("click", closeMenu);
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeMenu();
-      });
-
-      const sections = document.querySelectorAll("section[id]");
-      const navItems = document.querySelectorAll(".nav-links a");
-
-      if ("IntersectionObserver" in window) {
-        const scrollSpyObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            navItems.forEach((link) => {
-              link.classList.toggle(
-                "active-section",
-                link.getAttribute("href") === "#" + entry.target.id
-              );
-            });
-          });
-        }, {
-          rootMargin: "-45% 0px -45% 0px"
-        });
-
-        sections.forEach((section) => {
-          scrollSpyObserver.observe(section);
-        });
-      }
-
-      const clientTabs = document.querySelectorAll(".client-tab");
-      const clientGroups = document.querySelectorAll(".client-group");
-      const logoTracks = Array.from(document.querySelectorAll(".client-logos-container"));
-      const logoOffsets = new WeakMap();
-      let previousLogoFrame = performance.now();
-
-      logoTracks.forEach((track) => {
-        logoOffsets.set(track, 0);
-      });
-
-      function resetLogoTrack(group) {
-        const track = group.querySelector(".client-logos-container");
-
-        if (!track) return;
-
-        logoOffsets.set(track, 0);
-        track.style.transform = "translate3d(0, 0, 0)";
-      }
-
-      function moveLogoTracks(now) {
-        const elapsed = Math.min(now - previousLogoFrame, 50);
-        previousLogoFrame = now;
-
-        logoTracks.forEach((track) => {
-          const group = track.closest(".client-group");
-
-          if (!group || group.hidden || !group.classList.contains("active")) {
-            return;
-          }
-
-          const loopWidth = track.scrollWidth / 2;
-
-          if (!loopWidth) return;
-
-          const isAgencyTrack = group.dataset.group === "agencies";
-
-          const pixelsPerSecond = window.innerWidth <= 700
-            ? (isAgencyTrack ? 42 : 32)
-            : (isAgencyTrack ? 34 : 25);
-
-          let offset = (logoOffsets.get(track) || 0) + (pixelsPerSecond * elapsed / 1000);
-
-          if (offset >= loopWidth) {
-            offset %= loopWidth;
-          }
-
-          logoOffsets.set(track, offset);
-          track.style.transform = `translate3d(${-offset}px, 0, 0)`;
-        });
-
-        window.requestAnimationFrame(moveLogoTracks);
-      }
-
-      clientTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          const selectedType = tab.dataset.type;
-
-          clientTabs.forEach((item) => {
-            const isSelected = item === tab;
-
-            item.classList.toggle("active", isSelected);
-            item.setAttribute("aria-selected", String(isSelected));
-          });
-
-          clientGroups.forEach((group) => {
-            const isSelected = group.dataset.group === selectedType;
-
-            group.classList.toggle("active", isSelected);
-            group.hidden = !isSelected;
-
-            if (isSelected) {
-              resetLogoTrack(group);
-            }
-          });
-        });
-      });
-
-      window.requestAnimationFrame(moveLogoTracks);
-
-      const workTriggers = document.querySelectorAll(".work-header-trigger");
-
-      workTriggers.forEach((trigger) => {
-        trigger.addEventListener("click", () => {
-          const currentRow = trigger.closest(".work-row");
-          const isExpanded = trigger.getAttribute("aria-expanded") === "true";
-
-          document.querySelectorAll(".work-row").forEach((row) => {
-            row.classList.remove("is-open");
-
-            const rowTrigger = row.querySelector(".work-header-trigger");
-
-            if (rowTrigger) {
-              rowTrigger.setAttribute("aria-expanded", "false");
-            }
-          });
-
-          if (!isExpanded && currentRow) {
-            currentRow.classList.add("is-open");
-            trigger.setAttribute("aria-expanded", "true");
-          }
-        });
-      });
-
-      /*
-        CONTACT POINT
-        While the contact section is visible, the Point calmly loops between
-        the email and the visitor. Its pointing gesture is a soft extension
-        of its ink body rather than a separate arrow.
-      */
-      const contactSection = document.getElementById("contact");
-      const contactEmailStage = document.getElementById("contact-email-stage");
-      const contactEmail = document.getElementById("contact-email");
-      const contactPoint = document.getElementById("contact-point");
-
-      let contactPointHasEntered = false;
-      let contactPointIsPerforming = false;
-      let contactPointLoopActive = false;
-      let contactPointLoopToken = 0;
-
-      function clearContactPointDirection() {
-        if (!contactPoint) return;
-        contactPoint.classList.remove("is-looking-email", "is-looking-user");
-      }
-
-      async function waitForContactPoint(delay, token) {
-        await sleep(delay);
-        return contactPointLoopActive && token === contactPointLoopToken;
-      }
-
-      async function performContactPointCycle({ initial = false, token = contactPointLoopToken } = {}) {
-        if (!contactPoint || contactPointIsPerforming) return false;
-
-        contactPointIsPerforming = true;
-        contactPoint.classList.add("is-performing");
-        contactPoint.classList.remove("is-settled", "is-pointing", "is-nodding");
-
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        if (initial) {
-          contactPoint.classList.add("is-visible");
-          if (!(await waitForContactPoint(reducedMotion ? 180 : 520, token))) {
-            contactPointIsPerforming = false;
-            return false;
-          }
-        }
-
-        /* Look down at the action and hold long enough to be understood. */
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email");
-        if (!(await waitForContactPoint(reducedMotion ? 360 : 1250, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        /* Look back up at the visitor, as if checking they noticed. */
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-user");
-        if (!(await waitForContactPoint(reducedMotion ? 360 : 1050, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        /* Return attention to the email and let the ink body point naturally. */
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email");
-        if (!(await waitForContactPoint(reducedMotion ? 180 : 430, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
-        contactPoint.classList.add("is-pointing");
-        if (!(await waitForContactPoint(reducedMotion ? 220 : 520, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
-
+      requestAnimationFrame(frame);
+    });
+  }
+
+  function setInert(element, inert) {
+    if (!element) return;
+    element.inert = inert;
+    if (inert) element.setAttribute("inert", "");
+    else element.removeAttribute("inert");
+  }
+
+  /* Hero Point ---------------------------------------------------------- */
+  const heroWords = ["Brand", "Marketing", "Kreative"];
+  const introSection = document.getElementById("intro");
+  const heroWordLayer = document.getElementById("hero-word-layer");
+  const heroWordStage = document.getElementById("hero-word-stage");
+  const heroPointHome = document.getElementById("hero-point-home");
+  const heroPoint = document.getElementById("hero-point");
+  const heroPointBody = document.getElementById("hero-point-body");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  let heroWordIndex = 0;
+  let heroAnimationRunning = false;
+  let heroLoopToken = 0;
+  let heroInView = false;
+  let heroResizeTimer = 0;
+
+  const heroIsCancelled = (token) => token !== heroLoopToken || !heroInView || document.hidden;
+  const heroDuration = (normal, reduced) => reducedMotionQuery.matches ? reduced : normal;
+
+  function setPointDirection(direction) {
+    if (!heroPoint) return;
+    heroPoint.classList.remove("is-looking-word", "is-looking-left", "is-looking-right");
+    if (direction) heroPoint.classList.add(direction);
+  }
+
+  function setPointBodyTransform(scaleX = 1, scaleY = 1, rotation = 0, y = 0) {
+    if (!heroPointBody) return;
+    heroPointBody.style.transform = `translate3d(0, ${y}px, 0) rotate(${rotation}deg) scale(${scaleX}, ${scaleY})`;
+  }
+
+  function resetPointBodyTransform() {
+    heroPointBody?.style.removeProperty("transform");
+  }
+
+  function resetHeroWord() {
+    if (!heroWordLayer) return;
+    heroWordLayer.querySelectorAll("*").forEach((element) => {
+      element.getAnimations().forEach((animation) => animation.cancel());
+    });
+    const word = document.createElement("span");
+    word.className = "hero-word";
+    word.textContent = heroWords[heroWordIndex];
+    heroWordLayer.replaceChildren(word);
+  }
+
+  function resetHeroPoint() {
+    if (!heroPoint || !heroPointHome) return;
+    heroPoint.querySelectorAll("*").forEach((element) => {
+      element.getAnimations().forEach((animation) => animation.cancel());
+    });
+    heroPoint.getAnimations().forEach((animation) => animation.cancel());
+    if (heroPoint.parentElement !== heroPointHome) heroPointHome.appendChild(heroPoint);
+    heroPoint.className = "hero-point";
+    heroPoint.removeAttribute("style");
+    resetPointBodyTransform();
+    resetHeroWord();
+  }
+
+  function detachHeroPoint() {
+    const homeRect = heroPointHome.getBoundingClientRect();
+    const stageRect = heroWordStage.getBoundingClientRect();
+    const pointSize = clamp(stageRect.height * 0.78, 54, 118);
+    const startScale = Math.max(homeRect.width / pointSize, 0.08);
+    const startLeft = homeRect.left + homeRect.width / 2 - pointSize / 2;
+    const startTop = homeRect.top + homeRect.height / 2 - pointSize / 2;
+
+    heroPoint.classList.add("is-flying");
+    heroPoint.style.left = `${startLeft}px`;
+    heroPoint.style.top = `${startTop}px`;
+    heroPoint.style.width = `${pointSize}px`;
+    heroPoint.style.height = `${pointSize}px`;
+    heroPoint.style.transform = `translate3d(0,0,0) scale(${startScale})`;
+    document.body.appendChild(heroPoint);
+
+    return {
+      pointSize,
+      startScale,
+      originLeft: startLeft,
+      originTop: startTop,
+      currentLeft: startLeft,
+      currentTop: startTop,
+      currentScale: startScale
+    };
+  }
+
+  async function animateHeroPoint(journey, targetLeft, targetTop, token, options = {}) {
+    const startLeft = journey.currentLeft;
+    const startTop = journey.currentTop;
+    const startScale = journey.currentScale;
+    const endScale = options.scale ?? 1;
+    const duration = options.duration ?? 650;
+    const arc = options.arc ?? -70;
+    const rotation = options.rotation ?? -8;
+    const stretch = options.stretch ?? 0.2;
+
+    const completed = await animateFrame(duration, (rawProgress) => {
+      const progress = easeInOutCubic(rawProgress);
+      const lift = Math.sin(Math.PI * rawProgress);
+      const left = lerp(startLeft, targetLeft, progress);
+      const top = lerp(startTop, targetTop, progress) + lift * arc;
+      const scale = lerp(startScale, endScale, easeOutBack(rawProgress));
+      const containerRotation = lift * rotation;
+      const scaleX = 1 + lift * stretch;
+      const scaleY = 1 - lift * stretch * 0.55;
+
+      heroPoint.style.transform = `translate3d(${left - journey.originLeft}px, ${top - journey.originTop}px, 0) rotate(${containerRotation}deg) scale(${scale})`;
+      setPointBodyTransform(scaleX, scaleY, containerRotation * -0.18, lift * -2);
+    }, () => heroIsCancelled(token));
+
+    if (!completed) return false;
+
+    journey.currentLeft = targetLeft;
+    journey.currentTop = targetTop;
+    journey.currentScale = endScale;
+    heroPoint.style.transform = `translate3d(${targetLeft - journey.originLeft}px, ${targetTop - journey.originTop}px, 0) scale(${endScale})`;
+    resetPointBodyTransform();
+    return true;
+  }
+
+  async function wakeHeroPoint(journey, token) {
+    heroPoint.classList.add("is-awake");
+
+    let completed = await animateFrame(
+      heroDuration(timings.hero.wake, timings.hero.wakeReduced),
+      (rawProgress) => {
+        const progress = easeOutBack(rawProgress);
+        const scale = lerp(journey.startScale, 1, progress);
+        const bounce = Math.sin(Math.PI * rawProgress);
+        heroPoint.style.transform = `translate3d(0, ${-bounce * 4}px, 0) scale(${scale})`;
+        setPointBodyTransform(1 + bounce * 0.12, 1 - bounce * 0.08, bounce * -1.5, bounce * 2);
+      },
+      () => heroIsCancelled(token)
+    );
+    if (!completed) return false;
+
+    journey.currentScale = 1;
+    heroPoint.style.transform = "translate3d(0,0,0) scale(1)";
+    resetPointBodyTransform();
+    setPointDirection("is-looking-word");
+
+    await sleep(heroDuration(timings.hero.inspect, timings.hero.inspectReduced));
+    if (heroIsCancelled(token)) return false;
+
+    completed = await animateFrame(
+      heroDuration(timings.hero.crouch, timings.hero.crouchReduced),
+      (rawProgress) => {
+        const progress = easeInOutCubic(rawProgress);
+        heroPoint.style.transform = `translate3d(${progress * 3}px, ${progress * 7}px, 0) rotate(${progress * 4}deg) scale(${1 + progress * 0.08}, ${1 - progress * 0.13})`;
+        setPointBodyTransform(1 + progress * 0.1, 1 - progress * 0.09, progress * 2, progress * 2);
+      },
+      () => heroIsCancelled(token)
+    );
+    if (!completed) return false;
+
+    resetPointBodyTransform();
+    await sleep(reducedMotionQuery.matches ? 20 : 80);
+    return !heroIsCancelled(token);
+  }
+
+  async function impactWord(nextWord, journey, token) {
+    const currentWord = heroWordLayer.querySelector(".hero-word");
+    if (!currentWord) return false;
+
+    const nextWordElement = document.createElement("span");
+    nextWordElement.className = "hero-word";
+    nextWordElement.textContent = nextWord;
+    nextWordElement.style.opacity = "0";
+    nextWordElement.style.transform = "translate3d(0.48em, 0.03em, 0) rotate(2deg) scale(0.96)";
+    heroWordLayer.appendChild(nextWordElement);
+
+    heroPoint.classList.add("is-working");
+    setPointDirection("is-looking-left");
+    await sleep(reducedMotionQuery.matches ? 20 : 130);
+    if (heroIsCancelled(token)) return false;
+
+    const restingLeft = journey.currentLeft;
+    const restingTop = journey.currentTop;
+    const windUpDistance = clamp(journey.pointSize * 0.17, 10, 20);
+    const impactDistance = clamp(journey.pointSize * 0.2, 14, 25);
+    const reboundDistance = clamp(journey.pointSize * 0.38, 26, 46);
+    const settleOffset = clamp(journey.pointSize * 0.055, 4, 7);
+    const baseX = restingLeft - journey.originLeft;
+    const baseY = restingTop - journey.originTop;
+
+    let completed = await animateFrame(
+      heroDuration(timings.hero.windUp, timings.hero.windUpReduced),
+      (rawProgress) => {
+        const progress = easeInOutCubic(rawProgress);
+        const x = lerp(0, windUpDistance, progress);
+        const dip = Math.sin(Math.PI * progress) * 3;
+        heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY + dip}px, 0) rotate(${progress * 3}deg) scale(1)`;
+        setPointBodyTransform(1 + progress * 0.08, 1 - progress * 0.1, progress * 2, progress * 2);
+      },
+      () => heroIsCancelled(token)
+    );
+    if (!completed) return false;
+
+    completed = await animateFrame(
+      heroDuration(timings.hero.strike, timings.hero.strikeReduced),
+      (rawProgress) => {
+        const acceleration = rawProgress * rawProgress * rawProgress;
+        const x = lerp(windUpDistance, -impactDistance, acceleration);
+        heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY}px, 0) rotate(${-acceleration * 5}deg) scale(1)`;
+        setPointBodyTransform(1 + acceleration * 0.2, 1 - acceleration * 0.14, -acceleration * 3, 0);
+      },
+      () => heroIsCancelled(token)
+    );
+    if (!completed) return false;
+
+    heroPoint.style.transform = `translate3d(${baseX - impactDistance}px, ${baseY}px, 0) rotate(-4deg) scale(1)`;
+    setPointBodyTransform(0.7, 1.28, -4, 0);
+
+    const currentAnimation = currentWord.animate([
+      { opacity: 1, transform: "translate3d(0,0,0) rotate(0deg) scale(1)", filter: "blur(0)" },
+      { opacity: 1, transform: "translate3d(-0.055em,0.01em,0) rotate(-0.8deg) scale(0.965,1.045)", filter: "blur(0)", offset: 0.1 },
+      { opacity: 1, transform: "translate3d(-0.2em,0.035em,0) rotate(-2deg) scale(1.04,0.96)", filter: "blur(0)", offset: 0.27 },
+      { opacity: 0, transform: "translate3d(-0.96em,0.14em,0) rotate(-8deg) scale(0.81)", filter: "blur(2px)" }
+    ], {
+      duration: reducedMotionQuery.matches ? 180 : 530,
+      easing: "cubic-bezier(0.22,1,0.36,1)",
+      fill: "forwards"
+    });
+
+    const nextAnimation = nextWordElement.animate([
+      { opacity: 0, transform: "translate3d(0.48em,0.03em,0) rotate(2deg) scale(0.96)" },
+      { opacity: 0, transform: "translate3d(0.34em,0.02em,0) rotate(1.5deg) scale(0.97)", offset: 0.25 },
+      { opacity: 1, transform: "translate3d(-0.045em,0.01em,0) rotate(-0.7deg) scale(1.03,0.975)", offset: 0.78 },
+      { opacity: 1, transform: "translate3d(0,0,0) rotate(0deg) scale(1)" }
+    ], {
+      duration: reducedMotionQuery.matches ? 180 : 570,
+      delay: reducedMotionQuery.matches ? 0 : 105,
+      easing: "cubic-bezier(0.22,1,0.36,1)",
+      fill: "forwards"
+    });
+
+    await sleep(heroDuration(timings.hero.impactHold, timings.hero.impactHoldReduced));
+    if (heroIsCancelled(token)) return false;
+
+    completed = await animateFrame(
+      heroDuration(timings.hero.rebound, timings.hero.reboundReduced),
+      (rawProgress) => {
+        const progress = easeOutBack(rawProgress);
+        const x = lerp(-impactDistance, reboundDistance, progress);
+        const verticalBounce = Math.sin(Math.PI * rawProgress) * -5;
+        heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY + verticalBounce}px, 0) rotate(${lerp(-4, 7, progress)}deg) scale(1)`;
+        setPointBodyTransform(lerp(0.7, 1, progress), lerp(1.28, 1, progress), lerp(-4, 2, progress), verticalBounce * 0.25);
+      },
+      () => heroIsCancelled(token)
+    );
+    if (!completed) return false;
+
+    completed = await animateFrame(
+      heroDuration(timings.hero.settle, timings.hero.settleReduced),
+      (rawProgress) => {
+        const progress = easeInOutCubic(rawProgress);
+        const x = lerp(reboundDistance, settleOffset, progress);
+        const wobble = Math.sin(rawProgress * Math.PI * 2) * (1 - rawProgress);
+        heroPoint.style.transform = `translate3d(${baseX + x}px, ${baseY + wobble * 2}px, 0) rotate(${wobble * 3}deg) scale(1)`;
+        setPointBodyTransform(1 + wobble * 0.035, 1 - wobble * 0.025, wobble * 2, 0);
+      },
+      () => heroIsCancelled(token)
+    );
+    if (!completed) return false;
+
+    const settledLeft = restingLeft + settleOffset;
+    journey.currentLeft = settledLeft;
+    journey.currentTop = restingTop;
+    heroPoint.style.transform = `translate3d(${settledLeft - journey.originLeft}px, ${restingTop - journey.originTop}px, 0) scale(1)`;
+    resetPointBodyTransform();
+
+    await Promise.allSettled([currentAnimation.finished, nextAnimation.finished]);
+    if (heroIsCancelled(token)) return false;
+
+    currentWord.remove();
+    nextWordElement.getAnimations().forEach((animation) => animation.cancel());
+    nextWordElement.style.removeProperty("opacity");
+    nextWordElement.style.removeProperty("transform");
+    heroPoint.classList.remove("is-working");
+    return true;
+  }
+
+  async function returnHeroPointHome(journey, token) {
+    const homeRect = heroPointHome.getBoundingClientRect();
+    const targetLeft = homeRect.left + homeRect.width / 2 - journey.pointSize / 2;
+    const targetTop = homeRect.top + homeRect.height / 2 - journey.pointSize / 2;
+
+    setPointDirection("is-looking-right");
+    const completed = await animateHeroPoint(journey, targetLeft, targetTop, token, {
+      duration: heroDuration(timings.hero.leap, timings.hero.leapReduced),
+      arc: reducedMotionQuery.matches ? -8 : -58,
+      rotation: 9,
+      stretch: reducedMotionQuery.matches ? 0.06 : 0.2,
+      scale: journey.startScale
+    });
+    if (!completed) return false;
+
+    resetHeroPoint();
+    return true;
+  }
+
+  async function performHeroChange(token) {
+    if (heroAnimationRunning || heroIsCancelled(token)) return;
+    heroAnimationRunning = true;
+    let completed = false;
+
+    try {
+      const nextIndex = (heroWordIndex + 1) % heroWords.length;
+      const journey = detachHeroPoint();
+
+      if (!await wakeHeroPoint(journey, token)) return;
+
+      const activeWord = heroWordLayer.querySelector(".hero-word");
+      if (!activeWord) return;
+      const activeWordRect = activeWord.getBoundingClientRect();
+      const sideGap = clamp(journey.pointSize * 0.045, 3, 6);
+      const targetLeft = activeWordRect.right + sideGap;
+      const targetTop = activeWordRect.top + activeWordRect.height * 0.53 - journey.pointSize / 2;
+
+      if (!await animateHeroPoint(journey, targetLeft, targetTop, token, {
+        duration: heroDuration(timings.hero.leap, timings.hero.leapReduced),
+        arc: reducedMotionQuery.matches ? -8 : -72,
+        rotation: -9,
+        stretch: reducedMotionQuery.matches ? 0.05 : 0.18,
+        scale: 1
+      })) return;
+
+      if (!await impactWord(heroWords[nextIndex], journey, token)) return;
+      heroWordIndex = nextIndex;
+
+      await sleep(heroDuration(timings.hero.winkDelay, timings.hero.winkDelayReduced));
+      if (heroIsCancelled(token)) return;
+      heroPoint.classList.add("is-winking");
+      await sleep(heroDuration(timings.hero.wink, timings.hero.winkReduced));
+      heroPoint.classList.remove("is-winking");
+      if (heroIsCancelled(token)) return;
+
+      if (!await returnHeroPointHome(journey, token)) return;
+      completed = true;
+    } catch (error) {
+      console.error("Hero animation reset after an unexpected error:", error);
+    } finally {
+      if (!completed) resetHeroPoint();
+      heroAnimationRunning = false;
+    }
+  }
+
+  async function runHeroLoop(token) {
+    while (!heroIsCancelled(token)) {
+      await sleep(heroDuration(timings.hero.loop, timings.hero.loopReduced));
+      if (heroIsCancelled(token)) break;
+      await performHeroChange(token);
+    }
+  }
+
+  function startHeroLoop() {
+    if (!heroInView || document.hidden || !introSection) return;
+    const token = ++heroLoopToken;
+    runHeroLoop(token);
+  }
+
+  function stopHeroLoop() {
+    heroLoopToken += 1;
+    resetHeroPoint();
+  }
+
+  function calculateHeroVisibility() {
+    if (!introSection) return false;
+    const rect = introSection.getBoundingClientRect();
+    return rect.bottom > window.innerHeight * 0.25 && rect.top < window.innerHeight * 0.75;
+  }
+
+  if (introSection && heroPoint && heroPointHome && heroWordLayer && heroWordStage) {
+    heroInView = calculateHeroVisibility();
+
+    const heroObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      const visible = entry.isIntersecting && entry.intersectionRatio >= 0.25;
+      if (visible === heroInView) return;
+      heroInView = visible;
+      if (heroInView && !document.hidden) startHeroLoop();
+      else stopHeroLoop();
+    }, { threshold: [0, 0.25, 0.5] });
+
+    heroObserver.observe(introSection);
+
+    const fontsReady = document.fonts?.ready ?? Promise.resolve();
+    fontsReady.catch(() => undefined).then(() => {
+      if (heroInView && !document.hidden) startHeroLoop();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopHeroLoop();
+      else if (heroInView) startHeroLoop();
+    });
+
+    const resetHeroAfterViewportChange = () => {
+      stopHeroLoop();
+      window.clearTimeout(heroResizeTimer);
+      heroResizeTimer = window.setTimeout(() => {
+        heroInView = calculateHeroVisibility();
+        if (heroInView && !document.hidden) startHeroLoop();
+      }, 180);
+    };
+
+    window.addEventListener("resize", resetHeroAfterViewportChange, { passive: true });
+    window.addEventListener("orientationchange", resetHeroAfterViewportChange, { passive: true });
+  }
+
+  /* Contact Point ------------------------------------------------------- */
+  const contactSection = document.getElementById("contact");
+  const contactPoint = document.querySelector(".contact-point");
+  let contactSequencePlayed = false;
+  let contactSequenceRunning = false;
+  let contactReminderRunning = false;
+  let contactPointInView = false;
+  let contactReminderTimer = null;
+  let contactGestureToken = 0;
+
+  function clearContactReminder() {
+    if (contactReminderTimer !== null) {
+      window.clearTimeout(contactReminderTimer);
+      contactReminderTimer = null;
+    }
+  }
+
+  function contactCanPerform(token = contactGestureToken) {
+    return Boolean(
+      contactPoint &&
+      contactPointInView &&
+      !document.hidden &&
+      token === contactGestureToken
+    );
+  }
+
+  async function waitForContact(delay, token) {
+    await sleep(delay);
+    return contactCanPerform(token);
+  }
+
+  function resetContactPoint() {
+    if (!contactPoint) return;
+    contactPoint.classList.remove(
+      "is-pointing",
+      "is-nodding",
+      "is-winking",
+      "is-looking-user"
+    );
+    contactPoint.classList.add(
+      "is-visible",
+      "is-looking-email",
+      "is-settled"
+    );
+  }
+
+  function scheduleContactReminder() {
+    clearContactReminder();
+
+    if (
+      !contactCanPerform() ||
+      !contactSequencePlayed ||
+      contactSequenceRunning ||
+      contactReminderRunning
+    ) {
+      return;
+    }
+
+    const range = timings.contact.reminderMax - timings.contact.reminderMin;
+    const delay = timings.contact.reminderMin + Math.random() * range;
+
+    contactReminderTimer = window.setTimeout(() => {
+      contactReminderTimer = null;
+      playContactReminder();
+    }, delay);
+  }
+
+  async function playContactPointSequence() {
+    if (!contactPoint || contactSequenceRunning) return;
+
+    clearContactReminder();
+    contactSequenceRunning = true;
+    const token = ++contactGestureToken;
+
+    try {
+      contactPoint.classList.remove(
+        "is-settled",
+        "is-pointing",
+        "is-nodding",
+        "is-winking",
+        "is-looking-user"
+      );
+      contactPoint.classList.add("is-visible", "is-looking-email");
+
+      if (!await waitForContact(timings.contact.arrive, token)) return;
+      contactPoint.classList.add("is-pointing");
+
+      if (!await waitForContact(timings.contact.point, token)) return;
+      contactPoint.classList.add("is-nodding");
+
+      if (!await waitForContact(timings.contact.nod, token)) return;
+      contactPoint.classList.remove("is-nodding");
+
+      if (!await waitForContact(timings.contact.pause, token)) return;
+      contactPoint.classList.add("is-winking");
+
+      if (!await waitForContact(timings.contact.wink, token)) return;
+      contactPoint.classList.remove("is-winking");
+
+      if (!await waitForContact(timings.contact.acknowledge, token)) return;
+      contactPoint.classList.remove("is-pointing", "is-looking-email");
+      contactPoint.classList.add("is-looking-user");
+
+      await waitForContact(timings.contact.lookUser, token);
+    } finally {
+      resetContactPoint();
+      contactSequenceRunning = false;
+      scheduleContactReminder();
+    }
+  }
+
+  async function playContactReminder() {
+    if (
+      !contactPoint ||
+      !contactCanPerform() ||
+      contactSequenceRunning ||
+      contactReminderRunning
+    ) {
+      scheduleContactReminder();
+      return;
+    }
+
+    contactReminderRunning = true;
+    const token = ++contactGestureToken;
+
+    try {
+      contactPoint.classList.remove(
+        "is-settled",
+        "is-looking-user",
+        "is-winking",
+        "is-nodding"
+      );
+      contactPoint.classList.add("is-looking-email", "is-pointing");
+
+      if (!await waitForContact(timings.contact.reminderPoint, token)) return;
+
+      const gesture = Math.random();
+
+      if (gesture < 0.42) {
         contactPoint.classList.add("is-nodding");
-        if (!(await waitForContactPoint(reducedMotion ? 300 : 760, token))) {
-          contactPointIsPerforming = false;
-          return false;
-        }
+        if (!await waitForContact(timings.contact.nod, token)) return;
         contactPoint.classList.remove("is-nodding");
+      } else if (gesture < 0.72) {
+        contactPoint.classList.add("is-winking");
+        if (!await waitForContact(timings.contact.wink, token)) return;
+        contactPoint.classList.remove("is-winking");
+      } else if (!await waitForContact(420, token)) {
+        return;
+      }
 
-        if (!(await waitForContactPoint(reducedMotion ? 240 : 720, token))) {
-          contactPointIsPerforming = false;
-          return false;
+      contactPoint.classList.remove("is-pointing");
+      await waitForContact(timings.contact.reminderPause, token);
+    } finally {
+      resetContactPoint();
+      contactReminderRunning = false;
+      scheduleContactReminder();
+    }
+  }
+
+  if (contactSection && contactPoint) {
+    if ("IntersectionObserver" in window) {
+      const contactObserver = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        contactPointInView = entry.isIntersecting;
+
+        if (!contactPointInView) {
+          clearContactReminder();
+          contactGestureToken += 1;
+          resetContactPoint();
+          return;
         }
 
-        contactPoint.classList.remove("is-pointing", "is-performing");
-        contactPoint.classList.add("is-looking-email", "is-settled");
-        contactPointIsPerforming = false;
-
-        return true;
-      }
-
-      async function runContactPointLoop({ initial = false } = {}) {
-        if (!contactPoint || !contactPointLoopActive) return;
-
-        const token = contactPointLoopToken;
-        let firstCycle = initial;
-
-        while (contactPointLoopActive && token === contactPointLoopToken) {
-          const completed = await performContactPointCycle({
-            initial: firstCycle,
-            token
-          });
-
-          firstCycle = false;
-
-          if (!completed || !contactPointLoopActive || token !== contactPointLoopToken) {
-            break;
-          }
-
-          /* A quiet resting beat before it checks in again. */
-          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          if (!(await waitForContactPoint(reducedMotion ? 900 : 1900, token))) {
-            break;
-          }
-        }
-      }
-
-      function startContactPointLoop({ initial = false } = {}) {
-        if (!contactPoint || contactPointLoopActive) return;
-
-        contactPointLoopActive = true;
-        contactPointLoopToken += 1;
-        runContactPointLoop({ initial });
-      }
-
-      function stopContactPointLoop() {
-        contactPointLoopActive = false;
-        contactPointLoopToken += 1;
-        contactPointIsPerforming = false;
-
-        if (!contactPoint) return;
-
-        contactPoint.classList.remove("is-performing", "is-pointing", "is-nodding");
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email", "is-settled");
-      }
-
-      if (contactSection && contactPoint) {
-        if ("IntersectionObserver" in window) {
-          const contactPointObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const isFirstEntry = !contactPointHasEntered;
-                contactPointHasEntered = true;
-                startContactPointLoop({ initial: isFirstEntry });
-              } else if (contactPointHasEntered) {
-                stopContactPointLoop();
-              }
-            });
-          }, {
-            threshold: 0.34
-          });
-
-          contactPointObserver.observe(contactSection);
+        if (!contactSequencePlayed) {
+          contactSequencePlayed = true;
+          playContactPointSequence();
         } else {
-          contactPointHasEntered = true;
-          startContactPointLoop({ initial: true });
+          scheduleContactReminder();
         }
-      }
+      }, { threshold: 0.3 });
 
-      function encourageContactPoint() {
-        if (!contactPointHasEntered || !contactPointLoopActive || contactPointIsPerforming) return;
+      contactObserver.observe(contactSection);
+    } else {
+      contactPointInView = true;
+      contactSequencePlayed = true;
+      playContactPointSequence();
+    }
 
-        contactPoint.classList.remove("is-settled");
-        clearContactPointDirection();
-        contactPoint.classList.add("is-looking-email", "is-pointing", "is-nodding");
-
-        window.setTimeout(() => {
-          if (!contactPoint || contactPointIsPerforming) return;
-          contactPoint.classList.remove("is-pointing", "is-nodding");
-          contactPoint.classList.add("is-looking-email", "is-settled");
-        }, 760);
-      }
-
-      if (contactEmailStage) {
-        contactEmailStage.addEventListener("mouseenter", encourageContactPoint);
-      }
-
-      if (contactEmail) {
-        contactEmail.addEventListener("focus", encourageContactPoint);
-      }
-
-      const testimonials = Array.from(document.querySelectorAll(".testimonial-item"));
-      const testimonialControls = Array.from(document.querySelectorAll(".testimonial-control"));
-
-      let currentTestimonial = 0;
-      let testimonialTimer = null;
-
-      function showTestimonial(index) {
-        if (!testimonials.length) return;
-
-        currentTestimonial = (index + testimonials.length) % testimonials.length;
-
-        testimonials.forEach((item, itemIndex) => {
-          const isActive = itemIndex === currentTestimonial;
-
-          item.classList.toggle("active", isActive);
-          item.setAttribute("aria-hidden", String(!isActive));
-        });
-
-        testimonialControls.forEach((control, controlIndex) => {
-          const isActive = controlIndex === currentTestimonial;
-
-          control.classList.toggle("active", isActive);
-          control.setAttribute("aria-pressed", String(isActive));
-        });
-      }
-
-      function stopTestimonialTimer() {
-        if (testimonialTimer !== null) {
-          window.clearInterval(testimonialTimer);
-          testimonialTimer = null;
-        }
-      }
-
-      function startTestimonialTimer() {
-        stopTestimonialTimer();
-
-        if (testimonials.length > 1) {
-          testimonialTimer = window.setInterval(() => {
-            showTestimonial(currentTestimonial + 1);
-          }, 7000);
-        }
-      }
-
-      testimonialControls.forEach((control, index) => {
-        control.addEventListener("click", () => {
-          showTestimonial(index);
-          startTestimonialTimer();
-        });
-      });
-
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          stopTestimonialTimer();
-        } else {
-          startTestimonialTimer();
-        }
-      });
-
-      showTestimonial(0);
-      startTestimonialTimer();
-
-      const currentYear = document.getElementById("current-year");
-
-      if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearContactReminder();
+        contactGestureToken += 1;
+        resetContactPoint();
+      } else if (contactPointInView) {
+        scheduleContactReminder();
       }
     });
-  </script>
+  }
+
+  /* Mobile navigation -------------------------------------------------- */
+  const menuToggle = document.querySelector(".mobile-menu-toggle");
+  const nav = document.querySelector(".sticky-nav");
+  const navLinks = document.querySelector(".nav-links");
+  const main = document.querySelector("main");
+  const footer = document.querySelector("footer");
+
+  function menuIsOpen() {
+    return menuToggle?.getAttribute("aria-expanded") === "true";
+  }
+
+  function setMenuOpen(open, returnFocus = false) {
+    if (!menuToggle || !navLinks) return;
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Luk menu" : "Åbn menu");
+    menuToggle.classList.toggle("active", open);
+    navLinks.classList.toggle("active", open);
+    document.body.classList.toggle("menu-open", open);
+    setInert(main, open);
+    setInert(footer, open);
+
+    if (open) {
+      requestAnimationFrame(() => navLinks.querySelector("a")?.focus());
+    } else if (returnFocus) {
+      menuToggle.focus();
+    }
+  }
+
+  menuToggle?.addEventListener("click", () => setMenuOpen(!menuIsOpen()));
+  navLinks?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!menuIsOpen()) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setMenuOpen(false, true);
+      return;
+    }
+
+    if (event.key !== "Tab" || !nav) return;
+    const focusable = [...nav.querySelectorAll('a[href], button:not([disabled])')]
+      .filter((element) => element.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 700 && menuIsOpen()) setMenuOpen(false);
+  }, { passive: true });
+
+  /* Client tabs and moving logo strip --------------------------------- */
+  const clientTabs = [...document.querySelectorAll(".client-tab")];
+  const clientGroups = [...document.querySelectorAll(".client-group")];
+  const clientsWrapper = document.querySelector(".about-clients-wrapper");
+  let marqueeResizeTimer = 0;
+  const marqueeSources = new WeakMap();
+
+  function prepareMarquee(group) {
+    const track = group?.querySelector(".client-logos-container");
+    if (!track || group.hidden) return;
+
+    track.classList.remove("is-marquee-ready");
+    track.querySelectorAll('.client-logo-set[data-marquee-clone="true"]').forEach((clone) => clone.remove());
+
+    const sourceSet = track.querySelector(".client-logo-set");
+    if (!sourceSet) return;
+
+    if (!marqueeSources.has(track)) {
+      const templates = [...sourceSet.children]
+        .filter((element) => element.classList.contains("client-logo"))
+        .map((element) => element.cloneNode(true));
+      marqueeSources.set(track, templates);
+    }
+
+    const templates = marqueeSources.get(track);
+    if (!templates?.length) return;
+
+    sourceSet.replaceChildren();
+
+    function appendLogoRound(isPrimaryRound) {
+      templates.forEach((template) => {
+        const image = template.cloneNode(true);
+        image.loading = "eager";
+        image.decoding = "async";
+
+        if (!isPrimaryRound) {
+          image.setAttribute("aria-hidden", "true");
+          image.alt = "";
+        }
+
+        sourceSet.appendChild(image);
+      });
+    }
+
+    appendLogoRound(true);
+
+    const requiredWidth = Math.max(group.getBoundingClientRect().width + 120, 1);
+    let rounds = 1;
+
+    while (sourceSet.getBoundingClientRect().width < requiredWidth && rounds < 8) {
+      appendLogoRound(false);
+      rounds += 1;
+    }
+
+    const cloneSet = sourceSet.cloneNode(true);
+    cloneSet.dataset.marqueeClone = "true";
+    cloneSet.setAttribute("aria-hidden", "true");
+    cloneSet.querySelectorAll("img").forEach((image) => {
+      image.alt = "";
+      image.loading = "eager";
+      image.setAttribute("aria-hidden", "true");
+    });
+    track.appendChild(cloneSet);
+
+    const distance = sourceSet.getBoundingClientRect().width;
+    if (!distance) return;
+
+    const pixelsPerSecond = 34;
+    track.style.setProperty("--marquee-distance", `${distance}px`);
+    track.style.setProperty("--marquee-duration", `${Math.max(distance / pixelsPerSecond, 20)}s`);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => track.classList.add("is-marquee-ready"));
+    });
+  }
+
+  function activateClientTab(tab, moveFocus = false) {
+    clientTabs.forEach((item) => {
+      const active = item === tab;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-selected", String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+
+    clientGroups.forEach((group) => {
+      const active = group.dataset.group === tab.dataset.type;
+      group.hidden = !active;
+      group.classList.toggle("active", active);
+      if (active) requestAnimationFrame(() => prepareMarquee(group));
+    });
+
+    if (moveFocus) tab.focus();
+  }
+
+  clientTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activateClientTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      let nextIndex = index;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % clientTabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (index - 1 + clientTabs.length) % clientTabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = clientTabs.length - 1;
+      activateClientTab(clientTabs[nextIndex], true);
+    });
+  });
+
+  const activeClientGroup = clientGroups.find((group) => group.classList.contains("active"));
+  if (activeClientGroup) requestAnimationFrame(() => prepareMarquee(activeClientGroup));
+
+  if (clientsWrapper && "IntersectionObserver" in window) {
+    const clientsObserver = new IntersectionObserver((entries) => {
+      clientsWrapper.classList.toggle("is-in-view", entries[0].isIntersecting);
+    }, { threshold: 0.1 });
+    clientsObserver.observe(clientsWrapper);
+  } else {
+    clientsWrapper?.classList.add("is-in-view");
+  }
+
+  window.addEventListener("resize", () => {
+    window.clearTimeout(marqueeResizeTimer);
+    marqueeResizeTimer = window.setTimeout(() => {
+      const activeGroup = clientGroups.find((group) => group.classList.contains("active"));
+      prepareMarquee(activeGroup);
+    }, 180);
+  }, { passive: true });
+
+  /* Work accordions ---------------------------------------------------- */
+  const workRows = [...document.querySelectorAll(".work-row")];
+
+  function setWorkRowOpen(row, open) {
+    const trigger = row.querySelector(".work-header-trigger");
+    const panel = row.querySelector(".work-accordion-body");
+    row.classList.toggle("is-open", open);
+    trigger?.setAttribute("aria-expanded", String(open));
+    panel?.setAttribute("aria-hidden", String(!open));
+    setInert(panel, !open);
+  }
+
+  workRows.forEach((row) => {
+    const trigger = row.querySelector(".work-header-trigger");
+    trigger?.addEventListener("click", () => {
+      const shouldOpen = !row.classList.contains("is-open");
+      workRows.forEach((item) => setWorkRowOpen(item, false));
+      if (shouldOpen) setWorkRowOpen(row, true);
+    });
+  });
+
+  /* Testimonials ------------------------------------------------------- */
+  const testimonials = [...document.querySelectorAll(".testimonial-item")];
+  const testimonialControls = [...document.querySelectorAll(".testimonial-control")];
+
+  function activateTestimonial(index, moveFocus = false) {
+    testimonials.forEach((item, itemIndex) => {
+      const active = itemIndex === index;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-hidden", String(!active));
+      setInert(item, !active);
+    });
+
+    testimonialControls.forEach((control, controlIndex) => {
+      const active = controlIndex === index;
+      control.classList.toggle("active", active);
+      control.setAttribute("aria-selected", String(active));
+      control.tabIndex = active ? 0 : -1;
+    });
+
+    if (moveFocus) testimonialControls[index]?.focus();
+  }
+
+  testimonialControls.forEach((control, index) => {
+    control.addEventListener("click", () => activateTestimonial(index));
+    control.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      let nextIndex = index;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % testimonialControls.length;
+      if (event.key === "ArrowLeft") nextIndex = (index - 1 + testimonialControls.length) % testimonialControls.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = testimonialControls.length - 1;
+      activateTestimonial(nextIndex, true);
+    });
+  });
+
+  /* Active navigation state ------------------------------------------- */
+  const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+  const observedSections = sectionLinks
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+  const sectionEntries = new Map();
+
+  function updateActiveSection() {
+    const visible = observedSections
+      .map((section) => sectionEntries.get(section.id))
+      .filter((entry) => entry?.isIntersecting)
+      .sort((a, b) => Math.abs(a.boundingClientRect.top - 90) - Math.abs(b.boundingClientRect.top - 90));
+    const activeId = visible[0]?.target.id ?? "";
+    sectionLinks.forEach((link) => {
+      link.classList.toggle("active-section", link.getAttribute("href") === `#${activeId}`);
+    });
+  }
+
+  if (observedSections.length && "IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => sectionEntries.set(entry.target.id, entry));
+      updateActiveSection();
+    }, {
+      rootMargin: "-90px 0px -55% 0px",
+      threshold: [0, 0.1, 0.3]
+    });
+    observedSections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  const currentYear = document.getElementById("current-year");
+  if (currentYear) currentYear.textContent = new Date().getFullYear();
+});
+</script>
 </body>
 </html>
