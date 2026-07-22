@@ -976,30 +976,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const timings = {
     hero: {
-      loop: 3400,
-      loopReduced: 2600,
-      wake: 420,
-      wakeReduced: 160,
-      inspect: 480,
-      inspectReduced: 100,
-      crouch: 220,
-      crouchReduced: 100,
-      leap: 680,
-      leapReduced: 220,
-      windUp: 170,
-      windUpReduced: 50,
-      strike: 145,
-      strikeReduced: 70,
-      impactHold: 55,
-      impactHoldReduced: 10,
-      rebound: 285,
-      reboundReduced: 80,
-      settle: 230,
-      settleReduced: 60,
-      winkDelay: 320,
-      winkDelayReduced: 80,
-      wink: 520,
-      winkReduced: 120
+      loop: 2400,
+      loopReduced: 1800,
+      wake: 335,
+      wakeReduced: 130,
+      inspect: 385,
+      inspectReduced: 80,
+      crouch: 175,
+      crouchReduced: 80,
+      leap: 545,
+      leapReduced: 175,
+      windUp: 135,
+      windUpReduced: 40,
+      strike: 115,
+      strikeReduced: 55,
+      impactHold: 45,
+      impactHoldReduced: 8,
+      rebound: 230,
+      reboundReduced: 65,
+      settle: 185,
+      settleReduced: 50,
+      winkDelay: 255,
+      winkDelayReduced: 65,
+      wink: 415,
+      winkReduced: 95
     },
     contact: {
       arrive: 550,
@@ -1195,7 +1195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!completed) return false;
 
     resetPointBodyTransform();
-    await sleep(reducedMotionQuery.matches ? 20 : 80);
+    await sleep(reducedMotionQuery.matches ? 15 : 65);
     return !heroIsCancelled(token);
   }
 
@@ -1212,7 +1212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     heroPoint.classList.add("is-working");
     setPointDirection("is-looking-left");
-    await sleep(reducedMotionQuery.matches ? 20 : 130);
+    await sleep(reducedMotionQuery.matches ? 15 : 105);
     if (heroIsCancelled(token)) return false;
 
     const restingLeft = journey.currentLeft;
@@ -1258,7 +1258,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { opacity: 1, transform: "translate3d(-0.2em,0.035em,0) rotate(-2deg) scale(1.04,0.96)", filter: "blur(0)", offset: 0.27 },
       { opacity: 0, transform: "translate3d(-0.96em,0.14em,0) rotate(-8deg) scale(0.81)", filter: "blur(2px)" }
     ], {
-      duration: reducedMotionQuery.matches ? 180 : 530,
+      duration: reducedMotionQuery.matches ? 145 : 425,
       easing: "cubic-bezier(0.22,1,0.36,1)",
       fill: "forwards"
     });
@@ -1269,8 +1269,8 @@ document.addEventListener("DOMContentLoaded", () => {
       { opacity: 1, transform: "translate3d(-0.045em,0.01em,0) rotate(-0.7deg) scale(1.03,0.975)", offset: 0.78 },
       { opacity: 1, transform: "translate3d(0,0,0) rotate(0deg) scale(1)" }
     ], {
-      duration: reducedMotionQuery.matches ? 180 : 570,
-      delay: reducedMotionQuery.matches ? 0 : 105,
+      duration: reducedMotionQuery.matches ? 145 : 455,
+      delay: reducedMotionQuery.matches ? 0 : 85,
       easing: "cubic-bezier(0.22,1,0.36,1)",
       fill: "forwards"
     });
