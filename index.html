@@ -133,7 +133,6 @@
       -webkit-backdrop-filter: blur(8px);
     }
 
-    /* Simplified logo: The Point is a noticeable pink full stop after the name. */
     .nav-logo {
       position: relative;
       z-index: 1003;
@@ -166,7 +165,6 @@
       transform: translateY(0.25em);
     }
 
-    /* Keep the dot optically consistent with the capital height of the typeface. */
     @supports (width: 1cap) {
       .nav-point {
         width: 0.43cap;
@@ -652,28 +650,215 @@
     .service-row h3 { margin-bottom: 14px; font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 400; line-height: 1.05; text-wrap: balance; }
     .service-row p { max-width: 700px; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.65; opacity: 0.9; }
 
-    #recent-work { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-dark); color: var(--bg-cream); border-top: 2px solid rgba(255, 241, 229, 0.2); }
-    .work-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; }
-    .work-row { border-bottom: 2px solid rgba(255, 241, 229, 0.28); }
-    .work-header-trigger { width: 100%; min-width: 0; display: grid; grid-template-columns: 27% minmax(0, 1fr) auto; gap: 48px; align-items: start; padding: 42px 0 34px; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
-    .client-name { padding-top: 7px; color: var(--bg-cream); font-family: var(--font-system); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; line-height: 1.4; text-transform: uppercase; }
-    .trigger-headline { min-width: 0; color: var(--bg-cream); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.08; overflow-wrap: anywhere; text-wrap: balance; transition: color 0.25s ease; }
-    .work-row.is-open .trigger-headline { color: var(--pink); }
-    .accordion-icon { position: relative; width: 20px; height: 20px; margin-top: 12px; }
-    .icon-line { position: absolute; inset: 50% auto auto 50%; display: block; background: var(--bg-cream); transform: translate(-50%, -50%); transition: transform 0.25s ease; }
-    .icon-line.horizontal { width: 20px; height: 2px; }
-    .icon-line.vertical { width: 2px; height: 20px; }
-    .work-row.is-open .icon-line.vertical { transform: translate(-50%, -50%) rotate(90deg); }
-    .work-accordion-body { display: grid; grid-template-rows: 0fr; min-width: 0; transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1); }
-    .work-row.is-open .work-accordion-body { grid-template-rows: 1fr; }
-    .work-accordion-inner { min-width: 0; overflow: hidden; }
-    .work-fold-content { min-width: 0; display: grid; grid-template-columns: 27% minmax(0, 1fr); gap: 48px; padding: 0 0 52px; }
-    .work-image-wrapper { min-width: 0; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid rgba(255, 241, 229, 0.18); background: rgba(255, 255, 255, 0.08); }
-    .work-image-wrapper img { width: 100%; height: 100%; display: block; object-fit: cover; }
-    .narrative-stack { min-width: 0; max-width: 780px; display: flex; flex-direction: column; gap: 24px; }
-    .narrative-item { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-    .narrative-label { color: var(--bg-cream); font-family: var(--font-system); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-    .narrative-text { font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.65; overflow-wrap: anywhere; }
+    #recent-work {
+      padding: clamp(100px, 10vw, 140px) 20px;
+      overflow: hidden;
+      background: var(--bg-dark);
+      color: var(--bg-cream);
+      border-top: 2px solid rgba(255, 241, 229, 0.2);
+    }
+
+    .work-container {
+      width: 100%;
+      max-width: var(--page-width);
+      min-width: 0;
+      margin: 0 auto;
+    }
+
+    .work-section-header {
+      max-width: 940px;
+      margin-bottom: clamp(58px, 7vw, 82px);
+    }
+
+    .work-section-label {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--bg-cream);
+      font-family: var(--font-system);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      line-height: 1.4;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .work-section-intro {
+      max-width: 940px;
+      color: var(--bg-cream);
+      font-size: clamp(2.3rem, 4.7vw, 4.15rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.03;
+      text-wrap: balance;
+    }
+
+    .work-row {
+      border-bottom: 2px solid rgba(255, 241, 229, 0.28);
+    }
+
+    .work-row:first-of-type {
+      border-top: 2px solid rgba(255, 241, 229, 0.28);
+    }
+
+    .work-header-trigger {
+      width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 27% minmax(0, 1fr) auto;
+      gap: 48px;
+      align-items: start;
+      padding: 42px 0 34px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .work-meta {
+      min-width: 0;
+      padding-top: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .work-category {
+      color: var(--pink);
+      font-family: var(--font-system);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .client-name {
+      color: var(--bg-cream);
+      font-family: var(--font-system);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .trigger-headline {
+      min-width: 0;
+      color: var(--bg-cream);
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      overflow-wrap: anywhere;
+      text-wrap: balance;
+      transition: color 0.25s ease;
+    }
+
+    .work-row.is-open .trigger-headline {
+      color: var(--pink);
+    }
+
+    .accordion-icon {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      margin-top: 12px;
+    }
+
+    .icon-line {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      display: block;
+      background: var(--bg-cream);
+      transform: translate(-50%, -50%);
+      transition: transform 0.25s ease;
+    }
+
+    .icon-line.horizontal {
+      width: 20px;
+      height: 2px;
+    }
+
+    .icon-line.vertical {
+      width: 2px;
+      height: 20px;
+    }
+
+    .work-row.is-open .icon-line.vertical {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .work-accordion-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      min-width: 0;
+      transition: grid-template-rows 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .work-row.is-open .work-accordion-body {
+      grid-template-rows: 1fr;
+    }
+
+    .work-accordion-inner {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .work-fold-content {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 27% minmax(0, 1fr);
+      gap: 48px;
+      padding: 0 0 52px;
+    }
+
+    .work-image-wrapper {
+      min-width: 0;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid rgba(255, 241, 229, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .work-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .narrative-stack {
+      min-width: 0;
+      max-width: 780px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .narrative-item {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .narrative-label {
+      color: var(--bg-cream);
+      font-family: var(--font-system);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .narrative-text {
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      line-height: 1.65;
+      overflow-wrap: anywhere;
+    }
 
     #testimonials { padding: clamp(100px, 10vw, 140px) 20px; overflow: hidden; background: var(--bg-cream); color: var(--text); border-top: 2px solid var(--line-strong); }
     .testimonials-container { width: 100%; max-width: var(--page-width); min-width: 0; margin: 0 auto; }
@@ -755,17 +940,57 @@
     .footer-copy { font-family: var(--font-system); font-size: 0.72rem; opacity: 0.68; }
 
     @media (max-width: 980px) {
-      .work-header-trigger { grid-template-columns: minmax(0, 1fr) auto; gap: 18px; }
-      .work-header-trigger .client-name { grid-column: 1 / -1; }
-      .trigger-headline { grid-column: 1; }
-      .accordion-icon { grid-column: 2; grid-row: 2; }
-      .work-fold-content { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-      .work-image-wrapper { width: 100%; max-width: 640px; aspect-ratio: 16 / 9; }
-      .services-grid,.about-container { grid-template-columns: minmax(0, 1fr); }
-      .services-header,.about-image-col { position: static; }
-      .services-intro { max-width: 650px; }
-      .services-content { padding-left: 0; border-left: 0; }
-      .about-image-wrapper { width: 100%; max-width: 480px; aspect-ratio: 16 / 10; }
+      .work-header-trigger {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+      }
+
+      .work-header-trigger .work-meta {
+        grid-column: 1 / -1;
+      }
+
+      .trigger-headline {
+        grid-column: 1;
+      }
+
+      .accordion-icon {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .work-fold-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+      }
+
+      .work-image-wrapper {
+        width: 100%;
+        max-width: 640px;
+        aspect-ratio: 16 / 9;
+      }
+
+      .services-grid,.about-container {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .services-header,.about-image-col {
+        position: static;
+      }
+
+      .services-intro {
+        max-width: 650px;
+      }
+
+      .services-content {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .about-image-wrapper {
+        width: 100%;
+        max-width: 480px;
+        aspect-ratio: 16 / 10;
+      }
     }
 
     @media (max-width: 700px) {
@@ -785,6 +1010,9 @@
       .client-logo { width: 116px; height: 46px; }
       #recent-work,#services,#about-me,#testimonials,#contact { padding-left: 16px; padding-right: 16px; }
       #services,#recent-work,#testimonials { padding-top: 84px; padding-bottom: 84px; }
+      .work-section-header { margin-bottom: 52px; }
+      .work-section-label { margin-bottom: 16px; }
+      .work-section-intro { font-size: clamp(2.1rem, 9vw, 3rem); }
       .about-container,.services-grid { display: block; }
       .services-header { margin-bottom: 44px; }
       .about-image-col { margin-bottom: 40px; }
@@ -800,9 +1028,10 @@
       html { scroll-behavior: auto; }
       .hero-point,.hero-point__body,.hero-point__face,.hero-word { animation: none !important; transition-duration: 0.01ms !important; }
     }
-  </style>
+</style>
 </head>
 <body>
+
 <nav aria-label="Primary navigation" class="sticky-nav">
 <a aria-label="Strategy Support home" class="nav-logo" href="#intro">
 <span class="nav-logo__word">Strategy&nbsp;Support</span><span aria-hidden="true" class="nav-point"></span>
@@ -823,7 +1052,9 @@
 </li>
 </ul>
 </nav>
+
 <main>
+
 <section aria-labelledby="intro-heading" id="intro">
 <div class="hero-container">
 <h1 aria-label="Support for difficult brand, marketing or creative problems." class="hero-headline" id="intro-heading">
@@ -853,6 +1084,7 @@
 </h1>
 </div>
 </section>
+
 <section aria-labelledby="about-me-heading" id="about-me">
 <div class="about-container">
 <div class="about-image-col">
@@ -908,6 +1140,7 @@
 </div>
 </div>
 </section>
+
 <section aria-labelledby="services-heading" id="services">
 <div class="services-grid"><h2 class="visually-hidden" id="services-heading">How I help</h2>
 <div class="services-header">
@@ -920,13 +1153,133 @@
 </div>
 </div>
 </section>
+
 <section aria-labelledby="recent-work-heading" id="recent-work">
-<div class="work-container"><h2 class="visually-hidden" id="recent-work-heading">Recent work</h2>
-<article class="work-row"><button aria-controls="work-panel-1" aria-expanded="false" class="work-header-trigger" id="work-trigger-1" type="button"><span class="client-name">DSV Logistics — 2025</span><span class="trigger-headline">One marketing approach for a business that resists standardisation</span><span class="accordion-icon" aria-hidden="true"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div aria-hidden="true" aria-labelledby="work-trigger-1" class="work-accordion-body" id="work-panel-1" inert role="region"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img alt="DSV global marketing strategy work" decoding="async" height="1200" loading="lazy" src="assets/dsv-case.png" width="1600"/></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The situation</span><p class="narrative-text">DSV is the world’s largest transport and logistics company. Its marketing has to work across six industry verticals, four product divisions, multiple customer segments and more than 90 markets.</p></div><div class="narrative-item"><span class="narrative-label">The challenge</span><p class="narrative-text">The job was not simply to write another global strategy. It was to build a coherent approach that could guide global, regional and local decisions without ignoring the differences between industries, products and markets.</p></div><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">Working directly with the global CMO, I am developing the marketing strategy and the frameworks that connect business priorities with what actually drives purchase decisions in B2B logistics — from acquisition and retention to trade fairs and major industry moments.</p></div><div class="narrative-item"><span class="narrative-label">Alongside the strategy</span><p class="narrative-text">I am also supporting organisational design, process development and the implementation of AI across the marketing organisation.</p></div></div></div></div></div></article>
-<article class="work-row"><button aria-controls="work-panel-2" aria-expanded="false" class="work-header-trigger" id="work-trigger-2" type="button"><span class="client-name">Saxo Bank — 2023</span><span class="trigger-headline">Making Saxo the platform money would choose for itself</span><span class="accordion-icon" aria-hidden="true"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div aria-hidden="true" aria-labelledby="work-trigger-2" class="work-accordion-body" id="work-panel-2" inert role="region"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img alt="Saxo Bank brand platform" decoding="async" height="1200" loading="lazy" src="assets/saxo-bank-case.png" width="1600"/></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The situation</span><p class="narrative-text">Saxo wanted to grow awareness and preference among experienced investors and traders globally. But it was competing in a crowded, price-driven category full of bland, bank-like advertising.</p></div><div class="narrative-item"><span class="narrative-label">The unlock</span><p class="narrative-text">Investors do not only want to protect their money. They want to put it to work. And with more tradable instruments than its competitors, Saxo gives money more things to do.</p></div><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">We dramatised the product advantage of more than 75,000 tradable instruments by giving money a voice — and showing that, if it had a choice, it would choose Saxo.</p></div></div></div></div></div></article>
-<article class="work-row"><button aria-controls="work-panel-3" aria-expanded="false" class="work-header-trigger" id="work-trigger-3" type="button"><span class="client-name">Burger King — 2016</span><span class="trigger-headline">Giving Burger King’s global strategy a British attitude</span><span class="accordion-icon" aria-hidden="true"><span class="icon-line horizontal"></span><span class="icon-line vertical"></span></span></button><div aria-hidden="true" aria-labelledby="work-trigger-3" class="work-accordion-body" id="work-panel-3" inert role="region"><div class="work-accordion-inner"><div class="work-fold-content"><div class="work-image-wrapper"><img alt="Burger King UK brand strategy work" decoding="async" height="1200" loading="lazy" src="assets/burger-king-case.png" width="1600"/></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The situation</span><p class="narrative-text">Burger King had shifted its global brand strategy from <em>Have It Your Way</em> to <em>Be Your Way</em>. But as more brands began celebrating individuality, the platform risked feeling generic and imported in the UK.</p></div><div class="narrative-item"><span class="narrative-label">The unlock</span><p class="narrative-text">British youth do not always express individuality through grand rebellion. More often, they do it by being cheeky — taking what is expected and giving it their own twist.</p></div><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">We positioned Burger King as the destination for cheeky detours: a British expression of the global brand idea that felt natural to the product, the audience and the culture.</p></div></div></div></div></div></article>
+<div class="work-container">
+
+<div class="work-section-header">
+<h2 class="work-section-label" id="recent-work-heading">Selected work</h2>
+<p class="work-section-intro">The problem can sit anywhere: in the marketing system, the idea behind the work, or how that idea is expressed in a particular market.</p>
+</div>
+
+<article class="work-row">
+<button aria-controls="work-panel-1" aria-expanded="false" class="work-header-trigger" id="work-trigger-1" type="button">
+<span class="work-meta">
+<span class="work-category">The system</span>
+<span class="client-name">DSV Logistics — 2025</span>
+</span>
+<span class="trigger-headline">One marketing approach for a business that resists standardisation</span>
+<span class="accordion-icon" aria-hidden="true">
+<span class="icon-line horizontal"></span>
+<span class="icon-line vertical"></span>
+</span>
+</button>
+<div aria-hidden="true" aria-labelledby="work-trigger-1" class="work-accordion-body" id="work-panel-1" inert role="region">
+<div class="work-accordion-inner">
+<div class="work-fold-content">
+<div class="work-image-wrapper">
+<img alt="DSV global marketing strategy work" decoding="async" height="1200" loading="lazy" src="assets/dsv-case.png" width="1600"/>
+</div>
+<div class="narrative-stack">
+<div class="narrative-item">
+<span class="narrative-label">The situation</span>
+<p class="narrative-text">DSV is the world’s largest transport and logistics company. Its marketing has to work across six industry verticals, four product divisions, multiple customer segments and more than 90 markets.</p>
+</div>
+<div class="narrative-item">
+<span class="narrative-label">The challenge</span>
+<p class="narrative-text">The job was not simply to write another global strategy. It was to build a coherent approach that could guide global, regional and local decisions without ignoring the differences between industries, products and markets.</p>
+</div>
+<div class="narrative-item">
+<span class="narrative-label">The strategy</span>
+<p class="narrative-text">Working directly with the global CMO, I am developing the marketing strategy and the frameworks that connect business priorities with what actually drives purchase decisions in B2B logistics — from acquisition and retention to trade fairs and major industry moments.</p>
+</div>
+<div class="narrative-item">
+<span class="narrative-label">Alongside the strategy</span>
+<p class="narrative-text">I am also supporting organisational design, process development and the implementation of AI across the marketing organisation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+
+<article class="work-row">
+<button aria-controls="work-panel-2" aria-expanded="false" class="work-header-trigger" id="work-trigger-2" type="button">
+<span class="work-meta">
+<span class="work-category">The idea</span>
+<span class="client-name">Saxo Bank — 2023</span>
+</span>
+<span class="trigger-headline">Making Saxo the platform money would choose for itself</span>
+<span class="accordion-icon" aria-hidden="true">
+<span class="icon-line horizontal"></span>
+<span class="icon-line vertical"></span>
+</span>
+</button>
+<div aria-hidden="true" aria-labelledby="work-trigger-2" class="work-accordion-body" id="work-panel-2" inert role="region">
+<div class="work-accordion-inner">
+<div class="work-fold-content">
+<div class="work-image-wrapper">
+<img alt="Saxo Bank brand platform" decoding="async" height="1200" loading="lazy" src="assets/saxo-bank-case.png" width="1600"/>
+</div>
+<div class="narrative-stack">
+<div class="narrative-item">
+<span class="narrative-label">The situation</span>
+<p class="narrative-text">Saxo wanted to grow awareness and preference among experienced investors and traders globally. But it was competing in a crowded, price-driven category full of bland, bank-like advertising.</p>
+</div>
+<div class="narrative-item">
+<span class="narrative-label">The unlock</span>
+<p class="narrative-text">Investors do not only want to protect their money. They want to put it to work. And with more tradable instruments than its competitors, Saxo gives money more things to do.</p>
+</div>
+<div class="narrative-item">
+<span class="narrative-label">The strategy</span>
+<p class="narrative-text">We dramatised the product advantage of more than 75,000 tradable instruments by giving money a voice — and showing that, if it had a choice, it would choose Saxo.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+
+<article class="work-row">
+<button aria-controls="work-panel-3" aria-expanded="false" class="work-header-trigger" id="work-trigger-3" type="button">
+<span class="work-meta">
+<span class="work-category">The expression</span>
+<span class="client-name">Burger King — 2016</span>
+</span>
+<span class="trigger-headline">Giving Burger King’s global strategy a British attitude</span>
+<span class="accordion-icon" aria-hidden="true">
+<span class="icon-line horizontal"></span>
+<span class="icon-line vertical"></span>
+</span>
+</button>
+<div aria-hidden="true" aria-labelledby="work-trigger-3" class="work-accordion-body" id="work-panel-3" inert role="region">
+<div class="work-accordion-inner">
+<div class="work-fold-content">
+<div class="work-image-wrapper">
+<img alt="Burger King UK brand strategy work" decoding="async" height="1200" loading="lazy" src="assets/burger-king-case.png" width="1600"/>
+</div>
+<div class="narrative-stack">
+<div class="narrative-item">
+<span class="narrative-label">The situation</span>
+<p class="narrative-text">Burger King had shifted its global brand strategy from <em>Have It Your Way</em> to <em>Be Your Way</em>. But as more brands began celebrating individuality, the platform risked feeling generic and imported in the UK.</p>
+</div>
+<div class="narrative-item">
+<span class="narrative-label">The unlock</span>
+<p class="narrative-text">British youth do not always express individuality through grand rebellion. More often, they do it by being cheeky — taking what is expected and giving it their own twist.</p>
+</div>
+<div class="narrative-item">
+<span class="narrative-label">The strategy</span>
+<p class="narrative-text">We positioned Burger King as the destination for cheeky detours: a British expression of the global brand idea that felt natural to the product, the audience and the culture.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+
 </div>
 </section>
+
 <section aria-labelledby="testimonials-heading" id="testimonials">
 <div class="testimonials-container"><h2 class="visually-hidden" id="testimonials-heading">What clients say</h2>
 <div aria-live="polite" class="testimonial-stage">
@@ -941,6 +1294,7 @@
 </div>
 </div>
 </section>
+
 <section aria-labelledby="contact-heading" id="contact">
 <div class="contact-container">
 <h2 class="contact-heading" id="contact-heading">Got a difficult brand or marketing problem?</h2>
@@ -960,8 +1314,11 @@
 <div class="contact-meta"><span>Copenhagen-based · Working globally</span><a href="https://www.linkedin.com/in/emilvmadsen/">LinkedIn profile ↗</a></div>
 </div>
 </section>
+
 </main>
+
 <footer><p class="footer-copy">© <span id="current-year">2026</span> Strategy Support, an independent strategy studio in Copenhagen, Denmark. CVR 33320817.</p></footer>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const sleep = (delay) => new Promise((resolve) => window.setTimeout(resolve, delay));
