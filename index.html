@@ -5,12 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Freelance Brand &amp; Marketing Strategist | Strategy Support</title>
 <meta name="description" content="Independent brand and marketing strategist Emil Valdemar Madsen helps brands, agencies and in-house teams make clearer choices and create better work."/>
-
 <link rel="canonical" href="https://strategy-support.com/"/>
 <link rel="alternate" href="https://strategy-support.com/" hreflang="en-GB"/>
 <link rel="alternate" href="https://strategy-support.com/dk/" hreflang="da-DK"/>
 <link rel="alternate" href="https://strategy-support.com/" hreflang="x-default"/>
-
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://strategy-support.com/"/>
 <meta property="og:title" content="Freelance Brand &amp; Marketing Strategist | Emil Valdemar Madsen"/>
@@ -19,2445 +17,141 @@
 <meta property="og:image:alt" content="Emil Valdemar Madsen — Freelance Brand &amp; Marketing Strategist"/>
 <meta property="og:site_name" content="Strategy Support"/>
 <meta property="og:locale" content="en_GB"/>
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Freelance Brand &amp; Marketing Strategist | Emil Valdemar Madsen"/>
 <meta name="twitter:description" content="Independent brand and marketing strategy for brands, agencies and in-house teams."/>
 <meta name="twitter:image" content="https://strategy-support.com/assets/emilmadsen.JPG"/>
 <meta name="twitter:image:alt" content="Emil Valdemar Madsen — Freelance Brand &amp; Marketing Strategist"/>
-
 <link rel="icon" href="https://strategy-support.com/assets/favicon-96x96.png" sizes="96x96" type="image/png"/>
 <link rel="icon" href="https://strategy-support.com/assets/favicon.svg" type="image/svg+xml"/>
 <link rel="shortcut icon" href="https://strategy-support.com/assets/favicon.ico"/>
 <link rel="apple-touch-icon" href="https://strategy-support.com/assets/apple-touch-icon.png" sizes="180x180"/>
 <link rel="manifest" href="https://strategy-support.com/assets/site.webmanifest"/>
 <link rel="icon" href="https://strategy-support.com/assets/web-app-manifest-192x192.png" sizes="192x192" type="image/png"/>
-
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600&amp;display=swap" rel="stylesheet"/>
-
 <style>
-:root {
-  --font-voice: "Source Serif 4", Georgia, serif;
-  --font-system: "Inter", system-ui, sans-serif;
-  --bg-cream: #fff1e5;
-  --bg-dark: #3d0814;
-  --text: #3d0814;
-  --ink: #3d0814;
-  --pink: #f90090;
-  --line-light: rgba(61, 8, 20, .12);
-  --line-strong: rgba(61, 8, 20, .28);
-  --line-on-dark: rgba(255, 241, 229, .2);
-  --page-width: 1200px;
-  --nav-height: 68px;
-  --section-space: clamp(84px, 9vw, 118px);
-  --gutter: clamp(20px, 4vw, 48px);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
-}
-
-body {
-  min-width: 280px;
-  background: var(--bg-cream);
-  color: var(--text);
-  font-family: var(--font-voice);
-  letter-spacing: .01em;
-  -webkit-font-smoothing: antialiased;
-}
-
-body.menu-open {
-  overflow: hidden;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-
-button {
-  font: inherit;
-}
-
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid var(--pink);
-  outline-offset: 5px;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-.skip-link {
-  position: fixed;
-  top: 8px;
-  left: 8px;
-  z-index: 5000;
-  background: var(--bg-cream);
-  color: var(--ink);
-  padding: 12px;
-  transform: translateY(-150%);
-}
-
-.skip-link:focus {
-  transform: none;
-}
-
-section[id] {
-  scroll-margin-top: 90px;
-}
-
-.section-inner {
-  width: 100%;
-  max-width: var(--page-width);
-  margin: auto;
-  min-width: 0;
-}
-
-/* Navigation */
-
-.sticky-nav {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 1000;
-  height: var(--nav-height);
-  padding: 0 var(--gutter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--bg-cream);
-  border-bottom: 1px solid var(--line-light);
-}
-
-.nav-logo {
-  position: relative;
-  z-index: 1003;
-  display: inline-flex;
-  align-items: baseline;
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 1.12rem;
-  font-weight: 700;
-  letter-spacing: -.04em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.nav-point {
-  width: .4em;
-  height: .4em;
-  margin-left: .12em;
-  border-radius: 50%;
-  background: var(--pink);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  list-style: none;
-}
-
-.nav-links a {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--ink);
-  text-decoration: none;
-  font-family: var(--font-system);
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 5px;
-  height: 2px;
-  background: var(--pink);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .2s ease;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active-section::after {
-  transform: scaleX(1);
-}
-
-.language-switch {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--font-system);
-  font-size: .76rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-}
-
-.language-current {
-  color: var(--ink);
-  border-bottom: 2px solid var(--pink);
-  padding: 4px 0;
-}
-
-.language-separator {
-  opacity: .4;
-}
-
-.language-switch a {
-  font-size: inherit;
-  opacity: .65;
-}
-
-.language-switch a::after {
-  display: none;
-}
-
-.mobile-menu-toggle {
-  position: relative;
-  z-index: 1003;
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.hamburger-icon,
-.hamburger-icon::before,
-.hamburger-icon::after {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--ink);
-  transition: transform .2s ease;
-}
-
-.hamburger-icon {
-  position: relative;
-  margin: auto;
-}
-
-.hamburger-icon::before,
-.hamburger-icon::after {
-  content: "";
-  position: absolute;
-  left: 0;
-}
-
-.hamburger-icon::before {
-  top: -8px;
-}
-
-.hamburger-icon::after {
-  top: 8px;
-}
-
-.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon {
-  background: transparent;
-}
-
-.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-
-.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon::after {
-  top: 0;
-  transform: rotate(-45deg);
-}
-
-/* Hero */
-
-#intro {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding: calc(var(--nav-height) + 60px) 20px 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-cream);
-  text-align: center;
-  isolation: isolate;
-  overflow: hidden;
-}
-
-.hero-container {
-  width: 100%;
-  max-width: 1600px;
-  min-width: 0;
-}
-
-.hero-headline {
-  color: var(--ink);
-  font-size: clamp(3.15rem, 10.2vw, 9.75rem);
-  font-weight: 700;
-  letter-spacing: -.057em;
-  line-height: .9;
-  text-transform: uppercase;
-}
-
-.hero-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hero-lead {
-  margin-bottom: .3em;
-  font-family: var(--font-system);
-  font-size: .285em;
-  font-weight: 600;
-  letter-spacing: .02em;
-  line-height: 1.2;
-}
-
-.hero-word-stage {
-  position: relative;
-  display: inline-grid;
-  place-items: center;
-  height: 1.08em;
-  margin: .02em 0;
-}
-
-.hero-word-reserve,
-.hero-word-layer {
-  grid-area: 1 / 1;
-}
-
-.hero-word-reserve {
-  visibility: hidden;
-  white-space: nowrap;
-}
-
-.hero-word-layer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-}
-
-.hero-word {
-  grid-area: 1 / 1;
-  display: block;
-  white-space: nowrap;
-  line-height: 1.08;
-}
-
-.hero-problems-line {
-  display: inline-flex;
-  align-items: baseline;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-.hero-point-home {
-  position: relative;
-  display: inline-block;
-  width: .19em;
-  height: .19em;
-  margin-left: .055em;
-  flex: none;
-}
-
-.hero-point {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  pointer-events: none;
-  transform-origin: center;
-}
-
-.hero-point.is-travelling {
-  inset: auto;
-  will-change: transform;
-}
-
-.motion-control {
-  position: absolute;
-  bottom: 24px;
-  right: var(--gutter);
-  min-height: 44px;
-  padding: 8px 0;
-  border: 0;
-  border-bottom: 1px solid var(--line-strong);
-  background: transparent;
-  color: var(--ink);
-  font-family: var(--font-system);
-  font-size: .75rem;
-  cursor: pointer;
-}
-
+:root{--font-voice:"Source Serif 4",Georgia,serif;--font-system:"Inter",system-ui,sans-serif;--bg-cream:#fff1e5;--bg-dark:#3d0814;--text:#3d0814;--ink:#3d0814;--pink:#f90090;--line-light:rgba(61,8,20,.12);--line-strong:rgba(61,8,20,.28);--line-on-dark:rgba(255,241,229,.2);--page-width:1200px;--nav-height:68px;--section-space:clamp(84px,9vw,118px);--gutter:clamp(20px,4vw,48px)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:90px}body{min-width:280px;background:var(--bg-cream);color:var(--text);font-family:var(--font-voice);letter-spacing:.01em;-webkit-font-smoothing:antialiased}body.menu-open{overflow:hidden}img{max-width:100%;display:block}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}button,a{touch-action:manipulation}a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--pink);outline-offset:5px}[hidden]{display:none!important}.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.skip-link{position:fixed;top:8px;left:8px;z-index:5000;background:var(--bg-cream);color:var(--ink);padding:12px;transform:translateY(-150%)}.skip-link:focus{transform:none}section[id]{scroll-margin-top:90px}.section-inner{width:100%;max-width:var(--page-width);margin:auto;min-width:0}
+.sticky-nav{position:fixed;inset:0 0 auto;z-index:1000;height:var(--nav-height);padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;background:var(--bg-cream);border-bottom:1px solid var(--line-light)}.nav-logo{position:relative;z-index:1003;display:inline-flex;align-items:baseline;color:var(--ink);text-decoration:none;font-size:1.12rem;font-weight:700;letter-spacing:-.04em;line-height:1;text-transform:uppercase;white-space:nowrap}.nav-point{width:.4em;height:.4em;margin-left:.12em;border-radius:50%;background:var(--pink)}.nav-links{display:flex;align-items:center;gap:28px;list-style:none}.nav-links a{position:relative;display:inline-flex;align-items:center;min-height:44px;color:var(--ink);text-decoration:none;font-family:var(--font-system);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}.nav-links a::after{content:"";position:absolute;inset:auto 0 5px;height:2px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform .2s ease}.nav-links a:hover::after,.nav-links a.active-section::after{transform:scaleX(1)}.language-switch{display:flex;align-items:center;gap:7px;font-family:var(--font-system);font-size:.76rem;font-weight:600;letter-spacing:.06em}.language-current{color:var(--ink);border-bottom:2px solid var(--pink);padding:4px 0}.language-separator{opacity:.4}.language-switch a{font-size:inherit;opacity:.65}.language-switch a::after{display:none}.mobile-menu-toggle{position:relative;z-index:1003;display:none;width:44px;height:44px;border:0;background:transparent;cursor:pointer}.hamburger-icon,.hamburger-icon::before,.hamburger-icon::after{display:block;width:24px;height:2px;background:var(--ink);transition:transform .2s ease}.hamburger-icon{position:relative;margin:auto}.hamburger-icon::before,.hamburger-icon::after{content:"";position:absolute;left:0}.hamburger-icon::before{top:-8px}.hamburger-icon::after{top:8px}.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon{background:transparent}.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon::before{top:0;transform:rotate(45deg)}.mobile-menu-toggle[aria-expanded="true"] .hamburger-icon::after{top:0;transform:rotate(-45deg)}
+#intro{position:relative;min-height:100vh;min-height:100svh;padding:calc(var(--nav-height) + 60px) 20px 90px;display:flex;align-items:center;justify-content:center;background:var(--bg-cream);text-align:center;isolation:isolate;overflow:hidden}.hero-container{width:100%;max-width:1600px;min-width:0}.hero-headline{color:var(--ink);font-size:clamp(3.15rem,10.2vw,9.75rem);font-weight:700;letter-spacing:-.057em;line-height:.9;text-transform:uppercase}.hero-copy{display:flex;flex-direction:column;align-items:center}.hero-lead{margin-bottom:.3em;font-family:var(--font-system);font-size:.285em;font-weight:600;letter-spacing:.02em;line-height:1.2}.hero-word-stage{position:relative;display:inline-grid;place-items:center;height:1.08em;margin:.02em 0}.hero-word-reserve,.hero-word-layer{grid-area:1/1}.hero-word-reserve{visibility:hidden;white-space:nowrap}.hero-word-layer{position:relative;width:100%;height:100%;display:grid;place-items:center}.hero-word{grid-area:1/1;display:block;white-space:nowrap;line-height:1.08}.hero-problems-line{display:inline-flex;align-items:baseline;justify-content:center;white-space:nowrap}.hero-point-home{position:relative;display:inline-block;width:.19em;height:.19em;margin-left:.055em;flex:none}.hero-point{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none;transform-origin:center}.hero-point.is-travelling{inset:auto;will-change:transform}
 /* One shared character: the same colour, light source and face at every size. */
-
-.point {
-  --face-x: 0%;
-  --face-y: 0%;
-  --eye-scale: 1;
-  --mouth-stroke: 2px;
-  display: block;
-  aspect-ratio: 1;
-}
-
-.point-body {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      ellipse at 30% 21%,
-      rgba(255, 255, 255, .97) 0%,
-      rgba(255, 255, 255, .83) 3%,
-      rgba(255, 255, 255, .16) 8%,
-      transparent 17%
-    ),
-    radial-gradient(
-      circle at 37% 30%,
-      #ff89d6 0%,
-      #ff3bb4 24%,
-      #f90090 53%,
-      #cf0076 77%,
-      #870044 100%
-    );
-  box-shadow:
-    inset 3px 4px 7px rgba(255, 255, 255, .28),
-    inset -5px -7px 10px rgba(76, 0, 38, .25),
-    0 7px 12px rgba(42, 0, 16, .2);
-  transform-origin: 50% 80%;
-}
-
-.point-face {
-  position: absolute;
-  inset: 0;
-  transform: translate(var(--face-x), var(--face-y));
-  transition: transform .23s ease;
-}
-
-.point-eye {
-  position: absolute;
-  top: 39%;
-  width: 11.5%;
-  height: 14%;
-  border-radius: 50%;
-  background: #130008;
-  transform: scaleY(var(--eye-scale));
-  transform-origin: center;
-  transition: transform .2s ease;
-}
-
-.point-eye::after {
-  content: "";
-  position: absolute;
-  top: 12%;
-  left: 18%;
-  width: 29%;
-  height: 29%;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .92);
-}
-
-.point-eye--left {
-  left: 31%;
-}
-
-.point-eye--right {
-  right: 30%;
-  top: 38.2%;
-  width: 10.8%;
-  height: 13%;
-}
-
-.point-mouth {
-  position: absolute;
-  top: 61%;
-  left: 41.5%;
-  width: 17%;
-  height: 8%;
-  border-bottom: var(--mouth-stroke) solid #130008;
-  border-radius: 0 0 100% 100%;
-  transform: rotate(-5deg);
-}
-
-.hero-point:not(.is-travelling) {
-  --mouth-stroke: 1px;
-}
-
-.hero-point:not(.is-travelling) .point-body {
-  box-shadow:
-    inset 1px 1px 3px rgba(255, 255, 255, .3),
-    inset -2px -2px 3px rgba(76, 0, 38, .25),
-    0 2px 4px rgba(42, 0, 16, .16);
-}
-
-.hero-point:not(.is-travelling) .point-face {
-  opacity: 0;
-}
-
-.point.is-looking-word {
-  --face-x: -5%;
-  --face-y: -7%;
-}
-
-.point.is-looking-email {
-  --face-y: 7%;
-}
-
-.point.is-drowsy {
-  --eye-scale: .45;
-}
-
-.point.is-drowsy .point-eye {
-  transition: transform 1.2s ease;
-}
-
-.point.is-asleep {
-  --eye-scale: .07;
-  --face-y: 4%;
-}
-
-.point.is-asleep .point-eye::after {
-  opacity: 0;
-}
-
-.point.is-asleep .point-body {
-  transform: translateY(3px) scale(1.035, .966);
-}
-
-.point.is-waking .point-body {
-  animation: point-wake .43s ease-out both;
-}
-
-.point.is-slow-blinking .point-eye {
-  animation: slow-blink 1s ease-in-out both;
-}
-
-@keyframes slow-blink {
-  0%, 100% {
-    transform: scaleY(.45);
-  }
-  40%, 65% {
-    transform: scaleY(.06);
-  }
-}
-
-@keyframes point-wake {
-  0% {
-    transform: translateY(3px) scale(1.035, .966);
-  }
-  28% {
-    transform: translateY(-6px) scale(.96, 1.04);
-  }
-  65% {
-    transform: translateY(1px) scale(1.025, .976);
-  }
-  100% {
-    transform: none;
-  }
-}
-
-/* About and portrait */
-
-#about-me {
-  padding: var(--section-space) var(--gutter);
-  background: var(--bg-dark);
-  color: var(--bg-cream);
-}
-
-.about-container {
-  display: grid;
-  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
-  gap: clamp(36px, 5vw, 64px);
-  align-items: start;
-}
-
-.about-image-col,
-.about-content {
-  min-width: 0;
-}
-
-.about-image-col {
-  margin: 0;
-}
-
-.about-image-wrapper {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background: #541727;
-  border: 1px solid var(--line-on-dark);
-}
-
-.about-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 35%;
-}
-
-.portrait-caption {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid var(--line-on-dark);
-  font-family: var(--font-system);
-  font-size: .75rem;
-  line-height: 1.5;
-  letter-spacing: .04em;
-}
-
-.about-heading {
-  margin-bottom: 28px;
-  font-size: clamp(2.6rem, 5vw, 4.4rem);
-  font-weight: 400;
-  letter-spacing: -.03em;
-  line-height: 1.04;
-  text-wrap: balance;
-}
-
-.about-text {
-  max-width: 65ch;
-  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-  line-height: 1.7;
-}
-
-.about-text p + p {
-  margin-top: 22px;
-}
-
-/* Brands and agencies */
-
-.about-clients-wrapper {
-  grid-column: 1 / -1;
-  min-width: 0;
-  margin-top: 6px;
-  padding-top: 30px;
-  border-top: 1px solid var(--line-on-dark);
-}
-
-.clients-intro-label {
-  display: block;
-  margin-bottom: 12px;
-  font-family: var(--font-system);
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  opacity: .8;
-}
-
-.client-toolbar {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.client-tabs {
-  display: flex;
-  gap: 28px;
-}
-
-.client-tab {
-  position: relative;
-  min-height: 44px;
-  padding: 8px 0;
-  border: 0;
-  background: transparent;
-  color: var(--bg-cream);
-  font-family: var(--font-system);
-  font-size: 1rem;
-  cursor: pointer;
-  opacity: .65;
-}
-
-.client-tab[aria-selected="true"] {
-  opacity: 1;
-}
-
-.client-tab[aria-selected="true"]::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 2px;
-  height: 2px;
-  background: var(--pink);
-}
-
-.carousel-control {
-  min-height: 44px;
-  padding: 8px 0;
-  border: 0;
-  background: transparent;
-  color: var(--bg-cream);
-  font-family: var(--font-system);
-  font-size: .75rem;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-
-.client-group {
-  min-width: 0;
-  width: 100%;
-}
-
-.carousel-window {
-  width: 100%;
-  overflow-x: auto;
-  padding: 18px 0;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-}
-
-.client-track {
-  display: flex;
-  width: max-content;
-  align-items: center;
-}
-
-.client-logo-set {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: clamp(34px, 4vw, 56px);
-  padding-right: clamp(34px, 4vw, 56px);
-}
-
-.client-logo {
-  flex: none;
-  width: clamp(116px, 11vw, 148px);
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.client-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: .8;
-}
-
-.logo-fallback {
-  color: var(--bg-cream);
-  font-family: var(--font-system);
-  font-size: .9rem;
-  text-align: center;
-}
-
-.client-group.is-ready .carousel-window {
-  overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 5%,
-    #000 95%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 5%,
-    #000 95%,
-    transparent
-  );
-}
-
-.client-group.is-ready .client-track {
-  will-change: transform;
-  animation: logo-loop var(--duration, 30s) linear infinite;
-}
-
-.client-group.is-paused .client-track,
-.client-group.is-offscreen .client-track,
-html[data-page-hidden="true"] .client-track {
-  animation-play-state: paused;
-}
-
-@keyframes logo-loop {
-  to {
-    transform: translate3d(calc(-1 * var(--distance)), 0, 0);
-  }
-}
-
-/* Services */
-
-#services {
-  padding: clamp(100px, 10vw, 140px) var(--gutter);
-  background: var(--bg-cream);
-  color: var(--ink);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-  gap: clamp(48px, 6vw, 80px);
-  align-items: start;
-}
-
-.services-header,
-.services-content {
-  min-width: 0;
-}
-
-.services-header {
-  position: sticky;
-  top: 108px;
-}
-
-.services-intro {
-  font-size: clamp(2.6rem, 5vw, 4.4rem);
-  font-weight: 400;
-  letter-spacing: -.03em;
-  line-height: 1.04;
-  text-wrap: balance;
-}
-
-.pink-highlight {
-  color: #b60061;
-}
-
-.services-content {
-  padding-left: 40px;
-  border-left: 1px solid var(--line-strong);
-}
-
-.service-row {
-  padding: 46px 0;
-  border-top: 1px solid var(--line-strong);
-}
-
-.service-row:first-child {
-  padding-top: 34px;
-}
-
-.service-row:last-child {
-  border-bottom: 1px solid var(--line-strong);
-}
-
-.service-kicker,
-.narrative-label {
-  display: block;
-  margin-bottom: 10px;
-  font-family: var(--font-system);
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.service-row h3 {
-  margin-bottom: 14px;
-  font-size: clamp(2rem, 3.6vw, 3rem);
-  font-weight: 400;
-  line-height: 1.08;
-  text-wrap: balance;
-}
-
-.service-row p {
-  max-width: 65ch;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.65;
-}
-
-/* Work */
-
-#recent-work {
-  padding: clamp(100px, 10vw, 140px) var(--gutter);
-  background: var(--bg-dark);
-  color: var(--bg-cream);
-}
-
-.work-section-header {
-  max-width: 940px;
-  margin-bottom: clamp(58px, 7vw, 82px);
-}
-
-.work-section-label {
-  display: block;
-  margin-bottom: 20px;
-  font-family: var(--font-system);
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  line-height: 1.4;
-  text-transform: uppercase;
-  opacity: .8;
-}
-
-.work-section-intro {
-  font-size: clamp(2.3rem, 4.7vw, 4.15rem);
-  font-weight: 400;
-  letter-spacing: -.03em;
-  line-height: 1.06;
-  text-wrap: balance;
-}
-
-.work-row {
-  border-bottom: 1px solid var(--line-on-dark);
-}
-
-.work-row:first-of-type {
-  border-top: 1px solid var(--line-on-dark);
-}
-
-.work-header-trigger {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 27% minmax(0, 1fr) 24px;
-  gap: 48px;
-  align-items: start;
-  padding: 42px 0 34px;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  list-style: none;
-}
-
-.work-header-trigger::-webkit-details-marker {
-  display: none;
-}
-
-.work-header-trigger::marker {
-  content: "";
-}
-
-.work-meta {
-  min-width: 0;
-  padding-top: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.work-category {
-  color: var(--pink);
-  font-family: var(--font-system);
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.client-name {
-  font-family: var(--font-system);
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  line-height: 1.4;
-  text-transform: uppercase;
-  opacity: .8;
-}
-
-.trigger-headline {
-  min-width: 0;
-  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
-  font-weight: 400;
-  letter-spacing: -.02em;
-  line-height: 1.1;
-  text-wrap: balance;
-  transition: color .2s ease;
-}
-
-.work-row[open] .trigger-headline {
-  color: var(--pink);
-}
-
-.accordion-icon {
-  position: relative;
-  width: 24px;
-  height: 24px;
-  margin-top: 9px;
-}
-
-.accordion-icon::before,
-.accordion-icon::after {
-  content: "";
-  position: absolute;
-  top: 11px;
-  left: 2px;
-  width: 20px;
-  height: 2px;
-  background: var(--bg-cream);
-  transition: transform .2s ease;
-}
-
-.accordion-icon::after {
-  transform: rotate(90deg);
-}
-
-.work-row[open] .accordion-icon::after {
-  transform: rotate(0);
-}
-
-.work-panel {
-  overflow: hidden;
-}
-
-.work-fold-content {
-  min-width: 0;
-  display: grid;
-  grid-template-columns: 27% minmax(0, 1fr);
-  gap: 48px;
-  padding-bottom: 52px;
-}
-
-.work-image-stage {
-  position: relative;
-  min-width: 0;
-  align-self: start;
-  margin-top: 48px;
-}
-
-.work-image-wrapper {
-  position: relative;
-  z-index: 2;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border: 1px solid rgba(255, 241, 229, .18);
-  background: #541727;
-}
-
-.work-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.case-point-window {
-  position: absolute;
-  right: 18px;
-  bottom: 100%;
-  width: 76px;
-  height: 56px;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.case-point {
-  position: absolute;
-  left: 5px;
-  top: 28px;
-  width: 64px;
-  transform: translateY(70px);
-}
-
-.case-point-window.is-peeking .case-point {
-  animation: case-peek 4.4s cubic-bezier(.22, 1, .36, 1) both;
-}
-
-.case-point-window.is-peeking .point-face {
-  animation: case-inspect 4.4s ease both;
-}
-
-@keyframes case-peek {
-  0%, 100% {
-    transform: translateY(70px);
-  }
-  24%, 39% {
-    transform: translateY(5px);
-  }
-  57%, 80% {
-    transform: translateY(-9px);
-  }
-}
-
-@keyframes case-inspect {
-  0%, 39%, 100% {
-    transform: none;
-  }
-  55%, 73% {
-    transform: translate(-3px, 4px);
-  }
-}
-
-.narrative-stack {
-  min-width: 0;
-  max-width: 780px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.narrative-label {
-  margin-bottom: 8px;
-}
-
-.narrative-text {
-  font-size: clamp(1rem, 1.5vw, 1.18rem);
-  line-height: 1.65;
-}
-
-/* Testimonials */
-
-#testimonials {
-  padding: clamp(100px, 10vw, 140px) var(--gutter);
-  background: var(--bg-cream);
-  color: var(--ink);
-}
-
-.testimonial-stage {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  min-height: 300px;
-}
-
-.testimonial-item {
-  grid-area: 1 / 1;
-  width: 100%;
-  max-width: 900px;
-  text-align: center;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .35s ease;
-}
-
-.testimonial-item.active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.testimonial-quote {
-  max-width: 860px;
-  margin: auto;
-  font-size: clamp(1.35rem, 2.7vw, 2rem);
-  font-style: italic;
-  line-height: 1.55;
-}
-
-.testimonial-author {
-  margin-top: 26px;
-  font-family: var(--font-system);
-  font-size: .83rem;
-  line-height: 1.5;
-}
-
-.testimonial-author strong {
-  display: block;
-  font-size: .9rem;
-}
-
-.testimonial-role {
-  opacity: .75;
-}
-
-.testimonial-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  margin-top: 24px;
-  flex-wrap: wrap;
-}
-
-.testimonial-control {
-  position: relative;
-  min-height: 44px;
-  padding: 8px 0;
-  border: 0;
-  background: transparent;
-  color: var(--ink);
-  font-family: var(--font-system);
-  font-size: .78rem;
-  font-weight: 600;
-  cursor: pointer;
-  opacity: .65;
-}
-
-.testimonial-control.active {
-  opacity: 1;
-}
-
-.testimonial-control.active::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 2px;
-  height: 2px;
-  background: var(--pink);
-}
-
-/* Contact */
-
-#contact {
-  padding:
-    clamp(100px, 10vw, 136px)
-    var(--gutter)
-    clamp(84px, 8vw, 108px);
-  background: var(--bg-dark);
-  color: var(--bg-cream);
-  text-align: center;
-}
-
-.contact-container {
-  max-width: 960px;
-}
-
-.contact-heading {
-  max-width: 820px;
-  margin: auto;
-  font-size: clamp(3rem, 7vw, 6.8rem);
-  font-weight: 400;
-  letter-spacing: -.04em;
-  line-height: 1.02;
-  text-wrap: balance;
-}
-
-.contact-email-stage {
-  position: relative;
-  width: 100%;
-  margin-top: 34px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.contact-point {
-  position: relative;
-  width: clamp(76px, 7vw, 94px);
-  pointer-events: none;
-}
-
-.giant-email {
-  display: inline-block;
-  max-width: 100%;
-  color: var(--bg-cream);
-  text-decoration: none;
-  font-size: clamp(1.45rem, 4vw, 3.2rem);
-  font-weight: 600;
-  letter-spacing: -.02em;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
-  border-bottom: 2px solid var(--pink);
-}
-
-.giant-email:hover {
-  color: var(--pink);
-}
-
-.contact-meta {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  flex-wrap: wrap;
-  font-family: var(--font-system);
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-
-.contact-meta a {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  color: var(--bg-cream);
-  text-decoration: none;
-}
-
-.contact-meta span {
-  display: inline-flex;
-  align-items: center;
-}
-
-.contact-meta a:hover {
-  color: var(--pink);
-}
-
-footer {
-  padding: 30px var(--gutter);
-  background: var(--bg-dark);
-  color: var(--bg-cream);
-  border-top: 1px solid var(--line-on-dark);
-  text-align: center;
-}
-
-.footer-copy {
-  font-family: var(--font-system);
-  font-size: .75rem;
-  line-height: 1.6;
-  opacity: .75;
-}
-
-/* Tablet */
-
-@media (max-width: 980px) {
-  .nav-links {
-    gap: 18px;
-  }
-
-  .work-header-trigger {
-    grid-template-columns: minmax(0, 1fr) 24px;
-    gap: 18px;
-  }
-
-  .work-meta {
-    grid-column: 1 / -1;
-  }
-
-  .trigger-headline {
-    grid-column: 1;
-  }
-
-  .accordion-icon {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .work-fold-content {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-  }
-
-  .work-image-stage {
-    width: 100%;
-    max-width: 640px;
-  }
-
-  .work-image-wrapper {
-    aspect-ratio: 16 / 9;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-
-  .services-header {
-    position: static;
-  }
-
-  .services-intro {
-    max-width: 650px;
-  }
-
-  .services-content {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .about-container {
-    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-    gap: 32px;
-  }
-
-  .about-heading {
-    font-size: clamp(2.35rem, 4.7vw, 3.7rem);
-  }
-}
-
-/* Mobile */
-
-@media (max-width: 700px) {
-  :root {
-    --nav-height: 64px;
-    --section-space: 72px;
-    --gutter: 20px;
-  }
-
-  .nav-logo {
-    font-size: 1rem;
-  }
-
-  .mobile-menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: fixed;
-    inset: var(--nav-height) 0 0;
-    display: none;
-    padding: 24px var(--gutter);
-    background: var(--bg-cream);
-    overflow-y: auto;
-    flex-direction: column;
-    justify-content: center;
-    gap: 24px;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links a {
-    font-size: 1.25rem;
-    text-transform: none;
-  }
-
-  .language-switch {
-    margin-top: 8px;
-    font-size: .9rem;
-  }
-
-  #intro {
-    padding: calc(var(--nav-height) + 50px) 12px 86px;
-  }
-
-  .hero-headline {
-    font-size: clamp(2.3rem, 10.5vw, 5.4rem);
-    letter-spacing: -.052em;
-  }
-
-  .hero-lead {
-    font-size: .31em;
-    margin-bottom: .34em;
-  }
-
-  .hero-point-home {
-    width: .22em;
-    height: .22em;
-  }
-
-  .about-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .about-image-col {
-    width: 100%;
-    max-width: none;
-  }
-
-  .about-image-wrapper {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
-
-  .about-image-wrapper img {
-    object-position: 50% 32%;
-  }
-
-  .portrait-caption {
-    margin-top: 12px;
-    padding-top: 12px;
-  }
-
-  .about-heading {
-    font-size: clamp(2.35rem, 9.7vw, 3.6rem);
-  }
-
-  .about-clients-wrapper {
-    margin-top: 6px;
-    padding-top: 24px;
-  }
-
-  .client-tabs {
-    gap: 24px;
-  }
-
-  .client-logo {
-    width: 120px;
-    height: 54px;
-  }
-
-  .client-logo-set {
-    gap: 34px;
-    padding-right: 34px;
-  }
-
-  #services,
-  #recent-work,
-  #testimonials {
-    padding-top: 84px;
-    padding-bottom: 84px;
-  }
-
-  .work-section-header {
-    margin-bottom: 52px;
-  }
-
-  .work-section-intro {
-    font-size: clamp(2.1rem, 9vw, 3rem);
-  }
-
-  .services-intro {
-    font-size: clamp(2.35rem, 9.7vw, 3.6rem);
-  }
-
-  .contact-point {
-    width: 76px;
-  }
-
-  .contact-meta {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .testimonial-controls {
-    gap: 22px;
-  }
-
-  .motion-control {
-    bottom: 18px;
-  }
-
-  .work-header-trigger {
-    padding: 32px 0;
-  }
-
-  .contact-heading {
-    font-size: clamp(2.7rem, 11vw, 4.5rem);
-  }
-}
-
-/* Motion preferences; explicit controls can opt back in. */
-
-html[data-motion="off"] {
-  scroll-behavior: auto;
-}
-
-html[data-motion="off"] .point *,
-html[data-motion="off"] .case-point,
-html[data-motion="off"] .testimonial-item,
-html[data-motion="off"] .accordion-icon::after {
-  animation: none !important;
-  transition: none !important;
-}
-
-html[data-motion="off"] .case-point-window {
-  display: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html:not([data-motion="on"]) {
-    scroll-behavior: auto;
-  }
-}
-
-/* Usable navigation and testimonials if JavaScript is unavailable. */
-
-@media (max-width: 700px) {
-  html:not([data-menu-ready]) .mobile-menu-toggle {
-    display: none;
-  }
-
-  html:not([data-menu-ready]) .sticky-nav {
-    position: relative;
-    height: auto;
-    min-height: 64px;
-    flex-wrap: wrap;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    gap: 12px;
-  }
-
-  html:not([data-menu-ready]) .nav-links {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0;
-    gap: 8px 20px;
-  }
-
-  html:not([data-menu-ready]) .nav-links a {
-    font-size: .85rem;
-  }
-}
-
-html:not([data-testimonials-ready]) .testimonial-stage {
-  display: block;
-}
-
-html:not([data-testimonials-ready]) .testimonial-item {
-  visibility: visible;
-  opacity: 1;
-  margin-bottom: 40px;
-}
+.point{--face-x:0%;--face-y:0%;--eye-scale:1;--mouth-stroke:2px;display:block;aspect-ratio:1}.point-body{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(ellipse at 30% 21%,rgba(255,255,255,.97) 0%,rgba(255,255,255,.83) 3%,rgba(255,255,255,.16) 8%,transparent 17%),radial-gradient(circle at 37% 30%,#ff89d6 0%,#ff3bb4 24%,#f90090 53%,#cf0076 77%,#870044 100%);box-shadow:inset 3px 4px 7px rgba(255,255,255,.28),inset -5px -7px 10px rgba(76,0,38,.25),0 7px 12px rgba(42,0,16,.2);transform-origin:50% 80%}.point-face{position:absolute;inset:0;transform:translate(var(--face-x),var(--face-y));transition:transform .23s ease}.point-eye{position:absolute;top:39%;width:11.5%;height:14%;border-radius:50%;background:#130008;transform:scaleY(var(--eye-scale));transform-origin:center;transition:transform .2s ease}.point-eye::after{content:"";position:absolute;top:12%;left:18%;width:29%;height:29%;border-radius:50%;background:rgba(255,255,255,.92)}.point-eye--left{left:31%}.point-eye--right{right:30%;top:38.2%;width:10.8%;height:13%}.point-mouth{position:absolute;top:61%;left:41.5%;width:17%;height:8%;border-bottom:var(--mouth-stroke) solid #130008;border-radius:0 0 100% 100%;transform:rotate(-5deg)}.hero-point:not(.is-travelling){--mouth-stroke:1px}.hero-point:not(.is-travelling) .point-body{box-shadow:inset 1px 1px 3px rgba(255,255,255,.3),inset -2px -2px 3px rgba(76,0,38,.25),0 2px 4px rgba(42,0,16,.16)}.hero-point:not(.is-travelling) .point-face{opacity:0}.point.is-looking-word{--face-x:-5%;--face-y:-7%}.point.is-looking-email{--face-y:7%}.point.is-drowsy{--eye-scale:.45}.point.is-drowsy .point-eye{transition:transform 1.2s ease}.point.is-asleep{--eye-scale:.07;--face-y:4%}.point.is-asleep .point-eye::after{opacity:0}.point.is-asleep .point-body{transform:translateY(3px) scale(1.035,.966)}.point.is-waking .point-body{animation:point-wake .43s ease-out both}.point.is-slow-blinking .point-eye{animation:slow-blink 1s ease-in-out both}@keyframes slow-blink{0%,100%{transform:scaleY(.45)}40%,65%{transform:scaleY(.06)}}@keyframes point-wake{0%{transform:translateY(3px) scale(1.035,.966)}28%{transform:translateY(-6px) scale(.96,1.04)}65%{transform:translateY(1px) scale(1.025,.976)}100%{transform:none}}
+/* The portrait belongs to the About composition, including on phones. */
+#about-me{padding:var(--section-space) var(--gutter);background:var(--bg-dark);color:var(--bg-cream)}.about-container{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(36px,5vw,64px);align-items:start}.about-image-col,.about-content{min-width:0}.about-image-col{margin:0}.about-image-wrapper{width:100%;aspect-ratio:3/4;overflow:hidden;background:#541727;border:1px solid var(--line-on-dark)}.about-image-wrapper img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}.portrait-caption{margin-top:15px;padding-top:15px;border-top:1px solid var(--line-on-dark);font-family:var(--font-system);font-size:.75rem;line-height:1.5;letter-spacing:.04em}.about-heading{margin-bottom:28px;font-size:clamp(2.6rem,5vw,4.4rem);font-weight:400;letter-spacing:-.03em;line-height:1.04;text-wrap:balance}.about-text{max-width:65ch;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.7}.about-text p+p{margin-top:22px}.about-clients-wrapper{grid-column:1/-1;min-width:0;margin-top:6px;padding-top:30px;border-top:1px solid var(--line-on-dark)}.clients-intro-label{display:block;margin-bottom:12px;font-family:var(--font-system);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.8}.client-toolbar{display:flex;gap:20px;align-items:center;justify-content:space-between;margin-bottom:14px}.client-tabs{display:flex;gap:28px}.client-tab{position:relative;min-height:44px;padding:8px 0;border:0;background:transparent;color:var(--bg-cream);font-family:var(--font-system);font-size:1rem;cursor:pointer;opacity:.65}.client-tab[aria-selected="true"]{opacity:1}.client-tab[aria-selected="true"]::after{content:"";position:absolute;inset:auto 0 2px;height:2px;background:var(--pink)}.client-group{min-width:0;width:100%}.carousel-window{width:100%;overflow-x:auto;padding:18px 0;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}.client-track{display:flex;width:max-content;align-items:center}.client-logo-set{display:flex;align-items:center;flex-shrink:0;gap:clamp(34px,4vw,56px);padding-right:clamp(34px,4vw,56px)}.client-logo{flex:none;width:clamp(116px,11vw,148px);height:60px;display:flex;align-items:center;justify-content:center}.client-logo img{width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1);opacity:.8}.logo-fallback{color:var(--bg-cream);font-family:var(--font-system);font-size:.9rem;text-align:center}.client-group.is-ready .carousel-window{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}.client-group.is-ready .client-track{will-change:transform;animation:logo-loop var(--duration,30s) linear infinite}.client-group.is-offscreen .client-track,html[data-page-hidden="true"] .client-track{animation-play-state:paused}@keyframes logo-loop{to{transform:translate3d(calc(-1 * var(--distance)),0,0)}}
+#services{padding:clamp(100px,10vw,140px) var(--gutter);background:var(--bg-cream);color:var(--ink)}.services-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(48px,6vw,80px);align-items:start}.services-header,.services-content{min-width:0}.services-header{position:sticky;top:108px}.services-intro{font-size:clamp(2.6rem,5vw,4.4rem);font-weight:400;letter-spacing:-.03em;line-height:1.04;text-wrap:balance}.pink-highlight{color:#b60061}.services-content{padding-left:40px;border-left:1px solid var(--line-strong)}.service-row{padding:46px 0;border-top:1px solid var(--line-strong)}.service-row:first-child{padding-top:34px}.service-row:last-child{border-bottom:1px solid var(--line-strong)}.service-kicker,.narrative-label{display:block;margin-bottom:10px;font-family:var(--font-system);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}.service-row h3{margin-bottom:14px;font-size:clamp(2rem,3.6vw,3rem);font-weight:400;line-height:1.08;text-wrap:balance}.service-row p{max-width:65ch;font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.65}
+#recent-work{padding:clamp(100px,10vw,140px) var(--gutter);background:var(--bg-dark);color:var(--bg-cream)}.work-section-header{max-width:940px;margin-bottom:clamp(58px,7vw,82px)}.work-section-label{display:block;margin-bottom:20px;font-family:var(--font-system);font-size:.75rem;font-weight:600;letter-spacing:.1em;line-height:1.4;text-transform:uppercase;opacity:.8}.work-section-intro{font-size:clamp(2.3rem,4.7vw,4.15rem);font-weight:400;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}.work-row{border-bottom:1px solid var(--line-on-dark)}.work-row:first-of-type{border-top:1px solid var(--line-on-dark)}.work-header-trigger{width:100%;display:grid;grid-template-columns:27% minmax(0,1fr) 24px;gap:48px;align-items:start;padding:42px 0 34px;color:inherit;text-align:left;cursor:pointer;list-style:none}.work-header-trigger::-webkit-details-marker{display:none}.work-header-trigger::marker{content:""}.work-meta{min-width:0;padding-top:5px;display:flex;flex-direction:column;gap:9px}.work-category{color:var(--pink);font-family:var(--font-system);font-size:.75rem;font-weight:600;letter-spacing:.1em;line-height:1.4;text-transform:uppercase}.client-name{font-family:var(--font-system);font-size:.78rem;font-weight:600;letter-spacing:.08em;line-height:1.4;text-transform:uppercase;opacity:.8}.trigger-headline{min-width:0;font-size:clamp(1.8rem,3.4vw,2.8rem);font-weight:400;letter-spacing:-.02em;line-height:1.1;text-wrap:balance;transition:color .2s ease}.work-row[open] .trigger-headline{color:var(--pink)}.accordion-icon{position:relative;width:24px;height:24px;margin-top:9px}.accordion-icon::before,.accordion-icon::after{content:"";position:absolute;top:11px;left:2px;width:20px;height:2px;background:var(--bg-cream);transition:transform .2s ease}.accordion-icon::after{transform:rotate(90deg)}.work-row[open] .accordion-icon::after{transform:rotate(0)}.work-panel{overflow:hidden}.work-fold-content{min-width:0;display:grid;grid-template-columns:27% minmax(0,1fr);gap:48px;padding-bottom:52px}.work-image-stage{position:relative;min-width:0;align-self:start;margin-top:48px}.work-image-wrapper{position:relative;z-index:2;aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(255,241,229,.18);background:#541727}.work-image-wrapper img{width:100%;height:100%;object-fit:cover}.case-point-window{position:absolute;right:18px;bottom:100%;width:76px;height:56px;overflow:hidden;pointer-events:none}.case-point{position:absolute;left:5px;top:28px;width:64px;transform:translateY(70px)}.case-point-window.is-peeking .case-point{animation:case-peek 4.4s cubic-bezier(.22,1,.36,1) both}.case-point-window.is-peeking .point-face{animation:case-inspect 4.4s ease both}@keyframes case-peek{0%,100%{transform:translateY(70px)}24%,39%{transform:translateY(5px)}57%,80%{transform:translateY(-9px)}}@keyframes case-inspect{0%,39%,100%{transform:none}55%,73%{transform:translate(-3px,4px)}}.narrative-stack{min-width:0;max-width:780px;display:flex;flex-direction:column;gap:24px}.narrative-label{margin-bottom:8px}.narrative-text{font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.65}
+#testimonials{padding:clamp(100px,10vw,140px) var(--gutter);background:var(--bg-cream);color:var(--ink)}.testimonial-stage{display:grid;align-items:center;justify-items:center;min-height:300px}.testimonial-item{grid-area:1/1;width:100%;max-width:900px;text-align:center;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .35s ease}.testimonial-item.active{visibility:visible;opacity:1;pointer-events:auto}.testimonial-quote{max-width:860px;margin:auto;font-size:clamp(1.35rem,2.7vw,2rem);font-style:italic;line-height:1.55}.testimonial-author{margin-top:26px;font-family:var(--font-system);font-size:.83rem;line-height:1.5}.testimonial-author strong{display:block;font-size:.9rem}.testimonial-role{opacity:.75}.testimonial-controls{display:flex;justify-content:center;align-items:center;gap:28px;margin-top:24px;flex-wrap:wrap}.testimonial-control{position:relative;min-height:44px;padding:8px 0;border:0;background:transparent;color:var(--ink);font-family:var(--font-system);font-size:.78rem;font-weight:600;cursor:pointer;opacity:.65}.testimonial-control.active{opacity:1}.testimonial-control.active::after{content:"";position:absolute;inset:auto 0 2px;height:2px;background:var(--pink)}
+#contact{padding:clamp(100px,10vw,136px) var(--gutter) clamp(84px,8vw,108px);background:var(--bg-dark);color:var(--bg-cream);text-align:center}.contact-container{max-width:960px}.contact-heading{max-width:820px;margin:auto;font-size:clamp(3rem,7vw,6.8rem);font-weight:400;letter-spacing:-.04em;line-height:1.02;text-wrap:balance}.contact-email-stage{position:relative;width:100%;margin-top:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}.contact-point{position:relative;width:clamp(76px,7vw,94px);pointer-events:none}.giant-email{display:inline-block;max-width:100%;color:var(--bg-cream);text-decoration:none;font-size:clamp(1.45rem,4vw,3.2rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;overflow-wrap:anywhere;border-bottom:2px solid var(--pink)}.giant-email:hover{color:var(--pink)}.contact-meta{margin-top:30px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-family:var(--font-system);font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}.contact-meta a{display:inline-flex;min-height:44px;align-items:center;color:var(--bg-cream);text-decoration:none}.contact-meta span{display:inline-flex;align-items:center}.contact-meta a:hover{color:var(--pink)}footer{padding:30px var(--gutter);background:var(--bg-dark);color:var(--bg-cream);border-top:1px solid var(--line-on-dark);text-align:center}.footer-copy{font-family:var(--font-system);font-size:.75rem;line-height:1.6;opacity:.75}
+@media(max-width:980px){.nav-links{gap:18px}.work-header-trigger{grid-template-columns:minmax(0,1fr) 24px;gap:18px}.work-meta{grid-column:1/-1}.trigger-headline{grid-column:1}.accordion-icon{grid-column:2;grid-row:2}.work-fold-content{grid-template-columns:minmax(0,1fr);gap:28px}.work-image-stage{width:100%;max-width:640px}.work-image-wrapper{aspect-ratio:16/9}.services-grid{grid-template-columns:1fr;gap:44px}.services-header{position:static}.services-intro{max-width:650px}.services-content{padding-left:0;border-left:0}.about-container{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:32px}.about-heading{font-size:clamp(2.35rem,4.7vw,3.7rem)}}
+@media(max-width:700px){:root{--nav-height:64px;--section-space:72px;--gutter:20px}.nav-logo{font-size:1rem}.mobile-menu-toggle{display:block}.nav-links{position:fixed;inset:var(--nav-height) 0 0;display:none;padding:24px var(--gutter);background:var(--bg-cream);overflow-y:auto;flex-direction:column;justify-content:center;gap:24px}.nav-links.active{display:flex}.nav-links a{font-size:1.25rem;text-transform:none}.language-switch{margin-top:8px;font-size:.9rem}#intro{padding:calc(var(--nav-height) + 50px) 12px 86px}.hero-headline{font-size:clamp(2.3rem,10.5vw,5.4rem);letter-spacing:-.052em}.hero-lead{font-size:.31em;margin-bottom:.34em}.hero-point-home{width:.22em;height:.22em}.about-container{grid-template-columns:1fr;gap:30px}.about-image-col{width:100%;max-width:none}.about-image-wrapper{width:100%;aspect-ratio:4/3}.about-image-wrapper img{object-position:50% 32%}.portrait-caption{margin-top:12px;padding-top:12px}.about-heading{font-size:clamp(2.35rem,9.7vw,3.6rem)}.about-clients-wrapper{margin-top:6px;padding-top:24px}.client-tabs{gap:24px}.client-logo{width:120px;height:54px}.client-logo-set{gap:34px;padding-right:34px}#services,#recent-work,#testimonials{padding-top:84px;padding-bottom:84px}.work-section-header{margin-bottom:52px}.work-section-intro{font-size:clamp(2.1rem,9vw,3rem)}.services-intro{font-size:clamp(2.35rem,9.7vw,3.6rem)}.contact-point{width:76px}.contact-meta{flex-direction:column;align-items:center;gap:8px}.testimonial-controls{gap:22px}.work-header-trigger{padding:32px 0}.contact-heading{font-size:clamp(2.7rem,11vw,4.5rem)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:700px){html:not([data-menu-ready]) .mobile-menu-toggle{display:none}html:not([data-menu-ready]) .sticky-nav{position:relative;height:auto;min-height:64px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px;gap:12px}html:not([data-menu-ready]) .nav-links{position:static;display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:8px 20px}html:not([data-menu-ready]) .nav-links a{font-size:.85rem}}
+html:not([data-testimonials-ready]) .testimonial-stage{display:block}html:not([data-testimonials-ready]) .testimonial-item{visibility:visible;opacity:1;margin-bottom:40px}
 </style>
 </head>
-
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
-
 <nav class="sticky-nav" aria-label="Primary navigation">
-  <a class="nav-logo" href="#intro" aria-label="Strategy Support home">
-    <span>Strategy&nbsp;Support</span>
-    <span class="nav-point" aria-hidden="true"></span>
-  </a>
-
-  <button
-    class="mobile-menu-toggle"
-    type="button"
-    aria-controls="primary-navigation"
-    aria-expanded="false"
-    aria-label="Open menu"
-  >
-    <span class="hamburger-icon" aria-hidden="true"></span>
-  </button>
-
-  <ul class="nav-links" id="primary-navigation">
-    <li><a href="#about-me">About</a></li>
-    <li><a href="#services">How I help</a></li>
-    <li><a href="#recent-work">Work</a></li>
-    <li><a href="#testimonials">Clients</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li class="language-switch" aria-label="Choose language">
-      <span class="language-current" aria-current="page">EN</span>
-      <span class="language-separator" aria-hidden="true">/</span>
-      <a href="/dk/" hreflang="da-DK" lang="da">DA</a>
-    </li>
-  </ul>
+<a class="nav-logo" href="#intro" aria-label="Strategy Support home"><span>Strategy&nbsp;Support</span><span class="nav-point" aria-hidden="true"></span></a>
+<button class="mobile-menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open menu"><span class="hamburger-icon" aria-hidden="true"></span></button>
+<ul class="nav-links" id="primary-navigation"><li><a href="#about-me">About</a></li><li><a href="#services">How I help</a></li><li><a href="#recent-work">Work</a></li><li><a href="#testimonials">Clients</a></li><li><a href="#contact">Contact</a></li><li class="language-switch" aria-label="Choose language"><span class="language-current" aria-current="page">EN</span><span class="language-separator" aria-hidden="true">/</span><a href="/dk/" hreflang="da-DK" lang="da">DA</a></li></ul>
 </nav>
-
 <main id="main">
-
-  <section id="intro" aria-labelledby="intro-heading">
-    <div class="hero-container">
-      <h1
-        class="hero-headline"
-        id="intro-heading"
-        aria-label="Support for difficult brand, marketing or creative problems."
-      >
-        <span class="hero-copy" aria-hidden="true">
-          <span class="hero-lead">Support for difficult</span>
-
-          <span class="hero-word-stage">
-            <span class="hero-word-reserve">Marketing</span>
-            <span class="hero-word-layer">
-              <span class="hero-word">Brand</span>
-            </span>
-          </span>
-
-          <span class="hero-problems-line">
-            <span>Problems</span>
-
-            <span class="hero-point-home">
-              <span class="point hero-point">
-                <span class="point-body">
-                  <span class="point-face">
-                    <span class="point-eye point-eye--left"></span>
-                    <span class="point-eye point-eye--right"></span>
-                    <span class="point-mouth"></span>
-                  </span>
-                </span>
-              </span>
-            </span>
-          </span>
-        </span>
-      </h1>
-    </div>
-
-    <button class="motion-control" type="button" hidden>
-      Pause animation
-    </button>
-  </section>
-
-  <section id="about-me" aria-labelledby="about-me-heading">
-    <div class="section-inner about-container">
-
-      <figure class="about-image-col">
-        <div class="about-image-wrapper">
-          <img
-            src="https://strategy-support.com/assets/emilmadsen.JPG"
-            alt="Emil Valdemar Madsen"
-            width="1200"
-            height="1600"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <figcaption class="portrait-caption">
-          Emil Valdemar Madsen · Strategy Support
-        </figcaption>
-      </figure>
-
-      <div class="about-content">
-        <h2 class="about-heading" id="about-me-heading">
-          I’ve spent 15 years working on both sides of the brief.
-        </h2>
-
-        <div class="about-text">
-          <p>
-            Hi! I’m Emil Valdemar Madsen. I’ve led strategy at London agencies
-            and run brand and marketing inside global businesses. So I
-            understand both what the business needs to achieve and what
-            creative teams need to make something good.
-          </p>
-          <p>
-            Sometimes that means bringing order to a global marketing
-            organisation. Sometimes it means finding the thought that unlocks
-            a difficult brief. My role is to work out what really matters,
-            make it clear and help people do something useful with it.
-          </p>
-        </div>
-      </div>
-
-      <div class="about-clients-wrapper">
-        <span class="clients-intro-label">
-          Brands and agencies I’ve worked with
-        </span>
-
-        <div class="client-toolbar">
-          <div class="client-tabs" role="tablist" aria-label="Client type">
-            <button
-              type="button"
-              class="client-tab"
-              role="tab"
-              id="client-tab-brands"
-              aria-controls="client-panel-brands"
-              aria-selected="true"
-              tabindex="0"
-            >
-              Brands
-            </button>
-
-            <button
-              type="button"
-              class="client-tab"
-              role="tab"
-              id="client-tab-agencies"
-              aria-controls="client-panel-agencies"
-              aria-selected="false"
-              tabindex="-1"
-            >
-              Agencies
-            </button>
-          </div>
-
-          <button class="carousel-control" type="button" hidden>
-            Pause logos
-          </button>
-        </div>
-
-        <div
-          class="client-group"
-          id="client-panel-brands"
-          role="tabpanel"
-          aria-labelledby="client-tab-brands"
-          tabindex="0"
-        >
-          <div class="carousel-window">
-            <div class="client-track">
-              <div class="client-logo-set">
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand1.png" alt="Huawei" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand2.png" alt="Burger King" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand3.png" alt="Barclays" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand4.png" alt="Arla Foods" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand5.png" alt="PepsiCo" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand6.png" alt="Saxo Bank" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand7.png" alt="Mr Green" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand8.png" alt="Danske Bank" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand9.png" alt="ATP" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand10.png" alt="Kellogg’s" width="180" height="58" decoding="async"/>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="client-group"
-          id="client-panel-agencies"
-          role="tabpanel"
-          aria-labelledby="client-tab-agencies"
-          tabindex="0"
-          hidden
-        >
-          <div class="carousel-window">
-            <div class="client-track">
-              <div class="client-logo-set">
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand12.png" alt="Worth Your While Agency" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand13.png" alt="Dentsu Creative London" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand14.png" alt="Edelman London" width="180" height="58" decoding="async"/>
-                </span>
-                <span class="client-logo">
-                  <img src="https://strategy-support.com/assets/brand15.png" alt="FCB London" width="180" height="58" decoding="async"/>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="services" aria-labelledby="services-heading">
-    <div class="section-inner services-grid">
-      <h2 class="visually-hidden" id="services-heading">How I help</h2>
-
-      <div class="services-header">
-        <p class="services-intro">
-          Clients usually bring me in
-          <span class="pink-highlight">
-            when something important has become difficult
-          </span>
-          to explain, prioritise or turn into good work.
-        </p>
-      </div>
-
-      <div class="services-content">
-        <div class="service-row">
-          <span class="service-kicker">Brand definition</span>
-          <h3>When the brand has become hard to explain</h3>
-          <p>
-            When a brand has accumulated too many messages, audiences and
-            ambitions, I help find the single idea that holds it together.
-            The result is a clear position people can remember, use and
-            build from.
-          </p>
-        </div>
-
-        <div class="service-row">
-          <span class="service-kicker">Marketing strategy</span>
-          <h3>When marketing needs a sharper focus</h3>
-          <p>
-            I help turn commercial ambitions into meaningful marketing
-            choices: who matters, what needs to change and where your
-            resources can make the greatest difference.
-          </p>
-        </div>
-
-        <div class="service-row">
-          <span class="service-kicker">Creative planning</span>
-          <h3>When the work needs a better idea behind it</h3>
-          <p>
-            I find the truth that reframes the brief and turn it into a
-            platform capable of producing more than one campaign. Clear
-            enough to focus the work. Open enough to inspire it.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="recent-work" aria-labelledby="recent-work-heading">
-    <div class="section-inner work-container">
-
-      <div class="work-section-header">
-        <h2 class="work-section-label" id="recent-work-heading">
-          Selected work
-        </h2>
-        <p class="work-section-intro">
-          The problem can sit anywhere: in the marketing system, the idea
-          behind the work, or how that idea is expressed in a particular
-          market.
-        </p>
-      </div>
-
-      <details class="work-row">
-        <summary class="work-header-trigger" id="work-trigger-1">
-          <span class="work-meta">
-            <span class="work-category">The system</span>
-            <span class="client-name">DSV Logistics — 2025</span>
-          </span>
-          <span class="trigger-headline">
-            One marketing approach for a business that resists standardisation
-          </span>
-          <span class="accordion-icon" aria-hidden="true"></span>
-        </summary>
-
-        <div class="work-panel" role="region" aria-labelledby="work-trigger-1">
-          <div class="work-fold-content">
-
-            <div class="work-image-stage">
-              <span class="case-point-window" aria-hidden="true">
-                <span class="point case-point">
-                  <span class="point-body">
-                    <span class="point-face">
-                      <span class="point-eye point-eye--left"></span>
-                      <span class="point-eye point-eye--right"></span>
-                      <span class="point-mouth"></span>
-                    </span>
-                  </span>
-                </span>
-              </span>
-
-              <div class="work-image-wrapper">
-                <img
-                  src="https://strategy-support.com/assets/dsv-case.png"
-                  alt="DSV global marketing strategy work"
-                  width="1600"
-                  height="1200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
-
-            <div class="narrative-stack">
-              <div class="narrative-item">
-                <span class="narrative-label">The situation</span>
-                <p class="narrative-text">
-                  DSV is the world’s largest transport and logistics company.
-                  Its marketing has to work across six industry verticals,
-                  four product divisions, multiple customer segments and more
-                  than 90 markets.
-                </p>
-              </div>
-
-              <div class="narrative-item">
-                <span class="narrative-label">The challenge</span>
-                <p class="narrative-text">
-                  The job was not simply to write another global strategy.
-                  It was to build a coherent approach that could guide global,
-                  regional and local decisions without ignoring the differences
-                  between industries, products and markets.
-                </p>
-              </div>
-
-              <div class="narrative-item">
-                <span class="narrative-label">The strategy</span>
-                <p class="narrative-text">
-                  Working directly with the global CMO, I am developing the
-                  marketing strategy and the frameworks that connect business
-                  priorities with what actually drives purchase decisions in
-                  B2B logistics — from acquisition and retention to trade fairs
-                  and major industry moments.
-                </p>
-              </div>
-
-              <div class="narrative-item">
-                <span class="narrative-label">Alongside the strategy</span>
-                <p class="narrative-text">
-                  I am also supporting organisational design, process
-                  development and the implementation of AI across the
-                  marketing organisation.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </details>
-
-      <details class="work-row">
-        <summary class="work-header-trigger" id="work-trigger-2">
-          <span class="work-meta">
-            <span class="work-category">The idea</span>
-            <span class="client-name">Saxo Bank — 2023</span>
-          </span>
-          <span class="trigger-headline">
-            Making Saxo the platform money would choose for itself
-          </span>
-          <span class="accordion-icon" aria-hidden="true"></span>
-        </summary>
-
-        <div class="work-panel" role="region" aria-labelledby="work-trigger-2">
-          <div class="work-fold-content">
-
-            <div class="work-image-stage">
-              <span class="case-point-window" aria-hidden="true">
-                <span class="point case-point">
-                  <span class="point-body">
-                    <span class="point-face">
-                      <span class="point-eye point-eye--left"></span>
-                      <span class="point-eye point-eye--right"></span>
-                      <span class="point-mouth"></span>
-                    </span>
-                  </span>
-                </span>
-              </span>
-
-              <div class="work-image-wrapper">
-                <img
-                  src="https://strategy-support.com/assets/saxo-bank-case.png"
-                  alt="Saxo Bank brand platform"
-                  width="1600"
-                  height="1200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
-
-            <div class="narrative-stack">
-              <div class="narrative-item">
-                <span class="narrative-label">The situation</span>
-                <p class="narrative-text">
-                  Saxo wanted to grow awareness and preference among experienced
-                  investors and traders globally. But it was competing in a
-                  crowded, price-driven category full of bland, bank-like
-                  advertising.
-                </p>
-              </div>
-
-              <div class="narrative-item">
-                <span class="narrative-label">The unlock</span>
-                <p class="narrative-text">
-                  Investors do not only want to protect their money. They want
-                  to put it to work. And with more tradable instruments than
-                  its competitors, Saxo gives money more things to do.
-                </p>
-              </div>
-
-              <div class="narrative-item">
-                <span class="narrative-label">The strategy</span>
-                <p class="narrative-text">
-                  We dramatised the product advantage of more than 75,000
-                  tradable instruments by giving money a voice — and showing
-                  that, if it had a choice, it would choose Saxo.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </details>
-
-      <details class="work-row">
-        <summary class="work-header-trigger" id="work-trigger-3">
-          <span class="work-meta">
-            <span class="work-category">The expression</span>
-            <span class="client-name">Burger King — 2016</span>
-          </span>
-          <span class="trigger-headline">
-            Giving Burger King’s global strategy a British attitude
-          </span>
-          <span class="accordion-icon" aria-hidden="true"></span>
-        </summary>
-
-        <div class="work-panel" role="region" aria-labelledby="work-trigger-3">
-          <div class="work-fold-content">
-
-            <div class="work-image-stage">
-              <span class="case-point-window" aria-hidden="true">
-                <span class="point case-point">
-                  <span class="point-body">
-                    <span class="point-face">
-                      <span class="point-eye point-eye--left"></span>
-                      <span class="point-eye point-eye--right"></span>
-                      <span class="point-mouth"></span>
-                    </span>
-                  </span>
-                </span>
-              </span>
-
-              <div class="work-image-wrapper">
-                <img
-                  src="https://strategy-support.com/assets/burger-king-case.png"
-                  alt="Burger King UK brand strategy work"
-                  width="1600"
-                  height="1200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
-
-            <div class="narrative-stack">
-              <div class="narrative-item">
-                <span class="narrative-label">The situation</span>
-                <p class="narrative-text">
-                  Burger King had shifted its global brand strategy from
-                  <em>Have It Your Way</em> to <em>Be Your Way</em>. But as more
-                  brands began celebrating individuality, the platform risked
-                  feeling generic and imported in the UK.
-                </p>
-              </div>
-
-              <div class="narrative-item">
-                <span class="narrative-label">The unlock</span>
-                <p class="narrative-text">
-                  British youth do not always express individuality through
-                  grand rebellion. More often, they do it by being cheeky —
-                  taking what is expected and giving it their own twist.
-                </p>
-              </div>
-
-              <div class="narrative-item">
-                <span class="narrative-label">The strategy</span>
-                <p class="narrative-text">
-                  We positioned Burger King as the destination for cheeky
-                  detours: a British expression of the global brand idea that
-                  felt natural to the product, the audience and the culture.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </details>
-
-    </div>
-  </section>
-
-  <section id="testimonials" aria-labelledby="testimonials-heading">
-    <div class="section-inner">
-      <h2 class="visually-hidden" id="testimonials-heading">
-        What clients say
-      </h2>
-
-      <div class="testimonial-stage">
-        <figure
-          class="testimonial-item active"
-          id="testimonial-panel-1"
-          role="tabpanel"
-          aria-labelledby="testimonial-tab-1"
-        >
-          <blockquote class="testimonial-quote">
-            “If you need a marketing strategist who also has a flair for
-            tactical execution, there is no one better than Emil. I cannot
-            recommend him highly enough.”
-          </blockquote>
-          <figcaption class="testimonial-author">
-            <strong>John Veje</strong>
-            <span class="testimonial-role">Group CMO, Danske Bank</span>
-          </figcaption>
-        </figure>
-
-        <figure
-          class="testimonial-item"
-          id="testimonial-panel-2"
-          role="tabpanel"
-          aria-labelledby="testimonial-tab-2"
-        >
-          <blockquote class="testimonial-quote">
-            “Emil is a thoroughly modern strategist, combining the rigour of
-            insightful strategic thinking with the ability to execute
-            effortlessly across any channel.”
-          </blockquote>
-          <figcaption class="testimonial-author">
-            <strong>Vicki Holgate</strong>
-            <span class="testimonial-role">CSO, FCB Inferno London</span>
-          </figcaption>
-        </figure>
-
-        <figure
-          class="testimonial-item"
-          id="testimonial-panel-3"
-          role="tabpanel"
-          aria-labelledby="testimonial-tab-3"
-        >
-          <blockquote class="testimonial-quote">
-            “Emil is a brilliant strategist. His work is meticulous, his
-            approach is rigorous, and his presentation and communication
-            skills are second to none.”
-          </blockquote>
-          <figcaption class="testimonial-author">
-            <strong>Nathan Cook</strong>
-            <span class="testimonial-role">Global Director, Unilever</span>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div
-        class="testimonial-controls"
-        role="tablist"
-        aria-label="Client testimonials"
-      >
-        <button
-          class="testimonial-control active"
-          type="button"
-          role="tab"
-          id="testimonial-tab-1"
-          aria-controls="testimonial-panel-1"
-          aria-selected="true"
-          tabindex="0"
-        >
-          John Veje
-        </button>
-
-        <button
-          class="testimonial-control"
-          type="button"
-          role="tab"
-          id="testimonial-tab-2"
-          aria-controls="testimonial-panel-2"
-          aria-selected="false"
-          tabindex="-1"
-        >
-          Vicki Holgate
-        </button>
-
-        <button
-          class="testimonial-control"
-          type="button"
-          role="tab"
-          id="testimonial-tab-3"
-          aria-controls="testimonial-panel-3"
-          aria-selected="false"
-          tabindex="-1"
-        >
-          Nathan Cook
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" aria-labelledby="contact-heading">
-    <div class="section-inner contact-container">
-      <h2 class="contact-heading" id="contact-heading">
-        Got a difficult brand or marketing problem?
-      </h2>
-
-      <div class="contact-email-stage">
-        <span class="point contact-point" aria-hidden="true">
-          <span class="point-body">
-            <span class="point-face">
-              <span class="point-eye point-eye--left"></span>
-              <span class="point-eye point-eye--right"></span>
-              <span class="point-mouth"></span>
-            </span>
-          </span>
-        </span>
-
-        <a class="giant-email" href="mailto:emil@strategy-support.com">
-          emil@strategy-support.com
-        </a>
-      </div>
-
-      <div class="contact-meta">
-        <span>Copenhagen-based · Working globally</span>
-        <a href="https://www.linkedin.com/in/emilvmadsen/">
-          LinkedIn profile ↗
-        </a>
-      </div>
-    </div>
-  </section>
-
+<section id="intro" aria-labelledby="intro-heading">
+<div class="hero-container"><h1 class="hero-headline" id="intro-heading" aria-label="Support for difficult brand, marketing or creative problems."><span class="hero-copy" aria-hidden="true"><span class="hero-lead">Support for difficult</span><span class="hero-word-stage"><span class="hero-word-reserve">Marketing</span><span class="hero-word-layer"><span class="hero-word">Brand</span></span></span><span class="hero-problems-line"><span>Problems</span><span class="hero-point-home"><span class="point hero-point"><span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span></span></span></span></span></h1></div>
+</section>
+<section id="about-me" aria-labelledby="about-me-heading">
+<div class="section-inner about-container">
+<figure class="about-image-col"><div class="about-image-wrapper"><img src="https://strategy-support.com/assets/emilmadsen.JPG" alt="Emil Valdemar Madsen" width="1200" height="1600" loading="lazy" decoding="async"/></div><figcaption class="portrait-caption">Emil Valdemar Madsen · Strategy Support</figcaption></figure>
+<div class="about-content"><h2 class="about-heading" id="about-me-heading">I’ve spent 15 years working on both sides of the brief.</h2><div class="about-text"><p>Hi! I’m Emil Valdemar Madsen. I’ve led strategy at London agencies and run brand and marketing inside global businesses. So I understand both what the business needs to achieve and what creative teams need to make something good.</p><p>Sometimes that means bringing order to a global marketing organisation. Sometimes it means finding the thought that unlocks a difficult brief. My role is to work out what really matters, make it clear and help people do something useful with it.</p></div></div>
+<div class="about-clients-wrapper"><span class="clients-intro-label">Brands and agencies I’ve worked with</span><div class="client-toolbar"><div class="client-tabs" role="tablist" aria-label="Client type"><button type="button" class="client-tab" role="tab" id="client-tab-brands" aria-controls="client-panel-brands" aria-selected="true" tabindex="0">Brands</button><button type="button" class="client-tab" role="tab" id="client-tab-agencies" aria-controls="client-panel-agencies" aria-selected="false" tabindex="-1">Agencies</button></div></div>
+<div class="client-group" id="client-panel-brands" role="tabpanel" aria-labelledby="client-tab-brands" tabindex="0"><div class="carousel-window"><div class="client-track"><div class="client-logo-set">
+<span class="client-logo"><img src="https://strategy-support.com/assets/brand1.png" alt="Huawei" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand2.png" alt="Burger King" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand3.png" alt="Barclays" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand4.png" alt="Arla Foods" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand5.png" alt="PepsiCo" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand6.png" alt="Saxo Bank" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand7.png" alt="Mr Green" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand8.png" alt="Danske Bank" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand9.png" alt="ATP" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand10.png" alt="Kellogg’s" width="180" height="58" decoding="async"/></span>
+</div></div></div></div>
+<div class="client-group" id="client-panel-agencies" role="tabpanel" aria-labelledby="client-tab-agencies" tabindex="0" hidden><div class="carousel-window"><div class="client-track"><div class="client-logo-set">
+<span class="client-logo"><img src="https://strategy-support.com/assets/brand12.png" alt="Worth Your While Agency" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand13.png" alt="Dentsu Creative London" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand14.png" alt="Edelman London" width="180" height="58" decoding="async"/></span><span class="client-logo"><img src="https://strategy-support.com/assets/brand15.png" alt="FCB London" width="180" height="58" decoding="async"/></span>
+</div></div></div></div>
+</div></div></section>
+<section id="services" aria-labelledby="services-heading"><div class="section-inner services-grid"><h2 class="visually-hidden" id="services-heading">How I help</h2><div class="services-header"><p class="services-intro">Clients usually bring me in <span class="pink-highlight">when something important has become difficult</span> to explain, prioritise or turn into good work.</p></div><div class="services-content"><div class="service-row"><span class="service-kicker">Brand definition</span><h3>When the brand has become hard to explain</h3><p>When a brand has accumulated too many messages, audiences and ambitions, I help find the single idea that holds it together. The result is a clear position people can remember, use and build from.</p></div><div class="service-row"><span class="service-kicker">Marketing strategy</span><h3>When marketing needs a sharper focus</h3><p>I help turn commercial ambitions into meaningful marketing choices: who matters, what needs to change and where your resources can make the greatest difference.</p></div><div class="service-row"><span class="service-kicker">Creative planning</span><h3>When the work needs a better idea behind it</h3><p>I find the truth that reframes the brief and turn it into a platform capable of producing more than one campaign. Clear enough to focus the work. Open enough to inspire it.</p></div></div></div></section>
+<section id="recent-work" aria-labelledby="recent-work-heading"><div class="section-inner work-container"><div class="work-section-header"><h2 class="work-section-label" id="recent-work-heading">Selected work</h2><p class="work-section-intro">The problem can sit anywhere: in the marketing system, the idea behind the work, or how that idea is expressed in a particular market.</p></div>
+<details class="work-row"><summary class="work-header-trigger" id="work-trigger-1"><span class="work-meta"><span class="work-category">The system</span><span class="client-name">DSV Logistics — 2025</span></span><span class="trigger-headline">One marketing approach for a business that resists standardisation</span><span class="accordion-icon" aria-hidden="true"></span></summary><div class="work-panel" role="region" aria-labelledby="work-trigger-1"><div class="work-fold-content"><div class="work-image-stage"><span class="case-point-window" aria-hidden="true"><span class="point case-point"><span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span></span></span><div class="work-image-wrapper"><img src="https://strategy-support.com/assets/dsv-case.png" alt="DSV global marketing strategy work" width="1600" height="1200" loading="lazy" decoding="async"/></div></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The situation</span><p class="narrative-text">DSV is the world’s largest transport and logistics company. Its marketing has to work across six industry verticals, four product divisions, multiple customer segments and more than 90 markets.</p></div><div class="narrative-item"><span class="narrative-label">The challenge</span><p class="narrative-text">The job was not simply to write another global strategy. It was to build a coherent approach that could guide global, regional and local decisions without ignoring the differences between industries, products and markets.</p></div><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">Working directly with the global CMO, I am developing the marketing strategy and the frameworks that connect business priorities with what actually drives purchase decisions in B2B logistics — from acquisition and retention to trade fairs and major industry moments.</p></div><div class="narrative-item"><span class="narrative-label">Alongside the strategy</span><p class="narrative-text">I am also supporting organisational design, process development and the implementation of AI across the marketing organisation.</p></div></div></div></div></details>
+<details class="work-row"><summary class="work-header-trigger" id="work-trigger-2"><span class="work-meta"><span class="work-category">The idea</span><span class="client-name">Saxo Bank — 2023</span></span><span class="trigger-headline">Making Saxo the platform money would choose for itself</span><span class="accordion-icon" aria-hidden="true"></span></summary><div class="work-panel" role="region" aria-labelledby="work-trigger-2"><div class="work-fold-content"><div class="work-image-stage"><span class="case-point-window" aria-hidden="true"><span class="point case-point"><span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span></span></span><div class="work-image-wrapper"><img src="https://strategy-support.com/assets/saxo-bank-case.png" alt="Saxo Bank brand platform" width="1600" height="1200" loading="lazy" decoding="async"/></div></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The situation</span><p class="narrative-text">Saxo wanted to grow awareness and preference among experienced investors and traders globally. But it was competing in a crowded, price-driven category full of bland, bank-like advertising.</p></div><div class="narrative-item"><span class="narrative-label">The unlock</span><p class="narrative-text">Investors do not only want to protect their money. They want to put it to work. And with more tradable instruments than its competitors, Saxo gives money more things to do.</p></div><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">We dramatised the product advantage of more than 75,000 tradable instruments by giving money a voice — and showing that, if it had a choice, it would choose Saxo.</p></div></div></div></div></details>
+<details class="work-row"><summary class="work-header-trigger" id="work-trigger-3"><span class="work-meta"><span class="work-category">The expression</span><span class="client-name">Burger King — 2016</span></span><span class="trigger-headline">Giving Burger King’s global strategy a British attitude</span><span class="accordion-icon" aria-hidden="true"></span></summary><div class="work-panel" role="region" aria-labelledby="work-trigger-3"><div class="work-fold-content"><div class="work-image-stage"><span class="case-point-window" aria-hidden="true"><span class="point case-point"><span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span></span></span><div class="work-image-wrapper"><img src="https://strategy-support.com/assets/burger-king-case.png" alt="Burger King UK brand strategy work" width="1600" height="1200" loading="lazy" decoding="async"/></div></div><div class="narrative-stack"><div class="narrative-item"><span class="narrative-label">The situation</span><p class="narrative-text">Burger King had shifted its global brand strategy from <em>Have It Your Way</em> to <em>Be Your Way</em>. But as more brands began celebrating individuality, the platform risked feeling generic and imported in the UK.</p></div><div class="narrative-item"><span class="narrative-label">The unlock</span><p class="narrative-text">British youth do not always express individuality through grand rebellion. More often, they do it by being cheeky — taking what is expected and giving it their own twist.</p></div><div class="narrative-item"><span class="narrative-label">The strategy</span><p class="narrative-text">We positioned Burger King as the destination for cheeky detours: a British expression of the global brand idea that felt natural to the product, the audience and the culture.</p></div></div></div></div></details>
+</div></section>
+<section id="testimonials" aria-labelledby="testimonials-heading"><div class="section-inner"><h2 class="visually-hidden" id="testimonials-heading">What clients say</h2><div class="testimonial-stage"><figure class="testimonial-item active" id="testimonial-panel-1" role="tabpanel" aria-labelledby="testimonial-tab-1"><blockquote class="testimonial-quote">“If you need a marketing strategist who also has a flair for tactical execution, there is no one better than Emil. I cannot recommend him highly enough.”</blockquote><figcaption class="testimonial-author"><strong>John Veje</strong><span class="testimonial-role">Group CMO, Danske Bank</span></figcaption></figure><figure class="testimonial-item" id="testimonial-panel-2" role="tabpanel" aria-labelledby="testimonial-tab-2"><blockquote class="testimonial-quote">“Emil is a thoroughly modern strategist, combining the rigour of insightful strategic thinking with the ability to execute effortlessly across any channel.”</blockquote><figcaption class="testimonial-author"><strong>Vicki Holgate</strong><span class="testimonial-role">CSO, FCB Inferno London</span></figcaption></figure><figure class="testimonial-item" id="testimonial-panel-3" role="tabpanel" aria-labelledby="testimonial-tab-3"><blockquote class="testimonial-quote">“Emil is a brilliant strategist. His work is meticulous, his approach is rigorous, and his presentation and communication skills are second to none.”</blockquote><figcaption class="testimonial-author"><strong>Nathan Cook</strong><span class="testimonial-role">Global Director, Unilever</span></figcaption></figure></div><div class="testimonial-controls" role="tablist" aria-label="Client testimonials"><button class="testimonial-control active" type="button" role="tab" id="testimonial-tab-1" aria-controls="testimonial-panel-1" aria-selected="true" tabindex="0">John Veje</button><button class="testimonial-control" type="button" role="tab" id="testimonial-tab-2" aria-controls="testimonial-panel-2" aria-selected="false" tabindex="-1">Vicki Holgate</button><button class="testimonial-control" type="button" role="tab" id="testimonial-tab-3" aria-controls="testimonial-panel-3" aria-selected="false" tabindex="-1">Nathan Cook</button></div></div></section>
+<section id="contact" aria-labelledby="contact-heading"><div class="section-inner contact-container"><h2 class="contact-heading" id="contact-heading">Got a difficult brand or marketing problem?</h2><div class="contact-email-stage"><span class="point contact-point" aria-hidden="true"><span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span></span><a class="giant-email" href="mailto:emil@strategy-support.com">emil@strategy-support.com</a></div><div class="contact-meta"><span>Copenhagen-based · Working globally</span><a href="https://www.linkedin.com/in/emilvmadsen/">LinkedIn profile ↗</a></div></div></section>
 </main>
-
-<footer>
-  <p class="footer-copy">
-    © <span id="current-year">2026</span> Strategy Support, an independent
-    strategy studio in Copenhagen, Denmark. CVR 33320817.
-  </p>
-</footer>
-
+<footer><p class="footer-copy">© <span id="current-year">2026</span> Strategy Support, an independent strategy studio in Copenhagen, Denmark. CVR 33320817.</p></footer>
 <script>
 /* Enhancements are isolated: a character problem cannot disable navigation or cases. */
 (function () {
   'use strict';
-
   function boot() {
     const root = document.documentElement;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let motion = !reduced.matches;
-
-    const motionListeners = [];
-    const onMotion = fn => motionListeners.push(fn);
-    const canMove = () => motion && !document.hidden;
-
-    const safely = fn => {
-      try {
-        fn();
-      } catch (error) {
-        console.error('Strategy Support:', error);
-      }
-    };
-
+    // Autoplay while visible; no start/stop controls.
+    const canMove = () => !document.hidden;
+    const safely = fn => { try { fn(); } catch (error) { console.error('Strategy Support:', error); } };
     const clamp = (x, a, b) => Math.min(Math.max(x, a), b);
-
-    const setInert = (el, value) => {
-      if (el) {
-        el.inert = value;
-        el.toggleAttribute('inert', value);
-      }
-    };
-
-    const listenMedia = (query, fn) => {
-      if (query.addEventListener) {
-        query.addEventListener('change', fn);
-      } else {
-        query.addListener(fn);
-      }
-    };
-
-    function setMotion(value) {
-      motion = value;
-      root.dataset.motion = value ? 'on' : 'off';
-
-      const control = document.querySelector('.motion-control');
-      control.textContent = value ? 'Pause animation' : 'Play animation';
-
-      motionListeners.forEach(fn => safely(fn));
-    }
-
-    root.dataset.motion = motion ? 'on' : 'off';
+    const setInert = (el, value) => { if (el) { el.inert = value; el.toggleAttribute('inert', value); } };
+    const listenMedia = (query, fn) => query.addEventListener ? query.addEventListener('change', fn) : query.addListener(fn);
     root.dataset.pageHidden = String(document.hidden);
-
-    document.addEventListener('visibilitychange', () => {
-      root.dataset.pageHidden = String(document.hidden);
-    });
-
-    listenMedia(reduced, () => setMotion(!reduced.matches));
-
-    const motionControl = document.querySelector('.motion-control');
-    motionControl.hidden = false;
-    motionControl.textContent = motion ? 'Pause animation' : 'Play animation';
-    motionControl.addEventListener('click', () => setMotion(!motion));
+    document.addEventListener('visibilitychange', () => { root.dataset.pageHidden = String(document.hidden); });
 
     /* Native details still open when scripts are blocked. */
     safely(() => {
       const rows = [...document.querySelectorAll('.work-row')];
       const states = new Map();
-
       function peek(row) {
         const s = states.get(row);
-
         if (!row.open || !s.visible || s.played || !canMove()) return;
-
         clearTimeout(s.timer);
-
         s.timer = setTimeout(() => {
           if (!row.open || !s.visible || !canMove()) return;
-
           s.played = true;
           row.querySelector('.case-point-window').classList.add('is-peeking');
         }, 360);
       }
-
       rows.forEach(row => {
-        states.set(row, {
-          visible: !('IntersectionObserver' in window),
-          played: false,
-          timer: 0,
-          animation: null
-        });
-
+        states.set(row, { visible: !('IntersectionObserver' in window), played: false, timer: 0, animation: null });
         row.addEventListener('toggle', () => {
           const s = states.get(row);
           s.animation?.cancel();
           clearTimeout(s.timer);
-
           if (row.open) {
-            rows.forEach(other => {
-              if (other !== row) other.open = false;
-            });
-
+            rows.forEach(other => { if (other !== row) other.open = false; });
             const panel = row.querySelector('.work-panel');
-
             if (canMove() && panel.animate) {
-              s.animation = panel.animate(
-                [
-                  { opacity: 0, transform: 'translateY(-6px)' },
-                  { opacity: 1, transform: 'none' }
-                ],
-                {
-                  duration: 260,
-                  easing: 'ease-out'
-                }
-              );
+              s.animation = panel.animate([{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: 'ease-out' });
             }
-
             peek(row);
           } else {
             s.played = false;
-            row.querySelector('.case-point-window')
-              .classList.remove('is-peeking');
+            row.querySelector('.case-point-window').classList.remove('is-peeking');
           }
         });
       });
-
       if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            const row = entry.target.closest('.work-row');
-            states.get(row).visible = entry.isIntersecting;
-            peek(row);
-          });
-        }, {
-          threshold: 0
-        });
-
-        rows.forEach(row => {
-          observer.observe(row.querySelector('.work-image-stage'));
-        });
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+          const row = entry.target.closest('.work-row');
+          states.get(row).visible = entry.isIntersecting;
+          peek(row);
+        }), { threshold: 0 });
+        rows.forEach(row => observer.observe(row.querySelector('.work-image-stage')));
       }
-
-      const refresh = () => {
-        rows.forEach(row => {
-          const s = states.get(row);
-
-          if (!canMove()) {
-            clearTimeout(s.timer);
-            s.animation?.cancel();
-
-            if (
-              row.querySelector('.case-point-window')
-                .classList.contains('is-peeking')
-            ) {
-              s.played = false;
-            }
-
-            row.querySelector('.case-point-window')
-              .classList.remove('is-peeking');
-          } else {
-            peek(row);
-          }
-        });
-      };
-
-      onMotion(refresh);
+      const refresh = () => rows.forEach(row => {
+        const s = states.get(row);
+        if (!canMove()) {
+          clearTimeout(s.timer);
+          s.animation?.cancel();
+          if (row.querySelector('.case-point-window').classList.contains('is-peeking')) s.played = false;
+          row.querySelector('.case-point-window').classList.remove('is-peeking');
+        } else peek(row);
+      });
       document.addEventListener('visibilitychange', refresh);
     });
 
-    /* Mobile navigation */
     safely(() => {
       const button = document.querySelector('.mobile-menu-toggle');
       const links = document.querySelector('.nav-links');
@@ -2466,80 +160,37 @@ html:not([data-testimonials-ready]) .testimonial-item {
       const footer = document.querySelector('footer');
       const mobile = window.matchMedia('(max-width: 700px)');
       let open = false;
-
       function setOpen(value, returnFocus = false) {
         open = value;
-
         button.setAttribute('aria-expanded', String(value));
         button.setAttribute('aria-label', value ? 'Close menu' : 'Open menu');
         links.classList.toggle('active', value);
         document.body.classList.toggle('menu-open', value);
-
-        setInert(main, value);
-        setInert(footer, value);
+        setInert(main, value); setInert(footer, value);
         setInert(links, mobile.matches && !value);
-
-        document.dispatchEvent(
-          new CustomEvent('navigationstate', {
-            detail: { open: value }
-          })
-        );
-
-        if (value) {
-          links.querySelector('a').focus();
-        } else if (returnFocus) {
-          button.focus();
-        }
+        document.dispatchEvent(new CustomEvent('navigationstate', { detail: { open: value } }));
+        if (value) links.querySelector('a').focus();
+        else if (returnFocus) button.focus();
       }
-
       button.addEventListener('click', () => setOpen(!open, open));
-
-      links.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          setOpen(false);
-
-          if (link.hash && link.pathname === location.pathname) {
-            const section = document.querySelector(link.hash);
-
-            if (section) {
-              section.tabIndex = -1;
-              section.focus({ preventScroll: true });
-            }
-          }
-        });
-      });
-
-      nav.querySelector('.nav-logo').addEventListener('click', () => {
+      links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
         setOpen(false);
-      });
-
+        if (link.hash && link.pathname === location.pathname) {
+          const section = document.querySelector(link.hash);
+          if (section) { section.tabIndex = -1; section.focus({ preventScroll: true }); }
+        }
+      }));
+      nav.querySelector('.nav-logo').addEventListener('click', () => setOpen(false));
       document.addEventListener('keydown', event => {
         if (!open) return;
-
-        if (event.key === 'Escape') {
-          event.preventDefault();
-          setOpen(false, true);
-        }
-
+        if (event.key === 'Escape') { event.preventDefault(); setOpen(false, true); }
         if (event.key !== 'Tab') return;
-
-        const items = [...nav.querySelectorAll('a[href],button')]
-          .filter(el => el.getClientRects().length && !el.closest('[inert]'));
-
-        const first = items[0];
-        const last = items[items.length - 1];
-
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
+        const items = [...nav.querySelectorAll('a[href],button')].filter(el => el.getClientRects().length && !el.closest('[inert]'));
+        const first = items[0], last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
       });
-
       listenMedia(mobile, () => setOpen(false));
-
       root.dataset.menuReady = 'true';
       setOpen(false);
     });
@@ -2547,259 +198,111 @@ html:not([data-testimonials-ready]) .testimonial-item {
     function connectTabs(buttons, select) {
       buttons.forEach((button, index) => {
         button.addEventListener('click', () => select(index, false));
-
         button.addEventListener('keydown', event => {
-          if (
-            !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)
-          ) return;
-
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
           event.preventDefault();
-
-          const next = event.key === 'Home'
-            ? 0
-            : event.key === 'End'
-              ? buttons.length - 1
-              : (
-                index +
-                (event.key === 'ArrowRight' ? 1 : -1) +
-                buttons.length
-              ) % buttons.length;
-
+          const next = event.key === 'Home' ? 0 : event.key === 'End' ? buttons.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + buttons.length) % buttons.length;
           select(next, true);
         });
       });
     }
 
-    /*
-      Fixed logo boxes make measurements independent of image loading.
-      A complete set fills the viewport before one identical copy is appended.
-    */
+    /* Fixed logo boxes make measurements independent of image loading.
+       A complete set fills the viewport before one identical copy is appended. */
     safely(() => {
       const wrapper = document.querySelector('.about-clients-wrapper');
       const tabs = [...document.querySelectorAll('.client-tab')];
       const groups = [...document.querySelectorAll('.client-group')];
-      const control = document.querySelector('.carousel-control');
-
-      const templates = new Map(
-        groups.map(group => [
-          group,
-          [...group.querySelector('.client-logo-set').children]
-            .map(el => el.cloneNode(true))
-        ])
-      );
-
+      const templates = new Map(groups.map(group => [group, [...group.querySelector('.client-logo-set').children].map(el => el.cloneNode(true))]));
       const widths = new Map();
-
-      let selected = 0;
-      let paused = !motion;
-      let inView = true;
-      let frame = 0;
-
+      let selected = 0, inView = true, frame = 0;
       function updatePause() {
         groups.forEach(group => {
-          group.classList.toggle('is-paused', paused);
           group.classList.toggle('is-offscreen', !inView);
         });
-
-        control.textContent = paused ? 'Play logos' : 'Pause logos';
       }
-
       function prepare(group, force = false) {
         if (group.hidden) return;
-
         const windowEl = group.querySelector('.carousel-window');
         const width = windowEl.clientWidth;
-
-        if (
-          !width ||
-          (
-            !force &&
-            widths.get(group) === width &&
-            group.classList.contains('is-ready')
-          )
-        ) return;
-
+        if (!width || (!force && widths.get(group) === width && group.classList.contains('is-ready'))) return;
         widths.set(group, width);
-
         const track = group.querySelector('.client-track');
-
         group.classList.remove('is-ready');
         track.replaceChildren();
-
         const source = document.createElement('div');
         source.className = 'client-logo-set';
         track.appendChild(source);
-
         const originals = templates.get(group);
-
         function appendRound(duplicate) {
           originals.forEach(template => {
             const logo = template.cloneNode(true);
             const img = logo.querySelector('img');
-
-            if (duplicate) {
-              logo.setAttribute('aria-hidden', 'true');
-              img.alt = '';
-            }
-
+            if (duplicate) { logo.setAttribute('aria-hidden', 'true'); img.alt = ''; }
             const fallback = template.querySelector('img').alt;
-
             img.addEventListener('error', () => {
               const label = document.createElement('span');
-              label.className = 'logo-fallback';
-              label.textContent = fallback;
+              label.className = 'logo-fallback'; label.textContent = fallback;
               img.replaceWith(label);
-            }, {
-              once: true
-            });
-
+            }, { once: true });
             source.appendChild(logo);
           });
         }
-
         appendRound(false);
-
         let rounds = 1;
-
-        while (
-          source.getBoundingClientRect().width < width + 120 &&
-          rounds < 20
-        ) {
-          appendRound(true);
-          rounds++;
-        }
-
+        while (source.getBoundingClientRect().width < width + 120 && rounds < 20) { appendRound(true); rounds++; }
         const distance = source.getBoundingClientRect().width;
         if (!distance) return;
-
         const clone = source.cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
-
         clone.querySelectorAll('img').forEach((img, index) => {
-          const fallback = originals[index % originals.length]
-            .querySelector('img').alt;
-
+          const fallback = originals[index % originals.length].querySelector('img').alt;
           img.alt = '';
-
-          img.addEventListener('error', () => {
-            const label = document.createElement('span');
-            label.className = 'logo-fallback';
-            label.textContent = fallback;
-            img.replaceWith(label);
-          }, {
-            once: true
-          });
+          img.addEventListener('error', () => { const label = document.createElement('span'); label.className = 'logo-fallback'; label.textContent = fallback; img.replaceWith(label); }, { once: true });
         });
-
         track.appendChild(clone);
-
         track.style.setProperty('--distance', distance + 'px');
         track.style.setProperty('--duration', distance / 30 + 's');
-
         group.classList.add('is-ready');
         updatePause();
       }
-
       function select(index, focus = false) {
         selected = index;
-
-        tabs.forEach((tab, i) => {
-          tab.setAttribute('aria-selected', String(i === index));
-          tab.tabIndex = i === index ? 0 : -1;
-        });
-
-        groups.forEach((group, i) => {
-          group.hidden = i !== index;
-        });
-
+        tabs.forEach((tab, i) => { tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1; });
+        groups.forEach((group, i) => { group.hidden = i !== index; });
         cancelAnimationFrame(frame);
-
-        frame = requestAnimationFrame(() => {
-          prepare(groups[selected]);
-        });
-
+        frame = requestAnimationFrame(() => prepare(groups[selected]));
         if (focus) tabs[index].focus();
       }
-
       connectTabs(tabs, select);
-
-      control.hidden = false;
-
-      control.addEventListener('click', () => {
-        paused = !paused;
-        updatePause();
-      });
-
-      onMotion(() => {
-        paused = !motion;
-        updatePause();
-      });
-
       if ('ResizeObserver' in window) {
         new ResizeObserver(() => {
           cancelAnimationFrame(frame);
-
-          frame = requestAnimationFrame(() => {
-            prepare(groups[selected]);
-          });
+          frame = requestAnimationFrame(() => prepare(groups[selected]));
         }).observe(wrapper);
-      } else {
-        window.addEventListener('resize', () => {
-          prepare(groups[selected]);
-        }, {
-          passive: true
-        });
-      }
-
+      } else window.addEventListener('resize', () => prepare(groups[selected]), { passive: true });
       if ('IntersectionObserver' in window) {
-        new IntersectionObserver(entries => {
-          inView = entries[0].isIntersecting;
-          updatePause();
-        }, {
-          rootMargin: '80px 0px'
-        }).observe(wrapper);
+        new IntersectionObserver(entries => { inView = entries[0].isIntersecting; updatePause(); }, { rootMargin: '80px 0px' }).observe(wrapper);
       }
-
-      if (document.fonts?.ready) {
-        document.fonts.ready
-          .then(() => prepare(groups[selected], true))
-          .catch(() => {});
-      }
-
-      updatePause();
-      select(0);
+      if (document.fonts?.ready) document.fonts.ready.then(() => prepare(groups[selected], true)).catch(() => {});
+      updatePause(); select(0);
     });
 
-    /* Testimonials */
     safely(() => {
       const buttons = [...document.querySelectorAll('.testimonial-control')];
       const panels = [...document.querySelectorAll('.testimonial-item')];
-
       function select(index, focus = false) {
-        buttons.forEach((button, i) => {
-          button.classList.toggle('active', i === index);
-          button.setAttribute('aria-selected', String(i === index));
-          button.tabIndex = i === index ? 0 : -1;
-        });
-
-        panels.forEach((panel, i) => {
-          panel.classList.toggle('active', i === index);
-          panel.setAttribute('aria-hidden', String(i !== index));
-          setInert(panel, i !== index);
-        });
-
+        buttons.forEach((button, i) => { button.classList.toggle('active', i === index); button.setAttribute('aria-selected', String(i === index)); button.tabIndex = i === index ? 0 : -1; });
+        panels.forEach((panel, i) => { panel.classList.toggle('active', i === index); panel.setAttribute('aria-hidden', String(i !== index)); setInert(panel, i !== index); });
         if (focus) buttons[index].focus();
       }
-
       connectTabs(buttons, select);
       root.dataset.testimonialsReady = 'true';
       select(0);
     });
 
-    /*
-      All travel is relative to the hero, so scrolling never invalidates it.
-      Height-only resize events from Safari's toolbar do not restart the scene.
-    */
+    /* All travel is relative to the hero, so scrolling never invalidates it.
+       Height-only resize events from Safari's toolbar do not restart the scene. */
     safely(() => {
       const intro = document.querySelector('#intro');
       const home = document.querySelector('.hero-point-home');
@@ -2807,562 +310,171 @@ html:not([data-testimonials-ready]) .testimonial-item {
       const body = point.querySelector('.point-body');
       const layer = document.querySelector('.hero-word-layer');
       const words = ['Brand', 'Marketing', 'Creative'];
-
-      let index = 0;
-      let inView = false;
-      let menuOpen = false;
-      let running = false;
-      let token = 0;
-      let timer = 0;
-      let performed = false;
+      let index = 0, inView = false, menuOpen = false, running = false, token = 0, timer = 0, performed = false;
       let lastWidth = intro.clientWidth;
-
       const animations = new Set();
-
-      const valid = id => {
-        return id === token && inView && canMove() && !menuOpen;
-      };
-
-      const wait = async (ms, id) => {
-        await new Promise(resolve => setTimeout(resolve, ms));
-        return valid(id);
-      };
-
+      const valid = id => id === token && inView && canMove() && !menuOpen;
+      const wait = async (ms, id) => { await new Promise(resolve => setTimeout(resolve, ms)); return valid(id); };
       function reset() {
-        animations.forEach(a => a.cancel());
-        animations.clear();
-
-        home.appendChild(point);
-        point.className = 'point hero-point';
-        point.removeAttribute('style');
-        body.removeAttribute('style');
-
-        const word = document.createElement('span');
-        word.className = 'hero-word';
-        word.textContent = words[index];
-        layer.replaceChildren(word);
+        animations.forEach(a => a.cancel()); animations.clear();
+        home.appendChild(point); point.className = 'point hero-point'; point.removeAttribute('style'); body.removeAttribute('style');
+        const word = document.createElement('span'); word.className = 'hero-word'; word.textContent = words[index]; layer.replaceChildren(word);
       }
-
-      function stop() {
-        token++;
-        clearTimeout(timer);
-        running = false;
-        reset();
-      }
-
-      async function animate(
-        el,
-        frames,
-        duration,
-        id,
-        easing = 'cubic-bezier(.22,1,.36,1)'
-      ) {
+      function stop() { token++; clearTimeout(timer); running = false; reset(); }
+      async function animate(el, frames, duration, id, easing = 'cubic-bezier(.22,1,.36,1)') {
         if (!valid(id)) return false;
-
-        if (!el.animate) {
-          Object.assign(el.style, frames[frames.length - 1]);
-          return valid(id);
-        }
-
-        const animation = el.animate(frames, {
-          duration,
-          easing,
-          fill: 'forwards'
-        });
-
+        if (!el.animate) { Object.assign(el.style, frames[frames.length - 1]); return valid(id); }
+        const animation = el.animate(frames, { duration, easing, fill: 'forwards' });
         animations.add(animation);
-
-        try {
-          await animation.finished;
-        } catch (_) {
-          return false;
-        }
-
+        try { await animation.finished; } catch (_) { return false; }
         if (!valid(id)) return false;
-
         const final = frames[frames.length - 1];
-
-        Object.keys(final)
-          .filter(key => !['offset', 'easing', 'composite'].includes(key))
-          .forEach(key => {
-            el.style[key] = final[key];
-          });
-
-        animation.cancel();
-        animations.delete(animation);
-
+        Object.keys(final).filter(key => !['offset', 'easing', 'composite'].includes(key)).forEach(key => { el.style[key] = final[key]; });
+        animation.cancel(); animations.delete(animation);
         return true;
       }
-
       function schedule(delay) {
         clearTimeout(timer);
-
         if (running || !inView || !canMove() || menuOpen) return;
-
-        timer = setTimeout(
-          () => perform(token),
-          delay ?? (performed ? 3200 : 650)
-        );
+        timer = setTimeout(() => perform(token), delay ?? (performed ? 3200 : 650));
       }
-
       async function perform(id) {
         if (running || !valid(id)) return;
-
         running = true;
-
         try {
           const base = intro.getBoundingClientRect();
           const dot = home.getBoundingClientRect();
           const size = clamp(intro.clientWidth * .075, 36, 84);
-
           const hx = dot.left - base.left + dot.width / 2 - size / 2;
           const hy = dot.top - base.top + dot.height / 2 - size / 2;
           const homeScale = dot.width / size;
-
           intro.appendChild(point);
           point.classList.add('is-travelling', 'is-looking-word');
           point.setAttribute('aria-hidden', 'true');
-
-          Object.assign(point.style, {
-            left: hx + 'px',
-            top: hy + 'px',
-            width: size + 'px',
-            height: size + 'px',
-            transform: `scale(${homeScale})`
-          });
-
-          if (!await animate(
-            point,
-            [
-              { transform: `scale(${homeScale})` },
-              { transform: 'scale(1)' }
-            ],
-            280,
-            id
-          )) return;
-
+          Object.assign(point.style, { left: hx + 'px', top: hy + 'px', width: size + 'px', height: size + 'px', transform: `scale(${homeScale})` });
+          if (!await animate(point, [{ transform: `scale(${homeScale})` }, { transform: 'scale(1)' }], 280, id)) return;
           if (!await wait(180, id)) return;
-
           const word = layer.querySelector('.hero-word');
           const rect = word.getBoundingClientRect();
-
-          const tx = clamp(
-            rect.right - base.left + 5,
-            8,
-            intro.clientWidth - size - 8
-          );
-
+          const tx = clamp(rect.right - base.left + 5, 8, intro.clientWidth - size - 8);
           const ty = rect.top - base.top + rect.height * .58 - size / 2;
-          const dx = tx - hx;
-          const dy = ty - hy;
-
-          if (!await animate(
-            body,
-            [
-              { transform: 'scale(1)' },
-              { transform: 'scale(1.09,.918)' },
-              { transform: 'scale(1)' }
-            ],
-            150,
-            id
-          )) return;
-
-          if (!await animate(
-            point,
-            [
-              { transform: 'translate(0,0) scale(1)' },
-              {
-                transform: `translate(${dx * .5}px,${dy * .5 - 36}px) scale(.97,1.03)`,
-                offset: .5
-              },
-              {
-                transform: `translate(${dx}px,${dy}px) scale(1)`
-              }
-            ],
-            470,
-            id,
-            'linear'
-          )) return;
-
-          if (!await animate(
-            body,
-            [
-              { transform: 'scale(1.08,.925)' },
-              { transform: 'scale(1)' }
-            ],
-            130,
-            id
-          )) return;
-
+          const dx = tx - hx, dy = ty - hy;
+          if (!await animate(body, [{ transform: 'scale(1)' }, { transform: 'scale(1.09,.918)' }, { transform: 'scale(1)' }], 150, id)) return;
+          if (!await animate(point, [{ transform: 'translate(0,0) scale(1)' }, { transform: `translate(${dx * .5}px,${dy * .5 - 36}px) scale(.97,1.03)`, offset: .5 }, { transform: `translate(${dx}px,${dy}px) scale(1)` }], 470, id, 'linear')) return;
+          if (!await animate(body, [{ transform: 'scale(1.08,.925)' }, { transform: 'scale(1)' }], 130, id)) return;
           if (!await wait(120, id)) return;
-
-          if (!await animate(
-            body,
-            [
-              { transform: 'translateX(0)' },
-              { transform: 'translateX(3px)', offset: .35 },
-              { transform: 'translateX(-5px) scale(.94,1.06)' }
-            ],
-            170,
-            id
-          )) return;
-
+          if (!await animate(body, [{ transform: 'translateX(0)' }, { transform: 'translateX(3px)', offset: .35 }, { transform: 'translateX(-5px) scale(.94,1.06)' }], 170, id)) return;
           const nextIndex = (index + 1) % words.length;
-          const next = document.createElement('span');
-
-          next.className = 'hero-word';
-          next.textContent = words[nextIndex];
-          next.style.opacity = '0';
-          layer.appendChild(next);
-
+          const next = document.createElement('span'); next.className = 'hero-word'; next.textContent = words[nextIndex]; next.style.opacity = '0'; layer.appendChild(next);
           const nextRect = next.getBoundingClientRect();
-
-          const nx = clamp(
-            nextRect.right - base.left + 5,
-            8,
-            intro.clientWidth - size - 8
-          ) - hx;
-
+          const nx = clamp(nextRect.right - base.left + 5, 8, intro.clientWidth - size - 8) - hx;
           const result = await Promise.all([
-            animate(
-              word,
-              [
-                { opacity: '1', transform: 'translateX(0)' },
-                { opacity: '0', transform: 'translateX(-.14em)' }
-              ],
-              230,
-              id
-            ),
-            animate(
-              next,
-              [
-                { opacity: '0', transform: 'translateX(.12em)' },
-                { opacity: '1', transform: 'translateX(0)' }
-              ],
-              300,
-              id
-            ),
-            animate(
-              point,
-              [
-                { transform: `translate(${dx}px,${dy}px)` },
-                { transform: `translate(${nx}px,${dy}px)` }
-              ],
-              300,
-              id
-            ),
-            animate(
-              body,
-              [
-                { transform: 'translateX(-5px) scale(.94,1.06)' },
-                { transform: 'translateX(0) scale(1)' }
-              ],
-              230,
-              id
-            )
+            animate(word, [{ opacity: '1', transform: 'translateX(0)' }, { opacity: '0', transform: 'translateX(-.14em)' }], 230, id),
+            animate(next, [{ opacity: '0', transform: 'translateX(.12em)' }, { opacity: '1', transform: 'translateX(0)' }], 300, id),
+            animate(point, [{ transform: `translate(${dx}px,${dy}px)` }, { transform: `translate(${nx}px,${dy}px)` }], 300, id),
+            animate(body, [{ transform: 'translateX(-5px) scale(.94,1.06)' }, { transform: 'translateX(0) scale(1)' }], 230, id)
           ]);
-
           if (!result.every(Boolean) || !valid(id)) return;
-
-          index = nextIndex;
-          word.remove();
-
+          index = nextIndex; word.remove();
           if (!await wait(520, id)) return;
-
           point.classList.remove('is-looking-word');
-
-          if (!await animate(
-            point,
-            [
-              {
-                transform: `translate(${nx}px,${dy}px) scale(1)`
-              },
-              {
-                transform: `translate(${nx * .5}px,${dy * .5 - 30}px) scale(.8)`,
-                offset: .5
-              },
-              {
-                transform: `translate(0,0) scale(${homeScale})`
-              }
-            ],
-            450,
-            id,
-            'linear'
-          )) return;
-
+          if (!await animate(point, [{ transform: `translate(${nx}px,${dy}px) scale(1)` }, { transform: `translate(${nx * .5}px,${dy * .5 - 30}px) scale(.8)`, offset: .5 }, { transform: `translate(0,0) scale(${homeScale})` }], 450, id, 'linear')) return;
           performed = true;
-        } catch (error) {
-          console.error('Point animation:', error);
-        } finally {
-          if (id === token) {
-            reset();
-            running = false;
-            schedule();
-          }
-        }
+        } catch (error) { console.error('Point animation:', error); }
+        finally { if (id === token) { reset(); running = false; schedule(); } }
       }
-
-      function refresh() {
-        if (!inView || !canMove() || menuOpen) {
-          stop();
-        } else {
-          schedule();
-        }
-      }
-
+      function refresh() { if (!inView || !canMove() || menuOpen) stop(); else schedule(); }
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(entries => {
           const visible = entries[0].isIntersecting;
-
-          if (visible !== inView) {
-            inView = visible;
-            refresh();
-          }
-        }, {
-          threshold: 0
-        }).observe(intro);
-      } else {
-        inView = true;
-        refresh();
-      }
-
+          if (visible !== inView) { inView = visible; refresh(); }
+        }, { threshold: 0 }).observe(intro);
+      } else { inView = true; refresh(); }
       function resized() {
         const width = intro.clientWidth;
-
         if (Math.abs(width - lastWidth) < 1) return;
-
-        lastWidth = width;
-        stop();
-        schedule(200);
+        lastWidth = width; stop(); schedule(200);
       }
-
-      if ('ResizeObserver' in window) {
-        new ResizeObserver(resized).observe(intro);
-      } else {
-        window.addEventListener('resize', resized, {
-          passive: true
-        });
-      }
-
-      // Font readiness refines layout but never gates the first performance.
-      if (document.fonts?.ready) {
-        document.fonts.ready.then(() => {
-          stop();
-          schedule(200);
-        }).catch(() => {});
-      }
-
+      if ('ResizeObserver' in window) new ResizeObserver(resized).observe(intro);
+      else window.addEventListener('resize', resized, { passive: true });
+      // Font readiness can refine layout, but never gates the first performance.
+      if (document.fonts?.ready) document.fonts.ready.then(() => { stop(); schedule(200); }).catch(() => {});
       document.addEventListener('visibilitychange', refresh);
-
-      document.addEventListener('navigationstate', event => {
-        menuOpen = event.detail.open;
-        refresh();
-      });
-
-      onMotion(refresh);
+      document.addEventListener('navigationstate', event => { menuOpen = event.detail.open; refresh(); });
     });
 
     /* Touch wakes the footer character immediately; no hover dependency. */
     safely(() => {
       const point = document.querySelector('.contact-point');
       const email = document.querySelector('.giant-email');
-
-      let visible = false;
-      let token = 0;
-      let hover = false;
-      let focused = false;
-
+      let visible = false, token = 0, hover = false, focused = false;
       const valid = id => id === token && visible && canMove();
-
-      const wait = async (ms, id) => {
-        await new Promise(resolve => setTimeout(resolve, ms));
-        return valid(id);
-      };
-
-      function rest() {
-        point.className = 'point contact-point';
-      }
-
+      const wait = async (ms, id) => { await new Promise(resolve => setTimeout(resolve, ms)); return valid(id); };
+      function rest() { point.className = 'point contact-point'; }
       async function sleep(id) {
         if (!await wait(6500, id) || hover || focused) return;
-
         point.classList.add('is-drowsy');
-
         if (!await wait(1500, id)) return;
-
         point.classList.add('is-slow-blinking');
-
         if (!await wait(1000, id)) return;
-
         point.classList.remove('is-slow-blinking');
-
         if (!await wait(450, id)) return;
-
-        point.classList.remove('is-drowsy');
-        point.classList.add('is-asleep');
+        point.classList.remove('is-drowsy'); point.classList.add('is-asleep');
       }
-
       async function enter() {
-        const id = ++token;
-        rest();
-
+        const id = ++token; rest();
         if (!valid(id)) return;
         if (!await wait(400, id)) return;
-
         point.classList.add('is-looking-email');
-
         if (!await wait(750, id)) return;
-
         point.classList.remove('is-looking-email');
         sleep(id);
       }
-
       async function wake() {
-        if (
-          point.classList.contains('is-waking') &&
-          visible &&
-          canMove()
-        ) return;
-
-        const sleepy = point.matches(
-          '.is-asleep,.is-drowsy,.is-slow-blinking'
-        );
-
-        const id = ++token;
-        rest();
-
+        if (point.classList.contains('is-waking') && visible && canMove()) return;
+        const sleepy = point.matches('.is-asleep,.is-drowsy,.is-slow-blinking');
+        const id = ++token; rest();
         if (!valid(id)) return;
-
         if (sleepy) {
           point.classList.add('is-waking');
-
           if (!await wait(430, id)) return;
-
           point.classList.remove('is-waking');
         }
-
         sleep(id);
       }
-
-      function refresh() {
-        if (visible && canMove()) {
-          enter();
-        } else {
-          ++token;
-          rest();
-        }
-      }
-
+      function refresh() { if (visible && canMove()) enter(); else { ++token; rest(); } }
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(entries => {
           const next = entries[0].isIntersecting;
-
-          if (next !== visible) {
-            visible = next;
-            refresh();
-          }
-        }, {
-          threshold: 0
-        }).observe(point);
-      } else {
-        visible = true;
-        refresh();
-      }
-
-      email.addEventListener('pointerenter', event => {
-        if (event.pointerType !== 'touch') {
-          hover = true;
-          wake();
-        }
-      });
-
-      email.addEventListener('pointerleave', event => {
-        if (event.pointerType !== 'touch') {
-          hover = false;
-          if (!focused) wake();
-        }
-      });
-
-      email.addEventListener('focus', () => {
-        focused = true;
-        wake();
-      });
-
-      email.addEventListener('blur', () => {
-        focused = false;
-        if (!hover) wake();
-      });
-
+          if (next !== visible) { visible = next; refresh(); }
+        }, { threshold: 0 }).observe(point);
+      } else { visible = true; refresh(); }
+      email.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') { hover = true; wake(); } });
+      email.addEventListener('pointerleave', event => { if (event.pointerType !== 'touch') { hover = false; if (!focused) wake(); } });
+      email.addEventListener('focus', () => { focused = true; wake(); });
+      email.addEventListener('blur', () => { focused = false; if (!hover) wake(); });
       email.addEventListener('pointerdown', wake);
-
-      if (!window.PointerEvent) {
-        email.addEventListener('touchstart', wake, {
-          passive: true
-        });
-      }
-
+      if (!window.PointerEvent) email.addEventListener('touchstart', wake, { passive: true });
       document.addEventListener('visibilitychange', refresh);
-      onMotion(refresh);
     });
 
-    /* Active section and copyright year */
     safely(() => {
-      const links = [
-        ...document.querySelectorAll('.nav-links a[href^="#"]')
-      ];
-
-      const sections = links.map(link => {
-        return document.querySelector(link.hash);
-      });
-
+      const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const sections = links.map(link => document.querySelector(link.hash));
       let pending = false;
-
       function update() {
         pending = false;
         let current = '';
-
-        sections.forEach(section => {
-          if (section.getBoundingClientRect().top <= innerHeight * .4) {
-            current = section.id;
-          }
-        });
-
-        links.forEach(link => {
-          const active = link.hash === '#' + current;
-          link.classList.toggle('active-section', active);
-
-          if (active) {
-            link.setAttribute('aria-current', 'location');
-          } else {
-            link.removeAttribute('aria-current');
-          }
-        });
+        sections.forEach(section => { if (section.getBoundingClientRect().top <= innerHeight * .4) current = section.id; });
+        links.forEach(link => { const active = link.hash === '#' + current; link.classList.toggle('active-section', active); if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
       }
-
-      window.addEventListener('scroll', () => {
-        if (!pending) {
-          pending = true;
-          requestAnimationFrame(update);
-        }
-      }, {
-        passive: true
-      });
-
+      window.addEventListener('scroll', () => { if (!pending) { pending = true; requestAnimationFrame(update); } }, { passive: true });
       update();
-
-      document.querySelector('#current-year').textContent = String(
-        new Date().getFullYear()
-      );
+      document.querySelector('#current-year').textContent = String(new Date().getFullYear());
     });
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, {
-      once: true
-    });
-  } else {
-    boot();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
 })();
 </script>
 </body>
