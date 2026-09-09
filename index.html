@@ -98,6 +98,9 @@ html:not([data-testimonials-ready]) .testimonial-stage{display:block}html:not([d
 .services-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
 .services-heading {
   margin: 0 0 22px;
+  font-family: var(--font-voice);
+  text-transform: none;
+  opacity: 1;
   font-size: clamp(2.5rem, 4.5vw, 4rem);
   font-weight: 400;
   letter-spacing: -.035em;
@@ -106,11 +109,14 @@ html:not([data-testimonials-ready]) .testimonial-stage{display:block}html:not([d
 }
 .services-intro {
   max-width: 38ch;
+  font-family: var(--font-voice);
+  font-weight: 400;
   font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
   line-height: 1.65;
   letter-spacing: 0;
   text-wrap: pretty;
 }
+.work-section-intro { max-width: 62ch; }
 /* Relative positioning keeps optical adjustments independent of animation transforms. */
 .hero-lead { margin-bottom: .5em; letter-spacing: .025em; }
 .hero-word-stage { height: 1.05em; margin: .015em 0 .085em; }
@@ -167,6 +173,33 @@ html:not([data-testimonials-ready]) .testimonial-stage{display:block}html:not([d
   .contact-heading { font-size: 1.25rem; }
   .nav-links a { font-size: 1.125rem; }
   .language-switch a { font-size: var(--type-control); }
+}
+
+/* Selected work follows the established services hierarchy. */
+.work-section-label {
+  margin: 0 0 22px;
+  font-family: var(--font-voice);
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1.06;
+  text-transform: none;
+  text-wrap: balance;
+  opacity: 1;
+}
+.work-section-intro {
+  max-width: 62ch;
+  font-family: var(--font-voice);
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.65;
+  text-transform: none;
+  text-wrap: pretty;
+}
+@media (max-width: 700px) {
+  .work-section-label { font-size: clamp(2.3rem, 9vw, 3rem); margin-bottom: 18px; }
+  .work-section-intro { font-size: 1.0625rem; }
 }
 </style>
 </head>
