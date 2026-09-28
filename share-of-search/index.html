@@ -373,15 +373,42 @@ select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
 .lecture-controls { display: inline-flex; align-items: center; gap: 8px; }
 .lecture-count { font-family: var(--font-system); font-size: var(--text-meta); font-weight: 500; color: var(--chalk-dim); min-width: 3ch; text-align: center; }
 
-.professor {
-  --mouth-stroke: 2px;
-  width: var(--prof-size); flex: none; margin: auto auto -6px; z-index: 4;
-  transform-origin: 50% 100%;
+/* The rig carries the spring-driven body motion (lean, squash, rolling); the
+   Point inside carries the keyframed moments (breathing, hops, cheers). */
+.prof-rig {
+  width: var(--prof-size); flex: none; margin: auto auto -6px; z-index: 4; position: relative;
+  transform-origin: 50% 100%; pointer-events: none; will-change: transform;
 }
+.professor { --mouth-stroke: 2px; width: 100%; transform-origin: 50% 100%; animation: breathe 5s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { transform: none; } 50% { transform: scale(1.012, .988); } }
 .professor.is-hopping { animation: prof-hop .62s cubic-bezier(.3, 1.6, .5, 1); }
 @keyframes prof-hop {
   0% { transform: none; } 30% { transform: translateY(-20px) scale(.96, 1.05); } 62% { transform: translateY(0) scale(1.06, .94); } 100% { transform: none; }
 }
+.professor.is-cheering { animation: prof-cheer 1.5s ease-out; }
+@keyframes prof-cheer {
+  0% { transform: none; } 12% { transform: scale(1.08, .9); } 30% { transform: translateY(-34px) scale(.95, 1.06); } 48% { transform: scale(1.08, .9); }
+  64% { transform: translateY(-22px) scale(.97, 1.04); } 80% { transform: scale(1.05, .95); } 100% { transform: none; }
+}
+.professor.is-cheering .hat { animation: hat-wobble 1.2s ease-in-out .15s; }
+@keyframes hat-wobble {
+  0%, 100% { transform: translateX(-50%) rotate(-7deg); } 25% { transform: translateX(-50%) translateY(-9%) rotate(5deg); }
+  55% { transform: translateX(-50%) translateY(-4%) rotate(-15deg); } 80% { transform: translateX(-50%) rotate(-2deg); }
+}
+.professor.is-gloomy { animation: prof-gloom 2.5s ease-in-out; }
+@keyframes prof-gloom { 0%, 100% { transform: none; } 25%, 75% { transform: translateY(3px) scale(1.07, .9); } }
+.professor.is-gloomy .hat { animation: hat-slip 2.5s ease-in-out; }
+@keyframes hat-slip {
+  0%, 100% { transform: translateX(-50%) rotate(-7deg); }
+  25%, 75% { transform: translateX(-50%) translateY(calc(var(--prof-size) * .06)) rotate(-17deg); }
+}
+.professor.is-shaking { animation: prof-shake .6s ease-in-out; }
+@keyframes prof-shake {
+  0%, 100% { transform: none; } 15% { transform: translateX(-7px) rotate(-3deg); } 35% { transform: translateX(7px) rotate(3deg); }
+  55% { transform: translateX(-5px) rotate(-2deg); } 75% { transform: translateX(4px) rotate(2deg); }
+}
+.professor.is-yawning { --eye-scale: .35; }
+.professor.is-yawning .point-mouth { top: 60%; left: 43%; width: 14%; height: 14%; border: 0; border-radius: 50%; background: #3a0018; transform: none; }
 .professor.mood-happy .point-mouth { top: 59%; left: 37%; width: 26%; height: 13%; transform: none; --mouth-stroke: 3px; }
 .professor.mood-flat .point-mouth { top: 64%; left: 42%; width: 16%; height: 0; border-radius: 0; transform: none; }
 .professor.mood-worried .point-mouth { top: 66%; left: 40%; width: 20%; height: 7%; border-bottom: 0; border-top: var(--mouth-stroke) solid #130008; border-radius: 100% 100% 0 0; transform: none; }
@@ -670,7 +697,7 @@ footer a { color: inherit; }
   .brush-wrap { grid-area: brush; }
   .brush-hint { grid-area: hint; margin-bottom: 14px; }
   .lecture-ui { grid-area: lect; align-self: center; margin: 0 0 8px; }
-  .professor { grid-area: prof; --prof-size: 96px; width: 96px; margin: 0 0 -6px; }
+  .prof-rig { grid-area: prof; --prof-size: 96px; width: 96px; margin: 0 0 -6px; }
   .board-sub { text-align: left; justify-content: flex-start; }
   .extras, .practice { grid-template-columns: minmax(0, 1fr); }
   .practice-list { padding-left: 0; border-left: 0; }
@@ -699,7 +726,8 @@ footer a { color: inherit; }
 @media (max-width: 420px) { .nav-links { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .point.is-blinking .point-eye, .professor.is-hopping, .zzz span, .tip-ring.is-on, .hat-drop { animation: none; }
+  .point.is-blinking .point-eye, .zzz span, .tip-ring.is-on, .hat-drop { animation: none; }
+  .professor, .professor .hat { animation: none !important; }
   .w { animation: none; opacity: 1; }
   .sheet { transition: none; }
 }
@@ -759,9 +787,11 @@ footer a { color: inherit; }
             <button class="chalk-btn is-small" type="button" id="lecture-stop">Stop</button>
           </span>
         </div>
-        <div class="point professor" id="prof" aria-hidden="true">
+        <div class="prof-rig" id="prof-rig">
+          <div class="point professor" id="prof" aria-hidden="true">
           <span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span>
           <span class="hat"><span class="hat-board"></span><i class="hat-btn"></i><i class="hat-cord"></i><i class="hat-drop"></i></span>
+        </div>
         </div>
       </aside>
 
@@ -1929,7 +1959,7 @@ footer a { color: inherit; }
     renderAll();
     if (message) toast(message);
     if (scroll) $('#tracker').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
-    profReact(); writeInsight();
+    profReact(); writeInsight(); setTimeout(recordReaction, 900);
   }
 
   function serialise(data) {
@@ -2370,6 +2400,7 @@ footer a { color: inherit; }
      ====================================================================== */
   let toastTimer = 0;
   function toast(message, isError = false) {
+    if (isError) profShake();
     const el = $('#toast');
     el.textContent = message;
     el.classList.toggle('is-error', !!isError);
@@ -2409,9 +2440,13 @@ footer a { color: inherit; }
      The professor: a pointing stick that is also the chart's crosshair
      ====================================================================== */
   const prof = $('#prof');
+  const rig = $('#prof-rig');
+  const stageSvg = $('#stage-svg');
   const boardInner = $('#board-inner');
   const S = { stk: $('#stk'), shadow: $('#stk-shadow'), tip: $('#tip'), ring: $('#tip-ring') };
-  const stage = { goal: null, tip: null, raf: 0, last: 0, idle: true, visible: true, look: '' };
+  const stage = { goal: null, tip: null, raf: 0, last: 0, idle: true, visible: true, look: '', moving: false };
+  // Spring-driven body: x (rolling), lean (degrees) and squash (sy), each with a velocity.
+  const mv = { x: 0, vx: 0, xGoal: 0, lean: 0, vl: 0, sy: 1, vs: 0 };
   const lecture = { active: false, step: 0, steps: [], timer: 0 };
   const noteEl = $('#lecture-note');
   const insightEl = $('#insight');
@@ -2420,11 +2455,28 @@ footer a { color: inherit; }
     if (reduceMotion.matches || !el) return;
     el.classList.remove('is-blinking'); void el.offsetWidth; el.classList.add('is-blinking');
   }
-  function profReact() {
+  function playClass(cls, ms) {
     if (!prof || reduceMotion.matches) return;
-    prof.classList.remove('is-hopping'); void prof.offsetWidth; prof.classList.add('is-hopping');
-    setTimeout(() => prof.classList.remove('is-hopping'), 700);
+    prof.classList.remove(cls); void prof.offsetWidth; prof.classList.add(cls);
+    setTimeout(() => prof.classList.remove(cls), ms);
   }
+  const profReact = () => playClass('is-hopping', 700);
+  const cheer = () => playClass('is-cheering', 1600);
+  const gloom = () => playClass('is-gloomy', 2500);
+  function profShake() { playClass('is-shaking', 650); }
+  function impulse(vs, vl) { if (reduceMotion.matches) return; mv.vs += vs || 0; mv.vl += vl || 0; kick(); }
+  function puff(x, y) {
+    if (reduceMotion.matches) return;
+    for (let i = 0; i < 6; i++) {
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', x.toFixed(1)); c.setAttribute('cy', y.toFixed(1)); c.setAttribute('r', (1.6 + Math.random() * 1.6).toFixed(1)); c.setAttribute('fill', '#f3ebe0');
+      stageSvg.appendChild(c);
+      const a = Math.random() * Math.PI * 2, d = 10 + Math.random() * 14;
+      const anim = c.animate([{ opacity: .85, transform: 'translate(0,0)' }, { opacity: 0, transform: `translate(${(Math.cos(a) * d).toFixed(1)}px,${(Math.sin(a) * d).toFixed(1)}px)` }], { duration: 520 + Math.random() * 200, easing: 'ease-out' });
+      anim.onfinish = () => c.remove();
+    }
+  }
+  function tap(x, y) { impulse(-2.4, 0); puff(x, y); }
   safely(() => { setInterval(() => { if (!document.hidden && Math.random() < .5) blink(prof); }, 4800); });
 
   const restBrand = () => model ? (state.focus != null && model.vis[state.focus] ? state.focus : model.vis.findIndex(Boolean)) : -1;
@@ -2471,12 +2523,13 @@ footer a { color: inherit; }
   }
   function put(el, x1, y1, x2, y2) { el.setAttribute('x1', x1.toFixed(1)); el.setAttribute('y1', y1.toFixed(1)); el.setAttribute('x2', x2.toFixed(1)); el.setAttribute('y2', y2.toFixed(1)); }
 
+  const narrow = window.matchMedia('(max-width: 900px)');
   function drawStage(t, bob) {
-    const R = boardInner.getBoundingClientRect(), P = prof.getBoundingClientRect();
-    const s = P.width, px = P.left - R.left, py = P.top - R.top;
+    const R = boardInner.getBoundingClientRect(), P = rig.getBoundingClientRect();
+    const s = rig.offsetWidth;
     const tx = t.x, ty = t.y + bob;
     // No arms: the stick simply extends from his rim, straight towards the target.
-    const C = { x: px + s / 2, y: py + s / 2 };
+    const C = { x: P.left - R.left + P.width / 2, y: P.top - R.top + P.height / 2 };
     const dx = tx - C.x, dy = ty - C.y, len = Math.hypot(dx, dy) || 1;
     const ux = dx / len, uy = dy / len;
     const base = { x: C.x + ux * s * .48, y: C.y + uy * s * .48 };
@@ -2487,21 +2540,47 @@ footer a { color: inherit; }
     const lx = (Math.round(clamp(ux * 7, -7, 4) * 2) / 2), ly = (Math.round(clamp(uy * 6, -6, 6) * 2) / 2);
     const key = lx + ',' + ly;
     if (key !== stage.look) { stage.look = key; prof.style.setProperty('--face-x', lx + '%'); prof.style.setProperty('--face-y', ly + '%'); }
+    return { ux, uy, len, cx: C.x - mv.x, s };
   }
   function stageFrame(now) {
     stage.raf = 0;
     if (!stage.goal || !prof) return;
-    const dt = Math.min(50, now - stage.last); stage.last = now;
+    const dt = Math.min(50, now - stage.last) / 1000; stage.last = now;
+    const still = reduceMotion.matches;
     const g = chartToBoard(stage.goal);
-    if (!stage.tip || reduceMotion.matches) stage.tip = { x: g.x, y: g.y };
+    if (!stage.tip || still) stage.tip = { x: g.x, y: g.y };
+    else { const k = 1 - Math.exp(-dt / .085); stage.tip.x += (g.x - stage.tip.x) * k; stage.tip.y += (g.y - stage.tip.y) * k; }
+    const bob = stage.idle && !still ? Math.sin(now / 950) * 2.5 : 0;
+
+    // Where he stands: in lecture mode he rolls along the ledge to sit under the point he is making.
+    const R = boardInner.getBoundingClientRect();
+    const s0 = rig.offsetWidth;
+    const homeX = rig.getBoundingClientRect().left - R.left + s0 / 2 - mv.x;
+    const chartLeft = chartWrap.getBoundingClientRect().left - R.left;
+    mv.xGoal = lecture.active && !narrow.matches && !still ? clamp(g.x - homeX, Math.min(0, chartLeft + s0 * .95 - homeX), 0) : 0;
+
+    // Draw the stick from where his body is now, then let the springs move the body.
+    let dir = drawStage(stage.tip, bob);
+    let leanT = 0, settled = true;
+    if (still) { mv.x = mv.vx = mv.lean = mv.vl = 0; mv.sy = 1; mv.vs = 0; rig.style.transform = ''; }
     else {
-      const k = 1 - Math.exp(-dt / 85);
-      stage.tip.x += (g.x - stage.tip.x) * k; stage.tip.y += (g.y - stage.tip.y) * k;
+      leanT = clamp(dir.ux * 4.5, -4.5, 4.5) * clamp(dir.len / 260, 0, 1) + clamp(mv.vx / 200, -7, 7);
+      mv.vx += ((mv.xGoal - mv.x) * 38 - mv.vx * 11) * dt; mv.x += mv.vx * dt;
+      mv.vl += ((leanT - mv.lean) * 110 - mv.vl * 13) * dt; mv.lean += mv.vl * dt;
+      mv.vs += ((1 - mv.sy) * 320 - mv.vs * 19) * dt; mv.sy += mv.vs * dt;
+      const stretch = clamp(Math.abs(mv.vx) / 1800, 0, .08);
+      const sy = mv.sy / (1 + stretch * .6), sx = (1 / Math.sqrt(mv.sy)) * (1 + stretch);
+      rig.style.transform = `translateX(${mv.x.toFixed(1)}px) rotate(${mv.lean.toFixed(2)}deg) scale(${sx.toFixed(3)},${sy.toFixed(3)})`;
+      settled = Math.abs(mv.xGoal - mv.x) < .3 && Math.abs(mv.vx) < 2 && Math.abs(leanT - mv.lean) < .05 && Math.abs(mv.vl) < .3 && Math.abs(mv.sy - 1) < .002 && Math.abs(mv.vs) < .02;
     }
-    const bob = stage.idle && !reduceMotion.matches ? Math.sin(now / 950) * 2.5 : 0;
-    drawStage(stage.tip, bob);
-    const settled = Math.hypot(g.x - stage.tip.x, g.y - stage.tip.y) < .4;
-    if (!document.hidden && stage.visible && (!settled || (stage.idle && !reduceMotion.matches))) stage.raf = requestAnimationFrame(stageFrame);
+
+    // A tap when the tip arrives on a point being made.
+    const arrived = Math.hypot(g.x - stage.tip.x, g.y - stage.tip.y) < 5;
+    if (stage.moving && arrived && S.ring.classList.contains('is-on')) tap(stage.tip.x, stage.tip.y);
+    stage.moving = !arrived;
+
+    const tipSettled = Math.hypot(g.x - stage.tip.x, g.y - stage.tip.y) < .4;
+    if (!document.hidden && stage.visible && (!tipSettled || !settled || (stage.idle && !still))) stage.raf = requestAnimationFrame(stageFrame);
   }
 
   function updateMood() {
@@ -2533,11 +2612,40 @@ footer a { color: inherit; }
       setGoal({ x: geom.x(state.data.dates[i]), y: clamp(e.clientY - r.top, geom.margin.t, geom.margin.t + geom.ph) });
     });
     chartWrap.addEventListener('pointerleave', () => { if (!lecture.active) restGoal(); });
-    chartWrap.addEventListener('pointerdown', () => { if (lecture.active) stopLecture(); });
+    chartWrap.addEventListener('pointerdown', () => { if (lecture.active) stopLecture(); else if (stage.tip) tap(stage.tip.x, stage.tip.y); });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(entries => { stage.visible = entries[0].isIntersecting; if (stage.visible) kick(); }, { threshold: 0 }).observe($('#board'));
     }
     document.addEventListener('visibilitychange', () => { if (!document.hidden) kick(); });
+  });
+
+  // A record high or low for your brand earns a reaction after new data arrives.
+  function recordReaction() {
+    if (!prof || !state.data || !model || reduceMotion.matches) return;
+    const k = model.vis.findIndex(Boolean); if (k < 0) return;
+    const arr = model.shares[k], n = model.n, first = model.first;
+    if (n - first < 26) return;
+    let max = -1, min = 2;
+    for (let i = first; i < n; i++) { const v = arr[i]; if (v > max) max = v; if (v < min) min = v; }
+    const last = arr[n - 1];
+    if (last >= max - 1e-9) cheer(); else if (last <= min + 1e-9) gloom();
+  }
+
+  // Small signs of life: a rock now and then, a hop, and a yawn if nobody has touched the page for a minute.
+  safely(() => {
+    setInterval(() => {
+      if (document.hidden || lecture.active || reduceMotion.matches || !stage.visible) return;
+      if (Math.random() < .65) impulse(0, (Math.random() < .5 ? -1 : 1) * 35); else profReact();
+    }, 9000);
+    let lastActive = performance.now();
+    ['pointermove', 'keydown', 'scroll', 'pointerdown'].forEach(ev => window.addEventListener(ev, () => { lastActive = performance.now(); }, { passive: true }));
+    setInterval(() => {
+      if (document.hidden || lecture.active || reduceMotion.matches || !stage.visible) return;
+      if (performance.now() - lastActive > 60000) {
+        lastActive = performance.now();
+        prof.classList.add('is-yawning'); setTimeout(() => prof.classList.remove('is-yawning'), 1800);
+      }
+    }, 5000);
   });
 
   /* ======================================================================
@@ -2610,7 +2718,8 @@ footer a { color: inherit; }
     noteEl.textContent = s.text;
     chalkify(noteEl);
     $('#lecture-count').textContent = `${n + 1}/${lecture.steps.length}`;
-    if (n === lecture.steps.length - 1) profReact();
+    if (n > 0) impulse(-1.6, 0);
+    if (n === lecture.steps.length - 1) setTimeout(() => { if (!lecture.active) return; prof.classList.contains('mood-happy') ? cheer() : prof.classList.contains('mood-worried') ? gloom() : profReact(); }, 900);
     lecture.timer = setTimeout(() => goStep(n + 1), 4200 + s.text.length * 45);
   }
   function startLecture() {
