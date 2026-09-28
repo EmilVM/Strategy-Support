@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Share of Search Tracker | Strategy Support</title>
+<meta name="description" content="Track how your brand’s share of search develops against up to four competitors. Load Google Trends data and see the relative development as a 100% wave chart."/>
+<link rel="canonical" href="https://strategy-support.com/share-of-search/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://strategy-support.com/share-of-search/"/>
+<meta property="og:title" content="Share of Search Tracker | Strategy Support"/>
+<meta property="og:description" content="See how your brand’s share of category search develops against up to four competitors."/>
+<meta property="og:image" content="https://strategy-support.com/assets/emilmadsen.JPG"/>
+<meta property="og:site_name" content="Strategy Support"/>
+<meta property="og:locale" content="en_GB"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="https://strategy-support.com/assets/favicon-96x96.png" sizes="96x96" type="image/png"/>
+<link rel="icon" href="https://strategy-support.com/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="shortcut icon" href="https://strategy-support.com/assets/favicon.ico"/>
+<link rel="apple-touch-icon" href="https://strategy-support.com/assets/apple-touch-icon.png" sizes="180x180"/>
+<link rel="manifest" href="https://strategy-support.com/assets/site.webmanifest"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,600&amp;display=swap" rel="stylesheet"/>
+<style>
+/* ==========================================================================
+   Share of Search — a Strategy Support tool
+   Same typographic system and palette as the main site.
+   ========================================================================== */
+
+:root {
+  --font-voice: "Source Serif 4", Georgia, serif;
+  --font-system: "Inter", system-ui, sans-serif;
+
+  --bg-cream: #fff1e5;
+  --bg-dark: #3d0814;
+  --ink: #3d0814;
+  --pink: #f90090;
+  --line-light: rgba(61, 8, 20, .12);
+  --line-strong: rgba(61, 8, 20, .28);
+  --line-on-dark: rgba(255, 241, 229, .2);
+  --ink-muted: rgba(61, 8, 20, .66);
+  --cream-muted: rgba(255, 241, 229, .72);
+
+  /* Brand slots — validated for colour-blind separation on the cream surface.
+     Colour follows the slot, never the rank. */
+  --series-1: #f90090;
+  --series-2: #2f5fd0;
+  --series-3: #d96307;
+  --series-4: #12977a;
+  --series-5: #7a3fb8;
+
+  --page-width: 1200px;
+  --nav-height: 68px;
+  --section-space: clamp(72px, 9vw, 120px);
+  --gutter: clamp(20px, 4vw, 48px);
+
+  --text-title: clamp(2.6rem, 9vw, 7.4rem);
+  --text-section: clamp(2.05rem, 3.55vw, 3.15rem);
+  --text-subhead: clamp(1.4rem, 2.15vw, 1.9rem);
+  --text-deck: clamp(1.125rem, 1.35vw, 1.3125rem);
+  --text-body: clamp(1.0625rem, .35vw + 1rem, 1.1875rem);
+  --text-ui: .75rem;
+  --text-label: .6875rem;
+  --text-meta: .75rem;
+  --text-logo: 1.05rem;
+  --leading-body: 1.62;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  min-width: 280px;
+  background: var(--bg-cream);
+  color: var(--ink);
+  font-family: var(--font-voice);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button, input, select, textarea { font: inherit; color: inherit; }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
+}
+[hidden] { display: none !important; }
+.visually-hidden {
+  position: absolute !important; width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important; overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important;
+}
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 5000;
+  background: var(--bg-cream); color: var(--ink); padding: 12px;
+  transform: translateY(-150%);
+}
+.skip-link:focus { transform: none; }
+.section-inner { width: 100%; max-width: var(--page-width); margin: auto; min-width: 0; }
+
+/* Shared type roles ------------------------------------------------------- */
+.t-label {
+  display: block;
+  font-family: var(--font-system);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: .14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.t-section {
+  font-family: var(--font-voice);
+  font-size: var(--text-section);
+  font-weight: 400;
+  letter-spacing: -.032em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+.t-deck {
+  font-family: var(--font-voice);
+  font-size: var(--text-deck);
+  font-weight: 400;
+  letter-spacing: -.01em;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.t-body {
+  font-family: var(--font-voice);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+.t-subhead {
+  font-family: var(--font-voice);
+  font-size: var(--text-subhead);
+  font-weight: 400;
+  letter-spacing: -.022em;
+  line-height: 1.16;
+  text-wrap: balance;
+}
+.t-meta {
+  font-family: var(--font-system);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  letter-spacing: .02em;
+  line-height: 1.55;
+}
+
+/* Navigation -------------------------------------------------------------- */
+.sticky-nav {
+  position: fixed; inset: 0 0 auto; z-index: 1000;
+  height: var(--nav-height);
+  padding: 0 var(--gutter);
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-cream);
+  border-bottom: 1px solid var(--line-light);
+}
+.nav-logo {
+  display: inline-flex; align-items: baseline;
+  color: var(--ink); text-decoration: none;
+  font-family: var(--font-voice); font-size: var(--text-logo); font-weight: 700;
+  letter-spacing: -.04em; line-height: 1; text-transform: uppercase; white-space: nowrap;
+}
+.nav-point {
+  width: .4em; height: .4em; margin-left: .12em;
+  border-radius: 50%; background: var(--pink);
+}
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a {
+  position: relative; display: inline-flex; align-items: center; min-height: 44px;
+  color: var(--ink); text-decoration: none;
+  font-family: var(--font-system); font-size: var(--text-ui); font-weight: 500;
+  letter-spacing: .08em; line-height: 1.3; text-transform: uppercase;
+}
+.nav-links a::after {
+  content: ""; position: absolute; inset: auto 0 10px; height: 1px;
+  background: var(--pink); transform: scaleX(0); transform-origin: left;
+  transition: transform .2s ease;
+}
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links .nav-back { opacity: .6; }
+
+/* The point — the site's character, used here as a full stop ------------- */
+.point {
+  --face-x: 0%; --face-y: 0%; --eye-scale: 1; --mouth-stroke: 2px;
+  position: relative; display: inline-block; aspect-ratio: 1;
+}
+.point-body {
+  position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 30% 21%, rgba(255,255,255,.97) 0%, rgba(255,255,255,.83) 3%, rgba(255,255,255,.16) 8%, transparent 17%),
+    radial-gradient(circle at 37% 30%, #ff89d6 0%, #ff3bb4 24%, #f90090 53%, #cf0076 77%, #870044 100%);
+  box-shadow: inset 3px 4px 7px rgba(255,255,255,.28), inset -5px -7px 10px rgba(76,0,38,.25), 0 7px 12px rgba(42,0,16,.2);
+  transform-origin: 50% 80%;
+}
+.point-face { position: absolute; inset: 0; transform: translate(var(--face-x), var(--face-y)); transition: transform .3s ease; }
+.point-eye {
+  position: absolute; top: 39%; width: 11.5%; height: 14%; border-radius: 50%;
+  background: #130008; transform: scaleY(var(--eye-scale)); transform-origin: center;
+}
+.point-eye::after {
+  content: ""; position: absolute; top: 12%; left: 18%; width: 29%; height: 29%;
+  border-radius: 50%; background: rgba(255,255,255,.92);
+}
+.point-eye--left { left: 31%; }
+.point-eye--right { right: 30%; top: 38.2%; width: 10.8%; height: 13%; }
+.point-mouth {
+  position: absolute; top: 61%; left: 41.5%; width: 17%; height: 8%;
+  border-bottom: var(--mouth-stroke) solid #130008; border-radius: 0 0 100% 100%;
+  transform: rotate(-5deg);
+}
+.point.is-looking-down { --face-y: 8%; --face-x: 4%; }
+.point.is-blinking .point-eye { animation: blink .32s ease-in-out; }
+@keyframes blink { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.08); } }
+
+/* Hero -------------------------------------------------------------------- */
+.tool-hero {
+  padding: calc(var(--nav-height) + clamp(56px, 9vw, 112px)) var(--gutter) clamp(48px, 6vw, 72px);
+}
+.hero-kicker { color: var(--pink); margin-bottom: 18px; }
+.tool-title {
+  font-family: var(--font-voice);
+  font-size: var(--text-title);
+  font-weight: 700;
+  font-variation-settings: "opsz" 60;
+  letter-spacing: -.055em;
+  line-height: .9;
+  text-transform: uppercase;
+}
+.title-line { display: block; white-space: nowrap; }
+.title-point {
+  width: .19em; margin-left: .05em; vertical-align: baseline;
+  --mouth-stroke: 2px;
+}
+.hero-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px 48px;
+  align-items: end;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+.hero-deck { max-width: 40ch; }
+.hero-actions { display: flex; gap: 12px 24px; flex-wrap: wrap; align-items: center; }
+
+/* Buttons & controls ------------------------------------------------------ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 46px; padding: 12px 20px;
+  border: 1px solid var(--ink); background: var(--ink); color: var(--bg-cream);
+  font-family: var(--font-system); font-size: var(--text-ui); font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+  cursor: pointer; transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
+.btn:hover { background: var(--pink); border-color: var(--pink); color: #fff; }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--bg-cream); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.btn-link {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-family: var(--font-system); font-size: var(--text-ui); font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: inherit;
+  text-decoration: none; border-bottom: 1px solid var(--pink); padding-top: 2px;
+  background: none; border-top: 0; border-left: 0; border-right: 0; cursor: pointer;
+}
+.btn-link:hover { color: var(--pink); }
+
+.dark .btn { background: var(--bg-cream); border-color: var(--bg-cream); color: var(--ink); }
+.dark .btn:hover { background: var(--pink); border-color: var(--pink); color: #fff; }
+.dark .btn-ghost { background: transparent; color: var(--bg-cream); border-color: var(--line-on-dark); }
+.dark .btn-ghost:hover { background: var(--bg-cream); color: var(--ink); border-color: var(--bg-cream); }
+
+/* Tracker ----------------------------------------------------------------- */
+#tracker { padding: 0 var(--gutter) var(--section-space); }
+.tracker-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px 48px;
+  align-items: end;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-strong);
+}
+.dataset-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-bottom: 10px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-system); font-size: var(--text-label); font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+}
+.badge-sample { color: var(--pink); }
+.badge-sample::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pink); }
+.dataset-sub { opacity: .66; }
+.dataset-title { overflow-wrap: anywhere; }
+.insight {
+  font-family: var(--font-voice); font-size: var(--text-deck); line-height: 1.5;
+  letter-spacing: -.01em; max-width: 44ch; justify-self: end; text-wrap: pretty;
+}
+.insight strong { font-weight: 600; }
+.insight .up, .insight .down { white-space: nowrap; font-weight: 600; }
+
+.controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 32px;
+  margin-top: 32px; padding: 6px 0;
+  border-top: 1px solid var(--line-light); border-bottom: 1px solid var(--line-light);
+}
+.control-group { display: flex; align-items: center; gap: 4px 16px; flex-wrap: wrap; }
+.control-label { font-family: var(--font-system); font-size: var(--text-label); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .55; margin-right: 2px; }
+.seg {
+  position: relative; min-height: 40px; padding: 6px 0;
+  border: 0; background: transparent; cursor: pointer; opacity: .55;
+  font-family: var(--font-system); font-size: var(--text-ui); font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.seg:hover { opacity: .85; }
+.seg[aria-pressed="true"] { opacity: 1; }
+.seg[aria-pressed="true"]::after {
+  content: ""; position: absolute; inset: auto 0 6px; height: 1.5px; background: var(--pink);
+}
+.control-actions { margin-left: auto; display: flex; gap: 4px 18px; flex-wrap: wrap; }
+.action {
+  display: inline-flex; align-items: center; gap: 7px; min-height: 40px;
+  border: 0; background: none; cursor: pointer;
+  font-family: var(--font-system); font-size: var(--text-ui); font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.action svg { width: 14px; height: 14px; }
+.action:hover { color: var(--pink); }
+
+/* Brand strip: legend + headline numbers in one ------------------------- */
+.brand-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 28px;
+}
+.brand-card {
+  position: relative; min-width: 0;
+  padding: 16px 18px 16px 0;
+  margin-right: 18px;
+  transition: opacity .2s ease;
+}
+.brand-card + .brand-card { padding-left: 18px; border-left: 1px solid var(--line-light); margin-left: -18px; }
+.brand-swatch { display: block; height: 6px; border-radius: 3px; background: var(--c); margin-bottom: 14px; }
+.brand-card.is-hidden { opacity: .42; }
+.brand-card.is-hidden .brand-swatch {
+  background: repeating-linear-gradient(135deg, var(--c) 0 3px, transparent 3px 7px);
+}
+.brand-name-row { display: flex; align-items: center; gap: 6px; }
+.brand-name {
+  flex: 1; min-width: 0;
+  border: 0; border-bottom: 1px solid transparent; background: transparent;
+  font-family: var(--font-voice); font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em;
+  padding: 2px 0; text-overflow: ellipsis;
+}
+.brand-name:hover { border-bottom-color: var(--line-strong); }
+.brand-name:focus { outline: none; border-bottom-color: var(--pink); }
+.brand-toggle {
+  flex: none; width: 32px; height: 32px; display: grid; place-items: center;
+  border: 0; background: transparent; cursor: pointer; opacity: .6; border-radius: 50%;
+}
+.brand-toggle:hover { opacity: 1; background: var(--line-light); }
+.brand-toggle svg { width: 17px; height: 17px; }
+.brand-share {
+  display: block; margin-top: 6px;
+  font-family: var(--font-system); font-size: clamp(1.7rem, 2.7vw, 2.4rem);
+  font-weight: 600; letter-spacing: -.035em; line-height: 1.05;
+}
+.brand-share small { font-size: .5em; font-weight: 500; letter-spacing: 0; margin-left: 2px; opacity: .6; }
+.brand-delta { display: block; margin-top: 6px; font-family: var(--font-system); font-size: var(--text-meta); font-weight: 500; opacity: .8; }
+.brand-delta b { font-weight: 600; }
+
+/* Chart ------------------------------------------------------------------- */
+.chart-figure { margin-top: 18px; }
+.chart-wrap {
+  position: relative; width: 100%;
+  height: clamp(320px, 52vh, 520px);
+  cursor: crosshair; touch-action: pan-y;
+}
+.chart-wrap:focus-visible { outline-offset: 6px; }
+.chart-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; display: block; }
+.chart-wrap.is-empty { cursor: default; }
+.axis-text { font-family: var(--font-system); font-size: 11px; font-weight: 500; fill: var(--ink); fill-opacity: .66; font-variant-numeric: tabular-nums; }
+.band-label { font-family: var(--font-system); font-size: 12px; font-weight: 600; pointer-events: none; }
+.band-label .pct { font-weight: 500; }
+.chart-tooltip {
+  position: absolute; top: 12px; left: 0; z-index: 5;
+  min-width: 190px; max-width: 260px; padding: 12px 14px;
+  background: var(--bg-cream); color: var(--ink);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 10px 30px rgba(61, 8, 20, .14);
+  pointer-events: none;
+  font-family: var(--font-system);
+}
+.tt-date { font-size: var(--text-label); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .7; margin-bottom: 8px; }
+.tt-row { display: grid; grid-template-columns: 14px auto 1fr; align-items: center; gap: 8px; padding: 3px 0; }
+.tt-key { width: 14px; height: 3px; border-radius: 2px; }
+.tt-value { font-size: .95rem; font-weight: 600; font-variant-numeric: tabular-nums; min-width: 3.4em; }
+.tt-name { font-size: var(--text-meta); font-weight: 500; opacity: .72; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tt-foot { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line-light); font-size: .6875rem; opacity: .62; }
+
+.brush-wrap { position: relative; height: 58px; margin-top: 10px; touch-action: none; }
+.brush-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.brush-wrap:focus-visible { outline-offset: 4px; }
+.brush-hint { display: flex; justify-content: space-between; gap: 16px; margin-top: 6px; opacity: .6; }
+
+.chart-caption { margin-top: 18px; max-width: 90ch; opacity: .72; }
+
+.chart-empty {
+  position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
+  font-family: var(--font-voice); font-size: var(--text-deck);
+}
+
+.table-details { margin-top: 22px; border-top: 1px solid var(--line-light); }
+.table-details summary {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer;
+  font-family: var(--font-system); font-size: var(--text-ui); font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  list-style: none;
+}
+.table-details summary::-webkit-details-marker { display: none; }
+.table-details summary::before { content: "+"; font-size: 1rem; width: 12px; }
+.table-details[open] summary::before { content: "−"; }
+.table-scroll { max-height: 420px; overflow: auto; border: 1px solid var(--line-light); }
+.data-table { width: 100%; border-collapse: collapse; font-family: var(--font-system); font-size: .8125rem; font-variant-numeric: tabular-nums; }
+.data-table th, .data-table td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line-light); white-space: nowrap; }
+.data-table th:first-child, .data-table td:first-child { text-align: left; }
+.data-table thead th { position: sticky; top: 0; background: var(--bg-cream); font-weight: 600; font-size: var(--text-label); letter-spacing: .1em; text-transform: uppercase; }
+.data-table .raw { opacity: .55; }
+
+/* Data section (dark) ----------------------------------------------------- */
+.dark { background: var(--bg-dark); color: var(--bg-cream); }
+#data { padding: var(--section-space) var(--gutter); }
+.data-head { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 20px 64px; align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
+.data-head .t-deck { max-width: 46ch; opacity: .9; }
+.steps { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 0 56px; }
+.step { padding: 28px 0 32px; border-top: 1px solid var(--line-on-dark); }
+.step-num { color: var(--pink); margin-bottom: 10px; }
+.step h3 { margin-bottom: 14px; }
+.step p { max-width: 52ch; }
+.step-note { margin-top: 12px; font-family: var(--font-system); font-size: .8125rem; line-height: 1.55; color: var(--cream-muted); max-width: 56ch; }
+.step-note kbd {
+  display: inline-block; padding: 0 5px; border: 1px solid var(--line-on-dark); border-radius: 3px;
+  font-family: var(--font-system); font-size: .75rem;
+}
+.left-col, .right-col { min-width: 0; }
+.right-col { display: flex; flex-direction: column; }
+.right-col .step:first-child { flex: 1; display: flex; flex-direction: column; }
+
+.field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin-top: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field-full { grid-column: 1 / -1; }
+.field > span { font-family: var(--font-system); font-size: var(--text-label); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-muted); }
+.input {
+  width: 100%; min-height: 46px; padding: 10px 12px;
+  background: rgba(255, 241, 229, .06); color: var(--bg-cream);
+  border: 1px solid var(--line-on-dark); border-radius: 0;
+  font-family: var(--font-system); font-size: .9375rem;
+}
+.input::placeholder { color: rgba(255, 241, 229, .42); }
+.input:hover { border-color: rgba(255, 241, 229, .4); }
+.input:focus { outline: none; border-color: var(--pink); background: rgba(255, 241, 229, .1); }
+select.input { appearance: none; -webkit-appearance: none; padding-right: 36px; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--bg-cream) 50%), linear-gradient(135deg, var(--bg-cream) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px; background-repeat: no-repeat; }
+select.input option { color: var(--ink); background: var(--bg-cream); }
+.brand-inputs { display: grid; gap: 8px; margin-top: 18px; }
+.brand-input { position: relative; }
+.brand-input .input { padding-left: 38px; }
+.brand-input::before {
+  content: ""; position: absolute; left: 14px; top: 50%; width: 12px; height: 12px; margin-top: -6px;
+  border-radius: 50%; background: var(--c); box-shadow: 0 0 0 2px var(--bg-dark);
+}
+.step-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+
+.dropzone {
+  flex: 1; position: relative; min-height: 250px; margin-top: 18px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  padding: 28px 20px; text-align: center;
+  border: 1px solid var(--line-on-dark);
+  background:
+    linear-gradient(var(--line-on-dark), var(--line-on-dark)) top left / 18px 1px no-repeat,
+    rgba(255, 241, 229, .03);
+  transition: border-color .2s ease, background-color .2s ease;
+  cursor: pointer;
+}
+.dropzone:hover, .dropzone.is-over { border-color: var(--pink); background-color: rgba(249, 0, 144, .08); }
+.dropzone-icon { width: 44px; height: 44px; color: var(--pink); }
+.dropzone strong { font-family: var(--font-voice); font-size: 1.35rem; font-weight: 400; letter-spacing: -.015em; }
+.dropzone .t-meta { color: var(--cream-muted); max-width: 34ch; }
+.paste-area { margin-top: 14px; }
+.paste-area textarea { min-height: 120px; resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8125rem; }
+
+.status-line { min-height: 1.5em; margin-top: 12px; font-family: var(--font-system); font-size: .8125rem; color: var(--cream-muted); }
+.status-line.is-error { color: #ffb3d6; }
+
+.extras { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 0 56px; margin-top: 12px; }
+.extra { border-top: 1px solid var(--line-on-dark); }
+.extra > summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  min-height: 72px; cursor: pointer; list-style: none;
+}
+.extra > summary::-webkit-details-marker { display: none; }
+.extra > summary .t-subhead { font-size: clamp(1.2rem, 1.7vw, 1.45rem); }
+.extra > summary .plus { position: relative; width: 22px; height: 22px; flex: none; }
+.extra > summary .plus::before, .extra > summary .plus::after {
+  content: ""; position: absolute; top: 10px; left: 1px; width: 20px; height: 1.5px; background: var(--bg-cream); transition: transform .2s ease;
+}
+.extra > summary .plus::after { transform: rotate(90deg); }
+.extra[open] > summary .plus::after { transform: rotate(0); }
+.extra-body { padding: 0 0 32px; }
+.extra-body p, .extra-body li { font-family: var(--font-system); font-size: .875rem; line-height: 1.6; color: var(--cream-muted); }
+.extra-body ol { padding-left: 1.2em; display: grid; gap: 6px; margin: 12px 0 18px; }
+.extra-body a { color: var(--bg-cream); text-decoration-color: var(--pink); text-underline-offset: 3px; }
+.extra-body code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8em; color: var(--bg-cream); }
+.connection-row { display: flex; gap: 10px; margin-top: 8px; }
+.connection-row .input { flex: 1; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-system); font-size: var(--text-label); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-muted); }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 241, 229, .35); }
+.pill.is-on { color: var(--bg-cream); }
+.pill.is-on::before { background: #3ddc97; }
+
+.library { list-style: none; display: grid; }
+.library li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line-on-dark); }
+.library li:first-child { border-top: 1px solid var(--line-on-dark); }
+.library .lib-title { font-family: var(--font-voice); font-size: 1.05rem; color: var(--bg-cream); overflow-wrap: anywhere; }
+.library .lib-meta { font-family: var(--font-system); font-size: .75rem; color: var(--cream-muted); overflow-wrap: anywhere; }
+.library .lib-actions { grid-row: 1 / span 2; grid-column: 2; display: flex; gap: 14px; }
+.library li.is-current .lib-title::after { content: " · open"; font-family: var(--font-system); font-size: .6875rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pink); }
+.library-empty { font-family: var(--font-system); font-size: .875rem; color: var(--cream-muted); }
+.dark .btn-link { color: var(--bg-cream); }
+.dark .btn-link:hover { color: var(--pink); }
+
+/* Method ------------------------------------------------------------------ */
+#method { padding: var(--section-space) var(--gutter); }
+.method-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 64px); }
+.method-head .t-section { margin-bottom: 16px; }
+.method-head .t-deck { max-width: 52ch; }
+.method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
+.method-col { padding-top: 22px; border-top: 1px solid var(--line-strong); }
+.method-col .t-label { margin-bottom: 10px; opacity: .7; }
+.method-col h3 { margin-bottom: 12px; }
+.method-col p + p { margin-top: .9em; }
+.method-col a { color: inherit; text-decoration-color: var(--pink); text-underline-offset: 3px; }
+.practice { margin-top: clamp(48px, 6vw, 72px); display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: 32px 80px; }
+.practice-list { list-style: none; padding-left: 36px; border-left: 1px solid var(--line-strong); }
+.practice-list li { padding: 20px 0; border-top: 1px solid var(--line-strong); }
+.practice-list li:first-child { padding-top: 4px; border-top: 0; }
+.practice-list strong { display: block; font-weight: 600; margin-bottom: 4px; }
+.cta-row { margin-top: clamp(48px, 6vw, 72px); padding-top: 28px; border-top: 1px solid var(--line-strong); display: flex; gap: 20px 40px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.cta-row p { max-width: 48ch; }
+.cta-row a.mail { color: var(--ink); font-family: var(--font-voice); font-size: var(--text-subhead); font-weight: 600; letter-spacing: -.02em; text-decoration: none; border-bottom: 2px solid var(--pink); }
+.cta-row a.mail:hover { color: var(--pink); }
+
+footer { padding: 28px var(--gutter); background: var(--bg-dark); color: var(--bg-cream); border-top: 1px solid var(--line-on-dark); text-align: center; }
+.footer-copy { opacity: .62; }
+footer a { color: inherit; }
+
+/* Drag overlay + toast ---------------------------------------------------- */
+.drop-overlay {
+  position: fixed; inset: 0; z-index: 4000;
+  display: grid; place-items: center;
+  background: rgba(61, 8, 20, .88); color: var(--bg-cream);
+  pointer-events: none;
+}
+.drop-overlay-inner { display: grid; justify-items: center; gap: 18px; text-align: center; padding: 40px; border: 1px solid var(--pink); margin: var(--gutter); }
+.drop-overlay .point { width: 72px; }
+.drop-overlay strong { font-family: var(--font-voice); font-size: var(--text-section); font-weight: 400; letter-spacing: -.03em; }
+.toast {
+  position: fixed; left: 50%; bottom: 24px; z-index: 4500;
+  max-width: min(560px, calc(100vw - 32px));
+  padding: 14px 18px; background: var(--ink); color: var(--bg-cream);
+  font-family: var(--font-system); font-size: .875rem; line-height: 1.45;
+  box-shadow: 0 16px 40px rgba(61, 8, 20, .28);
+  border-left: 3px solid var(--pink);
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.toast.is-visible { transform: translate(-50%, 0); opacity: 1; }
+.toast.is-error { border-left-color: #ffb3d6; }
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 980px) {
+  .tracker-head, .data-head, .steps, .extras, .practice { grid-template-columns: minmax(0, 1fr); }
+  .insight { justify-self: start; }
+  .brand-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 8px; }
+  .brand-card:nth-child(3n + 1) { padding-left: 0; border-left: 0; margin-left: 0; }
+  .method-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .practice-list { padding-left: 0; border-left: 0; }
+  .hero-row { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  :root {
+    --nav-height: 64px;
+    --gutter: 20px;
+    --text-section: clamp(1.85rem, 8.4vw, 2.55rem);
+    --text-subhead: clamp(1.3rem, 6vw, 1.6rem);
+    --text-deck: 1.125rem;
+    --text-body: 1.0625rem;
+  }
+  .nav-links { gap: 16px; }
+  .nav-links .nav-hide-sm { display: none; }
+  .brand-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brand-card:nth-child(3n + 1) { padding-left: 18px; border-left: 1px solid var(--line-light); margin-left: -18px; }
+  .brand-card:nth-child(2n + 1) { padding-left: 0; border-left: 0; margin-left: 0; }
+  .controls { gap: 4px 20px; }
+  .control-actions { margin-left: 0; }
+  .field-grid { grid-template-columns: minmax(0, 1fr); }
+  .chart-wrap { height: 340px; }
+  .connection-row { flex-direction: column; }
+}
+@media (max-width: 420px) {
+  .nav-links { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .point.is-blinking .point-eye { animation: none; }
+}
+@media print {
+  .sticky-nav, #data, .controls, .brush-wrap, .brush-hint, .table-details, .cta-row, footer, .hero-actions { display: none !important; }
+  .tool-hero { padding-top: 24px; }
+}
+</style>
+</head>
+<body>
+<a href="#tracker" class="skip-link">Skip to the tracker</a>
+<nav class="sticky-nav" aria-label="Primary navigation">
+  <a class="nav-logo" href="/" aria-label="Strategy Support home"><span>Strategy&nbsp;Support</span><span class="nav-point" aria-hidden="true"></span></a>
+  <ul class="nav-links">
+    <li class="nav-hide-sm"><a href="#tracker">Tracker</a></li>
+    <li><a href="#data">Your data</a></li>
+    <li class="nav-hide-sm"><a href="#method">Method</a></li>
+    <li><a class="nav-back" href="/">Main site</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+<header class="tool-hero">
+  <div class="section-inner">
+    <span class="t-label hero-kicker">A Strategy Support tool</span>
+    <h1 class="tool-title" aria-label="Share of Search">
+      <span class="title-line" aria-hidden="true">Share of</span>
+      <span class="title-line" aria-hidden="true">Search<span class="point title-point" id="title-point"><span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span></span></span>
+    </h1>
+    <div class="hero-row">
+      <p class="t-deck hero-deck">See how your brand’s share of category search develops against up to four competitors. Every band is a brand, and together they always make 100%. When one grows, it is taking attention from the others.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#data">Load your brands</a>
+        <a class="btn-link" href="#method">How to read it</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="tracker" aria-labelledby="dataset-title">
+  <div class="section-inner">
+    <div class="tracker-head">
+      <div>
+        <div class="dataset-meta">
+          <span class="badge badge-sample" id="sample-badge">Sample data · fictional brands</span>
+          <span class="t-meta dataset-sub" id="dataset-sub"></span>
+        </div>
+        <h2 class="t-section dataset-title" id="dataset-title">Share of search</h2>
+      </div>
+      <p class="insight" id="insight" aria-live="polite"></p>
+    </div>
+
+    <div class="controls" role="group" aria-label="Chart controls">
+      <div class="control-group" role="group" aria-label="Time range">
+        <span class="control-label" aria-hidden="true">Range</span>
+        <button class="seg" type="button" data-range="1">1Y</button>
+        <button class="seg" type="button" data-range="2">2Y</button>
+        <button class="seg" type="button" data-range="3">3Y</button>
+        <button class="seg" type="button" data-range="all">All</button>
+      </div>
+      <div class="control-group" role="group" aria-label="Rolling average">
+        <span class="control-label" aria-hidden="true">Rolling avg</span>
+        <button class="seg" type="button" data-smooth="raw">Off</button>
+        <button class="seg" type="button" data-smooth="1m">1M</button>
+        <button class="seg" type="button" data-smooth="3m">3M</button>
+        <button class="seg" type="button" data-smooth="6m">6M</button>
+        <button class="seg" type="button" data-smooth="12m">12M</button>
+      </div>
+      <div class="control-group" role="group" aria-label="View">
+        <span class="control-label" aria-hidden="true">View</span>
+        <button class="seg" type="button" data-mode="share">Share</button>
+        <button class="seg" type="button" data-mode="index">Interest</button>
+      </div>
+      <div class="control-actions">
+        <button class="action" type="button" id="export-png"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"/></svg>PNG</button>
+        <button class="action" type="button" id="export-csv"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"/></svg>CSV</button>
+        <button class="action" type="button" id="share-link"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2.3-2.3a3 3 0 0 0-4.2-4.2L7.6 4.2M9.5 6.5a3 3 0 0 0-4.2 0L3 8.8A3 3 0 0 0 7.2 13l1.2-1.2"/></svg>Share link</button>
+      </div>
+    </div>
+
+    <div class="brand-strip" id="brand-strip" aria-label="Brands (legend)"></div>
+
+    <figure class="chart-figure">
+      <div class="chart-wrap" id="chart-wrap" tabindex="0" role="img" aria-roledescription="interactive chart" aria-label="Share of search chart. Use the left and right arrow keys to read values.">
+        <svg id="chart" aria-hidden="true"></svg>
+        <div class="chart-tooltip" id="tooltip" hidden></div>
+      </div>
+      <div class="brush-wrap" id="brush-wrap" tabindex="0" role="slider" aria-label="Selected time window. Use arrow keys to move it; Shift + arrow to move faster." aria-valuetext="">
+        <svg id="brush" aria-hidden="true"></svg>
+      </div>
+      <div class="brush-hint t-meta" aria-hidden="true"><span>Drag to choose a window · drag the edges to resize</span><span id="brush-range"></span></div>
+      <figcaption class="chart-caption t-meta" id="chart-caption"></figcaption>
+    </figure>
+
+    <details class="table-details" id="table-details">
+      <summary>View the numbers as a table</summary>
+      <div class="table-scroll"><table class="data-table" id="data-table"></table></div>
+    </details>
+  </div>
+</section>
+
+<section id="data" class="dark" aria-labelledby="data-heading">
+  <div class="section-inner">
+    <div class="data-head">
+      <h2 class="t-section" id="data-heading">Bring in your brands</h2>
+      <p class="t-deck">Google Trends lets you compare exactly five search terms at once, which is why the tracker holds five brands. Set up the comparison here, download it from Google Trends and drop the file in. It takes about thirty seconds.</p>
+    </div>
+
+    <div class="steps">
+      <div class="left-col">
+        <div class="step">
+          <span class="t-label step-num">Step 1</span>
+          <h3 class="t-subhead">Name the brands and the market</h3>
+          <p class="t-meta" style="color: var(--cream-muted)">Put your own brand first. It gets the pink band.</p>
+          <div class="brand-inputs" id="brand-inputs"></div>
+          <div class="field-grid">
+            <label class="field"><span>Market</span>
+              <select class="input" id="geo-select">
+                <option value="">Worldwide</option>
+                <option value="DK">Denmark</option>
+                <option value="SE">Sweden</option>
+                <option value="NO">Norway</option>
+                <option value="FI">Finland</option>
+                <option value="GB">United Kingdom</option>
+                <option value="DE">Germany</option>
+                <option value="NL">Netherlands</option>
+                <option value="FR">France</option>
+                <option value="ES">Spain</option>
+                <option value="IT">Italy</option>
+                <option value="PL">Poland</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="__other">Other…</option>
+              </select>
+            </label>
+            <label class="field"><span>Period</span>
+              <select class="input" id="time-select">
+                <option value="today 5-y">Past 5 years (weekly)</option>
+                <option value="today 12-m">Past 12 months (weekly)</option>
+                <option value="today 3-m">Past 90 days (daily)</option>
+                <option value="all">2004 to today (monthly)</option>
+              </select>
+            </label>
+            <label class="field field-full" id="geo-other-field" hidden><span>Country code (ISO, e.g. BE or US-CA)</span>
+              <input class="input" id="geo-other" type="text" maxlength="8" autocomplete="off" spellcheck="false" placeholder="BE"/>
+            </label>
+            <label class="field field-full"><span>Name this comparison (optional)</span>
+              <input class="input" id="title-input" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Danish banks"/>
+            </label>
+          </div>
+        </div>
+        <div class="step">
+          <span class="t-label step-num">Step 2</span>
+          <h3 class="t-subhead">Get the numbers</h3>
+          <p class="t-body" style="font-size: 1rem">Open the comparison in Google Trends and click the download icon <span aria-hidden="true">⤓</span> on the <em>Interest over time</em> chart. If you have set up a live connection, you can fetch the data straight into the tracker instead.</p>
+          <div class="step-actions">
+            <button class="btn" type="button" id="open-trends">Open in Google Trends <span aria-hidden="true">↗</span></button>
+            <button class="btn btn-ghost" type="button" id="fetch-live">Fetch live</button>
+          </div>
+          <p class="status-line" id="step2-status" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="step">
+          <span class="t-label step-num">Step 3</span>
+          <h3 class="t-subhead">Drop the file here</h3>
+          <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-describedby="dropzone-help">
+            <svg class="dropzone-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 6v22M14 20l8 8 8-8"/><path d="M6 28v8a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2v-8"/></svg>
+            <strong>Drop <em>multiTimeline.csv</em></strong>
+            <span class="t-meta" id="dropzone-help">Or click to choose a file. You can also drop the file anywhere on this page, or paste copied rows with <kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>V</kbd>.</span>
+          </div>
+          <input type="file" id="file-input" accept=".csv,.tsv,.txt,.json,text/csv,text/plain,application/json" hidden/>
+          <p class="status-line" id="drop-status" aria-live="polite"></p>
+          <p class="step-note">Works with Google Trends downloads (CSV) and with your own spreadsheets. Use one date column and one column per brand, saved as CSV, or copy the cells and paste them. The tracker reads the brand names from the header row.</p>
+          <div class="step-actions">
+            <button class="btn-link" type="button" id="toggle-paste">Paste data instead</button>
+            <button class="btn-link" type="button" id="load-sample">Show sample data</button>
+          </div>
+          <div class="paste-area" id="paste-area" hidden>
+            <label class="field"><span>Paste CSV or spreadsheet cells</span>
+              <textarea class="input" id="paste-input" spellcheck="false" placeholder="Week,Brand A,Brand B&#10;2025-01-05,54,31&#10;2025-01-12,58,29"></textarea>
+            </label>
+            <div class="step-actions"><button class="btn" type="button" id="load-paste">Load pasted data</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="extras">
+      <details class="extra" id="live-details">
+        <summary><span class="t-subhead">Live connection <span class="pill" id="live-pill">Not connected</span></span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="extra-body">
+          <p>Google doesn’t offer an open Trends API. The official one is in closed alpha, and Google Trends blocks requests made directly from a web page. A small, free connector running on Cloudflare fixes that. Once it is set up, <em>Fetch live</em> pulls the comparison straight into the tracker.</p>
+          <ol>
+            <li>Download <a href="connector/worker.js" download>worker.js</a>.</li>
+            <li>Sign up for a free Cloudflare account. Go to <em>Workers &amp; Pages → Create → Worker</em>, paste in the file and deploy it.</li>
+            <li>Recommended: sign up for a SerpApi key (the free plan covers regular tracking) and add it to the worker as a secret named <code>SERPAPI_KEY</code>. Without the key, the worker asks Google Trends directly, and Google sometimes refuses those requests.</li>
+            <li>Paste the worker’s address below. It is only saved in this browser.</li>
+          </ol>
+          <label class="field"><span>Connector URL</span>
+            <div class="connection-row">
+              <input class="input" id="endpoint-input" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://share-of-search.your-name.workers.dev"/>
+              <button class="btn" type="button" id="endpoint-save">Save</button>
+            </div>
+          </label>
+          <p class="status-line" id="endpoint-status" aria-live="polite"></p>
+        </div>
+      </details>
+      <details class="extra" id="library-details" open>
+        <summary><span class="t-subhead">Saved comparisons</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="extra-body">
+          <ul class="library" id="library"></ul>
+          <p class="library-empty" id="library-empty">Comparisons you load are saved here, in this browser only. Nothing is uploaded.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="method" aria-labelledby="method-heading">
+  <div class="section-inner">
+    <div class="method-head">
+      <span class="t-label" style="color: var(--pink); margin-bottom: 14px">Method</span>
+      <h2 class="t-section" id="method-heading">A fast, cheap early warning for market share</h2>
+      <p class="t-deck">People search for the brands they are thinking of buying. So a brand’s share of all branded searches in its category is a practical measure of how much of the category’s demand it is winning.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-col">
+        <span class="t-label">What it measures</span>
+        <h3 class="t-subhead">Share of the conversation people start</h3>
+        <p class="t-body">Share of search is a brand’s search volume divided by the total for every brand in the set. The tracker does this for every week or month, so the bands always add up to 100%.</p>
+      </div>
+      <div class="method-col">
+        <span class="t-label">Why it matters</span>
+        <h3 class="t-subhead">It tends to move before sales do</h3>
+        <p class="t-body">In <a href="https://ipa.co.uk/news/binet-presents-fast-cheap-predictive-share-of-search-metric" rel="noopener" target="_blank">Les Binet’s work for the IPA</a>, share of search tracked market share in cars, energy and mobile phones, and often moved ahead of it, by up to a year for cars. It shows correlation, not causation, and price still shapes conversion.</p>
+      </div>
+      <div class="method-col">
+        <span class="t-label">How to read it</span>
+        <h3 class="t-subhead">Read the trend, not the week</h3>
+        <p class="t-body">Search is seasonal and responds to news. Use a 6–12 month rolling average to see whether a brand is really gaining. Then switch to <em>Interest</em> to check whether the whole category is growing or shrinking.</p>
+      </div>
+    </div>
+    <div class="practice">
+      <div>
+        <h3 class="t-subhead">Good practice</h3>
+      </div>
+      <ul class="practice-list t-body">
+        <li><strong>Download all brands together.</strong>Google Trends scales every term in a comparison against the same peak. That makes the brands in one download comparable with each other. Numbers from separate downloads can’t be combined.</li>
+        <li><strong>Choose the search terms carefully.</strong>Use the name people actually type. For ambiguous names like Apple, Shell or Orange, pick a category in Google Trends or use its <em>topic</em> suggestion, and keep the same setup every time you refresh.</li>
+        <li><strong>Small brands are approximate.</strong>Google shows very low values as “&lt;1”. The tracker counts them as 0.5, so shares below a few percent are rough.</li>
+        <li><strong>Expect small wobbles.</strong>Google Trends uses a sample of searches, so a new download can differ by a point or two. The long-term trend holds up. A single week doesn’t tell you much.</li>
+      </ul>
+    </div>
+    <div class="cta-row">
+      <p class="t-deck">Want help understanding what’s behind the shift in your category, or what to do about it?</p>
+      <a class="mail" href="mailto:emil@strategy-support.com">emil@strategy-support.com</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><p class="footer-copy t-meta">© <span id="current-year">2026</span> <a href="/">Strategy Support</a>, an independent strategy studio in Copenhagen, Denmark. Data source: Google Trends. Your data stays in your browser.</p></footer>
+
+<div class="drop-overlay" id="drop-overlay" hidden aria-hidden="true">
+  <div class="drop-overlay-inner">
+    <span class="point is-looking-down"><span class="point-body"><span class="point-face"><span class="point-eye point-eye--left"></span><span class="point-eye point-eye--right"></span><span class="point-mouth"></span></span></span></span>
+    <strong>Drop it. I’ll do the maths.</strong>
+    <span class="t-meta">Google Trends CSV, spreadsheet CSV or connector JSON</span>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ======================================================================
+     Constants & helpers
+     ====================================================================== */
+  const PALETTE = ['#f90090', '#2f5fd0', '#d96307', '#12977a', '#7a3fb8'];
+  const SURFACE = '#fff1e5';
+  const INK = '#3d0814';
+  const MAX_BRANDS = 5;
+  const DAY = 86400000;
+  const STORE_LIBRARY = 'sos.library.v1';
+  const STORE_SETTINGS = 'sos.settings.v1';
+  const SMOOTH_DAYS = { raw: 0, '1m': 30.44, '3m': 91.3, '6m': 182.6, '12m': 365.25 };
+  const SMOOTH_LABEL = { raw: 'no rolling average', '1m': '1-month rolling average', '3m': '3-month rolling average', '6m': '6-month rolling average', '12m': '12-month rolling average' };
+  const GEO_NAMES = { '': 'Worldwide', DK: 'Denmark', SE: 'Sweden', NO: 'Norway', FI: 'Finland', GB: 'United Kingdom', DE: 'Germany', NL: 'Netherlands', FR: 'France', ES: 'Spain', IT: 'Italy', PL: 'Poland', US: 'United States', CA: 'Canada', AU: 'Australia' };
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => [...document.querySelectorAll(sel)];
+  const clamp = (x, a, b) => Math.min(Math.max(x, a), b);
+  const safely = fn => { try { return fn(); } catch (error) { console.error('Share of Search:', error); } };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const r1 = n => Math.round(n * 10) / 10;
+  const fx = n => (Math.round(n * 100) / 100).toString();
+
+  function storeGet(key, fallback) {
+    try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; } catch (_) { return fallback; }
+  }
+  function storeSet(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (_) { return false; }
+  }
+
+  const fmtMonth = new Intl.DateTimeFormat('en-GB', { month: 'short', timeZone: 'UTC' });
+  const fmtMonthYear = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const fmtDay = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const isoDate = t => new Date(t).toISOString().slice(0, 10);
+
+  function pct(v, digits = 1) { return v == null || !isFinite(v) ? '–' : (v * 100).toFixed(digits) + '%'; }
+  function pp(v) {
+    if (v == null || !isFinite(v)) return '–';
+    const n = r1(v * 100);
+    if (n === 0) return '±0.0 pp';
+    return (n > 0 ? '+' : '−') + Math.abs(n).toFixed(1) + ' pp';
+  }
+  function periodLabel(t, cadence) {
+    if (cadence >= 27) return fmtMonthYear.format(t);
+    if (cadence >= 6) return 'Week of ' + fmtDay.format(t);
+    return fmtDay.format(t);
+  }
+  function shortDate(t, cadence) { return cadence >= 27 ? fmtMonthYear.format(t) : fmtDay.format(t); }
+
+  function relativeLuminance(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); });
+    return .2126 * c[0] + .7152 * c[1] + .0722 * c[2];
+  }
+  function contrast(a, b) { const x = relativeLuminance(a), y = relativeLuminance(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); }
+  const LABEL_INK = PALETTE.map(c => contrast(c, '#ffffff') >= contrast(c, INK) ? '#ffffff' : INK);
+
+  let measureCtx = null;
+  function textWidth(text, font) {
+    if (!measureCtx) measureCtx = document.createElement('canvas').getContext('2d');
+    measureCtx.font = font;
+    return measureCtx.measureText(text).width;
+  }
+
+  /* ======================================================================
+     Parsing — Google Trends CSV, spreadsheet CSV/TSV, long format, JSON
+     ====================================================================== */
+  function detectDelimiter(text) {
+    const lines = text.split(/\r?\n/).filter(l => l.trim()).slice(0, 30);
+    let best = ',', bestScore = -1;
+    for (const d of [',', ';', '\t']) {
+      const counts = lines.map(l => splitLine(l, d).length).filter(n => n > 1);
+      if (!counts.length) continue;
+      const mode = counts.sort((a, b) => counts.filter(v => v === b).length - counts.filter(v => v === a).length)[0];
+      const score = counts.filter(n => n === mode).length * 10 + mode;
+      if (score > bestScore) { bestScore = score; best = d; }
+    }
+    return best;
+  }
+  function splitLine(line, d) {
+    const out = []; let cur = '', q = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (q) {
+        if (ch === '"') { if (line[i + 1] === '"') { cur += '"'; i++; } else q = false; }
+        else cur += ch;
+      } else if (ch === '"') q = true;
+      else if (ch === d) { out.push(cur); cur = ''; }
+      else cur += ch;
+    }
+    out.push(cur);
+    return out.map(s => s.trim());
+  }
+
+  const MONTHS = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+  function parseDateCell(raw, dayFirst) {
+    const s = String(raw || '').trim().replace(/^"|"$/g, '');
+    if (!s) return null;
+    let m;
+    if ((m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return Date.UTC(+m[1], +m[2] - 1, +m[3]);
+    if ((m = s.match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})/))) return Date.UTC(+m[1], +m[2] - 1, +m[3]);
+    if ((m = s.match(/^(\d{4})-(\d{1,2})$/))) return Date.UTC(+m[1], +m[2] - 1, 1);
+    if ((m = s.match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/))) {
+      const a = +m[1], b = +m[2];
+      const [d, mo] = dayFirst ? [a, b] : [b, a];
+      if (mo < 1 || mo > 12 || d < 1 || d > 31) return null;
+      return Date.UTC(+m[3], mo - 1, d);
+    }
+    if ((m = s.match(/^(\d{10})$/))) return +m[1] * 1000;
+    if ((m = s.match(/^(\d{13})$/))) return +m[1];
+    // "Jan 7, 2024", "7 Jan 2024", "Sep 29 – Oct 5, 2024"
+    const first = s.split(/\s[–—-]\s|–|—/)[0];
+    const year = (s.match(/(\d{4})\s*$/) || first.match(/(\d{4})/) || [])[1];
+    if ((m = first.match(/([A-Za-z]{3})[a-z]*\.?\s+(\d{1,2})/)) && year && MONTHS[m[1].toLowerCase()] != null) return Date.UTC(+year, MONTHS[m[1].toLowerCase()], +m[2]);
+    if ((m = first.match(/(\d{1,2})\.?\s+([A-Za-z]{3})[a-z]*/)) && year && MONTHS[m[2].toLowerCase()] != null) return Date.UTC(+year, MONTHS[m[2].toLowerCase()], +m[1]);
+    if ((m = first.match(/^([A-Za-z]{3})[a-z]*\s+(\d{4})$/)) && MONTHS[m[1].toLowerCase()] != null) return Date.UTC(+m[2], MONTHS[m[1].toLowerCase()], 1);
+    return null;
+  }
+  function decideDayFirst(cells) {
+    let dayFirst = null;
+    for (const c of cells) {
+      const m = String(c).trim().match(/^(\d{1,2})[./-](\d{1,2})[./-](\d{4})$/);
+      if (!m) continue;
+      if (+m[1] > 12) return true;
+      if (+m[2] > 12) dayFirst = false;
+    }
+    return dayFirst == null ? true : dayFirst;
+  }
+  function parseValue(raw, decimalComma) {
+    let s = String(raw == null ? '' : raw).trim().replace(/^"|"$/g, '').replace(/%$/, '').replace(/\s/g, '');
+    if (!s || s === '-' || /^n\/?a$/i.test(s)) return null;
+    if (/^<\s*1$/.test(s)) return 0.5;
+    if (decimalComma) s = s.replace(/\./g, '').replace(',', '.');
+    else s = s.replace(/,(?=\d{3}\b)/g, '');
+    const n = Number(s);
+    return isFinite(n) ? n : NaN;
+  }
+  function cleanName(raw) {
+    const s = String(raw || '').trim().replace(/^"|"$/g, '');
+    const m = s.match(/^(.*?):\s*\((.*)\)\s*$/);
+    return m ? { name: m[1].trim(), geo: m[2].trim() } : { name: s, geo: '' };
+  }
+
+  function parseText(text) {
+    text = String(text || '').replace(/^﻿/, '').trim();
+    if (!text) throw new Error('The file is empty.');
+    if (/^[\[{]/.test(text)) {
+      try { return parseJSON(JSON.parse(text)); } catch (e) { if (!(e instanceof SyntaxError)) throw e; }
+    }
+    if (/^PK/.test(text) || /\u0000/.test(text)) throw new Error('This looks like an Excel file. Save it as CSV first, or copy the cells and paste them here.');
+    const d = detectDelimiter(text);
+    const rows = text.split(/\r?\n/).map(l => splitLine(l, d));
+    const firstCells = rows.map(r => r[0]);
+    const dayFirst = decideDayFirst(firstCells);
+    const decimalComma = d === ';' || (d === '\t' && /\d,\d/.test(text) && !/\d\.\d/.test(text));
+    const isDataRow = r => r.length >= 2 && parseDateCell(r[0], dayFirst) != null && r.slice(1).some(c => { const v = parseValue(c, decimalComma); return v != null && !isNaN(v); });
+    const firstData = rows.findIndex(isDataRow);
+    if (firstData < 0) throw new Error('No dates found. The first column should hold dates, like a Google Trends download.');
+    let header = null;
+    for (let i = firstData - 1; i >= 0; i--) { if (rows[i].filter(Boolean).length >= 2) { header = rows[i]; break; } }
+    const dataRows = rows.slice(firstData).filter(isDataRow);
+
+    // Long format: date, brand, value
+    const looksLong = dataRows.length > 2 && dataRows.every(r => r.length >= 3) && dataRows.slice(0, 20).every(r => isNaN(parseValue(r[1], decimalComma)) && !isNaN(parseValue(r[2], decimalComma)));
+    if (looksLong) {
+      const names = []; const map = new Map();
+      dataRows.forEach(r => {
+        const t = parseDateCell(r[0], dayFirst); const nm = cleanName(r[1]).name;
+        if (!names.includes(nm)) names.push(nm);
+        if (!map.has(t)) map.set(t, {});
+        map.get(t)[nm] = parseValue(r[2], decimalComma);
+      });
+      const dates = [...map.keys()].sort((a, b) => a - b);
+      return finalise({ dates, series: names.map(nm => ({ name: nm, raw: dates.map(t => { const v = map.get(t)[nm]; return v == null || isNaN(v) ? null : v; }) })) });
+    }
+
+    const width = Math.max(...dataRows.map(r => r.length));
+    const series = [];
+    let geo = '';
+    for (let c = 1; c < width; c++) {
+      const headName = header && header[c] != null ? header[c] : '';
+      if (/^ispartial$/i.test(headName)) continue;
+      const values = dataRows.map(r => parseValue(r[c], decimalComma));
+      const filled = values.filter(v => v != null);
+      if (!filled.length) continue;
+      if (filled.some(v => isNaN(v))) {
+        if (filled.every(v => isNaN(v))) continue; // text column (e.g. notes, isPartial flags)
+      }
+      const { name, geo: g } = cleanName(headName);
+      if (g && !geo) geo = g;
+      series.push({ name: name || ('Brand ' + (series.length + 1)), raw: values.map(v => (v == null || isNaN(v)) ? null : v) });
+    }
+    const dates = dataRows.map(r => parseDateCell(r[0], dayFirst));
+    return finalise({ dates, series, geoLabel: geo });
+  }
+
+  function parseJSON(obj) {
+    // Connector format: { terms:[...], points:[{t, v:[...]}], geo, time, source }
+    if (obj && Array.isArray(obj.points) && Array.isArray(obj.terms)) {
+      const dates = obj.points.map(p => typeof p.t === 'number' ? p.t : parseDateCell(p.t, true));
+      const series = obj.terms.map((name, i) => ({ name, raw: obj.points.map(p => { const v = p.v[i]; return v == null ? null : Number(v); }) }));
+      return finalise({ dates, series, geoLabel: obj.geo != null ? (GEO_NAMES[obj.geo] || obj.geo) : '', query: { terms: obj.terms, geo: obj.geo || '', time: obj.time || '' }, source: obj.source || 'Google Trends' });
+    }
+    // SerpApi Google Trends format
+    const timeline = obj && (obj.interest_over_time?.timeline_data || obj.timeline_data);
+    if (Array.isArray(timeline)) {
+      const names = timeline[0].values.map(v => v.query);
+      const dates = timeline.map(p => p.timestamp ? Number(p.timestamp) * 1000 : parseDateCell(p.date, true));
+      const series = names.map((name, i) => ({ name, raw: timeline.map(p => { const v = p.values[i]; if (!v) return null; if (v.value === '<1') return 0.5; return Number(v.extracted_value ?? v.value); }) }));
+      return finalise({ dates, series });
+    }
+    // Google's own widget format: { default: { timelineData: [...] } }
+    const tl = obj && obj.default && obj.default.timelineData;
+    if (Array.isArray(tl)) {
+      const dates = tl.map(p => Number(p.time) * 1000);
+      const n = tl[0].value.length;
+      const series = Array.from({ length: n }, (_, i) => ({ name: 'Brand ' + (i + 1), raw: tl.map(p => Number(p.value[i])) }));
+      return finalise({ dates, series });
+    }
+    throw new Error('This JSON format isn’t recognised. Use a Google Trends CSV, or JSON from the live connector.');
+  }
+
+  function finalise({ dates, series, geoLabel = '', query = null, source = 'Google Trends' }) {
+    const notes = [];
+    if (series.length > MAX_BRANDS) { notes.push(`Only the first ${MAX_BRANDS} of ${series.length} columns were used.`); series = series.slice(0, MAX_BRANDS); }
+    if (series.length < 2) throw new Error('At least two brands are needed to calculate a share. The file has ' + series.length + '.');
+    // Sort by date & merge duplicates
+    const idx = dates.map((t, i) => i).filter(i => dates[i] != null).sort((a, b) => dates[a] - dates[b]);
+    const outDates = []; const outRaw = series.map(() => []);
+    idx.forEach(i => {
+      if (outDates.length && outDates[outDates.length - 1] === dates[i]) return;
+      outDates.push(dates[i]);
+      series.forEach((s, k) => outRaw[k].push(s.raw[i]));
+    });
+    if (outDates.length < 3) throw new Error('At least three dates are needed.');
+    // Names must be unique for readability
+    const seen = new Map();
+    const names = series.map(s => {
+      let n = s.name.slice(0, 60) || 'Brand';
+      const c = seen.get(n.toLowerCase()) || 0; seen.set(n.toLowerCase(), c + 1);
+      return c ? `${n} (${c + 1})` : n;
+    });
+    return {
+      dates: outDates,
+      brands: names.map((name, k) => ({ name, raw: outRaw[k] })),
+      geoLabel, query, source, notes
+    };
+  }
+
+  /* ======================================================================
+     Sample data — fictional brands, generated deterministically
+     ====================================================================== */
+  function sampleData() {
+    let seed = 20260928;
+    const rand = () => { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; };
+    const now = new Date();
+    const lastSunday = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) - now.getUTCDay() * DAY - 7 * DAY;
+    const weeks = 261;
+    const dates = Array.from({ length: weeks }, (_, i) => lastSunday - (weeks - 1 - i) * 7 * DAY);
+    // Each brand has its own seasonal rhythm, so the shares ebb and flow.
+    const season = (i, phase, depth) => 1 + depth * Math.sin((i / 52) * Math.PI * 2 + phase);
+    const bump = (i, at, w, h) => h * Math.exp(-Math.pow((i - at) / w, 2));
+    const brands = [
+      { name: 'Your brand', f: i => (24 + i * .05) * season(i, 0, .12) + bump(i, 150, 6, 16) + bump(i, 205, 8, 11) },
+      { name: 'Market leader', f: i => (64 - i * .06) * season(i, 2.2, .2) + bump(i, 60, 4, 14) },
+      { name: 'Challenger', f: i => (30 + 6 * Math.sin(i / 20)) * season(i, 4, .28) + bump(i, 110, 7, 12) },
+      { name: 'Budget player', f: i => (18 + i * .01) * season(i, 1, .35) + bump(i, 180, 12, 6) },
+      { name: 'New entrant', f: i => i < 90 ? .5 + i * .01 : (1 + Math.pow((i - 90) / 171, 1.35) * 24) * season(i, 3, .15) + bump(i, 170, 5, 9) }
+    ];
+    const raw = brands.map(b => dates.map((_, i) => Math.max(0, b.f(i) * (0.9 + rand() * .2))));
+    const peak = Math.max(...raw.flat());
+    return {
+      title: 'Your category, fictional example',
+      sample: true,
+      dates,
+      brands: brands.map((b, k) => ({ name: b.name, raw: raw[k].map(v => { const n = Math.round(v / peak * 100); return n < 1 ? 0.5 : n; }) })),
+      geoLabel: 'Sample market',
+      source: 'Generated example',
+      query: null
+    };
+  }
+
+  /* ======================================================================
+     State
+     ====================================================================== */
+  const settings = Object.assign({ endpoint: '', smooth: null, mode: 'share' }, storeGet(STORE_SETTINGS, {}));
+  let library = storeGet(STORE_LIBRARY, { items: [], current: null });
+  if (!library || !Array.isArray(library.items)) library = { items: [], current: null };
+
+  const state = {
+    data: null,
+    id: null,
+    smooth: '6m',
+    mode: settings.mode === 'index' ? 'index' : 'share',
+    hidden: new Set(),
+    range: null,
+    hover: null
+  };
+  let model = null;
+
+  function cadenceOf(dates) {
+    const diffs = [];
+    for (let i = 1; i < dates.length; i++) diffs.push((dates[i] - dates[i - 1]) / DAY);
+    diffs.sort((a, b) => a - b);
+    return diffs[Math.floor(diffs.length / 2)] || 7;
+  }
+  function periodsFor(smooth, cadence) {
+    const days = SMOOTH_DAYS[smooth] || 0;
+    return Math.max(1, Math.round(days / cadence));
+  }
+  function defaultSmooth(cadence) { return cadence >= 6 ? '3m' : '1m'; }
+
+  function buildModel() {
+    const d = state.data;
+    const n = d.dates.length;
+    const cadence = cadenceOf(d.dates);
+    let periods = periodsFor(state.smooth, cadence);
+    if (periods > n - 3) periods = Math.max(1, n - 3);
+    const vis = d.brands.map((_, k) => !state.hidden.has(k));
+    // Rolling mean of each brand's interest
+    const avg = d.brands.map(b => {
+      const out = new Array(n).fill(null);
+      let sum = 0, count = 0;
+      for (let i = 0; i < n; i++) {
+        const add = b.raw[i]; if (add != null) { sum += add; count++; }
+        if (i >= periods) { const rem = b.raw[i - periods]; if (rem != null) { sum -= rem; count--; } }
+        if (i >= periods - 1) out[i] = count ? sum / count : null;
+      }
+      return out;
+    });
+    const shares = d.brands.map(() => new Array(n).fill(null));
+    const first = periods - 1;
+    let last = null;
+    for (let i = first; i < n; i++) {
+      let total = 0;
+      d.brands.forEach((_, k) => { if (vis[k] && avg[k][i] != null) total += avg[k][i]; });
+      if (total > 0) {
+        last = d.brands.map((_, k) => vis[k] ? (avg[k][i] || 0) / total : 0);
+      } else if (!last) {
+        const nv = vis.filter(Boolean).length;
+        last = vis.map(v => v ? 1 / nv : 0);
+      }
+      d.brands.forEach((_, k) => { shares[k][i] = last[k]; });
+    }
+    const avgTotal = new Array(n).fill(null);
+    for (let i = first; i < n; i++) avgTotal[i] = d.brands.reduce((s, _, k) => s + (vis[k] ? (avg[k][i] || 0) : 0), 0);
+    return { n, cadence, periods, first, vis, avg, shares, avgTotal };
+  }
+
+  function clampRange(range) {
+    const { n, first } = model;
+    const minSpan = Math.min(6, n - 1 - first);
+    let [a, b] = range || [first, n - 1];
+    a = clamp(Math.round(a), first, n - 1); b = clamp(Math.round(b), first, n - 1);
+    if (b < a) [a, b] = [b, a];
+    if (b - a < minSpan) { if (a + minSpan <= n - 1) b = a + minSpan; else a = b - minSpan; }
+    return [a, b];
+  }
+  function presetRange(years) {
+    const { n, first } = model;
+    if (years === 'all') return [first, n - 1];
+    const from = state.data.dates[n - 1] - years * 365.25 * DAY;
+    let a = state.data.dates.findIndex(t => t >= from - DAY);
+    return clampRange([Math.max(first, a), n - 1]);
+  }
+
+  /* ======================================================================
+     Geometry — shared by the live SVG and the PNG export
+     ====================================================================== */
+  function monotonePath(xs, ys) {
+    const n = xs.length;
+    if (!n) return '';
+    if (n === 1) return `M${fx(xs[0])},${fx(ys[0])}`;
+    const dx = [], m = [], t = new Array(n);
+    for (let i = 0; i < n - 1; i++) { dx[i] = (xs[i + 1] - xs[i]) || 1e-6; m[i] = (ys[i + 1] - ys[i]) / dx[i]; }
+    t[0] = m[0]; t[n - 1] = m[n - 2];
+    for (let i = 1; i < n - 1; i++) {
+      if (m[i - 1] * m[i] <= 0) t[i] = 0;
+      else { const w1 = 2 * dx[i] + dx[i - 1], w2 = dx[i] + 2 * dx[i - 1]; t[i] = (w1 + w2) / (w1 / m[i - 1] + w2 / m[i]); }
+    }
+    let d = `M${fx(xs[0])},${fx(ys[0])}`;
+    for (let i = 0; i < n - 1; i++) {
+      const h = dx[i] / 3;
+      d += `C${fx(xs[i] + h)},${fx(ys[i] + t[i] * h)},${fx(xs[i + 1] - h)},${fx(ys[i + 1] - t[i + 1] * h)},${fx(xs[i + 1])},${fx(ys[i + 1])}`;
+    }
+    return d;
+  }
+
+  // Sample long ranges so paths stay light: keep at most ~2 points per px.
+  function sampleIndices(a, b, maxPoints) {
+    const out = []; const span = b - a;
+    const step = Math.max(1, Math.floor(span / maxPoints));
+    for (let i = a; i <= b; i += step) out.push(i);
+    if (out[out.length - 1] !== b) out.push(b);
+    return out;
+  }
+
+  function niceMax(v) {
+    if (!(v > 0)) return 1;
+    const p = Math.pow(10, Math.floor(Math.log10(v)));
+    const f = v / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
+  }
+
+  function monthTicks(t0, t1, maxTicks) {
+    const d0 = new Date(t0), d1 = new Date(t1);
+    const months = (d1.getUTCFullYear() - d0.getUTCFullYear()) * 12 + d1.getUTCMonth() - d0.getUTCMonth();
+    const step = [1, 2, 3, 6, 12, 24, 36, 60].find(s => months / s <= maxTicks) || 60;
+    const ticks = [];
+    let y = d0.getUTCFullYear(), m = d0.getUTCMonth() + 1;
+    if (m > 11) { m = 0; y++; }
+    for (let guard = 0; guard < 400; guard++) {
+      const t = Date.UTC(y, m, 1);
+      if (t > t1) break;
+      const idx = y * 12 + m;
+      if (step >= 12 ? (m === 0 && (y % (step / 12) === 0)) : (idx % step === 0)) {
+        ticks.push({ t, label: (m === 0 || step >= 12) ? String(y) : fmtMonth.format(t) });
+      }
+      m++; if (m > 11) { m = 0; y++; }
+    }
+    return ticks;
+  }
+
+  function geometry(W, H, opts = {}) {
+    const d = state.data, M = model;
+    const [a, b] = opts.range || state.range;
+    const mode = opts.mode || state.mode;
+    const margin = opts.margin || { l: W < 520 ? 34 : 42, r: 6, t: 8, b: 26 };
+    const pw = Math.max(10, W - margin.l - margin.r), ph = Math.max(10, H - margin.t - margin.b);
+    const t0 = d.dates[a], t1 = d.dates[b];
+    const x = t => margin.l + (t1 === t0 ? 0 : (t - t0) / (t1 - t0) * pw);
+    const idx = sampleIndices(a, b, Math.max(40, Math.round(pw / 1.5)));
+    const xs = idx.map(i => x(d.dates[i]));
+    const visible = d.brands.map((_, k) => k).filter(k => M.vis[k]);
+    const g = { W, H, margin, pw, ph, a, b, x, idx, xs, mode, visible, bands: [], lines: [], yTicks: [], xTicks: [] };
+
+    if (mode === 'share') {
+      const y = v => margin.t + (1 - v) * ph;
+      g.y = y;
+      const cum = idx.map(() => 0);
+      const bounds = []; // cumulative boundary per visible band (bottom-up)
+      visible.forEach(k => {
+        idx.forEach((i, j) => { cum[j] += M.shares[k][i] || 0; });
+        bounds.push({ k, lower: bounds.length ? bounds[bounds.length - 1].upper : idx.map(() => 0), upper: cum.slice() });
+      });
+      if (bounds.length) bounds[bounds.length - 1].upper = idx.map(() => 1);
+      const bottom = margin.t + ph;
+      // Painter's order: top band first as the full rectangle, lower bands on top.
+      for (let j = bounds.length - 1; j >= 0; j--) {
+        const bd = bounds[j];
+        const ys = bd.upper.map(v => y(clamp(v, 0, 1)));
+        const curve = monotonePath(xs, ys);
+        g.bands.push({ k: bd.k, color: PALETTE[bd.k], area: curve + `L${fx(xs[xs.length - 1])},${fx(bottom)}L${fx(xs[0])},${fx(bottom)}Z`, edge: j < bounds.length - 1 ? curve : null, lower: bd.lower, upper: bd.upper });
+      }
+      g.yTicks = [0, .25, .5, .75, 1].map(v => ({ v, y: y(v), label: Math.round(v * 100) + '%' }));
+    } else {
+      let max = 0;
+      visible.forEach(k => idx.forEach(i => { const v = M.avg[k][i]; if (v != null && v > max) max = v; }));
+      const top = niceMax(max * 1.05);
+      const y = v => margin.t + (1 - v / top) * ph;
+      g.y = y; g.top = top;
+      visible.forEach(k => {
+        const ys = idx.map(i => y(M.avg[k][i] == null ? 0 : M.avg[k][i]));
+        g.lines.push({ k, color: PALETTE[k], path: monotonePath(xs, ys), endX: xs[xs.length - 1], endY: ys[ys.length - 1] });
+      });
+      const step = top / 4;
+      g.yTicks = [0, 1, 2, 3, 4].map(s => ({ v: s * step, y: y(s * step), label: String(Math.round(s * step * 10) / 10) }));
+    }
+    const maxTicks = Math.max(2, Math.floor(pw / (W < 520 ? 58 : 76)));
+    g.xTicks = monthTicks(t0, t1, maxTicks).map(tk => ({ ...tk, x: x(tk.t) })).filter(tk => tk.x >= margin.l + 12 && tk.x <= margin.l + pw - 12);
+    return g;
+  }
+
+  // Direct labels inside bands at the right edge, only where they fit.
+  function bandLabels(g, font) {
+    if (g.mode !== 'share') return [];
+    const d = state.data, M = model;
+    const out = [];
+    const right = g.xs[g.xs.length - 1] - 10;
+    g.bands.forEach(bd => {
+      const name = d.brands[bd.k].name;
+      const share = M.shares[bd.k][g.b];
+      const text = name + '  ' + pct(share, 0);
+      const w = textWidth(text, font) + 4;
+      const left = right - w;
+      if (left < g.margin.l + 40) return;
+      let minThick = Infinity, midSum = 0, cnt = 0;
+      g.xs.forEach((xv, j) => {
+        if (xv < left - 6) return;
+        const top = g.y(bd.upper[j]), bottom = g.y(bd.lower[j]);
+        minThick = Math.min(minThick, bottom - top);
+        midSum += (top + bottom) / 2; cnt++;
+      });
+      if (!cnt || minThick < 20) return;
+      out.push({ k: bd.k, name, share: pct(share, 0), x: right, y: midSum / cnt, color: LABEL_INK[bd.k] });
+    });
+    return out;
+  }
+
+  /* ======================================================================
+     Rendering — main chart
+     ====================================================================== */
+  const chartWrap = $('#chart-wrap');
+  const chartSvg = $('#chart');
+  const tooltip = $('#tooltip');
+  let geom = null;
+  let hoverLayer = null;
+
+  function renderChart() {
+    const W = chartWrap.clientWidth, H = chartWrap.clientHeight;
+    if (!W || !H || !state.data) return;
+    chartSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const g = geom = geometry(W, H);
+    const { margin, pw, ph } = g;
+    let s = `<defs><clipPath id="plot-clip"><rect x="${margin.l}" y="${margin.t - 1}" width="${pw}" height="${ph + 2}"/></clipPath></defs>`;
+    if (g.mode === 'share') {
+      s += `<g clip-path="url(#plot-clip)">`;
+      g.bands.forEach(bd => { s += `<path d="${bd.area}" fill="${bd.color}"/>`; });
+      g.bands.forEach(bd => { if (bd.edge) s += `<path d="${bd.edge}" fill="none" stroke="${SURFACE}" stroke-width="2" stroke-linejoin="round"/>`; });
+      g.yTicks.forEach(tk => { if (tk.v > 0 && tk.v < 1) s += `<line x1="${margin.l}" x2="${margin.l + pw}" y1="${fx(tk.y)}" y2="${fx(tk.y)}" stroke="${SURFACE}" stroke-opacity=".4" stroke-width="1"/>`; });
+      s += `</g>`;
+      const font = '600 12px Inter, system-ui, sans-serif';
+      bandLabels(g, font).forEach(l => {
+        s += `<text class="band-label" x="${fx(l.x)}" y="${fx(l.y)}" dy=".35em" text-anchor="end" fill="${l.color}">${esc(l.name)}<tspan class="pct" dx="8">${esc(l.share)}</tspan></text>`;
+      });
+    } else {
+      g.yTicks.forEach(tk => { s += `<line x1="${margin.l}" x2="${margin.l + pw}" y1="${fx(tk.y)}" y2="${fx(tk.y)}" stroke="${INK}" stroke-opacity="${tk.v === 0 ? .28 : .1}" stroke-width="1"/>`; });
+      s += `<g clip-path="url(#plot-clip)">`;
+      g.lines.forEach(l => { s += `<path d="${l.path}" fill="none" stroke="${l.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`; });
+      s += `</g>`;
+      g.lines.forEach(l => { s += `<circle cx="${fx(l.endX)}" cy="${fx(l.endY)}" r="4.5" fill="${l.color}" stroke="${SURFACE}" stroke-width="2"/>`; });
+    }
+    g.yTicks.forEach(tk => { s += `<text class="axis-text" x="${margin.l - 8}" y="${fx(tk.y)}" dy=".32em" text-anchor="end">${esc(tk.label)}</text>`; });
+    s += `<line x1="${margin.l}" x2="${margin.l + pw}" y1="${margin.t + ph + .5}" y2="${margin.t + ph + .5}" stroke="${INK}" stroke-opacity=".28"/>`;
+    g.xTicks.forEach(tk => {
+      s += `<line x1="${fx(tk.x)}" x2="${fx(tk.x)}" y1="${margin.t + ph}" y2="${margin.t + ph + 5}" stroke="${INK}" stroke-opacity=".28"/>`;
+      s += `<text class="axis-text" x="${fx(tk.x)}" y="${margin.t + ph + 18}" text-anchor="middle">${esc(tk.label)}</text>`;
+    });
+    s += `<g id="hover-layer" style="display:none"><line id="hover-line" y1="${margin.t}" y2="${margin.t + ph}" stroke="${INK}" stroke-width="1"/><g id="hover-dots"></g></g>`;
+    chartSvg.innerHTML = s;
+    hoverLayer = chartSvg.querySelector('#hover-layer');
+    if (state.hover != null) showHover(state.hover);
+  }
+
+  function nearestIndex(clientX) {
+    const rect = chartWrap.getBoundingClientRect();
+    const px = clientX - rect.left;
+    const g = geom; if (!g) return null;
+    const d = state.data.dates;
+    const t = d[g.a] + (px - g.margin.l) / g.pw * (d[g.b] - d[g.a]);
+    let lo = g.a, hi = g.b;
+    while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (d[mid] < t) lo = mid; else hi = mid; }
+    return Math.abs(d[lo] - t) <= Math.abs(d[hi] - t) ? lo : hi;
+  }
+
+  function showHover(i) {
+    const g = geom; if (!g || !hoverLayer) return;
+    state.hover = i;
+    const d = state.data, M = model;
+    const x = g.x(d.dates[i]);
+    hoverLayer.style.display = '';
+    const line = hoverLayer.querySelector('#hover-line');
+    line.setAttribute('x1', x); line.setAttribute('x2', x);
+    const dots = hoverLayer.querySelector('#hover-dots');
+    let s = '';
+    const rows = [];
+    if (g.mode === 'share') {
+      let cum = 0;
+      g.visible.forEach(k => {
+        const v = M.shares[k][i] || 0;
+        const mid = g.y(cum + v / 2); cum += v;
+        s += `<circle cx="${fx(x)}" cy="${fx(mid)}" r="4.5" fill="${PALETTE[k]}" stroke="${SURFACE}" stroke-width="2"/>`;
+        rows.unshift({ k, value: pct(v), extra: M.avg[k][i] });
+      });
+    } else {
+      g.visible.forEach(k => {
+        const v = M.avg[k][i];
+        s += `<circle cx="${fx(x)}" cy="${fx(g.y(v || 0))}" r="4.5" fill="${PALETTE[k]}" stroke="${SURFACE}" stroke-width="2"/>`;
+        rows.push({ k, value: v == null ? '–' : (Math.round(v * 10) / 10).toString(), extra: M.shares[k][i] });
+      });
+      rows.sort((p, q) => (M.avg[q.k][i] || 0) - (M.avg[p.k][i] || 0));
+    }
+    dots.innerHTML = s;
+
+    tooltip.replaceChildren();
+    const head = document.createElement('div'); head.className = 'tt-date'; head.textContent = periodLabel(d.dates[i], M.cadence);
+    tooltip.appendChild(head);
+    rows.forEach(r => {
+      const row = document.createElement('div'); row.className = 'tt-row';
+      const key = document.createElement('span'); key.className = 'tt-key'; key.style.background = PALETTE[r.k];
+      const val = document.createElement('span'); val.className = 'tt-value'; val.textContent = r.value;
+      const name = document.createElement('span'); name.className = 'tt-name'; name.textContent = d.brands[r.k].name;
+      row.append(key, val, name); tooltip.appendChild(row);
+    });
+    const foot = document.createElement('div'); foot.className = 'tt-foot';
+    foot.textContent = g.mode === 'share'
+      ? (M.periods > 1 ? SMOOTH_LABEL[state.smooth].replace(/^./, c => c.toUpperCase()) : 'Share of the brands shown')
+      : 'Google Trends interest, 0–100' + (M.periods > 1 ? ' · ' + SMOOTH_LABEL[state.smooth] : '');
+    tooltip.appendChild(foot);
+    tooltip.hidden = false;
+    const tw = tooltip.offsetWidth, W = chartWrap.clientWidth;
+    let left = x + 16;
+    if (left + tw > W) left = x - tw - 16;
+    tooltip.style.left = clamp(left, 0, Math.max(0, W - tw)) + 'px';
+  }
+  function hideHover() {
+    state.hover = null;
+    if (hoverLayer) hoverLayer.style.display = 'none';
+    tooltip.hidden = true;
+  }
+
+  /* ======================================================================
+     Rendering — brush (overview + window)
+     ====================================================================== */
+  const brushWrap = $('#brush-wrap');
+  const brushSvg = $('#brush');
+  let brushGeom = null;
+
+  function renderBrush() {
+    const W = brushWrap.clientWidth, H = brushWrap.clientHeight;
+    if (!W || !H || !state.data) return;
+    brushSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const margin = { l: W < 520 ? 34 : 42, r: 6, t: 4, b: 4 };
+    const full = [model.first, model.n - 1];
+    const g = geometry(W, H, { range: full, mode: 'share', margin });
+    brushGeom = g;
+    const [a, b] = state.range;
+    const xa = g.x(state.data.dates[a]), xb = g.x(state.data.dates[b]);
+    const top = margin.t, bottom = H - margin.b;
+    let s = `<defs><clipPath id="brush-clip"><rect x="${margin.l}" y="${top}" width="${g.pw}" height="${bottom - top}"/></clipPath></defs><g clip-path="url(#brush-clip)">`;
+    g.bands.forEach(bd => { s += `<path d="${bd.area}" fill="${bd.color}"/>`; });
+    g.bands.forEach(bd => { if (bd.edge) s += `<path d="${bd.edge}" fill="none" stroke="${SURFACE}" stroke-width="1"/>`; });
+    s += `<rect x="${margin.l}" y="${top}" width="${fx(Math.max(0, xa - margin.l))}" height="${bottom - top}" fill="${SURFACE}" fill-opacity=".78"/>`;
+    s += `<rect x="${fx(xb)}" y="${top}" width="${fx(Math.max(0, margin.l + g.pw - xb))}" height="${bottom - top}" fill="${SURFACE}" fill-opacity=".78"/>`;
+    s += `</g>`;
+    s += `<rect x="${fx(xa)}" y="${top - 1}" width="${fx(Math.max(1, xb - xa))}" height="${bottom - top + 2}" fill="none" stroke="${INK}" stroke-width="1.5"/>`;
+    [xa, xb].forEach(xh => {
+      s += `<rect x="${fx(xh - 4)}" y="${fx((top + bottom) / 2 - 11)}" width="8" height="22" rx="3" fill="${INK}"/>`;
+      s += `<line x1="${fx(xh - 1)}" x2="${fx(xh - 1)}" y1="${fx((top + bottom) / 2 - 5)}" y2="${fx((top + bottom) / 2 + 5)}" stroke="${SURFACE}" stroke-width="1"/>`;
+      s += `<line x1="${fx(xh + 1)}" x2="${fx(xh + 1)}" y1="${fx((top + bottom) / 2 - 5)}" y2="${fx((top + bottom) / 2 + 5)}" stroke="${SURFACE}" stroke-width="1"/>`;
+    });
+    brushSvg.innerHTML = s;
+    const cad = model.cadence;
+    const label = `${shortDate(state.data.dates[a], cad)} – ${shortDate(state.data.dates[b], cad)}`;
+    $('#brush-range').textContent = label;
+    brushWrap.setAttribute('aria-valuetext', label);
+  }
+
+  function brushIndexAt(clientX) {
+    const g = brushGeom; if (!g) return null;
+    const rect = brushWrap.getBoundingClientRect();
+    const px = clamp(clientX - rect.left, g.margin.l, g.margin.l + g.pw);
+    const d = state.data.dates;
+    const t = d[g.a] + (px - g.margin.l) / g.pw * (d[g.b] - d[g.a]);
+    let best = g.a, bestD = Infinity;
+    let lo = g.a, hi = g.b;
+    while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (d[mid] < t) lo = mid; else hi = mid; }
+    [lo, hi].forEach(i => { const dd = Math.abs(d[i] - t); if (dd < bestD) { bestD = dd; best = i; } });
+    return best;
+  }
+
+  safely(() => {
+    let drag = null;
+    brushWrap.addEventListener('pointerdown', e => {
+      if (!brushGeom || !state.data) return;
+      const rect = brushWrap.getBoundingClientRect();
+      const px = e.clientX - rect.left;
+      const xa = brushGeom.x(state.data.dates[state.range[0]]);
+      const xb = brushGeom.x(state.data.dates[state.range[1]]);
+      const i = brushIndexAt(e.clientX);
+      if (Math.abs(px - xa) <= 12) drag = { kind: 'a' };
+      else if (Math.abs(px - xb) <= 12) drag = { kind: 'b' };
+      else if (px > xa && px < xb && (state.range[0] > model.first || state.range[1] < model.n - 1)) drag = { kind: 'move', offset: i - state.range[0], span: state.range[1] - state.range[0] };
+      else drag = { kind: 'new', anchor: i };
+      brushWrap.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    brushWrap.addEventListener('pointermove', e => {
+      if (!drag) {
+        if (!brushGeom || !state.data) return;
+        const rect = brushWrap.getBoundingClientRect();
+        const px = e.clientX - rect.left;
+        const xa = brushGeom.x(state.data.dates[state.range[0]]);
+        const xb = brushGeom.x(state.data.dates[state.range[1]]);
+        brushWrap.style.cursor = (Math.abs(px - xa) <= 12 || Math.abs(px - xb) <= 12) ? 'ew-resize' : (px > xa && px < xb ? 'grab' : 'crosshair');
+        return;
+      }
+      const i = brushIndexAt(e.clientX);
+      let [a, b] = state.range;
+      if (drag.kind === 'a') a = Math.min(i, b - 1);
+      else if (drag.kind === 'b') b = Math.max(i, a + 1);
+      else if (drag.kind === 'move') {
+        a = i - drag.offset; b = a + drag.span;
+        if (a < model.first) { a = model.first; b = a + drag.span; }
+        if (b > model.n - 1) { b = model.n - 1; a = b - drag.span; }
+      } else { a = Math.min(drag.anchor, i); b = Math.max(drag.anchor, i); }
+      setRange([a, b], true);
+    });
+    const end = () => { drag = null; };
+    brushWrap.addEventListener('pointerup', end);
+    brushWrap.addEventListener('pointercancel', end);
+    brushWrap.addEventListener('keydown', e => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key) || !model) return;
+      e.preventDefault();
+      const span = state.range[1] - state.range[0];
+      let a = state.range[0];
+      const step = e.shiftKey ? Math.max(1, Math.round(span / 4)) : 1;
+      if (e.key === 'ArrowLeft') a -= step;
+      if (e.key === 'ArrowRight') a += step;
+      if (e.key === 'Home') a = model.first;
+      if (e.key === 'End') a = model.n - 1 - span;
+      a = clamp(a, model.first, model.n - 1 - span);
+      setRange([a, a + span], true);
+    });
+  });
+
+  /* ======================================================================
+     Brand cards, insight, caption, table
+     ====================================================================== */
+  const eyeOpen = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1.8 10S5 4.5 10 4.5 18.2 10 18.2 10 15 15.5 10 15.5 1.8 10 1.8 10Z"/><circle cx="10" cy="10" r="2.6"/></svg>';
+  const eyeClosed = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1.8 10S5 4.5 10 4.5 18.2 10 18.2 10 15 15.5 10 15.5 1.8 10 1.8 10Z"/><path d="M3 17 17 3"/></svg>';
+
+  function renderCards() {
+    const strip = $('#brand-strip');
+    const d = state.data, M = model;
+    const [a, b] = state.range;
+    strip.replaceChildren();
+    d.brands.forEach((brand, k) => {
+      const hidden = state.hidden.has(k);
+      const card = document.createElement('div');
+      card.className = 'brand-card' + (hidden ? ' is-hidden' : '');
+      card.style.setProperty('--c', PALETTE[k]);
+      const sw = document.createElement('span'); sw.className = 'brand-swatch'; sw.setAttribute('aria-hidden', 'true');
+      const row = document.createElement('div'); row.className = 'brand-name-row';
+      const input = document.createElement('input');
+      input.className = 'brand-name'; input.type = 'text'; input.value = brand.name; input.maxLength = 60;
+      input.setAttribute('aria-label', `Brand ${k + 1} name (click to rename)`);
+      input.title = 'Click to rename';
+      input.addEventListener('change', () => {
+        const v = input.value.trim();
+        if (!v) { input.value = brand.name; return; }
+        brand.name = v; persistCurrent(); renderAll();
+      });
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') input.blur(); if (e.key === 'Escape') { input.value = brand.name; input.blur(); } });
+      const toggle = document.createElement('button');
+      toggle.type = 'button'; toggle.className = 'brand-toggle';
+      toggle.setAttribute('aria-pressed', String(!hidden));
+      toggle.setAttribute('aria-label', (hidden ? 'Show ' : 'Hide ') + brand.name);
+      toggle.title = hidden ? 'Show in chart' : 'Hide from chart. Shares are recalculated for the remaining brands.';
+      toggle.innerHTML = hidden ? eyeClosed : eyeOpen;
+      toggle.addEventListener('click', () => {
+        if (!hidden && d.brands.length - state.hidden.size <= 1) { toast('At least one brand has to stay visible.'); return; }
+        if (hidden) state.hidden.delete(k); else state.hidden.add(k);
+        refreshModel(); renderAll();
+        const again = $$('.brand-toggle')[k]; if (again) again.focus();
+      });
+      row.append(input, toggle);
+      const share = document.createElement('span'); share.className = 'brand-share';
+      const delta = document.createElement('span'); delta.className = 'brand-delta';
+      if (hidden) {
+        share.textContent = '–';
+        delta.textContent = 'Hidden from the chart';
+      } else {
+        const end = M.shares[k][b], start = M.shares[k][a];
+        const num = (end * 100).toFixed(1);
+        share.textContent = num; const small = document.createElement('small'); small.textContent = '%'; share.appendChild(small);
+        const bold = document.createElement('b'); bold.textContent = (end - start > 0.0005 ? '▲ ' : end - start < -0.0005 ? '▼ ' : '') + pp(end - start);
+        delta.append(bold, document.createTextNode(' since ' + shortDate(d.dates[a], M.cadence)));
+      }
+      card.append(sw, row, share, delta);
+      strip.appendChild(card);
+    });
+  }
+
+  function renderInsight() {
+    const el = $('#insight');
+    el.replaceChildren();
+    const d = state.data, M = model;
+    const [a, b] = state.range;
+    const vis = d.brands.map((_, k) => k).filter(k => M.vis[k]);
+    if (vis.length < 2) { el.textContent = 'Only one brand is visible, so it has 100% of the search in the set. Show more brands to compare.'; return; }
+    const endS = k => M.shares[k][b], startS = k => M.shares[k][a];
+    const leader = vis.reduce((p, q) => endS(q) > endS(p) ? q : p);
+    const mover = vis.reduce((p, q) => Math.abs(endS(q) - startS(q)) > Math.abs(endS(p) - startS(p)) ? q : p);
+    const focus = vis[0];
+    const strong = t => { const s = document.createElement('strong'); s.textContent = t; return s; };
+    const signed = v => { const s = document.createElement('span'); s.className = v >= 0 ? 'up' : 'down'; s.textContent = pp(v); return s; };
+    const txt = t => document.createTextNode(t);
+    const since = shortDate(d.dates[a], M.cadence);
+    el.append(strong(d.brands[focus].name), txt(` holds ${pct(endS(focus))} of search in the set, `), signed(endS(focus) - startS(focus)), txt(` since ${since}. `));
+    if (leader !== focus) el.append(strong(d.brands[leader].name), txt(` leads with ${pct(endS(leader))}. `));
+    else el.append(txt('That’s the biggest share in the set. '));
+    if (mover !== focus && Math.abs(endS(mover) - startS(mover)) >= 0.005) {
+      el.append(txt('The biggest mover is '), strong(d.brands[mover].name), txt(' ('), signed(endS(mover) - startS(mover)), txt(').'));
+    }
+  }
+
+  function renderMeta() {
+    const d = state.data, M = model;
+    $('#sample-badge').hidden = !d.sample;
+    $('#dataset-title').textContent = d.title || 'Share of search';
+    const cad = M.cadence >= 27 ? 'Monthly' : M.cadence >= 6 ? 'Weekly' : 'Daily';
+    const bits = [d.geoLabel, `${cad} data`, `${shortDate(d.dates[0], M.cadence)} – ${shortDate(d.dates[M.n - 1], M.cadence)}`].filter(Boolean);
+    $('#dataset-sub').textContent = bits.join(' · ');
+    const [a, b] = state.range;
+    const cap = state.mode === 'share'
+      ? `Share of search = each brand’s Google Trends interest ÷ the total of the brands shown, with a ${SMOOTH_LABEL[state.smooth]}. The bands always add up to 100%. Source: ${d.source || 'Google Trends'}${d.geoLabel ? ', ' + d.geoLabel : ''}. Showing ${shortDate(d.dates[a], M.cadence)} – ${shortDate(d.dates[b], M.cadence)}.`
+      : `Search interest as Google Trends reports it (0–100, where 100 is the highest point for any brand in the download), with a ${SMOOTH_LABEL[state.smooth]}. Use this view to see whether the whole category is growing. Source: ${d.source || 'Google Trends'}${d.geoLabel ? ', ' + d.geoLabel : ''}.`;
+    $('#chart-caption').textContent = M.periods > 1 && M.first > 0 ? cap + ` The first ${M.first} ${M.cadence >= 27 ? 'months' : M.cadence >= 6 ? 'weeks' : 'days'} are used to start the rolling average.` : cap;
+    chartWrap.setAttribute('aria-label', `${state.mode === 'share' ? 'Share of search' : 'Search interest'} chart for ${d.brands.map(b => b.name).join(', ')}. Use the left and right arrow keys to read values. A table view follows the chart.`);
+  }
+
+  function renderTable() {
+    const details = $('#table-details');
+    if (!details.open) return;
+    const table = $('#data-table');
+    const d = state.data, M = model;
+    const [a, b] = state.range;
+    table.replaceChildren();
+    const thead = document.createElement('thead'); const hr = document.createElement('tr');
+    const th0 = document.createElement('th'); th0.textContent = 'Period'; th0.scope = 'col'; hr.appendChild(th0);
+    d.brands.forEach((br, k) => { if (!M.vis[k]) return; const th = document.createElement('th'); th.scope = 'col'; th.textContent = br.name + ' share'; hr.appendChild(th); });
+    d.brands.forEach((br, k) => { if (!M.vis[k]) return; const th = document.createElement('th'); th.scope = 'col'; th.className = 'raw'; th.textContent = br.name + ' (Trends)'; hr.appendChild(th); });
+    thead.appendChild(hr); table.appendChild(thead);
+    const tbody = document.createElement('tbody');
+    const frag = document.createDocumentFragment();
+    for (let i = b; i >= a; i--) {
+      const tr = document.createElement('tr');
+      const td0 = document.createElement('td'); td0.textContent = isoDate(d.dates[i]); tr.appendChild(td0);
+      d.brands.forEach((_, k) => { if (!M.vis[k]) return; const td = document.createElement('td'); td.textContent = pct(M.shares[k][i]); tr.appendChild(td); });
+      d.brands.forEach((br, k) => { if (!M.vis[k]) return; const td = document.createElement('td'); td.className = 'raw'; const v = br.raw[i]; td.textContent = v == null ? '–' : (v === 0.5 ? '<1' : String(v)); tr.appendChild(td); });
+      frag.appendChild(tr);
+    }
+    tbody.appendChild(frag); table.appendChild(tbody);
+  }
+
+  function renderControls() {
+    $$('[data-smooth]').forEach(btn => {
+      const periods = periodsFor(btn.dataset.smooth, model.cadence);
+      const usable = btn.dataset.smooth === 'raw' || (periods > 1 && periods < model.n - 3);
+      btn.hidden = !usable;
+      btn.setAttribute('aria-pressed', String(btn.dataset.smooth === state.smooth));
+    });
+    const [a, b] = state.range;
+    $$('[data-range]').forEach(btn => {
+      const v = btn.dataset.range;
+      const r = presetRange(v === 'all' ? 'all' : +v);
+      const spanYears = (state.data.dates[model.n - 1] - state.data.dates[model.first]) / (365.25 * DAY);
+      btn.hidden = v !== 'all' && spanYears < +v * 1.02;
+      btn.setAttribute('aria-pressed', String(r[0] === a && r[1] === b));
+    });
+    $$('[data-mode]').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.mode === state.mode)));
+  }
+
+  function renderAll() {
+    if (!state.data) return;
+    renderMeta();
+    renderControls();
+    renderCards();
+    renderInsight();
+    renderChart();
+    renderBrush();
+    renderTable();
+  }
+
+  let frame = 0;
+  function setRange(range, fromBrush) {
+    state.range = clampRange(range);
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      renderControls(); renderCards(); renderInsight(); renderMeta(); renderChart(); renderBrush();
+      if (!fromBrush) renderTable();
+      clearTimeout(setRange.t); setRange.t = setTimeout(renderTable, 250);
+    });
+  }
+
+  // Rebuild the model but keep the same dates in view.
+  function refreshModel() {
+    const prev = model && state.range ? [state.data.dates[state.range[0]], state.data.dates[state.range[1]]] : null;
+    model = buildModel();
+    if (prev) {
+      const d = state.data.dates;
+      const a = d.findIndex(t => t >= prev[0]);
+      let b = d.length - 1; for (let i = d.length - 1; i >= 0; i--) { if (d[i] <= prev[1]) { b = i; break; } }
+      state.range = clampRange([a < 0 ? model.first : a, b]);
+    } else state.range = clampRange(null);
+  }
+
+  /* ======================================================================
+     Loading datasets, library, persistence
+     ====================================================================== */
+  function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+
+  function loadDataset(data, { id = null, save = true, scroll = false, message = '' } = {}) {
+    state.data = data;
+    state.id = data.sample ? null : (id || uid());
+    state.hidden = new Set();
+    state.hover = null;
+    model = null;
+    const cad = cadenceOf(data.dates);
+    const preferred = settings.smooth && periodsFor(settings.smooth, cad) < data.dates.length - 3 ? settings.smooth : defaultSmooth(cad);
+    state.smooth = preferred;
+    if (periodsFor(state.smooth, cad) >= data.dates.length - 3) state.smooth = 'raw';
+    model = buildModel();
+    state.range = clampRange(null);
+    if (save && !data.sample) persistCurrent();
+    else if (data.sample) { library.current = null; storeSet(STORE_LIBRARY, library); renderLibrary(); }
+    fillStepOne(data);
+    renderAll();
+    if (message) toast(message);
+    if (scroll) $('#tracker').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+    nudgePoint();
+  }
+
+  function serialise(data) {
+    return { title: data.title, geoLabel: data.geoLabel, source: data.source, query: data.query, dates: data.dates, brands: data.brands.map(b => ({ name: b.name, raw: b.raw })), savedAt: Date.now() };
+  }
+
+  function persistCurrent() {
+    const d = state.data; if (!d || d.sample) return;
+    const entry = { id: state.id, ...serialise(d) };
+    const i = library.items.findIndex(it => it.id === state.id);
+    if (i >= 0) library.items[i] = entry; else library.items.unshift(entry);
+    library.items = library.items.slice(0, 20);
+    library.current = state.id;
+    if (!storeSet(STORE_LIBRARY, library)) {
+      library.items = library.items.slice(0, 5);
+      storeSet(STORE_LIBRARY, library);
+    }
+    renderLibrary();
+  }
+
+  function renderLibrary() {
+    const list = $('#library');
+    list.replaceChildren();
+    $('#library-empty').hidden = library.items.length > 0;
+    library.items.forEach(item => {
+      const li = document.createElement('li');
+      if (item.id === state.id) li.classList.add('is-current');
+      const title = document.createElement('span'); title.className = 'lib-title'; title.textContent = item.title || 'Untitled comparison';
+      const meta = document.createElement('span'); meta.className = 'lib-meta';
+      const last = item.dates[item.dates.length - 1];
+      meta.textContent = `${item.brands.map(b => b.name).join(' · ')}  —  ${item.geoLabel ? item.geoLabel + ', ' : ''}data to ${fmtDay.format(last)}`;
+      const actions = document.createElement('span'); actions.className = 'lib-actions';
+      const open = document.createElement('button'); open.type = 'button'; open.className = 'btn-link'; open.textContent = 'Open';
+      open.addEventListener('click', () => { loadDataset(revive(item), { id: item.id, save: true, scroll: true }); });
+      const del = document.createElement('button'); del.type = 'button'; del.className = 'btn-link'; del.textContent = 'Delete';
+      del.setAttribute('aria-label', 'Delete ' + (item.title || 'comparison'));
+      del.addEventListener('click', () => {
+        if (!confirm(`Delete “${item.title || 'this comparison'}” from this browser?`)) return;
+        library.items = library.items.filter(it => it.id !== item.id);
+        if (library.current === item.id) library.current = null;
+        storeSet(STORE_LIBRARY, library);
+        if (state.id === item.id) loadDataset(library.items[0] ? revive(library.items[0]) : sampleData(), { id: library.items[0]?.id, save: !!library.items[0] });
+        renderLibrary();
+      });
+      actions.append(open, del);
+      li.append(title, meta, actions);
+      list.appendChild(li);
+    });
+  }
+  function revive(item) {
+    return { title: item.title, geoLabel: item.geoLabel, source: item.source, query: item.query, dates: item.dates.slice(), brands: item.brands.map(b => ({ name: b.name, raw: b.raw.slice() })) };
+  }
+
+  /* ======================================================================
+     Step 1–3 wiring
+     ====================================================================== */
+  const brandInputs = $('#brand-inputs');
+  for (let k = 0; k < MAX_BRANDS; k++) {
+    const wrap = document.createElement('label'); wrap.className = 'brand-input'; wrap.style.setProperty('--c', PALETTE[k]);
+    const input = document.createElement('input');
+    input.className = 'input'; input.type = 'text'; input.maxLength = 80; input.autocomplete = 'off'; input.spellcheck = false;
+    input.placeholder = k === 0 ? 'Your brand' : `Competitor ${k}`;
+    input.setAttribute('aria-label', k === 0 ? 'Your brand' : `Competitor ${k}`);
+    input.dataset.slot = k;
+    wrap.appendChild(input);
+    brandInputs.appendChild(wrap);
+  }
+  const geoSelect = $('#geo-select'), geoOther = $('#geo-other'), timeSelect = $('#time-select'), titleInput = $('#title-input');
+  geoSelect.addEventListener('change', () => { $('#geo-other-field').hidden = geoSelect.value !== '__other'; if (geoSelect.value === '__other') geoOther.focus(); });
+
+  function currentQuery() {
+    const terms = $$('#brand-inputs input').map(i => i.value.trim()).filter(Boolean).slice(0, MAX_BRANDS);
+    let geo = geoSelect.value === '__other' ? geoOther.value.trim().toUpperCase() : geoSelect.value;
+    if (!/^[A-Z]{2}(-[A-Z0-9]{1,3})?$/.test(geo)) geo = geoSelect.value === '__other' ? '' : geo;
+    return { terms, geo, time: timeSelect.value };
+  }
+  function fillStepOne(data) {
+    if (data.sample) return;
+    const q = data.query;
+    const names = q && q.terms && q.terms.length ? q.terms : data.brands.map(b => b.name);
+    $$('#brand-inputs input').forEach((inp, k) => { inp.value = names[k] || ''; });
+    if (q) {
+      if (q.geo != null) {
+        if ([...geoSelect.options].some(o => o.value === q.geo)) { geoSelect.value = q.geo; $('#geo-other-field').hidden = true; }
+        else if (q.geo) { geoSelect.value = '__other'; geoOther.value = q.geo; $('#geo-other-field').hidden = false; }
+      }
+      if (q.time && [...timeSelect.options].some(o => o.value === q.time)) timeSelect.value = q.time;
+    }
+    titleInput.value = data.title || '';
+  }
+  function trendsURL(q) {
+    const params = [`date=${encodeURIComponent(q.time)}`, q.geo ? `geo=${encodeURIComponent(q.geo)}` : '', `q=${q.terms.map(encodeURIComponent).join(',')}`, 'hl=en-GB'].filter(Boolean);
+    return 'https://trends.google.com/trends/explore?' + params.join('&');
+  }
+  function geoLabelFor(geo) { return GEO_NAMES[geo] != null ? GEO_NAMES[geo] : geo; }
+
+  $('#open-trends').addEventListener('click', () => {
+    const q = currentQuery();
+    const status = $('#step2-status');
+    status.classList.remove('is-error');
+    if (q.terms.length < 2) { status.textContent = 'Add at least two brands in step 1.'; status.classList.add('is-error'); $('#brand-inputs input').focus(); return; }
+    pendingQuery = q;
+    window.open(trendsURL(q), '_blank', 'noopener');
+    status.textContent = 'Google Trends opened in a new tab. Download “Interest over time” and drop the file in step 3.';
+  });
+  let pendingQuery = null;
+
+  function titleFor(q, parsed) {
+    const typed = titleInput.value.trim();
+    if (typed) return typed;
+    const names = parsed.brands.map(b => b.name);
+    return names.slice(0, 2).join(' vs ') + (names.length > 2 ? ` + ${names.length - 2} more` : '');
+  }
+
+  function ingest(text, origin) {
+    const statusEl = $('#drop-status');
+    statusEl.classList.remove('is-error');
+    try {
+      const parsed = parseText(text);
+      const q = pendingQuery && sameTerms(pendingQuery.terms, parsed.brands.map(b => b.name)) ? pendingQuery : (parsed.query || null);
+      const geoLabel = parsed.geoLabel || (q ? geoLabelFor(q.geo) : '');
+      const data = {
+        title: titleFor(q, parsed),
+        geoLabel,
+        source: parsed.source || 'Google Trends',
+        query: q ? { terms: q.terms, geo: q.geo, time: q.time } : { terms: parsed.brands.map(b => b.name), geo: geoSelect.value === '__other' ? '' : geoSelect.value, time: timeSelect.value },
+        dates: parsed.dates,
+        brands: parsed.brands
+      };
+      const cad = cadenceOf(data.dates);
+      const unit = cad >= 27 ? 'months' : cad >= 6 ? 'weeks' : 'days';
+      const msg = `Loaded ${data.brands.length} brands · ${data.dates.length} ${unit}${origin ? ' from ' + origin : ''}.` + (parsed.notes.length ? ' ' + parsed.notes.join(' ') : '');
+      statusEl.textContent = msg;
+      loadDataset(data, { save: true, scroll: true, message: msg });
+      pendingQuery = null;
+      return true;
+    } catch (err) {
+      statusEl.textContent = err.message || String(err);
+      statusEl.classList.add('is-error');
+      toast(err.message || String(err), true);
+      return false;
+    }
+  }
+  function sameTerms(a, b) {
+    const norm = s => s.trim().toLowerCase();
+    return a.length === b.length && a.every((t, i) => norm(t) === norm(b[i]));
+  }
+
+  async function readFile(file) {
+    if (!file) return;
+    if (/\.(xlsx|xls|numbers)$/i.test(file.name)) { toast('Excel and Numbers files can’t be read directly. Save the file as CSV, or copy the cells and paste them.', true); return; }
+    if (file.size > 5 * 1024 * 1024) { toast('That file is too large for a Trends export (max 5 MB).', true); return; }
+    const text = await file.text();
+    ingest(text, file.name);
+  }
+
+  const fileInput = $('#file-input');
+  const dropzone = $('#dropzone');
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+  fileInput.addEventListener('change', () => { readFile(fileInput.files[0]); fileInput.value = ''; });
+
+  safely(() => {
+    const overlay = $('#drop-overlay');
+    let depth = 0;
+    const hasFiles = e => e.dataTransfer && [...(e.dataTransfer.types || [])].includes('Files');
+    window.addEventListener('dragenter', e => { if (!hasFiles(e)) return; depth++; overlay.hidden = false; dropzone.classList.add('is-over'); });
+    window.addEventListener('dragover', e => { if (!hasFiles(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+    window.addEventListener('dragleave', e => { if (!hasFiles(e)) return; depth = Math.max(0, depth - 1); if (!depth) { overlay.hidden = true; dropzone.classList.remove('is-over'); } });
+    window.addEventListener('drop', e => {
+      if (!hasFiles(e)) return;
+      e.preventDefault(); depth = 0; overlay.hidden = true; dropzone.classList.remove('is-over');
+      readFile(e.dataTransfer.files[0]);
+    });
+    document.addEventListener('paste', e => {
+      const target = e.target;
+      if (target && (target.closest('input, textarea, [contenteditable="true"]'))) return;
+      const file = e.clipboardData && [...e.clipboardData.files][0];
+      if (file) { e.preventDefault(); readFile(file); return; }
+      const text = e.clipboardData && e.clipboardData.getData('text/plain');
+      if (text && text.split(/\r?\n/).length >= 3) { e.preventDefault(); ingest(text, 'pasted data'); }
+    });
+  });
+
+  $('#toggle-paste').addEventListener('click', () => {
+    const area = $('#paste-area');
+    area.hidden = !area.hidden;
+    $('#toggle-paste').textContent = area.hidden ? 'Paste data instead' : 'Hide paste box';
+    if (!area.hidden) $('#paste-input').focus();
+  });
+  $('#load-paste').addEventListener('click', () => {
+    if (ingest($('#paste-input').value, 'pasted data')) $('#paste-input').value = '';
+  });
+  $('#load-sample').addEventListener('click', () => loadDataset(sampleData(), { save: false, scroll: true, message: 'Showing sample data with fictional brands.' }));
+
+  /* Live connection ------------------------------------------------------ */
+  const endpointInput = $('#endpoint-input');
+  function renderEndpoint() {
+    endpointInput.value = settings.endpoint || '';
+    const pill = $('#live-pill');
+    pill.classList.toggle('is-on', !!settings.endpoint);
+    pill.textContent = settings.endpoint ? 'Connected' : 'Not connected';
+    $('#fetch-live').title = settings.endpoint ? 'Fetch the comparison through your connector' : 'Set up a live connection first';
+  }
+  $('#endpoint-save').addEventListener('click', () => {
+    const v = endpointInput.value.trim();
+    const status = $('#endpoint-status'); status.classList.remove('is-error');
+    if (v && !/^https:\/\/[^\s]+$/i.test(v)) { status.textContent = 'The address must start with https://'; status.classList.add('is-error'); return; }
+    settings.endpoint = v.replace(/\/+$/, '');
+    storeSet(STORE_SETTINGS, settings);
+    renderEndpoint();
+    status.textContent = v ? 'Saved. Use “Fetch live” in step 2.' : 'Connection removed.';
+  });
+
+  $('#fetch-live').addEventListener('click', async () => {
+    const status = $('#step2-status'); status.classList.remove('is-error');
+    if (!settings.endpoint) {
+      const det = $('#live-details'); det.open = true;
+      det.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+      endpointInput.focus({ preventScroll: true });
+      status.textContent = 'Set up a live connection first (see below), or use the Google Trends download.';
+      return;
+    }
+    const q = currentQuery();
+    if (q.terms.length < 2) { status.textContent = 'Add at least two brands in step 1.'; status.classList.add('is-error'); return; }
+    const btn = $('#fetch-live'); btn.disabled = true; const label = btn.textContent; btn.textContent = 'Fetching…';
+    status.textContent = 'Asking Google Trends. This can take a few seconds…';
+    const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 30000);
+    try {
+      const url = `${settings.endpoint}/?q=${encodeURIComponent(q.terms.join(','))}&geo=${encodeURIComponent(q.geo)}&time=${encodeURIComponent(q.time)}`;
+      const res = await fetch(url, { signal: ctrl.signal, headers: { Accept: 'application/json' } });
+      const body = await res.json().catch(() => null);
+      if (!res.ok || !body || body.error) throw new Error((body && body.error) || `The connector answered ${res.status}.`);
+      pendingQuery = q;
+      body.terms = q.terms; body.geo = q.geo; body.time = q.time;
+      if (ingest(JSON.stringify(body), 'the live connection')) status.textContent = 'Fetched live from ' + (body.source === 'serpapi' ? 'Google Trends via SerpApi.' : 'Google Trends.');
+    } catch (err) {
+      status.textContent = (err.name === 'AbortError' ? 'The request timed out.' : err.message) + ' You can always use the download in step 2 and drop the file in step 3.';
+      status.classList.add('is-error');
+    } finally {
+      clearTimeout(timer); btn.disabled = false; btn.textContent = label;
+    }
+  });
+
+  /* ======================================================================
+     Controls
+     ====================================================================== */
+  $$('[data-range]').forEach(btn => btn.addEventListener('click', () => {
+    const v = btn.dataset.range;
+    setRange(presetRange(v === 'all' ? 'all' : +v));
+  }));
+  $$('[data-smooth]').forEach(btn => btn.addEventListener('click', () => {
+    state.smooth = btn.dataset.smooth;
+    settings.smooth = state.smooth; storeSet(STORE_SETTINGS, settings);
+    const wasAll = state.range[0] === model.first && state.range[1] === model.n - 1;
+    refreshModel();
+    if (wasAll) state.range = clampRange(null);
+    renderAll();
+  }));
+  $$('[data-mode]').forEach(btn => btn.addEventListener('click', () => {
+    state.mode = btn.dataset.mode;
+    settings.mode = state.mode; storeSet(STORE_SETTINGS, settings);
+    renderAll();
+  }));
+
+  // Chart hover & keyboard
+  chartWrap.addEventListener('pointermove', e => { if (!state.data) return; const i = nearestIndex(e.clientX); if (i != null) showHover(i); });
+  chartWrap.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') hideHover(); });
+  chartWrap.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') { const i = nearestIndex(e.clientX); if (i != null) showHover(i); } });
+  chartWrap.addEventListener('keydown', e => {
+    if (!state.data) return;
+    const [a, b] = state.range;
+    let i = state.hover == null ? b : state.hover;
+    if (e.key === 'ArrowLeft') i = Math.max(a, i - (e.shiftKey ? 4 : 1));
+    else if (e.key === 'ArrowRight') i = Math.min(b, i + (e.shiftKey ? 4 : 1));
+    else if (e.key === 'Home') i = a;
+    else if (e.key === 'End') i = b;
+    else if (e.key === 'Escape') { hideHover(); return; }
+    else return;
+    e.preventDefault(); showHover(i);
+  });
+  chartWrap.addEventListener('focus', () => { if (state.data && state.hover == null) showHover(state.range[1]); });
+  chartWrap.addEventListener('blur', hideHover);
+
+  $('#table-details').addEventListener('toggle', renderTable);
+
+  /* ======================================================================
+     Export — PNG, CSV and share links
+     ====================================================================== */
+  function download(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+  const slug = s => (s || 'share-of-search').toLowerCase().normalize('NFKD').replace(/[^\w]+/g, '-').replace(/^-|-$/g, '').slice(0, 50) || 'share-of-search';
+
+  $('#export-csv').addEventListener('click', () => {
+    const d = state.data, M = model; if (!d) return;
+    const [a, b] = state.range;
+    const q = v => /[",\n;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+    const vis = d.brands.map((_, k) => k).filter(k => M.vis[k]);
+    const head = ['date', ...vis.map(k => q(d.brands[k].name + ' share %')), ...vis.map(k => q(d.brands[k].name + ' interest'))];
+    const lines = [head.join(',')];
+    for (let i = a; i <= b; i++) {
+      lines.push([isoDate(d.dates[i]), ...vis.map(k => (M.shares[k][i] * 100).toFixed(2)), ...vis.map(k => d.brands[k].raw[i] == null ? '' : String(d.brands[k].raw[i]))].join(','));
+    }
+    download(new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' }), `${slug(d.title)}-share-of-search.csv`);
+  });
+
+  $('#export-png').addEventListener('click', async () => {
+    const d = state.data, M = model; if (!d) return;
+    try {
+      if (document.fonts && document.fonts.load) await Promise.all(['700 64px "Source Serif 4"', '400 64px "Source Serif 4"', '600 20px Inter', '500 20px Inter'].map(f => document.fonts.load(f).catch(() => {})));
+      const W = 1600, H = 1000, scale = 2;
+      const canvas = document.createElement('canvas'); canvas.width = W * scale; canvas.height = H * scale;
+      const ctx = canvas.getContext('2d'); ctx.scale(scale, scale);
+      ctx.fillStyle = SURFACE; ctx.fillRect(0, 0, W, H);
+      const pad = 80;
+      const [a, b] = state.range;
+      ctx.fillStyle = PALETTE[0]; ctx.font = '600 16px Inter, system-ui, sans-serif';
+      if ('letterSpacing' in ctx) ctx.letterSpacing = '2.5px';
+      ctx.fillText(state.mode === 'share' ? 'SHARE OF SEARCH' : 'SEARCH INTEREST', pad, 92);
+      if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+      ctx.fillStyle = INK; ctx.font = '400 54px "Source Serif 4", Georgia, serif';
+      const title = d.title || 'Share of search';
+      let t = title; while (ctx.measureText(t).width > W - pad * 2 && t.length > 4) t = t.slice(0, -2);
+      ctx.fillText(t === title ? t : t + '…', pad, 152);
+      ctx.globalAlpha = .7; ctx.font = '500 18px Inter, system-ui, sans-serif';
+      ctx.fillText([d.geoLabel, `${shortDate(d.dates[a], M.cadence)} – ${shortDate(d.dates[b], M.cadence)}`, SMOOTH_LABEL[state.smooth]].filter(Boolean).join('  ·  '), pad, 188);
+      ctx.globalAlpha = 1;
+      // Legend
+      let lx = pad; const ly = 240;
+      d.brands.forEach((br, k) => {
+        if (!M.vis[k]) return;
+        const val = state.mode === 'share' ? pct(M.shares[k][b]) : String(Math.round((M.avg[k][b] || 0) * 10) / 10);
+        ctx.fillStyle = PALETTE[k];
+        if (state.mode === 'share') { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(lx, ly - 13, 26, 14, 3) : ctx.rect(lx, ly - 13, 26, 14); ctx.fill(); }
+        else { ctx.fillRect(lx, ly - 7, 26, 3); }
+        ctx.fillStyle = INK; ctx.font = '600 19px Inter, system-ui, sans-serif';
+        ctx.fillText(val, lx + 36, ly);
+        const vw = ctx.measureText(val).width;
+        ctx.font = '500 19px Inter, system-ui, sans-serif'; ctx.globalAlpha = .75;
+        ctx.fillText(br.name, lx + 44 + vw, ly);
+        ctx.globalAlpha = 1;
+        lx += 44 + vw + ctx.measureText(br.name).width + 40;
+      });
+      // Chart
+      const cx = pad, cy = 285, cw = W - pad * 2, ch = H - cy - 110;
+      const g = geometry(cw, ch, { margin: { l: 56, r: 4, t: 6, b: 34 } });
+      ctx.save(); ctx.translate(cx, cy);
+      ctx.save(); ctx.beginPath(); ctx.rect(g.margin.l, g.margin.t - 1, g.pw, g.ph + 2); ctx.clip();
+      if (g.mode === 'share') {
+        g.bands.forEach(bd => { ctx.fillStyle = bd.color; ctx.fill(new Path2D(bd.area)); });
+        ctx.strokeStyle = SURFACE; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+        g.bands.forEach(bd => { if (bd.edge) ctx.stroke(new Path2D(bd.edge)); });
+        ctx.globalAlpha = .4; ctx.lineWidth = 1;
+        g.yTicks.forEach(tk => { if (tk.v > 0 && tk.v < 1) { ctx.beginPath(); ctx.moveTo(g.margin.l, tk.y); ctx.lineTo(g.margin.l + g.pw, tk.y); ctx.stroke(); } });
+        ctx.globalAlpha = 1;
+      } else {
+        ctx.strokeStyle = INK; ctx.lineWidth = 1;
+        g.yTicks.forEach(tk => { ctx.globalAlpha = tk.v === 0 ? .28 : .1; ctx.beginPath(); ctx.moveTo(g.margin.l, tk.y); ctx.lineTo(g.margin.l + g.pw, tk.y); ctx.stroke(); });
+        ctx.globalAlpha = 1; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+        g.lines.forEach(l => { ctx.strokeStyle = l.color; ctx.stroke(new Path2D(l.path)); });
+      }
+      ctx.restore();
+      if (g.mode === 'share') {
+        const font = '600 17px Inter, system-ui, sans-serif';
+        bandLabels(g, font).forEach(l => {
+          ctx.fillStyle = l.color; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+          ctx.font = '500 17px Inter, system-ui, sans-serif';
+          ctx.fillText(l.share, l.x, l.y);
+          const sw = ctx.measureText(l.share).width;
+          ctx.font = font; ctx.fillText(l.name, l.x - sw - 10, l.y);
+        });
+      }
+      ctx.fillStyle = INK; ctx.globalAlpha = .66; ctx.font = '500 15px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+      g.yTicks.forEach(tk => ctx.fillText(tk.label, g.margin.l - 12, tk.y));
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      g.xTicks.forEach(tk => ctx.fillText(tk.label, tk.x, g.margin.t + g.ph + 26));
+      ctx.globalAlpha = .28; ctx.fillRect(g.margin.l, g.margin.t + g.ph, g.pw, 1);
+      ctx.restore();
+      // Footer
+      ctx.globalAlpha = .62; ctx.fillStyle = INK; ctx.textAlign = 'left'; ctx.font = '500 15px Inter, system-ui, sans-serif';
+      ctx.fillText(`Source: ${d.source || 'Google Trends'}. Share = brand interest ÷ total of brands shown.`, pad, H - 48);
+      ctx.globalAlpha = 1; ctx.textAlign = 'right'; ctx.font = '700 18px "Source Serif 4", Georgia, serif';
+      const brand = 'STRATEGY SUPPORT';
+      ctx.fillText(brand, W - pad - 14, H - 48);
+      ctx.fillStyle = PALETTE[0]; ctx.beginPath(); ctx.arc(W - pad - 5, H - 52, 5, 0, Math.PI * 2); ctx.fill();
+      canvas.toBlob(blob => { if (blob) download(blob, `${slug(d.title)}-share-of-search.png`); }, 'image/png');
+    } catch (err) {
+      console.error(err); toast('The image couldn’t be created in this browser.', true);
+    }
+  });
+
+  // Share links carry the data in the URL hash — nothing is stored on a server.
+  const b64u = {
+    enc: bytes => { let s = ''; bytes.forEach(b => { s += String.fromCharCode(b); }); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); },
+    dec: str => { const s = atob(str.replace(/-/g, '+').replace(/_/g, '/')); return Uint8Array.from(s, c => c.charCodeAt(0)); }
+  };
+  async function streamBytes(bytes, transform) {
+    const stream = new Blob([bytes]).stream().pipeThrough(transform);
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+  async function encodeShare(data) {
+    const days = data.dates.map(t => Math.round(t / DAY));
+    const deltas = days.map((v, i) => i ? v - days[i - 1] : v);
+    const payload = JSON.stringify({ v: 1, t: data.title, g: data.geoLabel, s: data.source, q: data.query, d: deltas, b: data.brands.map(b => [b.name, b.raw.map(v => v == null ? -1 : v)]) });
+    const bytes = new TextEncoder().encode(payload);
+    if ('CompressionStream' in window) {
+      try { return 'z' + b64u.enc(await streamBytes(bytes, new CompressionStream('deflate-raw'))); } catch (_) { /* fall through */ }
+    }
+    return 'j' + b64u.enc(bytes);
+  }
+  async function decodeShare(str) {
+    const kind = str[0]; let bytes = b64u.dec(str.slice(1));
+    if (kind === 'z') bytes = await streamBytes(bytes, new DecompressionStream('deflate-raw'));
+    const o = JSON.parse(new TextDecoder().decode(bytes));
+    let acc = 0;
+    const dates = o.d.map(v => (acc += v) * DAY);
+    const brands = o.b.slice(0, MAX_BRANDS).map(([name, raw]) => ({ name: String(name).slice(0, 60), raw: raw.map(v => v < 0 ? null : Number(v)) }));
+    if (brands.length < 2 || dates.length < 3 || brands.some(b => b.raw.length !== dates.length)) throw new Error('bad');
+    return { title: String(o.t || 'Shared comparison').slice(0, 80), geoLabel: String(o.g || '').slice(0, 60), source: String(o.s || 'Google Trends').slice(0, 60), query: o.q && Array.isArray(o.q.terms) ? { terms: o.q.terms.map(String).slice(0, MAX_BRANDS), geo: String(o.q.geo || ''), time: String(o.q.time || '') } : null, dates, brands };
+  }
+  $('#share-link').addEventListener('click', async () => {
+    const d = state.data; if (!d) return;
+    try {
+      const code = await encodeShare(d);
+      const url = location.origin + location.pathname + '#data=' + code;
+      try { await navigator.clipboard.writeText(url); toast('Link copied. Anyone who opens it sees this comparison. The data is in the link itself.'); }
+      catch (_) { window.prompt('Copy this link:', url); }
+    } catch (err) { console.error(err); toast('The link couldn’t be created.', true); }
+  });
+
+  /* ======================================================================
+     Toast, character, resize, boot
+     ====================================================================== */
+  let toastTimer = 0;
+  function toast(message, isError = false) {
+    const el = $('#toast');
+    el.textContent = message;
+    el.classList.toggle('is-error', !!isError);
+    el.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('is-visible'), isError ? 7000 : 4200);
+  }
+
+  const titlePoint = $('#title-point');
+  function nudgePoint() {
+    if (reduceMotion.matches || !titlePoint) return;
+    titlePoint.classList.remove('is-blinking'); void titlePoint.offsetWidth; titlePoint.classList.add('is-blinking');
+  }
+  safely(() => {
+    // The point glances down at the chart while someone is reading it.
+    chartWrap.addEventListener('pointerenter', () => titlePoint.classList.add('is-looking-down'));
+    chartWrap.addEventListener('pointerleave', () => titlePoint.classList.remove('is-looking-down'));
+    setInterval(() => { if (!document.hidden && Math.random() < .5) nudgePoint(); }, 5200);
+  });
+
+  safely(() => {
+    let rf = 0;
+    const onResize = () => { cancelAnimationFrame(rf); rf = requestAnimationFrame(() => { renderChart(); renderBrush(); }); };
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(onResize); ro.observe(chartWrap); ro.observe(brushWrap); }
+    else window.addEventListener('resize', onResize, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (state.data) renderChart(); }).catch(() => {});
+  });
+
+  async function boot() {
+    $('#current-year').textContent = String(new Date().getFullYear());
+    renderEndpoint();
+    renderLibrary();
+    const m = location.hash.match(/^#data=([\w-]+)$/);
+    if (m) {
+      try {
+        const data = await decodeShare(m[1]);
+        history.replaceState(null, '', location.pathname);
+        loadDataset(data, { save: true, message: 'Opened a shared comparison. It’s now saved in this browser too.' });
+        return;
+      } catch (err) { console.error(err); toast('The shared link couldn’t be read. It may have been cut short.', true); }
+    }
+    const current = library.items.find(it => it.id === library.current);
+    if (current) loadDataset(revive(current), { id: current.id, save: false });
+    else loadDataset(sampleData(), { save: false });
+  }
+
+  // Expose the parser for testing in the console.
+  window.ShareOfSearch = { parse: parseText };
+  boot();
+})();
+</script>
+</body>
+</html>
